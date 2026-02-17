@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Table & QR Command Center — Stitch Café</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#f2930d",
+            "background-light": "#fafaf5",
+            "background-dark": "#1a1c18",
+            "accent-grey": "#d6d3d1"
+          },
+          fontFamily: {
+            display: ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#1a1c18] dark:text-white antialiased">
+  <div class="relative min-h-screen w-full max-w-[390px] mx-auto flex flex-col bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl">
+    <header class="flex items-center justify-between px-4 py-3 bg-white dark:bg-[#111] border-b border-accent-grey/40 dark:border-white/10">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-[20px] text-primary">qr_code_2</span>
+        <h1 class="text-[16px] font-extrabold">QR Command Center</h1>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="zip-all" class="px-3 h-9 rounded-full bg-gray-900 text-white text-xs font-bold">ZIP All</button>
+        <button id="new-table" class="px-3 h-9 rounded-full bg-primary text-white text-xs font-bold">New Table</button>
+      </div>
+    </header>
+
+    <main class="px-4 py-4">
+      <div class="flex gap-1 mb-3">
+        <button class="tab-btn tab-active">Floor A</button>
+        <button class="tab-btn">Floor B</button>
+        <button class="tab-btn">Terrace</button>
+      </div>
+
+      <section class="grid grid-cols-3 gap-2 mb-6" id="table-grid"></section>
+
+      <section class="qr-section">
+        <div class="relative p-6 qr-gradient rounded-3xl border-2 border-accent-grey dark:border-white/10 shadow-inner group w-full max-w-[280px] aspect-square flex items-center justify-center mx-auto">
+          <img id="qr-image" alt="QR code" class="w-full h-full mix-blend-multiply opacity-90 object-contain" src="https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=Table%2012"/>
+        </div>
+        <div class="flex items-center justify-center gap-2 mt-4">
+          <button id="refresh-qr" class="px-4 h-10 rounded-full bg-primary text-white text-xs font-extrabold tracking-wider">Refresh QR</button>
+          <button id="share-qr" class="px-4 h-10 rounded-full bg-gray-900 text-white text-xs font-extrabold tracking-wider">Share</button>
+          <button id="save-qr" class="px-4 h-10 rounded-full bg-white border border-gray-200 text-xs font-extrabold tracking-wider">Save</button>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

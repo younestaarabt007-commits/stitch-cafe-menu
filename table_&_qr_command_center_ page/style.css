@@ -1,0 +1,41 @@
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.tab-btn {
+  height: 36px;
+  border-radius: 18px;
+  padding: 0 12px;
+  background: white;
+  color: #2b2b2b;
+  border: 1px solid #e4e4e7;
+  font-weight: 700;
+  font-size: 12px;
+}
+.dark .tab-btn {
+  background: #1f2937;
+  color: white;
+  border-color: #334155;
+}
+.tab-active {
+  background: #f2930d;
+  color: white;
+  border-color: #f2930d;
+}
+.table-card {
+  background: white;
+  border: 1px solid #e4e4e7;
+  border-radius: 14px;
+  padding: 8px;
+}
+.dark .table-card {
+  background: #1f2937;
+  border-color: #334155;
+}
+.table-card.selected {
+  outline: 2px solid #f2930d;
+}
+.qr-gradient {
+  background:
+    radial-gradient(circle at 20% 20%, #fff 0, #f6f6f6 50%, transparent 70%),
+    radial-gradient(circle at 80% 80%, #fff 0, #f0f0f0 50%, transparent 70%);
+}

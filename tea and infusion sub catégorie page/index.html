@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Tea & Infusion — Stitch Café</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#f2930d",
+            "background-light": "#fafaf5",
+            "background-dark": "#1a1c18",
+            "zen-green": "#4a5d4e",
+            "card-zen": "#f1f3ec"
+          },
+          fontFamily: {
+            display: ["Plus Jakarta Sans", "sans-serif"],
+            serif: ["Playfair Display", "serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#1a1c18] dark:text-white antialiased">
+  <div class="relative min-h-screen w-full max-w-[390px] mx-auto flex flex-col bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl">
+    <header class="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 bg-gradient-to-b from-black/30 to-transparent">
+      <button id="back-btn" class="flex size-9 items-center justify-center rounded-full bg-white/25 backdrop-blur-md text-white shadow-sm active:scale-95">
+        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+      </button>
+      <button id="search-btn" class="flex size-9 items-center justify-center rounded-full bg-white/25 backdrop-blur-md text-white shadow-sm active:scale-95">
+        <span class="material-symbols-outlined text-[20px]">search</span>
+      </button>
+    </header>
+
+    <div class="relative h-[380px] w-full overflow-hidden tea-hero-gradient flex items-end justify-center pb-8 shrink-0">
+      <div class="absolute inset-0 botanical-floats opacity-40"></div>
+      <div class="relative z-10 flex flex-col items-center text-center px-6">
+        <h1 class="text-white text-[28px] font-extrabold tracking-tight leading-tight">Tea & Infusion</h1>
+        <p class="text-white/85 text-[12px] font-medium mt-1">Ceremonial matcha, masala chai & herbal blends</p>
+      </div>
+    </div>
+
+    <div class="flex gap-2 px-4 overflow-x-auto no-scrollbar py-5">
+      <button class="filter-btn active px-5 h-9 rounded-full bg-primary text-white text-xs font-extrabold tracking-wide shadow-lg shadow-primary/20" data-filter="all">All</button>
+      <button class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-slate-800 text-zinc-700 dark:text-white text-xs font-semibold border border-slate-200 dark:border-slate-700 shadow-sm" data-filter="matcha">Matcha</button>
+      <button class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-slate-800 text-zinc-700 dark:text-white text-xs font-semibold border border-slate-200 dark:border-slate-700 shadow-sm" data-filter="herbal">Herbal</button>
+      <button class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-slate-800 text-zinc-700 dark:text-white text-xs font-semibold border border-slate-200 dark:border-slate-700 shadow-sm" data-filter="iced">Iced</button>
+    </div>
+
+    <div class="px-4 pt-2 pb-3 flex items-center justify-between">
+      <h2 class="text-[20px] font-bold">Popular Picks</h2>
+      <span class="text-primary text-xs font-bold cursor-pointer">View All</span>
+    </div>
+    <div id="product-list" class="px-4 grid grid-cols-2 gap-3 pb-32"></div>
+
+    <div id="floating-cart" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden">
+      <div class="bg-black text-white flex items-center justify-between pr-2 pl-6 overflow-hidden shadow-[0_0_20px_rgba(242,147,13,0.35)] pointer-events-auto" style="width: 342px; height: 64px; border-radius: 32px;">
+        <div class="flex flex-col justify-center">
+          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Total</span>
+          <div class="flex items-center gap-2">
+            <span id="cart-items-text" class="text-sm font-bold">0 Items</span>
+            <span class="w-1 h-1 bg-gray-600 rounded-full"></span>
+            <span id="cart-total" class="text-sm font-bold text-primary">$0.00</span>
+          </div>
+        </div>
+        <button class="bg-primary text-white px-5 h-[48px] rounded-full flex items-center gap-2">
+          <span class="font-extrabold text-[12px] uppercase tracking-wider">View Cart</span>
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

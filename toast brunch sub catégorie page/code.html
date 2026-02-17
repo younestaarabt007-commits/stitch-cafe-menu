@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Elite Compact Artisan Brunch</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2930d",
+                        "background-light": "#fafaf5",
+                        "background-dark": "#1a1c18",
+                        "card-zen": "#fffcf2",
+                        "yolk-yellow": "#fef08a",
+                        "herb-green": "#4ade80",
+                        "chili-red": "#ef4444"
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "1.5rem",
+                        "xl": "2rem",
+                        "2xl": "1.25rem","full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fafaf5;
+            min-height: 1300px;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 70% 30%, #fef9c3 0%, #fef3c7 45%, #fffbeb 100%);
+        }
+        .green-float {
+            @apply absolute bg-green-500/80 rounded-full border border-white/20 backdrop-blur-[1px];
+            box-shadow: inset -2px -2px 4px rgba(0,0,0,0.2), 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .chili-float {
+            @apply absolute bg-red-500/80 rounded-[40%] rotate-12 border border-white/20 backdrop-blur-[1px];
+             box-shadow: inset -2px -2px 4px rgba(0,0,0,0.2), 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .egg-drop {
+            @apply absolute bg-[#fffbeb] rounded-full blur-[0.5px] opacity-90;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#1c160d] dark:text-[#fcfaf8] antialiased">
+<div class="relative min-h-[1300px] w-full max-w-[390px] mx-auto flex flex-col bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl">
+<div class="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 bg-gradient-to-b from-black/20 to-transparent">
+<div class="flex size-9 items-center justify-center rounded-full bg-white/30 backdrop-blur-md text-white shadow-sm">
+<span class="material-symbols-outlined text-[20px]">arrow_back_ios_new</span>
+</div>
+<div class="flex size-9 items-center justify-center rounded-full bg-white/30 backdrop-blur-md text-white shadow-sm">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+</div>
+<div class="relative h-[380px] w-full overflow-hidden hero-gradient flex items-center justify-center mb-2">
+<div class="green-float w-5 h-2 top-28 left-12 opacity-90 rotate-45"></div>
+<div class="chili-float w-4 h-6 top-40 right-10 -rotate-12"></div>
+<div class="green-float w-4 h-3 bottom-40 left-10 rotate-[30deg]"></div>
+<div class="egg-drop w-4 h-4 bottom-28 right-24 opacity-80 bg-yellow-100"></div>
+<div class="egg-drop w-3 h-5 top-1/2 left-8 rotate-[60deg] bg-white"></div>
+<div class="egg-drop w-2 h-3 top-36 right-28 rotate-[-15deg] bg-yellow-50"></div>
+<div class="relative z-10 flex flex-col items-center justify-center text-center px-4 mt-6">
+<div class="w-64 h-64 bg-center bg-contain bg-no-repeat mb-1 scale-105 drop-shadow-[0_20px_40px_rgba(0,0,0,0.25)]" style='background-image: url("https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&w=500&h=500&q=80");'>
+</div>
+<h1 class="text-orange-900 text-[28px] font-serif font-bold tracking-tight leading-tight drop-shadow-sm">Artisan Brunch</h1>
+<p class="text-orange-800/80 text-xs font-medium mt-1 tracking-wide">Farm-fresh eggs and savory delights</p>
+</div>
+</div>
+<div class="flex w-full overflow-x-auto px-4 py-2 gap-4 no-scrollbar mb-2">
+<div class="flex flex-col items-center gap-1.5 min-w-[64px]">
+<div class="size-[60px] rounded-full border-2 border-primary p-0.5">
+<div class="w-full h-full rounded-full bg-cover bg-center" style='background-image: url("https://images.unsplash.com/photo-1525351484163-7529414395d8?auto=format&fit=crop&w=200&h=200&q=80");'></div>
+</div>
+<span class="text-[10px] font-bold text-primary tracking-tight">Egg Rituals</span>
+</div>
+<div class="flex flex-col items-center gap-1.5 min-w-[64px]">
+<div class="size-[60px] rounded-full border-2 border-slate-200 dark:border-slate-700 p-0.5">
+<div class="w-full h-full rounded-full bg-cover bg-center" style='background-image: url("https://images.unsplash.com/photo-1525351484163-7529414395d8?auto=format&fit=crop&w=200&h=200&q=80");'></div>
+</div>
+<span class="text-[10px] font-medium opacity-70 tracking-tight">Savory Toasts</span>
+</div>
+<div class="flex flex-col items-center gap-1.5 min-w-[64px]">
+<div class="size-[60px] rounded-full border-2 border-slate-200 dark:border-slate-700 p-0.5">
+<div class="w-full h-full rounded-full bg-cover bg-center" style='background-image: url("https://images.unsplash.com/photo-1533089862017-a02f99f5de28?auto=format&fit=crop&w=200&h=200&q=80");'></div>
+</div>
+<span class="text-[10px] font-medium opacity-70 tracking-tight">Offers</span>
+</div>
+<div class="flex flex-col items-center gap-1.5 min-w-[64px]">
+<div class="size-[60px] rounded-full border-2 border-slate-200 dark:border-slate-700 p-0.5">
+<div class="w-full h-full rounded-full bg-cover bg-center" style='background-image: url("https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=200&h=200&q=80");'></div>
+</div>
+<span class="text-[10px] font-medium opacity-70 tracking-tight">New Sides</span>
+</div>
+</div>
+<div class="flex gap-2 px-4 mb-4 overflow-x-auto no-scrollbar">
+<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-primary px-4 shadow-sm">
+<p class="text-white text-xs font-bold">All</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-white dark:bg-slate-800 px-4 border border-slate-100 dark:border-slate-700 shadow-sm">
+<p class="text-[#1c160d] dark:text-white text-xs font-medium">Omelettes</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-white dark:bg-slate-800 px-4 border border-slate-100 dark:border-slate-700 shadow-sm">
+<p class="text-[#1c160d] dark:text-white text-xs font-medium">Eggs Benedict</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-white dark:bg-slate-800 px-4 border border-slate-100 dark:border-slate-700 shadow-sm">
+<p class="text-[#1c160d] dark:text-white text-xs font-medium">Savory Bowls</p>
+</div>
+</div>
+<div class="px-4 grid grid-cols-2 gap-3 mb-4">
+<div class="col-span-1 h-[260px] relative rounded-[20px] overflow-hidden bg-card-zen dark:bg-slate-800/50 p-3 flex flex-col border border-orange-100 shadow-sm">
+<div class="mb-1">
+<h3 class="font-bold text-base leading-tight text-gray-900 dark:text-white">Signature Benedict</h3>
+<p class="text-[9px] uppercase tracking-wider text-orange-600 font-bold mt-0.5">Hollandaise &amp; Ham</p>
+</div>
+<div class="flex-1 w-full bg-cover bg-center rounded-lg my-1 scale-105" style='background-image: url("https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&w=600&h=600&q=80");'></div>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-bold text-primary text-base">$14.50</span>
+<a href="../toast_brunch_customization_view/index.html" class="size-7 rounded-full bg-primary flex items-center justify-center text-white shadow-md">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</a>
+</div>
+</div>
+<div class="col-span-1 flex flex-col gap-3 h-[260px]">
+<div class="flex-1 rounded-[20px] bg-card-zen dark:bg-slate-800/50 p-3 flex flex-col justify-between border border-orange-100 shadow-sm">
+<div class="flex justify-between items-start">
+<div class="size-12 rounded-lg bg-cover bg-center shadow-sm" style='background-image: url("https://images.unsplash.com/photo-1525351484163-7529414395d8?auto=format&fit=crop&w=200&h=200&q=80");'></div>
+<span class="font-bold text-[10px] text-primary bg-white/80 dark:bg-slate-700 px-1.5 py-0.5 rounded-md shadow-sm">$12.50</span>
+</div>
+<div class="flex justify-between items-end mt-1">
+<h3 class="font-bold text-xs leading-tight text-gray-900 dark:text-white">Truffle Omelette</h3>
+<a href="../toast_brunch_customization_view/index.html" class="size-6 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[14px]">add</span>
+</a>
+</div>
+</div>
+<div class="flex-1 rounded-[20px] bg-card-zen dark:bg-slate-800/50 p-3 flex flex-col justify-between border border-orange-100 shadow-sm">
+<div class="flex justify-between items-start">
+<div class="size-12 rounded-lg bg-cover bg-center shadow-sm" style='background-image: url("https://images.unsplash.com/photo-1525351484163-7529414395d8?auto=format&fit=crop&w=200&h=200&q=80");'></div>
+<span class="font-bold text-[10px] text-primary bg-white/80 dark:bg-slate-700 px-1.5 py-0.5 rounded-md shadow-sm">$11.25</span>
+</div>
+<div class="flex justify-between items-end mt-1">
+<h3 class="font-bold text-xs leading-tight text-gray-900 dark:text-white">Shakshuka</h3>
+<a href="../toast_brunch_customization_view/index.html" class="size-6 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[14px]">add</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="mx-4 mb-6 h-[90px] rounded-[20px] bg-yellow-50 dark:bg-slate-800 p-4 border border-yellow-100 relative overflow-hidden flex items-center shadow-sm">
+<div class="z-10 w-2/3">
+<h3 class="font-bold text-orange-600 dark:text-orange-400 text-[9px] uppercase tracking-widest mb-0.5">Weekend Special</h3>
+<p class="font-extrabold text-sm leading-tight text-gray-900 dark:text-white">Lobster Omelette Platter</p>
+<div class="mt-1.5 inline-flex items-center gap-1 text-primary text-[9px] font-bold uppercase">
+                Order Platter <span class="material-symbols-outlined text-[10px]">arrow_right_alt</span>
+</div>
+</div>
+<div class="absolute -right-4 top-0 bottom-0 w-32 bg-center bg-contain bg-no-repeat opacity-90 rotate-6" style='background-image: url("https://images.unsplash.com/photo-1533089862017-a02f99f5de28?auto=format&fit=crop&w=240&h=240&q=80");'></div>
+</div>
+<div class="px-4 flex items-center justify-between mb-3">
+<h3 class="text-lg font-extrabold tracking-tight text-gray-900 dark:text-white">Daily Brunch</h3>
+<span class="text-primary text-[10px] font-bold uppercase tracking-wider">Scroll All</span>
+</div>
+<div class="px-4 grid grid-cols-2 gap-3 pb-32">
+<div class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="w-full aspect-square rounded-xl bg-cover bg-center mb-3" style='background-image: url("https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&w=600&h=600&q=80");'></div>
+<h4 class="font-semibold text-[16px] text-gray-900 dark:text-white leading-tight mb-1">Classic Benedict</h4>
+<p class="text-[11px] opacity-60 line-clamp-1 mb-3">Poached eggs, ham, muffin</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-primary font-bold text-[15px]">$13.50</span>
+<a href="../toast_brunch_customization_view/index.html" class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm hover:shadow-md transition-shadow">
+                    ADD
+                </a>
+</div>
+</div>
+<div class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="w-full aspect-square rounded-xl bg-cover bg-center mb-3" style='background-image: url("https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=600&h=600&q=80");'></div>
+<h4 class="font-semibold text-[16px] text-gray-900 dark:text-white leading-tight mb-1">Mediterranean</h4>
+<p class="text-[11px] opacity-60 line-clamp-1 mb-3">Feta, olives, tomatoes</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-primary font-bold text-[15px]">$11.00</span>
+<a href="../toast_brunch_customization_view/index.html" class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm hover:shadow-md transition-shadow">
+                    ADD
+                </a>
+</div>
+</div>
+<div class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="w-full aspect-square rounded-xl bg-cover bg-center mb-3" style='background-image: url("https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&w=600&h=600&q=80");'></div>
+<h4 class="font-semibold text-[16px] text-gray-900 dark:text-white leading-tight mb-1">Steak &amp; Eggs</h4>
+<p class="text-[11px] opacity-60 line-clamp-1 mb-3">Grilled ribeye, sunny-side</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-primary font-bold text-[15px]">$18.00</span>
+<a href="../toast_brunch_customization_view/index.html" class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm hover:shadow-md transition-shadow">
+                    ADD
+                </a>
+</div>
+</div>
+<div class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="w-full aspect-square rounded-xl bg-cover bg-center mb-3" style='background-image: url("https://images.unsplash.com/photo-1525351484163-7529414395d8?auto=format&fit=crop&w=600&h=600&q=80");'></div>
+<h4 class="font-semibold text-[16px] text-gray-900 dark:text-white leading-tight mb-1">Avocado Toast</h4>
+<p class="text-[11px] opacity-60 line-clamp-1 mb-3">Sourdough, smashed avo</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-primary font-bold text-[15px]">$10.50</span>
+<a href="../toast_brunch_customization_view/index.html" class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm hover:shadow-md transition-shadow">
+                    ADD
+                </a>
+</div>
+</div>
+</div>
+<div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[390px] p-4 z-50 pointer-events-none flex justify-center">
+<div class="bg-primary rounded-full h-[52px] w-[342px] flex items-center justify-between px-5 shadow-[0_12px_40px_rgba(242,147,13,0.5)] pointer-events-auto ring-4 ring-white/20">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-white/25 flex items-center justify-center text-white font-bold text-xs backdrop-blur-sm">2</div>
+<span class="text-white font-bold text-[14px]">View Cart</span>
+</div>
+<span class="text-white font-bold text-[16px]">$24.50</span>
+</div>
+</div>
+</div>
+
+</body></html>
+<script>
+  (function () {
+    function getStoredCart() {
+      try { return JSON.parse(localStorage.getItem('stitch_cart') || '[]'); } catch { return []; }
+    }
+    function storeCart(items, count, total) {
+      localStorage.setItem('stitch_cart', JSON.stringify(items));
+      localStorage.setItem('stitch_cart_count', String(count));
+      localStorage.setItem('stitch_cart_total', String(total));
+    }
+    function getSummary() {
+      const items = getStoredCart();
+      const count = items.reduce((s, x) => s + (x.qty || 1), 0);
+      const total = items.reduce((s, x) => s + (Number(x.price || 0) * (x.qty || 1)), 0);
+      return { items, count, total };
+    }
+    function updateBar() {
+      const bar = document.querySelector('.fixed.bottom-0 .bg-primary.rounded-full');
+      if (!bar) return;
+      const badge = bar.querySelector('.size-6');
+      const totalEl = bar.querySelector('span.text-white.font-bold.text-[16px]');
+      const summary = getSummary();
+      if (badge) badge.textContent = String(summary.count);
+      if (totalEl) totalEl.textContent = '$' + summary.total.toFixed(2);
+    }
+    function addHandlers() {
+      document.querySelectorAll('button').forEach(btn => {
+        const icon = btn.querySelector('.material-symbols-outlined');
+        const txt = (btn.textContent || '').trim().toLowerCase();
+        if ((icon && (icon.textContent || '').toLowerCase().includes('add')) || txt === 'add') {
+          btn.addEventListener('click', () => {
+            const card = btn.closest('.p-3, .p-4');
+            const nameEl = card ? card.querySelector('h4, h3') : null;
+            const priceEl = card ? card.querySelector('span.text-primary.font-bold, span.font-bold.text-[10px].text-primary, span.text-primary.font-bold') : null;
+            const name = nameEl ? nameEl.textContent.trim() : 'Item';
+            const priceText = priceEl ? priceEl.textContent.replace('$','') : '0';
+            const price = Number(parseFloat(priceText));
+            const items = getStoredCart();
+            const id = 'brunch-' + name.toLowerCase().replace(/\\s+/g,'-');
+            const found = items.find(x => x.id === id);
+            if (found) found.qty = (found.qty || 1) + 1;
+            else items.push({ id, name, price, qty: 1 });
+            const count = items.reduce((s, x) => s + (x.qty || 1), 0);
+            const total = items.reduce((s, x) => s + (Number(x.price || 0) * (x.qty || 1)), 0);
+            storeCart(items, count, total);
+            updateBar();
+          });
+        }
+      });
+    }
+    updateBar();
+    addHandlers();
+  })();
+</script>

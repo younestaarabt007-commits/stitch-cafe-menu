@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Elite Main Menu — Stitch Café</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#FF5200",
+            "background-light": "#f8f6f5",
+            "background-dark": "#1a100c"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"],
+            serif: ["Instrument Serif", "serif"]
+          },
+          boxShadow: {
+            glow: "0 0 20px rgba(255, 82, 0, 0.35)"
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="mesh-bg min-h-screen font-sans text-gray-900 dark:text-white pb-32">
+  <div class="relative mx-auto w-full max-w-4xl min-h-screen flex flex-col overflow-hidden">
+    <header class="bg-primary pt-6 pb-6 md:rounded-b-[3rem] shadow-xl relative z-20">
+      <div class="flex items-center justify-between px-4 md:px-8 mb-4 text-white">
+        <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20">
+          <span class="material-symbols-outlined text-[20px]">table_restaurant</span>
+          <span class="text-xs font-bold tracking-wide">Table 12</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <span class="material-symbols-outlined text-[20px]">location_on</span>
+          <span class="text-xs font-semibold truncate max-w-[120px] md:max-w-none">Elite Roastery</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="lang-toggle" class="bg-white/20 p-2 rounded-full backdrop-blur-sm">
+            <span class="material-symbols-outlined text-[20px]">translate</span>
+          </button>
+          <button class="bg-white/20 p-2 rounded-full backdrop-blur-sm">
+          <span class="material-symbols-outlined text-[20px]">notifications</span>
+          </button>
+        </div>
+      </div>
+      <div class="px-4 md:px-8">
+        <div class="relative max-w-2xl mx-auto">
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+            <span class="material-symbols-outlined text-white/70">search</span>
+          </div>
+          <input id="search-input" class="block w-full pl-11 pr-4 py-3.5 bg-white/20 backdrop-blur-md border border-white/20 rounded-2xl text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:bg-white/30 transition-all font-medium text-sm" placeholder="Search menu..." type="text"/>
+        </div>
+      </div>
+    </header>
+
+    <section class="relative pt-8 md:pt-12 px-4 md:px-8 z-10">
+      <div class="bg-white dark:bg-[#2a1e19] rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 shadow-lg relative overflow-hidden h-[240px] md:h-[320px] max-w-4xl mx-auto">
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-orange-50 to-white dark:from-[#2a1e19] dark:to-[#1f1612] opacity-50"></div>
+        <div class="relative z-10 flex flex-col items-start h-full">
+          <span class="bg-orange-100 dark:bg-orange-900/40 text-primary dark:text-orange-400 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-2">New Arrival</span>
+          <h1 class="font-serif italic font-bold text-4xl md:text-6xl leading-[0.9] text-gray-900 dark:text-white mt-1 uppercase">VELVET<br/><span class="text-primary">SIPS</span></h1>
+          <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mt-4 max-w-[140px] md:max-w-[200px]">Rich chocolate shakes & crafted lattes.</p>
+          <button id="hero-order-btn" class="mt-auto bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-bold flex items-center justify-center gap-2 shadow-lg hover:scale-105 transition-transform" style="width:160px;height:48px;border-radius:24px;">
+            Order Now <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </button>
+        </div>
+        <div class="absolute -right-8 -bottom-8 md:right-0 md:bottom-0 w-64 h-64 md:w-80 md:h-80">
+          <img alt="" class="w-full h-full object-contain drop-shadow-2xl transform rotate-[-12deg]" src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800&auto=format&fit=crop"/>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-8 md:pt-12">
+      <div class="px-4 md:px-8 mb-6 flex items-center justify-between max-w-4xl mx-auto w-full">
+        <h3 class="text-lg md:text-xl font-bold text-gray-900 dark:text-white uppercase tracking-tight">Chef's Specials</h3>
+        <span class="text-primary text-xs font-extrabold uppercase tracking-wider cursor-pointer">View All</span>
+      </div>
+      <div class="flex overflow-x-auto hide-scrollbar gap-4 md:gap-8 px-4 md:px-8 pb-4 max-w-4xl mx-auto w-full">
+        <!-- Categories loaded via script -->
+      </div>
+    </section>
+
+    <section class="px-4 md:px-8 pt-8 md:pt-12 max-w-4xl mx-auto w-full">
+      <h3 class="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-6 uppercase tracking-tight">Our Menu</h3>
+      <div class="grid grid-cols-2 gap-4">
+        <!-- Brunch -->
+        <a href="../long_scroll_brunch_explorer/index.html" class="col-span-1 h-44 md:h-56 relative bg-orange-100 dark:bg-orange-900/20 rounded-[2rem] overflow-hidden p-4 group shadow-sm">
+          <div class="relative z-10">
+            <h4 class="text-gray-900 dark:text-white text-lg md:text-xl font-bold uppercase">Brunch</h4>
+            <p class="text-gray-500 dark:text-gray-400 text-[10px] md:text-xs mt-1">Toasts & Bowls</p>
+          </div>
+          <div class="absolute right-[-10px] bottom-[-10px] w-24 h-24 md:w-32 md:h-32 opacity-20 group-hover:opacity-40 transition-opacity">
+            <span class="material-symbols-outlined text-[100px] md:text-[120px] text-primary">brunch_dining</span>
+          </div>
+        </a>
+        <!-- Brew -->
+        <a href="../Brew catégorie page/index.html" class="col-span-1 h-44 md:h-56 relative bg-[#3E2723] rounded-[2rem] overflow-hidden p-4 group shadow-sm">
+          <div class="relative z-10">
+            <h4 class="text-white text-lg md:text-xl font-bold uppercase">Brew</h4>
+            <p class="text-white/60 text-[10px] md:text-xs mt-1">Coffee & Tea</p>
+          </div>
+          <div class="absolute right-[-10px] bottom-[-10px] w-24 h-24 md:w-32 md:h-32 opacity-20 group-hover:opacity-40 transition-opacity">
+            <span class="material-symbols-outlined text-[100px] md:text-[120px] text-white">coffee</span>
+          </div>
+        </a>
+        <!-- Cold Drink -->
+        <a href="../cold drinks catégorie page/index.html" class="col-span-1 h-44 md:h-56 relative bg-blue-50 dark:bg-blue-900/20 rounded-[2rem] overflow-hidden p-4 group shadow-sm">
+          <div class="relative z-10">
+            <h4 class="text-gray-900 dark:text-white text-lg md:text-xl font-bold uppercase">Cold Drink</h4>
+            <p class="text-gray-500 dark:text-gray-400 text-[10px] md:text-xs mt-1">Juices & Shakes</p>
+          </div>
+          <div class="absolute right-[-10px] bottom-[-10px] w-24 h-24 md:w-32 md:h-32 opacity-20 group-hover:opacity-40 transition-opacity">
+            <span class="material-symbols-outlined text-[100px] md:text-[120px] text-blue-500">local_bar</span>
+          </div>
+        </a>
+        <!-- Pastry -->
+        <a href="../bakery catégorie page/index.html" class="col-span-1 h-44 md:h-56 relative bg-yellow-50 dark:bg-yellow-900/20 rounded-[2rem] overflow-hidden p-4 group shadow-sm">
+          <div class="relative z-10">
+            <h4 class="text-gray-900 dark:text-white text-lg md:text-xl font-bold uppercase">Pastry</h4>
+            <p class="text-gray-500 dark:text-gray-400 text-[10px] md:text-xs mt-1">Bakery & Sweets</p>
+          </div>
+          <div class="absolute right-[-10px] bottom-[-10px] w-24 h-24 md:w-32 md:h-32 opacity-20 group-hover:opacity-40 transition-opacity">
+            <span class="material-symbols-outlined text-[100px] md:text-[120px] text-yellow-600">bakery_dining</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="px-4 md:px-8 py-12 max-w-4xl mx-auto w-full">
+      <div class="mb-8 flex items-end justify-between">
+        <div>
+          <span class="text-primary font-bold text-[10px] uppercase tracking-[0.2em]">Trending Now</span>
+          <h3 class="font-serif font-black text-3xl md:text-4xl text-gray-900 dark:text-white leading-tight mt-1">BESTSELLERS</h3>
+        </div>
+        <button class="bg-white dark:bg-[#2a1e19] p-3 rounded-full shadow-sm border border-gray-100 dark:border-white/5">
+          <span class="material-symbols-outlined text-[22px] text-gray-600 dark:text-gray-300">tune</span>
+        </button>
+      </div>
+      <div id="bestsellers" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"></div>
+    </section>
+
+    <div id="floating-cart" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-[390px] px-4">
+      <div class="bg-black text-white shadow-glow flex items-center justify-between pr-2 pl-6 overflow-hidden w-full h-16 rounded-full">
+        <div class="flex flex-col justify-center">
+          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Total</span>
+          <div class="flex items-center gap-2">
+            <span id="cart-items-text" class="text-sm font-bold">0 Items</span>
+            <span class="w-1 h-1 bg-gray-600 rounded-full"></span>
+            <span id="cart-total" class="text-sm font-bold text-primary">$0.00</span>
+          </div>
+        </div>
+        <button id="view-cart-btn" class="bg-primary text-white px-5 h-[48px] rounded-full flex items-center gap-2 active:scale-95 transition-transform">
+          <span id="view-cart-label" class="font-extrabold text-[12px] uppercase tracking-wider">View Cart</span>
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="order-modal" class="fixed inset-0 z-[60] hidden">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="absolute bottom-0 left-0 right-0 bg-white dark:bg-[#2a1e19] rounded-t-[2rem] border-t border-gray-100 dark:border-white/5 shadow-[0_-10px_30px_rgba(0,0,0,0.15)] p-6 max-w-4xl mx-auto">
+      <div class="w-12 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full mx-auto mb-6"></div>
+      <div class="flex items-center justify-between mb-4">
+        <h3 id="order-modal-title" class="text-xl font-bold">Order Status</h3>
+        <span id="order-status-badge" class="px-2 py-0.5 bg-orange-100 dark:bg-orange-900/30 text-primary text-[10px] font-bold rounded-full">Received</span>
+      </div>
+      <div class="space-y-3 max-h-[40vh] overflow-y-auto pr-2" id="order-items"></div>
+      <div class="mt-6 pt-4 border-t border-gray-100 dark:border-white/5 space-y-2">
+        <div class="flex justify-between items-center">
+          <span id="subtotal-label" class="text-gray-400 font-bold uppercase tracking-widest text-[10px]">Subtotal</span>
+          <span id="modal-subtotal" class="font-bold">$0.00</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span id="tax-label" class="text-gray-400 font-bold uppercase tracking-widest text-[10px]">Tax (10%)</span>
+          <span id="modal-tax" class="font-bold">$0.00</span>
+        </div>
+        <div class="flex justify-between items-center pt-2">
+          <span id="total-label" class="text-xl font-bold">Total</span>
+          <span id="modal-total" class="text-2xl font-black text-primary">$0.00</span>
+        </div>
+      </div>
+      <div class="mt-6 grid grid-cols-2 gap-3">
+        <button id="order-close-btn" class="w-full bg-gray-100 dark:bg-white/5 py-4 rounded-2xl font-bold hover:scale-[1.02] transition-all">
+          Close
+        </button>
+        <button id="order-place-btn" class="w-full bg-primary text-white py-4 rounded-2xl font-bold shadow-glow hover:scale-[1.02] transition-all">
+          Place Order
+        </button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #fafaf5;
+  min-height: 100vh;
+}
+.hero-mesh-gradient {
+  background:
+    radial-gradient(circle at 20% 20%, #4a2410 0%, transparent 70%),
+    radial-gradient(circle at 80% 80%, #1a1612 0%, transparent 70%),
+    radial-gradient(circle at 50% 50%, #78350f 0%, #2d1406 100%);
+}
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.filter-btn { transition: all 0.3s ease; }
+.filter-btn.active {
+  background-color: #f2930d;
+  color: white;
+  box-shadow: 0 10px 25px -8px rgba(242, 147, 13, 0.25);
+}
+.filter-btn:not(.active):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up { animation: fadeInUp 0.35s ease-out forwards; }

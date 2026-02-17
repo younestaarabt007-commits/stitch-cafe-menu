@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Artisan Bakery — Stitch Café</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#FF5200",
+            "background-light": "#f8f6f5",
+            "background-dark": "#1a100c"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"],
+            serif: ["Instrument Serif", "serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="mesh-bg min-h-screen font-sans text-gray-900 dark:text-white">
+  <div class="relative mx-auto w-full max-w-[390px] min-h-screen flex flex-col overflow-hidden pb-24">
+    <!-- Header -->
+    <header class="bg-primary pt-6 pb-6 rounded-b-[2.5rem] shadow-xl relative z-20">
+      <div class="flex items-center justify-between px-6 mb-4 text-white">
+        <button onclick="window.history.back()" class="bg-white/20 p-2 rounded-full backdrop-blur-sm">
+          <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+        </button>
+        <h1 class="font-serif italic text-xl font-bold">Artisan Bakery</h1>
+        <button class="bg-white/20 p-2 rounded-full backdrop-blur-sm">
+          <span class="material-symbols-outlined text-[20px]">search</span>
+        </button>
+      </div>
+      <div class="px-6">
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+          <p class="text-white/80 text-xs font-bold uppercase tracking-widest mb-1">Fresh Daily</p>
+          <p class="text-white text-sm font-medium">Baked fresh every morning at 5 AM using organic grains.</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Category Chips -->
+    <div class="flex gap-2 px-6 py-6 overflow-x-auto no-scrollbar">
+      <button class="chip chip-active">All</button>
+      <button class="chip">Sourdough</button>
+      <button class="chip">Pastries</button>
+      <button class="chip">Whole Grain</button>
+      <button class="chip">Daily Specials</button>
+    </div>
+
+    <!-- Featured Section -->
+    <section class="px-6 mb-8">
+      <div class="bg-white dark:bg-[#2a1e19] rounded-[2.5rem] p-4 shadow-lg border border-gray-100 dark:border-white/5 relative overflow-hidden">
+        <div class="flex gap-4">
+          <div class="w-1/2 aspect-square rounded-3xl overflow-hidden bg-gray-50 dark:bg-black/20">
+            <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Signature Sourdough">
+          </div>
+          <div class="w-1/2 flex flex-col justify-center py-2">
+            <span class="bg-orange-100 dark:bg-orange-950/30 text-primary text-[10px] font-bold px-2 py-1 rounded-full w-fit uppercase mb-2">Signature</span>
+            <h3 class="font-bold text-lg leading-tight mb-1">Signature Sourdough</h3>
+            <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-3 italic">Naturally leavened for 24h</p>
+            <div class="flex items-center justify-between mt-auto">
+              <span class="font-bold text-primary">$8.50</span>
+              <a href="../petit pain bakery_customization_view/index.html" class="bg-primary text-white p-1.5 rounded-xl shadow-glow flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]">add</span>
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Grid -->
+    <section class="px-6 grid grid-cols-2 gap-4 mb-8">
+      <!-- Item 1 -->
+      <div class="bg-white dark:bg-[#2a1e19] rounded-[2rem] p-4 shadow-md border border-gray-100 dark:border-white/5 flex flex-col">
+        <div class="aspect-square rounded-2xl overflow-hidden bg-gray-50 dark:bg-black/20 mb-3">
+          <img src="https://images.unsplash.com/photo-1590095834643-753c0e4972c2?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Butter Croissant">
+        </div>
+        <h4 class="font-bold text-sm mb-1">Butter Croissant</h4>
+        <div class="flex items-center justify-between mt-auto">
+          <span class="text-xs font-bold text-primary">$3.50</span>
+          <a href="../petit pain bakery_customization_view/index.html" class="bg-gray-100 dark:bg-white/5 p-1.5 rounded-xl flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px] text-primary">add</span>
+                </a>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="product-card bg-white dark:bg-[#2a1e19] rounded-[2rem] p-4 shadow-md border border-gray-100 dark:border-white/5 flex flex-col" data-category="pastries">
+        <div class="aspect-square rounded-2xl overflow-hidden bg-gray-50 dark:bg-black/20 mb-3">
+          <img src="https://images.unsplash.com/photo-1568758881209-4893f8ca3b58?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Pain au Chocolat">
+        </div>
+        <h4 class="font-bold text-sm mb-1">Pain au Chocolat</h4>
+        <div class="flex items-center justify-between mt-auto">
+          <span class="text-xs font-bold text-primary">$4.25</span>
+          <a href="../petit pain bakery_customization_view/code.html" class="bg-gray-100 dark:bg-white/5 p-1.5 rounded-xl flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px] text-primary">add</span>
+                </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Horizontal List Section -->
+    <section class="px-6 mb-8">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-bold">Traditional Breads</h3>
+        <span class="text-primary text-[10px] font-bold uppercase tracking-widest">View All</span>
+      </div>
+      <div class="space-y-3">
+        <!-- Bread Row 1 -->
+        <div class="bg-white dark:bg-[#2a1e19] p-3 rounded-[1.5rem] border border-gray-100 dark:border-white/5 flex items-center gap-4">
+          <div class="w-16 h-16 rounded-xl overflow-hidden bg-gray-50 dark:bg-black/20 shrink-0">
+            <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Baguette">
+          </div>
+          <div class="flex-1">
+            <h5 class="font-bold text-sm">Traditional Baguette</h5>
+            <p class="text-[10px] text-gray-500">Crispy crust, airy interior</p>
+            <span class="text-xs font-bold text-primary mt-1 block">$4.00</span>
+          </div>
+          <a href="../petit pain bakery_customization_view/code.html" class="bg-gray-50 dark:bg-black/20 p-2 rounded-xl flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary text-[20px]">add</span>
+                </a>
+        </div>
+
+        <!-- Bread Row 2 -->
+        <div class="product-card bg-white dark:bg-[#2a1e19] p-3 rounded-[1.5rem] border border-gray-100 dark:border-white/5 flex items-center gap-4" data-category="whole grain">
+          <div class="w-16 h-16 rounded-xl overflow-hidden bg-gray-50 dark:bg-black/20 shrink-0">
+            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Rye Bread">
+          </div>
+          <div class="flex-1">
+            <h5 class="font-bold text-sm">Artisan Rye Bread</h5>
+            <p class="text-[10px] text-gray-500">Dense and fiber-rich</p>
+            <span class="text-xs font-bold text-primary mt-1 block">$7.25</span>
+          </div>
+          <a href="../petit pain bakery_customization_view/code.html" class="bg-gray-50 dark:bg-black/20 p-2 rounded-xl flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary text-[20px]">add</span>
+                </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cart Bar -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-48px)] max-w-[342px] z-50">
+      <button class="w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 h-16 rounded-[2rem] flex items-center justify-between px-6 shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all">
+        <div class="flex items-center gap-4">
+          <div class="bg-primary text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold">3</div>
+          <div class="text-left">
+            <p class="text-sm font-bold">View Cart</p>
+            <p class="text-[10px] opacity-70 font-bold uppercase tracking-widest">3 Items added</p>
+          </div>
+        </div>
+        <span class="font-bold text-sm">$16.25</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

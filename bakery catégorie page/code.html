@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Elite Compact Bakery Explorer 3000px</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Poppins:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,700;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">:root {
+    --primary-caramel: #C68642;
+    --deep-caramel: #8B5E3C;
+    --toasted-beige: #F5EBE0;
+    --cream-bg: #FFFBF5;
+    --soft-cinnamon: #8B5E3C;
+    --dark-espresso: #3E2723;
+    --price-tag-bg: #F3E5D8
+    }
+.no-scrollbar::-webkit-scrollbar {
+    display: none
+    }
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none
+    }
+.organic-shape {
+    position: absolute;
+    filter: blur(60px);
+    z-index: 0;
+    opacity: 0.6
+    }
+.line-art {
+    position: absolute;
+    color: rgba(198, 134, 66, 0.06);
+    pointer-events: none;
+    z-index: 0
+    }
+.micro-texture {
+    background-image: url(https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&h=800&q=80)
+    }
+.hero-croissant-shadow {
+    filter: drop-shadow(0 20px 30px rgba(139, 94, 60, 0.4))
+    }
+.crumb-particle {
+    position: absolute;
+    background: #C68642;
+    border-radius: 50%;
+    filter: blur(1px)
+    }
+.stamp-tag {
+    mask-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0 L100 0 L100 100 L0 100 Z' fill='black'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0 L100 0 L100 100 L0 100 Z' fill='black'/%3E%3C/svg%3E");
+    background-image: radial-gradient(#8B5E3C 0.5px, transparent 0.5px);
+    background-size: 4px 4px
+    }</style>
+<style type="text/tailwindcss">
+  .glass-panel { @apply bg-white/60 backdrop-blur-xl border border-white/50; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+</style>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        caramel: "#C68642",
+                        "deep-caramel": "#8B5E3C",
+                        cinnamon: "#8B5E3C",
+                        beige: "#F5EBE0",
+                        cream: "#FFFBF5",
+                        espresso: "#3E2723",
+                    },
+                    fontFamily: {
+                        display: ["Poppins", "sans-serif"],
+                        serif: ["Playfair Display", "serif"],
+                        body: ["DM Sans", "sans-serif"],
+                    },
+                    spacing: {
+                        'gutter': '16px',
+                        'gap-v': '24px',
+                    },
+                    fontSize: {
+                        'hero': ['28px', '1.1'],
+                        'section': ['20px', '1.2'],
+                        'product': ['16px', '1.2'],
+                    },
+                    borderRadius: {
+                        'card': '20px',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <style>
+    .glass-search {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+  </style>
+  </head>
+<body class="bg-cream text-stone-800 font-body min-h-[3000px] relative overflow-x-hidden pb-32">
+<div class="organic-shape bg-[#F5EBE0] w-[400px] h-[400px] rounded-full top-[-100px] left-[-100px]"></div>
+<div class="organic-shape bg-[#ECDCC9] w-[300px] h-[300px] rounded-full top-[600px] right-[-100px]"></div>
+<div class="organic-shape bg-[#F5EBE0] w-[500px] h-[500px] rounded-full top-[1400px] left-[-200px]"></div>
+<div class="line-art top-64 right-[-20px] rotate-12">
+<span class="material-symbols-outlined text-[120px]">bakery_dining</span>
+</div>
+<div class="line-art top-[900px] left-[-40px] -rotate-45">
+<span class="material-symbols-outlined text-[180px]">skillet</span>
+</div>
+<div class="line-art top-[1800px] right-4 rotate-90">
+<span class="material-symbols-outlined text-[140px]">grass</span>
+</div>
+<div class="fixed top-0 left-0 right-0 z-50 px-4 pt-12 pb-4 bg-transparent flex items-center justify-between">
+<button class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-white active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">arrow_back_ios_new</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="text-[10px] font-bold tracking-widest uppercase text-white">Menu</span>
+<span class="text-sm font-bold text-white">Le Petit Croissant</span>
+</div>
+<button class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-white active:scale-95 transition-transform relative">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+<span class="absolute top-0 right-0 w-2.5 h-2.5 bg-caramel rounded-full border border-white"></span>
+</button>
+</div>
+<div class="relative pt-32 px-gutter pb-8 overflow-visible">
+<div class="relative z-10">
+<h1 class="font-serif font-bold text-hero text-stone-900 italic tracking-tight mb-2">Golden Mornings<br/>Start Here.</h1>
+<p class="text-sm text-stone-500 max-w-[200px]">Hand-laminated, 27 layers of pure butter bliss.</p>
+<div class="mt-6 inline-flex items-center space-x-1 bg-white px-3 py-1.5 rounded-full shadow-sm border border-stone-100">
+<span class="material-symbols-outlined text-yellow-500 text-sm font-variation-fill">star</span>
+<span class="text-xs font-bold text-stone-800">4.9</span>
+<span class="text-xs text-stone-400">(2.1k reviews)</span>
+</div>
+</div>
+<div class="absolute top-24 -right-12 w-[280px] h-[280px] z-0 pointer-events-none">
+<div class="crumb-particle w-1.5 h-1.5 top-10 right-20 animate-pulse"></div>
+<div class="crumb-particle w-1 h-1 top-24 right-10"></div>
+<div class="crumb-particle w-2 h-2 top-40 right-40 opacity-60"></div>
+<div class="crumb-particle w-1 h-1 top-32 right-32 opacity-40"></div>
+<img alt="Golden Croissant" class="w-full h-full object-contain hero-croissant-shadow rotate-[-15deg] scale-125 origin-center transform transition-transform hover:scale-130 duration-700" src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&h=600&q=80"/>
+</div>
+</div>
+<div class="px-gutter mb-gap-v relative z-10">
+<div class="glass-search rounded-xl h-12 flex items-center px-4 shadow-xl border border-white/40 w-full">
+<span class="material-symbols-outlined text-caramel mr-3 text-xl">search</span>
+<input class="bg-transparent border-none outline-none text-stone-800 placeholder-stone-400 w-full font-medium text-sm focus:ring-0" placeholder="Search pastries, breads..." type="text"/>
+<span class="material-symbols-outlined text-stone-500 text-xl">mic</span>
+</div>
+</div>
+<div class="sticky top-24 z-30 -mx-gutter px-gutter py-2 bg-cream/80 backdrop-blur-md border-b border-stone-100/50">
+<div class="flex space-x-3 overflow-x-auto no-scrollbar py-1 pl-1">
+<button class="flex-shrink-0 px-5 py-2 rounded-full bg-stone-900 text-white text-sm font-semibold shadow-lg">All Items</button>
+<button class="flex-shrink-0 px-5 py-2 rounded-full border border-stone-100 bg-white text-stone-600 text-sm font-semibold whitespace-nowrap">Viennoiserie</button>
+<button class="flex-shrink-0 px-5 py-2 rounded-full border border-stone-100 bg-white text-stone-600 text-sm font-semibold whitespace-nowrap">Sourdough</button>
+<button class="flex-shrink-0 px-5 py-2 rounded-full border border-stone-100 bg-white text-stone-600 text-sm font-semibold whitespace-nowrap">Patisserie</button>
+</div>
+</div>
+<div class="px-gutter mb-gap-v">
+<div class="flex justify-between items-end mb-4">
+<h2 class="font-serif font-bold text-section text-stone-900 tracking-tight">Collections</h2>
+<span class="text-xs font-bold text-caramel uppercase tracking-wide">View All</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="col-span-2 bg-[#8B5E3C] rounded-card p-4 relative overflow-hidden h-40 shadow-lg group">
+<div class="micro-texture absolute inset-0 opacity-20"></div>
+<div class="relative z-10 w-2/3">
+<span class="bg-white/20 backdrop-blur-sm text-white text-[9px] font-bold px-2 py-1 rounded-md uppercase tracking-wider mb-2 inline-block">Best Seller</span>
+<h3 class="font-serif text-lg text-white leading-tight">Artisan<br/>Breads</h3>
+<p class="text-white/80 text-xs mt-1 font-medium">Daily fermented selection</p>
+<div class="w-8 h-1 bg-white/40 rounded-full mt-2"></div>
+</div>
+<img alt="Artisan Bread" class="absolute -bottom-8 -right-8 w-40 h-40 object-cover rounded-full border-[3px] border-white/20 shadow-2xl rotate-12 group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&h=400&q=80"/>
+</div>
+<div class="col-span-1 bg-[#F5EBE0] rounded-card p-4 relative overflow-hidden h-44 shadow-md group border border-white">
+<div class="relative z-10">
+<h3 class="font-serif text-lg text-stone-800 leading-tight">Sweet<br/>Pastries</h3>
+<p class="text-stone-500 text-xs mt-1">12 varieties</p>
+</div>
+<img alt="Pastries" class="absolute -bottom-4 -right-4 w-28 h-28 object-cover rounded-full shadow-lg group-hover:rotate-6 transition-transform duration-500" src="https://source.unsplash.com/z5TUVT717wM/300x300"/>
+</div>
+<div class="col-span-1 bg-[#FFF8F0] rounded-card p-4 relative overflow-hidden h-44 shadow-md border border-stone-100 group">
+<div class="relative z-10">
+<h3 class="font-serif text-lg text-stone-800 leading-tight">Gluten<br/>Free</h3>
+<p class="text-stone-500 text-xs mt-1">Safe &amp; tasty</p>
+</div>
+<img alt="Cake" class="absolute -bottom-4 -right-4 w-28 h-28 object-cover rounded-full shadow-lg group-hover:-rotate-6 transition-transform duration-500" src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=300&h=300&q=80"/>
+</div>
+</div>
+</div>
+<div class="px-gutter pb-24">
+<h2 class="font-serif font-bold text-section text-stone-900 mb-4">Fresh from the Oven</h2>
+<div class="grid grid-cols-2 gap-x-gutter gap-y-gap-v">
+<div class="flex flex-col group">
+<div class="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden shadow-sm mb-3 bg-white">
+<img alt="Babka" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://source.unsplash.com/mXOlDLaInFs/800x1000"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-1.5 shadow-sm z-10">
+<span class="material-symbols-outlined text-[16px] text-stone-400">favorite</span>
+</div>
+<div class="absolute bottom-3 left-3 bg-[#F3E5D8] px-2 py-1 rounded-md shadow-sm border border-[#E6D0BC]">
+<span class="text-[10px] font-bold text-[#5D4037] font-display">$12.00</span>
+</div>
+</div>
+<h3 class="font-display font-bold text-product text-stone-900 leading-tight">Chocolate Babka</h3>
+<p class="text-[11px] text-stone-500 mb-3 line-clamp-1">Rich dark chocolate ganache swirl.</p>
+<a href="../petit pain bakery_customization_view/code.html" class="w-full h-[36px] bg-white border border-caramel/30 text-caramel rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-caramel hover:text-white transition-colors flex items-center justify-center gap-1 shadow-sm active:scale-95">
+                    Add <span class="material-symbols-outlined text-[14px]">add</span>
+                </a>
+</div>
+<div class="flex flex-col group">
+<div class="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden shadow-sm mb-3 bg-white">
+<img alt="Multigrain" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://source.unsplash.com/rYOqbTcGp1c/800x1000"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-1.5 shadow-sm z-10">
+<span class="material-symbols-outlined text-[16px] text-stone-400">favorite</span>
+</div>
+<div class="absolute bottom-3 left-3 bg-[#F3E5D8] px-2 py-1 rounded-md shadow-sm border border-[#E6D0BC]">
+<span class="text-[10px] font-bold text-[#5D4037] font-display">$9.00</span>
+</div>
+</div>
+<h3 class="font-display font-bold text-product text-stone-900 leading-tight">Seeded Multigrain</h3>
+<p class="text-[11px] text-stone-500 mb-3 line-clamp-1">Hand-topped with flax &amp; oats.</p>
+<a href="../petit pain bakery_customization_view/code.html" class="w-full h-[36px] bg-white border border-caramel/30 text-caramel rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-caramel hover:text-white transition-colors flex items-center justify-center gap-1 shadow-sm active:scale-95">
+                    Add <span class="material-symbols-outlined text-[14px]">add</span>
+                </a>
+</div>
+<div class="flex flex-col group">
+<div class="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden shadow-sm mb-3 bg-white">
+<img alt="Rye" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?auto=format&fit=crop&w=800&h=1000&q=80"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-1.5 shadow-sm z-10">
+<span class="material-symbols-outlined text-[16px] text-stone-400">favorite</span>
+</div>
+<div class="absolute bottom-3 left-3 bg-[#F3E5D8] px-2 py-1 rounded-md shadow-sm border border-[#E6D0BC]">
+<span class="text-[10px] font-bold text-[#5D4037] font-display">$10.50</span>
+</div>
+</div>
+<h3 class="font-display font-bold text-product text-stone-900 leading-tight">Dark Rye Loaf</h3>
+<p class="text-[11px] text-stone-500 mb-3 line-clamp-1">Robust German-style dense rye.</p>
+<a href="../petit pain bakery_customization_view/code.html" class="w-full h-[36px] bg-white border border-caramel/30 text-caramel rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-caramel hover:text-white transition-colors flex items-center justify-center gap-1 shadow-sm active:scale-95">
+                    Add <span class="material-symbols-outlined text-[14px]">add</span>
+                </a>
+</div>
+<div class="flex flex-col group">
+<div class="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden shadow-sm mb-3 bg-white">
+<img alt="Focaccia" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://images.unsplash.com/photo-1573140247632-f84660f67627?auto=format&fit=crop&w=800&h=1000&q=80"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-1.5 shadow-sm z-10">
+<span class="material-symbols-outlined text-[16px] text-stone-400">favorite</span>
+</div>
+<div class="absolute bottom-3 left-3 bg-[#F3E5D8] px-2 py-1 rounded-md shadow-sm border border-[#E6D0BC]">
+<span class="text-[10px] font-bold text-[#5D4037] font-display">$7.50</span>
+</div>
+</div>
+<h3 class="font-display font-bold text-product text-stone-900 leading-tight">Herbed Focaccia</h3>
+<p class="text-[11px] text-stone-500 mb-3 line-clamp-1">Rosemary, garlic &amp; olive oil.</p>
+<a href="../petit pain bakery_customization_view/code.html" class="w-full h-[36px] bg-white border border-caramel/30 text-caramel rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-caramel hover:text-white transition-colors flex items-center justify-center gap-1 shadow-sm active:scale-95">
+                    Add <span class="material-symbols-outlined text-[14px]">add</span>
+                </a>
+</div>
+<div class="flex flex-col group">
+<div class="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden shadow-sm mb-3 bg-white">
+<img alt="Brioche" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://source.unsplash.com/omqRjn_WZtE/800x1000"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-1.5 shadow-sm z-10">
+<span class="material-symbols-outlined text-[16px] text-stone-400">favorite</span>
+</div>
+<div class="absolute bottom-3 left-3 bg-[#F3E5D8] px-2 py-1 rounded-md shadow-sm border border-[#E6D0BC]">
+<span class="text-[10px] font-bold text-[#5D4037] font-display">$11.25</span>
+</div>
+</div>
+<h3 class="font-display font-bold text-product text-stone-900 leading-tight">Honey Brioche</h3>
+<p class="text-[11px] text-stone-500 mb-3 line-clamp-1">Ultra-soft, buttery morning loaf.</p>
+<a href="../petit pain bakery_customization_view/code.html" class="w-full h-[36px] bg-white border border-caramel/30 text-caramel rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-caramel hover:text-white transition-colors flex items-center justify-center gap-1 shadow-sm active:scale-95">
+                    Add <span class="material-symbols-outlined text-[14px]">add</span>
+                </a>
+</div>
+<div class="flex flex-col group">
+<div class="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden shadow-sm mb-3 bg-white">
+<img alt="Whole Wheat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://source.unsplash.com/h3MVMRHitDU/800x1000"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-1.5 shadow-sm z-10">
+<span class="material-symbols-outlined text-[16px] text-stone-400">favorite</span>
+</div>
+<div class="absolute bottom-3 left-3 bg-[#F3E5D8] px-2 py-1 rounded-md shadow-sm border border-[#E6D0BC]">
+<span class="text-[10px] font-bold text-[#5D4037] font-display">$8.75</span>
+</div>
+</div>
+<h3 class="font-display font-bold text-product text-stone-900 leading-tight">Stoneground Wheat</h3>
+<p class="text-[11px] text-stone-500 mb-3 line-clamp-1">Nutritious 100% whole grain.</p>
+<a href="../petit pain bakery_customization_view/code.html" class="w-full h-[36px] bg-white border border-caramel/30 text-caramel rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-caramel hover:text-white transition-colors flex items-center justify-center gap-1 shadow-sm active:scale-95">
+                    Add <span class="material-symbols-outlined text-[14px]">add</span>
+                </a>
+</div>
+<div class="flex flex-col group">
+<div class="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden shadow-sm mb-3 bg-white">
+<img alt="Baguette" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://source.unsplash.com/cWXibBbXx44/800x1000"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-1.5 shadow-sm z-10">
+<span class="material-symbols-outlined text-[16px] text-stone-400">favorite</span>
+</div>
+<div class="absolute bottom-3 left-3 bg-[#F3E5D8] px-2 py-1 rounded-md shadow-sm border border-[#E6D0BC]">
+<span class="text-[10px] font-bold text-[#5D4037] font-display">$4.50</span>
+</div>
+</div>
+<h3 class="font-display font-bold text-product text-stone-900 leading-tight">Parisian Baguette</h3>
+<p class="text-[11px] text-stone-500 mb-3 line-clamp-1">Classic crust with an airy crumb.</p>
+<a href="../petit pain bakery_customization_view/code.html" class="w-full h-[36px] bg-white border border-caramel/30 text-caramel rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-caramel hover:text-white transition-colors flex items-center justify-center gap-1 shadow-sm active:scale-95">
+                    Add <span class="material-symbols-outlined text-[14px]">add</span>
+                </a>
+</div>
+<div class="flex flex-col group">
+<div class="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden shadow-sm mb-3 bg-white">
+<img alt="Cranberry Walnut" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&h=1000&q=80"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-1.5 shadow-sm z-10">
+<span class="material-symbols-outlined text-[16px] text-stone-400">favorite</span>
+</div>
+<div class="absolute bottom-3 left-3 bg-[#F3E5D8] px-2 py-1 rounded-md shadow-sm border border-[#E6D0BC]">
+<span class="text-[10px] font-bold text-[#5D4037] font-display">$9.50</span>
+</div>
+</div>
+<h3 class="font-display font-bold text-product text-stone-900 leading-tight">Cranberry Walnut</h3>
+<p class="text-[11px] text-stone-500 mb-3 line-clamp-1">Sweet &amp; tart artisan loaf.</p>
+<a href="../petit pain bakery_customization_view/code.html" class="w-full h-[36px] bg-white border border-caramel/30 text-caramel rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-caramel hover:text-white transition-colors flex items-center justify-center gap-1 shadow-sm active:scale-95">
+                    Add <span class="material-symbols-outlined text-[14px]">add</span>
+                </a>
+</div>
+<div class="flex flex-col group opacity-90">
+<div class="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden shadow-sm mb-3 bg-white">
+<img alt="Boule" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://source.unsplash.com/lKDioOEj7v4/800x1000"/>
+<div class="absolute bottom-3 left-3 bg-[#F3E5D8] px-2 py-1 rounded-md shadow-sm border border-[#E6D0BC]">
+<span class="text-[10px] font-bold text-[#5D4037] font-display">$7.00</span>
+</div>
+</div>
+<h3 class="font-display font-bold text-product text-stone-900 leading-tight">Artisan Boule</h3>
+<p class="text-[11px] text-stone-500 mb-3 line-clamp-1">Classic French round loaf.</p>
+<a href="../petit pain bakery_customization_view/code.html" class="w-full h-[36px] bg-white border border-caramel/30 text-caramel rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-caramel hover:text-white transition-colors flex items-center justify-center gap-1 shadow-sm active:scale-95">
+                    Add <span class="material-symbols-outlined text-[14px]">add</span>
+                </a>
+</div>
+<div class="flex flex-col group opacity-90">
+<div class="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden shadow-sm mb-3 bg-white">
+<img alt="Caramel Roll" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://source.unsplash.com/fitwDsD6gxM/800x1000"/>
+<div class="absolute bottom-3 left-3 bg-[#F3E5D8] px-2 py-1 rounded-md shadow-sm border border-[#E6D0BC]">
+<span class="text-[10px] font-bold text-[#5D4037] font-display">$5.50</span>
+</div>
+</div>
+<h3 class="font-display font-bold text-product text-stone-900 leading-tight">Caramel Roll</h3>
+<p class="text-[11px] text-stone-500 mb-3 line-clamp-1">Sticky, sweet morning delight.</p>
+<a href="../petit pain bakery_customization_view/code.html" class="w-full h-[36px] bg-white border border-caramel/30 text-caramel rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-caramel hover:text-white transition-colors flex items-center justify-center gap-1 shadow-sm active:scale-95">
+                    Add <span class="material-symbols-outlined text-[14px]">add</span>
+                </a>
+</div>
+</div>
+</div>
+<div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-[90%] max-w-[400px] z-50">
+<div class="bg-gradient-to-r from-deep-caramel to-espresso text-white rounded-[32px] p-2 pr-5 shadow-[0_15px_40px_rgba(62,39,35,0.4)] flex items-center justify-between border border-white/10 backdrop-blur-xl">
+<div class="flex items-center">
+<div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mr-3 relative overflow-hidden">
+<span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+<div class="absolute top-2 right-3 w-2 h-2 bg-red-500 rounded-full border border-deep-caramel"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-medium text-white/80">3 items</span>
+<span class="text-sm font-bold">$24.50</span>
+</div>
+</div>
+<button class="flex items-center space-x-2 bg-white text-espresso px-5 py-2.5 rounded-full font-bold text-xs shadow-lg active:scale-95 transition-transform">
+<span>Checkout</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+
+</body></html>
+<script>
+  (function () {
+    function getStoredCart() {
+      try { return JSON.parse(localStorage.getItem('stitch_cart') || '[]'); } catch { return []; }
+    }
+    function storeCart(items, count, total) {
+      localStorage.setItem('stitch_cart', JSON.stringify(items));
+      localStorage.setItem('stitch_cart_count', String(count));
+      localStorage.setItem('stitch_cart_total', String(total));
+    }
+    function getSummary() {
+      const items = getStoredCart();
+      const count = items.reduce((s, x) => s + (x.qty || 1), 0);
+      const total = items.reduce((s, x) => s + (Number(x.price || 0) * (x.qty || 1)), 0);
+      return { items, count, total };
+    }
+    function updateBar() {
+      const bar = document.querySelector('.fixed.bottom-6 .bg-gradient-to-r');
+      if (!bar) return;
+      const itemsEl = bar.querySelector('span.text-xs.font-medium.text-white\\/80');
+      const totalEl = bar.querySelector('span.text-sm.font-bold');
+      const summary = getSummary();
+      if (itemsEl) itemsEl.textContent = String(summary.count) + ' items';
+      if (totalEl) totalEl.textContent = '$' + summary.total.toFixed(2);
+    }
+    function addHandlers() {
+      document.querySelectorAll('button').forEach(btn => {
+        const txt = (btn.textContent || '').trim().toLowerCase();
+        const icon = btn.querySelector('.material-symbols-outlined');
+        if (txt.startsWith('add') || (icon && (icon.textContent || '').toLowerCase().includes('add'))) {
+          btn.addEventListener('click', () => {
+            const card = btn.closest('.flex.flex-col.group');
+            const nameEl = card ? card.querySelector('h3') : null;
+            const priceEl = card ? card.querySelector('.bg-\\[\\#F3E5D8\\] span') : null;
+            const name = nameEl ? nameEl.textContent.trim() : 'Bakery Item';
+            const priceText = priceEl ? priceEl.textContent.replace('$','') : '0';
+            const price = Number(parseFloat(priceText));
+            const items = getStoredCart();
+            const id = 'bakery-' + name.toLowerCase().replace(/\\s+/g,'-');
+            const found = items.find(x => x.id === id);
+            if (found) found.qty = (found.qty || 1) + 1;
+            else items.push({ id, name, price, qty: 1 });
+            const count = items.reduce((s, x) => s + (x.qty || 1), 0);
+            const total = items.reduce((s, x) => s + (Number(x.price || 0) * (x.qty || 1)), 0);
+            storeCart(items, count, total);
+            updateBar();
+          });
+        }
+      });
+    }
+    updateBar();
+    addHandlers();
+  })();
+</script>

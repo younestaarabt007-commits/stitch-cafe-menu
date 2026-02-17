@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pure Juices Explorer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2930d",
+                        "background-light": "#fafaf5",
+                        "background-dark": "#1a1c18",
+                        "card-zen": "#fffdf5",
+                        "berry-red": "#e11d48",
+                        "smoothie-pink": "#fce7f3",
+                        "zen-green": "#4a5d4e"
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "1.5rem",
+                        "xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fafaf5;
+            min-height: 1300px;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 70% 30%, #fed7aa 0%, #ffedd5 45%, #fff7ed 100%);
+        }
+        .mint-leaf {
+            @apply absolute bg-green-500/80 border border-white/20 backdrop-blur-[1px];
+            border-radius: 2px 20px;
+            box-shadow: inset -2px -2px 4px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .ice-cube {
+            @apply absolute bg-white/30 rounded-lg border border-white/40 backdrop-blur-[2px];
+            box-shadow: inset 2px 2px 4px rgba(255,255,255,0.4), 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .citrus-drop {
+             @apply absolute bg-orange-400/80 rounded-full blur-[1px] opacity-60;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+        body {
+          min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#1c160d] dark:text-[#fcfaf8] antialiased">
+<div class="relative min-h-[1300px] w-full max-w-[390px] mx-auto flex flex-col bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl">
+<div class="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 bg-gradient-to-b from-black/10 to-transparent">
+<div class="flex size-10 items-center justify-center rounded-full bg-white/40 backdrop-blur-md text-[#1c160d] shadow-sm">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<div class="flex size-10 items-center justify-center rounded-full bg-white/40 backdrop-blur-md text-[#1c160d] shadow-sm">
+<span class="material-symbols-outlined">search</span>
+</div>
+</div>
+<div class="relative h-[380px] w-full overflow-hidden hero-gradient flex items-center justify-center mb-6">
+<div class="mint-leaf w-8 h-8 top-28 left-12 rotate-45 opacity-90"></div>
+<div class="ice-cube w-10 h-10 top-40 right-8 -rotate-12"></div>
+<div class="mint-leaf w-6 h-6 bottom-40 left-10 rotate-[120deg]"></div>
+<div class="citrus-drop w-4 h-4 bottom-28 right-24"></div>
+<div class="ice-cube w-6 h-6 top-1/2 left-8 rotate-[60deg]"></div>
+<div class="citrus-drop w-3 h-3 top-36 right-28"></div>
+<div class="relative z-10 flex flex-col items-center justify-center text-center px-6 mt-8">
+<div class="w-60 h-64 bg-center bg-contain bg-no-repeat mb-2 scale-110 drop-shadow-[0_25px_50px_rgba(0,0,0,0.15)]" data-alt="Glass of orange juice with ice and mint" style='background-image: url("https://images.unsplash.com/photo-1610970878497-27b5d33f6309?w=500&h=500&fit=crop");'>
+</div>
+<h1 class="text-orange-900 dark:text-orange-100 text-[28px] font-serif font-bold italic tracking-tight leading-tight drop-shadow-sm">Pure Juices</h1>
+<p class="text-orange-800/80 dark:text-orange-200/80 text-sm font-medium mt-1 tracking-wide font-display">100% Cold-Pressed &amp; Pure Daily</p>
+</div>
+</div>
+<div class="flex w-full overflow-x-auto px-4 pb-6 gap-5 no-scrollbar">
+<div class="flex flex-col items-center gap-2 min-w-[72px]">
+<div class="size-16 rounded-full border-2 border-primary p-0.5">
+<div class="w-full h-full rounded-full bg-cover bg-center" data-alt="Detox" style='background-image: url("https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=500&h=500&fit=crop");'></div>
+</div>
+<span class="text-xs font-semibold text-primary">Detox</span>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[72px]">
+<div class="size-16 rounded-full border-2 border-slate-200 dark:border-slate-700 p-0.5">
+<div class="w-full h-full rounded-full bg-cover bg-center" data-alt="Energy" style='background-image: url("https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=500&h=500&fit=crop");'></div>
+</div>
+<span class="text-xs font-medium opacity-70">Energy</span>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[72px]">
+<div class="size-16 rounded-full border-2 border-slate-200 dark:border-slate-700 p-0.5">
+<div class="w-full h-full rounded-full bg-cover bg-center" data-alt="Immunity" style='background-image: url("https://images.unsplash.com/photo-1553530979-7ee52a2670c4?w=500&h=500&fit=crop");'></div>
+</div>
+<span class="text-xs font-medium opacity-70">Immunity</span>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[72px]">
+<div class="size-16 rounded-full border-2 border-slate-200 dark:border-slate-700 p-0.5">
+<div class="w-full h-full rounded-full bg-cover bg-center" data-alt="Offers" style='background-image: url("https://images.unsplash.com/photo-1625944525533-5c8cf393368c?w=500&h=500&fit=crop");'></div>
+</div>
+<span class="text-xs font-medium opacity-70">Offers</span>
+</div>
+</div>
+<div class="flex gap-2 px-4 mb-6 overflow-x-auto no-scrollbar">
+<div class="flex h-9 shrink-0 items-center justify-center rounded-full bg-primary px-5 shadow-sm">
+<p class="text-white text-sm font-bold">All</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center rounded-full bg-white dark:bg-slate-800 px-5 border border-slate-100 dark:border-slate-700 shadow-sm">
+<p class="text-[#1c160d] dark:text-white text-sm font-medium">Cold-Pressed</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center rounded-full bg-white dark:bg-slate-800 px-5 border border-slate-100 dark:border-slate-700 shadow-sm">
+<p class="text-[#1c160d] dark:text-white text-sm font-medium">Wellness Shots</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center rounded-full bg-white dark:bg-slate-800 px-5 border border-slate-100 dark:border-slate-700 shadow-sm">
+<p class="text-[#1c160d] dark:text-white text-sm font-medium">Citrus</p>
+</div>
+</div>
+<div class="px-4 grid grid-cols-2 gap-3 mb-6">
+<div class="col-span-1 h-[260px] relative rounded-[20px] overflow-hidden bg-[#f4f7f0] dark:bg-slate-800/50 p-[12px] flex flex-col border border-green-100">
+<div class="mb-2">
+<h3 class="font-semibold text-[16px] leading-tight">Morning Green</h3>
+<p class="text-[10px] uppercase tracking-wider text-green-700 font-bold mt-1">Celery &amp; Cucumber</p>
+</div>
+<div class="flex-1 w-full bg-cover bg-center rounded-lg my-2 scale-105" data-alt="Morning Green Juice" style='background-image: url("https://images.unsplash.com/photo-1576618148400-f54bed99fcf0?w=500&h=500&fit=crop");'></div>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-bold text-primary text-base">$8.50</span>
+<a href="../smothie customisation review/code.html" class="w-[84px] h-[36px] rounded-[12px] bg-primary flex items-center justify-center text-white text-sm font-bold shadow-md uppercase tracking-wide">ADD</a>
+</div>
+</div>
+<div class="col-span-1 flex flex-col gap-3 h-[260px]">
+<div class="flex-1 rounded-[20px] bg-orange-50 dark:bg-slate-800/50 p-[12px] flex flex-col justify-between border border-orange-100">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-lg bg-cover bg-center shadow-sm" data-alt="Sunset Citrus Juice" style='background-image: url("https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&h=500&fit=crop");'></div>
+<span class="font-bold text-xs text-primary bg-white/80 dark:bg-slate-700 px-1.5 py-0.5 rounded-md shadow-sm">$7.50</span>
+</div>
+<div class="flex flex-col gap-2 mt-1">
+<h3 class="font-semibold text-[14px] leading-tight">Sunset Citrus</h3>
+<a href="../smothie customisation review/code.html" class="w-full h-[32px] rounded-[10px] bg-primary flex items-center justify-center text-white text-xs font-bold shadow-sm uppercase">ADD</a>
+</div>
+</div>
+<div class="flex-1 rounded-[20px] bg-yellow-50 dark:bg-slate-800/50 p-[12px] flex flex-col justify-between border border-yellow-100">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-lg bg-cover bg-center shadow-sm" data-alt="Zesty Ginger Shot" style='background-image: url("https://images.unsplash.com/photo-1490474501764-546119934457?w=500&h=500&fit=crop");'></div>
+<span class="font-bold text-xs text-primary bg-white/80 dark:bg-slate-700 px-1.5 py-0.5 rounded-md shadow-sm">$5.25</span>
+</div>
+<div class="flex flex-col gap-2 mt-1">
+<h3 class="font-semibold text-[14px] leading-tight">Zesty Ginger</h3>
+<a href="../smothie customisation review/code.html" class="w-full h-[32px] rounded-[10px] bg-primary flex items-center justify-center text-white text-xs font-bold shadow-sm uppercase">ADD</a>
+</div>
+</div>
+</div>
+</div>
+<div class="mx-4 mb-6 h-[100px] rounded-xl bg-gradient-to-r from-green-50 to-emerald-50 dark:from-slate-800 dark:to-slate-900 p-4 border border-green-100 relative overflow-hidden flex items-center">
+<div class="z-10 w-2/3">
+<h3 class="font-bold text-green-600 dark:text-green-400 text-[10px] uppercase tracking-widest mb-0.5">Subscription Packs</h3>
+<p class="font-extrabold text-base leading-tight">Juice Cleanses</p>
+<div class="mt-2 inline-flex items-center gap-1 text-primary text-[10px] font-bold uppercase">
+            Start Now <span class="material-symbols-outlined text-[10px]">arrow_right_alt</span>
+</div>
+</div>
+<div class="absolute -right-2 top-0 bottom-0 w-28 bg-center bg-contain bg-no-repeat opacity-80 rotate-0" data-alt="Juice bottles" style='background-image: url("https://images.unsplash.com/photo-1546173159908-640c16302ddc?w=500&h=500&fit=crop");'></div>
+</div>
+<div class="px-4 flex items-center justify-between mb-4">
+<h3 class="text-[20px] font-bold tracking-tight">Daily Squeeze</h3>
+<span class="text-primary text-xs font-bold uppercase tracking-wider">Scroll All</span>
+</div>
+<div class="px-4 grid grid-cols-2 gap-4 pb-48">
+<div class="flex flex-col gap-2 bg-white dark:bg-slate-800 p-[12px] rounded-[20px] shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="relative w-full aspect-square rounded-xl overflow-hidden bg-slate-50">
+<div class="w-full h-full bg-cover bg-center" data-alt="Orange Vitamin C" style='background-image: url("https://images.unsplash.com/photo-1595974482550-923c6d85ff63?w=500&h=500&fit=crop");'></div>
+<div class="absolute top-2 left-2 bg-white/90 dark:bg-black/50 backdrop-blur-sm px-2 py-1 rounded-md">
+<span class="text-[10px] font-bold">$7.50</span>
+</div>
+</div>
+<div class="flex flex-col mt-1">
+<h4 class="font-semibold text-[16px] leading-tight">Orange Burst</h4>
+<p class="text-[10px] opacity-60 line-clamp-1 mt-0.5">Fresh navel oranges</p>
+</div>
+<a href="../smothie customisation review/code.html" class="w-[84px] h-[36px] mt-2 rounded-[12px] bg-primary flex items-center justify-center text-white text-sm font-bold shadow-md uppercase">ADD</a>
+</div>
+<div class="flex flex-col gap-2 bg-white dark:bg-slate-800 p-[12px] rounded-[20px] shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="relative w-full aspect-square rounded-xl overflow-hidden bg-slate-50">
+<div class="w-full h-full bg-cover bg-center" data-alt="Beet Root Juice" style='background-image: url("https://images.unsplash.com/photo-1610970878497-27b5d33f6309?w=500&h=500&fit=crop");'></div>
+<div class="absolute top-2 left-2 bg-white/90 dark:bg-black/50 backdrop-blur-sm px-2 py-1 rounded-md">
+<span class="text-[10px] font-bold">$7.00</span>
+</div>
+</div>
+<div class="flex flex-col mt-1">
+<h4 class="font-semibold text-[16px] leading-tight">Beet It</h4>
+<p class="text-[10px] opacity-60 line-clamp-1 mt-0.5">Beetroot, carrot</p>
+</div>
+<a href="../smothie customisation review/code.html" class="w-[84px] h-[36px] mt-2 rounded-[12px] bg-primary flex items-center justify-center text-white text-sm font-bold shadow-md uppercase">ADD</a>
+</div>
+<div class="flex flex-col gap-2 bg-white dark:bg-slate-800 p-[12px] rounded-[20px] shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="relative w-full aspect-square rounded-xl overflow-hidden bg-slate-50">
+<div class="w-full h-full bg-cover bg-center" data-alt="Green Machine" style='background-image: url("https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=500&h=500&fit=crop");'></div>
+<div class="absolute top-2 left-2 bg-white/90 dark:bg-black/50 backdrop-blur-sm px-2 py-1 rounded-md">
+<span class="text-[10px] font-bold">$8.00</span>
+</div>
+</div>
+<div class="flex flex-col mt-1">
+<h4 class="font-semibold text-[16px] leading-tight">Green Machine</h4>
+<p class="text-[10px] opacity-60 line-clamp-1 mt-0.5">Kale, spinach</p>
+</div>
+<a href="../smothie customisation review/code.html" class="w-[84px] h-[36px] mt-2 rounded-[12px] bg-primary flex items-center justify-center text-white text-sm font-bold shadow-md uppercase">ADD</a>
+</div>
+<div class="flex flex-col gap-2 bg-white dark:bg-slate-800 p-[12px] rounded-[20px] shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="relative w-full aspect-square rounded-xl overflow-hidden bg-slate-50">
+<div class="w-full h-full bg-cover bg-center" data-alt="Watermelon Hydration" style='background-image: url("https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=500&h=500&fit=crop");'></div>
+<div class="absolute top-2 left-2 bg-white/90 dark:bg-black/50 backdrop-blur-sm px-2 py-1 rounded-md">
+<span class="text-[10px] font-bold">$6.50</span>
+</div>
+</div>
+<div class="flex flex-col mt-1">
+<h4 class="font-semibold text-[16px] leading-tight">Melon Quench</h4>
+<p class="text-[10px] opacity-60 line-clamp-1 mt-0.5">Watermelon, mint</p>
+</div>
+<a href="../smothie customisation review/code.html" class="w-[84px] h-[36px] mt-2 rounded-[12px] bg-primary flex items-center justify-center text-white text-sm font-bold shadow-md uppercase">ADD</a>
+</div>
+</div>
+<div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-[342px] max-w-[390px] pb-6 z-50 pointer-events-none">
+<div class="bg-primary rounded-full h-16 w-full flex items-center justify-between px-6 shadow-[0_12px_40px_rgba(242,147,13,0.5)] pointer-events-auto">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-white/25 flex items-center justify-center text-white font-bold text-sm backdrop-blur-sm">2</div>
+<div class="flex flex-col">
+<span class="text-white font-bold text-sm">View Cart</span>
+<span class="text-white/80 text-[10px] uppercase font-bold tracking-widest leading-tight">2 Items added</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="h-6 w-px bg-white/20 mr-2"></div>
+<span class="text-white font-extrabold text-lg">$14.50</span>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

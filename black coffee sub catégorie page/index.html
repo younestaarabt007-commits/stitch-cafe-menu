@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Brew Mastery - Stitch Café</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2930d",
+                        "background-light": "#FAFAF5",
+                        "background-dark": "#1a0f08",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans"],
+                        "serif": ["Playfair Display", "serif"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#1c160d] dark:text-[#fcfaf8] antialiased">
+    <div
+        class="relative mx-auto w-full max-w-[390px] min-h-[1300px] flex flex-col shadow-2xl overflow-hidden bg-[#FAFAF5] dark:bg-background-dark">
+        <!-- Header -->
+        <header class="absolute top-0 left-0 w-full z-20 flex items-center justify-between p-4">
+            <button id="back-btn"
+                class="size-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md transition-transform active:scale-95">
+                <span class="material-symbols-outlined text-white">arrow_back</span>
+            </button>
+            <div class="flex gap-3">
+                <button id="search-btn"
+                    class="size-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md transition-transform active:scale-95">
+                    <span class="material-symbols-outlined text-white">search</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <div class="relative w-full h-[400px] hero-gradient overflow-hidden flex flex-col justify-end p-4">
+            <div class="absolute top-10 right-10 size-16 bg-primary/20 rounded-full blur-3xl"></div>
+            <div class="relative z-10 flex flex-col items-start gap-3 mb-2">
+                <span
+                    class="px-2.5 py-0.5 rounded-full bg-primary text-white text-[10px] font-bold uppercase tracking-widest">Premium
+                    Selection</span>
+                <div class="space-y-1">
+                    <h1 class="text-white text-[28px] font-serif font-bold leading-[1.1]">Brew <span
+                            class="text-primary">Mastery.</span></h1>
+                    <p class="text-white/60 text-sm max-w-[200px]">Artisan beans roasted to perfection, delivered to
+                        your table.</p>
+                </div>
+            </div>
+            <div class="absolute top-1/2 -right-4 w-64 h-64 -translate-y-1/2">
+                <div class="w-full h-full bg-center bg-contain bg-no-repeat" role="img"
+                    aria-label="Exploding 3D coffee cup with floating beans"
+                    style="background-image: url('https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800&auto=format&fit=crop');">
+                </div>
+            </div>
+        </div>
+
+        <!-- Story Circles -->
+        <div class="flex w-full overflow-x-auto px-4 pt-6 pb-2 gap-4 no-scrollbar">
+            <div class="flex flex-col items-center gap-2 min-w-[64px]">
+                <div class="size-[60px] rounded-full p-[2px] border-2 border-primary">
+                    <div class="w-full h-full rounded-full bg-center bg-cover" role="img"
+                        aria-label="Fresh coffee beans close up"
+                        style="background-image: url('https://images.unsplash.com/photo-1529400971008-b82928afa1d2?q=80&w=200&auto=format&fit=crop');">
+                    </div>
+                </div>
+                <p class="text-[11px] font-semibold">Just In</p>
+            </div>
+            <div class="flex flex-col items-center gap-2 min-w-[64px]">
+                <div class="size-[60px] rounded-full p-[2px] border-2 border-primary">
+                    <div class="w-full h-full rounded-full bg-center bg-cover" role="img"
+                        aria-label="Promotional offer coffee cups"
+                        style="background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=200&auto=format&fit=crop');">
+                    </div>
+                </div>
+                <p class="text-[11px] font-semibold">Offers</p>
+            </div>
+            <div class="flex flex-col items-center gap-2 min-w-[64px]">
+                <div class="size-[60px] rounded-full p-[2px] border-2 border-primary">
+                    <div class="w-full h-full rounded-full bg-center bg-cover" role="img"
+                        aria-label="Chef specialty coffee latte"
+                        style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=200&auto=format&fit=crop');">
+                    </div>
+                </div>
+                <p class="text-[11px] font-semibold">Chef Pick</p>
+            </div>
+            <div class="flex flex-col items-center gap-2 min-w-[64px]">
+                <div class="size-[60px] rounded-full p-[2px] border-2 border-gray-200">
+                    <div class="w-full h-full rounded-full bg-center bg-cover" role="img"
+                        aria-label="Cold brew glass bottle"
+                        style="background-image: url('https://images.unsplash.com/photo-1510626176956-c2a2b4ff10ec?q=80&w=200&auto=format&fit=crop');">
+                    </div>
+                </div>
+                <p class="text-[11px] font-semibold">Cold Brew</p>
+            </div>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="flex gap-2.5 px-4 overflow-x-auto no-scrollbar py-6">
+            <button
+                class="filter-btn active px-5 py-2 rounded-full bg-primary text-white text-xs font-bold shadow-lg shadow-primary/20"
+                data-filter="all">All</button>
+            <button
+                class="filter-btn px-5 py-2 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700"
+                data-filter="black">Black</button>
+            <button
+                class="filter-btn px-5 py-2 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700"
+                data-filter="milk">Milk</button>
+            <button
+                class="filter-btn px-5 py-2 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700"
+                data-filter="decaf">Decaf</button>
+        </div>
+
+        <!-- Featured Grid -->
+        <div class="px-4 space-y-4">
+            <div class="grid grid-cols-2 gap-3 h-[280px]">
+                <div
+                    class="relative rounded-[20px] overflow-hidden bg-zinc-900 group h-full transition-transform active:scale-95">
+                    <div class="absolute inset-0 bg-cover bg-center opacity-70 group-hover:scale-105 transition-transform duration-500"
+                        role="img" aria-label="Vertical shot of signature pour over"
+                        style="background-image: url('https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800&auto=format&fit=crop');">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 p-4 w-full bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                        <p class="text-white font-bold text-base leading-tight">Signature Pour Over</p>
+                        <p class="text-primary text-xs font-bold mt-1">$6.50</p>
+                    </div>
+                </div>
+                <div class="grid grid-rows-2 gap-3 h-full">
+                    <div
+                        class="relative rounded-[20px] overflow-hidden bg-zinc-200 h-full transition-transform active:scale-95">
+                        <div class="absolute inset-0 bg-cover bg-center" role="img"
+                            aria-label="Close up of coffee beans"
+                            style="background-image: url('https://images.unsplash.com/photo-1529400971008-b82928afa1d2?q=80&w=800&auto=format&fit=crop');">
+                        </div>
+                        <div class="absolute inset-0 bg-black/30 flex items-center justify-center p-4">
+                            <p class="text-white text-[10px] font-bold uppercase tracking-[0.1em] text-center">New
+                                Origins</p>
+                        </div>
+                    </div>
+                    <div
+                        class="relative rounded-[20px] overflow-hidden bg-primary/5 flex flex-col items-center justify-center text-center p-4 border border-primary/20 h-full transition-transform active:scale-95">
+                        <span class="material-symbols-outlined text-primary text-2xl mb-1">loyalty</span>
+                        <p class="text-[10px] font-bold text-primary uppercase tracking-tighter">Rewards</p>
+                        <p class="text-[#1c160d] text-[10px] font-bold">2x Points Today</p>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="relative w-full h-20 rounded-[20px] overflow-hidden bg-[#1a0f08] flex items-center px-4 py-3 transition-transform active:scale-95">
+                <div class="flex-1">
+                    <h3 class="text-white font-bold text-base">Limited Roast</h3>
+                    <p class="text-white/60 text-[10px]">Ethiopian Yirgacheffe G1</p>
+                </div>
+                <button class="bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase">Try
+                    Now</button>
+            </div>
+        </div>
+
+        <!-- Products Section -->
+        <div class="px-4 pt-8 pb-3 flex items-center justify-between">
+            <h2 class="text-[20px] font-bold">All Brews</h2>
+            <span class="text-primary text-xs font-bold cursor-pointer">View All</span>
+        </div>
+        <div id="product-list" class="px-4 space-y-4 pb-32">
+            <!-- Products will be dynamically rendered -->
+        </div>
+
+        <!-- Floating Cart -->
+        <div id="floating-cart"
+            class="sticky bottom-0 left-0 w-full flex justify-center pb-8 pt-4 bg-gradient-to-t from-[#FAFAF5] via-[#FAFAF5]/90 to-transparent z-50 pointer-events-none hidden">
+            <div
+                class="w-[342px] pointer-events-auto bg-primary rounded-full px-5 py-3.5 flex items-center justify-between shadow-[0_15px_30px_-8px_rgba(242,147,13,0.5)] transform transition-transform active:scale-95 cursor-pointer">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <span class="material-symbols-outlined text-white text-[20px]">shopping_bag</span>
+                        <span id="cart-badge"
+                            class="absolute -top-1.5 -right-1.5 bg-white text-primary text-[9px] font-bold size-3.5 rounded-full flex items-center justify-center">0</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-white text-[14px] font-bold leading-none">View Cart</p>
+                        <p id="cart-items-text" class="text-white/80 text-[10px] mt-0.5">0 Items</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <span id="cart-total" class="text-white font-bold text-[14px]">$0.00</span>
+                    <span class="material-symbols-outlined text-white text-[18px]">arrow_forward</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

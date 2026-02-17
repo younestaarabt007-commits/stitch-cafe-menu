@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Elite Compact Juice &amp; Creams Master 3000px</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ff5500", 
+                        "primary-light": "#ff8800",
+                        "background-light": "#fdfbf7",
+                        "background-dark": "#0f0f0f",
+                        "card-glass": "rgba(255, 255, 255, 0.65)",
+                        "glass-border": "rgba(255, 255, 255, 0.4)",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                    backgroundImage: {
+                        'mesh-gradient': 'radial-gradient(at 0% 0%, rgba(255,160,122,0.3) 0px, transparent 50%), radial-gradient(at 100% 0%, rgba(255,120,50,0.2) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(255,200,100,0.1) 0px, transparent 50%), radial-gradient(at 0% 100%, rgba(255,250,240,0.5) 0px, transparent 50%)',
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fdfbf7;
+            min-height: 3000px;
+        }
+        .text-stroke-outline {
+            -webkit-text-stroke: 2px rgba(255, 255, 255, 0.2);
+            color: transparent;
+        }
+        .hero-mesh {
+            background: radial-gradient(circle at 50% 50%, #fff7ed 0%, #ffedd5 25%, #fed7aa 50%, #fb923c 100%);
+            background-size: 200% 200%;
+        }
+        .glass-card {
+            @apply bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_8px_32px_0_rgba(255,100,0,0.05)];
+        }
+        .floating-particle {
+            @apply absolute rounded-full opacity-40 mix-blend-multiply pointer-events-none;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .cart-glow {
+            box-shadow: 0 0 50px 0px rgba(255, 85, 0, 0.6);
+        }
+        .liquid-splash-img {
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15));
+        }
+        .compact-card {
+            @apply p-3 pt-10;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased overflow-x-hidden">
+<div class="relative w-full max-w-[390px] mx-auto flex flex-col bg-background-light dark:bg-background-dark shadow-2xl overflow-visible pb-32">
+<div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+<div class="absolute top-[800px] left-[-20px] w-40 h-40 bg-orange-200/20 rounded-full blur-3xl"></div>
+<div class="absolute top-[1200px] right-[-40px] w-64 h-64 bg-yellow-200/20 rounded-full blur-3xl"></div>
+<div class="absolute top-[2000px] left-[20%] w-32 h-32 bg-orange-300/10 rounded-full blur-2xl"></div>
+<div class="floating-particle w-2 h-3 bg-green-800/20 top-[600px] left-[10%] rotate-45 rounded-tl-none rounded-br-none"></div>
+<div class="floating-particle w-3 h-4 bg-orange-800/20 top-[900px] right-[15%] rotate-12 rounded-[100%]"></div>
+<div class="floating-particle w-2 h-2 bg-green-500/20 top-[1500px] left-[80%] rotate-90 rounded-tl-none"></div>
+</div>
+<div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[390px] z-50 flex items-center justify-between p-4 bg-gradient-to-b from-black/10 to-transparent pointer-events-none">
+<div class="flex size-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white border border-white/20 shadow-lg pointer-events-auto cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<div class="flex size-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white border border-white/20 shadow-lg pointer-events-auto cursor-pointer">
+<span class="material-symbols-outlined">search</span>
+</div>
+</div>
+<div class="relative h-[480px] w-full overflow-hidden hero-mesh flex items-center justify-center rounded-b-[2.5rem] shadow-xl z-10">
+<h1 class="absolute top-24 left-1/2 -translate-x-1/2 text-[100px] font-black text-stroke-outline tracking-tighter opacity-30 select-none z-0 scale-y-125">
+            SQUEEZE
+        </h1>
+<div class="absolute inset-0 z-10">
+<div class="absolute top-20 left-4 w-20 h-20 bg-orange-500/30 blur-xl rounded-full mix-blend-overlay"></div>
+<div class="absolute bottom-24 right-8 w-24 h-24 bg-white/40 blur-2xl rounded-full mix-blend-overlay"></div>
+<div class="absolute top-32 left-8 w-10 h-10 border border-white/30 bg-white/10 backdrop-blur-sm rounded-xl -rotate-12 shadow-lg z-20"></div>
+<div class="absolute bottom-32 right-12 w-8 h-8 border border-white/30 bg-white/10 backdrop-blur-sm rounded-lg rotate-45 shadow-lg z-20"></div>
+<div class="absolute top-24 right-10 w-12 h-12 rounded-full border-2 border-orange-100/50 bg-orange-500/20 backdrop-blur-sm shadow-xl z-20"></div>
+<div class="absolute bottom-28 left-12 w-10 h-10 rounded-full border border-orange-100/50 bg-orange-400/20 backdrop-blur-sm shadow-xl -rotate-12 z-20"></div>
+</div>
+<div class="relative z-30 flex flex-col items-center justify-center text-center mt-6">
+<div class="w-[280px] h-[280px] bg-center bg-contain bg-no-repeat drop-shadow-[0_25px_50px_rgba(0,0,0,0.3)] transform transition-transform duration-700 hover:scale-105" data-alt="Exploding glass of orange juice with milk swirls" style='background-image: url("https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=500&h=500&q=80");'>
+</div>
+<div class="mt-0 flex flex-col items-center">
+<h1 class="text-white font-serif font-bold text-[28px] tracking-tight leading-tight drop-shadow-md">
+                    Velvet <span class="text-orange-100">Crush</span>
+</h1>
+<div class="mt-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white font-semibold text-[10px] uppercase tracking-wider shadow-lg">
+                    Limited Edition
+                </div>
+</div>
+</div>
+</div>
+<div class="relative z-20 -mt-6">
+<div class="flex w-full overflow-x-auto px-4 py-3 gap-3 no-scrollbar pb-6">
+<div class="flex flex-col items-center gap-1.5 min-w-[72px] group">
+<div class="size-[72px] rounded-full p-[2px] bg-gradient-to-tr from-orange-500 via-yellow-400 to-white shadow-lg animate-pulse">
+<div class="w-full h-full rounded-full border-[2px] border-white bg-white overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-active:scale-110 transition-transform duration-300" style='background-image: url("https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=500&h=500&q=80");'></div>
+</div>
+</div>
+<span class="text-[10px] font-bold text-slate-700 uppercase tracking-wide">Pure OJ</span>
+</div>
+<div class="flex flex-col items-center gap-1.5 min-w-[72px] group">
+<div class="size-[72px] rounded-full p-[2px] bg-gradient-to-tr from-orange-400 via-orange-200 to-white shadow-lg">
+<div class="w-full h-full rounded-full border-[2px] border-white bg-white overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-active:scale-110 transition-transform duration-300" style='background-image: url("https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=500&h=500&q=80");'></div>
+</div>
+</div>
+<span class="text-[10px] font-bold text-slate-700 uppercase tracking-wide">Oat Blend</span>
+</div>
+<div class="flex flex-col items-center gap-1.5 min-w-[72px] group">
+<div class="size-[72px] rounded-full p-[2px] bg-gradient-to-tr from-orange-400 via-orange-200 to-white shadow-lg">
+<div class="w-full h-full rounded-full border-[2px] border-white bg-white overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-active:scale-110 transition-transform duration-300" style='background-image: url("https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=500&h=500&q=80");'></div>
+</div>
+</div>
+<span class="text-[10px] font-bold text-slate-700 uppercase tracking-wide">Protein</span>
+</div>
+<div class="flex flex-col items-center gap-1.5 min-w-[72px] group">
+<div class="size-[72px] rounded-full p-[2px] bg-gradient-to-tr from-orange-400 via-orange-200 to-white shadow-lg">
+<div class="w-full h-full rounded-full border-[2px] border-white bg-white overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-active:scale-110 transition-transform duration-300" style='background-image: url("https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=500&h=500&q=80");'></div>
+</div>
+</div>
+<span class="text-[10px] font-bold text-slate-700 uppercase tracking-wide">Offers</span>
+</div>
+</div>
+</div>
+<div class="sticky top-20 z-40 bg-background-light/95 backdrop-blur-md py-3 border-b border-orange-100/50 mb-4">
+<div class="flex gap-2 px-4 overflow-x-auto no-scrollbar">
+<div class="flex h-9 shrink-0 items-center justify-center rounded-full bg-black px-5 shadow-lg active:scale-95 transition-transform">
+<p class="text-white text-xs font-bold">All</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center rounded-full bg-white px-5 border border-orange-100 shadow-sm text-slate-800 font-bold text-xs active:scale-95 transition-transform">
+<p>Pure Juice</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center rounded-full bg-white px-5 border border-orange-100 shadow-sm text-slate-800 font-bold text-xs active:scale-95 transition-transform">
+<p>Cream Blends</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center rounded-full bg-white px-5 border border-orange-100 shadow-sm text-slate-800 font-bold text-xs active:scale-95 transition-transform">
+<p>Shots</p>
+</div>
+</div>
+</div>
+<div class="px-4 grid grid-cols-2 gap-3 mb-6">
+<div class="col-span-1 row-span-2 h-[320px] relative rounded-[1.5rem] overflow-hidden glass-card p-3 flex flex-col justify-between group">
+<div class="absolute inset-0 bg-gradient-to-b from-orange-50 to-transparent opacity-50"></div>
+<div class="z-10 relative">
+<h3 class="font-bold text-lg leading-tight text-slate-900 tracking-tight">Orange<br/>Velvet</h3>
+<p class="text-[10px] font-bold text-orange-500 mt-1 uppercase tracking-widest">Signature</p>
+</div>
+<div class="absolute right-[-20px] bottom-14 w-44 h-44 bg-contain bg-center bg-no-repeat group-hover:scale-105 transition-transform duration-500 drop-shadow-xl" style='background-image: url("https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=500&h=500&q=80");'></div>
+<div class="flex justify-between items-center z-10 mt-auto">
+<span class="font-bold text-base text-slate-900">$8.50</span>
+<a href="../latte_customization_view_2/code.html" class="size-8 rounded-full bg-black text-white flex items-center justify-center hover:bg-orange-500 transition-colors shadow-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-sm">add</span>
+                </a>
+</div>
+</div>
+<div class="col-span-1 h-[154px] relative rounded-[1.5rem] overflow-hidden glass-card p-3 flex flex-col justify-between group">
+<div class="flex justify-between items-start z-10">
+<h3 class="font-semibold text-base leading-tight text-slate-800">Berry<br/>Cream</h3>
+<span class="bg-white/80 backdrop-blur px-1.5 py-0.5 rounded text-[10px] font-bold">$6.00</span>
+</div>
+<div class="absolute right-[-5px] bottom-[-5px] w-24 h-24 bg-contain bg-center bg-no-repeat group-hover:rotate-6 transition-transform drop-shadow-lg" style='background-image: url("https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=500&h=500&q=80");'></div>
+<a href="../latte_customization_view_2/code.html" class="size-7 rounded-full bg-white border border-slate-100 flex items-center justify-center z-10 shadow-sm self-start flex items-center justify-center">
+                    <span class="material-symbols-outlined text-xs">add</span>
+                </a>
+</div>
+<div class="col-span-1 h-[154px] relative rounded-[1.5rem] overflow-hidden glass-card p-3 flex flex-col justify-between group">
+<div class="flex justify-between items-start z-10">
+<h3 class="font-semibold text-base leading-tight text-slate-800">Tropical<br/>Milk</h3>
+<span class="bg-white/80 backdrop-blur px-1.5 py-0.5 rounded text-[10px] font-bold">$6.50</span>
+</div>
+<div class="absolute right-[-10px] bottom-[-5px] w-24 h-24 bg-contain bg-center bg-no-repeat group-hover:rotate-6 transition-transform drop-shadow-lg" style='background-image: url("https://images.unsplash.com/photo-1546171753-97d7676e4602?auto=format&fit=crop&w=500&h=500&q=80");'></div>
+<a href="../latte_customization_view_2/code.html" class="size-7 rounded-full bg-white border border-slate-100 flex items-center justify-center z-10 shadow-sm self-start flex items-center justify-center">
+                    <span class="material-symbols-outlined text-xs">add</span>
+                </a>
+</div>
+<div class="col-span-2 h-[130px] relative rounded-[1.5rem] overflow-hidden bg-gradient-to-r from-green-900 to-green-800 p-5 flex items-center shadow-lg">
+<div class="w-1/2 z-10">
+<div class="bg-white/20 backdrop-blur-md px-1.5 py-0.5 rounded text-[9px] font-bold text-white w-fit mb-1.5 uppercase">Best Seller</div>
+<h3 class="text-white font-bold text-xl">Wellness Shots</h3>
+<div class="flex items-center gap-1 text-green-200 text-[10px] font-bold mt-1 cursor-pointer hover:text-white transition-colors">
+                     View All <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</div>
+</div>
+<div class="absolute right-[-15px] top-[-15px] w-40 h-40 bg-contain bg-center bg-no-repeat rotate-[-10deg] drop-shadow-xl" style='background-image: url("https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=500&h=500&q=80");'></div>
+</div>
+</div>
+<div class="px-4 pb-2">
+<div class="flex items-end justify-between mb-4 px-1">
+<h2 class="text-[20px] font-bold text-slate-900">Menu <span class="text-orange-500">.</span></h2>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">42 Items</span>
+</div>
+<div class="grid grid-cols-2 gap-x-3 gap-y-12 pt-8 pb-32">
+<div class="relative bg-white rounded-3xl compact-card shadow-[0_5px_25px_-5px_rgba(0,0,0,0.05)] overflow-visible group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 w-28 h-28 bg-contain bg-center bg-no-repeat z-10 liquid-splash-img group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=500&h=500&q=80");'></div>
+<div class="text-center pt-8">
+<h3 class="font-semibold text-[16px] text-slate-900 leading-tight">Valencia Classic</h3>
+<p class="text-[10px] text-slate-400 font-medium uppercase tracking-wider mt-1 mb-2">100% Pure</p>
+<div class="flex items-center justify-between mt-1 bg-slate-50 rounded-full p-1 pl-3">
+<span class="font-bold text-sm text-slate-900">$5.50</span>
+<a href="../latte_customization_view_2/code.html" class="size-7 rounded-full bg-black text-white flex items-center justify-center shadow-md active:bg-orange-500 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-xs">add</span>
+                </a>
+</div>
+</div>
+</div>
+<div class="relative bg-white rounded-3xl compact-card shadow-[0_5px_25px_-5px_rgba(0,0,0,0.05)] overflow-visible group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 w-28 h-28 bg-contain bg-center bg-no-repeat z-10 liquid-splash-img group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=500&h=500&q=80");'></div>
+<div class="text-center pt-8">
+<h3 class="font-semibold text-[16px] text-slate-900 leading-tight">Orange Milk</h3>
+<p class="text-[10px] text-slate-400 font-medium uppercase tracking-wider mt-1 mb-2">Creamy Refresher</p>
+<div class="flex items-center justify-between mt-1 bg-slate-50 rounded-full p-1 pl-3">
+<span class="font-bold text-sm text-slate-900">$6.00</span>
+<a href="../latte_customization_view_2/code.html" class="size-7 rounded-full bg-black text-white flex items-center justify-center shadow-md active:bg-orange-500 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-xs">add</span>
+                </a>
+</div>
+</div>
+</div>
+<div class="relative bg-white rounded-3xl compact-card shadow-[0_5px_25px_-5px_rgba(0,0,0,0.05)] overflow-visible group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 w-28 h-28 bg-contain bg-center bg-no-repeat z-10 liquid-splash-img group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://images.unsplash.com/photo-1598155523122-3842334d6c10?auto=format&fit=crop&w=500&h=500&q=80");'></div>
+<div class="text-center pt-8">
+<h3 class="font-semibold text-[16px] text-slate-900 leading-tight">Carrot Glow</h3>
+<p class="text-[10px] text-slate-400 font-medium uppercase tracking-wider mt-1 mb-2">Ginger Kick</p>
+<div class="flex items-center justify-between mt-1 bg-slate-50 rounded-full p-1 pl-3">
+<span class="font-bold text-sm text-slate-900">$7.00</span>
+<a href="../latte_customization_view_2/code.html" class="size-7 rounded-full bg-black text-white flex items-center justify-center shadow-md active:bg-orange-500 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-xs">add</span>
+                </a>
+</div>
+</div>
+</div>
+<div class="relative bg-white rounded-3xl compact-card shadow-[0_5px_25px_-5px_rgba(0,0,0,0.05)] overflow-visible group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 w-28 h-28 bg-contain bg-center bg-no-repeat z-10 liquid-splash-img group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAzYvFGROZIiSp1O0KLukE4r2L06KiZmv-TEwEcVmTE8Q6DnJ0BqQs5acZIsFNJYbF0wVSF9I_P9fjGYVwMVvf-5Pa-yeW3bY0nGTERwNXDjsiO0WaaaRcFhrzEpIPRBRIzwV0n84hkLc6bjPfCzVRUAGIXosxVg6dy8ghRFEHkCjxc3HTB42OSbnl6ylQMwU3z_GM5nZqDn9LcvtMy7FSZyiAUM3kP3OruNEDif7RVuet8osVsJB4qPC28Mhx5gkCebl3wC5AEMGg");'></div>
+<div class="text-center pt-8">
+<h3 class="font-semibold text-[16px] text-slate-900 leading-tight">Berry Shake</h3>
+<p class="text-[10px] text-slate-400 font-medium uppercase tracking-wider mt-1 mb-2">Thick &amp; Creamy</p>
+<div class="flex items-center justify-between mt-1 bg-slate-50 rounded-full p-1 pl-3">
+<span class="font-bold text-sm text-slate-900">$7.50</span>
+<a href="../latte_customization_view_2/code.html" class="size-7 rounded-full bg-black text-white flex items-center justify-center shadow-md active:bg-orange-500 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-xs">add</span>
+                </a>
+</div>
+</div>
+</div>
+<div class="relative bg-white rounded-3xl compact-card shadow-[0_5px_25px_-5px_rgba(0,0,0,0.05)] overflow-visible group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 w-28 h-28 bg-contain bg-center bg-no-repeat z-10 liquid-splash-img group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDruIBY9K_JqCpkvczEzw3D82kZ8l4jHepIsT_S9IvCNS2mgOsY8aWqiSbKrENpqrW40mELeN7j_V6ALqwZh3ZfXR7myzHiGrLElGH19YNxGY2EQP6yGdfywMdggUo-NazoIbq_FnTFe2CSS9yyfkBp4hPb-NoeaJEPTAE4ZmehrHRXuUAPW5Z4forlHm2gEE8D90Y1J3A6x8TLuTPVavC1Ai63Zg4BkqMM9QUgiEs3G0CQvRQthc4xHXv6f9CaH02pgN6hzR_fcMw");'></div>
+<div class="text-center pt-8">
+<h3 class="font-semibold text-[16px] text-slate-900 leading-tight">Super Green</h3>
+<p class="text-[10px] text-slate-400 font-medium uppercase tracking-wider mt-1 mb-2">Detoxifier</p>
+<div class="flex items-center justify-between mt-1 bg-slate-50 rounded-full p-1 pl-3">
+<span class="font-bold text-sm text-slate-900">$8.00</span>
+<a href="../latte_customization_view_2/code.html" class="size-7 rounded-full bg-black text-white flex items-center justify-center shadow-md active:bg-orange-500 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-xs">add</span>
+                </a>
+</div>
+</div>
+</div>
+<div class="relative bg-white rounded-3xl compact-card shadow-[0_5px_25px_-5px_rgba(0,0,0,0.05)] overflow-visible group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 w-28 h-28 bg-contain bg-center bg-no-repeat z-10 liquid-splash-img group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2Lzg-DoKr9iV5o9viJI-C1nIGGLnHniNWZ_LBMTQdM9imD0qZ-FQvZlCo1yKaUul1xRt5yIMTWpcli7Y8gJmT5TvBx-npiD4NqVM75JIRPBS4A_VPBieVtwHOlOq7KaHmHV_V_zd5m6SdceZq2wS2rFIcS8twSaGWFIM1QK-TU_JR6zRhxedKr6eUp0Hj7DKrnqdF6BPHanOKcvl1o0zFkh79YgatiNicj3z53cLeaDmRC0XQPPm0UTER0RktA1bXkxqoYJmp7Zk");'></div>
+<div class="text-center pt-8">
+<h3 class="font-semibold text-[16px] text-slate-900 leading-tight">Mango Iced</h3>
+<p class="text-[10px] text-slate-400 font-medium uppercase tracking-wider mt-1 mb-2">Exotic</p>
+<div class="flex items-center justify-between mt-1 bg-slate-50 rounded-full p-1 pl-3">
+<span class="font-bold text-sm text-slate-900">$6.50</span>
+<a href="../latte_customization_view_2/code.html" class="size-7 rounded-full bg-black text-white flex items-center justify-center shadow-md active:bg-orange-500 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-xs">add</span>
+                </a>
+</div>
+</div>
+</div>
+<div class="relative bg-white rounded-3xl compact-card shadow-[0_5px_25px_-5px_rgba(0,0,0,0.05)] overflow-visible group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 w-28 h-28 bg-contain bg-center bg-no-repeat z-10 liquid-splash-img group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAjZjs_rXPZp43L3sjjmetBB_PnhoXOg2afVE5GXImmIl5lqRQFJhmr7KhQmAGDl9urHSymQprVBD-K0Hh-5aBfk9Fik2fL8oyHcVBUAtpVpdZAwy3QweUDjiOaGbGudw00jVTpKgH1olTSNaD4tuf6WXlAzQrOB08vqWwKSb0HYdK2QcOOcHpW0HmchbtCwcHpYW--tkr06A-O_6gm_Hnh7KmfwcALIYNFkltlJ13SYcioXlXaKmslVfop5Y1-VjyHOpm13ciY54U");'></div>
+<div class="text-center pt-8">
+<h3 class="font-semibold text-[16px] text-slate-900 leading-tight">Citrus Burst</h3>
+<p class="text-[10px] text-slate-400 font-medium uppercase tracking-wider mt-1 mb-2">100% Pure</p>
+<div class="flex items-center justify-between mt-1 bg-slate-50 rounded-full p-1 pl-3">
+<span class="font-bold text-sm text-slate-900">$5.50</span>
+<a href="../latte_customization_view_2/code.html" class="size-7 rounded-full bg-black text-white flex items-center justify-center shadow-md active:bg-orange-500 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-xs">add</span>
+                </a>
+</div>
+</div>
+</div>
+<div class="relative bg-white rounded-3xl compact-card shadow-[0_5px_25px_-5px_rgba(0,0,0,0.05)] overflow-visible group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 w-28 h-28 bg-contain bg-center bg-no-repeat z-10 liquid-splash-img group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBZeRH3nvjuI8aRb-C1dIlDjibIaej6WXnWGy84jF9uRQ5QMne8qxpV4xMu2DoZkE78v8jIWj6UFBoygwc68BRWOs6QvX5K_y8ha0NidsT7NuuGL5FTTDy6jOxGK_1JWYkSpP9flnv4K8lCLmnr7oN7x3iQreKIGr9C5ioEot1kfG63KJCPtA5FGoAm_0oHy5BWUnZP8J0LeXI4v_Bs12Ykf8oxenKLYskVr0ghAQKFzVoc0rs7AupgjqpA4w11OZXe6T6EErnWtzQ");'></div>
+<div class="text-center pt-8">
+<h3 class="font-semibold text-[16px] text-slate-900 leading-tight">Creamsicle</h3>
+<p class="text-[10px] text-slate-400 font-medium uppercase tracking-wider mt-1 mb-2">Creamy Refresher</p>
+<div class="flex items-center justify-between mt-1 bg-slate-50 rounded-full p-1 pl-3">
+<span class="font-bold text-sm text-slate-900">$6.00</span>
+<a href="../latte_customization_view_2/code.html" class="size-7 rounded-full bg-black text-white flex items-center justify-center shadow-md active:bg-orange-500 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-xs">add</span>
+                </a>
+</div>
+</div>
+</div>
+<div class="relative bg-white rounded-3xl compact-card shadow-[0_5px_25px_-5px_rgba(0,0,0,0.05)] overflow-visible group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 w-28 h-28 bg-contain bg-center bg-no-repeat z-10 liquid-splash-img group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAyIy7xOGqGwK8zHLuaEOtGVm834NNx_bCeSlci0YmI0fgzuYbPBxpYD_W3wfdQbyGn6lHuero0jMW7PkuXWdOEarotEwOjFXW99lCeCtKxpP1t0PXJPJvGqr0nroKrhbr30r-OBN7qWX7vLVILqVZwQeKFLVilSR3Qvtg_wASnYB7TiLBXIJSxa5RimMjKZmMYDLQWEMdz3hQRqQ0Of2HCZJ7DkM5SOMxrX0ml1mylQPzz2hcXm8rJ2H1sEtaGpponYBLtdMizRZ8");'></div>
+<div class="text-center pt-8">
+<h3 class="font-semibold text-[16px] text-slate-900 leading-tight">Ginger Zest</h3>
+<p class="text-[10px] text-slate-400 font-medium uppercase tracking-wider mt-1 mb-2">Ginger Kick</p>
+<div class="flex items-center justify-between mt-1 bg-slate-50 rounded-full p-1 pl-3">
+<span class="font-bold text-sm text-slate-900">$7.00</span>
+<a href="../latte_customization_view_2/code.html" class="size-7 rounded-full bg-black text-white flex items-center justify-center shadow-md active:bg-orange-500 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-xs">add</span>
+                </a>
+</div>
+</div>
+</div>
+<div class="relative bg-white rounded-3xl compact-card shadow-[0_5px_25px_-5px_rgba(0,0,0,0.05)] overflow-visible group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 w-28 h-28 bg-contain bg-center bg-no-repeat z-10 liquid-splash-img group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAzYvFGROZIiSp1O0KLukE4r2L06KiZmv-TEwEcVmTE8Q6DnJ0BqQs5acZIsFNJYbF0wVSF9I_P9fjGYVwMVvf-5Pa-yeW3bY0nGTERwNXDjsiO0WaaaRcFhrzEpIPRBRIzwV0n84hkLc6bjPfCzVRUAGIXosxVg6dy8ghRFEHkCjxc3HTB42OSbnl6ylQMwU3z_GM5nZqDn9LcvtMy7FSZyiAUM3kP3OruNEDif7RVuet8osVsJB4qPC28Mhx5gkCebl3wC5AEMGg");'></div>
+<div class="text-center pt-8">
+<h3 class="font-semibold text-[16px] text-slate-900 leading-tight">Berry Blast</h3>
+<p class="text-[10px] text-slate-400 font-medium uppercase tracking-wider mt-1 mb-2">Thick &amp; Creamy</p>
+<div class="flex items-center justify-between mt-1 bg-slate-50 rounded-full p-1 pl-3">
+<span class="font-bold text-sm text-slate-900">$7.50</span>
+<a href="../latte_customization_view_2/code.html" class="size-7 rounded-full bg-black text-white flex items-center justify-center shadow-md active:bg-orange-500 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-xs">add</span>
+                </a>
+</div>
+</div>
+</div>
+<div class="relative bg-white rounded-3xl compact-card shadow-[0_5px_25px_-5px_rgba(0,0,0,0.05)] overflow-visible group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 w-28 h-28 bg-contain bg-center bg-no-repeat z-10 liquid-splash-img group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDruIBY9K_JqCpkvczEzw3D82kZ8l4jHepIsT_S9IvCNS2mgOsY8aWqiSbKrENpqrW40mELeN7j_V6ALqwZh3ZfXR7myzHiGrLElGH19YNxGY2EQP6yGdfywMdggUo-NazoIbq_FnTFe2CSS9yyfkBp4hPb-NoeaJEPTAE4ZmehrHRXuUAPW5Z4forlHm2gEE8D90Y1J3A6x8TLuTPVavC1Ai63Zg4BkqMM9QUgiEs3G0CQvRQthc4xHXv6f9CaH02pgN6hzR_fcMw");'></div>
+<div class="text-center pt-8">
+<h3 class="font-semibold text-[16px] text-slate-900 leading-tight">Kale Power</h3>
+<p class="text-[10px] text-slate-400 font-medium uppercase tracking-wider mt-1 mb-2">Detoxifier</p>
+<div class="flex items-center justify-between mt-1 bg-slate-50 rounded-full p-1 pl-3">
+<span class="font-bold text-sm text-slate-900">$8.00</span>
+<a href="../latte_customization_view_2/code.html" class="size-7 rounded-full bg-black text-white flex items-center justify-center shadow-md active:bg-orange-500 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-xs">add</span>
+                </a>
+</div>
+</div>
+</div>
+<div class="relative bg-white rounded-3xl compact-card shadow-[0_5px_25px_-5px_rgba(0,0,0,0.05)] overflow-visible group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 w-28 h-28 bg-contain bg-center bg-no-repeat z-10 liquid-splash-img group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2Lzg-DoKr9iV5o9viJI-C1nIGGLnHniNWZ_LBMTQdM9imD0qZ-FQvZlCo1yKaUul1xRt5yIMTWpcli7Y8gJmT5TvBx-npiD4NqVM75JIRPBS4A_VPBieVtwHOlOq7KaHmHV_V_zd5m6SdceZq2wS2rFIcS8twSaGWFIM1QK-TU_JR6zRhxedKr6eUp0Hj7DKrnqdF6BPHanOKcvl1o0zFkh79YgatiNicj3z53cLeaDmRC0XQPPm0UTER0RktA1bXkxqoYJmp7Zk");'></div>
+<div class="text-center pt-8">
+<h3 class="font-semibold text-[16px] text-slate-900 leading-tight">Pineapple Pop</h3>
+<p class="text-[10px] text-slate-400 font-medium uppercase tracking-wider mt-1 mb-2">Exotic</p>
+<div class="flex items-center justify-between mt-1 bg-slate-50 rounded-full p-1 pl-3">
+<span class="font-bold text-sm text-slate-900">$6.50</span>
+<a href="../latte_customization_view_2/code.html" class="size-7 rounded-full bg-black text-white flex items-center justify-center shadow-md active:bg-orange-500 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-xs">add</span>
+                </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-full max-w-[342px] z-50">
+<div class="bg-black rounded-full h-[64px] w-full flex items-center justify-between px-2 pr-6 cart-glow border border-slate-800 backdrop-blur-md cursor-pointer active:scale-95 transition-all duration-300">
+<div class="flex items-center gap-4 h-full pl-1">
+<div class="h-[50px] w-[50px] rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center relative">
+<span class="material-symbols-outlined text-orange-500 text-xl">shopping_bag</span>
+<div class="absolute -top-0.5 -right-0.5 size-4 bg-orange-500 rounded-full border border-black flex items-center justify-center text-[9px] font-bold text-white">2</div>
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-white font-bold text-sm tracking-tight leading-none">Checkout</span>
+<span class="text-slate-400 text-[9px] font-bold uppercase tracking-wider mt-0.5">Juice Master</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="h-6 w-px bg-slate-800"></div>
+<span class="text-white font-black text-lg tracking-tight">$14.50</span>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

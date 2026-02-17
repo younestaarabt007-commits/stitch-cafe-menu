@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Customize Tea — Stitch Café</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#f2930d",
+            "background-light": "#fafaf5",
+            "background-dark": "#1a1c18",
+            "zen-green": "#4a5d4e"
+          },
+          fontFamily: {
+            display: ["Plus Jakarta Sans", "sans-serif"],
+            serif: ["Playfair Display", "serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#1a1c18] dark:text-white antialiased">
+  <div class="relative min-h-screen w-full max-w-[390px] mx-auto flex flex-col bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl">
+    <header class="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 bg-gradient-to-b from-black/30 to-transparent">
+      <button id="back-btn" onclick="history.back()" class="flex size-9 items-center justify-center rounded-full bg-white/25 backdrop-blur-md text-white shadow-sm active:scale-95">
+        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+      </button>
+      <button id="favorite-btn" class="flex size-9 items-center justify-center rounded-full bg-white/25 backdrop-blur-md text-white shadow-sm active:scale-95">
+        <span class="material-symbols-outlined text-[20px]">favorite</span>
+      </button>
+    </header>
+
+    <div class="relative h-[320px] w-full overflow-hidden tea-cust-hero flex items-end justify-center pb-6 shrink-0">
+      <div class="relative z-10 flex flex-col items-center text-center px-6">
+        <h1 id="product-title" class="text-white text-[26px] font-extrabold tracking-tight leading-tight">Kyoto Matcha Latte</h1>
+        <p class="text-white/85 text-[12px] font-medium mt-1">Stone-ground matcha with your choice of milk</p>
+      </div>
+    </div>
+
+    <main class="px-4 pb-36">
+      <section class="mt-4">
+        <h2 class="text-[18px] font-bold mb-2">Size</h2>
+        <div class="grid grid-cols-3 gap-2">
+          <button class="chip chip-active" data-size="small" data-price="6.00">Small</button>
+          <button class="chip" data-size="medium" data-price="7.00">Medium</button>
+          <button class="chip" data-size="large" data-price="8.00">Large</button>
+        </div>
+      </section>
+
+      <section class="mt-5">
+        <h2 class="text-[18px] font-bold mb-2">Milk Base</h2>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar">
+          <button class="chip" data-milk="whole" data-extra="0">Whole</button>
+          <button class="chip" data-milk="skim" data-extra="0">Skim</button>
+          <button class="chip" data-milk="soy" data-extra="0.5">Soy +$0.50</button>
+          <button class="chip" data-milk="almond" data-extra="0.7">Almond +$0.70</button>
+          <button class="chip" data-milk="oat" data-extra="0.7">Oat +$0.70</button>
+        </div>
+      </section>
+
+      <section class="mt-5">
+        <h2 class="text-[18px] font-bold mb-2">Sweetness</h2>
+        <div class="grid grid-cols-4 gap-2">
+          <button class="chip chip-active" data-sweet="0">0%</button>
+          <button class="chip" data-sweet="25">25%</button>
+          <button class="chip" data-sweet="50">50%</button>
+          <button class="chip" data-sweet="75">75%</button>
+        </div>
+      </section>
+
+      <section class="mt-5">
+        <h2 class="text-[18px] font-bold mb-2">Quantity</h2>
+        <div class="flex items-center gap-3">
+          <button id="dec-qty" class="qty-btn">-</button>
+          <span id="qty" class="text-[16px] font-bold">1</span>
+          <button id="inc-qty" class="qty-btn">+</button>
+        </div>
+      </section>
+    </main>
+
+    <div id="floating-add" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+      <div class="bg-black text-white flex items-center justify-between pr-2 pl-6 overflow-hidden shadow-[0_0_20px_rgba(242,147,13,0.35)]" style="width: 342px; height: 64px; border-radius: 32px;">
+        <div class="flex flex-col justify-center">
+          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Total</span>
+          <div class="flex items-center gap-2">
+            <span id="summary-text" class="text-xs font-bold">Medium • Whole • 50%</span>
+            <span class="w-1 h-1 bg-gray-600 rounded-full"></span>
+            <span id="total-price" class="text-sm font-bold text-primary">$7.00</span>
+          </div>
+        </div>
+        <button id="add-btn" class="bg-primary text-white px-5 h-[48px] rounded-full flex items-center gap-2">
+          <span class="font-extrabold text-[12px] uppercase tracking-wider">Add to Order</span>
+          <span class="material-symbols-outlined text-[18px]">shopping_cart</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Professional Shop &amp; Menu Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "roastery-bg": "#FAFAF5",
+                        "charcoal": "#1A1A1A",
+                        "emerald": "#10B981",
+                        "soft-gray": "#F1F1EB",
+                        "border-light": "#E5E5DF",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-roastery-bg text-charcoal font-sans;
+                min-height: max(884px, 100dvh);
+            }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .active-pill {
+            @apply bg-charcoal text-white;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased">
+<header class="sticky top-0 z-50 bg-roastery-bg/95 backdrop-blur-md border-b border-border-light w-full">
+<div class="flex items-center p-4 justify-between w-full">
+<div class="flex size-10 items-center justify-start">
+<span class="material-symbols-outlined text-2xl text-charcoal">account_circle</span>
+</div>
+<h1 class="text-charcoal text-base font-bold tracking-tight">Shop &amp; Menu Hub</h1>
+<div class="flex size-10 items-center justify-end">
+<button class="flex size-9 items-center justify-center rounded-full bg-soft-gray">
+<span class="material-symbols-outlined text-xl text-charcoal">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<main class="w-full pb-32">
+<div class="w-full bg-white border-b border-border-light p-6 shadow-sm flex items-center justify-between">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-2">
+<span class="size-2.5 rounded-full bg-emerald shadow-[0_0_8px_rgba(16,185,129,0.4)]"></span>
+<p class="text-charcoal text-lg font-bold leading-tight">Live Shop Status</p>
+</div>
+<p class="text-zinc-500 text-sm font-medium">Accepting orders right now</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-14 h-8 bg-zinc-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-emerald"></div>
+</label>
+</div>
+<div class="px-4 mt-2">
+<div class="flex gap-6 border-b border-border-light w-full">
+<a class="pb-3 border-b-2 border-charcoal flex-1 text-center" href="javascript:void(0)">
+<span class="text-sm font-bold text-charcoal">Menu</span>
+</a>
+<a class="pb-3 border-b-2 border-transparent flex-1 text-center" href="../swiggy-style_elite_main_menu_390x2500/index.html">
+<span class="text-sm font-semibold text-zinc-400">Storefront</span>
+</a>
+<a class="pb-3 border-b-2 border-transparent flex-1 text-center" href="javascript:alert('Inventory module coming soon')">
+<span class="text-sm font-semibold text-zinc-400">Inventory</span>
+</a>
+</div>
+</div>
+<div class="flex gap-2 p-4 overflow-x-auto hide-scrollbar w-full">
+<button class="px-5 py-2 rounded-full bg-charcoal text-white text-sm font-bold whitespace-nowrap">All Items</button>
+<button class="px-5 py-2 rounded-full bg-white border border-border-light text-charcoal text-sm font-semibold whitespace-nowrap shadow-sm">Espresso</button>
+<button class="px-5 py-2 rounded-full bg-white border border-border-light text-charcoal text-sm font-semibold whitespace-nowrap shadow-sm">Brunch</button>
+<button class="px-5 py-2 rounded-full bg-white border border-border-light text-charcoal text-sm font-semibold whitespace-nowrap shadow-sm">Pastries</button>
+</div>
+<div class="w-full space-y-0 divide-y divide-border-light border-t border-b border-border-light">
+<div class="flex items-center justify-between px-4 py-3 bg-roastery-bg border-b border-border-light">
+<h3 class="text-xs font-bold uppercase tracking-widest text-zinc-400">Signature Espresso</h3>
+<button class="text-emerald text-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-base">add_circle</span> Add Item
+            </button>
+</div>
+<div class="flex items-center gap-4 bg-white p-4 w-full">
+<div class="size-20 rounded-lg bg-cover bg-center flex-shrink-0 border border-border-light shadow-inner" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDQ09R0rxEf4hCVMP4eh_ipBvGl6d4Z6u-d1gxELQLfaithtRMWN4ePUCDHK4K51hnWTg9Zmzyqc0NU6WHXWHZzUD-9vlnDTgjWJKlbk2BaeI1iIzNvaCikN_iCSkbc7WYqFjEkdMx4aVjh-NJ5zR0RVffZDWc7D7vTJktd7IQGJUj1oHJhF3sjQ8npTWLriblrTgBf8BTklgvYf0K1teJNVrbZzgl_aI6AjyFTvY-PaBwk7VHdgbN_CPmQPOT1oYpkkpCxJtbZm8Q')"></div>
+<div class="flex-1 min-w-0">
+<h4 class="text-charcoal text-lg font-bold leading-tight truncate">Oat Milk Latte</h4>
+<p class="text-zinc-500 text-xs mt-0.5">House blend, Oatly milk</p>
+<p class="text-charcoal font-extrabold text-base mt-1">$5.50</p>
+</div>
+<div class="flex flex-col items-center gap-1.5 pl-2 border-l border-soft-gray">
+<label class="relative inline-flex items-center cursor-pointer scale-90">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-zinc-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald"></div>
+</label>
+<span class="text-[9px] font-extrabold text-zinc-400 tracking-tighter">LIVE</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white/60 p-4 w-full opacity-80">
+<div class="size-20 rounded-lg bg-cover bg-center flex-shrink-0 grayscale opacity-40 border border-border-light shadow-inner" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAWbTCTJwcxo2ZBU1rOsotuQwAKWSiXYYNE3dkhc7lst8CBsQHiy3ILKO07hYly0gCOAPpajUf0BPsJJXInc_FAzrx9kPUHMTD6VMrtdAYAfjaYjxyHVh08VQuCkzLcfsWJqXeSarrXQve16n26A-3RdMvYvYS9XD1M02ttHqWrPmNiKB4sFNVSKndfo_5GOHdhqD60ZBXx-34bFLKBgHPuW5jVPdUsOcOWJhTSQoRinTCr0HEvcXVdUDImI1A2zEtNSqm0zlzWxT8')"></div>
+<div class="flex-1 min-w-0">
+<h4 class="text-zinc-400 text-lg font-bold leading-tight truncate">Truffle Scramble</h4>
+<p class="text-zinc-400 text-xs mt-0.5">Organic eggs, black truffle</p>
+<p class="text-zinc-400 font-extrabold text-base mt-1">$18.00</p>
+</div>
+<div class="flex flex-col items-center gap-1.5 pl-2 border-l border-soft-gray">
+<label class="relative inline-flex items-center cursor-pointer scale-90">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-zinc-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald"></div>
+</label>
+<span class="text-[9px] font-extrabold text-red-500 tracking-tighter">OFF</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white p-4 w-full">
+<div class="size-20 rounded-lg bg-cover bg-center flex-shrink-0 border border-border-light shadow-inner" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCovO3LswUhggpjTdItiDJSbnQ7aGfT2n9mY8xL_y_CMKZvU6BsZJcDl16JU0qmlMTBITJzN94Z0lw38jFOqaiYsQS2zKvTBuQ62URtqosLxZoAKhCXB9xnPCeG57jM4J-gwxiBMJ7t2-dHqsImoZwQTwqYglCSStxv-JnotimXbquGjCaL_Oo6V9phlFMLNIyDwf0ED86_M4Y1bQfyqf5BzYm-XFxA8ooLfGsxVBcsDoSAO5E3v1lfH4m6GNxAJhX7JqeYGPauJzI')"></div>
+<div class="flex-1 min-w-0">
+<h4 class="text-charcoal text-lg font-bold leading-tight truncate">Cortado</h4>
+<p class="text-zinc-500 text-xs mt-0.5">Equal parts espresso &amp; milk</p>
+<p class="text-charcoal font-extrabold text-base mt-1">$4.25</p>
+</div>
+<div class="flex flex-col items-center gap-1.5 pl-2 border-l border-soft-gray">
+<label class="relative inline-flex items-center cursor-pointer scale-90">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-zinc-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald"></div>
+</label>
+<span class="text-[9px] font-extrabold text-zinc-400 tracking-tighter">LIVE</span>
+</div>
+</div>
+</div>
+<div class="w-full mt-8 pb-12">
+<h2 class="text-charcoal text-lg font-bold tracking-tight pb-4 px-4">Merchant Essentials</h2>
+<div class="grid grid-cols-2 gap-px bg-border-light border-y border-border-light">
+<div class="bg-white p-6 flex flex-col gap-4 active:bg-soft-gray transition-colors">
+<span class="material-symbols-outlined text-emerald text-3xl">qr_code_2</span>
+<div>
+<p class="text-charcoal font-bold text-sm">Table QR</p>
+<p class="text-zinc-500 text-[11px] font-medium uppercase tracking-tighter">Generate Codes</p>
+</div>
+</div>
+<div class="bg-white p-6 flex flex-col gap-4 active:bg-soft-gray transition-colors">
+<span class="material-symbols-outlined text-emerald text-3xl">schedule</span>
+<div>
+<p class="text-charcoal font-bold text-sm">Store Hours</p>
+<p class="text-zinc-500 text-[11px] font-medium uppercase tracking-tighter">09:00 - 18:00</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 w-full bg-white border-t border-border-light shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-50 pb-safe pt-2">
+<div class="flex items-center justify-between px-6 pb-4 pt-1">
+<button class="flex flex-col items-center justify-center size-12 text-zinc-400">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="text-[10px] font-medium mt-0.5">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center size-12 text-charcoal">
+<span class="material-symbols-outlined text-2xl font-variation-settings-fill">restaurant_menu</span>
+<span class="text-[10px] font-bold mt-0.5">Menu</span>
+</button>
+<button class="flex items-center justify-center size-12 -mt-6 bg-charcoal rounded-full shadow-lg border-4 border-white">
+<span class="material-symbols-outlined text-white text-2xl">add</span>
+</button>
+<button class="flex flex-col items-center justify-center size-12 text-zinc-400">
+<span class="material-symbols-outlined text-2xl">receipt_long</span>
+<span class="text-[10px] font-medium mt-0.5">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center size-12 text-zinc-400">
+<span class="material-symbols-outlined text-2xl">settings</span>
+<span class="text-[10px] font-medium mt-0.5">Settings</span>
+</button>
+</div>
+</nav>
+
+</body></html>

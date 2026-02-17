@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Elite Pro Merchant Master Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "brand-orange": "#FF5200",
+                        "warm-cream": "#FAFAF5",
+                        "charcoal": "#1A1A1A",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                background-color: #FAFAF5;
+                background-image: radial-gradient(#1A1A1A 0.5px, transparent 0.5px);
+                background-size: 24px 24px;
+                background-attachment: fixed;
+                @apply font-sans text-charcoal antialiased;
+            }
+        }
+        .noir-serif {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 900;
+        }
+        .gloss-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+        }
+        .kpi-card {
+            border-bottom: 6px solid #FF5200;
+        }
+        .order-accept-btn {
+            background-color: #FF5200;
+            background-image: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%);
+            box-shadow: 0 10px 30px -5px rgba(255, 82, 0, 0.5);
+        }
+        .pulsing-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #FF5200;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 0 rgba(255, 82, 0, 0.7);
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 82, 0, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 82, 0, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 82, 0, 0); }
+        }
+        .custom-checkbox:checked {
+            background-color: #FF5200;
+            border-color: #FF5200;
+        }
+        .priority-border {
+            border-left: 10px solid #FF5200;
+        }
+        .btn-outline-charcoal {
+            border: 1px solid #1A1A1A;
+            color: #1A1A1A;
+        }
+        .btn-outline-charcoal:hover {
+            background-color: #1A1A1A;
+            color: #FAFAF5;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-charcoal/5 px-12 py-5">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-12">
+<h1 class="noir-serif text-3xl tracking-tight text-charcoal">The Roasted Bean</h1>
+<div class="flex items-center bg-charcoal rounded-full px-5 py-2.5 gap-3 shadow-lg">
+<span class="pulsing-dot"></span>
+<span class="text-xs font-black uppercase tracking-widest text-white">Live Hub</span>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<nav class="hidden xl:flex items-center gap-8 text-[11px] font-black uppercase tracking-widest text-charcoal/40">
+<a class="text-charcoal border-b-2 border-brand-orange pb-1" href="javascript:void(0)">Production</a>
+<a class="hover:text-charcoal transition-colors" href="javascript:alert('History module coming soon')">History</a>
+<a class="hover:text-charcoal transition-colors" href="javascript:alert('Inventory module coming soon')">Inventory</a>
+<a class="hover:text-charcoal transition-colors" href="javascript:alert('Settings module coming soon')">Settings</a>
+</nav>
+<div class="h-8 w-px bg-charcoal/10 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-xs font-black text-charcoal leading-none">ALEX MORGAN</p>
+<p class="text-[9px] text-brand-orange font-bold uppercase tracking-tighter">Shift Lead</p>
+</div>
+<div class="size-10 rounded-full border-2 border-brand-orange p-0.5">
+<img alt="Avatar" class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-luBCOgMjAZc1pMpe5g8NfDD-XLf6PAFpph-khUcTenAdxgz43a-WJnmyPdI2l-1FMxgd7HwbmWaRNcCzJgVUcz3hh502DVZazhGYj6vGUom_cIX5NCnTuuswd8DeDqJFwQLBnTU__QdUdUL5JsKbqdAfgjovYNYQUMi_HJngzCHhIZPDtMYzM968h9L_PdaB3DeYO4js02swgkdX2Rpe9ICskvsBY4BP-RO0O0YIaR-Qgz3zdW1zbHt6DKDXcUUps1SYK7jT05w"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-[1440px] mx-auto px-12 py-10 space-y-12">
+<section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="gloss-card kpi-card rounded-2xl p-10 flex flex-col justify-between h-48 transition-all hover:translate-y-[-4px]">
+<div class="flex justify-between items-start">
+<span class="text-[10px] font-black uppercase tracking-[0.2em] text-charcoal/50">Daily Sales</span>
+<span class="material-symbols-outlined text-brand-orange">payments</span>
+</div>
+<div>
+<h2 class="text-6xl font-black text-charcoal tracking-tighter">$2,840</h2>
+<p class="text-[11px] font-bold text-emerald-600 mt-2 uppercase tracking-wider">+18% vs Typical Tuesday</p>
+</div>
+</div>
+<div class="gloss-card kpi-card rounded-2xl p-10 flex flex-col justify-between h-48 transition-all hover:translate-y-[-4px]">
+<div class="flex justify-between items-start">
+<span class="text-[10px] font-black uppercase tracking-[0.2em] text-charcoal/50">Active Tickets</span>
+<span class="material-symbols-outlined text-brand-orange">confirmation_number</span>
+</div>
+<div>
+<h2 class="text-6xl font-black text-charcoal tracking-tighter">14</h2>
+<p class="text-[11px] font-bold text-charcoal/40 mt-2 uppercase tracking-wider">Avg prep: 4.2 mins</p>
+</div>
+</div>
+<div class="gloss-card kpi-card rounded-2xl p-10 flex flex-col justify-between h-48 transition-all hover:translate-y-[-4px]">
+<div class="flex justify-between items-start">
+<span class="text-[10px] font-black uppercase tracking-[0.2em] text-charcoal/50">Service Speed</span>
+<span class="material-symbols-outlined text-brand-orange">speed</span>
+</div>
+<div>
+<h2 class="text-6xl font-black text-charcoal tracking-tighter">98%</h2>
+<p class="text-[11px] font-bold text-emerald-600 mt-2 uppercase tracking-wider">Top 5% of network</p>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+<div class="lg:col-span-8 space-y-10">
+<div class="flex items-end justify-between border-b border-charcoal/10 pb-4">
+<h3 class="text-4xl font-black text-charcoal tracking-tighter">Live Orders</h3>
+<div class="flex gap-4">
+<span class="text-[10px] font-black uppercase tracking-widest px-4 py-2 bg-charcoal text-white rounded-full">New (3)</span>
+<span class="text-[10px] font-black uppercase tracking-widest px-4 py-2 bg-white border border-charcoal/10 text-charcoal/40 rounded-full">In Progress (9)</span>
+</div>
+</div>
+<div class="bg-white priority-border rounded-xl shadow-2xl overflow-hidden">
+<div class="flex flex-col md:flex-row">
+<div class="flex-1 p-10 space-y-8">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="bg-brand-orange text-white text-[9px] font-black px-3 py-1 rounded tracking-[0.2em]">PRIORITY</span>
+<span class="text-charcoal/40 text-xs font-black uppercase tracking-widest">Received 3m 14s ago</span>
+</div>
+<span class="text-charcoal font-black text-xl">Table 08</span>
+</div>
+<div>
+<h4 class="text-7xl font-black text-charcoal tracking-tighter">#402-A</h4>
+</div>
+<div class="space-y-6 py-8 border-y border-charcoal/5">
+<div class="flex items-center gap-6">
+<input class="custom-checkbox size-7 rounded-md border-2 border-charcoal/20 transition-all cursor-pointer focus:ring-0" id="order-1-item-1" type="checkbox"/>
+<label class="flex-1 flex items-baseline gap-3 cursor-pointer group" for="order-1-item-1">
+<span class="text-2xl font-black text-brand-orange">2x</span>
+<span class="text-2xl font-bold text-charcoal">Iced Oat Latte</span>
+<span class="text-sm font-medium text-charcoal/40">/ Extra Shot, No Syrup</span>
+</label>
+</div>
+<div class="flex items-center gap-6">
+<input checked="" class="custom-checkbox size-7 rounded-md border-2 border-charcoal/20 transition-all cursor-pointer focus:ring-0" id="order-1-item-2" type="checkbox"/>
+<label class="flex-1 flex items-baseline gap-3 cursor-pointer" for="order-1-item-2">
+<span class="text-2xl font-black text-brand-orange">1x</span>
+<span class="text-2xl font-bold text-charcoal">Smoked Salmon Bagel</span>
+<span class="text-sm font-medium text-charcoal/40">/ Extra Capers</span>
+</label>
+</div>
+</div>
+<div class="space-y-4">
+<button class="order-accept-btn w-full py-8 rounded-xl text-white text-2xl font-black uppercase tracking-[0.3em] transition-all active:scale-[0.98]">
+                                ACCEPT ORDER
+                            </button>
+<div class="grid grid-cols-2 gap-4">
+<button class="btn-outline-charcoal py-4 rounded-xl text-xs font-black uppercase tracking-[0.2em] transition-all">
+                                    Hold Ticket
+                                </button>
+<button class="btn-outline-charcoal py-4 rounded-xl text-xs font-black uppercase tracking-[0.2em] transition-all">
+                                    Reject
+                                </button>
+</div>
+</div>
+</div>
+<div class="w-full md:w-72 bg-charcoal">
+<img alt="Order Item" class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqKGNYWRGbjxSvouDF11gaimWsZWgjJdV8BqY9OkMJTNKEN_oqossc8Fz_DBOzWfSeo3AMiuqIncTzrAReXMcSZgBroyFc1asin01P407OUMmQIMBFpyR-H_01Jj2zJYfDtB2unIIzDZnHlw-loWo-JZhLcIE8Ei_F2baXdrx2IxKkbbybfEDWzBI8-d3jQBKhjCCOCFjmCyDLxzCklgusr-GvTjJgCCywjcGkkHpZtuM5rT-rioHp4HD9ERsAGcakclAEjfmBlzU"/>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-white border-l-8 border-charcoal/20 rounded-xl p-8 space-y-6 shadow-sm">
+<div class="flex justify-between items-start">
+<h5 class="text-3xl font-black text-charcoal tracking-tight">#403-B</h5>
+<span class="text-[10px] font-black text-charcoal/40 uppercase tracking-widest">5m ago</span>
+</div>
+<div class="space-y-4 pb-4 border-b border-charcoal/5">
+<div class="flex items-center gap-3">
+<input class="custom-checkbox size-5 rounded border-charcoal/20 focus:ring-0" id="o2-i1" type="checkbox"/>
+<label class="flex items-baseline gap-2" for="o2-i1">
+<span class="text-lg font-black text-brand-orange">1x</span>
+<span class="text-lg font-bold text-charcoal">Cortado</span>
+</label>
+</div>
+</div>
+<div class="space-y-3">
+<button class="bg-brand-orange w-full py-4 rounded-lg text-white text-sm font-black uppercase tracking-widest">ACCEPT</button>
+<div class="grid grid-cols-2 gap-2">
+<button class="btn-outline-charcoal py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest">Hold</button>
+<button class="btn-outline-charcoal py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest">Reject</button>
+</div>
+</div>
+</div>
+<div class="bg-white border-l-8 border-charcoal/20 rounded-xl p-8 space-y-6 shadow-sm">
+<div class="flex justify-between items-start">
+<h5 class="text-3xl font-black text-charcoal tracking-tight">#404-C</h5>
+<span class="text-[10px] font-black text-charcoal/40 uppercase tracking-widest">7m ago</span>
+</div>
+<div class="space-y-4 pb-4 border-b border-charcoal/5">
+<div class="flex items-center gap-3">
+<input class="custom-checkbox size-5 rounded border-charcoal/20 focus:ring-0" id="o3-i1" type="checkbox"/>
+<label class="flex items-baseline gap-2" for="o3-i1">
+<span class="text-lg font-black text-brand-orange">3x</span>
+<span class="text-lg font-bold text-charcoal">Avocado Toast</span>
+</label>
+</div>
+</div>
+<div class="space-y-3">
+<button class="bg-brand-orange w-full py-4 rounded-lg text-white text-sm font-black uppercase tracking-widest">ACCEPT</button>
+<div class="grid grid-cols-2 gap-2">
+<button class="btn-outline-charcoal py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest">Hold</button>
+<button class="btn-outline-charcoal py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest">Reject</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 space-y-8">
+<div class="bg-charcoal rounded-2xl p-8 text-white sticky top-32">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-xl font-bold tracking-tight">Daily Volume</h3>
+<span class="material-symbols-outlined text-brand-orange">analytics</span>
+</div>
+<div class="h-40 flex items-end gap-2 mb-8">
+<div class="flex-1 bg-white/10 rounded-t-sm h-[40%]"></div>
+<div class="flex-1 bg-white/10 rounded-t-sm h-[60%]"></div>
+<div class="flex-1 bg-white/10 rounded-t-sm h-[45%]"></div>
+<div class="flex-1 bg-brand-orange rounded-t-sm h-[90%] shadow-[0_0_20px_rgba(255,82,0,0.3)]"></div>
+<div class="flex-1 bg-white/10 rounded-t-sm h-[70%]"></div>
+<div class="flex-1 bg-white/10 rounded-t-sm h-[50%]"></div>
+<div class="flex-1 bg-white/10 rounded-t-sm h-[30%]"></div>
+</div>
+<div class="space-y-4">
+<div class="p-4 rounded-xl bg-white/5 border border-white/10 flex justify-between items-center">
+<div>
+<p class="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">Peak Intensity</p>
+<p class="font-black text-lg">09:15 AM</p>
+</div>
+<div class="size-8 rounded-full bg-brand-orange/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-brand-orange text-sm">trending_up</span>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-white/5 border border-white/10 flex justify-between items-center">
+<div>
+<p class="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">Stock Alerts</p>
+<p class="font-black text-lg text-brand-orange">Oat Milk Low</p>
+</div>
+<span class="material-symbols-outlined text-white/20">inventory_2</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100]">
+<nav class="bg-charcoal/95 backdrop-blur-2xl rounded-2xl p-2.5 flex items-center gap-1 shadow-2xl border border-white/10">
+<button class="bg-brand-orange size-12 rounded-xl flex items-center justify-center text-white shadow-lg">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1">grid_view</span>
+</button>
+<button class="text-white/40 hover:text-white size-12 rounded-xl flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-2xl">list_alt</span>
+</button>
+<button class="text-white/40 hover:text-white size-12 rounded-xl flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-2xl">bar_chart</span>
+</button>
+<div class="w-px h-6 bg-white/10 mx-2"></div>
+<button class="text-white/40 hover:text-white size-12 rounded-xl flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+</button>
+</nav>
+</div>
+
+</body></html>
