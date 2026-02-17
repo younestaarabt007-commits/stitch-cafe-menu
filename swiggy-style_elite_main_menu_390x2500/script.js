@@ -53,21 +53,32 @@ async function loadMenuData() {
 }
 
 function renderCategories(items) {
-  // Enforce the 4 specific categories user requested, regardless of data
-  const categories = ['Brunch', 'Brew', 'Cold Drink', 'Pastry'];
+  // SUB-CATEGORIES to be displayed as circles with real images
+  const subCategories = [
+    { name: 'Tea & Infusion', img: 'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?q=80&w=200&auto=format&fit=crop', link: '../tea and infusion sub catégorie page/index.html' },
+    { name: 'Milkshake', img: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=200&auto=format&fit=crop', link: '../milkshake sub catégorie page/index.html' },
+    { name: 'Juice', img: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=200&auto=format&fit=crop', link: '../juces sub catégorie page/index.html' },
+    { name: 'Sweet Pastries', img: 'https://images.unsplash.com/photo-1555507036-ab1f40388085?q=80&w=200&auto=format&fit=crop', link: '../sweet pastries sub catégorie page/index.html' },
+    { name: 'Black Coffee', img: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=200&auto=format&fit=crop', link: '../black coffee sub catégorie page/index.html' },
+    { name: 'Latte', img: 'https://images.unsplash.com/photo-1570968992193-d6ea066f8a89?q=80&w=200&auto=format&fit=crop', link: '../latté hot drink sub catégorie page/index.html' },
+    { name: 'Smoothie', img: 'https://images.unsplash.com/photo-1505252585461-04db1eb84625?q=80&w=200&auto=format&fit=crop', link: '../smothie sub catégorie page/index.html' },
+    { name: 'Toast', img: 'https://images.unsplash.com/photo-1584776296906-6af761660009?q=80&w=200&auto=format&fit=crop', link: '../toast brunch sub catégorie page/index.html' },
+    { name: 'Artisanal Bread', img: 'https://images.unsplash.com/photo-1509440159598-7106ff28ebfe?q=80&w=200&auto=format&fit=crop', link: '../artisanal bread sub catégorie page/index.html' }
+  ];
+
   const container = document.querySelector('.flex.overflow-x-auto.hide-scrollbar');
   if (!container) return;
 
-  container.innerHTML = categories.map(cat => `
-    <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="navigateToCategory('${cat}')">
+  container.innerHTML = subCategories.map(sub => `
+    <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="window.location.href='${sub.link}'">
       <div class="p-[3px] rounded-full bg-gray-200 dark:bg-gray-700 group-hover:bg-primary transition-all">
         <div class="bg-white dark:bg-[#1a100c] p-1 rounded-full">
-          <div class="w-16 h-16 rounded-full bg-orange-50 dark:bg-orange-950/20 flex items-center justify-center text-primary">
-            <span class="material-symbols-outlined text-2xl">${getCategoryIcon(cat)}</span>
+          <div class="w-16 h-16 rounded-full overflow-hidden relative">
+            <img src="${sub.img}" alt="${sub.name}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
           </div>
         </div>
       </div>
-      <span class="text-[12px] text-gray-700 dark:text-gray-300 font-bold">${cat}</span>
+      <span class="text-[12px] text-gray-700 dark:text-gray-300 font-bold text-center leading-tight max-w-[70px]">${sub.name}</span>
     </div>
   `).join('');
 }
