@@ -58,11 +58,11 @@ function renderCategories(items) {
     { name: 'Tea & Infusion', img: 'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?q=80&w=200&auto=format&fit=crop', link: '../tea and infusion sub catégorie page/index.html' },
     { name: 'Milkshake', img: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=200&auto=format&fit=crop', link: '../milkshake sub catégorie page/index.html' },
     { name: 'Juice', img: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=200&auto=format&fit=crop', link: '../juces sub catégorie page/index.html' },
-    { name: 'Sweet Pastries', img: 'https://images.unsplash.com/photo-1555507036-ab1f40388085?q=80&w=200&auto=format&fit=crop', link: '../sweet pastries sub catégorie page/index.html' },
+    { name: 'Sweet Pastries', img: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=200&auto=format&fit=crop', link: '../sweet pastries sub catégorie page/index.html' },
     { name: 'Black Coffee', img: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=200&auto=format&fit=crop', link: '../black coffee sub catégorie page/index.html' },
-    { name: 'Latte', img: 'https://images.unsplash.com/photo-1570968992193-d6ea066f8a89?q=80&w=200&auto=format&fit=crop', link: '../latté hot drink sub catégorie page/index.html' },
+    { name: 'Latte', img: 'https://images.unsplash.com/photo-1541167760496-16288540b7d2?q=80&w=200&auto=format&fit=crop', link: '../latté hot drink sub catégorie page/index.html' },
     { name: 'Smoothie', img: 'https://images.unsplash.com/photo-1505252585461-04db1eb84625?q=80&w=200&auto=format&fit=crop', link: '../smothie sub catégorie page/index.html' },
-    { name: 'Toast', img: 'https://images.unsplash.com/photo-1584776296906-6af761660009?q=80&w=200&auto=format&fit=crop', link: '../toast brunch sub catégorie page/index.html' },
+    { name: 'Toast', img: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?q=80&w=200&auto=format&fit=crop', link: '../toast brunch sub catégorie page/index.html' },
     { name: 'Artisanal Bread', img: 'https://images.unsplash.com/photo-1509440159598-7106ff28ebfe?q=80&w=200&auto=format&fit=crop', link: '../artisanal bread sub catégorie page/index.html' }
   ];
 
