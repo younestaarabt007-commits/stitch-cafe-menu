@@ -55,15 +55,15 @@ async function loadMenuData() {
 function renderCategories(items) {
   // SUB-CATEGORIES to be displayed as circles with real images
   const subCategories = [
-    { name: 'Tea & Infusion', img: 'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?q=80&w=200&auto=format&fit=crop', link: '../tea and infusion sub catégorie page/index.html' },
-    { name: 'Milkshake', img: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=200&auto=format&fit=crop', link: '../milkshake sub catégorie page/index.html' },
-    { name: 'Juice', img: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=200&auto=format&fit=crop', link: '../juces sub catégorie page/index.html' },
-    { name: 'Sweet Pastries', img: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=200&auto=format&fit=crop', link: '../sweet pastries sub catégorie page/index.html' },
-    { name: 'Black Coffee', img: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=200&auto=format&fit=crop', link: '../black coffee sub catégorie page/index.html' },
-    { name: 'Latte', img: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=200&auto=format&fit=crop', link: '../latté hot drink sub catégorie page/index.html' },
-    { name: 'Smoothie', img: 'https://images.unsplash.com/photo-1505252585461-04db1eb84625?q=80&w=200&auto=format&fit=crop', link: '../smothie sub catégorie page/index.html' },
-    { name: 'Toast', img: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?q=80&w=200&auto=format&fit=crop', link: '../toast brunch sub catégorie page/index.html' },
-    { name: 'Artisanal Bread', img: 'https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=200&auto=format&fit=crop', link: '../artisanal bread sub catégorie page/index.html' }
+    { name: 'Tea & Infusion', img: 'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?q=80&w=300&auto=format&fit=crop', link: '../tea and infusion sub catégorie page/index.html' },
+    { name: 'Milkshake', img: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=300&auto=format&fit=crop', link: '../milkshake sub catégorie page/index.html' },
+    { name: 'Juice', img: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=300&auto=format&fit=crop', link: '../juces sub catégorie page/index.html' },
+    { name: 'Sweet Pastries', img: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=300&auto=format&fit=crop', link: '../sweet pastries sub catégorie page/index.html' },
+    { name: 'Black Coffee', img: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=300&auto=format&fit=crop', link: '../black coffee sub catégorie page/index.html' },
+    { name: 'Latte', img: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=300&auto=format&fit=crop', link: '../latté hot drink sub catégorie page/index.html' },
+    { name: 'Smoothie', img: 'https://images.unsplash.com/photo-1505252585461-04db1eb84625?q=80&w=300&auto=format&fit=crop', link: '../smothie sub catégorie page/index.html' },
+    { name: 'Toast', img: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?q=80&w=300&auto=format&fit=crop', link: '../toast brunch sub catégorie page/index.html' },
+    { name: 'Artisanal Bread', img: 'https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=300&auto=format&fit=crop', link: '../artisanal bread sub catégorie page/index.html' }
   ];
 
   const container = document.getElementById('explore-categories');
@@ -74,7 +74,7 @@ function renderCategories(items) {
       <div class="p-[3px] rounded-full bg-gray-200 dark:bg-gray-700 group-hover:bg-primary transition-all">
         <div class="bg-white dark:bg-[#1a100c] p-1 rounded-full">
           <div class="w-16 h-16 rounded-full overflow-hidden relative">
-            <img src="${sub.img}" alt="${sub.name}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            <img src="${sub.img}" alt="${sub.name}" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
           </div>
         </div>
       </div>
