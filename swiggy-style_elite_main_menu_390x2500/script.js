@@ -66,7 +66,7 @@ function renderCategories(items) {
     { name: 'Artisanal Bread', img: 'https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=200&auto=format&fit=crop', link: '../artisanal bread sub catégorie page/index.html' }
   ];
 
-  const container = document.querySelector('.flex.overflow-x-auto.hide-scrollbar');
+  const container = document.getElementById('explore-categories');
   if (!container) return;
 
   container.innerHTML = subCategories.map(sub => `
