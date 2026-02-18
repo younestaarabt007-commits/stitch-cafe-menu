@@ -22,17 +22,3 @@ body {
 .card:active {
   transform: scale(0.98);
 }
-
-.inverse-top-corners {
-  --r: 14px;
-  -webkit-mask:
-    radial-gradient(circle var(--r) at left top, transparent 99%, #000 100%),
-    radial-gradient(circle var(--r) at right top, transparent 99%, #000 100%),
-    linear-gradient(#000 0 0);
-  -webkit-mask-repeat: no-repeat;
-  mask:
-    radial-gradient(circle var(--r) at left top, transparent 99%, #000 100%),
-    radial-gradient(circle var(--r) at right top, transparent 99%, #000 100%),
-    linear-gradient(#000 0 0);
-  mask-repeat: no-repeat;
-}
