@@ -74,7 +74,7 @@ function renderCategories(items) {
       <div class="p-[3px] rounded-full bg-gray-200 dark:bg-gray-700 group-hover:bg-primary transition-all">
         <div class="bg-white dark:bg-[#1a100c] p-1 rounded-full">
           <div class="w-16 h-16 rounded-full overflow-hidden relative">
-            <img src="${sub.img}" alt="${sub.name}" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            <img src="${sub.img}" alt="${sub.name}" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=300&auto=format&fit=crop'">
           </div>
         </div>
       </div>
