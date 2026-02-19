@@ -78,7 +78,8 @@ function renderCategories(items) {
           </div>
         </div>
       </div>
-      <span class="text-[12px] text-gray-700 dark:text-gray-300 font-bold text-center leading-tight max-w-[70px]">${sub.name}</span>
+      <h4 class="text-[12px] text-gray-700 dark:text-gray-300 font-bold text-center leading-tight max-w-[70px]">${sub.name}</h4>
+      <p class="text-[10px] text-gray-500 dark:text-gray-400 text-center">Explore</p>
     </div>
   `).join('');
 }
