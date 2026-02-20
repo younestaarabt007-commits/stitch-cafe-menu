@@ -141,6 +141,49 @@ function renderBestsellers(items) {
     const rating = typeof item.rating === 'number' ? item.rating : getRatingForItem(item);
     
     const fallback = getFallbackImage(item, index + 50); // Different seed for fallback
+    
+    let promoHTML = '';
+    if (item.id === 'brunch-8') {
+      promoHTML = `
+        <div class="px-4 space-y-4 my-6">
+            <div class="grid grid-cols-2 gap-3 h-[280px]">
+                <div class="relative rounded-[20px] overflow-hidden bg-zinc-900 group h-full transition-transform active:scale-95">
+                    <div class="absolute inset-0 bg-cover bg-center opacity-70 group-hover:scale-105 transition-transform duration-500" role="img" aria-label="Vertical shot of signature pour over" style="background-image: url('https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800&auto=format&fit=crop');">
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-4 w-full bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                        <p class="text-white font-bold text-base leading-tight">Signature Pour Over</p>
+                        <p class="text-primary text-xs font-bold mt-1">$6.50</p>
+                    </div>
+                </div>
+                <div class="grid grid-rows-2 gap-3 h-full">
+                    <div class="relative rounded-[20px] overflow-hidden bg-zinc-200 h-full transition-transform active:scale-95">
+                        <div class="absolute inset-0 bg-cover bg-center" role="img" aria-label="Close up of coffee beans" style="background-image: url('https://images.unsplash.com/photo-1529400971008-b82928afa1d2?q=80&w=800&auto=format&fit=crop');">
+                        </div>
+                        <div class="absolute inset-0 bg-black/30 flex items-center justify-center p-4">
+                            <p class="text-white text-[10px] font-bold uppercase tracking-[0.1em] text-center">New
+                                Origins</p>
+                        </div>
+                    </div>
+                    <div class="relative rounded-[20px] overflow-hidden bg-primary/5 flex flex-col items-center justify-center text-center p-4 border border-primary/20 h-full transition-transform active:scale-95">
+                        <span class="material-symbols-outlined text-primary text-2xl mb-1">
+loyalty</span>
+                        <p class="text-[10px] font-bold text-primary uppercase tracking-tighter">Rewards</p>
+                        <p class="text-[#1c160d] text-[10px] font-bold">2x Points Today</p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative w-full h-20 rounded-[20px] overflow-hidden bg-[#1a0f08] flex items-center px-4 py-3 transition-transform active:scale-95">
+                <div class="flex-1">
+                    <h3 class="text-white font-bold text-base">Limited Roast</h3>
+                    <p class="text-white/60 text-[10px]">Ethiopian Yirgacheffe G1</p>
+                </div>
+                <button class="bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase">Try
+                    Now</button>
+            </div>
+        </div>
+      `;
+    }
+
     return `
     <div class="bg-white dark:bg-[#2a1e19] rounded-[1.5rem] p-3 shadow-md border border-gray-100 dark:border-white/5 flex gap-4 items-center relative" data-category="${item.category}">
       <div class="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden bg-gray-50 dark:bg-black/20 relative shrink-0">
@@ -167,6 +210,7 @@ function renderBestsellers(items) {
         <span class="material-symbols-outlined text-[14px] text-primary">${getCategoryIcon(item.category)}</span>
       </div>
     </div>
+    ${promoHTML}
   `}).join('');
 }
 
