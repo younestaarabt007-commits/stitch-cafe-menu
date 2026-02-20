@@ -168,17 +168,17 @@ function renderBestsellers(items) {
 function renderCategories(items) {
   // SUB-CATEGORIES to be displayed as circles with real images
   const subCategories = [
-    { name: 'Brunch', img: 'https://images.unsplash.com/photo-1559622214-f8a985d3ccaa?q=80&w=300&auto=format&fit=crop', link: '../long_scroll_brunch_explorer/index.html' },
-    { name: 'Brew', img: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=300&auto=format&fit=crop', link: '../Brew catégorie page/index.html' },
-    { name: 'Tea & Infusion', img: 'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?q=80&w=300&auto=format&fit=crop', link: '../tea and infusion sub catégorie page/index.html' },
-    { name: 'Milkshake', img: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=300&auto=format&fit=crop', link: '../milkshake sub catégorie page/index.html' },
-    { name: 'Juice', img: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=300&auto=format&fit=crop', link: '../juces sub catégorie page/index.html' },
-    { name: 'Sweet Pastries', img: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=300&auto=format&fit=crop', link: '../sweet pastries sub catégorie page/index.html' },
-    { name: 'Black Coffee', img: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=300&auto=format&fit=crop', link: '../black coffee sub catégorie page/index.html' },
-    { name: 'Latte', img: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=300&auto=format&fit=crop', link: '../latté hot drink sub catégorie page/index.html' },
-    { name: 'Smoothie', img: 'https://images.unsplash.com/photo-1505252585461-04db1eb84625?q=80&w=300&auto=format&fit=crop', link: '../smothie sub catégorie page/index.html' },
-    { name: 'Toast', img: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?q=80&w=300&auto=format&fit=crop', link: '../toast brunch sub catégorie page/index.html' },
-    { name: 'Artisanal Bread', img: 'https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=300&auto=format&fit=crop', link: '../artisanal bread sub catégorie page/index.html' }
+    { name: 'Brunch', img: 'assets/Brunch.jpg', link: '../long_scroll_brunch_explorer/index.html' },
+    { name: 'Brew', img: 'assets/Brew.jpg', link: '../Brew catégorie page/index.html' },
+    { name: 'Tea & Infusion', img: 'assets/Brew.jpg', link: '../tea and infusion sub catégorie page/index.html' },
+    { name: 'Milkshake', img: 'assets/close-up-milkshake-glass-plate_117406-7215.jpg', link: '../milkshake sub catégorie page/index.html' },
+    { name: 'Juice', img: 'assets/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif', link: '../juces sub catégorie page/index.html' },
+    { name: 'Sweet Pastries', img: 'assets/pastry.jpg', link: '../sweet pastries sub catégorie page/index.html' },
+    { name: 'Black Coffee', img: 'assets/Brew.jpg', link: '../black coffee sub catégorie page/index.html' },
+    { name: 'Latte', img: 'assets/Brew.jpg', link: '../latté hot drink sub catégorie page/index.html' },
+    { name: 'Smoothie', img: 'assets/raspberry-smoothie_1150-18529.jpg', link: '../smothie sub catégorie page/index.html' },
+    { name: 'Toast', img: 'assets/Brunch.jpg', link: '../toast brunch sub catégorie page/index.html' },
+    { name: 'Artisanal Bread', img: 'assets/pastry.jpg', link: '../artisanal bread sub catégorie page/index.html' }
   ];
 
   const container = document.getElementById('explore-categories');
