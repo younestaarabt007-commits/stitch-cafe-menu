@@ -18,7 +18,7 @@ const sampleMenu = [
   { id: 'brunch-3', name: "Spicy Shakshuka", description: "Poached eggs in hearty spicy tomato sauce.", price: 15.50, image: "https://images.unsplash.com/photo-1590412200988-a436970781fa?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
   { id: 'brunch-4', name: "Garden Skillet", description: "Roasted potatoes, kale, peppers.", price: 14.50, image: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
   { id: 'brunch-5', name: "Brunch Burrito", description: "Chorizo, scrambled eggs, beans.", price: 13.00, image: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
-  { id: 'brunch-6', name: "Steak & Eggs", description: "6oz sirloin, two eggs any style.", price: 19.50, image: "https://images.unsplash.com/photo-1598511726623-d090c279a04a?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
+  { id: 'brunch-6', name: "Steak & Eggs", description: "6oz sirloin, two eggs any style.", price: 19.50, image: "https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
   { id: 'brunch-7', name: "Fit Egg-White", description: "Spinach, goat cheese, egg whites.", price: 13.50, image: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
   { id: 'brunch-8', name: "Brunch Tacos", description: "Corn tortillas, pickled onions, avocado.", price: 11.00, image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
   { id: 'brunch-9', name: "Iron Frittata", description: "Onions, potatoes, aged cheddar.", price: 14.75, image: "https://images.unsplash.com/photo-1598511726623-d090c279a04a?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
@@ -28,7 +28,7 @@ const sampleMenu = [
 
   // Brew
   { id: 'brew-1', name: "Nitro Cold Brew", description: "18-hour steep, nitrogen infused.", price: 6.50, image: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=500&auto=format&fit=crop", category: "Cold Brew" },
-  { id: 'brew-2', name: "Ceremonial Matcha", description: "Uji-sourced matcha with oat milk.", price: 7.25, image: "https://images.unsplash.com/photo-1515825838458-f2a94b20105a?q=80&w=500&auto=format&fit=crop", category: "Tea" },
+  { id: 'brew-2', name: "Ceremonial Matcha", description: "Uji-sourced matcha with oat milk.", price: 7.25, image: "https://images.unsplash.com/photo-1582793988951-9aed5509eb97?q=80&w=500&auto=format&fit=crop", category: "Tea" },
   { id: 'brew-3', name: "Ethiopian Yirgacheffe", description: "Floral notes with a citrus finish.", price: 5.00, image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
   { id: 'brew-4', name: "Dirty Masala Chai", description: "House-made spices, double shot.", price: 6.75, image: "https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?q=80&w=500&auto=format&fit=crop", category: "Tea" },
   { id: 'brew-5', name: "Oat Milk Cortado", description: "Equal parts espresso & milk.", price: 4.50, image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
@@ -67,7 +67,7 @@ const sampleMenu = [
   { id: 'creme-1', name: "Creamy Orange Latte", description: "Fresh orange with milk foam", price: 5.50, image: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=500", category: "Coffee" },
   { id: 'creme-2', name: "Citrus Spark", description: "Lemon-lime with mint", price: 4.25, image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=500", category: "Juice" },
   { id: 'creme-3', name: "Mango Cream Fizz", description: "Mango puree and light cream", price: 5.75, image: "https://images.unsplash.com/photo-1546173159-315724a31696?q=80&w=500", category: "Cold Drink" },
-  { id: 'creme-4', name: "Classic Apple Juice", description: "Cold pressed apples", price: 4.00, image: "https://images.unsplash.com/photo-1567306301408-9b74779a11af?q=80&w=500", category: "Juice" },
+  { id: 'creme-4', name: "Classic Apple Juice", description: "Cold pressed apples", price: 4.00, image: "https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=500&auto=format&fit=crop", category: "Juice" },
   { id: 'creme-5', name: "Berry Citrus", description: "Strawberry and grapefruit", price: 5.20, image: "https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?q=80&w=500", category: "Juice" },
 
   // Juices (unique items)
