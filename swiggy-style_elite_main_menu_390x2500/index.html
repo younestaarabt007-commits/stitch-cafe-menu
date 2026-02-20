@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Elite Main Menu — Stitch Café</title>
+  <title>Elite Main Menu — Stitch Café (Updated)</title>
+  <meta name="version" content="1.1">
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/swiggy-style_elite_main_menu_390x2500/style.css"/>
+  <link rel="stylesheet" href="style.css"/>
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -32,27 +33,22 @@
 </head>
 <body class="mesh-bg min-h-screen font-sans text-gray-900 dark:text-white pb-32">
   <div class="relative mx-auto w-full max-w-4xl min-h-screen flex flex-col overflow-hidden">
-    <header class="bg-primary pt-6 pb-10 shadow-xl relative z-0">
+    <header class="bg-primary pt-6 pb-20 shadow-xl relative z-0">
       <div class="flex items-center justify-between px-4 md:px-8 mb-4 text-white">
         <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20">
-          <span class="material-symbols-outlined text-[20px]">table_restaurant</span>
+          <span class="material-symbols-outlined text-[18px]">table_restaurant</span>
           <span class="text-xs font-bold tracking-wide">Table 12</span>
         </div>
         <div class="flex items-center gap-1">
-          <span class="material-symbols-outlined text-[20px]">location_on</span>
-          <span class="text-xs font-semibold truncate max-w-[120px] md:max-w-none">Elite Roastery</span>
+          <span class="material-symbols-outlined text-[18px]">location_on</span>
+          <span class="text-xs font-semibold truncate max-w-[120px]">Stitch Café</span>
         </div>
-        <div class="flex items-center gap-2">
-          <button id="lang-toggle" class="bg-white/20 p-2 rounded-full backdrop-blur-sm">
-            <span class="material-symbols-outlined text-[20px]">translate</span>
-          </button>
-          <button class="bg-white/20 p-2 rounded-full backdrop-blur-sm">
+        <button class="bg-white/20 p-2 rounded-full backdrop-blur-sm flex items-center justify-center">
           <span class="material-symbols-outlined text-[20px]">notifications</span>
-          </button>
-        </div>
+        </button>
       </div>
-      <div class="px-4 md:px-8">
-        <div class="relative max-w-2xl mx-auto">
+      <div class="px-4 md:px-8 relative z-20">
+        <div class="relative group">
           <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
             <span class="material-symbols-outlined text-white/70">search</span>
           </div>
@@ -61,17 +57,17 @@
       </div>
     </header>
 
-    <section class="relative -mt-8 md:-mt-10 pt-6 md:pt-8 px-4 md:px-8 z-10 bg-background-light dark:bg-background-dark rounded-t-[2.5rem] md:rounded-t-[3rem] shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
+    <section class="relative -mt-6 pt-6 pb-0 flex flex-col px-4 md:px-8 z-10 bg-background-light dark:bg-background-dark rounded-t-[2.5rem] md:rounded-t-[3rem] shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
       <!-- Hero Card Carousel -->
-      <div id="hero-carousel" class="max-w-4xl mx-auto mt-0 md:mt-0 relative">
-        <div class="flex w-full overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4">
-          <!-- Card 1 -->
-          <div class="w-[360px] min-w-[360px] flex-shrink-0 snap-center bg-white dark:bg-[#2a1e19] rounded-lg p-5 md:p-6 shadow-lg relative overflow-hidden h-[180px] md:h-[180px]">
-            <div class="relative z-10 flex flex-col items-start h-full">
-              <span class="bg-orange-100 dark:bg-orange-900/40 text-primary dark:text-orange-400 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-1">New Arrival</span>
-              <h1 class="font-serif italic font-bold text-3xl md:text-5xl leading-[0.9] text-gray-900 dark:text-white mt-0 uppercase">VELVET<br/><span class="text-primary">SIPS</span></h1>
-              <p class="text-[11px] md:text-xs text-gray-500 dark:text-gray-400 mt-2 max-w-[140px] md:max-w-[200px] leading-tight">Rich chocolate shakes & crafted lattes.</p>
-              <button id="hero-order-btn" class="mt-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-bold flex items-center justify-center gap-2 shadow-lg hover:scale-105 transition-transform" style="width:140px;height:40px;border-radius:20px;">
+      <div id="hero-carousel" class="max-w-4xl mx-auto mt-auto relative">
+  <div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4" style="width: calc(360px * 3 + 32px);">
+          <!-- Card 1: Velvet Sips -->
+          <div class="w-[360px] h-[160px] flex-shrink-0 snap-center bg-white dark:bg-[#2a1e19] rounded-lg p-3 md:p-4 shadow-lg relative overflow-hidden">
+            <div class="relative z-10 flex flex-col items-start h-full justify-center">
+              <span class="bg-orange-100 dark:bg-orange-900/40 text-primary dark:text-orange-400 text-[10px] md:text-xs font-bold px-3 py-0.5 rounded-full uppercase tracking-widest mb-0.5">New Arrival</span>
+              <h1 class="font-serif italic font-bold text-2xl md:text-3xl leading-[0.9] text-gray-900 dark:text-white mt-0 uppercase">VELVET<br><span class="text-primary">SIPS</span></h1>
+              <p class="text-[11px] md:text-xs text-gray-500 dark:text-gray-400 mt-1 max-w-[140px] md:max-w-[200px] leading-tight">Rich chocolate shakes & crafted lattes.</p>
+              <button id="hero-order-btn" class="mt-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-bold flex items-center justify-center gap-2 shadow-lg hover:scale-105 transition-transform" style="width:140px;height:40px;border-radius:20px;">
                 Order Now <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
               </button>
             </div>
@@ -79,30 +75,61 @@
               <img alt="" class="w-full h-full object-contain drop-shadow-2xl transform rotate-[-12deg]" src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800&auto=format&fit=crop"/>
             </div>
           </div>
+
+          <!-- Card 2: Morning Brew -->
+          <div class="w-[360px] h-[160px] flex-shrink-0 snap-center bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/40 rounded-lg p-3 md:p-4 shadow-lg relative overflow-hidden">
+            <div class="relative z-10 flex flex-col items-start h-full justify-center">
+              <span class="bg-blue-200 dark:bg-blue-700/60 text-blue-700 dark:text-blue-300 text-[10px] md:text-xs font-bold px-3 py-0.5 rounded-full uppercase tracking-widest mb-0.5">Morning Special</span>
+              <h1 class="font-serif italic font-bold text-2xl md:text-3xl leading-[0.9] text-blue-900 dark:text-white mt-0 uppercase">MORNING<br><span class="text-blue-600 dark:text-blue-400">BREW</span></h1>
+              <p class="text-[11px] md:text-xs text-blue-600 dark:text-blue-300 mt-1 max-w-[140px] md:max-w-[200px] leading-tight">Fresh coffee blends &amp; breakfast favorites.</p>
+              <button class="hero-order-btn mt-2 bg-blue-600 dark:bg-blue-500 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-lg hover:scale-105 transition-transform" style="width:140px;height:40px;border-radius:20px;">
+                Order Now <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+              </button>
+            </div>
+            <div class="absolute -right-4 -bottom-4 md:right-0 md:bottom-0 w-44 h-44 md:w-60 md:h-60">
+              <img alt="" class="w-full h-full object-contain drop-shadow-2xl" src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/>
+            </div>
+          </div>
+
+          <!-- Card 3: Sweet Delights -->
+          <div class="w-[360px] h-[160px] flex-shrink-0 snap-center bg-gradient-to-br from-pink-50 to-rose-100 dark:from-pink-900/30 dark:to-rose-800/40 rounded-lg p-3 md:p-4 shadow-lg relative overflow-hidden">
+            <div class="relative z-10 flex flex-col items-start h-full justify-center">
+              <span class="bg-pink-200 dark:bg-pink-700/60 text-pink-700 dark:text-pink-300 text-[10px] md:text-xs font-bold px-3 py-0.5 rounded-full uppercase tracking-widest mb-0.5">Sweet Treats</span>
+              <h1 class="font-serif italic font-bold text-2xl md:text-3xl leading-[0.9] text-pink-900 dark:text-white mt-0 uppercase">SWEET<br><span class="text-pink-600 dark:text-pink-400">DELIGHTS</span></h1>
+              <p class="text-[11px] md:text-xs text-pink-600 dark:text-pink-300 mt-1 max-w-[140px] md:max-w-[200px] leading-tight">Decadent desserts &amp; pastries to satisfy cravings.</p>
+              <button class="hero-order-btn mt-2 bg-pink-600 dark:bg-pink-500 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-lg hover:scale-105 transition-transform" style="width:140px;height:40px;border-radius:20px;">
+                Order Now <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+              </button>
+            </div>
+            <div class="absolute -right-4 -bottom-4 md:right-0 md:bottom-0 w-44 h-44 md:w-60 md:h-60">
+              <img alt="" class="w-full h-full object-contain drop-shadow-2xl transform rotate-6" src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <div class="bg-background-light dark:bg-background-dark rounded-t-[2.5rem] mt-6 pt-8 pb-20 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] relative z-0">
+    <div class="bg-background-light dark:bg-background-dark mt-0 pt-0 pb-2 relative z-0">
     <section class="">
-      <div class="px-4 md:px-8 mb-6 flex items-center justify-between max-w-4xl mx-auto w-full">
+      <div class="px-4 md:px-8 mb-0 flex items-center justify-between max-w-4xl mx-auto w-full">
         <h3 class="text-lg md:text-xl font-bold text-gray-900 dark:text-white uppercase tracking-tight">Explore</h3>
         <span class="text-primary text-xs font-extrabold uppercase tracking-wider cursor-pointer">View All</span>
       </div>
-      <div id="explore-categories" class="flex overflow-x-auto hide-scrollbar gap-4 md:gap-8 px-4 md:px-8 pb-4 max-w-4xl mx-auto w-full">
+      <div id="explore-categories" class="flex overflow-x-auto hide-scrollbar gap-1 px-4 md:px-8 pb-0 max-w-4xl mx-auto w-full">
         <!-- Categories loaded via script -->
       </div>
     </section>
 
-    <section class="px-4 md:px-8 pt-8 md:pt-12 max-w-4xl mx-auto w-full">
-      <h3 class="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-6 uppercase tracking-tight">Our Menu</h3>
-      <div class="grid grid-cols-2 gap-4">
+    <section class="px-4 md:px-8 pt-0 md:pt-0 mt-2 max-w-4xl mx-auto w-full">
+      <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-2 text-center uppercase tracking-tight">Our Menu</h3>
+      <div class="grid grid-cols-2 gap-2">
         <!-- Brunch -->
         <a href="../long_scroll_brunch_explorer/index.html" class="col-span-1 h-44 md:h-56 relative bg-orange-100 dark:bg-orange-900/20 rounded-[2rem] overflow-hidden group shadow-sm text-white">
           <img alt="Brunch" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-0 filter brightness-110 saturate-125 contrast-105"
                src="assets/Brunch.jpg"
                onerror="this.src='https://images.unsplash.com/photo-1559622214-f8a985d3ccaa?q=80&w=800&auto=format&fit=crop'">
-          <div class="relative z-10 p-4 text-white">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+          <div class="relative z-20 p-4 text-white">
             <h4 class="text-white text-lg md:text-xl font-bold uppercase">Brunch</h4>
             <p class="text-white text-[10px] md:text-xs mt-1">Toasts & Bowls</p>
           </div>
@@ -112,7 +139,8 @@
           <img alt="Brew" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-0 filter brightness-110 saturate-125 contrast-105"
                src="assets/Brew.jpg"
                onerror="this.src='https://images.unsplash.com/photo-1560972715-3fb62a8469fe?q=80&w=800&auto=format&fit=crop'">
-          <div class="relative z-10 p-4 text-white">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+          <div class="relative z-20 p-4 text-white">
             <h4 class="text-white text-lg md:text-xl font-bold uppercase">Brew</h4>
             <p class="text-white text-[10px] md:text-xs mt-1">Coffee & Tea</p>
           </div>
@@ -122,7 +150,8 @@
           <img alt="Cold Drink" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-0 filter brightness-110 saturate-125 contrast-105"
                src="assets/Cold%20drinks.jpg"
                onerror="this.src='https://images.unsplash.com/photo-1562059390-a761a0847683?q=80&w=800&auto=format&fit=crop'">
-          <div class="relative z-10 p-4 text-white">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+          <div class="relative z-20 p-4 text-white">
             <h4 class="text-white text-lg md:text-xl font-bold uppercase">Cold Drink</h4>
             <p class="text-white text-[10px] md:text-xs mt-1">Juices & Shakes</p>
           </div>
@@ -132,7 +161,8 @@
           <img alt="Pastry" loading="lazy" class="absolute inset-0 w-full h-full object-cover z-0 filter brightness-110 saturate-125 contrast-105"
                src="assets/pastry.jpg"
                onerror="this.src='https://images.unsplash.com/photo-1509440159598-7106ff28ebfe?q=80&w=800&auto=format&fit=crop'">
-          <div class="relative z-10 p-4 text-white">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+          <div class="relative z-20 p-4 text-white">
             <h4 class="text-white text-lg md:text-xl font-bold uppercase">Pastry</h4>
             <p class="text-white text-[10px] md:text-xs mt-1">Bakery & Sweets</p>
           </div>
@@ -140,13 +170,14 @@
       </div>
     </section>
 
-    <section class="px-4 md:px-8 py-12 max-w-4xl mx-auto w-full">
-      <div class="mb-8 flex items-end justify-between">
-        <div>
-          <span class="text-primary font-bold text-[10px] uppercase tracking-[0.2em]">Trending Now</span>
-          <h3 class="font-serif font-black text-3xl md:text-4xl text-gray-900 dark:text-white leading-tight mt-1">BESTSELLERS</h3>
+    <section class="px-4 md:px-8 py-0 max-w-4xl mx-auto w-full">
+      <div class="mb-4 flex items-center justify-between">
+        <div class="w-12"></div>
+        <div class="text-center">
+          <span class="text-primary font-bold text-[10px] uppercase tracking-[0.2em] block">Trending Now</span>
+          <h3 class="font-inter font-black text-3xl md:text-4xl text-gray-900 dark:text-white leading-tight mt-0 text-center">OUR MENU</h3>
         </div>
-        <button class="bg-white dark:bg-[#2a1e19] p-3 rounded-full shadow-sm border border-gray-100 dark:border-white/5">
+        <button class="bg-white dark:bg-[#2a1e19] p-3 rounded-full shadow-sm border border-gray-100 dark:border-white/5 w-12 h-12 flex items-center justify-center">
           <span class="material-symbols-outlined text-[22px] text-gray-600 dark:text-gray-300">tune</span>
         </button>
       </div>
@@ -154,21 +185,27 @@
     </section>
     </div>
 
-    <div id="floating-cart" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-[390px] px-4">
-      <div class="bg-black text-white shadow-glow flex items-center justify-between pr-2 pl-6 overflow-hidden w-full h-16 rounded-full">
-        <div class="flex flex-col justify-center">
-          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Total</span>
-          <div class="flex items-center gap-2">
-            <span id="cart-items-text" class="text-sm font-bold">0 Items</span>
-            <span class="w-1 h-1 bg-gray-600 rounded-full"></span>
-            <span id="cart-total" class="text-sm font-bold text-primary">$0.00</span>
-          </div>
-        </div>
-        <button id="view-cart-btn" class="bg-primary text-white px-5 h-[48px] rounded-full flex items-center gap-2 active:scale-95 transition-transform">
-          <span id="view-cart-label" class="font-extrabold text-[12px] uppercase tracking-wider">View Cart</span>
-          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+    <div id="bottom-tabbar" class="fixed bottom-0 left-0 z-50 w-full">
+      <nav class="bg-white dark:bg-[#2a1e19] border-t border-gray-100 dark:border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] backdrop-blur-md h-[64px] flex items-stretch justify-between px-6">
+        <button id="tab-menu" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300">
+          <span class="material-symbols-outlined text-[22px]">restaurant_menu</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest">Menu</span>
         </button>
-      </div>
+        <button id="tab-categories" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300">
+          <span class="material-symbols-outlined text-[22px]">category</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest">Explore</span>
+        </button>
+        <button id="view-cart-btn" class="relative flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300">
+          <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest">Cart</span>
+          <span id="cart-items-text" class="absolute -top-1 right-4 bg-primary text-white text-[10px] font-bold px-1.5 py-[2px] rounded-full">0 Items</span>
+          <span id="cart-total" class="text-[10px] font-bold text-primary mt-0.5">$0.00</span>
+        </button>
+        <button id="tab-profile" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300">
+          <span class="material-symbols-outlined text-[22px]">person</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest">Profile</span>
+        </button>
+      </nav>
     </div>
   </div>
   <div id="order-modal" class="fixed inset-0 z-[60] hidden">
@@ -204,6 +241,6 @@
       </div>
     </div>
   </div>
-  <script src="/swiggy-style_elite_main_menu_390x2500/script.js"></script>
+  <script src="./script.js?v=3"></script>
 </body>
 </html>

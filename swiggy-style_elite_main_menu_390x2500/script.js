@@ -26,7 +26,30 @@ document.addEventListener('DOMContentLoaded', () => {
   setupEvents();
   applyLang(getLang());
   updateCart();
+  // centerOurMenuHeading(); // Disabled to allow HTML/CSS positioning to work
+
+  const el = document.getElementById("rotating-text");
+  if (!el) return;
+  const phrases = [
+    "Welcome to Velvet Sips",
+    "Freshly Brewed Daily",
+    "Scan. Order. Enjoy.",
+    "Crafted with Passion"
+  ];
+  let idx = 0;
+  el.style.opacity = 1;
+  el.style.transition = "opacity 0.4s ease-in-out";
+  setInterval(() => {
+    el.style.opacity = 0;
+    setTimeout(() => {
+      idx = (idx + 1) % phrases.length;
+      el.textContent = phrases[idx];
+      el.style.opacity = 1;
+    }, 400);
+  }, 2800);
 });
+
+ 
 
 async function loadMenuData() {
   const container = document.getElementById('bestsellers');
@@ -51,6 +74,8 @@ async function loadMenuData() {
     renderCategories(bestsellers);
   }
 }
+
+
 
 function renderCategories(items) {
   // SUB-CATEGORIES to be displayed as circles with real images
@@ -78,8 +103,7 @@ function renderCategories(items) {
           </div>
         </div>
       </div>
-      <h4 class="text-[12px] text-gray-700 dark:text-gray-300 font-bold text-center leading-tight max-w-[70px]">${sub.name}</h4>
-      <p class="text-[10px] text-gray-500 dark:text-gray-400 text-center">Explore</p>
+      <p class="text-[10px] text-gray-800 dark:text-white text-center">Explore</p>
     </div>
   `).join('');
 }
@@ -189,6 +213,21 @@ function setupEvents() {
   if (viewBtn) {
     viewBtn.addEventListener('click', openOrderModal);
   }
+  const tabHome = document.getElementById('tab-home');
+  const tabCall = document.getElementById('tab-call');
+  const tabSettings = document.getElementById('tab-settings');
+  if (tabHome) {
+    tabHome.addEventListener('click', () => setActiveTab('home'));
+  }
+  if (tabCall) {
+    tabCall.addEventListener('click', () => {
+      setActiveTab('call');
+      callWaiter();
+    });
+  }
+  if (tabSettings) {
+    tabSettings.addEventListener('click', () => setActiveTab('settings'));
+  }
   const closeBtn = document.getElementById('order-close-btn');
   if (closeBtn) {
     closeBtn.addEventListener('click', closeOrderModal);
@@ -205,6 +244,28 @@ function setupEvents() {
       applyLang(next);
     });
   }
+}
+
+function setActiveTab(name) {
+  const ids = ['tab-home', 'view-cart-btn', 'tab-call', 'tab-settings'];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const isActive =
+      (id === 'tab-home' && name === 'home') ||
+      (id === 'view-cart-btn' && name === 'cart') ||
+      (id === 'tab-call' && name === 'call') ||
+      (id === 'tab-settings' && name === 'settings');
+    el.classList.toggle('text-primary', isActive);
+  });
+}
+
+function callWaiter() {
+  const toast = document.createElement('div');
+  toast.className = 'fixed bottom-20 left-1/2 -translate-x-1/2 z-[60] bg-black text-white px-4 py-2 rounded-full shadow-glow';
+  toast.textContent = 'Waiter called';
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 2000);
 }
 
 function openOrderModal() {
@@ -421,4 +482,65 @@ function applyLang(lang) {
   });
   const badge = document.getElementById('order-status-badge');
   if (badge) badge.textContent = t('status_received');
+}
+
+// Hero Carousel Auto Rotation
+function initHeroCarousel() {
+  console.log('Initializing hero carousel...');
+  const carousel = document.getElementById('hero-carousel');
+  if (!carousel) {
+    console.log('Hero carousel element not found');
+    return;
+  }
+  
+  const container = carousel.querySelector('.flex');
+  if (!container) {
+    console.log('Carousel container not found');
+    return;
+  }
+  
+  const cards = container.querySelectorAll('[class*="w-[360px]"]');
+  console.log('Found', cards.length, 'cards');
+  if (cards.length <= 1) {
+    console.log('Not enough cards for carousel');
+    return;
+  }
+  
+  let currentIndex = 0;
+  
+  // Auto rotate every 0.5 seconds - more reliable method
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % cards.length;
+    
+    // Scroll to the specific card - calculate exact position
+    const targetScroll = currentIndex * (360 + 16); // 360px card width + 16px gap
+    
+    // Use both methods for better compatibility
+    try {
+      container.scrollTo({
+        left: targetScroll,
+        behavior: 'smooth'
+      });
+    } catch (error) {
+      // Fallback method
+      container.scrollLeft = targetScroll;
+    }
+    
+    console.log('Scrolling to card', currentIndex + 1, 'at position', targetScroll);
+  }, 500);
+}
+
+// Initialize carousel when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOM fully loaded, initializing carousel...');
+  initHeroCarousel();
+});
+
+// Also try immediate execution for debugging
+console.log('Script loaded, checking if DOM is ready...');
+if (document.readyState === 'loading') {
+  console.log('DOM still loading, waiting for DOMContentLoaded');
+} else {
+  console.log('DOM already ready, initializing carousel immediately');
+  initHeroCarousel();
 }
