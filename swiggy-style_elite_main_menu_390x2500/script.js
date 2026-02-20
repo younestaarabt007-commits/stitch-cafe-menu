@@ -194,7 +194,6 @@ window.addToCart = (id) => {
 function updateCart() {
   const total = cart.reduce((sum, x) => sum + x.price * x.qty, 0);
   const count = cart.reduce((sum, x) => sum + x.qty, 0);
-  document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
   
   const badge = document.getElementById('cart-items-text');
   badge.textContent = `${count} Item${count !== 1 ? 's' : ''}`;
