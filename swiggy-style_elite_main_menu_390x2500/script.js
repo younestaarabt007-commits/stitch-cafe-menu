@@ -73,7 +73,7 @@ const sampleMenu = [
   // Juices (unique items)
   { id: 'juice-1', name: "Lemon Mint", description: "Zesty lemon with mint", price: 4.10, image: "assets/colorful-cocktail-with-orange-slice-cocktail-umbrella-green-black-straw_140725-10521.avif", category: "Juice" },
   { id: 'juice-2', name: "Pineapple Punch", description: "Tropical pineapple blend", price: 4.80, image: "assets/exotic-cocktail-closeup_181624-983.avif", category: "Juice" },
-  { id: 'juice-3', name: "Mango Glow", description: "Alphonso mango puree", price: 5.25, image: "assets/delicious-indian-mango-drink-high-angle_23-2148734680.avif", category: "Juice" },
+  { id: 'juice-3', name: "Mango Glow", description: "Alphonso mango puree", price: 5.25, image: "https://images.unsplash.com/photo-1603569283847-aa295f0d016a?q=80&w=500&auto=format&fit=crop", category: "Juice" },
 
   // Latte Hot
   { id: 'latte-1', name: "Classic Latte", description: "Double shot, steamed milk", price: 4.80, image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
@@ -90,9 +90,9 @@ const sampleMenu = [
   { id: 'tea-6', name: "Iced Peach Oolong", description: "Fruity, floral, chilled", price: 6.50, image: "https://images.unsplash.com/photo-1515512965560-0b814a59fdf8?q=80&w=500&auto=format&fit=crop", category: "Tea" },
 
   // Smoothie & Shake (New)
-  { id: 'smoothie-1', name: "Berry Burst", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "assets/raspberry-smoothie_1150-18529.jpg", category: "Smoothie" },
+  { id: 'smoothie-1', name: "Berry Burst", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?q=80&w=500&auto=format&fit=crop", category: "Smoothie" },
   { id: 'smoothie-2', name: "Green Power", description: "Spinach, apple, banana", price: 5.00, image: "assets/kiwi-milk-shake-table_140725-8608.jpg", category: "Smoothie" },
-  { id: 'shake-1', name: "Classic Chocolate Shake", description: "Rich cocoa, creamy base", price: 5.20, image: "assets/close-up-milkshake-glass-plate_117406-7215.jpg", category: "Shake" },
+  { id: 'shake-1', name: "Classic Chocolate Shake", description: "Rich cocoa, creamy base", price: 5.20, image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=500&auto=format&fit=crop", category: "Shake" },
   { id: 'shake-2', name: "Vanilla Bean Shake", description: "Madagascar vanilla, smooth", price: 5.00, image: "assets/strawberry-ice-cream-with-delights_140725-8818.jpg", category: "Shake" },
   { id: 'shake-3', name: "Strawberry Bliss", description: "Fresh strawberries, cream", price: 5.40, image: "assets/caramel-cold-shake-with-cream_140725-4501.avif", category: "Shake" },
   { id: 'shake-4', name: "Banana Caramel", description: "Banana, caramel drizzle", price: 5.60, image: "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=500&auto=format&fit=crop", category: "Shake" },
