@@ -26,3 +26,18 @@ body {
 #rotating-text {
   transition: opacity 0.3s ease-in-out;
 }
+
+/* Carousel enhancements */
+#hero-carousel .flex {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+#hero-carousel .flex::-webkit-scrollbar {
+  display: none;
+}
+
+#hero-carousel .flex {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
