@@ -195,7 +195,18 @@ function updateCart() {
   const total = cart.reduce((sum, x) => sum + x.price * x.qty, 0);
   const count = cart.reduce((sum, x) => sum + x.qty, 0);
   document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
-  document.getElementById('cart-items-text').textContent = `${count} Item${count !== 1 ? 's' : ''}`;
+  
+  const badge = document.getElementById('cart-items-text');
+  badge.textContent = `${count} Item${count !== 1 ? 's' : ''}`;
+  
+  if (count > 0) {
+    badge.classList.remove('hidden');
+    badge.classList.add('animate-bounce');
+  } else {
+    badge.classList.add('hidden');
+    badge.classList.remove('animate-bounce');
+  }
+  
   storeCart(cart, count, total);
 }
 
