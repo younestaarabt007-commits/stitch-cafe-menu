@@ -1,3 +1,4 @@
+
 function apiBase() {
   try {
     return localStorage.getItem('stitch_api_base') || (typeof window !== 'undefined' && window.STITCH_API_BASE) || 'http://localhost:3000';
@@ -8,78 +9,165 @@ function apiBase() {
 
 let bestsellers = [];
 let cart = [];
+
+// Consolidated Product Data from all sub-categories
 const sampleMenu = [
-  { id: 'fallback-1', name: 'Iced Citrus Cooler', category: 'Cold Drink', price: 4.80, description: 'Tropical pineapple blend', image_url: 'https://images.unsplash.com/photo-1547394765-185d449d6eb2?q=80&w=500&auto=format&fit=crop' },
-  { id: 'fallback-2', name: 'Fresh Orange Juice', category: 'Cold Drink', price: 4.50, description: 'Valencia oranges, cold pressed', image_url: 'https://images.unsplash.com/photo-1541976076758-65c1b5dc0f5b?q=80&w=500&auto=format&fit=crop' },
-  { id: 'fallback-3', name: 'Cold Brew', category: 'Brew', price: 4.90, description: '12-hour steep, smooth finish', image_url: 'https://images.unsplash.com/photo-1576675745666-0e81982f807a?q=80&w=500&auto=format&fit=crop' },
-  { id: 'fallback-4', name: 'Flat White', category: 'Brew', price: 3.90, description: 'Velvety milk and espresso', image_url: 'https://images.unsplash.com/photo-1560972715-3fb62a8469fe?q=80&w=500&auto=format&fit=crop' },
-  { id: 'fallback-5', name: 'Croissant', category: 'Pastry', price: 2.80, description: 'Butter-laminated pastry', image_url: 'https://images.unsplash.com/photo-1509440159598-7106ff28ebfe?q=80&w=500&auto=format&fit=crop' },
-  { id: 'fallback-6', name: 'Almond Pain', category: 'Pastry', price: 3.20, description: 'Almond cream filling', image_url: 'https://images.unsplash.com/photo-1541167760496-16288540b7d2?q=80&w=500&auto=format&fit=crop' },
-  { id: 'fallback-7', name: 'Avocado Toast', category: 'Brunch', price: 10.50, description: 'Sourdough, smashed avocado', image_url: 'https://images.unsplash.com/photo-1559622214-f8a985d3ccaa?q=80&w=500&auto=format&fit=crop' },
-  { id: 'fallback-8', name: 'Shakshuka', category: 'Brunch', price: 11.25, description: 'Tomato, peppers, eggs', image_url: 'https://images.unsplash.com/photo-1543332164-6e82f355bad2?q=80&w=500&auto=format&fit=crop' },
-  { id: 'fallback-9', name: 'Mango Lassi', category: 'Cold Drink', price: 5.00, description: 'Alphonso mango, yogurt, cardamom', image_url: 'https://images.unsplash.com/photo-1589656966895-2f33e7653819?q=80&w=500&auto=format&fit=crop' }
+  // Brunch (New)
+  { id: 'brunch-1', name: "Farm Omelette", description: "Organic eggs, cheddar, fresh herbs.", price: 12.50, image: "https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
+  { id: 'brunch-2', name: "Eggs Benedict", description: "English muffin, bacon, hollandaise sauce.", price: 16.00, image: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
+  { id: 'brunch-3', name: "Spicy Shakshuka", description: "Poached eggs in hearty spicy tomato sauce.", price: 15.50, image: "https://images.unsplash.com/photo-1590412200988-a436970781fa?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
+  { id: 'brunch-4', name: "Garden Skillet", description: "Roasted potatoes, kale, peppers.", price: 14.50, image: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
+  { id: 'brunch-5', name: "Brunch Burrito", description: "Chorizo, scrambled eggs, beans.", price: 13.00, image: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
+  { id: 'brunch-6', name: "Steak & Eggs", description: "6oz sirloin, two eggs any style.", price: 19.50, image: "https://images.unsplash.com/photo-1598511726623-d090c279a04a?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
+  { id: 'brunch-7', name: "Fit Egg-White", description: "Spinach, goat cheese, egg whites.", price: 13.50, image: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
+  { id: 'brunch-8', name: "Brunch Tacos", description: "Corn tortillas, pickled onions, avocado.", price: 11.00, image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
+  { id: 'brunch-9', name: "Iron Frittata", description: "Onions, potatoes, aged cheddar.", price: 14.75, image: "https://images.unsplash.com/photo-1598511726623-d090c279a04a?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
+  { id: 'brunch-10', name: "Acai Delight", description: "Mixed berries, granola, honey.", price: 12.00, image: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
+  { id: 'brunch-11', name: "Belgian Gold", description: "Crispy waffles, berries, cream.", price: 11.50, image: "https://images.unsplash.com/photo-1562376552-0d160a2f238d?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
+  { id: 'brunch-12', name: "Full English", description: "Sausage, bacon, eggs, beans, toast.", price: 22.00, image: "https://images.unsplash.com/photo-1533089862017-a0e27b80d72a?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
+
+  // Brew
+  { id: 'brew-1', name: "Nitro Cold Brew", description: "18-hour steep, nitrogen infused.", price: 6.50, image: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=500&auto=format&fit=crop", category: "Cold Brew" },
+  { id: 'brew-2', name: "Ceremonial Matcha", description: "Uji-sourced matcha with oat milk.", price: 7.25, image: "https://images.unsplash.com/photo-1515825838458-f2a94b20105a?q=80&w=500&auto=format&fit=crop", category: "Tea" },
+  { id: 'brew-3', name: "Ethiopian Yirgacheffe", description: "Floral notes with a citrus finish.", price: 5.00, image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
+  { id: 'brew-4', name: "Dirty Masala Chai", description: "House-made spices, double shot.", price: 6.75, image: "https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?q=80&w=500&auto=format&fit=crop", category: "Tea" },
+  { id: 'brew-5', name: "Oat Milk Cortado", description: "Equal parts espresso & milk.", price: 4.50, image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
+  { id: 'brew-6', name: "Lavender Honey", description: "Floral infusion with local honey.", price: 7.50, image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?q=80&w=500&auto=format&fit=crop", category: "Tea" },
+  { id: 'brew-7', name: "Golden Turmeric", description: "Spiced healing brew.", price: 6.25, image: "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?q=80&w=500&auto=format&fit=crop", category: "Tea" },
+  { id: 'brew-8', name: "Caramel Macchiato", description: "Layered espresso & vanilla.", price: 6.50, image: "https://images.unsplash.com/photo-1485808191679-5f8c7c41f7bc?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
+  { id: 'brew-9', name: "V60 Single Origin", description: "Hand poured perfection.", price: 8.00, image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
+  { id: 'brew-10', name: "Blueberry Infusion", description: "Antioxidant rich blend.", price: 5.75, image: "https://images.unsplash.com/photo-1596710629170-1f222915dd44?q=80&w=500&auto=format&fit=crop", category: "Tea" },
+
+  // Artisanal Bread
+  { id: 'bread-1', name: "Chocolate Babka", description: "Rich dark chocolate ganache swirl.", price: 12.00, image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=500&auto=format&fit=crop", category: "Pastry" },
+  { id: 'bread-2', name: "Seeded Multigrain", description: "Hand-topped with flax & oats.", price: 9.00, image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500&auto=format&fit=crop", category: "Bread" },
+  { id: 'bread-3', name: "Dark Rye Loaf", description: "Robust German-style dense rye.", price: 10.50, image: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?q=80&w=500&auto=format&fit=crop", category: "Bread" },
+  { id: 'bread-4', name: "Herbed Focaccia", description: "Rosemary, garlic & olive oil.", price: 7.50, image: "https://images.unsplash.com/photo-1573140247632-f84660f67627?q=80&w=500&auto=format&fit=crop", category: "Bread" },
+  { id: 'bread-5', name: "Honey Brioche", description: "Ultra-soft, buttery morning loaf.", price: 11.25, image: "https://images.unsplash.com/photo-1619531102901-2e673070c79f?q=80&w=500&auto=format&fit=crop", category: "Bread" },
+  { id: 'bread-6', name: "Stoneground Wheat", description: "Nutritious 100% whole grain.", price: 8.75, image: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=500&auto=format&fit=crop", category: "Bread" },
+  { id: 'bread-7', name: "Parisian Baguette", description: "Classic crust with an airy crumb.", price: 4.50, image: "https://images.unsplash.com/photo-1598373182133-52452f7691ef?q=80&w=500&auto=format&fit=crop", category: "Bread" },
+  { id: 'bread-8', name: "Cranberry Walnut", description: "Sweet & tart artisan loaf.", price: 9.50, image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500&auto=format&fit=crop", category: "Bread" },
+
+  // Black Coffee
+  { id: 'coffee-1', name: "Velvet Flat White", description: "Double Shot, Silky Microfoam", price: 4.80, image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
+  { id: 'coffee-2', name: "Kyoto Cold Brew", description: "12-Hour Slow Drip Extraction", price: 5.50, image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=500&auto=format&fit=crop", category: "Cold Brew" },
+  { id: 'coffee-3', name: "Oat Milk Latte", description: "Creamy, Nut-Free, Vegan", price: 5.20, image: "https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
+  { id: 'coffee-4', name: "Single Origin Espresso", description: "Intense Berry Notes", price: 3.50, image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
+  { id: 'coffee-5', name: "Dark Mocha", description: "70% Cacao, Double Espresso", price: 6.00, image: "https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
+
+  // Cold Drinks
+  { id: 'cold-1', name: "Fresh Orange Juice", description: "Cold pressed Valencia oranges", price: 4.50, image: "https://images.unsplash.com/photo-1541976076758-65c1b5dc0f5b?q=80&w=500&auto=format&fit=crop", category: "Juice" },
+  { id: 'cold-2', name: "Strawberry Smoothie", description: "Greek yogurt, strawberry puree", price: 5.75, image: "https://images.unsplash.com/photo-1497534446932-c925b458314e?q=80&w=500&auto=format&fit=crop", category: "Smoothie" },
+  { id: 'cold-3', name: "Chocolate Shake", description: "70% cacao, vanilla ice cream", price: 6.25, image: "https://images.unsplash.com/photo-1542444459-db9b6f23e273?q=80&w=500&auto=format&fit=crop", category: "Shake" },
+  { id: 'cold-4', name: "Iced Latte", description: "Double shot over chilled milk", price: 5.50, image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
+  { id: 'cold-5', name: "Mango Lassi", description: "Alphonso mango, yogurt, cardamom", price: 5.00, image: "https://images.unsplash.com/photo-1632773171696-145c3f5f262c?q=80&w=500&auto=format&fit=crop", category: "Smoothie" },
+  { id: 'cold-6', name: "Cold Brew", description: "12-hour steep, smooth finish", price: 4.90, image: "https://images.unsplash.com/photo-1510626176956-c2a2b4ff10ec?q=80&w=500&auto=format&fit=crop", category: "Cold Brew" },
+
+  // Creme/Latte (Updated Images)
+  { id: 'creme-1', name: "Creamy Orange Latte", description: "Fresh orange with milk foam", price: 5.50, image: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=500", category: "Coffee" },
+  { id: 'creme-2', name: "Citrus Spark", description: "Lemon-lime with mint", price: 4.25, image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=500", category: "Juice" },
+  { id: 'creme-3', name: "Mango Cream Fizz", description: "Mango puree and light cream", price: 5.75, image: "https://images.unsplash.com/photo-1546173159-315724a31696?q=80&w=500", category: "Cold Drink" },
+  { id: 'creme-4', name: "Classic Apple Juice", description: "Cold pressed apples", price: 4.00, image: "https://images.unsplash.com/photo-1567306301408-9b74779a11af?q=80&w=500", category: "Juice" },
+  { id: 'creme-5', name: "Berry Citrus", description: "Strawberry and grapefruit", price: 5.20, image: "https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?q=80&w=500", category: "Juice" },
+
+  // Juices (unique items)
+  { id: 'juice-1', name: "Lemon Mint", description: "Zesty lemon with mint", price: 4.10, image: "https://images.unsplash.com/photo-1556745753-7e4bfc180a9f?q=80&w=500&auto=format&fit=crop", category: "Juice" },
+  { id: 'juice-2', name: "Pineapple Punch", description: "Tropical pineapple blend", price: 4.80, image: "https://images.unsplash.com/photo-1547394765-185d449d6eb2?q=80&w=500&auto=format&fit=crop", category: "Juice" },
+  { id: 'juice-3', name: "Mango Glow", description: "Alphonso mango puree", price: 5.25, image: "https://images.unsplash.com/photo-1567197553646-4c084b6698a0?q=80&w=500&auto=format&fit=crop", category: "Juice" },
+
+  // Latte Hot
+  { id: 'latte-1', name: "Classic Latte", description: "Double shot, steamed milk", price: 4.80, image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
+  { id: 'latte-2', name: "Vanilla Latte", description: "House vanilla syrup", price: 5.10, image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
+  { id: 'latte-3', name: "Caramel Latte", description: "Buttery caramel drizzle", price: 5.10, image: "https://images.unsplash.com/photo-1547234063-3a9ffc8ef9a7?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
+  { id: 'latte-4', name: "Pumpkin Spice Latte", description: "Seasonal spices & puree", price: 5.40, image: "https://images.unsplash.com/photo-1631900161776-9de35f9d5fbe?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
+
+  // Tea (New)
+  { id: 'tea-1', name: "Ceremonial Matcha", description: "Stone-ground, umami-rich", price: 12.00, image: "https://images.unsplash.com/photo-1520986438870-2e27b2b88a4d?q=80&w=500&auto=format&fit=crop", category: "Tea" },
+  { id: 'tea-2', name: "Masala Chai", description: "Spiced, creamy, warming", price: 5.50, image: "https://images.unsplash.com/photo-1604908554112-46d5772f4a2d?q=80&w=500&auto=format&fit=crop", category: "Tea" },
+  { id: 'tea-3', name: "Ginger Lemon", description: "Zesty, soothing infusion", price: 4.75, image: "https://images.unsplash.com/photo-1513639725746-9baf0f0b33a3?q=80&w=500&auto=format&fit=crop", category: "Tea" },
+  { id: 'tea-4', name: "Moroccan Mint", description: "Cooling green tea", price: 4.50, image: "https://images.unsplash.com/photo-1595974732096-0f5f9c1a5f06?q=80&w=500&auto=format&fit=crop", category: "Tea" },
+  { id: 'tea-5', name: "Royal Milk Tea", description: "Black tea, milk, caramel", price: 7.00, image: "https://images.unsplash.com/photo-1532634726-240e47cb5d1a?q=80&w=500&auto=format&fit=crop", category: "Tea" },
+  { id: 'tea-6', name: "Iced Peach Oolong", description: "Fruity, floral, chilled", price: 6.50, image: "https://images.unsplash.com/photo-1515512965560-0b814a59fdf8?q=80&w=500&auto=format&fit=crop", category: "Tea" },
+
+  // Smoothie & Shake (New)
+  { id: 'smoothie-1', name: "Berry Burst", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "https://images.unsplash.com/photo-1502741119870-16c6b8d5fbb4?q=80&w=500&auto=format&fit=crop", category: "Smoothie" },
+  { id: 'smoothie-2', name: "Green Power", description: "Spinach, apple, banana", price: 5.00, image: "https://images.unsplash.com/photo-1505250469679-203ad9ced0cb?q=80&w=500&auto=format&fit=crop", category: "Smoothie" },
+  { id: 'shake-1', name: "Classic Chocolate Shake", description: "Rich cocoa, creamy base", price: 5.20, image: "https://images.unsplash.com/photo-1542444459-db9b6f23e273?q=80&w=500&auto=format&fit=crop", category: "Shake" },
+  { id: 'shake-2', name: "Vanilla Bean Shake", description: "Madagascar vanilla, smooth", price: 5.00, image: "https://images.unsplash.com/photo-1542444453-9e3048fabb17?q=80&w=500&auto=format&fit=crop", category: "Shake" },
+  { id: 'shake-3', name: "Strawberry Bliss", description: "Fresh strawberries, cream", price: 5.40, image: "https://images.unsplash.com/photo-1497534446932-c925b458314e?q=80&w=500&auto=format&fit=crop", category: "Shake" },
+  { id: 'shake-4', name: "Banana Caramel", description: "Banana, caramel drizzle", price: 5.60, image: "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=500&auto=format&fit=crop", category: "Shake" },
+
+  // Toast (New)
+  { id: 'toast-1', name: "Signature Benedict", description: "Poached eggs, hollandaise", price: 14.50, image: "https://images.unsplash.com/photo-1512058564366-18510be2bd16?q=80&w=500&auto=format&fit=crop", category: "Toast" },
+  { id: 'toast-2', name: "Truffle Omelette", description: "Mushrooms, truffle oil", price: 12.50, image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=500&auto=format&fit=crop", category: "Toast" },
+  { id: 'toast-3', name: "Shakshuka", description: "Tomato, peppers, eggs", price: 11.25, image: "https://images.unsplash.com/photo-1604908172713-3d6b1eb1b1a6?q=80&w=500&auto=format&fit=crop", category: "Toast" },
+  { id: 'toast-4', name: "Avocado Toast", description: "Sourdough, smashed avo", price: 10.50, image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=500&auto=format&fit=crop", category: "Toast" },
+  { id: 'toast-5', name: "Classic Benedict", description: "Ham, hollandaise", price: 13.50, image: "https://images.unsplash.com/photo-1512058564366-18510be2bd16?q=80&w=500&auto=format&fit=crop", category: "Toast" },
+  { id: 'toast-6', name: "Vegan Power Bowl", description: "Grains, greens", price: 12.00, image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=500&auto=format&fit=crop", category: "Toast" },
+
+  // Pastry (New)
+  { id: 'pastry-1', name: "Butter Croissant", description: "Flaky layers, French butter", price: 4.50, image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=500&auto=format&fit=crop", category: "Pastry" },
+  { id: 'pastry-2', name: "Almond Croissant", description: "Frangipane, toasted almond", price: 5.25, image: "https://images.unsplash.com/photo-1612539425542-4ec77f5a7f8a?q=80&w=500&auto=format&fit=crop", category: "Pastry" },
+  { id: 'pastry-3', name: "Chocolate Éclair", description: "Choux pastry, rich ganache", price: 4.75, image: "https://images.unsplash.com/photo-1546549036-3786c5d0cf29?q=80&w=500&auto=format&fit=crop", category: "Pastry" },
+  { id: 'pastry-4', name: "Strawberry Tart", description: "Vanilla custard, fresh berries", price: 5.80, image: "https://images.unsplash.com/photo-1541782810487-8f9b5c0294c6?q=80&w=500&auto=format&fit=crop", category: "Pastry" },
+  { id: 'pastry-5', name: "Lemon Meringue Tart", description: "Zesty curd, torched meringue", price: 5.90, image: "https://images.unsplash.com/photo-1617196030881-4ac5bb32f21e?q=80&w=500&auto=format&fit=crop", category: "Pastry" },
+  { id: 'pastry-6', name: "Velvet Cake Slice", description: "Moist crumb, vanilla frosting", price: 4.95, image: "https://images.unsplash.com/photo-1606312618779-298c046f66da?q=80&w=500&auto=format&fit=crop", category: "Pastry" }
 ];
 
-document.addEventListener('DOMContentLoaded', () => {
-  cart = getStoredCart();
-  loadMenuData();
-  setupEvents();
-  applyLang(getLang());
-  updateCart();
-  // centerOurMenuHeading(); // Disabled to allow HTML/CSS positioning to work
-
-  const el = document.getElementById("rotating-text");
-  if (!el) return;
-  const phrases = [
-    "Welcome to Velvet Sips",
-    "Freshly Brewed Daily",
-    "Scan. Order. Enjoy.",
-    "Crafted with Passion"
-  ];
-  let idx = 0;
-  el.style.opacity = 1;
-  el.style.transition = "opacity 0.4s ease-in-out";
-  setInterval(() => {
-    el.style.opacity = 0;
-    setTimeout(() => {
-      idx = (idx + 1) % phrases.length;
-      el.textContent = phrases[idx];
-      el.style.opacity = 1;
-    }, 400);
-  }, 2800);
-});
-
- 
-
-async function loadMenuData() {
-  const container = document.getElementById('bestsellers');
-  container.innerHTML = '<div class="text-center py-10"><span class="animate-spin material-symbols-outlined text-primary text-4xl">sync</span></div>';
-
+async function fetchBestsellers() {
+  const base = apiBase();
   try {
-    const res = await fetch(`${apiBase()}/api/v1/menu`);
-    const result = await res.json();
-    
-    if (result.success && Array.isArray(result.data) && result.data.length > 0) {
-      bestsellers = result.data;
-      renderBestsellers(bestsellers);
-      renderCategories(bestsellers);
-    } else {
-      bestsellers = sampleMenu;
-      renderBestsellers(bestsellers);
-      renderCategories(bestsellers);
-    }
-  } catch (e) {
+    const res = await fetch(`${base}/api/products`);
+    if (!res.ok) throw new Error('API Error');
+    const data = await res.json();
+    bestsellers = data;
+    renderBestsellers(bestsellers);
+  } catch (err) {
+    console.log('Using local fallback data');
     bestsellers = sampleMenu;
     renderBestsellers(bestsellers);
-    renderCategories(bestsellers);
   }
 }
 
-
+function renderBestsellers(items) {
+  const container = document.getElementById('bestsellers') || document.getElementById('bestsellers-grid');
+  if (!container) return;
+  
+  container.innerHTML = items.map(item => {
+    // Check if the item has a valid image URL (either 'image' or 'image_url')
+    const imgUrl = item.image || item.image_url;
+    // Fallback image if URL is missing or broken (using a generic placeholder)
+    const displayImg = imgUrl ? imgUrl : 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500&auto=format&fit=crop';
+    
+    return `
+    <div class="product-card bg-white dark:bg-[#2a1e19] rounded-[2rem] p-4 shadow-md border border-gray-100 dark:border-white/5 flex flex-col" data-category="${item.category}">
+      <div class="aspect-square rounded-2xl overflow-hidden bg-gray-50 dark:bg-black/20 mb-3 relative">
+        <img src="${displayImg}" 
+             class="w-full h-full object-cover" 
+             alt="${item.name}"
+             loading="lazy"
+             onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500&auto=format&fit=crop'">
+        <div class="absolute top-2 right-2 bg-white/90 dark:bg-black/60 backdrop-blur-sm p-1.5 rounded-full shadow-sm">
+           <span class="material-symbols-outlined text-[16px] text-primary">${getCategoryIcon(item.category)}</span>
+        </div>
+      </div>
+      <h4 class="font-bold text-sm mb-1 text-gray-900 dark:text-white leading-tight">${item.name}</h4>
+      <p class="text-[10px] text-gray-500 dark:text-gray-400 line-clamp-2 mb-3 h-8">${item.description}</p>
+      <div class="flex items-center justify-between mt-auto">
+        <span class="text-xs font-bold text-primary">$${typeof item.price === 'number' ? item.price.toFixed(2) : item.price}</span>
+        <button class="bg-gray-100 dark:bg-white/5 p-1.5 rounded-xl flex items-center justify-center hover:bg-primary hover:text-white transition-colors group" onclick="addToCart('${item.id}')">
+           <span class="material-symbols-outlined text-[18px] text-primary group-hover:text-white">add</span>
+        </button>
+      </div>
+    </div>
+  `}).join('');
+}
 
 function renderCategories(items) {
   // SUB-CATEGORIES to be displayed as circles with real images
   const subCategories = [
+    { name: 'Brunch', img: 'https://images.unsplash.com/photo-1559622214-f8a985d3ccaa?q=80&w=300&auto=format&fit=crop', link: '../long_scroll_brunch_explorer/index.html' },
+    { name: 'Brew', img: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=300&auto=format&fit=crop', link: '../Brew catégorie page/index.html' },
     { name: 'Tea & Infusion', img: 'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?q=80&w=300&auto=format&fit=crop', link: '../tea and infusion sub catégorie page/index.html' },
     { name: 'Milkshake', img: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=300&auto=format&fit=crop', link: '../milkshake sub catégorie page/index.html' },
     { name: 'Juice', img: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=300&auto=format&fit=crop', link: '../juces sub catégorie page/index.html' },
@@ -94,28 +182,73 @@ function renderCategories(items) {
   const container = document.getElementById('explore-categories');
   if (!container) return;
 
-  container.innerHTML = subCategories.map(sub => `
-    <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="window.location.href='${sub.link}'">
+  container.innerHTML = subCategories.map(cat => `
+    <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="window.location.href='${cat.link}'">
       <div class="p-[3px] rounded-full bg-gray-200 dark:bg-gray-700 group-hover:bg-primary transition-all">
         <div class="bg-white dark:bg-[#1a100c] p-1 rounded-full">
           <div class="w-16 h-16 rounded-full overflow-hidden relative">
-            <img src="${sub.img}" alt="${sub.name}" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=300&auto=format&fit=crop'">
+            <img src="${cat.img}" alt="${cat.name}" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
           </div>
         </div>
       </div>
-      <p class="text-[10px] text-gray-800 dark:text-white text-center">Explore</p>
+      <p class="text-[10px] text-gray-800 dark:text-white text-center">${cat.name}</p>
     </div>
   `).join('');
+
+  // Ensure labels display correct names (override any default text)
+  const labels = container.querySelectorAll('p.text-[10px].text-center');
+  labels.forEach((label, idx) => {
+    const name = subCategories[idx] && subCategories[idx].name;
+    if (name && label.textContent.trim().toLowerCase() !== name.toLowerCase()) {
+      label.textContent = name;
+    }
+  });
+
+  // Attach category-specific fallback images to avoid coffee-only fallbacks
+  container.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', () => {
+      const cat = img.getAttribute('alt') || '';
+      img.src = getCategoryFallback(cat);
+    }, { once: true });
+  });
 }
 
 function getCategoryIcon(cat) {
   const icons = {
     'Brew': 'coffee',
+    'Cold Brew': 'coffee', // Added Cold Brew
     'Pastry': 'bakery_dining',
     'Brunch': 'brunch_dining',
-    'Cold Drink': 'local_bar'
+    'Cold Drink': 'local_bar',
+    'Tea': 'emoji_food_beverage',
+    'Coffee': 'coffee',
+    'Juice': 'local_drink',
+    'Smoothie': 'blender',
+    'Shake': 'icecream',
+    'Bread': 'breakfast_dining',
+    'Toast': 'breakfast_dining'
   };
   return icons[cat] || 'restaurant';
+}
+
+function getCategoryFallback(cat) {
+  const map = {
+    'Brunch': 'assets/Brunch.jpg',
+    'Brew': 'assets/Brew.jpg',
+    'Black Coffee': 'assets/Brew.jpg',
+    'Cold Drink': 'assets/Cold%20drinks.jpg',
+    'Pastry': 'assets/pastry.jpg',
+    'Sweet Pastries': 'assets/pastry.jpg',
+    'Latte': 'assets/Brew.jpg',
+    // For categories without local assets, use neutral non-coffee fallbacks
+    'Tea & Infusion': 'assets/Brunch.jpg',
+    'Milkshake': 'assets/Cold%20drinks.jpg',
+    'Juice': 'assets/Cold%20drinks.jpg',
+    'Smoothie': 'assets/Cold%20drinks.jpg',
+    'Toast': 'assets/Brunch.jpg',
+    'Artisanal Bread': 'assets/pastry.jpg'
+  };
+  return map[cat] || 'assets/Brunch.jpg';
 }
 
 window.navigateToCategory = (category) => {
@@ -126,8 +259,8 @@ window.navigateToCategory = (category) => {
     window.location.href = '../Brew catégorie page/index.html';
     return;
   }
-  if (categoryId === 'bakery' || categoryId === 'pastry') {
-    window.location.href = '../bakery catégorie page/index.html';
+  if (categoryId === 'bakery' || categoryId === 'pastry' || categoryId === 'sweet pastries') {
+    window.location.href = '../sweet pastries sub catégorie page/index.html';
     return;
   }
   if (categoryId === 'cold drink') {
@@ -135,12 +268,46 @@ window.navigateToCategory = (category) => {
     return;
   }
   if (categoryId === 'branch') {
-    // Assuming there is a branch page, otherwise keep default behavior or alert
-    // window.location.href = '../branch_page/index.html'; 
     console.log('Branch category selected');
   }
   if (categoryId === 'brunch') {
     window.location.href = '../long_scroll_brunch_explorer/index.html';
+    return;
+  }
+  if (categoryId === 'toast') {
+    window.location.href = '../toast brunch sub catégorie page/index.html';
+    return;
+  }
+  if (categoryId === 'tea' || categoryId === 'tea & infusion') {
+    window.location.href = '../tea and infusion sub catégorie page/index.html';
+    return;
+  }
+  if (categoryId === 'milkshake' || categoryId === 'shake') { // Added shake alias
+    window.location.href = '../milkshake sub catégorie page/index.html';
+    return;
+  }
+  if (categoryId === 'juice') {
+    window.location.href = '../juces sub catégorie page/index.html';
+    return;
+  }
+  if (categoryId === 'black coffee') {
+    window.location.href = '../black coffee sub catégorie page/index.html';
+    return;
+  }
+  if (categoryId === 'latte') {
+    window.location.href = '../latté hot drink sub catégorie page/index.html';
+    return;
+  }
+  if (categoryId === 'creme') { // Added creme
+    window.location.href = '../creme or latté fuite juces sub catégorie page/index.html';
+    return;
+  }
+  if (categoryId === 'smoothie') {
+    window.location.href = '../smothie sub catégorie page/index.html';
+    return;
+  }
+  if (categoryId === 'artisanal bread' || categoryId === 'bread') { // Added bread alias
+    window.location.href = '../artisanal bread sub catégorie page/index.html';
     return;
   }
 
@@ -153,404 +320,69 @@ window.filterByCategory = (category) => {
   renderBestsellers(filtered);
 };
 
-function renderBestsellers(items) {
-  const container = document.getElementById('bestsellers');
-  if (items.length === 0) {
-    container.innerHTML = '<p class="text-center py-10 text-gray-400 font-bold">No items found</p>';
-    return;
-  }
-  container.innerHTML = items.map(item => `
-    <div class="bg-white dark:bg-[#2a1e19] p-[16px] rounded-[1.5rem] shadow-sm flex gap-[16px] items-center relative overflow-hidden group">
-      <div class="w-24 h-24 shrink-0 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800">
-        <img alt="${item.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-             src="${item.image_url || 'https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=200'}"
-             onerror="this.src='https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=200'"/>
-      </div>
-      <div class="flex-1 min-w-0">
-        <div class="flex flex-col gap-0.5">
-          <span class="text-[10px] text-primary font-bold uppercase tracking-widest">${item.category}</span>
-          <h4 class="text-[18px] font-bold text-gray-900 dark:text-white leading-tight truncate">${item.name}</h4>
-          ${item.description ? `<p class="text-[12px] text-gray-500 dark:text-gray-400 line-clamp-1">${item.description}</p>` : ''}
-        </div>
-        <div class="flex items-center justify-between mt-2">
-          <span class="text-gray-900 dark:text-white font-black text-[16px]">$${Number(item.price).toFixed(2)}</span>
-          <button class="bg-orange-50 text-primary dark:bg-primary/20 dark:text-primary text-[12px] font-black uppercase shadow-sm active:scale-95 transition-transform flex items-center justify-center" style="width:84px;height:36px;border-radius:12px;" onclick="addToCart('${item.id}')">
-            Add
-          </button>
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
-
 window.addToCart = (id) => {
-  const item = bestsellers.find(x => x.id === id);
-  const existing = cart.find(x => x.id === id);
-  if (existing) existing.qty += 1;
-  else cart.push({ ...item, qty: 1 });
-  updateCart();
+  const item = bestsellers.find(i => i.id === id) || sampleMenu.find(i => i.id === id);
+  if (!item) return;
+
+  const existing = cart.find(i => i.id === id);
+  if (existing) {
+    existing.quantity++;
+  } else {
+    cart.push({ ...item, quantity: 1 });
+  }
+  updateCartUI();
+  
+  // Also save to localStorage for persistence across pages
+  localStorage.setItem('stitch_cart', JSON.stringify(cart));
 };
 
-function updateCart() {
-  const total = cart.reduce((sum, x) => sum + x.price * x.qty, 0);
-  const count = cart.reduce((sum, x) => sum + x.qty, 0);
-  
-  const badge = document.getElementById('cart-items-text');
-  badge.textContent = `${count} Item${count !== 1 ? 's' : ''}`;
-  
-  if (count > 0) {
-    badge.classList.remove('hidden');
-    badge.classList.add('animate-bounce');
-  } else {
-    badge.classList.add('hidden');
-    badge.classList.remove('animate-bounce');
-  }
-  
-  storeCart(cart, count, total);
-}
-
-function setupEvents() {
-  document.getElementById('hero-order-btn').addEventListener('click', () => {
-    const trending = bestsellers[0];
-    if (trending) addToCart(trending.id);
-  });
-  document.getElementById('search-input').addEventListener('input', (e) => {
-    const q = e.target.value.toLowerCase();
-    const filtered = bestsellers.filter(x => x.name.toLowerCase().includes(q) || x.category.toLowerCase().includes(q));
-    renderBestsellers(filtered);
-  });
-  const viewBtn = document.getElementById('view-cart-btn');
-  if (viewBtn) {
-    viewBtn.addEventListener('click', openOrderModal);
-  }
-  const tabHome = document.getElementById('tab-home');
-  const tabCall = document.getElementById('tab-call');
-  const tabSettings = document.getElementById('tab-settings');
-  if (tabHome) {
-    tabHome.addEventListener('click', () => setActiveTab('home'));
-  }
-  if (tabCall) {
-    tabCall.addEventListener('click', () => {
-      setActiveTab('call');
-      callWaiter();
-    });
-  }
-  if (tabSettings) {
-    tabSettings.addEventListener('click', () => setActiveTab('settings'));
-  }
-  const closeBtn = document.getElementById('order-close-btn');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeOrderModal);
-  }
-  const placeBtn = document.getElementById('order-place-btn');
-  if (placeBtn) {
-    placeBtn.addEventListener('click', placeOrder);
-  }
-  const langToggle = document.getElementById('lang-toggle');
-  if (langToggle) {
-    langToggle.addEventListener('click', () => {
-      const next = nextLang(getLang());
-      localStorage.setItem('stitch_lang', next);
-      applyLang(next);
-    });
+function updateCartUI() {
+  const badge = document.getElementById('cart-badge');
+  if (badge) {
+    const total = cart.reduce((acc, item) => acc + item.quantity, 0);
+    badge.textContent = total;
+    badge.classList.toggle('hidden', total === 0);
   }
 }
 
-function setActiveTab(name) {
-  const ids = ['tab-home', 'view-cart-btn', 'tab-call', 'tab-settings'];
-  ids.forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const isActive =
-      (id === 'tab-home' && name === 'home') ||
-      (id === 'view-cart-btn' && name === 'cart') ||
-      (id === 'tab-call' && name === 'call') ||
-      (id === 'tab-settings' && name === 'settings');
-    el.classList.toggle('text-primary', isActive);
-  });
-}
-
-function callWaiter() {
-  const toast = document.createElement('div');
-  toast.className = 'fixed bottom-20 left-1/2 -translate-x-1/2 z-[60] bg-black text-white px-4 py-2 rounded-full shadow-glow';
-  toast.textContent = 'Waiter called';
-  document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 2000);
-}
-
-function openOrderModal() {
-  const modal = document.getElementById('order-modal');
-  if (!modal) return;
-  renderOrderSummary();
-  modal.classList.remove('hidden');
-}
-
-function closeOrderModal() {
-  const modal = document.getElementById('order-modal');
-  if (!modal) return;
-  modal.classList.add('hidden');
-}
-
-function renderOrderSummary() {
-  const container = document.getElementById('order-items');
-  const subtotalEl = document.getElementById('modal-subtotal');
-  const taxEl = document.getElementById('modal-tax');
-  const totalEl = document.getElementById('modal-total');
-  const statusBadge = document.getElementById('order-status-badge');
-  const last = getLastOrder();
-  let items = [];
-  let subtotal = 0;
-  if (cart.length > 0) {
-    items = cart.map(x => ({ name: x.name, qty: x.qty, price: x.price }));
-    subtotal = cart.reduce((sum, x) => sum + x.price * x.qty, 0);
-  } else if (last) {
-    if (Array.isArray(last.items) && last.items.length) {
-      items = last.items.map(i => ({ name: i.name, qty: i.qty, price: i.price }));
-      subtotal = Number(last.subtotal || items.reduce((s, i) => s + i.price * i.qty, 0));
-    } else if (last.item) {
-      items = [{ name: last.item, qty: last.qty || 1, price: last.unit_price || Number(last.price || 0) }];
-      subtotal = Number(last.total || items[0].price * items[0].qty);
-    }
-  }
-  const tax = subtotal * 0.1;
-  const total = subtotal + tax;
-  container.innerHTML = items.map(x => `
-    <div class="flex items-center justify-between bg-gray-50 dark:bg-black/20 p-3 rounded-2xl border border-gray-100 dark:border-white/5">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-white dark:bg-[#2a1e19] flex items-center justify-center text-primary font-bold">${x.qty}x</div>
-        <div>
-          <p class="font-bold text-sm">${x.name}</p>
-          <p class="text-[10px] text-gray-400 font-bold tracking-widest uppercase">$${Number(x.price).toFixed(2)} each</p>
-        </div>
-      </div>
-      <span class="font-bold">$${(Number(x.price) * Number(x.qty)).toFixed(2)}</span>
-    </div>
-  `).join('');
-  subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-  taxEl.textContent = `$${tax.toFixed(2)}`;
-  totalEl.textContent = `$${total.toFixed(2)}`;
-  statusBadge.textContent = t('status_received');
-}
-
-async function placeOrder() {
-  const subtotal = cart.reduce((sum, x) => sum + x.price * x.qty, 0);
-  const tax = subtotal * 0.1;
-  const total = subtotal + tax;
-
-  const orderData = {
-    items: cart.map(x => ({ 
-        id: x.id, 
-        name: x.name, 
-        qty: x.qty, 
-        price: x.price,
-        // Add options if they exist in the cart item
-        options: x.options || {} 
-    })),
-    total_amount: total, // Ensure this matches API expectation
-    table_number: 12,
-    status: 'PENDING'
-  };
-
-  try {
-      // Show loading state
-      const btn = document.getElementById('order-place-btn');
-      const originalText = btn.textContent;
-      btn.textContent = 'Processing...';
-      btn.disabled = true;
-
-      const response = await fetch(`${apiBase()}/api/v1/orders`, {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(orderData)
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-          // Clear cart
-          cart = [];
-          storeCart(cart, 0, 0);
-          updateCart();
-          
-          // Save last order for display
-          localStorage.setItem('stitch_last_order', JSON.stringify(result.data));
-          
-          // Show success and close
-          closeOrderModal();
-          alert('Order placed successfully!');
-          // Optional: Redirect to success page if it exists
-          // window.location.href = '../order_success_page/index.html';
-      } else {
-          alert('Failed to place order: ' + (result.message || 'Unknown error'));
-      }
-      
-      btn.textContent = originalText;
-      btn.disabled = false;
-
-  } catch (error) {
-      console.error('Error placing order:', error);
-      alert('Error connecting to server. Please try again.');
-      document.getElementById('order-place-btn').textContent = t('place_order');
-      document.getElementById('order-place-btn').disabled = false;
-  }
-}
-
-function getLastOrder() {
-  try {
-    return JSON.parse(localStorage.getItem('stitch_last_order') || 'null');
-  } catch {
-    return null;
-  }
-}
+// Helper to get stored cart
 function getStoredCart() {
   try {
-    const raw = localStorage.getItem('stitch_cart') || '[]';
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [];
+    const stored = localStorage.getItem('stitch_cart');
+    return stored ? JSON.parse(stored) : [];
   } catch {
     return [];
   }
 }
-function storeCart(items, count, total) {
-  localStorage.setItem('stitch_cart', JSON.stringify(items));
-  localStorage.setItem('stitch_cart_count', String(count));
-  localStorage.setItem('stitch_cart_total', String(total));
-}
-const i18n = {
-  en: {
-    view_cart: 'View Cart',
-    order_status: 'Order Status',
-    subtotal: 'Subtotal',
-    tax: 'Tax (10%)',
-    total: 'Total',
-    close: 'Close',
-    place_order: 'Place Order',
-    status_received: 'Received'
-  },
-  fr: {
-    view_cart: 'Voir le panier',
-    order_status: 'Statut de commande',
-    subtotal: 'Sous-total',
-    tax: 'Taxe (10%)',
-    total: 'Total',
-    close: 'Fermer',
-    place_order: 'Passer la commande',
-    status_received: 'Reçu'
-  },
-  es: {
-    view_cart: 'Ver carrito',
-    order_status: 'Estado del pedido',
-    subtotal: 'Subtotal',
-    tax: 'Impuesto (10%)',
-    total: 'Total',
-    close: 'Cerrar',
-    place_order: 'Realizar pedido',
-    status_received: 'Recibido'
-  },
-  ar: {
-    view_cart: 'عرض السلة',
-    order_status: 'حالة الطلب',
-    subtotal: 'المجموع الفرعي',
-    tax: '(10٪) ضريبة',
-    total: 'الإجمالي',
-    close: 'إغلاق',
-    place_order: 'تأكيد الطلب',
-    status_received: 'تم الاستلام'
+
+// Setup basic events
+function setupEvents() {
+  const searchBtn = document.querySelector('.material-symbols-outlined.text-xl'); // Assuming search icon
+  if (searchBtn) {
+    searchBtn.addEventListener('click', () => {
+      alert('Search feature coming soon!');
+    });
   }
-};
+}
+
+// Language Helper (Placeholder for future translation logic)
+function applyLang(lang) {
+  document.documentElement.lang = lang;
+  // Here we would update text content based on a dictionary
+}
 
 function getLang() {
   return localStorage.getItem('stitch_lang') || 'en';
 }
 
-function nextLang(curr) {
-  const order = ['en', 'fr', 'es', 'ar'];
-  const i = order.indexOf(curr);
-  return order[(i + 1) % order.length];
-}
-
-function t(key) {
-  const lang = getLang();
-  return (i18n[lang] && i18n[lang][key]) || i18n.en[key] || key;
-}
-
-function applyLang(lang) {
-  const map = [
-    ['view-cart-label', 'view_cart'],
-    ['order-modal-title', 'order_status'],
-    ['subtotal-label', 'subtotal'],
-    ['tax-label', 'tax'],
-    ['total-label', 'total'],
-    ['order-close-btn', 'close'],
-    ['order-place-btn', 'place_order']
-  ];
-  map.forEach(([id, key]) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = t(key);
-  });
-  const badge = document.getElementById('order-status-badge');
-  if (badge) badge.textContent = t('status_received');
-}
-
-// Hero Carousel Auto Rotation
-function initHeroCarousel() {
-  console.log('Initializing hero carousel...');
-  const carousel = document.getElementById('hero-carousel');
-  if (!carousel) {
-    console.log('Hero carousel element not found');
-    return;
-  }
-  
-  const container = carousel.querySelector('.flex');
-  if (!container) {
-    console.log('Carousel container not found');
-    return;
-  }
-  
-  const cards = container.querySelectorAll('[class*="w-[360px]"]');
-  console.log('Found', cards.length, 'cards');
-  if (cards.length <= 1) {
-    console.log('Not enough cards for carousel');
-    return;
-  }
-  
-  let currentIndex = 0;
-  
-  // Auto rotate every 0.5 seconds - more reliable method
-  setInterval(() => {
-    currentIndex = (currentIndex + 1) % cards.length;
-    
-    // Scroll to the specific card - calculate exact position
-    const targetScroll = currentIndex * (360 + 16); // 360px card width + 16px gap
-    
-    // Use both methods for better compatibility
-    try {
-      container.scrollTo({
-        left: targetScroll,
-        behavior: 'smooth'
-      });
-    } catch (error) {
-      // Fallback method
-      container.scrollLeft = targetScroll;
-    }
-    
-    console.log('Scrolling to card', currentIndex + 1, 'at position', targetScroll);
-  }, 500);
-}
-
-// Initialize carousel when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM fully loaded, initializing carousel...');
-  initHeroCarousel();
+  cart = getStoredCart();
+  updateCartUI();
+  fetchBestsellers();
+  renderCategories();
+  setupEvents();
+  
+  // Check for language preference
+  const lang = getLang();
+  if (lang !== 'en') applyLang(lang);
 });
-
-// Also try immediate execution for debugging
-console.log('Script loaded, checking if DOM is ready...');
-if (document.readyState === 'loading') {
-  console.log('DOM still loading, waiting for DOMContentLoaded');
-} else {
-  console.log('DOM already ready, initializing carousel immediately');
-  initHeroCarousel();
-}
