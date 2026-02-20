@@ -322,19 +322,43 @@ function startHeroCarousel() {
   const container = document.querySelector('#hero-carousel > div');
   if (!container) return;
 
-  const cardWidth = 360; // Card width
-  const gap = 16;        // Gap
-  const scrollStep = cardWidth + gap;
-  
+  let isPaused = false;
+  let pauseTimeout;
+
+  const pause = () => {
+    isPaused = true;
+    clearTimeout(pauseTimeout);
+    // Resume auto-scroll after 8 seconds of inactivity
+    pauseTimeout = setTimeout(() => {
+      isPaused = false;
+    }, 8000);
+  };
+
+  // Pause on interaction
+  container.addEventListener('touchstart', pause, { passive: true });
+  container.addEventListener('mousedown', pause);
+  container.addEventListener('wheel', pause, { passive: true });
+
   setInterval(() => {
+    if (isPaused) return;
+
+    const firstCard = container.querySelector('div');
+    if (!firstCard) return;
+
+    const cardWidth = firstCard.offsetWidth;
+    const style = window.getComputedStyle(container);
+    const gap = parseFloat(style.gap) || 0;
+    const scrollStep = cardWidth + gap;
+    
     const maxScroll = container.scrollWidth - container.clientWidth;
-    // Allow a small buffer for float precision
+    
+    // Check if we are at the end (with a small buffer)
     if (container.scrollLeft >= maxScroll - 10) {
       container.scrollTo({ left: 0, behavior: 'smooth' });
     } else {
       container.scrollBy({ left: scrollStep, behavior: 'smooth' });
     }
-  }, 4000); // Scroll every 4 seconds
+  }, 4000);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
