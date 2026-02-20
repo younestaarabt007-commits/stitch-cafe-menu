@@ -139,27 +139,29 @@ function renderBestsellers(items) {
     const rating = typeof item.rating === 'number' ? item.rating : getRatingForItem(item);
     
     return `
-    <div class="bg-white dark:bg-[#2a1e19] rounded-[1.5rem] p-3 shadow-md border border-gray-100 dark:border-white/5 flex gap-3 items-center" data-category="${item.category}">
-      <div class="w-14 h-14 md:w-16 md:h-16 rounded-xl overflow-hidden bg-gray-50 dark:bg-black/20 relative shrink-0">
+    <div class="bg-white dark:bg-[#2a1e19] rounded-[1.5rem] p-3 shadow-md border border-gray-100 dark:border-white/5 flex gap-4 items-center relative" data-category="${item.category}">
+      <div class="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden bg-gray-50 dark:bg-black/20 relative shrink-0">
         <img src="${displayImg}" class="w-full h-full object-cover" alt="${item.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500&auto=format&fit=crop'">
-        <div class="absolute top-1 right-1 bg-white/90 dark:bg-black/60 px-1 rounded-full shadow-sm">
-          <span class="material-symbols-outlined text-[12px] text-primary">${getCategoryIcon(item.category)}</span>
-        </div>
       </div>
-      <div class="flex-1 min-w-0">
-        <h4 class="font-bold text-[13px] md:text-sm text-gray-900 dark:text-white leading-tight">${item.name}</h4>
-        <div class="flex items-center gap-1 mt-0.5">
-          <span class="material-symbols-outlined text-[14px] text-yellow-500" style="font-variation-settings: 'FILL' 1">star</span>
-          <span class="text-[11px] text-gray-700 dark:text-gray-300 font-semibold">${Number(rating).toFixed(1)}</span>
-          <span class="text-[10px] text-gray-400">(${Math.floor(Number(rating) * 25)}+)</span>
+      <div class="flex-1 min-w-0 flex flex-col h-24 md:h-32 justify-between py-0.5">
+        <div>
+          <h4 class="font-bold text-[13px] md:text-sm text-gray-900 dark:text-white leading-tight pr-6">${item.name}</h4>
+          <div class="flex items-center gap-1 mt-1">
+            <span class="material-symbols-outlined text-[14px] text-yellow-500" style="font-variation-settings: 'FILL' 1">star</span>
+            <span class="text-[11px] text-gray-700 dark:text-gray-300 font-semibold">${Number(rating).toFixed(1)}</span>
+            <span class="text-[10px] text-gray-400">(${Math.floor(Number(rating) * 25)}+)</span>
+          </div>
+          <p class="text-[10px] md:text-[11px] text-gray-500 dark:text-gray-400 line-clamp-2 mt-1">${item.description}</p>
         </div>
-        <p class="text-[10px] md:text-[11px] text-gray-500 dark:text-gray-400 line-clamp-2 mt-1">${item.description}</p>
-        <div class="flex items-center justify-between mt-2">
+        <div class="flex items-center justify-between mt-auto">
           <span class="text-xs font-bold text-primary">$${typeof item.price === 'number' ? item.price.toFixed(2) : item.price}</span>
-          <button class="size-7 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors active:scale-95" onclick="addToCart('${item.id}')">
-            <span class="material-symbols-outlined text-[16px] text-primary">add</span>
+          <button class="size-8 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors active:scale-95" onclick="addToCart('${item.id}')">
+            <span class="material-symbols-outlined text-[18px] text-primary">add</span>
           </button>
         </div>
+      </div>
+      <div class="absolute top-3 right-3 bg-white/90 dark:bg-black/60 px-2 py-1 rounded-full shadow-sm z-10">
+        <span class="material-symbols-outlined text-[14px] text-primary">${getCategoryIcon(item.category)}</span>
       </div>
     </div>
   `}).join('');
