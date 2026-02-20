@@ -14,7 +14,7 @@ let cart = [];
 const sampleMenu = [
   // Brunch (New)
   { id: 'brunch-1', name: "Farm Omelette", description: "Organic eggs, cheddar, fresh herbs.", price: 12.50, image: "https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
-  { id: 'brunch-2', name: "Eggs Benedict", description: "English muffin, bacon, hollandaise sauce.", price: 16.00, image: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
+  { id: 'brunch-2', name: "Eggs Benedict", description: "English muffin, bacon, hollandaise sauce.", price: 16.00, image: "assets/croissant-benedict-salmon-with-poched-egg-hollandaise-sauce-served-with-fresh-salad_140725-1329.avif", category: "Brunch" },
   { id: 'brunch-3', name: "Spicy Shakshuka", description: "Poached eggs in hearty spicy tomato sauce.", price: 15.50, image: "https://images.unsplash.com/photo-1590412200988-a436970781fa?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
   { id: 'brunch-4', name: "Garden Skillet", description: "Roasted potatoes, kale, peppers.", price: 14.50, image: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
   { id: 'brunch-5', name: "Brunch Burrito", description: "Chorizo, scrambled eggs, beans.", price: 13.00, image: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
@@ -23,7 +23,7 @@ const sampleMenu = [
   { id: 'brunch-8', name: "Brunch Tacos", description: "Corn tortillas, pickled onions, avocado.", price: 11.00, image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
   { id: 'brunch-9', name: "Iron Frittata", description: "Onions, potatoes, aged cheddar.", price: 14.75, image: "https://images.unsplash.com/photo-1598511726623-d090c279a04a?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
   { id: 'brunch-10', name: "Acai Delight", description: "Mixed berries, granola, honey.", price: 12.00, image: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
-  { id: 'brunch-11', name: "Belgian Gold", description: "Crispy waffles, berries, cream.", price: 11.50, image: "https://images.unsplash.com/photo-1562376552-0d160a2f238d?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
+  { id: 'brunch-11', name: "Belgian Gold", description: "Crispy waffles, berries, cream.", price: 11.50, image: "assets/vertical-shot-pancakes-with-fruits-top_181624-23923.jpg", category: "Brunch" },
   { id: 'brunch-12', name: "Full English", description: "Sausage, bacon, eggs, beans, toast.", price: 22.00, image: "https://images.unsplash.com/photo-1533089862017-a0e27b80d72a?q=80&w=500&auto=format&fit=crop", category: "Brunch" },
 
   // Brew
@@ -56,11 +56,11 @@ const sampleMenu = [
   { id: 'coffee-5', name: "Dark Mocha", description: "70% Cacao, Double Espresso", price: 6.00, image: "https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
 
   // Cold Drinks
-  { id: 'cold-1', name: "Fresh Orange Juice", description: "Cold pressed Valencia oranges", price: 4.50, image: "https://images.unsplash.com/photo-1541976076758-65c1b5dc0f5b?q=80&w=500&auto=format&fit=crop", category: "Juice" },
-  { id: 'cold-2', name: "Strawberry Smoothie", description: "Greek yogurt, strawberry puree", price: 5.75, image: "https://images.unsplash.com/photo-1497534446932-c925b458314e?q=80&w=500&auto=format&fit=crop", category: "Smoothie" },
-  { id: 'cold-3', name: "Chocolate Shake", description: "70% cacao, vanilla ice cream", price: 6.25, image: "https://images.unsplash.com/photo-1542444459-db9b6f23e273?q=80&w=500&auto=format&fit=crop", category: "Shake" },
+  { id: 'cold-1', name: "Fresh Orange Juice", description: "Cold pressed Valencia oranges", price: 4.50, image: "assets/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif", category: "Juice" },
+  { id: 'cold-2', name: "Strawberry Smoothie", description: "Greek yogurt, strawberry puree", price: 5.75, image: "assets/raspberry-smoothie_1150-18529.jpg", category: "Smoothie" },
+  { id: 'cold-3', name: "Chocolate Shake", description: "70% cacao, vanilla ice cream", price: 6.25, image: "assets/close-up-milkshake-glass-plate_117406-7215.jpg", category: "Shake" },
   { id: 'cold-4', name: "Iced Latte", description: "Double shot over chilled milk", price: 5.50, image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
-  { id: 'cold-5', name: "Mango Lassi", description: "Alphonso mango, yogurt, cardamom", price: 5.00, image: "https://images.unsplash.com/photo-1632773171696-145c3f5f262c?q=80&w=500&auto=format&fit=crop", category: "Smoothie" },
+  { id: 'cold-5', name: "Mango Lassi", description: "Alphonso mango, yogurt, cardamom", price: 5.00, image: "assets/delicious-indian-mango-drink-high-angle_23-2148734680.avif", category: "Smoothie" },
   { id: 'cold-6', name: "Cold Brew", description: "12-hour steep, smooth finish", price: 4.90, image: "https://images.unsplash.com/photo-1510626176956-c2a2b4ff10ec?q=80&w=500&auto=format&fit=crop", category: "Cold Brew" },
 
   // Creme/Latte (Updated Images)
@@ -71,9 +71,9 @@ const sampleMenu = [
   { id: 'creme-5', name: "Berry Citrus", description: "Strawberry and grapefruit", price: 5.20, image: "https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?q=80&w=500", category: "Juice" },
 
   // Juices (unique items)
-  { id: 'juice-1', name: "Lemon Mint", description: "Zesty lemon with mint", price: 4.10, image: "https://images.unsplash.com/photo-1556745753-7e4bfc180a9f?q=80&w=500&auto=format&fit=crop", category: "Juice" },
-  { id: 'juice-2', name: "Pineapple Punch", description: "Tropical pineapple blend", price: 4.80, image: "https://images.unsplash.com/photo-1547394765-185d449d6eb2?q=80&w=500&auto=format&fit=crop", category: "Juice" },
-  { id: 'juice-3', name: "Mango Glow", description: "Alphonso mango puree", price: 5.25, image: "https://images.unsplash.com/photo-1567197553646-4c084b6698a0?q=80&w=500&auto=format&fit=crop", category: "Juice" },
+  { id: 'juice-1', name: "Lemon Mint", description: "Zesty lemon with mint", price: 4.10, image: "assets/colorful-cocktail-with-orange-slice-cocktail-umbrella-green-black-straw_140725-10521.avif", category: "Juice" },
+  { id: 'juice-2', name: "Pineapple Punch", description: "Tropical pineapple blend", price: 4.80, image: "assets/exotic-cocktail-closeup_181624-983.avif", category: "Juice" },
+  { id: 'juice-3', name: "Mango Glow", description: "Alphonso mango puree", price: 5.25, image: "assets/delicious-indian-mango-drink-high-angle_23-2148734680.avif", category: "Juice" },
 
   // Latte Hot
   { id: 'latte-1', name: "Classic Latte", description: "Double shot, steamed milk", price: 4.80, image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=500&auto=format&fit=crop", category: "Coffee" },
@@ -90,15 +90,15 @@ const sampleMenu = [
   { id: 'tea-6', name: "Iced Peach Oolong", description: "Fruity, floral, chilled", price: 6.50, image: "https://images.unsplash.com/photo-1515512965560-0b814a59fdf8?q=80&w=500&auto=format&fit=crop", category: "Tea" },
 
   // Smoothie & Shake (New)
-  { id: 'smoothie-1', name: "Berry Burst", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "https://images.unsplash.com/photo-1502741119870-16c6b8d5fbb4?q=80&w=500&auto=format&fit=crop", category: "Smoothie" },
-  { id: 'smoothie-2', name: "Green Power", description: "Spinach, apple, banana", price: 5.00, image: "https://images.unsplash.com/photo-1505250469679-203ad9ced0cb?q=80&w=500&auto=format&fit=crop", category: "Smoothie" },
-  { id: 'shake-1', name: "Classic Chocolate Shake", description: "Rich cocoa, creamy base", price: 5.20, image: "https://images.unsplash.com/photo-1542444459-db9b6f23e273?q=80&w=500&auto=format&fit=crop", category: "Shake" },
-  { id: 'shake-2', name: "Vanilla Bean Shake", description: "Madagascar vanilla, smooth", price: 5.00, image: "https://images.unsplash.com/photo-1542444453-9e3048fabb17?q=80&w=500&auto=format&fit=crop", category: "Shake" },
-  { id: 'shake-3', name: "Strawberry Bliss", description: "Fresh strawberries, cream", price: 5.40, image: "https://images.unsplash.com/photo-1497534446932-c925b458314e?q=80&w=500&auto=format&fit=crop", category: "Shake" },
+  { id: 'smoothie-1', name: "Berry Burst", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "assets/raspberry-smoothie_1150-18529.jpg", category: "Smoothie" },
+  { id: 'smoothie-2', name: "Green Power", description: "Spinach, apple, banana", price: 5.00, image: "assets/kiwi-milk-shake-table_140725-8608.jpg", category: "Smoothie" },
+  { id: 'shake-1', name: "Classic Chocolate Shake", description: "Rich cocoa, creamy base", price: 5.20, image: "assets/close-up-milkshake-glass-plate_117406-7215.jpg", category: "Shake" },
+  { id: 'shake-2', name: "Vanilla Bean Shake", description: "Madagascar vanilla, smooth", price: 5.00, image: "assets/strawberry-ice-cream-with-delights_140725-8818.jpg", category: "Shake" },
+  { id: 'shake-3', name: "Strawberry Bliss", description: "Fresh strawberries, cream", price: 5.40, image: "assets/caramel-cold-shake-with-cream_140725-4501.avif", category: "Shake" },
   { id: 'shake-4', name: "Banana Caramel", description: "Banana, caramel drizzle", price: 5.60, image: "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=500&auto=format&fit=crop", category: "Shake" },
 
   // Toast (New)
-  { id: 'toast-1', name: "Signature Benedict", description: "Poached eggs, hollandaise", price: 14.50, image: "https://images.unsplash.com/photo-1512058564366-18510be2bd16?q=80&w=500&auto=format&fit=crop", category: "Toast" },
+  { id: 'toast-1', name: "Signature Benedict", description: "Poached eggs, hollandaise", price: 14.50, image: "assets/croissant-benedict-salmon-with-poched-egg-hollandaise-sauce-served-with-fresh-salad_140725-1329.avif", category: "Toast" },
   { id: 'toast-2', name: "Truffle Omelette", description: "Mushrooms, truffle oil", price: 12.50, image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=500&auto=format&fit=crop", category: "Toast" },
   { id: 'toast-3', name: "Shakshuka", description: "Tomato, peppers, eggs", price: 11.25, image: "https://images.unsplash.com/photo-1604908172713-3d6b1eb1b1a6?q=80&w=500&auto=format&fit=crop", category: "Toast" },
   { id: 'toast-4', name: "Avocado Toast", description: "Sourdough, smashed avo", price: 10.50, image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=500&auto=format&fit=crop", category: "Toast" },
@@ -134,30 +134,32 @@ function renderBestsellers(items) {
   if (!container) return;
   
   container.innerHTML = items.map(item => {
-    // Check if the item has a valid image URL (either 'image' or 'image_url')
     const imgUrl = item.image || item.image_url;
-    // Fallback image if URL is missing or broken (using a generic placeholder)
     const displayImg = imgUrl ? imgUrl : 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500&auto=format&fit=crop';
+    const rating = typeof item.rating === 'number' ? item.rating : getRatingForItem(item);
     
     return `
-    <div class="product-card bg-white dark:bg-[#2a1e19] rounded-[2rem] p-4 shadow-md border border-gray-100 dark:border-white/5 flex flex-col" data-category="${item.category}">
-      <div class="aspect-square rounded-2xl overflow-hidden bg-gray-50 dark:bg-black/20 mb-3 relative">
-        <img src="${displayImg}" 
-             class="w-full h-full object-cover" 
-             alt="${item.name}"
-             loading="lazy"
-             onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500&auto=format&fit=crop'">
-        <div class="absolute top-2 right-2 bg-white/90 dark:bg-black/60 backdrop-blur-sm p-1.5 rounded-full shadow-sm">
-           <span class="material-symbols-outlined text-[16px] text-primary">${getCategoryIcon(item.category)}</span>
+    <div class="bg-white dark:bg-[#2a1e19] rounded-[1.5rem] p-3 shadow-md border border-gray-100 dark:border-white/5 flex gap-3 items-center" data-category="${item.category}">
+      <div class="w-14 h-14 md:w-16 md:h-16 rounded-xl overflow-hidden bg-gray-50 dark:bg-black/20 relative shrink-0">
+        <img src="${displayImg}" class="w-full h-full object-cover" alt="${item.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500&auto=format&fit=crop'">
+        <div class="absolute top-1 right-1 bg-white/90 dark:bg-black/60 px-1 rounded-full shadow-sm">
+          <span class="material-symbols-outlined text-[12px] text-primary">${getCategoryIcon(item.category)}</span>
         </div>
       </div>
-      <h4 class="font-bold text-sm mb-1 text-gray-900 dark:text-white leading-tight">${item.name}</h4>
-      <p class="text-[10px] text-gray-500 dark:text-gray-400 line-clamp-2 mb-3 h-8">${item.description}</p>
-      <div class="flex items-center justify-between mt-auto">
-        <span class="text-xs font-bold text-primary">$${typeof item.price === 'number' ? item.price.toFixed(2) : item.price}</span>
-        <button class="bg-gray-100 dark:bg-white/5 p-1.5 rounded-xl flex items-center justify-center hover:bg-primary hover:text-white transition-colors group" onclick="addToCart('${item.id}')">
-           <span class="material-symbols-outlined text-[18px] text-primary group-hover:text-white">add</span>
-        </button>
+      <div class="flex-1 min-w-0">
+        <h4 class="font-bold text-[13px] md:text-sm text-gray-900 dark:text-white leading-tight">${item.name}</h4>
+        <div class="flex items-center gap-1 mt-0.5">
+          <span class="material-symbols-outlined text-[14px] text-yellow-500" style="font-variation-settings: 'FILL' 1">star</span>
+          <span class="text-[11px] text-gray-700 dark:text-gray-300 font-semibold">${Number(rating).toFixed(1)}</span>
+          <span class="text-[10px] text-gray-400">(${Math.floor(Number(rating) * 25)}+)</span>
+        </div>
+        <p class="text-[10px] md:text-[11px] text-gray-500 dark:text-gray-400 line-clamp-2 mt-1">${item.description}</p>
+        <div class="flex items-center justify-between mt-2">
+          <span class="text-xs font-bold text-primary">$${typeof item.price === 'number' ? item.price.toFixed(2) : item.price}</span>
+          <button class="size-7 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors active:scale-95" onclick="addToCart('${item.id}')">
+            <span class="material-symbols-outlined text-[16px] text-primary">add</span>
+          </button>
+        </div>
       </div>
     </div>
   `}).join('');
@@ -231,6 +233,22 @@ function getCategoryIcon(cat) {
   return icons[cat] || 'restaurant';
 }
 
+function getRatingForItem(item) {
+  const map = {
+    'Coffee': 4.5,
+    'Cold Brew': 4.5,
+    'Tea': 4.4,
+    'Juice': 4.3,
+    'Smoothie': 4.4,
+    'Shake': 4.3,
+    'Pastry': 4.5,
+    'Brunch': 4.4,
+    'Toast': 4.3,
+    'Bread': 4.4
+  };
+  const base = map[item.category] || 4.4;
+  return base;
+}
 function getCategoryFallback(cat) {
   const map = {
     'Brunch': 'assets/Brunch.jpg',
@@ -386,3 +404,4 @@ document.addEventListener('DOMContentLoaded', () => {
   const lang = getLang();
   if (lang !== 'en') applyLang(lang);
 });
+
