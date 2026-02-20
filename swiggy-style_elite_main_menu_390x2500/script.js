@@ -133,15 +133,18 @@ function renderBestsellers(items) {
   const container = document.getElementById('bestsellers') || document.getElementById('bestsellers-grid');
   if (!container) return;
   
-  container.innerHTML = items.map(item => {
+  container.innerHTML = items.map((item, index) => {
     const imgUrl = item.image || item.image_url;
-    const displayImg = imgUrl ? imgUrl : 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500&auto=format&fit=crop';
+    // Use fallback if image is missing or is the default Unsplash placeholder
+    const isDefault = imgUrl && imgUrl.includes('photo-1546069901');
+    const displayImg = (imgUrl && !isDefault) ? imgUrl : getFallbackImage(item, index);
     const rating = typeof item.rating === 'number' ? item.rating : getRatingForItem(item);
     
+    const fallback = getFallbackImage(item, index + 50); // Different seed for fallback
     return `
     <div class="bg-white dark:bg-[#2a1e19] rounded-[1.5rem] p-3 shadow-md border border-gray-100 dark:border-white/5 flex gap-4 items-center relative" data-category="${item.category}">
       <div class="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden bg-gray-50 dark:bg-black/20 relative shrink-0">
-        <img src="${displayImg}" class="w-full h-full object-cover" alt="${item.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500&auto=format&fit=crop'">
+        <img src="${displayImg}" class="w-full h-full object-cover" alt="${item.name}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'">
       </div>
       <div class="flex-1 min-w-0 flex flex-col h-24 md:h-32 justify-between py-0.5">
         <div>
@@ -170,17 +173,15 @@ function renderBestsellers(items) {
 function renderCategories(items) {
   // SUB-CATEGORIES to be displayed as circles with real images
   const subCategories = [
-    { name: 'Brunch', img: 'assets/Brunch.jpg', link: '../long_scroll_brunch_explorer/index.html' },
-    { name: 'Brew', img: 'assets/Brew.jpg', link: '../Brew catégorie page/index.html' },
-    { name: 'Tea & Infusion', img: 'assets/Brew.jpg', link: '../tea and infusion sub catégorie page/index.html' },
+    { name: 'Tea & Infusion', img: 'assets/exotic-cocktail-closeup_181624-983.avif', link: '../tea and infusion sub catégorie page/index.html' },
     { name: 'Milkshake', img: 'assets/close-up-milkshake-glass-plate_117406-7215.jpg', link: '../milkshake sub catégorie page/index.html' },
     { name: 'Juice', img: 'assets/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif', link: '../juces sub catégorie page/index.html' },
-    { name: 'Sweet Pastries', img: 'assets/pastry.jpg', link: '../sweet pastries sub catégorie page/index.html' },
-    { name: 'Black Coffee', img: 'assets/Brew.jpg', link: '../black coffee sub catégorie page/index.html' },
-    { name: 'Latte', img: 'assets/Brew.jpg', link: '../latté hot drink sub catégorie page/index.html' },
+    { name: 'Sweet Pastries', img: 'assets/vertical-shot-pancakes-with-fruits-top_181624-23923.jpg', link: '../sweet pastries sub catégorie page/index.html' },
+    { name: 'Black Coffee', img: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=500&auto=format&fit=crop', link: '../black coffee sub catégorie page/index.html' },
+    { name: 'Latte', img: 'https://images.unsplash.com/photo-1570968992193-6e5c9220956c?q=80&w=500&auto=format&fit=crop', link: '../latté hot drink sub catégorie page/index.html' },
     { name: 'Smoothie', img: 'assets/raspberry-smoothie_1150-18529.jpg', link: '../smothie sub catégorie page/index.html' },
-    { name: 'Toast', img: 'assets/Brunch.jpg', link: '../toast brunch sub catégorie page/index.html' },
-    { name: 'Artisanal Bread', img: 'assets/pastry.jpg', link: '../artisanal bread sub catégorie page/index.html' }
+    { name: 'Toast', img: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?q=80&w=500&auto=format&fit=crop', link: '../toast brunch sub catégorie page/index.html' },
+    { name: 'Artisanal Bread', img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500&auto=format&fit=crop', link: '../artisanal bread sub catégorie page/index.html' }
   ];
 
   const container = document.getElementById('explore-categories');
@@ -188,14 +189,10 @@ function renderCategories(items) {
 
   container.innerHTML = subCategories.map(cat => `
     <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="window.location.href='${cat.link}'">
-      <div class="p-[3px] rounded-full bg-gray-200 dark:bg-gray-700 group-hover:bg-primary transition-all">
-        <div class="bg-white dark:bg-[#1a100c] p-1 rounded-full">
-          <div class="w-16 h-16 rounded-full overflow-hidden relative">
-            <img src="${cat.img}" alt="${cat.name}" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
-          </div>
-        </div>
+      <div class="w-20 h-20 rounded-2xl overflow-hidden shadow-sm border border-gray-100 dark:border-white/10 relative">
+        <img src="${cat.img}" alt="${cat.name}" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=500'">
       </div>
-      <p class="text-[10px] text-gray-800 dark:text-white text-center">${cat.name}</p>
+      <p class="text-[11px] font-medium text-gray-700 dark:text-gray-200 text-center leading-tight max-w-[5rem]">${cat.name}</p>
     </div>
   `).join('');
 
@@ -206,14 +203,6 @@ function renderCategories(items) {
     if (name && label.textContent.trim().toLowerCase() !== name.toLowerCase()) {
       label.textContent = name;
     }
-  });
-
-  // Attach category-specific fallback images to avoid coffee-only fallbacks
-  container.querySelectorAll('img').forEach(img => {
-    img.addEventListener('error', () => {
-      const cat = img.getAttribute('alt') || '';
-      img.src = getCategoryFallback(cat);
-    }, { once: true });
   });
 }
 
@@ -251,25 +240,60 @@ function getRatingForItem(item) {
   const base = map[item.category] || 4.4;
   return base;
 }
-function getCategoryFallback(cat) {
-  const map = {
-    'Brunch': 'assets/Brunch.jpg',
-    'Brew': 'assets/Brew.jpg',
-    'Black Coffee': 'assets/Brew.jpg',
-    'Cold Drink': 'assets/Cold%20drinks.jpg',
-    'Pastry': 'assets/pastry.jpg',
-    'Sweet Pastries': 'assets/pastry.jpg',
-    'Latte': 'assets/Brew.jpg',
-    // For categories without local assets, use neutral non-coffee fallbacks
-    'Tea & Infusion': 'assets/Brunch.jpg',
-    'Milkshake': 'assets/Cold%20drinks.jpg',
-    'Juice': 'assets/Cold%20drinks.jpg',
-    'Smoothie': 'assets/Cold%20drinks.jpg',
-    'Toast': 'assets/Brunch.jpg',
-    'Artisanal Bread': 'assets/pastry.jpg'
-  };
-  return map[cat] || 'assets/Brunch.jpg';
+
+function getFallbackImage(item, seed = 0) {
+  // Try to match specific keywords in name to local assets
+  const name = item.name.toLowerCase();
+  if (name.includes('milkshake')) return 'assets/close-up-milkshake-glass-plate_117406-7215.jpg';
+  if (name.includes('smoothie')) return 'assets/raspberry-smoothie_1150-18529.jpg';
+  if (name.includes('juice') || name.includes('orange')) return 'assets/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif';
+  if (name.includes('tea')) return 'assets/exotic-cocktail-closeup_181624-983.avif';
+  if (name.includes('toast') || name.includes('benedict')) return 'assets/croissant-benedict-salmon-with-poched-egg-hollandaise-sauce-served-with-fresh-salad_140725-1329.avif';
+  if (name.includes('pancake')) return 'assets/vertical-shot-pancakes-with-fruits-top_181624-23923.jpg';
+  if (name.includes('pastry') || name.includes('croissant')) return 'assets/pastry.jpg';
+  if (name.includes('mango')) return 'assets/delicious-indian-mango-drink-high-angle_23-2148734680.avif';
+
+  // Fallback pool of high-quality images
+  const pool = [
+    'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500', // Salad/Bowl
+    'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=500', // Pizza/Flatbread
+    'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=500', // Toast/Egg
+    'https://images.unsplash.com/photo-1484723091739-30a097e8f929?q=80&w=500', // French Toast
+    'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=500', // Healthy Bowl
+    'https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=500', // Drink
+    'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=500', // Coffee
+    'https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=500'  // Coffee beans
+  ];
+
+  // Deterministic selection based on item name char code sum + seed
+  const hash = item.name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) + seed;
+  return pool[hash % pool.length];
 }
+
+function startHeroCarousel() {
+  const container = document.querySelector('#hero-carousel > div');
+  if (!container) return;
+
+  const cardWidth = 360; // Card width
+  const gap = 16;        // Gap
+  const scrollStep = cardWidth + gap;
+  
+  setInterval(() => {
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    // Allow a small buffer for float precision
+    if (container.scrollLeft >= maxScroll - 10) {
+      container.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      container.scrollBy({ left: scrollStep, behavior: 'smooth' });
+    }
+  }, 4000); // Scroll every 4 seconds
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetchBestsellers();
+  renderCategories();
+  startHeroCarousel();
+});
 
 window.navigateToCategory = (category) => {
   const categoryId = category.toLowerCase();
