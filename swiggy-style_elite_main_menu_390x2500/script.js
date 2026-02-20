@@ -189,10 +189,14 @@ function renderCategories(items) {
 
   container.innerHTML = subCategories.map(cat => `
     <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="window.location.href='${cat.link}'">
-      <div class="w-20 h-20 rounded-2xl overflow-hidden shadow-sm border border-gray-100 dark:border-white/10 relative">
-        <img src="${cat.img}" alt="${cat.name}" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=500'">
+      <div class="p-[3px] rounded-full bg-gray-200 dark:bg-gray-700 group-hover:bg-primary transition-all">
+        <div class="bg-white dark:bg-[#1a100c] p-1 rounded-full">
+          <div class="w-16 h-16 rounded-full overflow-hidden relative">
+            <img src="${cat.img}" alt="${cat.name}" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=500'">
+          </div>
+        </div>
       </div>
-      <p class="text-[11px] font-medium text-gray-700 dark:text-gray-200 text-center leading-tight max-w-[5rem]">${cat.name}</p>
+      <p class="text-[10px] text-gray-800 dark:text-white text-center leading-tight max-w-[5rem]">${cat.name}</p>
     </div>
   `).join('');
 
