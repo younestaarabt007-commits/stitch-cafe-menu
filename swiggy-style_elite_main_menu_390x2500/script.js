@@ -324,13 +324,17 @@ function startHeroCarousel() {
 
   let isPaused = false;
   let pauseTimeout;
+  let currentCardIndex = 0;
+  let autoScrollInterval;
 
   const pause = () => {
     isPaused = true;
     clearTimeout(pauseTimeout);
+    clearInterval(autoScrollInterval);
     // Resume auto-scroll after 8 seconds of inactivity
     pauseTimeout = setTimeout(() => {
       isPaused = false;
+      startAutoScroll();
     }, 8000);
   };
 
@@ -339,39 +343,60 @@ function startHeroCarousel() {
   container.addEventListener('mousedown', pause);
   container.addEventListener('wheel', pause, { passive: true });
 
-  setInterval(() => {
-    if (isPaused) return;
-
+  function getCardDimensions() {
     const firstCard = container.querySelector('div');
-    if (!firstCard) return;
+    if (!firstCard) return null;
 
     const cardWidth = firstCard.offsetWidth;
     const style = window.getComputedStyle(container);
     let gap = parseFloat(style.gap) || 0;
-    // Handle case where gap might be returned as '1rem' (1) instead of pixels (16)
+    
     if (gap < 2 && style.gap && style.gap.includes('rem')) {
-      gap = gap * 16; // Approximate conversion
+      gap = gap * 16;
     } else if (gap === 0) {
-      gap = 16; // Default to 16px (gap-4) if valid gap not found
+      gap = 16;
     }
-    const itemWidth = cardWidth + gap;
     
+    return { cardWidth, gap, itemWidth: cardWidth + gap };
+  }
+
+  function scrollToCard(index) {
+    const dimensions = getCardDimensions();
+    if (!dimensions) return;
+
+    const { itemWidth } = dimensions;
     const maxScroll = container.scrollWidth - container.clientWidth;
-    const currentScroll = container.scrollLeft;
-    
-    // Calculate current index based on scroll position
-    const currentIndex = Math.round(currentScroll / itemWidth);
-    
-    // Determine next target scroll position
-    let targetScroll = (currentIndex + 1) * itemWidth;
-    
-    // If we are near the end or past it, loop back to start
-    if (targetScroll >= maxScroll - 10) {
-      targetScroll = 0;
+    const targetScroll = index * itemWidth;
+
+    if (targetScroll > maxScroll) {
+      // Loop back to start
+      currentCardIndex = 0;
+      container.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      container.scrollTo({ left: targetScroll, behavior: 'smooth' });
     }
-    
-    container.scrollTo({ left: targetScroll, behavior: 'smooth' });
-  }, 4000);
+  }
+
+  function startAutoScroll() {
+    if (isPaused) return;
+
+    autoScrollInterval = setInterval(() => {
+      if (isPaused) return;
+
+      const totalCards = container.children.length;
+      currentCardIndex = (currentCardIndex + 1) % totalCards;
+      
+      // Wait 0.5 seconds before scrolling to next card
+      setTimeout(() => {
+        if (!isPaused) {
+          scrollToCard(currentCardIndex);
+        }
+      }, 500);
+    }, 3500); // Total cycle: 3.5s (3s display + 0.5s pause)
+  }
+
+  // Start the automatic carousel
+  startAutoScroll();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
