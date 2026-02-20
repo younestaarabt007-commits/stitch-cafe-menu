@@ -347,17 +347,30 @@ function startHeroCarousel() {
 
     const cardWidth = firstCard.offsetWidth;
     const style = window.getComputedStyle(container);
-    const gap = parseFloat(style.gap) || 0;
-    const scrollStep = cardWidth + gap;
+    let gap = parseFloat(style.gap) || 0;
+    // Handle case where gap might be returned as '1rem' (1) instead of pixels (16)
+    if (gap < 2 && style.gap && style.gap.includes('rem')) {
+      gap = gap * 16; // Approximate conversion
+    } else if (gap === 0) {
+      gap = 16; // Default to 16px (gap-4) if valid gap not found
+    }
+    const itemWidth = cardWidth + gap;
     
     const maxScroll = container.scrollWidth - container.clientWidth;
+    const currentScroll = container.scrollLeft;
     
-    // Check if we are at the end (with a small buffer)
-    if (container.scrollLeft >= maxScroll - 10) {
-      container.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-      container.scrollBy({ left: scrollStep, behavior: 'smooth' });
+    // Calculate current index based on scroll position
+    const currentIndex = Math.round(currentScroll / itemWidth);
+    
+    // Determine next target scroll position
+    let targetScroll = (currentIndex + 1) * itemWidth;
+    
+    // If we are near the end or past it, loop back to start
+    if (targetScroll >= maxScroll - 10) {
+      targetScroll = 0;
     }
+    
+    container.scrollTo({ left: targetScroll, behavior: 'smooth' });
   }, 4000);
 }
 
