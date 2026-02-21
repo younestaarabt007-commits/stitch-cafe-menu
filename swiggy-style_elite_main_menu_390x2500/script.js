@@ -247,7 +247,7 @@ loyalty</span>
         </div>
         <div class="flex items-center justify-between mt-auto">
           <span class="text-xs font-bold text-primary">$${typeof item.price === 'number' ? item.price.toFixed(2) : item.price}</span>
-          <button class="bg-white dark:bg-white/10 text-primary font-bold text-[10px] px-4 py-1 rounded shadow-sm border border-gray-100 dark:border-white/10 uppercase tracking-wide hover:bg-primary hover:text-white transition-colors" onclick="addToCart('${item.id}')">
+          <button class="bg-orange-50 text-primary dark:bg-primary/20 dark:text-primary text-[12px] font-black uppercase shadow-sm active:scale-95 transition-transform flex items-center justify-center w-[84px] h-[36px] rounded-[12px]" onclick="addToCart('${item.id}')">
             Add
           </button>
         </div>
