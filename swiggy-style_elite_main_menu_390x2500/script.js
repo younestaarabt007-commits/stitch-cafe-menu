@@ -133,7 +133,40 @@ function renderBestsellers(items) {
   const container = document.getElementById('bestsellers') || document.getElementById('bestsellers-grid');
   if (!container) return;
   
-  container.innerHTML = items.map((item, index) => {
+  function classify(cat) {
+    const c = String(cat || '').toLowerCase();
+    if (c.includes('brunch') || c.includes('toast') || c.includes('pastry') || c.includes('bread') || c.includes('bakery')) return 'food';
+    if (c.includes('coffee') || c.includes('tea') || c.includes('espresso') || c.includes('latte')) return 'hot';
+    if (c.includes('cold') || c.includes('juice') || c.includes('smoothie') || c.includes('shake') || c.includes('drink')) return 'cold';
+    return 'food';
+  }
+  function diversify(itemsList) {
+    const food = [], hot = [], cold = [];
+    for (const it of itemsList) {
+      const t = classify(it.category);
+      if (t === 'food') food.push(it);
+      else if (t === 'hot') hot.push(it);
+      else cold.push(it);
+    }
+    const res = [];
+    function take2(arr) {
+      const out = [];
+      if (arr.length) out.push(arr.shift());
+      if (arr.length) out.push(arr.shift());
+      return out;
+    }
+    while (food.length || hot.length || cold.length) {
+      for (const arr of [food, hot, cold]) {
+        if (arr.length) {
+          const t = take2(arr);
+          for (const x of t) res.push(x);
+        }
+      }
+    }
+    return res;
+  }
+  const ordered = diversify(items);
+  container.innerHTML = ordered.map((item, index) => {
     const imgUrl = item.image || item.image_url;
     // Use fallback if image is missing or is the default Unsplash placeholder
     const isDefault = imgUrl && imgUrl.includes('photo-1546069901');
@@ -549,4 +582,3 @@ document.addEventListener('DOMContentLoaded', () => {
   const lang = getLang();
   if (lang !== 'en') applyLang(lang);
 });
-
