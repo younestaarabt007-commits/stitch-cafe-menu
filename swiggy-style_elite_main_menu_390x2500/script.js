@@ -146,6 +146,13 @@ function renderBestsellers(items) {
     if (item.id === 'brunch-8') {
       promoHTML = `
         <div class="px-4 space-y-4 my-6">
+            <div class="text-center mb-4">
+                <div class="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-orange-500 text-white px-4 py-2 rounded-full shadow-lg">
+                    <span class="material-symbols-outlined text-[16px]">local_fire_department</span>
+                    <span class="font-bold text-[12px] uppercase tracking-wide">Super Saver Deal 40% OFF</span>
+                    <span class="material-symbols-outlined text-[16px]">local_fire_department</span>
+                </div>
+            </div>
             <div class="grid grid-cols-2 gap-3 h-[280px]">
                 <div class="relative rounded-[20px] overflow-hidden bg-zinc-900 group h-full transition-transform active:scale-95">
                     <div class="absolute inset-0 bg-cover bg-center opacity-70 group-hover:scale-105 transition-transform duration-500" role="img" aria-label="Vertical shot of signature pour over" style="background-image: url('https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800&auto=format&fit=crop');">
@@ -172,14 +179,20 @@ loyalty</span>
                     </div>
                 </div>
             </div>
-            <div class="relative w-full h-20 rounded-[20px] overflow-hidden bg-[#1a0f08] flex items-center px-4 py-3 transition-transform active:scale-95">
-                <div class="flex-1">
-                    <h3 class="text-white font-bold text-base">Limited Roast</h3>
-                    <p class="text-white/60 text-[10px]">Ethiopian Yirgacheffe G1</p>
-                </div>
-                <button class="bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase">Try
-                    Now</button>
+        </div>
+      `;
+    }
+    
+    let limitedRoastHTML = '';
+    if (item.id === 'brew-6') {
+      limitedRoastHTML = `
+        <div class="relative w-full h-20 rounded-[20px] overflow-hidden bg-[#1a0f08] flex items-center px-4 py-3 transition-transform active:scale-95">
+            <div class="flex-1">
+                <h3 class="text-white font-bold text-base">Limited Roast</h3>
+                <p class="text-white/60 text-[10px]">Ethiopian Yirgacheffe G1</p>
             </div>
+            <button class="bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase">Try
+                Now</button>
         </div>
       `;
     }
@@ -210,6 +223,7 @@ loyalty</span>
         <span class="material-symbols-outlined text-[14px] text-primary">${getCategoryIcon(item.category)}</span>
       </div>
     </div>
+    ${limitedRoastHTML}
     ${promoHTML}
   `}).join('');
 }
@@ -319,29 +333,21 @@ function getFallbackImage(item, seed = 0) {
 }
 
 function startHeroCarousel() {
-  const container = document.querySelector('#hero-carousel > div');
-  if (!container) return;
+  console.log('Starting hero carousel (simplified version)...');
+  
+  // Wait a bit for DOM to be ready
+  setTimeout(() => {
+    const container = document.querySelector('#hero-carousel .flex');
+    if (!container) {
+      console.log('Carousel container not found, retrying...');
+      setTimeout(startHeroCarousel, 1000);
+      return;
+    }
+    
+    console.log('Carousel found, starting auto-scroll...');
 
-  let isPaused = false;
-  let pauseTimeout;
   let currentCardIndex = 0;
   let autoScrollInterval;
-
-  const pause = () => {
-    isPaused = true;
-    clearTimeout(pauseTimeout);
-    clearInterval(autoScrollInterval);
-    // Resume auto-scroll after 8 seconds of inactivity
-    pauseTimeout = setTimeout(() => {
-      isPaused = false;
-      startAutoScroll();
-    }, 8000);
-  };
-
-  // Pause on interaction
-  container.addEventListener('touchstart', pause, { passive: true });
-  container.addEventListener('mousedown', pause);
-  container.addEventListener('wheel', pause, { passive: true });
 
   function getCardDimensions() {
     const firstCard = container.querySelector('div');
@@ -362,47 +368,50 @@ function startHeroCarousel() {
 
   function scrollToCard(index) {
     const dimensions = getCardDimensions();
-    if (!dimensions) return;
+    if (!dimensions) {
+      console.log('No card dimensions available');
+      return;
+    }
 
     const { itemWidth } = dimensions;
+    const totalCards = container.children.length;
     const maxScroll = container.scrollWidth - container.clientWidth;
-    const targetScroll = index * itemWidth;
-
-    if (targetScroll > maxScroll) {
+    
+    console.log(`Scrolling to card ${index}, itemWidth: ${itemWidth}, maxScroll: ${maxScroll}`);
+    
+    if (index >= totalCards) {
       // Loop back to start
       currentCardIndex = 0;
       container.scrollTo({ left: 0, behavior: 'smooth' });
+      console.log('Looped back to start');
     } else {
+      const targetScroll = index * itemWidth;
       container.scrollTo({ left: targetScroll, behavior: 'smooth' });
+      console.log(`Scrolled to position ${targetScroll}`);
     }
   }
 
   function startAutoScroll() {
-    if (isPaused) return;
-
+    console.log('Starting auto-scroll interval...');
+    
     autoScrollInterval = setInterval(() => {
-      if (isPaused) return;
-
       const totalCards = container.children.length;
       currentCardIndex = (currentCardIndex + 1) % totalCards;
       
-      // Wait 0.5 seconds before scrolling to next card
-      setTimeout(() => {
-        if (!isPaused) {
-          scrollToCard(currentCardIndex);
-        }
-      }, 500);
-    }, 3500); // Total cycle: 3.5s (3s display + 0.5s pause)
+      console.log(`Auto-scrolling to card ${currentCardIndex} of ${totalCards}`);
+      scrollToCard(currentCardIndex);
+    }, 3000); // Change card every 3 seconds
   }
 
-  // Start the automatic carousel
-  startAutoScroll();
+    // Start the automatic carousel
+    startAutoScroll();
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   fetchBestsellers();
   renderCategories();
-  startHeroCarousel();
+  // startHeroCarousel(); // Disabled - using auto-loop instead
 });
 
 window.navigateToCategory = (category) => {

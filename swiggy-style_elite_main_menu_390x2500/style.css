@@ -1,43 +1,33 @@
-body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-}
-.hide-scrollbar::-webkit-scrollbar { display: none; }
-.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-.mesh-bg {
-  background-color: hsla(24, 100%, 97%, 1);
-  background-image:
-    radial-gradient(at 40% 20%, hsla(28,100%,74%,0.1) 0px, transparent 50%),
-    radial-gradient(at 80% 0%, hsla(189,100%,56%,0.1) 0px, transparent 50%),
-    radial-gradient(at 0% 50%, hsla(340,100%,76%,0.1) 0px, transparent 50%);
-}
-.dark .mesh-bg {
-  background-color: #1a100c;
-  background-image:
-    radial-gradient(at 40% 20%, hsla(28,100%,74%,0.05) 0px, transparent 50%),
-    radial-gradient(at 80% 0%, hsla(189,100%,56%,0.05) 0px, transparent 50%);
-}
-.card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.card:active {
-  transform: scale(0.98);
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
 }
 
-#rotating-text {
-  transition: opacity 0.3s ease-in-out;
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-/* Carousel enhancements */
-#hero-carousel .flex {
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
+@keyframes zoom-shake {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+    }
+    25% {
+        transform: scale(1.1) rotate(-2deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(2deg);
+    }
+    75% {
+        transform: scale(1.1) rotate(-2deg);
+    }
 }
 
-#hero-carousel .flex::-webkit-scrollbar {
-  display: none;
-}
-
-#hero-carousel .flex {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+.hero-card-image:hover {
+    animation: zoom-shake 0.5s ease-in-out;
 }
