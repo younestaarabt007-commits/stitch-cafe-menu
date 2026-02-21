@@ -195,7 +195,7 @@ function renderBestsellers(items) {
         </div>
         <div class="flex items-center justify-between mt-auto">
           <span class="text-xs font-bold text-primary">$${typeof item.price === 'number' ? item.price.toFixed(2) : item.price}</span>
-          <button class="bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-[12px] font-black uppercase shadow-sm active:scale-95 transition-transform flex items-center justify-center w-[84px] h-[36px] rounded-[12px]" onclick="addToCart('${item.id}')">
+          <button class="bg-orange-50 text-primary dark:bg-primary/20 dark:text-primary text-[12px] font-black uppercase shadow-sm active:scale-95 transition-transform flex items-center justify-center w-[84px] h-[36px] rounded-[12px]" onclick="addToCart('${item.id}')">
             Add
           </button>
         </div>
