@@ -177,6 +177,9 @@ function renderBestsellers(items) {
     
     return `
     <div class="bg-white dark:bg-[#2a1e19] rounded-[1.5rem] p-3 shadow-md border border-gray-100 dark:border-white/5 flex gap-4 items-center relative" data-category="${item.category}">
+      <div class="absolute top-3 right-3 bg-white/90 dark:bg-black/60 px-2 py-1 rounded-full shadow-sm z-10">
+        <span class="material-symbols-outlined text-[14px] text-primary">${getCategoryIcon(item.category)}</span>
+      </div>
       <div class="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden bg-gray-50 dark:bg-black/20 relative shrink-0">
         <img src="${displayImg}" class="w-full h-full object-cover" alt="${item.name}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'">
       </div>
