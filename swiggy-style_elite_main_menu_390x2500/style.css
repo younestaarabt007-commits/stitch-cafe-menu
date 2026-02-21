@@ -31,3 +31,7 @@
 .hero-card-image:hover {
     animation: zoom-shake 0.5s ease-in-out;
 }
+
+.material-symbols-outlined {
+    color: #16a34a !important;
+}
