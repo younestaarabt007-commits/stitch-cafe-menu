@@ -217,9 +217,9 @@ loyalty</span>
     }
     
     let limitedRoastHTML = '';
-    if (item.id === 'brew-4') {
+    if (item.id === 'brunch-4') {
       limitedRoastHTML = `
-        <div class="relative w-full h-20 rounded-[20px] overflow-hidden bg-[#1a0f08] flex items-center px-4 py-3 transition-transform active:scale-95">
+        <div class="col-span-2 relative w-full h-20 rounded-[20px] overflow-hidden bg-[#1a0f08] flex items-center px-4 py-3 transition-transform active:scale-95">
             <div class="flex-1">
                 <h3 class="text-white font-bold text-base">Limited Roast</h3>
                 <p class="text-white/60 text-[10px]">Ethiopian Yirgacheffe G1</p>
