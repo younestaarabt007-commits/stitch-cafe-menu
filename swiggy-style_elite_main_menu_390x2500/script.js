@@ -239,7 +239,7 @@ loyalty</span>
         <div>
           <h4 class="font-bold text-[13px] md:text-sm text-gray-900 dark:text-white leading-tight pr-6">${item.name}</h4>
           <div class="flex items-center gap-1 mt-1">
-            <span class="material-symbols-outlined text-[14px] text-yellow-500" style="font-variation-settings: 'FILL' 1">star</span>
+            <span class="material-symbols-outlined text-[14px] text-green-600 dark:text-green-400" style="font-variation-settings: 'FILL' 1">star</span>
             <span class="text-[11px] text-gray-700 dark:text-gray-300 font-semibold">${Number(rating).toFixed(1)}</span>
             <span class="text-[10px] text-gray-400">(${Math.floor(Number(rating) * 25)}+)</span>
           </div>
@@ -253,7 +253,7 @@ loyalty</span>
         </div>
       </div>
       <div class="absolute top-3 right-3 bg-white/90 dark:bg-black/60 px-2 py-1 rounded-full shadow-sm z-10">
-        <span class="material-symbols-outlined text-[14px] text-primary">${getCategoryIcon(item.category)}</span>
+        <span class="material-symbols-outlined text-[14px] text-green-600 dark:text-green-400">${getCategoryIcon(item.category)}</span>
       </div>
     </div>
     ${limitedRoastHTML}
