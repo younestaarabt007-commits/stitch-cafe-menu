@@ -247,13 +247,10 @@ loyalty</span>
         </div>
         <div class="flex items-center justify-between mt-auto">
           <span class="text-xs font-bold text-primary">$${typeof item.price === 'number' ? item.price.toFixed(2) : item.price}</span>
-          <button class="size-8 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors active:scale-95" onclick="addToCart('${item.id}')">
-            <span class="material-symbols-outlined text-[18px] text-primary">add</span>
+          <button class="bg-white dark:bg-white/10 text-primary font-bold text-[10px] px-4 py-1 rounded shadow-sm border border-gray-100 dark:border-white/10 uppercase tracking-wide hover:bg-primary hover:text-white transition-colors" onclick="addToCart('${item.id}')">
+            Add
           </button>
         </div>
-      </div>
-      <div class="absolute top-3 right-3 bg-white/90 dark:bg-black/60 px-2 py-1 rounded-full shadow-sm z-10">
-        <span class="material-symbols-outlined text-[14px] text-green-600 dark:text-green-400">${getCategoryIcon(item.category)}</span>
       </div>
     </div>
     ${limitedRoastHTML}
