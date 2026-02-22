@@ -24,12 +24,8 @@
     isRunning = true;
     
     // Get card dimensions
-    const firstCard = cards[0];
-    const cardWidth = firstCard.offsetWidth;
-    const style = window.getComputedStyle(container);
-    const gap = parseFloat(style.gap) || 16;
-    const itemWidth = cardWidth + gap;
-    
+    // Define itemWidth as let so we can update it after cleaning clones
+    let itemWidth;
     let currentIndex = 0;
     
     // Clear any existing interval
@@ -42,27 +38,46 @@
     
     // Create infinite loop by duplicating cards
     function createInfiniteLoop() {
-      const originalCards = Array.from(cards);
+      // Clean up any existing clones first to prevent exponential growth
+      const existingClones = container.querySelectorAll('.clone-card');
+      existingClones.forEach(el => el.remove());
+
+      // Get only original cards (exclude any clones if they somehow persist)
+      const originalCards = Array.from(container.children).filter(c => !c.classList.contains('clone-card'));
+      
+      if (originalCards.length === 0) return;
+
       const totalCards = originalCards.length;
+      
+      // Calculate itemWidth from an original card BEFORE cloning
+      const firstCard = originalCards[0];
+      const cardWidth = firstCard.offsetWidth;
+      const style = window.getComputedStyle(container);
+      const gap = parseFloat(style.gap) || 16;
+      itemWidth = cardWidth + gap; // Update the outer scope variable
       
       // Clone all cards and append them to create infinite effect
       originalCards.forEach(card => {
         const clone = card.cloneNode(true);
+        clone.classList.add('clone-card'); // Mark as clone
+        clone.style.display = ''; 
         container.appendChild(clone);
       });
       
       // Clone all cards again and prepend them
       originalCards.forEach(card => {
         const clone = card.cloneNode(true);
+        clone.classList.add('clone-card'); // Mark as clone
+        clone.style.display = '';
         container.insertBefore(clone, container.firstChild);
       });
       
       // Set initial scroll position to show original cards
-      const initialScroll = isRTL 
-        ? container.scrollWidth - container.clientWidth - (totalCards * itemWidth)
-        : totalCards * itemWidth;
-      
-      container.scrollLeft = initialScroll;
+      // Use scrollIntoView for reliable cross-browser positioning
+      const startCard = container.children[totalCards];
+      if (startCard) {
+        startCard.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'start' });
+      }
       currentIndex = totalCards;
       
       console.log(`Created infinite loop with ${totalCards} original cards, starting at index ${currentIndex}`);
@@ -74,48 +89,32 @@
     // Start continuous auto-scroll
     carouselInterval = setInterval(() => {
       currentIndex++;
-      let targetScroll;
       
-      if (isRTL) {
-        // For RTL, calculate scroll from the right
-        const maxScroll = container.scrollWidth - container.clientWidth;
-        targetScroll = maxScroll - (currentIndex * itemWidth);
-      } else {
-        // For LTR, normal left-to-right scrolling
-        targetScroll = currentIndex * itemWidth;
+      // Use scrollIntoView which handles RTL automatically
+      // 'inline: start' aligns to the appropriate start edge (Left for LTR, Right for RTL)
+      const targetCard = container.children[currentIndex];
+      if (targetCard) {
+        targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
       }
       
-      container.scrollTo({
-        left: targetScroll,
-        behavior: 'smooth'
-      });
-      
-      console.log(`Carousel auto-scrolled to card ${currentIndex + 1} (RTL: ${isRTL})`);
+      console.log(`Carousel auto-scrolled to card ${currentIndex} (RTL: ${isRTL})`);
       
       // Handle infinite loop - reset when reaching cloned cards
       setTimeout(() => {
-        const totalOriginalCards = cards.length / 3; // We have 3 sets: prepended, original, appended
+        // Calculate total original cards dynamically as cards.length includes clones
+        const currentTotalCards = container.children.length;
+        const totalOriginalCards = currentTotalCards / 3; 
         
         if (currentIndex >= totalOriginalCards * 2) {
           // We've reached the end of appended cards, jump back to original set
-          const resetScroll = isRTL 
-            ? container.scrollWidth - container.clientWidth - (totalOriginalCards * itemWidth)
-            : totalOriginalCards * itemWidth;
-          
-          container.scrollLeft = resetScroll;
           currentIndex = totalOriginalCards;
-          console.log('Reset to original card set for seamless loop');
-        } else if (currentIndex < totalOriginalCards) {
-          // We've reached the beginning of prepended cards, jump to original set
-          const resetScroll = isRTL 
-            ? container.scrollWidth - container.clientWidth - (totalOriginalCards * itemWidth)
-            : totalOriginalCards * itemWidth;
-          
-          container.scrollLeft = resetScroll;
-          currentIndex = totalOriginalCards;
+          const resetCard = container.children[currentIndex];
+          if (resetCard) {
+            resetCard.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'start' });
+          }
           console.log('Reset to original card set for seamless loop');
         }
-      }, 350); // Wait for scroll animation to complete
+      }, 500); // Wait for scroll animation to complete (increased from 350 to 500 for smoothness)
       
     }, 3000);
     

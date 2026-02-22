@@ -158,13 +158,13 @@
 
 /* RTL Support for hero card images */
 [dir="rtl"] .absolute.-right-4 {
-    right: auto;
-    left: -1rem;
+    right: auto !important;
+    left: -1rem !important;
 }
 
 [dir="rtl"] .absolute.right-3 {
-    right: auto;
-    left: 0.75rem;
+    right: auto !important;
+    left: 0.75rem !important;
 }
 
 /* RTL Support for horizontal scroll */
@@ -178,12 +178,17 @@
 
 /* RTL Support for carousel */
 [dir="rtl"] #hero-carousel .flex {
-    flex-direction: row-reverse;
-    direction: ltr; /* Keep container direction LTR for proper scrolling */
+    /* Ensure proper RTL behavior without forcing LTR */
 }
 
 [dir="rtl"] #hero-carousel .flex > div {
-    direction: rtl; /* Restore RTL for card content */
+    /* Ensure text aligns to the right in RTL */
+    text-align: right;
+}
+
+[dir="rtl"] #hero-carousel .items-start {
+    /* In RTL, items-start is Right. Ensure children align to the right */
+    align-items: flex-start; 
 }
 
 .microphone:after {
