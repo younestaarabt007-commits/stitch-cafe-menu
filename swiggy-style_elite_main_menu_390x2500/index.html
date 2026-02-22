@@ -37,20 +37,19 @@
       <div class="flex items-center justify-between px-4 md:px-8 mb-2 text-white">
         <div class="flex items-center gap-2 bg-white text-black px-3 py-1.5 rounded-full shadow-lg">
           <span class="material-symbols-outlined text-[18px] text-[#FFC107]">restaurant</span>
-          <span class="text-xs font-bold tracking-wide">Table 12</span>
+          <span class="text-xs font-bold tracking-wide" data-i18n="table_12">Table 12</span>
         </div>
         <div class="flex items-center gap-2">
           <!-- Language Toggle -->
-          <div class="language-toggle scale-75 origin-right">
-            <label class="toggle-switch">
-              <input type="checkbox" id="language-toggle" aria-label="Switch language">
-              <span class="slider"></span>
-            </label>
-            <span id="current-language" class="hidden md:inline-block">Français</span>
+          <div id="language-toggle" class="language-toggle scale-75 ltr:origin-right rtl:origin-left lang-en">
+              <div class="toggle-switch">
+                  <span class="slider"></span>
+              </div>
+              <span id="current-language" class="hidden md:inline-block">English</span>
           </div>
           <a href="https://www.bing.com/maps/search?FORM=HDRSC6&q=aposto+restaurant+rabat&cp=33.967154%7E-6.846021&lvl=11.8&style=r" target="_blank" class="flex items-center gap-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-full border border-white/20 cursor-pointer hover:bg-white/20 transition-all text-white hover:text-white decoration-none">
-            <div class="loader scale-[0.4] origin-center -ml-3 -mr-3"></div>
-            <span class="text-xs font-semibold truncate max-w-[120px]">Stitch Café</span>
+            <div class="loader scale-[0.4] origin-center -ml-3 -mr-3 rtl:-mr-3 rtl:-ml-3"></div>
+            <span class="text-xs font-semibold truncate max-w-[120px]" data-i18n="stitch_cafe">Stitch Café</span>
             <span class="material-symbols-outlined text-[14px]">expand_more</span>
           </a>
           <div class="shrink-0">
@@ -60,20 +59,20 @@
       </div>
       <div class="px-4 md:px-8 relative z-20 flex flex-col gap-5 mb-4">
         <div class="relative group w-full mt-4">
-          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
+          <div class="absolute inset-y-0 start-0 ps-3 flex items-center pointer-events-none z-10">
             <span class="material-symbols-outlined text-gray-500 text-[18px]">search</span>
           </div>
-          <input id="search-input" class="block w-full pl-10 pr-10 py-2.5 bg-white border-transparent rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:bg-white shadow-lg transition-all font-medium text-xs relative z-0" placeholder="Search..." type="text"/>
+          <input id="search-input" class="block w-full ps-10 pe-10 py-2.5 bg-white border-transparent rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:bg-white shadow-lg transition-all font-medium text-xs relative z-0 rtl:text-right" placeholder="Search..." data-i18n-placeholder="search_placeholder" type="text"/>
         </div>
         <div class="flex items-center justify-between gap-3">
           <div class="flex items-center gap-2">
             <button class="header-btn flex items-center gap-1.5 bg-white text-black px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
               <span class="material-symbols-outlined text-[14px] text-[#FFC107]">local_dining</span>
-              Dine In
+              <span data-i18n="dine_in">Dine In</span>
             </button>
             <button class="header-btn flex items-center gap-1.5 bg-white text-black px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
               <span class="material-symbols-outlined text-[14px] text-[#FFC107]">takeout_dining</span>
-              Take Away
+              <span data-i18n="take_away">Take Away</span>
             </button>
           </div>
           <div class="shrink-0">
@@ -96,11 +95,11 @@
             <div class="relative z-10 flex h-full justify-between items-center">
               <div class="flex flex-col items-start justify-center h-full w-[60%]">
                 <div class="flex items-center gap-1 mb-1">
-                  <span class="bg-green-200 dark:bg-green-700/60 text-green-700 dark:text-green-300 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Chef's Choice</span>
-                  <span class="bg-purple-200 dark:bg-purple-700/60 text-purple-700 dark:text-purple-300 text-[8px] font-bold px-1.5 py-0.5 rounded-full">N°1 seller</span>
+                  <span class="bg-green-200 dark:bg-green-700/60 text-green-700 dark:text-green-300 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider" data-i18n="chefs_choice">Chef's Choice</span>
+                  <span class="bg-purple-200 dark:bg-purple-700/60 text-purple-700 dark:text-purple-300 text-[8px] font-bold px-1.5 py-0.5 rounded-full" data-i18n="no1_seller">N°1 seller</span>
                 </div>
-                <h1 class="font-serif italic font-bold text-xl leading-none text-green-900 dark:text-white mt-1 uppercase tracking-tight">BRUNCH<br><span class="text-green-600 dark:text-green-400">FAVORITES</span></h1>
-                <p class="text-[10px] text-green-800/80 dark:text-green-200/80 mt-1">Savory brunch classics.</p>
+                <h1 class="font-serif italic font-bold text-xl leading-none text-green-900 dark:text-white mt-1 uppercase tracking-tight"><span data-i18n="brunch">BRUNCH</span><br><span class="text-green-600 dark:text-green-400" data-i18n="favorites">FAVORITES</span></h1>
+                <p class="text-[10px] text-green-800/80 dark:text-green-200/80 mt-1" data-i18n="savory_brunch">Savory brunch classics.</p>
                 <div class="flex items-center gap-1 mt-2 mb-2">
                   <div class="flex items-center gap-0.5">
                     <span class="material-symbols-outlined text-[#FFC107] text-[12px]">star</span>
@@ -109,8 +108,8 @@
                   <span class="text-[9px] text-green-600 dark:text-green-400">(2.3k+)</span>
                 </div>
                 <button class="hero-order-btn bg-gradient-to-r from-green-600 to-green-700 dark:from-green-500 dark:to-green-600 text-white text-[10px] font-bold flex items-center justify-center gap-1 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 px-4 py-2 rounded-full group">
-                  <span>Order Now</span>
-                  <span class="material-symbols-outlined text-[12px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                  <span data-i18n="order_now">Order Now</span>
+                  <span class="material-symbols-outlined text-[12px] group-hover:translate-x-1 transition-transform flip-rtl">arrow_forward</span>
                 </button>
               </div>
             </div>
@@ -127,11 +126,11 @@
             <div class="relative z-10 flex h-full justify-between items-center">
               <div class="flex flex-col items-start justify-center h-full w-[60%]">
                 <div class="flex items-center gap-1 mb-1">
-                  <span class="bg-amber-200 dark:bg-amber-700/60 text-amber-700 dark:text-amber-300 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">New Arrival</span>
-                  <span class="bg-red-500 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full">🔥 Hot</span>
+                  <span class="bg-amber-200 dark:bg-amber-700/60 text-amber-700 dark:text-amber-300 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider" data-i18n="new_arrival">New Arrival</span>
+                  <span class="bg-red-500 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full" data-i18n="hot">🔥 Hot</span>
                 </div>
-                <h1 class="font-serif italic font-bold text-xl leading-none text-amber-900 dark:text-white mt-1 uppercase tracking-tight">VELVET<br><span class="text-amber-600 dark:text-amber-400">SIPS</span></h1>
-                <p class="text-[10px] text-amber-800/80 dark:text-amber-200/80 mt-1">Smooth iced blends.</p>
+                <h1 class="font-serif italic font-bold text-xl leading-none text-amber-900 dark:text-white mt-1 uppercase tracking-tight"><span data-i18n="velvet">VELVET</span><br><span class="text-amber-600 dark:text-amber-400" data-i18n="sips">SIPS</span></h1>
+                <p class="text-[10px] text-amber-800/80 dark:text-amber-200/80 mt-1" data-i18n="smooth_iced_blends">Smooth iced blends.</p>
                 <div class="flex items-center gap-1 mt-2 mb-2">
                   <div class="flex items-center gap-0.5">
                     <span class="material-symbols-outlined text-[#FFC107] text-[12px]">star</span>
@@ -140,8 +139,8 @@
                   <span class="text-[9px] text-amber-600 dark:text-amber-400">(1.8k+)</span>
                 </div>
                 <button class="hero-order-btn bg-gradient-to-r from-amber-600 to-amber-700 dark:from-amber-500 dark:to-amber-600 text-white text-[10px] font-bold flex items-center justify-center gap-1 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 px-4 py-2 rounded-full group">
-                  <span>Order Now</span>
-                  <span class="material-symbols-outlined text-[12px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                  <span data-i18n="order_now">Order Now</span>
+                  <span class="material-symbols-outlined text-[12px] group-hover:translate-x-1 transition-transform flip-rtl">arrow_forward</span>
                 </button>
               </div>
             </div>
@@ -158,11 +157,11 @@
             <div class="relative z-10 flex h-full justify-between items-center">
               <div class="flex flex-col items-start justify-center h-full w-[60%]">
                 <div class="flex items-center gap-1 mb-1">
-                  <span class="bg-blue-200 dark:bg-blue-700/60 text-blue-700 dark:text-blue-300 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Morning Special</span>
-                  <span class="bg-cyan-200 dark:bg-cyan-700/60 text-cyan-700 dark:text-cyan-300 text-[8px] font-bold px-1.5 py-0.5 rounded-full">Trend</span>
+                  <span class="bg-blue-200 dark:bg-blue-700/60 text-blue-700 dark:text-blue-300 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider" data-i18n="morning_special">Morning Special</span>
+                  <span class="bg-cyan-200 dark:bg-cyan-700/60 text-cyan-700 dark:text-cyan-300 text-[8px] font-bold px-1.5 py-0.5 rounded-full" data-i18n="trend">Trend</span>
                 </div>
-                <h1 class="font-serif italic font-bold text-xl leading-none text-blue-900 dark:text-white mt-1 uppercase tracking-tight">MORNING<br><span class="text-blue-600 dark:text-blue-400">BREW</span></h1>
-                <p class="text-[10px] text-blue-800/80 dark:text-blue-200/80 mt-1">Freshly brewed coffee.</p>
+                <h1 class="font-serif italic font-bold text-xl leading-none text-blue-900 dark:text-white mt-1 uppercase tracking-tight"><span data-i18n="morning">MORNING</span><br><span class="text-blue-600 dark:text-blue-400" data-i18n="brew">BREW</span></h1>
+                <p class="text-[10px] text-blue-800/80 dark:text-blue-200/80 mt-1" data-i18n="freshly_brewed_coffee">Freshly brewed coffee.</p>
                 <div class="flex items-center gap-1 mt-2 mb-2">
                   <div class="flex items-center gap-0.5">
                     <span class="material-symbols-outlined text-[#FFC107] text-[12px]">star</span>
@@ -171,8 +170,8 @@
                   <span class="text-[9px] text-blue-600 dark:text-blue-400">(3.1k+)</span>
                 </div>
                 <button class="hero-order-btn bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 text-white text-[10px] font-bold flex items-center justify-center gap-1 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 px-4 py-2 rounded-full group">
-                  <span>Order Now</span>
-                  <span class="material-symbols-outlined text-[12px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                  <span data-i18n="order_now">Order Now</span>
+                  <span class="material-symbols-outlined text-[12px] group-hover:translate-x-1 transition-transform flip-rtl">arrow_forward</span>
                 </button>
               </div>
             </div>
@@ -189,11 +188,11 @@
             <div class="relative z-10 flex h-full justify-between items-center">
               <div class="flex flex-col items-start justify-center h-full w-[60%]">
                 <div class="flex items-center gap-1 mb-1">
-                  <span class="bg-green-200 dark:bg-green-700/60 text-green-700 dark:text-green-300 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Sweet Treats</span>
-                  <span class="bg-yellow-400 text-yellow-900 text-[8px] font-bold px-1.5 py-0.5 rounded-full">⭐ Popular</span>
+                  <span class="bg-green-200 dark:bg-green-700/60 text-green-700 dark:text-green-300 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider" data-i18n="sweet_treats">Sweet Treats</span>
+                  <span class="bg-yellow-400 text-yellow-900 text-[8px] font-bold px-1.5 py-0.5 rounded-full" data-i18n="popular">⭐ Popular</span>
                 </div>
-                <h1 class="font-serif italic font-bold text-xl leading-none text-pink-900 dark:text-white mt-1 uppercase tracking-tight">SWEET<br><span class="text-green-600 dark:text-green-400">DELIGHTS</span></h1>
-                <p class="text-[10px] text-green-800/80 dark:text-green-200/80 mt-1">Fluffy pancakes, sweet treats.</p>
+                <h1 class="font-serif italic font-bold text-xl leading-none text-pink-900 dark:text-white mt-1 uppercase tracking-tight"><span data-i18n="sweet">SWEET</span><br><span class="text-green-600 dark:text-green-400" data-i18n="delights">DELIGHTS</span></h1>
+                <p class="text-[10px] text-green-800/80 dark:text-green-200/80 mt-1" data-i18n="fluffy_pancakes">Fluffy pancakes, sweet treats.</p>
                 <div class="flex items-center gap-1 mt-2 mb-2">
                   <div class="flex items-center gap-0.5">
                     <span class="material-symbols-outlined text-[#FFC107] text-[12px]">star</span>
@@ -202,8 +201,8 @@
                   <span class="text-[9px] text-green-600 dark:text-green-400">(4.2k+)</span>
                 </div>
                 <button class="hero-order-btn bg-gradient-to-r from-pink-600 to-pink-700 dark:from-pink-500 dark:to-pink-600 text-white text-[10px] font-bold flex items-center justify-center gap-1 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 px-4 py-2 rounded-full group">
-                  <span>Order Now</span>
-                  <span class="material-symbols-outlined text-[12px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                  <span data-i18n="order_now">Order Now</span>
+                  <span class="material-symbols-outlined text-[12px] group-hover:translate-x-1 transition-transform flip-rtl">arrow_forward</span>
                 </button>
               </div>
             </div>
@@ -219,8 +218,8 @@
     <div class="bg-background-light dark:bg-background-dark mt-0 pt-0 pb-4 relative z-0">
     <section class="">
       <div class="px-4 md:px-8 mb-0 flex items-center justify-between max-w-4xl mx-auto w-full">
-        <h3 class="text-lg md:text-xl font-bold text-gray-900 dark:text-white uppercase tracking-tight">Explore</h3>
-        <span class="text-primary text-xs font-extrabold uppercase tracking-wider cursor-pointer">View All</span>
+        <h3 class="text-lg md:text-xl font-bold text-gray-900 dark:text-white uppercase tracking-tight" data-i18n="explore">Explore</h3>
+        <span class="text-primary text-xs font-extrabold uppercase tracking-wider cursor-pointer" data-i18n="view_all">View All</span>
       </div>
       <div id="explore-categories" class="flex overflow-x-auto hide-scrollbar gap-2 px-4 md:px-8 pb-0 max-w-4xl mx-auto w-full">
         <!-- 2 Cold Drinks -->
@@ -232,7 +231,7 @@
               </div>
             </div>
           </div>
-          <p class="text-[10px] text-gray-800 dark:text-white text-center">Milkshake</p>
+          <p class="text-[10px] text-gray-800 dark:text-white text-center" data-i18n="milkshake">Milkshake</p>
         </div>
 
         <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="window.location.href='../juces sub catégorie page/index.html'">
@@ -243,7 +242,7 @@
               </div>
             </div>
           </div>
-          <p class="text-[10px] text-gray-800 dark:text-white text-center">Juice</p>
+          <p class="text-[10px] text-gray-800 dark:text-white text-center" data-i18n="juice">Juice</p>
         </div>
 
         <!-- 3 Food Items -->
@@ -255,7 +254,7 @@
               </div>
             </div>
           </div>
-          <p class="text-[10px] text-gray-800 dark:text-white text-center">Sweet Pastries</p>
+          <p class="text-[10px] text-gray-800 dark:text-white text-center" data-i18n="sweet_pastries">Sweet Pastries</p>
         </div>
 
         <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="window.location.href='../toast brunch sub catégorie page/index.html'">
@@ -266,7 +265,7 @@
               </div>
             </div>
           </div>
-          <p class="text-[10px] text-gray-800 dark:text-white text-center">Toast</p>
+          <p class="text-[10px] text-gray-800 dark:text-white text-center" data-i18n="toast">Toast</p>
         </div>
 
         <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="window.location.href='../long_scroll_brunch_explorer/index.html'">
@@ -277,7 +276,7 @@
               </div>
             </div>
           </div>
-          <p class="text-[10px] text-gray-800 dark:text-white text-center">Brunch</p>
+          <p class="text-[10px] text-gray-800 dark:text-white text-center" data-i18n="brunch">Brunch</p>
         </div>
 
         <!-- 2 Brew Items -->
@@ -289,7 +288,7 @@
               </div>
             </div>
           </div>
-          <p class="text-[10px] text-gray-800 dark:text-white text-center">Black Coffee</p>
+          <p class="text-[10px] text-gray-800 dark:text-white text-center" data-i18n="black_coffee">Black Coffee</p>
         </div>
 
         <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="window.location.href='../latté hot drink sub catégorie page/index.html'">
@@ -300,7 +299,7 @@
               </div>
             </div>
           </div>
-          <p class="text-[10px] text-gray-800 dark:text-white text-center">Latte</p>
+          <p class="text-[10px] text-gray-800 dark:text-white text-center" data-i18n="latte">Latte</p>
         </div>
 
         <!-- 2 Cold Drinks -->
@@ -312,7 +311,7 @@
               </div>
             </div>
           </div>
-          <p class="text-[10px] text-gray-800 dark:text-white text-center">Smoothie</p>
+          <p class="text-[10px] text-gray-800 dark:text-white text-center" data-i18n="smoothie">Smoothie</p>
         </div>
 
         <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="window.location.href='../tea and infusion sub catégorie page/index.html'">
@@ -323,7 +322,7 @@
               </div>
             </div>
           </div>
-          <p class="text-[10px] text-gray-800 dark:text-white text-center">Tea &amp; Infusion</p>
+          <p class="text-[10px] text-gray-800 dark:text-white text-center" data-i18n="tea_infusion">Tea &amp; Infusion</p>
         </div>
 
         <!-- 1 Food Item -->
@@ -335,7 +334,7 @@
               </div>
             </div>
           </div>
-          <p class="text-[10px] text-gray-800 dark:text-white text-center">Artisanal Bread</p>
+          <p class="text-[10px] text-gray-800 dark:text-white text-center" data-i18n="artisanal_bread">Artisanal Bread</p>
         </div>
 
         <!-- 1 Brew Item -->
@@ -347,14 +346,14 @@
               </div>
             </div>
           </div>
-          <p class="text-[10px] text-gray-800 dark:text-white text-center">Brew</p>
+          <p class="text-[10px] text-gray-800 dark:text-white text-center" data-i18n="brew">Brew</p>
         </div>
       </div>
     </section>
 
     <section class="px-4 md:px-8 pt-0 md:pt-0 mt-3 max-w-4xl mx-auto w-full">
       <div class="text-center mb-5">
-        <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white uppercase tracking-tight mb-1">Our Menu</h3>
+        <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white uppercase tracking-tight mb-1" data-i18n="our_menu">Our Menu</h3>
         <div class="flex items-center justify-center gap-2 opacity-90">
           <div class="h-[1px] w-16 bg-gradient-to-r from-transparent via-amber-400 to-amber-400"></div>
           <div class="w-1.5 h-1.5 rotate-45 bg-amber-400"></div>
@@ -369,8 +368,8 @@
                onerror="this.src='assets/Brunch.jpg'">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
           <div class="relative z-20 p-4 text-white">
-            <h4 class="text-white text-lg md:text-xl font-bold uppercase">Brunch</h4>
-            <p class="text-white text-[10px] md:text-xs mt-1">Toasts & Bowls</p>
+            <h4 class="text-white text-lg md:text-xl font-bold uppercase" data-i18n="brunch">Brunch</h4>
+            <p class="text-white text-[10px] md:text-xs mt-1" data-i18n="toasts_bowls">Toasts & Bowls</p>
           </div>
         </a>
         <!-- Brew -->
@@ -380,8 +379,8 @@
                onerror="this.src='assets/Brew.jpg'">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
           <div class="relative z-20 p-4 text-white">
-            <h4 class="text-white text-lg md:text-xl font-bold uppercase">Brew</h4>
-            <p class="text-white text-[10px] md:text-xs mt-1">Coffee & Tea</p>
+            <h4 class="text-white text-lg md:text-xl font-bold uppercase" data-i18n="brew">Brew</h4>
+            <p class="text-white text-[10px] md:text-xs mt-1" data-i18n="coffee_tea">Coffee & Tea</p>
           </div>
         </a>
         <!-- Cold Drink -->
@@ -391,8 +390,8 @@
                onerror="this.src='assets/Cold%20drinks.jpg'">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
           <div class="relative z-20 p-4 text-white">
-            <h4 class="text-white text-lg md:text-xl font-bold uppercase">Cold Drink</h4>
-            <p class="text-white text-[10px] md:text-xs mt-1">Juices & Shakes</p>
+            <h4 class="text-white text-lg md:text-xl font-bold uppercase" data-i18n="cold_drink">Cold Drink</h4>
+            <p class="text-white text-[10px] md:text-xs mt-1" data-i18n="juices_shakes">Juices & Shakes</p>
           </div>
         </a>
         <!-- Pastry -->
@@ -402,8 +401,8 @@
                onerror="this.src='assets/pastry.jpg'">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
           <div class="relative z-20 p-4 text-white">
-            <h4 class="text-white text-lg md:text-xl font-bold uppercase">Pastry</h4>
-            <p class="text-white text-[10px] md:text-xs mt-1">Bakery & Sweets</p>
+            <h4 class="text-white text-lg md:text-xl font-bold uppercase" data-i18n="pastry">Pastry</h4>
+            <p class="text-white text-[10px] md:text-xs mt-1" data-i18n="bakery_sweets">Bakery & Sweets</p>
           </div>
         </a>
       </div>
@@ -413,9 +412,9 @@
       <div class="mb-4 flex items-center justify-between">
         <div class="flex-1">
           <div class="text-center">
-            <span class="text-primary font-bold text-[10px] uppercase tracking-[0.2em] block mt-6">Trending Now</span>
+            <span class="text-primary font-bold text-[10px] uppercase tracking-[0.2em] block mt-6" data-i18n="trending_now">Trending Now</span>
           </div>
-          <h3 class="font-serif italic font-bold text-lg md:text-xl text-gray-900 dark:text-white leading-tight mt-2 text-left">All variety of items</h3>
+          <h3 class="font-serif italic font-bold text-lg md:text-xl text-gray-900 dark:text-white leading-tight mt-2 text-left" data-i18n="all_items">All variety of items</h3>
         </div>
         <button class="bg-white dark:bg-[#2a1e19] p-3 rounded-full shadow-sm border border-gray-100 dark:border-white/5 w-12 h-12 flex items-center justify-center">
           <span class="material-symbols-outlined text-[22px] text-gray-600 dark:text-gray-300">tune</span>
@@ -429,20 +428,20 @@
       <nav class="bg-white dark:bg-[#2a1e19] border-t border-gray-100 dark:border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] backdrop-blur-md h-[55px] flex items-stretch justify-between px-6">
         <button id="tab-menu" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300">
           <span class="material-symbols-outlined text-[22px]">home</span>
-          <span class="text-[10px] font-bold uppercase tracking-widest">Home</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest" data-i18n="home">Home</span>
         </button>
         <button id="tab-categories" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300">
           <span class="material-symbols-outlined text-[22px]">category</span>
-          <span class="text-[10px] font-bold uppercase tracking-widest">Explore</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest" data-i18n="explore">Explore</span>
         </button>
         <button id="view-cart-btn" class="relative flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300">
           <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
-          <span class="text-[10px] font-bold uppercase tracking-widest">Cart</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest" data-i18n="cart">Cart</span>
           <span id="cart-items-text" class="absolute -top-1 right-4 bg-primary text-white text-[10px] font-bold px-1.5 py-[2px] rounded-full hidden">0 Items</span>
         </button>
         <button id="tab-profile" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300">
           <span class="material-symbols-outlined text-[22px]">person</span>
-          <span class="text-[10px] font-bold uppercase tracking-widest">Profile</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest" data-i18n="profile">Profile</span>
         </button>
       </nav>
     </div>
@@ -452,29 +451,29 @@
     <div class="absolute bottom-0 left-0 right-0 bg-white dark:bg-[#2a1e19] rounded-t-[2rem] border-t border-gray-100 dark:border-white/5 shadow-[0_-10px_30px_rgba(0,0,0,0.15)] p-6 max-w-4xl mx-auto">
       <div class="w-12 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full mx-auto mb-6"></div>
       <div class="flex items-center justify-between mb-4">
-        <h3 id="order-modal-title" class="text-xl font-bold">Order Status</h3>
-        <span id="order-status-badge" class="px-2 py-0.5 bg-orange-100 dark:bg-orange-900/30 text-primary text-[10px] font-bold rounded-full">Received</span>
+        <h3 id="order-modal-title" class="text-xl font-bold" data-i18n="order_status">Order Status</h3>
+        <span id="order-status-badge" class="px-2 py-0.5 bg-orange-100 dark:bg-orange-900/30 text-primary text-[10px] font-bold rounded-full" data-i18n="received">Received</span>
       </div>
       <div class="space-y-3 max-h-[40vh] overflow-y-auto pr-2" id="order-items"></div>
       <div class="mt-6 pt-4 border-t border-gray-100 dark:border-white/5 space-y-2">
         <div class="flex justify-between items-center">
-          <span id="subtotal-label" class="text-gray-400 font-bold uppercase tracking-widest text-[10px]">Subtotal</span>
+          <span id="subtotal-label" class="text-gray-400 font-bold uppercase tracking-widest text-[10px]" data-i18n="subtotal">Subtotal</span>
           <span id="modal-subtotal" class="font-bold">$0.00</span>
         </div>
         <div class="flex justify-between items-center">
-          <span id="tax-label" class="text-gray-400 font-bold uppercase tracking-widest text-[10px]">Tax (10%)</span>
+          <span id="tax-label" class="text-gray-400 font-bold uppercase tracking-widest text-[10px]" data-i18n="tax">Tax (10%)</span>
           <span id="modal-tax" class="font-bold">$0.00</span>
         </div>
         <div class="flex justify-between items-center pt-2">
-          <span id="total-label" class="text-xl font-bold">Total</span>
+          <span id="total-label" class="text-xl font-bold" data-i18n="total">Total</span>
           <span id="modal-total" class="text-2xl font-black text-primary">$0.00</span>
         </div>
       </div>
       <div class="mt-6 grid grid-cols-2 gap-3">
-        <button id="order-close-btn" class="w-full bg-gray-100 dark:bg-white/5 py-4 rounded-2xl font-bold hover:scale-[1.02] transition-all">
+        <button id="order-close-btn" class="w-full bg-gray-100 dark:bg-white/5 py-4 rounded-2xl font-bold hover:scale-[1.02] transition-all" data-i18n="close">
           Close
         </button>
-        <button id="order-place-btn" class="w-full bg-primary text-white py-4 rounded-2xl font-bold shadow-glow hover:scale-[1.02] transition-all">
+        <button id="order-place-btn" class="w-full bg-primary text-white py-4 rounded-2xl font-bold shadow-glow hover:scale-[1.02] transition-all" data-i18n="place_order">
           Place Order
         </button>
       </div>

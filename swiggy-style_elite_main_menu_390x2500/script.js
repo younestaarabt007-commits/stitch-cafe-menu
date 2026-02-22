@@ -181,22 +181,22 @@ function renderBestsellers(items) {
         <span class="material-symbols-outlined text-[14px] text-green-600 dark:text-green-400">${getCategoryIcon(item.category)}</span>
       </div>
       <div class="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden bg-gray-50 dark:bg-black/20 relative shrink-0">
-        <img src="${displayImg}" class="w-full h-full object-cover" alt="${item.name}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'">
+        <img src="${displayImg}" class="w-full h-full object-cover" alt="${getMenuTranslation(item, 'name')}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'">
       </div>
       <div class="flex-1 min-w-0 flex flex-col h-24 md:h-32 justify-between py-0.5">
         <div>
-          <h4 class="font-bold text-[13px] md:text-sm text-gray-900 dark:text-white leading-tight pr-6">${item.name}</h4>
+          <h4 class="font-bold text-[13px] md:text-sm text-gray-900 dark:text-white leading-tight pr-6">${getMenuTranslation(item, 'name')}</h4>
           <div class="flex items-center gap-1 mt-1">
             <span class="material-symbols-outlined text-[14px] text-[#FFC107]" style="font-variation-settings: 'FILL' 1">star</span>
             <span class="text-[11px] text-gray-700 dark:text-gray-300 font-semibold">${Number(rating).toFixed(1)}</span>
             <span class="text-[10px] text-gray-400">(${Math.floor(Number(rating) * 25)}+)</span>
           </div>
-          <p class="text-[10px] md:text-[11px] text-gray-500 dark:text-gray-400 line-clamp-2 mt-1">${item.description}</p>
+          <p class="text-[10px] md:text-[11px] text-gray-500 dark:text-gray-400 line-clamp-2 mt-1">${getMenuTranslation(item, 'description')}</p>
         </div>
         <div class="flex items-center justify-between mt-auto">
           <span class="text-xs font-bold text-primary">$${typeof item.price === 'number' ? item.price.toFixed(2) : item.price}</span>
           <button class="bg-orange-50 text-primary dark:bg-primary/20 dark:text-primary text-[12px] font-black uppercase shadow-sm active:scale-95 transition-transform flex items-center justify-center w-[84px] h-[36px] rounded-[12px]" onclick="addToCart('${item.id}')">
-            Add
+            ${getTranslation('add')}
           </button>
         </div>
       </div>
@@ -207,15 +207,15 @@ function renderBestsellers(items) {
 function renderCategories(items) {
   // SUB-CATEGORIES to be displayed as circles with real images
   const subCategories = [
-    { name: 'Tea & Infusion', img: 'assets/exotic-cocktail-closeup_181624-983.avif', link: '../tea and infusion sub catégorie page/index.html' },
-    { name: 'Milkshake', img: 'assets/close-up-milkshake-glass-plate_117406-7215.jpg', link: '../milkshake sub catégorie page/index.html' },
-    { name: 'Juice', img: 'assets/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif', link: '../juces sub catégorie page/index.html' },
-    { name: 'Sweet Pastries', img: 'assets/vertical-shot-pancakes-with-fruits-top_181624-23923.jpg', link: '../sweet pastries sub catégorie page/index.html' },
-    { name: 'Black Coffee', img: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=500&auto=format&fit=crop', link: '../black coffee sub catégorie page/index.html' },
-    { name: 'Latte', img: 'https://images.unsplash.com/photo-1570968992193-6e5c9220956c?q=80&w=500&auto=format&fit=crop', link: '../latté hot drink sub catégorie page/index.html' },
-    { name: 'Smoothie', img: 'assets/raspberry-smoothie_1150-18529.jpg', link: '../smothie sub catégorie page/index.html' },
-    { name: 'Toast', img: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?q=80&w=500&auto=format&fit=crop', link: '../toast brunch sub catégorie page/index.html' },
-    { name: 'Artisanal Bread', img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500&auto=format&fit=crop', link: '../artisanal bread sub catégorie page/index.html' }
+    { name: getTranslation('Tea & Infusion'), img: 'assets/exotic-cocktail-closeup_181624-983.avif', link: '../tea and infusion sub catégorie page/index.html' },
+    { name: getTranslation('Milkshake'), img: 'assets/close-up-milkshake-glass-plate_117406-7215.jpg', link: '../milkshake sub catégorie page/index.html' },
+    { name: getTranslation('Juice'), img: 'assets/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif', link: '../juces sub catégorie page/index.html' },
+    { name: getTranslation('Sweet Pastries'), img: 'assets/vertical-shot-pancakes-with-fruits-top_181624-23923.jpg', link: '../sweet pastries sub catégorie page/index.html' },
+    { name: getTranslation('Black Coffee'), img: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=500&auto=format&fit=crop', link: '../black coffee sub catégorie page/index.html' },
+    { name: getTranslation('Latte'), img: 'https://images.unsplash.com/photo-1570968992193-6e5c9220956c?q=80&w=500&auto=format&fit=crop', link: '../latté hot drink sub catégorie page/index.html' },
+    { name: getTranslation('Smoothie'), img: 'assets/raspberry-smoothie_1150-18529.jpg', link: '../smothie sub catégorie page/index.html' },
+    { name: getTranslation('Toast'), img: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?q=80&w=500&auto=format&fit=crop', link: '../toast brunch sub catégorie page/index.html' },
+    { name: getTranslation('Artisanal Bread'), img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500&auto=format&fit=crop', link: '../artisanal bread sub catégorie page/index.html' }
   ];
 
   const container = document.getElementById('explore-categories');
@@ -233,15 +233,6 @@ function renderCategories(items) {
       <p class="text-[10px] text-gray-800 dark:text-white text-center leading-tight max-w-[5rem]">${cat.name}</p>
     </div>
   `).join('');
-
-  // Ensure labels display correct names (override any default text)
-  const labels = container.querySelectorAll('p.text-[10px].text-center');
-  labels.forEach((label, idx) => {
-    const name = subCategories[idx] && subCategories[idx].name;
-    if (name && label.textContent.trim().toLowerCase() !== name.toLowerCase()) {
-      label.textContent = name;
-    }
-  });
 }
 
 function getCategoryIcon(cat) {
@@ -476,13 +467,91 @@ window.addToCart = (id) => {
 };
 
 function updateCartUI() {
-  const badge = document.getElementById('cart-badge');
+  const badge = document.getElementById('cart-items-text');
   if (badge) {
     const total = cart.reduce((acc, item) => acc + item.quantity, 0);
-    badge.textContent = total;
+    const itemsText = getTranslation('items');
+    badge.textContent = `${total} ${itemsText}`;
     badge.classList.toggle('hidden', total === 0);
   }
 }
+
+function openOrderModal() {
+  const modal = document.getElementById('order-modal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    renderCartItems();
+  }
+}
+
+function closeOrderModal() {
+  const modal = document.getElementById('order-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+  }
+}
+
+function renderCartItems() {
+  const container = document.getElementById('order-items');
+  const subtotalEl = document.getElementById('modal-subtotal');
+  const taxEl = document.getElementById('modal-tax');
+  const totalEl = document.getElementById('modal-total');
+  
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  let subtotal = 0;
+  
+  cart.forEach(item => {
+    const itemTotal = item.price * item.quantity;
+    subtotal += itemTotal;
+    
+    const div = document.createElement('div');
+    div.className = 'flex items-center gap-3 bg-gray-50 dark:bg-white/5 p-3 rounded-xl';
+    
+    // Get translated name
+    const itemName = getMenuTranslation(item, 'name');
+    
+    div.innerHTML = `
+      <div class="w-12 h-12 rounded-lg overflow-hidden shrink-0">
+        <img src="${item.image}" class="w-full h-full object-cover" alt="${itemName}">
+      </div>
+      <div class="flex-1 min-w-0">
+        <h4 class="font-bold text-sm truncate dark:text-white">${itemName}</h4>
+        <div class="flex items-center gap-2 mt-1">
+          <span class="text-xs text-gray-500 dark:text-gray-400">$${item.price}</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onclick="updateItemQuantity('${item.id}', -1)" class="w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-xs font-bold">-</button>
+        <span class="text-sm font-bold w-4 text-center dark:text-white">${item.quantity}</span>
+        <button onclick="updateItemQuantity('${item.id}', 1)" class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold">+</button>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+  
+  const tax = subtotal * 0.1;
+  const total = subtotal + tax;
+  
+  if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+  if (taxEl) taxEl.textContent = `$${tax.toFixed(2)}`;
+  if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
+}
+
+window.updateItemQuantity = (id, change) => {
+  const item = cart.find(i => i.id === id);
+  if (item) {
+    item.quantity += change;
+    if (item.quantity <= 0) {
+      cart = cart.filter(i => i.id !== id);
+    }
+    updateCartUI();
+    renderCartItems();
+    localStorage.setItem('stitch_cart', JSON.stringify(cart));
+  }
+};
 
 // Helper to get stored cart
 function getStoredCart() {
@@ -499,15 +568,636 @@ function setupEvents() {
   const searchBtn = document.querySelector('.material-symbols-outlined.text-xl'); // Assuming search icon
   if (searchBtn) {
     searchBtn.addEventListener('click', () => {
-      alert('Search feature coming soon!');
+      alert(getTranslation('search_feature_soon'));
     });
+  }
+
+  const cartBtn = document.getElementById('view-cart-btn');
+  if (cartBtn) {
+    cartBtn.addEventListener('click', openOrderModal);
+  }
+  
+  const closeBtn = document.getElementById('order-close-btn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeOrderModal);
   }
 }
 
-// Language Helper (Placeholder for future translation logic)
+// Language Helper
+const translations = {
+  en: {
+    table_12: "Table 12",
+    stitch_cafe: "Stitch Café",
+    dine_in: "Dine In",
+    take_away: "Take Away",
+    chefs_choice: "Chef's Choice",
+    no1_seller: "N°1 seller",
+    brunch: "BRUNCH",
+    favorites: "FAVORITES",
+    savory_brunch: "Savory brunch classics.",
+    order_now: "Order Now",
+    new_arrival: "New Arrival",
+    hot: "🔥 Hot",
+    velvet: "VELVET",
+    sips: "SIPS",
+    smooth_iced_blends: "Smooth iced blends.",
+    morning_special: "Morning Special",
+    trend: "Trend",
+    morning: "MORNING",
+    brew: "BREW",
+    freshly_brewed_coffee: "Freshly brewed coffee.",
+    sweet_treats: "Sweet Treats",
+    popular: "⭐ Popular",
+    sweet: "SWEET",
+    delights: "DELIGHTS",
+    fluffy_pancakes: "Fluffy pancakes, sweet treats.",
+    explore: "Explore",
+    view_all: "View All",
+    milkshake: "Milkshake",
+    juice: "Juice",
+    sweet_pastries: "Sweet Pastries",
+    toast: "Toast",
+    black_coffee: "Black Coffee",
+    latte: "Latte",
+    smoothie: "Smoothie",
+    tea_infusion: "Tea & Infusion",
+    artisanal_bread: "Artisanal Bread",
+    our_menu: "Our Menu",
+    toasts_bowls: "Toasts & Bowls",
+    coffee_tea: "Coffee & Tea",
+    cold_drink: "Cold Drink",
+    juices_shakes: "Juices & Shakes",
+    pastry: "Pastry",
+    bakery_sweets: "Bakery & Sweets",
+    trending_now: "Trending Now",
+    all_items: "All variety of items",
+    home: "Home",
+    cart: "Cart",
+    profile: "Profile",
+    search_placeholder: "Search...",
+    search_feature_soon: "Search feature coming soon!",
+    items: "items",
+    add: "ADD",
+    subtotal: "Subtotal",
+    tax: "Tax (10%)",
+    total: "Total",
+    close: "Close",
+    place_order: "Place Order",
+    order_status: "Order Status",
+    received: "Received",
+    // Categories
+    'Tea & Infusion': "Tea & Infusion",
+    'Milkshake': "Milkshake",
+    'Juice': "Juice",
+    'Sweet Pastries': "Sweet Pastries",
+    'Black Coffee': "Black Coffee",
+    'Latte': "Latte",
+    'Smoothie': "Smoothie",
+    'Toast': "Toast",
+    'Artisanal Bread': "Artisanal Bread"
+  },
+  fr: {
+    table_12: "Table 12",
+    stitch_cafe: "Stitch Café",
+    dine_in: "Sur Place",
+    take_away: "À Emporter",
+    chefs_choice: "Choix du Chef",
+    no1_seller: "N°1 des ventes",
+    brunch: "BRUNCH",
+    favorites: "FAVORIS",
+    savory_brunch: "Classiques salés du brunch.",
+    order_now: "Commander",
+    new_arrival: "Nouveauté",
+    hot: "🔥 Chaud",
+    velvet: "VELOURS",
+    sips: "GORGEES",
+    smooth_iced_blends: "Mélanges glacés onctueux.",
+    morning_special: "Spécial Matin",
+    trend: "Tendance",
+    morning: "MATIN",
+    brew: "INFUSION",
+    freshly_brewed_coffee: "Café fraîchement préparé.",
+    sweet_treats: "Douceurs Sucrées",
+    popular: "⭐ Populaire",
+    sweet: "DOUCEUR",
+    delights: "DELICES",
+    fluffy_pancakes: "Pancakes moelleux, douceurs.",
+    explore: "Explorer",
+    view_all: "Voir Tout",
+    milkshake: "Milkshake",
+    juice: "Jus",
+    sweet_pastries: "Pâtisseries Sucrées",
+    toast: "Tartine",
+    black_coffee: "Café Noir",
+    latte: "Latte",
+    smoothie: "Smoothie",
+    tea_infusion: "Thé & Infusion",
+    artisanal_bread: "Pain Artisanal",
+    our_menu: "Notre Menu",
+    toasts_bowls: "Tartines & Bols",
+    coffee_tea: "Café & Thé",
+    cold_drink: "Boissons Froides",
+    juices_shakes: "Jus & Shakes",
+    pastry: "Pâtisserie",
+    bakery_sweets: "Boulangerie & Douceurs",
+    trending_now: "Tendances",
+    all_items: "Toute la variété",
+    home: "Accueil",
+    cart: "Panier",
+    profile: "Profil",
+    search_placeholder: "Rechercher...",
+    search_feature_soon: "Fonction de recherche bientôt disponible !",
+    items: "articles",
+    add: "AJOUTER",
+    subtotal: "Sous-total",
+    tax: "Taxe (10%)",
+    total: "Total",
+    close: "Fermer",
+    place_order: "Commander",
+    order_status: "Statut de la commande",
+    received: "Reçu",
+    // Categories
+    'Tea & Infusion': "Thé & Infusion",
+    'Milkshake': "Milkshake",
+    'Juice': "Jus",
+    'Sweet Pastries': "Pâtisseries Sucrées",
+    'Black Coffee': "Café Noir",
+    'Latte': "Latte",
+    'Smoothie': "Smoothie",
+    'Toast': "Tartine",
+    'Artisanal Bread': "Pain Artisanal"
+  },
+  ar: {
+    table_12: "طاولة 12",
+    stitch_cafe: "ستيتش كافيه",
+    dine_in: "تناول هنا",
+    take_away: "سفري",
+    chefs_choice: "اختيار الشيف",
+    no1_seller: "الأكثر مبيعاً",
+    brunch: "فطور متأخر",
+    favorites: "المفضلة",
+    savory_brunch: "كلاسيكيات الفطور المالح.",
+    order_now: "اطلب الآن",
+    new_arrival: "وصل حديثاً",
+    hot: "🔥 ساخن",
+    velvet: "مخملي",
+    sips: "رشفات",
+    smooth_iced_blends: "مشروبات مثلجة ناعمة.",
+    morning_special: "عرض الصباح",
+    trend: "رائج",
+    morning: "الصباح",
+    brew: "قهوة",
+    freshly_brewed_coffee: "قهوة طازجة التحضير.",
+    sweet_treats: "حلويات",
+    popular: "⭐ مشهور",
+    sweet: "حلوى",
+    delights: "لذيذة",
+    fluffy_pancakes: "بان كيك هش، حلويات.",
+    explore: "استكشف",
+    view_all: "عرض الكل",
+    milkshake: "ميلك شيك",
+    juice: "عصير",
+    sweet_pastries: "معجنات حلوة",
+    toast: "توست",
+    black_coffee: "قهوة سوداء",
+    latte: "لاتيه",
+    smoothie: "سموثي",
+    tea_infusion: "شاي وأعشاب",
+    artisanal_bread: "خبز حرفي",
+    our_menu: "قائمتنا",
+    toasts_bowls: "توست وسلطانيات",
+    coffee_tea: "قهوة وشاي",
+    cold_drink: "مشروبات باردة",
+    juices_shakes: "عصائر ومخفوقات",
+    pastry: "معجنات",
+    bakery_sweets: "مخبوزات وحلويات",
+    trending_now: "الأكثر رواجاً",
+    all_items: "جميع الأصناف",
+    home: "الرئيسية",
+    cart: "السلة",
+    profile: "الملف الشخصي",
+    search_placeholder: "بحث...",
+    add: "إضافة",
+    search_feature_soon: "ميزة البحث قريبا!",
+    items: "عناصر",
+    order_status: "حالة الطلب",
+    received: "تم الاستلام",
+    subtotal: "المجموع الفرعي",
+    tax: "ضريبة (10%)",
+    total: "المجموع",
+    close: "إغلاق",
+    place_order: "تأكيد الطلب",
+    // Categories
+    'Tea & Infusion': "شاي وأعشاب",
+    'Milkshake': "ميلك شيك",
+    'Juice': "عصير",
+    'Sweet Pastries': "معجنات حلوة",
+    'Black Coffee': "قهوة سوداء",
+    'Latte': "لاتيه",
+    'Smoothie': "سموثي",
+    'Toast': "توست",
+    'Artisanal Bread': "خبز حرفي"
+  }
+};
+
+const menuTranslations = {
+  // Brunch
+  'brunch-1': {
+    fr: { name: "Omelette Fermière", description: "Œufs bio, cheddar, herbes fraîches." },
+    ar: { name: "عجة ريفية", description: "بيض عضوي، جبن شيدر، أعشاب طازجة." }
+  },
+  'brunch-2': {
+    fr: { name: "Œufs Bénédicte", description: "Muffin anglais, bacon, sauce hollandaise." },
+    ar: { name: "بيض بنديكت", description: "مافن إنجليزي، لحم مقدد، صلصة هولنديز." }
+  },
+  'brunch-3': {
+    fr: { name: "Shakshuka Épicée", description: "Œufs pochés dans une sauce tomate épicée." },
+    ar: { name: "شكشوكة حارة", description: "بيض مسلوق في صلصة طماطم حارة." }
+  },
+  'brunch-4': {
+    fr: { name: "Poêlée du Jardin", description: "Pommes de terre rôties, chou frisé, poivrons." },
+    ar: { name: "مقلاة الحديقة", description: "بطاطس مشوية، كرنب، فلفل." }
+  },
+  'brunch-5': {
+    fr: { name: "Burrito Brunch", description: "Chorizo, œufs brouillés, haricots." },
+    ar: { name: "بوريتو الفطور", description: "تشوريزو، بيض مخفوق، فاصوليا." }
+  },
+  'brunch-6': {
+    fr: { name: "Steak & Œufs", description: "Faux-filet 6oz, deux œufs au choix." },
+    ar: { name: "ستيك وبيض", description: "شريحة لحم 6 أونصة، بيضتان حسب الرغبة." }
+  },
+  'brunch-7': {
+    fr: { name: "Blanc d'Œuf Fitness", description: "Épinards, fromage de chèvre, blancs d'œufs." },
+    ar: { name: "بياض البيض الصحي", description: "سبانخ، جبن ماعز، بياض بيض." }
+  },
+  'brunch-8': {
+    fr: { name: "Tacos Brunch", description: "Tortillas de maïs, oignons marinés, avocat." },
+    ar: { name: "تاكو الفطور", description: "تورتيلا ذرة، بصل مخلل، أفوكادو." }
+  },
+  'brunch-9': {
+    fr: { name: "Frittata de Fer", description: "Oignons, pommes de terre, cheddar vieilli." },
+    ar: { name: "فريتاتا الحديد", description: "بصل، بطاطس، شيدر معتق." }
+  },
+  'brunch-10': {
+    fr: { name: "Délice Açaï", description: "Baies mélangées, granola, miel." },
+    ar: { name: "ديلك آساي", description: "توت مشكل، جرانولا، عسل." }
+  },
+  'brunch-11': {
+    fr: { name: "Gaufre Belge", description: "Gaufres croustillantes, baies, crème." },
+    ar: { name: "وافل بلجيكي", description: "وافل مقرمش، توت، كريمة." }
+  },
+  'brunch-12': {
+    fr: { name: "Petit Déjeuner Anglais", description: "Saucisse, bacon, œufs, haricots, toast." },
+    ar: { name: "فطور إنجليزي كامل", description: "سجق، لحم مقدد، بيض، فاصوليا، توست." }
+  },
+
+  // Brew
+  'brew-1': {
+    fr: { name: "Nitro Cold Brew", description: "Infusion 18h, infusé à l'azote." },
+    ar: { name: "نيترو كولد برو", description: "نقع 18 ساعة، مشبع بالنيتروجين." }
+  },
+  'brew-2': {
+    fr: { name: "Matcha Cérémonial", description: "Matcha d'Uji avec lait d'avoine." },
+    ar: { name: "ماتشا احتفالي", description: "ماتشا من أوجي مع حليب الشوفان." }
+  },
+  'brew-3': {
+    fr: { name: "Yirgacheffe Éthiopien", description: "Notes florales avec une finale citronnée." },
+    ar: { name: "يرجاشيف إثيوبي", description: "نكهات زهرية مع لمسة حمضية." }
+  },
+  'brew-4': {
+    fr: { name: "Dirty Masala Chai", description: "Épices maison, double dose." },
+    ar: { name: "ديرتي ماسالا تشاي", description: "توابل منزلية، جرعة مزدوجة." }
+  },
+  'brew-5': {
+    fr: { name: "Cortado Lait d'Avoine", description: "Parts égales expresso & lait." },
+    ar: { name: "كورتادو حليب الشوفان", description: "كميات متساوية من الإسبريسو والحليب." }
+  },
+  'brew-6': {
+    fr: { name: "Miel Lavande", description: "Infusion florale avec miel local." },
+    ar: { name: "عسل اللافندر", description: "نقيع زهري مع عسل محلي." }
+  },
+  'brew-7': {
+    fr: { name: "Curcuma Doré", description: "Infusion curative épicée." },
+    ar: { name: "كركم ذهبي", description: "مشروب علاجي متبل." }
+  },
+  'brew-8': {
+    fr: { name: "Caramel Macchiato", description: "Expresso étagé & vanille." },
+    ar: { name: "كراميل ماكياتو", description: "طبقات إسبريسو وفانيليا." }
+  },
+  'brew-9': {
+    fr: { name: "V60 Origine Unique", description: "Perfection versée à la main." },
+    ar: { name: "V60 أصل واحد", description: "تحضير يدوي متقن." }
+  },
+  'brew-10': {
+    fr: { name: "Infusion Myrtille", description: "Mélange riche en antioxydants." },
+    ar: { name: "نقيع التوت الأزرق", description: "خليط غني بمضادات الأكسدة." }
+  },
+
+  // Artisanal Bread
+  'bread-1': {
+    fr: { name: "Babka Chocolat", description: "Tourbillon de ganache chocolat noir riche." },
+    ar: { name: "بابكا الشوكولاتة", description: "دوامة غاناش الشوكولاتة الداكنة الغنية." }
+  },
+  'bread-2': {
+    fr: { name: "Multigrains", description: "Garni à la main de lin & avoine." },
+    ar: { name: "خبز متعدد الحبوب", description: "مغطى يدوياً بالكتان والشوفان." }
+  },
+  'bread-3': {
+    fr: { name: "Pain de Seigle Noir", description: "Seigle dense style allemand robuste." },
+    ar: { name: "رغيف الجاودار الداكن", description: "جاودار كثيف على الطراز الألماني." }
+  },
+  'bread-4': {
+    fr: { name: "Focaccia aux Herbes", description: "Romarin, ail & huile d'olive." },
+    ar: { name: "فوكاشيا بالأعشاب", description: "إكليل الجبل، ثوم وزيت زيتون." }
+  },
+  'bread-5': {
+    fr: { name: "Brioche au Miel", description: "Pain du matin ultra-doux et beurré." },
+    ar: { name: "بريوش بالعسل", description: "رغيف صباحي فائق النعومة والزبدة." }
+  },
+  'bread-6': {
+    fr: { name: "Blé Moulu sur Pierre", description: "100% grains entiers nutritifs." },
+    ar: { name: "قمح مطحون على الحجر", description: "حبوب كاملة مغذية 100%." }
+  },
+  'bread-7': {
+    fr: { name: "Baguette Parisienne", description: "Croûte classique avec mie aérée." },
+    ar: { name: "باغيت باريسي", description: "قشرة كلاسيكية مع لب هوائي." }
+  },
+  'bread-8': {
+    fr: { name: "Canneberge Noix", description: "Pain artisanal doux & acidulé." },
+    ar: { name: "توت بري وجوز", description: "رغيف حرفي حلو وحامض." }
+  },
+
+  // Black Coffee
+  'coffee-1': {
+    fr: { name: "Flat White Velours", description: "Double dose, micromousse soyeuse" },
+    ar: { name: "فلات وايت مخملي", description: "جرعة مزدوجة، رغوة ناعمة حريرية" }
+  },
+  'coffee-2': {
+    fr: { name: "Kyoto Cold Brew", description: "Extraction goutte à goutte lente 12h" },
+    ar: { name: "كيوتو كولد برو", description: "استخلاص بالتنقيط البطيء لمدة 12 ساعة" }
+  },
+  'coffee-3': {
+    fr: { name: "Latte Lait d'Avoine", description: "Crémeux, sans noix, végétalien" },
+    ar: { name: "لاتيه حليب الشوفان", description: "كريمي، خالي من المكسرات، نباتي" }
+  },
+  'coffee-4': {
+    fr: { name: "Espresso Origine Unique", description: "Notes de baies intenses" },
+    ar: { name: "إسبريسو أصل واحد", description: "نكهات توت قوية" }
+  },
+  'coffee-5': {
+    fr: { name: "Moka Noir", description: "70% Cacao, Double Expresso" },
+    ar: { name: "موكا داكن", description: "70% كاكاو، إسبريسو مزدوج" }
+  },
+
+  // Cold Drinks
+  'cold-1': {
+    fr: { name: "Jus d'Orange Frais", description: "Oranges Valencia pressées à froid" },
+    ar: { name: "عصير برتقال طازج", description: "برتقال فالنسيا معصور على البارد" }
+  },
+  'cold-2': {
+    fr: { name: "Smoothie Fraise", description: "Yaourt grec, purée de fraise" },
+    ar: { name: "سموثي الفراولة", description: "زبادي يوناني، هريس الفراولة" }
+  },
+  'cold-3': {
+    fr: { name: "Shake Chocolat", description: "70% cacao, glace vanille" },
+    ar: { name: "شيك الشوكولاتة", description: "70% كاكاو، آيس كريم فانيليا" }
+  },
+  'cold-4': {
+    fr: { name: "Latte Glacé", description: "Double dose sur lait glacé" },
+    ar: { name: "لاتيه مثلج", description: "جرعة مزدوجة على حليب بارد" }
+  },
+  'cold-5': {
+    fr: { name: "Mango Lassi", description: "Mangue Alphonso, yaourt, cardamome" },
+    ar: { name: "مانجو لاسي", description: "مانجو ألفونسو، زبادي، هيل" }
+  },
+  'cold-6': {
+    fr: { name: "Cold Brew", description: "Infusion 12h, finale douce" },
+    ar: { name: "كولد برو", description: "نقع 12 ساعة، نهاية سلسة" }
+  },
+
+  // Creme/Latte
+  'creme-1': {
+    fr: { name: "Latte Orange Crémeux", description: "Orange fraîche avec mousse de lait" },
+    ar: { name: "لاتيه برتقال كريمي", description: "برتقال طازج مع رغوة حليب" }
+  },
+  'creme-2': {
+    fr: { name: "Étincelle Agrumes", description: "Citron-lime avec menthe" },
+    ar: { name: "شرارة الحمضيات", description: "ليمون وليمون حامض مع نعناع" }
+  },
+  'creme-3': {
+    fr: { name: "Fizz Mangue Crème", description: "Purée de mangue et crème légère" },
+    ar: { name: "فيز مانجو وكريمة", description: "هريس مانجو وكريمة خفيفة" }
+  },
+  'creme-4': {
+    fr: { name: "Jus de Pomme Classique", description: "Pommes pressées à froid" },
+    ar: { name: "عصير تفاح كلاسيكي", description: "تفاح معصور على البارد" }
+  },
+  'creme-5': {
+    fr: { name: "Agrumes Baies", description: "Fraise et pamplemousse" },
+    ar: { name: "حمضيات وتوت", description: "فراولة وجريب فروت" }
+  },
+
+  // Juices
+  'juice-1': {
+    fr: { name: "Citron Menthe", description: "Citron piquant avec menthe" },
+    ar: { name: "ليمون ونعناع", description: "ليمون لاذع مع نعناع" }
+  },
+  'juice-2': {
+    fr: { name: "Punch Ananas", description: "Mélange ananas tropical" },
+    ar: { name: "بنش الأناناس", description: "مزيج أناناس استوائي" }
+  },
+  'juice-3': {
+    fr: { name: "Éclat Mangue", description: "Purée de mangue Alphonso" },
+    ar: { name: "توهج المانجو", description: "هريس مانجو ألفونسو" }
+  },
+
+  // Latte Hot
+  'latte-1': {
+    fr: { name: "Latte Classique", description: "Double dose, lait vapeur" },
+    ar: { name: "لاتيه كلاسيكي", description: "جرعة مزدوجة، حليب مبخر" }
+  },
+  'latte-2': {
+    fr: { name: "Latte Vanille", description: "Sirop vanille maison" },
+    ar: { name: "لاتيه فانيليا", description: "شراب فانيليا منزلي" }
+  },
+  'latte-3': {
+    fr: { name: "Latte Caramel", description: "Filet de caramel au beurre" },
+    ar: { name: "لاتيه كراميل", description: "رذاذ كراميل بالزبدة" }
+  },
+  'latte-4': {
+    fr: { name: "Pumpkin Spice Latte", description: "Épices de saison & purée" },
+    ar: { name: "لاتيه توابل اليقطين", description: "توابل موسمية وهريس" }
+  },
+
+  // Tea
+  'tea-1': {
+    fr: { name: "Matcha Cérémonial", description: "Moulu sur pierre, riche en umami" },
+    ar: { name: "ماتشا احتفالي", description: "مطحون على الحجر، غني بالأومامي" }
+  },
+  'tea-2': {
+    fr: { name: "Masala Chai", description: "Épicé, crémeux, réchauffant" },
+    ar: { name: "ماسالا تشاي", description: "متبل، كريمي، دافئ" }
+  },
+  'tea-3': {
+    fr: { name: "Gingembre Citron", description: "Piquant, infusion apaisante" },
+    ar: { name: "زنجبيل وليمون", description: "لاذع، نقيع مهدئ" }
+  },
+  'tea-4': {
+    fr: { name: "Menthe Marocaine", description: "Thé vert rafraîchissant" },
+    ar: { name: "شاي مغربي بالنعناع", description: "شاي أخضر منعش" }
+  },
+  'tea-5': {
+    fr: { name: "Thé au Lait Royal", description: "Thé noir, lait, caramel" },
+    ar: { name: "شاي بالحليب ملكي", description: "شاي أسود، حليب، كراميل" }
+  },
+  'tea-6': {
+    fr: { name: "Oolong Pêche Glacé", description: "Fruité, floral, frais" },
+    ar: { name: "أولونغ الخوخ المثلج", description: "فاكهي، زهري، بارد" }
+  },
+
+  // Smoothie & Shake
+  'smoothie-1': {
+    fr: { name: "Explosion de Baies", description: "Fraise, myrtille, yaourt" },
+    ar: { name: "انفجار التوت", description: "فراولة، توت أزرق، زبادي" }
+  },
+  'smoothie-2': {
+    fr: { name: "Force Verte", description: "Épinards, pomme, banane" },
+    ar: { name: "القوة الخضراء", description: "سبانخ، تفاح، موز" }
+  },
+  'shake-1': {
+    fr: { name: "Shake Chocolat Classique", description: "Cacao riche, base crémeuse" },
+    ar: { name: "شيك شوكولاتة كلاسيكي", description: "كاكاو غني، قاعدة كريمية" }
+  },
+  'shake-2': {
+    fr: { name: "Shake Vanille", description: "Vanille de Madagascar, onctueux" },
+    ar: { name: "شيك فانيليا", description: "فانيليا مدغشقر، ناعم" }
+  },
+  'shake-3': {
+    fr: { name: "Délice Fraise", description: "Fraises fraîches, crème" },
+    ar: { name: "بهجة الفراولة", description: "فراولة طازجة، كريمة" }
+  },
+  'shake-4': {
+    fr: { name: "Banane Caramel", description: "Banane, filet de caramel" },
+    ar: { name: "موز وكراميل", description: "موز، رذاذ كراميل" }
+  },
+
+  // Toast
+  'toast-1': {
+    fr: { name: "Bénédicte Signature", description: "Œufs pochés, hollandaise" },
+    ar: { name: "بنديكت المميز", description: "بيض مسلوق، هولنديز" }
+  },
+  'toast-2': {
+    fr: { name: "Omelette Truffe", description: "Champignons, huile de truffe" },
+    ar: { name: "عجة الكمأة", description: "فطر، زيت الكمأة" }
+  },
+  'toast-3': {
+    fr: { name: "Shakshuka", description: "Tomate, poivrons, œufs" },
+    ar: { name: "شكشوكة", description: "طماطم، فلفل، بيض" }
+  },
+  'toast-4': {
+    fr: { name: "Toast Avocat", description: "Levain, avocat écrasé" },
+    ar: { name: "توست الأفوكادو", description: "خبز العجين المخمر، أفوكادو مهروس" }
+  },
+  'toast-5': {
+    fr: { name: "Bénédicte Classique", description: "Jambon, hollandaise" },
+    ar: { name: "بنديكت كلاسيكي", description: "لحم، هولنديز" }
+  },
+  'toast-6': {
+    fr: { name: "Bol Énergie Vegan", description: "Graines, légumes verts" },
+    ar: { name: "وعاء الطاقة النباتي", description: "حبوب، خضروات" }
+  },
+
+  // Pastry
+  'pastry-1': {
+    fr: { name: "Croissant au Beurre", description: "Feuilleté, beurre français" },
+    ar: { name: "كرواسون بالزبدة", description: "طبقات هشة، زبدة فرنسية" }
+  },
+  'pastry-2': {
+    fr: { name: "Croissant aux Amandes", description: "Frangipane, amandes grillées" },
+    ar: { name: "كرواسون باللوز", description: "فرانجيبان، لوز محمص" }
+  },
+  'pastry-3': {
+    fr: { name: "Éclair au Chocolat", description: "Pâte à choux, ganache riche" },
+    ar: { name: "إكلير الشوكولاتة", description: "عجينة الشو، غاناش غني" }
+  },
+  'pastry-4': {
+    fr: { name: "Tarte aux Fraises", description: "Crème pâtissière, fraises fraîches" },
+    ar: { name: "تارت الفراولة", description: "كاسترد الفانيليا، فراولة طازجة" }
+  },
+  'pastry-5': {
+    fr: { name: "Tarte Citron Meringuée", description: "Caillé piquant, meringue brûlée" },
+    ar: { name: "تارت الليمون والميرينغ", description: "خثرة لاذعة، ميرينغ محمر" }
+  },
+  'pastry-6': {
+    fr: { name: "Part de Gâteau Velours", description: "Mie moelleuse, glaçage vanille" },
+    ar: { name: "شريحة كيك مخملي", description: "فتات رطب، كريمة فانيليا" }
+  }
+};
+
+function getTranslation(key) {
+  const lang = getLang();
+  return (translations[lang] && translations[lang][key]) || (translations['en'] && translations['en'][key]) || key;
+}
+
+function getMenuTranslation(item, field) {
+  const lang = getLang();
+  if (lang === 'en') return item[field];
+  
+  if (menuTranslations[item.id] && menuTranslations[item.id][lang] && menuTranslations[item.id][lang][field]) {
+    return menuTranslations[item.id][lang][field];
+  }
+  return item[field];
+}
+
 function applyLang(lang) {
   document.documentElement.lang = lang;
-  // Here we would update text content based on a dictionary
+  localStorage.setItem('stitch_lang', lang);
+  
+  // RTL Support
+  if (lang === 'ar') {
+    document.documentElement.dir = 'rtl';
+    document.body.classList.add('rtl');
+  } else {
+    document.documentElement.dir = 'ltr';
+    document.body.classList.remove('rtl');
+  }
+
+  // Update static text
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (key && translations[lang] && translations[lang][key]) {
+        el.textContent = translations[lang][key];
+    }
+  });
+
+  // Update placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (key && translations[lang] && translations[lang][key]) {
+        el.placeholder = translations[lang][key];
+    }
+  });
+
+  // Update Toggle UI
+  const toggle = document.getElementById('language-toggle');
+  const label = document.getElementById('current-language');
+  if (toggle && label) {
+    toggle.classList.remove('lang-en', 'lang-fr', 'lang-ar');
+    toggle.classList.add(`lang-${lang}`);
+    label.textContent = lang === 'en' ? 'English' : (lang === 'fr' ? 'Français' : 'العربية');
+  }
+  
+  // Re-render content
+  if (typeof bestsellers !== 'undefined' && bestsellers.length) {
+      renderBestsellers(bestsellers);
+  }
+  renderCategories();
+  updateCartUI();
+  
+  const modal = document.getElementById('order-modal');
+  if (modal && !modal.classList.contains('hidden')) {
+    renderCartItems();
+  }
 }
 
 function getLang() {
@@ -523,24 +1213,23 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Check for language preference
   const lang = getLang();
-  if (lang !== 'en') applyLang(lang);
+  applyLang(lang); // Always apply to ensure UI sync
 
   setupLanguageToggle();
 });
 
 function setupLanguageToggle() {
   const toggle = document.getElementById('language-toggle');
-  const label = document.getElementById('current-language');
   
-  if (!toggle || !label) return;
+  if (!toggle) return;
 
-  toggle.addEventListener('change', function() {
-    if (this.checked) {
-      label.textContent = 'العربية';
-      // Future: applyLang('ar');
-    } else {
-      label.textContent = 'Français';
-      // Future: applyLang('fr');
-    }
+  toggle.addEventListener('click', function() {
+    const current = getLang();
+    let next = 'en';
+    if (current === 'en') next = 'fr';
+    else if (current === 'fr') next = 'ar';
+    else if (current === 'ar') next = 'en';
+    
+    applyLang(next);
   });
 }

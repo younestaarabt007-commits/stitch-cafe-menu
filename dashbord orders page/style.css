@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+            body {
+                background-color: #FAFAF5;
+                background-image: radial-gradient(#1A1A1A 0.5px, transparent 0.5px);
+                background-size: 24px 24px;
+                background-attachment: fixed;
+                @apply font-sans text-charcoal antialiased;
+            }
+        }
+        .noir-serif {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 900;
+        }
+        .gloss-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+        }
+        .kpi-card {
+            border-bottom: 6px solid #FF5200;
+        }
+        .order-accept-btn {
+            background-color: #FF5200;
+            background-image: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%);
+            box-shadow: 0 10px 30px -5px rgba(255, 82, 0, 0.5);
+        }
+        .pulsing-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #FF5200;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 0 rgba(255, 82, 0, 0.7);
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 82, 0, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 82, 0, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 82, 0, 0); }
+        }
+        .custom-checkbox:checked {
+            background-color: #FF5200;
+            border-color: #FF5200;
+        }
+        .priority-border {
+            border-left: 10px solid #FF5200;
+        }
+        .btn-outline-charcoal {
+            border: 1px solid #1A1A1A;
+            color: #1A1A1A;
+        }
+        .btn-outline-charcoal:hover {
+            background-color: #1A1A1A;
+            color: #FAFAF5;
+        }
+
+body {
+      min-height: max(884px, 100dvh);
+    }
+

@@ -20,61 +20,11 @@
             },
         }
     </script>
-<style type="text/tailwindcss">
-        @layer base {
-            body {
-                @apply bg-[#00A862] overflow-hidden;
-                font-family: 'Inter', sans-serif;
-            }
-        }
-        .progress-ring {
-            transform: rotate(-90deg);
-        }@keyframes pulse-slow {
-            0%, 100% { transform: scale(1); opacity: 0.4; }
-            50% { transform: scale(1.1); opacity: 0.6; }
-        }
-        @keyframes rotate-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        @keyframes morph {
-            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-        }
-        @keyframes spin-ring {
-            0% { stroke-dashoffset: 282; transform: rotate(0deg); }
-            50% { stroke-dashoffset: 70; transform: rotate(180deg); }
-            100% { stroke-dashoffset: 282; transform: rotate(360deg); }
-        }
-         @keyframes rotate-entire-ring {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        .animate-pulse-slow {
-            animation: pulse-slow 4s ease-in-out infinite;
-        }
-        .animate-rotate-slow {
-            animation: rotate-slow 12s linear infinite;
-        }
-        .animate-morph {
-            animation: morph 8s ease-in-out infinite;
-        }
-        .animate-spin-ring {
-            transform-origin: center;
-            animation: rotate-entire-ring 2s linear infinite;
-        }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
+
+
+
+    <link rel="stylesheet" href="style.css"/>
+</head>
 <body class="text-white">
 <div class="relative w-[390px] h-[844px] mx-auto flex flex-col items-center justify-center overflow-hidden">
 <div class="relative flex flex-col items-center justify-center">
@@ -111,4 +61,5 @@
 </div>
 </div>
 <div class="fixed inset-0 pointer-events-none bg-gradient-to-t from-black/10 to-transparent z-[-1]"></div>
+  <script src="script.js"></script>
 </body></html>

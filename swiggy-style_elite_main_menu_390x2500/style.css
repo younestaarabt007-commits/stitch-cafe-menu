@@ -104,6 +104,7 @@
 .language-toggle {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .toggle-switch {
@@ -111,12 +112,7 @@
     display: inline-block;
     width: 50px;
     height: 28px;
-}
-
-.toggle-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+    pointer-events: none; /* Let the container handle clicks */
 }
 
 .slider {
@@ -126,7 +122,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('https://cdn-icons-png.freepik.com/256/14010/14010011.png'); /* French Flag */
     background-size: cover;
     background-position: center;
     transition: background-image 0.4s;
@@ -135,7 +130,16 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-input:checked + .slider {
+/* Flag states */
+.lang-en .slider {
+    background-image: url('https://cdn-icons-png.freepik.com/256/197/197374.png'); /* UK Flag */
+}
+
+.lang-fr .slider {
+    background-image: url('https://cdn-icons-png.freepik.com/256/14010/14010011.png'); /* French Flag */
+}
+
+.lang-ar .slider {
     background-image: url('https://cdn-icons-png.freepik.com/256/12364/12364498.png'); /* Algerian Flag */
 }
 
@@ -144,6 +148,12 @@ input:checked + .slider {
     font-size: 12px;
     color: white;
     font-weight: 600;
+}
+
+/* RTL Support for toggle */
+[dir="rtl"] #current-language {
+    margin-left: 0;
+    margin-right: 8px;
 }
 
 .microphone:after {
@@ -205,4 +215,8 @@ input:checked + .slider {
     transform: perspective(336px) translateZ(168px); 
     opacity: 0; 
   } 
+}
+
+[dir="rtl"] .material-symbols-outlined.flip-rtl {
+  transform: scaleX(-1);
 }
