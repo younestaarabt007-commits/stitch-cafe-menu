@@ -140,7 +140,7 @@
 }
 
 .lang-ar .slider {
-    background-image: url('https://flagcdn.com/w256/ma.png'); /* Moroccan Flag */
+    background-image: url('https://img.icons8.com/color/256/morocco.png'); /* Moroccan Flag */
 }
 
 #current-language {
@@ -165,6 +165,15 @@
 [dir="rtl"] .absolute.right-3 {
     right: auto;
     left: 0.75rem;
+}
+
+/* RTL Support for horizontal scroll */
+[dir="rtl"] .overflow-x-auto {
+    direction: rtl;
+}
+
+[dir="rtl"] .flex {
+    direction: rtl;
 }
 
 .microphone:after {
