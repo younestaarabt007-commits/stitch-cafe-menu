@@ -524,4 +524,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // Check for language preference
   const lang = getLang();
   if (lang !== 'en') applyLang(lang);
+
+  setupLanguageToggle();
 });
+
+function setupLanguageToggle() {
+  const toggle = document.getElementById('language-toggle');
+  const label = document.getElementById('current-language');
+  
+  if (!toggle || !label) return;
+
+  toggle.addEventListener('change', function() {
+    if (this.checked) {
+      label.textContent = 'العربية';
+      // Future: applyLang('ar');
+    } else {
+      label.textContent = 'Français';
+      // Future: applyLang('fr');
+    }
+  });
+}
