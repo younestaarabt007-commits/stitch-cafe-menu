@@ -187,7 +187,7 @@ function renderBestsellers(items) {
         <div>
           <h4 class="font-bold text-[13px] md:text-sm text-gray-900 dark:text-white leading-tight pr-6">${item.name}</h4>
           <div class="flex items-center gap-1 mt-1">
-            <span class="material-symbols-outlined text-[14px] text-green-600 dark:text-green-400" style="font-variation-settings: 'FILL' 1">star</span>
+            <span class="material-symbols-outlined text-[14px] text-[#FFC107]" style="font-variation-settings: 'FILL' 1">star</span>
             <span class="text-[11px] text-gray-700 dark:text-gray-300 font-semibold">${Number(rating).toFixed(1)}</span>
             <span class="text-[10px] text-gray-400">(${Math.floor(Number(rating) * 25)}+)</span>
           </div>
