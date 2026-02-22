@@ -176,6 +176,16 @@
     direction: rtl;
 }
 
+/* RTL Support for carousel */
+[dir="rtl"] #hero-carousel .flex {
+    flex-direction: row-reverse;
+    direction: ltr; /* Keep container direction LTR for proper scrolling */
+}
+
+[dir="rtl"] #hero-carousel .flex > div {
+    direction: rtl; /* Restore RTL for card content */
+}
+
 .microphone:after {
   content: '';
   position: absolute;

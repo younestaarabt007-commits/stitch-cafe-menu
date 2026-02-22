@@ -37,21 +37,61 @@
       clearInterval(carouselInterval);
     }
     
+    // Check if RTL mode is active
+    const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+    
     // Start continuous auto-scroll
     carouselInterval = setInterval(() => {
       currentIndex = (currentIndex + 1) % cards.length;
-      const targetScroll = currentIndex * itemWidth;
+      let targetScroll;
+      
+      if (isRTL) {
+        // For RTL, calculate scroll from the right
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        targetScroll = maxScroll - (currentIndex * itemWidth);
+      } else {
+        // For LTR, normal left-to-right scrolling
+        targetScroll = currentIndex * itemWidth;
+      }
       
       container.scrollTo({
         left: targetScroll,
         behavior: 'smooth'
       });
       
-      console.log(`Carousel auto-scrolled to card ${currentIndex + 1} of ${cards.length}`);
+      console.log(`Carousel auto-scrolled to card ${currentIndex + 1} of ${cards.length} (RTL: ${isRTL})`);
     }, 3000);
     
     console.log('Carousel running continuously in background');
   }
+  
+  // Function to restart carousel when RTL changes
+  function restartCarouselOnRTLChange() {
+    // Stop current carousel
+    if (carouselInterval) {
+      clearInterval(carouselInterval);
+      isRunning = false;
+    }
+    
+    // Restart with new RTL setting
+    setTimeout(startCarouselImmediately, 100);
+  }
+  
+  // Watch for RTL changes
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'dir') {
+        console.log('RTL direction changed, restarting carousel...');
+        restartCarouselOnRTLChange();
+      }
+    });
+  });
+  
+  // Start observing the document element for dir attribute changes
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['dir']
+  });
   
   // Try to start immediately when DOM is ready
   if (document.readyState === 'loading') {
