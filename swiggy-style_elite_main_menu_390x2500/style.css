@@ -41,17 +41,21 @@
 .search-main {
   position: relative;
   border: 2px solid #5F8FA4;
-  height: 40px;
+  height: 35px; /* Adjusted to match original design proportions (25px content + 8px padding + borders) */
   background: #B1BEC6;
   width: 100%;
   border-radius: 50px;
   padding-left: 31px;
   padding-right: 40px;
-  padding-top: 4px;
-  padding-bottom: 4px;
   font-size: 13px;
   color: #555;
   box-sizing: border-box;
+  z-index: 1;
+}
+
+.search-main::placeholder {
+  color: #555;
+  opacity: 0.7;
 }
 
 .search-main:focus {
@@ -69,6 +73,7 @@
   transform: translateY(-50%);
   border-radius: 100%;
   pointer-events: none;
+  z-index: 10;
 }
 
 .searchicon:after {
@@ -93,6 +98,7 @@
   border-radius: 100%;
   box-shadow: 0px 1px 2px 0px #555;
   cursor: pointer;
+  z-index: 10;
 }
 
 .microphone:after {
