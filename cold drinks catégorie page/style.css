@@ -69,5 +69,16 @@ body {
 }
 
 .lang-ar .slider {
-    background-image: url('https://cdn-icons-png.freepik.com/256/12364/12364498.png'); /* Algerian Flag */
+    background-image: url('https://cdn-icons-png.freepik.com/256/197/197604.png'); /* Moroccan Flag */
+}
+
+/* RTL Support for hero card images */
+[dir="rtl"] .absolute.-right-4 {
+    right: auto;
+    left: -1rem;
+}
+
+[dir="rtl"] .absolute.right-3 {
+    right: auto;
+    left: 0.75rem;
 }
