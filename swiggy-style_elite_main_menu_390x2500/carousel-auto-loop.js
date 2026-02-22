@@ -40,9 +40,40 @@
     // Check if RTL mode is active
     const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
     
+    // Create infinite loop by duplicating cards
+    function createInfiniteLoop() {
+      const originalCards = Array.from(cards);
+      const totalCards = originalCards.length;
+      
+      // Clone all cards and append them to create infinite effect
+      originalCards.forEach(card => {
+        const clone = card.cloneNode(true);
+        container.appendChild(clone);
+      });
+      
+      // Clone all cards again and prepend them
+      originalCards.forEach(card => {
+        const clone = card.cloneNode(true);
+        container.insertBefore(clone, container.firstChild);
+      });
+      
+      // Set initial scroll position to show original cards
+      const initialScroll = isRTL 
+        ? container.scrollWidth - container.clientWidth - (totalCards * itemWidth)
+        : totalCards * itemWidth;
+      
+      container.scrollLeft = initialScroll;
+      currentIndex = totalCards;
+      
+      console.log(`Created infinite loop with ${totalCards} original cards, starting at index ${currentIndex}`);
+    }
+    
+    // Create infinite loop
+    createInfiniteLoop();
+    
     // Start continuous auto-scroll
     carouselInterval = setInterval(() => {
-      currentIndex = (currentIndex + 1) % cards.length;
+      currentIndex++;
       let targetScroll;
       
       if (isRTL) {
@@ -59,7 +90,33 @@
         behavior: 'smooth'
       });
       
-      console.log(`Carousel auto-scrolled to card ${currentIndex + 1} of ${cards.length} (RTL: ${isRTL})`);
+      console.log(`Carousel auto-scrolled to card ${currentIndex + 1} (RTL: ${isRTL})`);
+      
+      // Handle infinite loop - reset when reaching cloned cards
+      setTimeout(() => {
+        const totalOriginalCards = cards.length / 3; // We have 3 sets: prepended, original, appended
+        
+        if (currentIndex >= totalOriginalCards * 2) {
+          // We've reached the end of appended cards, jump back to original set
+          const resetScroll = isRTL 
+            ? container.scrollWidth - container.clientWidth - (totalOriginalCards * itemWidth)
+            : totalOriginalCards * itemWidth;
+          
+          container.scrollLeft = resetScroll;
+          currentIndex = totalOriginalCards;
+          console.log('Reset to original card set for seamless loop');
+        } else if (currentIndex < totalOriginalCards) {
+          // We've reached the beginning of prepended cards, jump to original set
+          const resetScroll = isRTL 
+            ? container.scrollWidth - container.clientWidth - (totalOriginalCards * itemWidth)
+            : totalOriginalCards * itemWidth;
+          
+          container.scrollLeft = resetScroll;
+          currentIndex = totalOriginalCards;
+          console.log('Reset to original card set for seamless loop');
+        }
+      }, 350); // Wait for scroll animation to complete
+      
     }, 3000);
     
     console.log('Carousel running continuously in background');
