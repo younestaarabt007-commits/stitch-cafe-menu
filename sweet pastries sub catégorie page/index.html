@@ -5,7 +5,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Sweet Pastries — Stitch Café</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
   <script id="tailwind-config">
@@ -15,20 +15,22 @@
         extend: {
           colors: {
             primary: "#f2930d",
-            "background-light": "#fafaf5",
-            "background-dark": "#1a1612",
-            "card-tan": "#f4eee7"
+            "background-light": "#fffcf2",
+            "background-dark": "#1a1c18",
+            "yolk-yellow": "#fef08a",
+            "herb-green": "#4ade80",
+            "chili-red": "#ef4444"
           },
           fontFamily: {
-            display: ["Plus Jakarta Sans", "sans-serif"]
-          },
-          borderRadius: { "DEFAULT": "1rem", "lg": "1.5rem", "xl": "2rem", "full": "9999px" }
+            display: ["Plus Jakarta Sans", "sans-serif"],
+            serif: ["Playfair Display", "serif"]
+          }
         }
       }
     };
   </script>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-[#1c160d] dark:text-[#fcfaf8] antialiased">
+<body class="bg-background-light dark:bg-background-dark text-[#1a1c18] dark:text-white antialiased">
   <div class="relative min-h-screen w-full max-w-[390px] mx-auto flex flex-col bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl">
     <header class="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 bg-gradient-to-b from-black/30 to-transparent">
       <button id="back-btn" class="flex size-9 items-center justify-center rounded-full bg-white/25 backdrop-blur-md text-white shadow-sm active:scale-95">
@@ -39,11 +41,9 @@
       </button>
     </header>
 
-    <div class="relative h-[380px] w-full overflow-hidden hero-mesh-gradient flex items-center justify-center pt-10 shrink-0">
-      <div class="relative z-10 flex flex-col items-center justify-center text-center px-6">
-        <div class="w-[340px] h-[280px] mb-[-16px]">
-          <div class="w-full h-full bg-center bg-contain bg-no-repeat scale-110 drop-shadow-[0_40px_50px_rgba(0,0,0,0.45)]" style='background-image: url("https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1200&auto=format&fit=crop");'></div>
-        </div>
+    <div class="relative h-[360px] w-full overflow-hidden brunch-hero-gradient flex items-end justify-center pb-8 shrink-0">
+      <div class="absolute inset-0 egg-floats opacity-40"></div>
+      <div class="relative z-10 flex flex-col items-center text-center px-6">
         <h1 class="text-white text-[28px] font-extrabold tracking-tight leading-tight">Sweet Pastries</h1>
         <p class="text-white/85 text-[12px] font-medium mt-1">Freshly baked, flaky and indulgent</p>
       </div>
@@ -52,9 +52,8 @@
     <div class="flex gap-2 px-4 overflow-x-auto no-scrollbar py-5">
       <button class="filter-btn active px-5 h-9 rounded-full bg-primary text-white text-xs font-extrabold tracking-wide shadow-lg shadow-primary/20" data-filter="all">All</button>
       <button class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-slate-800 text-zinc-700 dark:text-white text-xs font-semibold border border-slate-200 dark:border-slate-700 shadow-sm" data-filter="croissant">Croissants</button>
-      <button class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-slate-800 text-zinc-700 dark:text-white text-xs font-semibold border border-slate-200 dark:border-slate-700 shadow-sm" data-filter="eclair">Éclairs</button>
-      <button class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-slate-800 text-zinc-700 dark:text-white text-xs font-semibold border border-slate-200 dark:border-slate-700 shadow-sm" data-filter="tart">Tarts</button>
       <button class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-slate-800 text-zinc-700 dark:text-white text-xs font-semibold border border-slate-200 dark:border-slate-700 shadow-sm" data-filter="cake">Cakes</button>
+      <button class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-slate-800 text-zinc-700 dark:text-white text-xs font-semibold border border-slate-200 dark:border-slate-700 shadow-sm" data-filter="tart">Tarts</button>
     </div>
 
     <div class="px-4 pt-2 pb-3 flex items-center justify-between">

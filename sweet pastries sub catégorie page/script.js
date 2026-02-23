@@ -1,10 +1,10 @@
 const products = [
-  { id: 1, name: "Butter Croissant", description: "Flaky layers, French butter", price: 4.50, image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=500&auto=format&fit=crop", category: "croissant" },
-  { id: 2, name: "Almond Croissant", description: "Frangipane, toasted almond", price: 5.25, image: "https://images.unsplash.com/photo-1612539425542-4ec77f5a7f8a?q=80&w=500&auto=format&fit=crop", category: "croissant" },
-  { id: 3, name: "Chocolate Éclair", description: "Choux pastry, rich ganache", price: 4.75, image: "https://images.unsplash.com/photo-1546549036-3786c5d0cf29?q=80&w=500&auto=format&fit=crop", category: "eclair" },
-  { id: 4, name: "Strawberry Tart", description: "Vanilla custard, fresh berries", price: 5.80, image: "https://images.unsplash.com/photo-1541782810487-8f9b5c0294c6?q=80&w=500&auto=format&fit=crop", category: "tart" },
-  { id: 5, name: "Lemon Meringue Tart", description: "Zesty curd, torched meringue", price: 5.90, image: "https://images.unsplash.com/photo-1617196030881-4ac5bb32f21e?q=80&w=500&auto=format&fit=crop", category: "tart" },
-  { id: 6, name: "Velvet Cake Slice", description: "Moist crumb, vanilla frosting", price: 4.95, image: "https://images.unsplash.com/photo-1606312618779-298c046f66da?q=80&w=500&auto=format&fit=crop", category: "cake" }
+  { id: 1, name: "Butter Croissant", description: "Flaky layers, French butter", price: 4.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/pastry.jpg", category: "croissant" },
+  { id: 2, name: "Almond Croissant", description: "Frangipane, toasted almond", price: 5.25, image: "../swiggy-style_elite_main_menu_390x2500/assets/pastry.jpg", category: "croissant" },
+  { id: 3, name: "Chocolate Éclair", description: "Choux pastry, rich ganache", price: 4.75, image: "../swiggy-style_elite_main_menu_390x2500/assets/hero-pancakes.png", category: "cake" },
+  { id: 4, name: "Strawberry Tart", description: "Vanilla custard, fresh berries", price: 5.80, image: "../swiggy-style_elite_main_menu_390x2500/assets/strawberry-ice-cream-with-delights_140725-8818.jpg", category: "tart" },
+  { id: 5, name: "Lemon Meringue Tart", description: "Zesty curd, torched meringue", price: 5.90, image: "../swiggy-style_elite_main_menu_390x2500/assets/vertical-shot-pancakes-with-fruits-top_181624-23923.jpg", category: "tart" },
+  { id: 6, name: "Velvet Cake Slice", description: "Moist crumb, vanilla frosting", price: 4.95, image: "../swiggy-style_elite_main_menu_390x2500/assets/hero-pancakes.png", category: "cake" }
 ];
 
 let cart = [];
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         list.innerHTML = filteredProducts.map((product, index) => `
             <div onclick="redirectToCustomization(${product.id})" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer" style="animation-delay:${index * 0.05}s">
                 <div class="product-image w-full aspect-square rounded-xl bg-cover bg-center mb-3" style="background-image:url('${product.image}')" data-name="${product.name}" data-price="${product.price}"></div>
-                <h4 class="font-semibold text-[16px] text-[#1c160d] dark:text-white leading-tight mb-0.5">${product.name}</h4>
+                <h4 class="font-semibold text-[16px] text-[#1a1c18] dark:text-white leading-tight mb-0.5">${product.name}</h4>
                 <p class="text-[11px] opacity-60 line-clamp-1 mb-2">${product.description}</p>
                 <div class="flex items-center justify-between mt-auto">
                     <span class="text-primary font-bold text-[15px]">$${product.price.toFixed(2)}</span>

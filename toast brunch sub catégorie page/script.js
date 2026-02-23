@@ -1,10 +1,10 @@
 const products = [
-  { id: 1, name: "Signature Benedict", description: "Poached eggs, hollandaise", price: 14.50, image: "https://images.unsplash.com/photo-1512058564366-18510be2bd16?q=80&w=500&auto=format&fit=crop", category: "eggs" },
-  { id: 2, name: "Truffle Omelette", description: "Mushrooms, truffle oil", price: 12.50, image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=500&auto=format&fit=crop", category: "eggs" },
-  { id: 3, name: "Shakshuka", description: "Tomato, peppers, eggs", price: 11.25, image: "https://images.unsplash.com/photo-1604908172713-3d6b1eb1b1a6?q=80&w=500&auto=format&fit=crop", category: "eggs" },
-  { id: 4, name: "Avocado Toast", description: "Sourdough, smashed avo", price: 10.50, image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=500&auto=format&fit=crop", category: "toast" },
-  { id: 5, name: "Classic Benedict", description: "Ham, hollandaise", price: 13.50, image: "https://images.unsplash.com/photo-1512058564366-18510be2bd16?q=80&w=500&auto=format&fit=crop", category: "eggs" },
-  { id: 6, name: "Vegan Power Bowl", description: "Grains, greens", price: 12.00, image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=500&auto=format&fit=crop", category: "vegan" }
+  { id: 1, name: "Signature Benedict", description: "Poached eggs, hollandaise", price: 14.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/croissant-benedict-salmon-with-poched-egg-hollandaise-sauce-served-with-fresh-salad_140725-1329.avif", category: "eggs" },
+  { id: 2, name: "Truffle Omelette", description: "Mushrooms, truffle oil", price: 12.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/hero-omelette.png", category: "eggs" },
+  { id: 3, name: "Shakshuka", description: "Tomato, peppers, eggs", price: 11.25, image: "../swiggy-style_elite_main_menu_390x2500/assets/Brunch.jpg", category: "eggs" },
+  { id: 4, name: "Avocado Toast", description: "Sourdough, smashed avo", price: 10.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/Brunch.jpg", category: "toast" },
+  { id: 5, name: "Classic Benedict", description: "Ham, hollandaise", price: 13.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/croissant-benedict-salmon-with-poched-egg-hollandaise-sauce-served-with-fresh-salad_140725-1329.avif", category: "eggs" },
+  { id: 6, name: "Vegan Power Bowl", description: "Grains, greens", price: 12.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/Brunch.jpg", category: "vegan" }
 ];
 
 let cart = [];

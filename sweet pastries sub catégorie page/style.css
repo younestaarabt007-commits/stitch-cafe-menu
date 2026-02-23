@@ -1,13 +1,22 @@
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  background-color: #fafaf5;
+  background-color: #fffcf2;
   min-height: 100vh;
 }
-.hero-mesh-gradient {
+.brunch-hero-gradient {
   background:
-    radial-gradient(circle at 20% 20%, #4a2410 0%, transparent 70%),
-    radial-gradient(circle at 80% 80%, #1a1612 0%, transparent 70%),
-    radial-gradient(circle at 50% 50%, #78350f 0%, #2d1406 100%);
+    radial-gradient(circle at 0% 0%, #3a2a12 0%, transparent 65%),
+    radial-gradient(circle at 100% 100%, #22180b 0%, transparent 65%),
+    radial-gradient(circle at 50% 50%, #5a3a16 0%, #2a1908 100%);
+}
+.egg-floats {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08) 0, transparent 60%),
+    radial-gradient(circle at 80% 40%, rgba(255,255,255,0.06) 0, transparent 50%);
+  background-repeat: no-repeat;
+  background-size: 180px 180px, 140px 140px;
+  background-position: 20% 30%, 80% 40%;
+  filter: blur(0.5px);
 }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
