@@ -42,8 +42,6 @@ const products = [
     }
 ];
 
-// Cart State
-let cart = [];
 let currentFilter = 'all';
 
 // Initialize
@@ -55,6 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // Render Products
 function renderProducts(filter = 'all') {
     const list = document.getElementById('product-list');
+    if (!list) return;
+
     const filteredProducts = filter === 'all'
         ? products
         : products.filter(p => p.category === filter);
@@ -80,56 +80,62 @@ function redirectToCustomization(productId) {
     window.location.href = '../pure_noir_espresso_customization_view_1/index.html';
 }
 
-// Deprecated: Direct add to cart (kept for reference)
+// Add to cart
 function addToCart(productId) {
-    redirectToCustomization(productId);
-    /*
     const product = products.find(p => p.id === productId);
-    const existingItem = cart.find(item => item.id === productId);
+    if (!product) return;
+
+    const cart = JSON.parse(localStorage.getItem('stitch_cart') || '[]');
+    const existingItem = cart.find(item => item.id === product.id);
 
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
-        cart.push({ ...product, quantity: 1 });
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            category: product.category,
+            quantity: 1
+        });
     }
 
-    updateCart();
-    */
-}
+    localStorage.setItem('stitch_cart', JSON.stringify(cart));
 
-// Update Cart Display
-function updateCart() {
-    const floatingCart = document.getElementById('floating-cart');
-    const cartTotal = document.getElementById('cart-total');
-    const cartBadge = document.getElementById('cart-badge');
-    const cartItemsText = document.getElementById('cart-items-text');
+    if (window.updateGlobalCartCount) {
+        window.updateGlobalCartCount();
+    }
 
-    if (cart.length > 0) {
-        floatingCart.classList.remove('hidden');
-        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-
-        cartTotal.textContent = `$${total.toFixed(2)}`;
-        cartBadge.textContent = count;
-        cartItemsText.textContent = `${count} Item${count !== 1 ? 's' : ''}`;
-    } else {
-        floatingCart.classList.add('hidden');
+    // Visual feedback
+    const btn = document.querySelector(`button[onclick*="${productId}"]`);
+    if(btn) {
+        const originalContent = btn.innerHTML;
+        btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span>';
+        setTimeout(() => {
+            btn.innerHTML = originalContent;
+        }, 1000);
     }
 }
 
 // Setup Event Listeners
 function setupEventListeners() {
     // Back Button
-    document.getElementById('back-btn').addEventListener('click', () => {
-        console.log('Back button clicked');
-        window.history.back();
-    });
+    const backBtn = document.getElementById('back-btn');
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            window.location.href = '../swiggy-style_elite_main_menu_390x2500/index.html';
+        });
+    }
 
     // Search Button
-    document.getElementById('search-btn').addEventListener('click', () => {
-        console.log('Search clicked');
-        alert('Search functionality would open here');
-    });
+    const searchBtn = document.getElementById('search-btn');
+    if (searchBtn) {
+        searchBtn.addEventListener('click', () => {
+            console.log('Search clicked');
+            alert('Search functionality would open here');
+        });
+    }
 
     // Filter Buttons
     document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -140,11 +146,5 @@ function setupEventListeners() {
             currentFilter = e.currentTarget.dataset.filter;
             renderProducts(currentFilter);
         });
-    });
-
-    // Floating Cart Click
-    document.getElementById('floating-cart').addEventListener('click', () => {
-        console.log('Cart clicked:', cart);
-        alert(`Cart contains ${cart.length} items`);
     });
 }

@@ -84,7 +84,7 @@
 <div class="flex size-9 items-center justify-center rounded-full bg-white/30 backdrop-blur-md text-white shadow-sm">
 <span class="material-symbols-outlined text-[20px]">arrow_back_ios_new</span>
 </div>
-<div class="flex size-9 items-center justify-center rounded-full bg-white/30 backdrop-blur-md text-white shadow-sm">
+<div id="search-btn" class="flex size-9 items-center justify-center rounded-full bg-white/30 backdrop-blur-md text-white shadow-sm cursor-pointer hover:bg-white/40 transition-colors">
 <span class="material-symbols-outlined text-[20px]">search</span>
 </div>
 </div>
@@ -142,47 +142,7 @@
 <p class="text-[#1c160d] dark:text-white text-xs font-medium">Savory Bowls</p>
 </div>
 </div>
-<div class="px-4 grid grid-cols-2 gap-3 mb-4">
-<div class="col-span-1 h-[260px] relative rounded-[20px] overflow-hidden bg-card-zen dark:bg-slate-800/50 p-3 flex flex-col border border-orange-100 shadow-sm">
-<div class="mb-1">
-<h3 class="font-bold text-base leading-tight text-gray-900 dark:text-white">Signature Benedict</h3>
-<p class="text-[9px] uppercase tracking-wider text-orange-600 font-bold mt-0.5">Hollandaise &amp; Ham</p>
-</div>
-<div class="flex-1 w-full bg-cover bg-center rounded-lg my-1 scale-105" style='background-image: url("https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&w=600&h=600&q=80");'></div>
-<div class="flex justify-between items-center mt-auto">
-<span class="font-bold text-primary text-base">$14.50</span>
-<a href="../toast_brunch_customization_view/index.html" class="size-7 rounded-full bg-primary flex items-center justify-center text-white shadow-md">
-<span class="material-symbols-outlined text-[16px]">add</span>
-</a>
-</div>
-</div>
-<div class="col-span-1 flex flex-col gap-3 h-[260px]">
-<div class="flex-1 rounded-[20px] bg-card-zen dark:bg-slate-800/50 p-3 flex flex-col justify-between border border-orange-100 shadow-sm">
-<div class="flex justify-between items-start">
-<div class="size-12 rounded-lg bg-cover bg-center shadow-sm" style='background-image: url("https://images.unsplash.com/photo-1525351484163-7529414395d8?auto=format&fit=crop&w=200&h=200&q=80");'></div>
-<span class="font-bold text-[10px] text-primary bg-white/80 dark:bg-slate-700 px-1.5 py-0.5 rounded-md shadow-sm">$12.50</span>
-</div>
-<div class="flex justify-between items-end mt-1">
-<h3 class="font-bold text-xs leading-tight text-gray-900 dark:text-white">Truffle Omelette</h3>
-<a href="../toast_brunch_customization_view/index.html" class="size-6 rounded-full bg-primary flex items-center justify-center text-white">
-<span class="material-symbols-outlined text-[14px]">add</span>
-</a>
-</div>
-</div>
-<div class="flex-1 rounded-[20px] bg-card-zen dark:bg-slate-800/50 p-3 flex flex-col justify-between border border-orange-100 shadow-sm">
-<div class="flex justify-between items-start">
-<div class="size-12 rounded-lg bg-cover bg-center shadow-sm" style='background-image: url("https://images.unsplash.com/photo-1525351484163-7529414395d8?auto=format&fit=crop&w=200&h=200&q=80");'></div>
-<span class="font-bold text-[10px] text-primary bg-white/80 dark:bg-slate-700 px-1.5 py-0.5 rounded-md shadow-sm">$11.25</span>
-</div>
-<div class="flex justify-between items-end mt-1">
-<h3 class="font-bold text-xs leading-tight text-gray-900 dark:text-white">Shakshuka</h3>
-<a href="../toast_brunch_customization_view/index.html" class="size-6 rounded-full bg-primary flex items-center justify-center text-white">
-<span class="material-symbols-outlined text-[14px]">add</span>
-</a>
-</div>
-</div>
-</div>
-</div>
+<!-- Featured grid removed, all products now in dynamic list -->
 <div class="mx-4 mb-6 h-[90px] rounded-[20px] bg-yellow-50 dark:bg-slate-800 p-4 border border-yellow-100 relative overflow-hidden flex items-center shadow-sm">
 <div class="z-10 w-2/3">
 <h3 class="font-bold text-orange-600 dark:text-orange-400 text-[9px] uppercase tracking-widest mb-0.5">Weekend Special</h3>
@@ -194,118 +154,34 @@
 <div class="absolute -right-4 top-0 bottom-0 w-32 bg-center bg-contain bg-no-repeat opacity-90 rotate-6" style='background-image: url("https://images.unsplash.com/photo-1533089862017-a02f99f5de28?auto=format&fit=crop&w=240&h=240&q=80");'></div>
 </div>
 <div class="px-4 flex items-center justify-between mb-3">
-<h3 class="text-lg font-extrabold tracking-tight text-gray-900 dark:text-white">Daily Brunch</h3>
-<span class="text-primary text-[10px] font-bold uppercase tracking-wider">Scroll All</span>
-</div>
-<div class="px-4 grid grid-cols-2 gap-3 pb-32">
-<div class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700">
-<div class="w-full aspect-square rounded-xl bg-cover bg-center mb-3" style='background-image: url("https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&w=600&h=600&q=80");'></div>
-<h4 class="font-semibold text-[16px] text-gray-900 dark:text-white leading-tight mb-1">Classic Benedict</h4>
-<p class="text-[11px] opacity-60 line-clamp-1 mb-3">Poached eggs, ham, muffin</p>
-<div class="flex items-center justify-between mt-auto">
-<span class="text-primary font-bold text-[15px]">$13.50</span>
-<a href="../toast_brunch_customization_view/index.html" class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm hover:shadow-md transition-shadow">
-                    ADD
-                </a>
-</div>
-</div>
-<div class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700">
-<div class="w-full aspect-square rounded-xl bg-cover bg-center mb-3" style='background-image: url("https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=600&h=600&q=80");'></div>
-<h4 class="font-semibold text-[16px] text-gray-900 dark:text-white leading-tight mb-1">Mediterranean</h4>
-<p class="text-[11px] opacity-60 line-clamp-1 mb-3">Feta, olives, tomatoes</p>
-<div class="flex items-center justify-between mt-auto">
-<span class="text-primary font-bold text-[15px]">$11.00</span>
-<a href="../toast_brunch_customization_view/index.html" class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm hover:shadow-md transition-shadow">
-                    ADD
-                </a>
-</div>
-</div>
-<div class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700">
-<div class="w-full aspect-square rounded-xl bg-cover bg-center mb-3" style='background-image: url("https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&w=600&h=600&q=80");'></div>
-<h4 class="font-semibold text-[16px] text-gray-900 dark:text-white leading-tight mb-1">Steak &amp; Eggs</h4>
-<p class="text-[11px] opacity-60 line-clamp-1 mb-3">Grilled ribeye, sunny-side</p>
-<div class="flex items-center justify-between mt-auto">
-<span class="text-primary font-bold text-[15px]">$18.00</span>
-<a href="../toast_brunch_customization_view/index.html" class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm hover:shadow-md transition-shadow">
-                    ADD
-                </a>
-</div>
-</div>
-<div class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700">
-<div class="w-full aspect-square rounded-xl bg-cover bg-center mb-3" style='background-image: url("https://images.unsplash.com/photo-1525351484163-7529414395d8?auto=format&fit=crop&w=600&h=600&q=80");'></div>
-<h4 class="font-semibold text-[16px] text-gray-900 dark:text-white leading-tight mb-1">Avocado Toast</h4>
-<p class="text-[11px] opacity-60 line-clamp-1 mb-3">Sourdough, smashed avo</p>
-<div class="flex items-center justify-between mt-auto">
-<span class="text-primary font-bold text-[15px]">$10.50</span>
-<a href="../toast_brunch_customization_view/index.html" class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm hover:shadow-md transition-shadow">
-                    ADD
-                </a>
-</div>
-</div>
-</div>
-<div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[390px] p-4 z-50 pointer-events-none flex justify-center">
-<div class="bg-primary rounded-full h-[52px] w-[342px] flex items-center justify-between px-5 shadow-[0_12px_40px_rgba(242,147,13,0.5)] pointer-events-auto ring-4 ring-white/20">
-<div class="flex items-center gap-2">
-<div class="size-6 rounded-full bg-white/25 flex items-center justify-center text-white font-bold text-xs backdrop-blur-sm">2</div>
-<span class="text-white font-bold text-[14px]">View Cart</span>
-</div>
-<span class="text-white font-bold text-[16px]">$24.50</span>
-</div>
-</div>
-</div>
-
+        <h3 class="text-lg font-extrabold tracking-tight text-gray-900 dark:text-white">Daily Brunch</h3>
+        <span class="text-primary text-[10px] font-bold uppercase tracking-wider">Scroll All</span>
+    </div>
+    <div id="product-list" class="px-4 grid grid-cols-2 gap-3 pb-32">
+        <!-- Products rendered via script.js -->
+    </div>
+    <!-- Navigation Bar -->
+    <script src="script.js"></script>
+    <!-- Hardcoded Nav Bar for Immediate Visibility -->
+<nav class="standard-nav-bar bg-white dark:bg-[#2a1e19] border-t border-gray-100 dark:border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] backdrop-blur-md h-[55px] flex items-stretch justify-between px-6 fixed bottom-0 left-0 right-0 z-50 max-w-[390px] mx-auto">
+    <button onclick="window.location.href='../swiggy-style_elite_main_menu_390x2500/index.html'" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">home</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Home</span>
+    </button>
+    <button onclick="window.location.href='../swiggy-style_elite_main_menu_390x2500/index.html#explore'" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">category</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Explore</span>
+    </button>
+    <button onclick="window.location.href='../order_success_page/index.html'" class="relative flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Cart</span>
+        <span id="global-cart-count" class="absolute -top-1 right-4 bg-primary text-white text-[10px] font-bold px-1.5 py-[2px] rounded-full hidden">0</span>
+    </button>
+    <button onclick="alert('Profile feature coming soon')" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">person</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Profile</span>
+    </button>
+</nav>
+<!-- Navigation Bar Script (logic only) -->
+<script src="../nav-bar.js"></script>
 </body></html>
-<script>
-  (function () {
-    function getStoredCart() {
-      try { return JSON.parse(localStorage.getItem('stitch_cart') || '[]'); } catch { return []; }
-    }
-    function storeCart(items, count, total) {
-      localStorage.setItem('stitch_cart', JSON.stringify(items));
-      localStorage.setItem('stitch_cart_count', String(count));
-      localStorage.setItem('stitch_cart_total', String(total));
-    }
-    function getSummary() {
-      const items = getStoredCart();
-      const count = items.reduce((s, x) => s + (x.qty || 1), 0);
-      const total = items.reduce((s, x) => s + (Number(x.price || 0) * (x.qty || 1)), 0);
-      return { items, count, total };
-    }
-    function updateBar() {
-      const bar = document.querySelector('.fixed.bottom-0 .bg-primary.rounded-full');
-      if (!bar) return;
-      const badge = bar.querySelector('.size-6');
-      const totalEl = bar.querySelector('span.text-white.font-bold.text-[16px]');
-      const summary = getSummary();
-      if (badge) badge.textContent = String(summary.count);
-      if (totalEl) totalEl.textContent = '$' + summary.total.toFixed(2);
-    }
-    function addHandlers() {
-      document.querySelectorAll('button').forEach(btn => {
-        const icon = btn.querySelector('.material-symbols-outlined');
-        const txt = (btn.textContent || '').trim().toLowerCase();
-        if ((icon && (icon.textContent || '').toLowerCase().includes('add')) || txt === 'add') {
-          btn.addEventListener('click', () => {
-            const card = btn.closest('.p-3, .p-4');
-            const nameEl = card ? card.querySelector('h4, h3') : null;
-            const priceEl = card ? card.querySelector('span.text-primary.font-bold, span.font-bold.text-[10px].text-primary, span.text-primary.font-bold') : null;
-            const name = nameEl ? nameEl.textContent.trim() : 'Item';
-            const priceText = priceEl ? priceEl.textContent.replace('$','') : '0';
-            const price = Number(parseFloat(priceText));
-            const items = getStoredCart();
-            const id = 'brunch-' + name.toLowerCase().replace(/\\s+/g,'-');
-            const found = items.find(x => x.id === id);
-            if (found) found.qty = (found.qty || 1) + 1;
-            else items.push({ id, name, price, qty: 1 });
-            const count = items.reduce((s, x) => s + (x.qty || 1), 0);
-            const total = items.reduce((s, x) => s + (Number(x.price || 0) * (x.qty || 1)), 0);
-            storeCart(items, count, total);
-            updateBar();
-          });
-        }
-      });
-    }
-    updateBar();
-    addHandlers();
-  })();
-</script>

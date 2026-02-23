@@ -33,9 +33,13 @@
         <button id="back-btn" class="size-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white active:scale-95 transition-transform">
           <span class="material-symbols-outlined">arrow_back</span>
         </button>
-        <button id="search-btn" class="size-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white active:scale-95 transition-transform">
-          <span class="material-symbols-outlined">search</span>
-        </button>
+        <div class="relative group">
+            <input type="text" id="search-input" placeholder="Search..." class="pl-10 pr-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-white placeholder-white/70 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 w-10 focus:w-48 transition-all duration-300 shadow-lg text-sm cursor-pointer focus:cursor-text peer">
+            <div class="absolute right-0 top-0 size-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white pointer-events-none transition-opacity duration-300 peer-focus:opacity-0 peer-placeholder-shown:opacity-100">
+                <span class="material-symbols-outlined">search</span>
+            </div>
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-white/70 text-[18px] opacity-0 peer-focus:opacity-100 transition-opacity duration-300 pointer-events-none">search</span>
+        </div>
       </header>
 
       <div class="relative w-full h-[360px] hero-gradient overflow-hidden flex flex-col justify-end p-4">
@@ -66,25 +70,8 @@
       </div>
       <div id="product-list" class="px-4 space-y-4 pb-32"></div>
 
-      <div id="floating-cart" class="sticky bottom-0 left-0 w-full flex justify-center pb-8 pt-4 bg-gradient-to-t from-background-light via-background-light/90 to-transparent z-50 pointer-events-none hidden">
-        <div class="w-[342px] pointer-events-auto bg-primary rounded-full px-5 py-3.5 flex items-center justify-between shadow-[0_15px_30px_-8px_rgba(242,147,13,0.5)] transform transition-transform active:scale-95 cursor-pointer">
-          <div class="flex items-center gap-3">
-            <div class="relative">
-              <span class="material-symbols-outlined text-white text-[20px]">shopping_bag</span>
-              <span id="cart-badge" class="absolute -top-1.5 -right-1.5 bg-white text-primary text-[9px] font-bold size-3.5 rounded-full flex items-center justify-center">0</span>
-            </div>
-            <div class="flex flex-col">
-              <p class="text-white text-[14px] font-bold leading-none">View Cart</p>
-              <p id="cart-items-text" class="text-white/80 text-[10px] mt-0.5">0 Items</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <span id="cart-total" class="text-white font-bold text-[14px]">$0.00</span>
-            <span class="material-symbols-outlined text-white text-[18px]">arrow_forward</span>
-          </div>
-        </div>
-      </div>
     </div>
+    <script src="../nav-bar.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

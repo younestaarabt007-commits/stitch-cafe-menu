@@ -1,11 +1,10 @@
 const products = [
-  { id: 1, name: "Berry Burst", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "https://images.unsplash.com/photo-1502741119870-16c6b8d5fbb4?q=80&w=500&auto=format&fit=crop", category: "berry" },
-  { id: 2, name: "Green Power", description: "Spinach, apple, banana", price: 5.00, image: "https://images.unsplash.com/photo-1505250469679-203ad9ced0cb?q=80&w=500&auto=format&fit=crop", category: "green" },
-  { id: 3, name: "Protein Plus", description: "Peanut, whey, banana", price: 5.80, image: "https://images.unsplash.com/photo-1502741526807-1e4a6401a2ac?q=80&w=500&auto=format&fit=crop", category: "protein" },
-  { id: 4, name: "Tropical Smooth", description: "Mango, pineapple, coconut", price: 5.40, image: "https://images.unsplash.com/photo-1559716808-4fd1a5a55ca9?q=80&w=500&auto=format&fit=crop", category: "berry" },
+  { id: "smoothie_1", name: "Berry Burst", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "https://images.unsplash.com/photo-1502741119870-16c6b8d5fbb4?q=80&w=500&auto=format&fit=crop", category: "berry" },
+  { id: "smoothie_2", name: "Green Power", description: "Spinach, apple, banana", price: 5.00, image: "https://images.unsplash.com/photo-1505250469679-203ad9ced0cb?q=80&w=500&auto=format&fit=crop", category: "green" },
+  { id: "smoothie_3", name: "Protein Plus", description: "Peanut, whey, banana", price: 5.80, image: "https://images.unsplash.com/photo-1502741526807-1e4a6401a2ac?q=80&w=500&auto=format&fit=crop", category: "protein" },
+  { id: "smoothie_4", name: "Tropical Smooth", description: "Mango, pineapple, coconut", price: 5.40, image: "https://images.unsplash.com/photo-1559716808-4fd1a5a55ca9?q=80&w=500&auto=format&fit=crop", category: "tropical" },
 ];
 
-let cart = [];
 let currentFilter = 'all';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,77 +13,121 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Navigate to customization page
-    function redirectToCustomization(productId) {
-        window.location.href = '../smothie customisation review/index.html';
+function redirectToCustomization(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    // Use price parameter for customization page
+    window.location.href = `../smothie customisation review/index.html?price=${product.price}`;
+}
+
+function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    const cart = JSON.parse(localStorage.getItem('stitch_cart') || '[]');
+    const existingItem = cart.find(item => item.id === product.id);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            category: product.category,
+            quantity: 1
+        });
     }
 
-    // Deprecated: Direct add to cart (kept for reference)
-    function addToCart(productId) {
-        redirectToCustomization(productId);
-        /*
-        const product = products.find(p => p.id === productId);
-        const existingItem = cart.find(item => item.id === productId);
-        if (existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            cart.push({ ...product, quantity: 1 });
-        }
-        updateCart();
-        */
+    localStorage.setItem('stitch_cart', JSON.stringify(cart));
+
+    if (window.updateGlobalCartCount) {
+        window.updateGlobalCartCount();
     }
 
-    function renderProducts(filter = 'all') {
-        const list = document.getElementById('product-list');
-        const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
-        list.innerHTML = filteredProducts.map((product, index) => `
-            <div onclick="redirectToCustomization(${product.id})" class="flex items-center gap-3 p-3 bg-white dark:bg-zinc-800 rounded-[16px] border border-zinc-100 dark:border-zinc-700 shadow-sm fade-in transition-transform active:scale-95 cursor-pointer" style="animation-delay: ${index * 0.05}s">
-                <div class="size-14 rounded-xl bg-zinc-100 bg-center bg-cover flex-shrink-0" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');"></div>
-                <div class="flex-1">
-                    <h4 class="font-semibold text-[16px]">${product.name}</h4>
-                    <p class="text-[11px] text-zinc-500 dark:text-zinc-300 mt-0.5">${product.description}</p>
-                    <p class="font-bold text-primary mt-1 text-sm">$${product.price.toFixed(2)}</p>
+    // Visual feedback
+    const btn = document.querySelector(`button[onclick*="${productId}"]`);
+    if(btn) {
+        const originalContent = btn.innerHTML;
+        btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span>';
+        setTimeout(() => {
+            btn.innerHTML = originalContent;
+        }, 1000);
+    }
+}
+
+function renderProducts(filter = 'all') {
+    const list = document.getElementById('product-list');
+    if (!list) return; // Guard clause
+    
+    const searchTerm = document.getElementById('search-input')?.value.toLowerCase() || '';
+    
+    const filteredProducts = products.filter(p => {
+        const matchesCategory = filter === 'all' || p.category === filter;
+        const matchesSearch = p.name.toLowerCase().includes(searchTerm) || 
+                              p.description.toLowerCase().includes(searchTerm);
+        return matchesCategory && matchesSearch;
+    });
+    
+    if (filteredProducts.length === 0) {
+        list.innerHTML = '<div class="col-span-2 text-center py-8 text-gray-500">No smoothies found</div>';
+        return;
+    }
+
+    list.innerHTML = filteredProducts.map((product, index) => `
+        <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col gap-2 bg-white dark:bg-slate-800 p-[12px] rounded-[20px] shadow-sm border border-slate-100 dark:border-slate-700 transition-transform active:scale-95 cursor-pointer fade-in" style="animation-delay: ${index * 0.05}s">
+            <div class="relative w-full aspect-square rounded-xl overflow-hidden bg-slate-50">
+                <div class="w-full h-full bg-cover bg-center" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');"></div>
+                <div class="absolute top-2 left-2 bg-white/90 dark:bg-black/50 backdrop-blur-sm px-2 py-1 rounded-md">
+                    <span class="text-[10px] font-bold">$${product.price.toFixed(2)}</span>
                 </div>
-                <button onclick="event.stopPropagation(); addToCart(${product.id})" class="size-8 rounded-full bg-white dark:bg-zinc-700 border border-zinc-200 dark:border-zinc-600 flex items-center justify-center text-primary shadow-sm hover:bg-zinc-50 dark:hover:bg-zinc-600 transition-transform active:scale-95">
-                    <span class="material-symbols-outlined text-[20px]">add</span>
-                </button>
             </div>
-        `).join('');
-    }
-
-function updateCart() {
-  const floatingCart = document.getElementById('floating-cart');
-  const cartTotal = document.getElementById('cart-total');
-  const cartBadge = document.getElementById('cart-badge');
-  const cartItemsText = document.getElementById('cart-items-text');
-
-  if (cart.length > 0) {
-    floatingCart.classList.remove('hidden');
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartTotal.textContent = `$${total.toFixed(2)}`;
-    cartBadge.textContent = count;
-    cartItemsText.textContent = `${count} Item${count !== 1 ? 's' : ''}`;
-  } else {
-    floatingCart.classList.add('hidden');
-  }
+            <div class="flex flex-col mt-1">
+                <h4 class="font-semibold text-[16px] leading-tight">${product.name}</h4>
+                <p class="text-[10px] opacity-60 line-clamp-1 mt-0.5">${product.description}</p>
+            </div>
+            <button onclick="event.stopPropagation(); addToCart('${product.id}')" class="w-full h-[36px] mt-2 rounded-[12px] bg-primary flex items-center justify-center text-white text-sm font-bold shadow-md uppercase hover:bg-orange-600 transition-colors">
+                ADD
+            </button>
+        </div>
+    `).join('');
 }
 
 function setupEventListeners() {
-  document.getElementById('back-btn').addEventListener('click', () => {
-    window.history.back();
-  });
-  document.getElementById('search-btn').addEventListener('click', () => {
-    alert('Search functionality would open here');
-  });
+  // Back button
+  const backBtn = document.getElementById('back-btn');
+  if (backBtn) {
+      backBtn.onclick = () => {
+          window.location.href = '../swiggy-style_elite_main_menu_390x2500/index.html';
+      };
+  }
+  
+  // Search input listener
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) {
+      searchInput.addEventListener('input', () => {
+          renderProducts(currentFilter);
+      });
+  }
+
+  // Filter buttons
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      e.currentTarget.classList.add('active');
-      currentFilter = e.currentTarget.dataset.filter;
+      const target = e.currentTarget;
+      
+      // Only apply style toggling to "pill" style buttons (heuristic: has px-5 class)
+      if (target.classList.contains('px-5')) {
+          document.querySelectorAll('.filter-btn.px-5').forEach(b => {
+              b.classList.remove('active', 'bg-primary', 'text-white');
+              b.classList.add('bg-white', 'dark:bg-slate-800', 'text-[#1c160d]', 'dark:text-white');
+          });
+          target.classList.remove('bg-white', 'dark:bg-slate-800', 'text-[#1c160d]', 'dark:text-white');
+          target.classList.add('active', 'bg-primary', 'text-white');
+      }
+      
+      currentFilter = target.dataset.filter;
       renderProducts(currentFilter);
     });
-  });
-  document.getElementById('floating-cart').addEventListener('click', () => {
-    alert(`Cart contains ${cart.length} items`);
   });
 }

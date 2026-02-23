@@ -1,11 +1,42 @@
 const products = [
-  { id: 1, name: "Classic Chocolate", description: "Rich cocoa, creamy base", price: 5.20, image: "https://images.unsplash.com/photo-1542444459-db9b6f23e273?q=80&w=500&auto=format&fit=crop", category: "chocolate" },
-  { id: 2, name: "Vanilla Bean", description: "Madagascar vanilla, smooth", price: 5.00, image: "https://images.unsplash.com/photo-1542444453-9e3048fabb17?q=80&w=500&auto=format&fit=crop", category: "vanilla" },
-  { id: 3, name: "Strawberry Bliss", description: "Fresh strawberries, cream", price: 5.40, image: "https://images.unsplash.com/photo-1497534446932-c925b458314e?q=80&w=500&auto=format&fit=crop", category: "fruit" },
-  { id: 4, name: "Banana Caramel", description: "Banana, caramel drizzle", price: 5.60, image: "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=500&auto=format&fit=crop", category: "fruit" },
+  {
+    id: 1,
+    name: "Classic Chocolate Fudge",
+    description: "Double dark chocolate with whipped cream",
+    calories: "450 kcal",
+    price: 6.50,
+    image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&h=600&q=80",
+    category: "chocolate"
+  },
+  {
+    id: 2,
+    name: "Wild Strawberry Swirl",
+    description: "Fresh farm berries with creamy vanilla base",
+    calories: "380 kcal",
+    price: 7.25,
+    image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=600&h=600&q=80",
+    category: "fruit"
+  },
+  {
+    id: 3,
+    name: "Peanut Butter Power",
+    description: "Protein rich shake with roasted peanuts",
+    calories: "520 kcal",
+    price: 8.00,
+    image: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=600&h=600&q=80",
+    category: "protein"
+  },
+  {
+    id: 4,
+    name: "Blueberry Vanilla Mist",
+    description: "Antioxidant blast with premium vanilla bean",
+    calories: "340 kcal",
+    price: 7.50,
+    image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=600&h=600&q=80",
+    category: "fruit"
+  }
 ];
 
-let cart = [];
 let currentFilter = 'all';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,68 +45,55 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Navigate to customization page
-    function redirectToCustomization(productId) {
-        window.location.href = '../smothie customisation review/index.html';
-    }
+function redirectToCustomization(productId) {
+    window.location.href = '../smothie customisation review/index.html';
+}
 
-    // Deprecated: Direct add to cart (kept for reference)
-    function addToCart(productId) {
-        redirectToCustomization(productId);
-        /*
-        const product = products.find(p => p.id === productId);
-        const existingItem = cart.find(item => item.id === productId);
-        if (existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            cart.push({ ...product, quantity: 1 });
-        }
-        updateCart();
-        */
-    }
+// Add to cart (redirects to customization)
+function addToCart(productId) {
+    redirectToCustomization(productId);
+}
 
-    function renderProducts(filter = 'all') {
-        const list = document.getElementById('product-list');
-        const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
-        list.innerHTML = filteredProducts.map((product, index) => `
-            <div onclick="redirectToCustomization(${product.id})" class="flex items-center gap-3 p-3 bg-white dark:bg-zinc-800 rounded-[16px] border border-zinc-100 dark:border-zinc-700 shadow-sm fade-in transition-transform active:scale-95 cursor-pointer" style="animation-delay: ${index * 0.05}s">
-                <div class="size-14 rounded-xl bg-zinc-100 bg-center bg-cover flex-shrink-0" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');"></div>
-                <div class="flex-1">
-                    <h4 class="font-semibold text-[16px]">${product.name}</h4>
-                    <p class="text-[11px] text-zinc-500 dark:text-zinc-300 mt-0.5">${product.description}</p>
-                    <p class="font-bold text-primary mt-1 text-sm">$${product.price.toFixed(2)}</p>
-                </div>
-                <button onclick="event.stopPropagation(); addToCart(${product.id})" class="size-8 rounded-full bg-white dark:bg-zinc-700 border border-zinc-200 dark:border-zinc-600 flex items-center justify-center text-primary shadow-sm hover:bg-zinc-50 dark:hover:bg-zinc-600 transition-transform active:scale-95">
-                    <span class="material-symbols-outlined text-[20px]">add</span>
+function renderProducts(filter = 'all') {
+    const list = document.getElementById('product-list');
+    if (!list) return;
+    
+    const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
+    list.innerHTML = filteredProducts.map((product, index) => `
+        <div class="flex items-center gap-3 rounded-[16px] bg-white p-3 shadow-sm ring-1 ring-black/5 dark:bg-zinc-800 dark:ring-white/5 cursor-pointer transition-transform active:scale-95 fade-in" style="animation-delay: ${index * 0.05}s">
+            <div class="size-20 shrink-0 overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-900">
+                <div class="size-full bg-cover bg-center" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');"></div>
+            </div>
+            <div class="flex flex-1 flex-col pr-2">
+                <h4 class="text-[16px] font-bold text-zinc-900 dark:text-white">${product.name}</h4>
+                <p class="mt-0.5 line-clamp-1 text-[11px] text-zinc-500 dark:text-zinc-400">${product.description}</p>
+                <p class="mt-1 text-[10px] font-medium text-zinc-400">${product.calories}</p>
+            </div>
+            <div class="flex shrink-0 items-center gap-3">
+                <p class="text-[15px] font-extrabold text-zinc-900 dark:text-white">$${product.price.toFixed(2)}</p>
+                <button onclick="event.stopPropagation(); addToCart(${product.id})" class="flex size-8 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/20 transition-transform active:scale-95">
+                    <span class="material-symbols-outlined text-[18px] font-bold">add</span>
                 </button>
             </div>
-        `).join('');
-    }
-
-function updateCart() {
-  const floatingCart = document.getElementById('floating-cart');
-  const cartTotal = document.getElementById('cart-total');
-  const cartBadge = document.getElementById('cart-badge');
-  const cartItemsText = document.getElementById('cart-items-text');
-
-  if (cart.length > 0) {
-    floatingCart.classList.remove('hidden');
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartTotal.textContent = `$${total.toFixed(2)}`;
-    cartBadge.textContent = count;
-    cartItemsText.textContent = `${count} Item${count !== 1 ? 's' : ''}`;
-  } else {
-    floatingCart.classList.add('hidden');
-  }
+        </div>
+    `).join('');
 }
 
 function setupEventListeners() {
-  document.getElementById('back-btn').addEventListener('click', () => {
-    window.history.back();
-  });
-  document.getElementById('search-btn').addEventListener('click', () => {
-    alert('Search functionality would open here');
-  });
+  const backBtn = document.getElementById('back-btn');
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+        window.history.back();
+    });
+  }
+  
+  const searchBtn = document.getElementById('search-btn');
+  if (searchBtn) {
+    searchBtn.addEventListener('click', () => {
+        alert('Search functionality would open here');
+    });
+  }
+
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -83,8 +101,5 @@ function setupEventListeners() {
       currentFilter = e.currentTarget.dataset.filter;
       renderProducts(currentFilter);
     });
-  });
-  document.getElementById('floating-cart').addEventListener('click', () => {
-    alert(`Cart contains ${cart.length} items`);
   });
 }

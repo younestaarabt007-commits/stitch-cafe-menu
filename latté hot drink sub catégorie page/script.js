@@ -1,90 +1,128 @@
 const products = [
-  { id: 1, name: "Classic Latte", description: "Double shot, steamed milk", price: 4.80, image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=500&auto=format&fit=crop", category: "classic" },
-  { id: 2, name: "Vanilla Latte", description: "House vanilla syrup", price: 5.10, image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=500&auto=format&fit=crop", category: "flavored" },
-  { id: 3, name: "Caramel Latte", description: "Buttery caramel drizzle", price: 5.10, image: "https://images.unsplash.com/photo-1547234063-3a9ffc8ef9a7?q=80&w=500&auto=format&fit=crop", category: "flavored" },
-  { id: 4, name: "Pumpkin Spice Latte", description: "Seasonal spices & puree", price: 5.40, image: "https://images.unsplash.com/photo-1631900161776-9de35f9d5fbe?q=80&w=500&auto=format&fit=crop", category: "seasonal" },
+  { id: "latte_1", name: "Classic Latte", description: "Double shot, steamed milk", price: 4.80, image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=500&auto=format&fit=crop", category: "classic" },
+  { id: "latte_2", name: "Signature Oat Latte", description: "Creamy & Sustainable", price: 6.50, image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=500&fit=crop", category: "plant-based" },
+  { id: "latte_3", name: "Vanilla Bean", description: "House vanilla bean syrup", price: 5.75, image: "https://images.unsplash.com/photo-1511537632536-acc2a4223056?w=500&h=500&fit=crop", category: "flavored" },
+  { id: "latte_4", name: "Caramel Macchiato", description: "Buttery caramel drizzle", price: 6.25, image: "https://images.unsplash.com/photo-1461023058943-48db5d469292?w=500&h=500&fit=crop", category: "flavored" },
+  { id: "latte_5", name: "Spanish Latte", description: "Condensed milk & espresso", price: 5.50, image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=500&h=500&fit=crop", category: "classic" },
+  { id: "latte_6", name: "Rose Water Latte", description: "Delicate floral infusion", price: 6.00, image: "https://images.unsplash.com/photo-1541167760496-1613c3434a74?w=500&h=500&fit=crop", category: "flavored" },
+  { id: "latte_7", name: "Iced Matcha Latte", description: "Ceremonial grade green tea", price: 6.25, image: "https://images.unsplash.com/photo-1570968993084-a8e384554f1f?w=500&h=500&fit=crop", category: "iced" },
+  { id: "latte_8", name: "Hazelnut Latte", description: "Rich nutty profile", price: 5.75, image: "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=500&h=500&fit=crop", category: "flavored" },
+  { id: "latte_9", name: "Pumpkin Spice Latte", description: "Seasonal spices & puree", price: 5.40, image: "https://images.unsplash.com/photo-1631900161776-9de35f9d5fbe?q=80&w=500&auto=format&fit=crop", category: "seasonal" }
 ];
 
-let cart = [];
 let currentFilter = 'all';
 
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   setupEventListeners();
+  // Update cart count on load
+  if (window.updateGlobalCartCount) {
+      window.updateGlobalCartCount();
+  }
 });
 
 // Navigate to customization page
-    function redirectToCustomization(productId) {
-        window.location.href = '../latte_customization_view_2/index.html';
+function redirectToCustomization(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    // Redirect to the review page which acts as customization for now, or the specific customization page if it exists
+    // Using smothie customisation review as a fallback or template if specific latte customization isn't ready
+    // But based on folder structure, maybe 'latté hot drink sub catégorie page' IS the list, and we need a detail page.
+    // The previous code pointed to '../latte_customization_view_2/index.html'
+    window.location.href = `../latte_customization_view_2/index.html?price=${product.price}&id=${product.id}&name=${encodeURIComponent(product.name)}`;
+}
+
+function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    const cart = JSON.parse(localStorage.getItem('stitch_cart') || '[]');
+    const existingItem = cart.find(item => item.id === product.id);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            category: product.category,
+            quantity: 1
+        });
     }
 
-    // Deprecated: Direct add to cart (kept for reference)
-    function addToCart(productId) {
-        redirectToCustomization(productId);
-        /*
-        const product = products.find(p => p.id === productId);
-        const existingItem = cart.find(item => item.id === productId);
-        if (existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            cart.push({ ...product, quantity: 1 });
-        }
-        updateCart();
-        */
+    localStorage.setItem('stitch_cart', JSON.stringify(cart));
+
+    if (window.updateGlobalCartCount) {
+        window.updateGlobalCartCount();
     }
 
-    function renderProducts(filter = 'all') {
-        const list = document.getElementById('product-list');
-        const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
-        list.innerHTML = filteredProducts.map((product, index) => `
-            <div onclick="redirectToCustomization(${product.id})" class="flex items-center gap-3 p-3 bg-white dark:bg-zinc-800 rounded-[16px] border border-zinc-100 dark:border-zinc-700 shadow-sm fade-in transition-transform active:scale-95 cursor-pointer" style="animation-delay: ${index * 0.05}s">
-                <div class="size-14 rounded-xl bg-zinc-100 bg-center bg-cover flex-shrink-0" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');"></div>
-                <div class="flex-1">
-                    <h4 class="font-semibold text-[16px]">${product.name}</h4>
-                    <p class="text-[11px] text-zinc-500 dark:text-zinc-300 mt-0.5">${product.description}</p>
-                    <p class="font-bold text-primary mt-1 text-sm">$${product.price.toFixed(2)}</p>
+    // Visual feedback
+    const btn = document.querySelector(`button[onclick*="${productId}"]`);
+    if(btn) {
+        const originalContent = btn.innerHTML;
+        btn.innerHTML = '<span class="material-symbols-outlined text-xs">check</span>';
+        setTimeout(() => {
+            btn.innerHTML = originalContent;
+        }, 1000);
+    }
+}
+
+function renderProducts(filter = 'all') {
+    const list = document.getElementById('product-list');
+    if (!list) return; // Guard clause in case element doesn't exist
+    
+    const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
+    
+    list.innerHTML = filteredProducts.map((product, index) => `
+        <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700 fade-in transition-transform active:scale-95 cursor-pointer" style="animation-delay: ${index * 0.05}s">
+            <div class="w-full aspect-square rounded-lg bg-cover bg-center mb-3" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');"></div>
+            <div class="flex-1 flex flex-col">
+                <div class="flex justify-between items-start mb-1">
+                    <h4 class="font-semibold text-[16px] leading-tight pr-1">${product.name}</h4>
                 </div>
-                <button onclick="event.stopPropagation(); addToCart(${product.id})" class="size-8 rounded-full bg-white dark:bg-zinc-700 border border-zinc-200 dark:border-zinc-600 flex items-center justify-center text-primary shadow-sm hover:bg-zinc-50 dark:hover:bg-zinc-600 transition-transform active:scale-95">
-                    <span class="material-symbols-outlined text-[20px]">add</span>
-                </button>
+                <p class="text-xs opacity-60 line-clamp-1 mb-2">${product.description}</p>
+                <div class="flex justify-between items-center mt-auto">
+                    <span class="text-primary font-bold">$${product.price.toFixed(2)}</span>
+                    <button onclick="event.stopPropagation(); addToCart('${product.id}')" class="size-8 rounded-full bg-primary flex items-center justify-center text-white shadow-sm hover:bg-primary/90 transition-transform active:scale-95">
+                        <span class="material-symbols-outlined text-sm">add</span>
+                    </button>
+                </div>
             </div>
-        `).join('');
-    }
-
-function updateCart() {
-  const floatingCart = document.getElementById('floating-cart');
-  const cartTotal = document.getElementById('cart-total');
-  const cartBadge = document.getElementById('cart-badge');
-  const cartItemsText = document.getElementById('cart-items-text');
-
-  if (cart.length > 0) {
-    floatingCart.classList.remove('hidden');
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartTotal.textContent = `$${total.toFixed(2)}`;
-    cartBadge.textContent = count;
-    cartItemsText.textContent = `${count} Item${count !== 1 ? 's' : ''}`;
-  } else {
-    floatingCart.classList.add('hidden');
-  }
+        </div>
+    `).join('');
 }
 
 function setupEventListeners() {
-  document.getElementById('back-btn').addEventListener('click', () => {
-    window.history.back();
-  });
-  document.getElementById('search-btn').addEventListener('click', () => {
-    alert('Search functionality would open here');
-  });
+  const backBtn = document.getElementById('back-btn');
+  if (backBtn) {
+      backBtn.addEventListener('click', () => {
+        window.location.href = '../swiggy-style_elite_main_menu_390x2500/index.html';
+      });
+  }
+  
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) {
+      searchInput.addEventListener('input', () => {
+          // Implement search if needed, or just filter
+          // renderProducts(currentFilter);
+      });
+  }
+
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      e.currentTarget.classList.add('active');
+      // Find the closest parent that contains all filter buttons if they are in different containers
+      // or just document.querySelectorAll again
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active', 'bg-primary', 'text-white'));
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.add('bg-card-tan', 'dark:bg-slate-800', 'text-[#1c160d]', 'dark:text-white')); // Reset to default style
+      
+      // Set active style
+      e.currentTarget.classList.remove('bg-card-tan', 'dark:bg-slate-800', 'text-[#1c160d]', 'dark:text-white');
+      e.currentTarget.classList.add('active', 'bg-primary', 'text-white');
+      
       currentFilter = e.currentTarget.dataset.filter;
       renderProducts(currentFilter);
     });
-  });
-  document.getElementById('floating-cart').addEventListener('click', () => {
-    alert(`Cart contains ${cart.length} items`);
   });
 }

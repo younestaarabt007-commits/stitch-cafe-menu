@@ -112,7 +112,7 @@ const menuTranslations = {
     }
 };
 
-let cart = [];
+// let cart = []; // Deprecated, handled by nav-bar.js
 let currentFilter = 'all';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -278,6 +278,7 @@ function setupEventListeners() {
   }
 }
 
+/*
 function openOrderModal() {
   const modal = document.getElementById('order-modal');
   if (!modal) return;
@@ -343,3 +344,4 @@ document.addEventListener('click', (e) => {
     alert('Order placed successfully! (Demo)');
   }
 });
+*/

@@ -89,10 +89,10 @@
 <div class="berry-splash w-64 h-64 -top-10 -right-10 rounded-full blur-3xl"></div>
 <div class="berry-splash w-48 h-48 top-1/2 -left-10 rounded-full blur-2xl"></div>
 <div class="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 bg-gradient-to-b from-black/10 to-transparent">
-<div class="flex size-10 items-center justify-center rounded-full bg-white/40 backdrop-blur-md text-white shadow-sm hover:bg-white/50 transition-colors">
+<div id="back-btn" class="flex size-10 items-center justify-center rounded-full bg-white/40 backdrop-blur-md text-white shadow-sm hover:bg-white/50 transition-colors cursor-pointer">
 <span class="material-symbols-outlined">arrow_back</span>
 </div>
-<div class="flex size-10 items-center justify-center rounded-full bg-white/40 backdrop-blur-md text-white shadow-sm hover:bg-white/50 transition-colors">
+<div id="search-btn" class="flex size-10 items-center justify-center rounded-full bg-white/40 backdrop-blur-md text-white shadow-sm hover:bg-white/50 transition-colors cursor-pointer">
 <span class="material-symbols-outlined">search</span>
 </div>
 </div>
@@ -113,7 +113,7 @@
 <div class="absolute bottom-6 left-0 right-0 px-4 z-20 w-full max-w-[390px] mx-auto box-border">
   <div class="glass-search rounded-xl h-12 flex items-center px-4 shadow-xl border border-white/40 w-full">
     <span class="material-symbols-outlined text-primary mr-3 text-xl">search</span>
-    <input class="bg-transparent border-none outline-none text-[#1c160d] placeholder-white/70 w-full font-medium text-sm focus:ring-0" placeholder="Search smoothies & shakes..." type="text"/>
+    <input id="search-input" class="bg-transparent border-none outline-none text-[#1c160d] placeholder-white/70 w-full font-medium text-sm focus:ring-0" placeholder="Search smoothies & shakes..." type="text"/>
     <span class="material-symbols-outlined text-white/80 text-xl">mic</span>
   </div>
 </div>
@@ -144,188 +144,44 @@
 </div>
 </div>
 <div class="flex gap-2 px-4 mb-6 overflow-x-auto no-scrollbar">
-<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-primary px-4 shadow-sm">
+<div class="filter-btn flex h-8 shrink-0 items-center justify-center rounded-full bg-primary px-4 shadow-sm cursor-pointer active" data-filter="all">
 <p class="text-white text-xs font-bold">All</p>
 </div>
-<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-white dark:bg-slate-800 px-4 border border-slate-100 dark:border-slate-700 shadow-sm">
+<div class="filter-btn flex h-8 shrink-0 items-center justify-center rounded-full bg-white dark:bg-slate-800 px-4 border border-slate-100 dark:border-slate-700 shadow-sm cursor-pointer hover:bg-gray-50 transition-colors" data-filter="fruit">
 <p class="text-[#1c160d] dark:text-white text-xs font-bold">Fruit-Based</p>
 </div>
-<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-white dark:bg-slate-800 px-4 border border-slate-100 dark:border-slate-700 shadow-sm">
+<div class="filter-btn flex h-8 shrink-0 items-center justify-center rounded-full bg-white dark:bg-slate-800 px-4 border border-slate-100 dark:border-slate-700 shadow-sm cursor-pointer hover:bg-gray-50 transition-colors" data-filter="protein">
 <p class="text-[#1c160d] dark:text-white text-xs font-bold">Protein</p>
 </div>
-<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-white dark:bg-slate-800 px-4 border border-slate-100 dark:border-slate-700 shadow-sm">
+<div class="filter-btn flex h-8 shrink-0 items-center justify-center rounded-full bg-white dark:bg-slate-800 px-4 border border-slate-100 dark:border-slate-700 shadow-sm cursor-pointer hover:bg-gray-50 transition-colors" data-filter="indulgent">
 <p class="text-[#1c160d] dark:text-white text-xs font-bold">Indulgent</p>
 </div>
 </div>
-<div class="px-4 grid grid-cols-2 gap-3 mb-6">
-<div class="col-span-1 h-[260px] relative rounded-xl overflow-hidden bg-white dark:bg-slate-800/50 p-3 flex flex-col border border-slate-100 shadow-sm">
-<div class="mb-1">
-<h3 class="font-bold text-base leading-tight">Green Detox</h3>
-<p class="text-[9px] uppercase tracking-wider text-green-600 font-bold mt-0.5">Spinach &amp; Apple</p>
+<div id="product-list" class="px-4 grid grid-cols-1 gap-3 pb-32">
+        <!-- Products will be rendered here by script.js -->
+    </div>
 </div>
-<div class="flex-1 w-full bg-cover bg-center rounded-lg my-2 scale-105" data-alt="Green detox smoothie" style='background-image: url("https://images.unsplash.com/photo-1610970881699-44a5587cabec?auto=format&fit=crop&w=600&h=600&q=80");'></div>
-<div class="flex justify-between items-center mt-auto">
-<span class="font-bold text-[#1c160d] text-sm">$9.50</span>
-<a href="../smothie customisation review/code.html" class="h-9 px-4 rounded-lg bg-white border border-slate-100 text-primary font-bold text-xs shadow-sm uppercase tracking-wider hover:bg-primary hover:text-white transition-colors">
-                    Add
-                </a>
-</div>
-</div>
-<div class="col-span-1 flex flex-col gap-3 h-[260px]">
-<div class="flex-1 rounded-xl bg-white dark:bg-slate-800/50 p-3 flex flex-col justify-between border border-slate-100 shadow-sm">
-<div class="flex justify-between items-start">
-<div class="w-12 h-12 rounded-lg bg-cover bg-center shadow-sm" data-alt="Chocolate Malt Shake" style='background-image: url("https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&h=600&q=80");'></div>
-<span class="font-bold text-[10px] text-[#1c160d] bg-slate-50 dark:bg-slate-700 px-1.5 py-0.5 rounded-md">$7.50</span>
-</div>
-<div class="flex justify-between items-end mt-1">
-<h3 class="font-bold text-xs leading-tight">Choco Malt</h3>
-<a href="../smothie customisation review/code.html" class="h-7 px-3 rounded-md bg-white border border-slate-100 text-primary font-bold text-[10px] shadow-sm uppercase tracking-wider hover:bg-primary hover:text-white transition-colors">
-                    Add
-                </a>
-</div>
-</div>
-<div class="flex-1 rounded-xl bg-white dark:bg-slate-800/50 p-3 flex flex-col justify-between border border-slate-100 shadow-sm">
-<div class="flex justify-between items-start">
-<div class="w-12 h-12 rounded-lg bg-cover bg-center shadow-sm" data-alt="Indulgent Berry Shake" style='background-image: url("https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=600&h=600&q=80");'></div>
-<span class="font-bold text-[10px] text-[#1c160d] bg-slate-50 dark:bg-slate-700 px-1.5 py-0.5 rounded-md">$8.25</span>
-</div>
-<div class="flex justify-between items-end mt-1">
-<h3 class="font-bold text-xs leading-tight">Berry Cream</h3>
-<a href="../smothie customisation review/code.html" class="h-7 px-3 rounded-md bg-white border border-slate-100 text-primary font-bold text-[10px] shadow-sm uppercase tracking-wider hover:bg-primary hover:text-white transition-colors">
-                    Add
-                </a>
-</div>
-</div>
-</div>
-</div>
-<div class="mx-4 mb-8 h-[90px] rounded-xl bg-gradient-to-r from-orange-50 to-orange-100/50 dark:from-slate-800 dark:to-slate-700 p-4 border border-orange-100/50 relative overflow-hidden flex items-center shadow-sm">
-<div class="z-10 w-2/3">
-<h3 class="font-bold text-orange-600 dark:text-orange-400 text-[9px] uppercase tracking-widest mb-0.5">Seasonal Special</h3>
-<p class="font-extrabold text-sm leading-tight text-[#1c160d] dark:text-white">Fresh Fruit Crates</p>
-<div class="mt-1.5 inline-flex items-center gap-1 text-primary text-[9px] font-bold uppercase">
-                    Order Box <span class="material-symbols-outlined text-[10px]">arrow_right_alt</span>
-</div>
-</div>
-<div class="absolute -right-4 top-1 bottom-1 w-24 bg-center bg-contain bg-no-repeat opacity-90 rotate-3" data-alt="Fresh fruit box" style='background-image: url("https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=600&h=600&q=80");'></div>
-</div>
-<div class="px-4 flex items-center justify-between mb-4">
-<h3 class="text-[20px] font-bold tracking-tight text-[#1c160d] dark:text-white">Daily Blends</h3>
-<span class="text-primary text-[10px] font-bold uppercase tracking-wider cursor-pointer">View All</span>
-</div>
-<div class="px-4 grid grid-cols-2 gap-3 pb-32">
-<div class="bg-white dark:bg-slate-800 p-3 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col h-full relative">
-<div class="w-full aspect-square rounded-lg bg-cover bg-center mb-2" data-alt="Tropical Mango Smoothie" style='background-image: url("https://images.unsplash.com/photo-1546171753-97d7676e4602?auto=format&fit=crop&w=600&h=600&q=80");'></div>
-<h4 class="font-bold text-sm leading-tight mb-0.5">Tropical Mango</h4>
-<p class="text-[10px] opacity-60 line-clamp-1 mb-2">Fresh mango, pineapple</p>
-<div class="mt-auto flex items-center justify-between">
-<span class="text-[#1c160d] dark:text-white font-bold text-sm">$7.50</span>
-<a href="../smothie customisation review/code.html" class="w-[84px] h-[36px] rounded-lg bg-white border border-primary text-primary hover:bg-primary hover:text-white flex items-center justify-center font-bold text-xs uppercase transition-colors shadow-sm">
-                    Add
-                </a>
-</div>
-</div>
-<div class="bg-white dark:bg-slate-800 p-3 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col h-full relative">
-<div class="w-full aspect-square rounded-lg bg-cover bg-center mb-2" data-alt="Wild Berry Smoothie" style='background-image: url("https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=600&h=600&q=80");'></div>
-<h4 class="font-bold text-sm leading-tight mb-0.5">Wild Berry</h4>
-<p class="text-[10px] opacity-60 line-clamp-1 mb-2">Blueberry, raspberry</p>
-<div class="mt-auto flex items-center justify-between">
-<span class="text-[#1c160d] dark:text-white font-bold text-sm">$7.00</span>
-<a href="../smothie customisation review/code.html" class="w-[84px] h-[36px] rounded-lg bg-white border border-primary text-primary hover:bg-primary hover:text-white flex items-center justify-center font-bold text-xs uppercase transition-colors shadow-sm">
-                    Add
-                </a>
-</div>
-</div>
-<div class="bg-white dark:bg-slate-800 p-3 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col h-full relative">
-<div class="w-full aspect-square rounded-lg bg-cover bg-center mb-2" data-alt="Green Glow Smoothie" style='background-image: url("https://images.unsplash.com/photo-1610970881699-44a5587cabec?auto=format&fit=crop&w=600&h=600&q=80");'></div>
-<h4 class="font-bold text-sm leading-tight mb-0.5">Green Glow</h4>
-<p class="text-[10px] opacity-60 line-clamp-1 mb-2">Kale, avocado, lime</p>
-<div class="mt-auto flex items-center justify-between">
-<span class="text-[#1c160d] dark:text-white font-bold text-sm">$8.00</span>
-<a href="../smothie customisation review/code.html" class="w-[84px] h-[36px] rounded-lg bg-white border border-primary text-primary hover:bg-primary hover:text-white flex items-center justify-center font-bold text-xs uppercase transition-colors shadow-sm">
-                    Add
-                </a>
-</div>
-</div>
-<div class="bg-white dark:bg-slate-800 p-3 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col h-full relative">
-<div class="w-full aspect-square rounded-lg bg-cover bg-center mb-2" data-alt="Oreo Blast Shake" style='background-image: url("https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&h=600&q=80");'></div>
-<h4 class="font-bold text-sm leading-tight mb-0.5">Oreo Blast</h4>
-<p class="text-[10px] opacity-60 line-clamp-1 mb-2">Cookies, cream</p>
-<div class="mt-auto flex items-center justify-between">
-<span class="text-[#1c160d] dark:text-white font-bold text-sm">$6.50</span>
-<a href="../smothie customisation review/code.html" class="w-[84px] h-[36px] rounded-lg bg-white border border-primary text-primary hover:bg-primary hover:text-white flex items-center justify-center font-bold text-xs uppercase transition-colors shadow-sm">
-                    Add
-                </a>
-</div>
-</div>
-</div>
-<div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
-<div class="w-[342px] bg-black text-white rounded-full h-[60px] flex items-center justify-between px-2 pl-2 pr-6 shadow-2xl pointer-events-auto ring-1 ring-white/10">
-<div class="flex items-center gap-3">
-<div class="size-11 rounded-full bg-[#333] flex items-center justify-center text-white font-bold text-sm">
-<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
-</div>
-<div class="flex flex-col">
-<span class="text-white font-bold text-sm">View Cart</span>
-<span class="text-white/60 text-[10px] font-medium">2 items • Elite</span>
-</div>
-</div>
-<div class="flex items-center gap-2">
-<span class="text-white font-bold text-base">$14.50</span>
-</div>
-</div>
-</div>
-</div>
-<script>
-  (function () {
-    function getStoredCart() {
-      try { return JSON.parse(localStorage.getItem('stitch_cart') || '[]'); } catch { return []; }
-    }
-    function storeCart(items, count, total) {
-      localStorage.setItem('stitch_cart', JSON.stringify(items));
-      localStorage.setItem('stitch_cart_count', String(count));
-      localStorage.setItem('stitch_cart_total', String(total));
-    }
-    function getSummary() {
-      const items = getStoredCart();
-      const count = items.reduce((s, x) => s + (x.qty || 1), 0);
-      const total = items.reduce((s, x) => s + (Number(x.price || 0) * (x.qty || 1)), 0);
-      return { items, count, total };
-    }
-    function updateBar() {
-      const bar = document.querySelector('.fixed.bottom-6 .w-[342px]');
-      if (!bar) return;
-      const left = bar.querySelectorAll('.flex.flex-col span');
-      const rightPrice = bar.querySelector('.flex.items-center.gap-2 span.text-white.font-bold.text-base');
-      const summary = getSummary();
-      if (left[1]) left[1].textContent = summary.count + ' items • Elite';
-      if (rightPrice) rightPrice.textContent = '$' + summary.total.toFixed(2);
-    }
-    function addHandlers() {
-      document.querySelectorAll('button').forEach(btn => {
-        if ((btn.textContent || '').trim().toLowerCase() === 'add') {
-          btn.addEventListener('click', () => {
-            const card = btn.closest('.bg-white, .dark\\:bg-slate-800');
-            const nameEl = card ? card.querySelector('h4, h3') : null;
-            const priceEl = card ? card.querySelector('span.font-bold') : null;
-            const name = nameEl ? nameEl.textContent.trim() : 'Item';
-            const priceText = priceEl ? priceEl.textContent.replace('$','') : '0';
-            const price = Number(parseFloat(priceText));
-            const items = getStoredCart();
-            const id = 'smooth-' + name.toLowerCase().replace(/\\s+/g,'-');
-            const found = items.find(x => x.id === id);
-            if (found) found.qty = (found.qty || 1) + 1;
-            else items.push({ id, name, price, qty: 1 });
-            const count = items.reduce((s, x) => s + (x.qty || 1), 0);
-            const total = items.reduce((s, x) => s + (Number(x.price || 0) * (x.qty || 1)), 0);
-            storeCart(items, count, total);
-            updateBar();
-          });
-        }
-      });
-    }
-    updateBar();
-    addHandlers();
-  })();
-</script>
-
+<!-- Hardcoded Nav Bar for Immediate Visibility -->
+<nav class="standard-nav-bar bg-white dark:bg-[#2a1e19] border-t border-gray-100 dark:border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] backdrop-blur-md h-[55px] flex items-stretch justify-between px-6 fixed bottom-0 left-0 right-0 z-50 max-w-[390px] mx-auto">
+    <button onclick="window.location.href='../swiggy-style_elite_main_menu_390x2500/index.html'" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">home</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Home</span>
+    </button>
+    <button onclick="window.location.href='../swiggy-style_elite_main_menu_390x2500/index.html#explore'" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">category</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Explore</span>
+    </button>
+    <button onclick="window.location.href='../order_success_page/index.html'" class="relative flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Cart</span>
+        <span id="global-cart-count" class="absolute -top-1 right-4 bg-primary text-white text-[10px] font-bold px-1.5 py-[2px] rounded-full hidden">0</span>
+    </button>
+    <button onclick="alert('Profile feature coming soon')" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">person</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Profile</span>
+    </button>
+</nav>
+<!-- Navigation Bar Script (logic only) -->
+<script src="script.js"></script>
+<script src="../nav-bar.js"></script>
 </body></html>

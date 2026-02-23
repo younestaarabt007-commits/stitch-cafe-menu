@@ -83,7 +83,7 @@
 <div class="flex size-10 items-center justify-center rounded-full bg-black/20 backdrop-blur-md text-white border border-white/10">
 <span class="material-symbols-outlined">arrow_back</span>
 </div>
-<div class="flex size-10 items-center justify-center rounded-full bg-black/20 backdrop-blur-md text-white border border-white/10">
+<div id="search-btn" class="flex size-10 items-center justify-center rounded-full bg-black/20 backdrop-blur-md text-white border border-white/10 cursor-pointer hover:bg-black/30 transition-colors">
 <span class="material-symbols-outlined">search</span>
 </div>
 </div>
@@ -204,144 +204,29 @@
 <span class="text-[10px] font-black uppercase tracking-widest">Filter</span>
 </div>
 </div>
-<div class="px-4 grid grid-cols-2 gap-3 pb-36">
-<div class="flex flex-col gap-2 bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
-<div class="w-full aspect-square rounded-xl bg-cover bg-center shadow-sm" data-alt="Spanish Latte" style='background-image: url("https://source.unsplash.com/O_7Eev-wA0k/600x600");'></div>
-<div class="flex flex-col">
-<h4 class="font-semibold text-[16px] leading-tight text-[#1c160d] dark:text-white truncate">Spanish Latte</h4>
-<p class="text-[11px] opacity-60 line-clamp-1 mt-0.5">Condensed milk &amp; espresso.</p>
-<div class="flex items-center justify-between mt-2">
-<span class="text-primary font-bold text-sm">$5.50</span>
-<a href="../sweet_pastries_customization_view/index.html" class="bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors size-7 flex items-center justify-center rounded-full"><span class="material-symbols-outlined text-base">add</span></a>
+<div class="px-4 grid grid-cols-2 gap-x-gutter gap-y-gap-v pb-36" id="product-list">
+    <!-- Products rendered via script.js -->
 </div>
-</div>
-</div>
-<div class="flex flex-col gap-2 bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
-<div class="w-full aspect-square rounded-xl bg-cover bg-center shadow-sm" data-alt="Rose Water Latte" style='background-image: url("https://source.unsplash.com/7tcXsqyhpWc/600x600");'></div>
-<div class="flex flex-col">
-<h4 class="font-semibold text-[16px] leading-tight text-[#1c160d] dark:text-white truncate">Rose Water Latte</h4>
-<p class="text-[11px] opacity-60 line-clamp-1 mt-0.5">Floral honey microfoam.</p>
-<div class="flex items-center justify-between mt-2">
-<span class="text-primary font-bold text-sm">$6.00</span>
-<a href="../sweet_pastries_customization_view/index.html" class="bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors size-7 flex items-center justify-center rounded-full"><span class="material-symbols-outlined text-base">add</span></a>
-</div>
-</div>
-</div>
-<div class="flex flex-col gap-2 bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
-<div class="w-full aspect-square rounded-xl bg-cover bg-center shadow-sm" data-alt="Iced Matcha Latte" style='background-image: url("https://source.unsplash.com/eV_KLbGZDq4/600x600");'></div>
-<div class="flex flex-col">
-<h4 class="font-semibold text-[16px] leading-tight text-[#1c160d] dark:text-white truncate">Iced Matcha Latte</h4>
-<p class="text-[11px] opacity-60 line-clamp-1 mt-0.5">Ceremonial grade tea.</p>
-<div class="flex items-center justify-between mt-2">
-<span class="text-primary font-bold text-sm">$6.25</span>
-<a href="../sweet_pastries_customization_view/index.html" class="bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors size-7 flex items-center justify-center rounded-full"><span class="material-symbols-outlined text-base">add</span></a>
-</div>
-</div>
-</div>
-<div class="flex flex-col gap-2 bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
-<div class="w-full aspect-square rounded-xl bg-cover bg-center shadow-sm" data-alt="Hazelnut Latte" style='background-image: url("https://source.unsplash.com/Nbu4vHEUNF8/600x600");'></div>
-<div class="flex flex-col">
-<h4 class="font-semibold text-[16px] leading-tight text-[#1c160d] dark:text-white truncate">Hazelnut Latte</h4>
-<p class="text-[11px] opacity-60 line-clamp-1 mt-0.5">Rich roasted nut profile.</p>
-<div class="flex items-center justify-between mt-2">
-<span class="text-primary font-bold text-sm">$5.75</span>
-<a href="../sweet_pastries_customization_view/index.html" class="bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors size-7 flex items-center justify-center rounded-full"><span class="material-symbols-outlined text-base">add</span></a>
-</div>
-</div>
-</div>
-<div class="flex flex-col gap-2 bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
-<div class="w-full aspect-square rounded-xl bg-cover bg-center shadow-sm" data-alt="Mocha Madness" style='background-image: url("https://source.unsplash.com/O_7Eev-wA0k/600x600");'></div>
-<div class="flex flex-col">
-<h4 class="font-semibold text-[16px] leading-tight text-[#1c160d] dark:text-white truncate">Mocha Madness</h4>
-<p class="text-[11px] opacity-60 line-clamp-1 mt-0.5">Dark chocolate blend.</p>
-<div class="flex items-center justify-between mt-2">
-<span class="text-primary font-bold text-sm">$6.50</span>
-<a href="../sweet_pastries_customization_view/index.html" class="bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors size-7 flex items-center justify-center rounded-full"><span class="material-symbols-outlined text-base">add</span></a>
-</div>
-</div>
-</div>
-<div class="flex flex-col gap-2 bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
-<div class="w-full aspect-square rounded-xl bg-cover bg-center shadow-sm" data-alt="Cold Brew" style='background-image: url("https://source.unsplash.com/E6f3_ipCdfc/600x600");'></div>
-<div class="flex flex-col">
-<h4 class="font-semibold text-[16px] leading-tight text-[#1c160d] dark:text-white truncate">Nitro Cold Brew</h4>
-<p class="text-[11px] opacity-60 line-clamp-1 mt-0.5">Velvety &amp; smooth.</p>
-<div class="flex items-center justify-between mt-2">
-<span class="text-primary font-bold text-sm">$5.25</span>
-<a href="../sweet_pastries_customization_view/index.html" class="bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors size-7 flex items-center justify-center rounded-full"><span class="material-symbols-outlined text-base">add</span></a>
-</div>
-</div>
-</div>
-</div>
-<div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-full max-w-[342px] z-50">
-<div class="bg-black/90 backdrop-blur-xl rounded-[24px] h-[64px] w-full flex items-center justify-between pl-4 pr-5 shadow-[0_12px_32px_rgba(0,0,0,0.35)] ring-1 ring-white/10 transition-transform active:scale-[0.98]">
-<div class="flex items-center gap-3">
-<div class="size-9 rounded-full bg-[#f2930d] flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-orange-500/30">2</div>
-<div class="flex flex-col justify-center">
-<span class="text-white font-bold text-sm leading-none">View Cart</span>
-<span class="text-white/60 text-[10px] font-medium mt-0.5">$12.25 total</span>
-</div>
-</div>
-<div class="flex items-center gap-2">
-<span class="text-[#f2930d] font-bold text-xs uppercase tracking-wider mr-1">Checkout</span>
-<div class="size-6 bg-white/10 rounded-full flex items-center justify-center">
-<span class="material-symbols-outlined text-white text-xs">arrow_forward</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-
+<!-- Hardcoded Nav Bar for Immediate Visibility -->
+<nav class="standard-nav-bar bg-white dark:bg-[#2a1e19] border-t border-gray-100 dark:border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] backdrop-blur-md h-[55px] flex items-stretch justify-between px-6 fixed bottom-0 left-0 right-0 z-50 max-w-[390px] mx-auto">
+    <button onclick="window.location.href='../swiggy-style_elite_main_menu_390x2500/index.html'" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">home</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Home</span>
+    </button>
+    <button onclick="window.location.href='../swiggy-style_elite_main_menu_390x2500/index.html#explore'" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">category</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Explore</span>
+    </button>
+    <button onclick="window.location.href='../order_success_page/index.html'" class="relative flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Cart</span>
+        <span id="global-cart-count" class="absolute -top-1 right-4 bg-primary text-white text-[10px] font-bold px-1.5 py-[2px] rounded-full hidden">0</span>
+    </button>
+    <button onclick="alert('Profile feature coming soon')" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">person</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Profile</span>
+    </button>
+</nav>
+<!-- Navigation Bar Script (logic only) -->
+<script src="../nav-bar.js"></script>
 </body></html>
-<script>
-  (function () {
-    function getStoredCart() {
-      try { return JSON.parse(localStorage.getItem('stitch_cart') || '[]'); } catch { return []; }
-    }
-    function storeCart(items, count, total) {
-      localStorage.setItem('stitch_cart', JSON.stringify(items));
-      localStorage.setItem('stitch_cart_count', String(count));
-      localStorage.setItem('stitch_cart_total', String(total));
-    }
-    function getSummary() {
-      const items = getStoredCart();
-      const count = items.reduce((s, x) => s + (x.qty || 1), 0);
-      const total = items.reduce((s, x) => s + (Number(x.price || 0) * (x.qty || 1)), 0);
-      return { items, count, total };
-    }
-    function updateBar() {
-      const bar = document.querySelector('.fixed.bottom-6 .bg-black\\/90');
-      if (!bar) return;
-      const badge = bar.querySelector('.size-9');
-      const totalLine = bar.querySelector('.flex.flex-col.justify-center span.text-white\\/60');
-      const summary = getSummary();
-      if (badge) badge.textContent = String(summary.count);
-      if (totalLine) totalLine.textContent = '$' + summary.total.toFixed(2) + ' total';
-    }
-    function addHandlers() {
-      document.querySelectorAll('button').forEach(btn => {
-        const icon = btn.querySelector('.material-symbols-outlined');
-        if (icon && (icon.textContent || '').toLowerCase().includes('add')) {
-          btn.addEventListener('click', () => {
-            const card = btn.closest('.p-3, .p-4');
-            const nameEl = card ? card.querySelector('h4, h3') : null;
-            const priceEl = card ? card.querySelector('span.text-primary.font-bold, span.font-bold.text-xs.text-primary, span.text-primary.font-bold') : null;
-            const name = nameEl ? nameEl.textContent.trim() : 'Item';
-            const priceText = priceEl ? priceEl.textContent.replace('$','') : '0';
-            const price = Number(parseFloat(priceText));
-            const items = getStoredCart();
-            const id = 'pastry-' + name.toLowerCase().replace(/\\s+/g,'-');
-            const found = items.find(x => x.id === id);
-            if (found) found.qty = (found.qty || 1) + 1;
-            else items.push({ id, name, price, qty: 1 });
-            const count = items.reduce((s, x) => s + (x.qty || 1), 0);
-            const total = items.reduce((s, x) => s + (Number(x.price || 0) * (x.qty || 1)), 0);
-            storeCart(items, count, total);
-            updateBar();
-          });
-        }
-      });
-    }
-    updateBar();
-    addHandlers();
-  })();
-</script>

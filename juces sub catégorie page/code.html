@@ -73,10 +73,10 @@
 <body class="bg-background-light dark:bg-background-dark text-[#1c160d] dark:text-[#fcfaf8] antialiased">
 <div class="relative min-h-[1300px] w-full max-w-[390px] mx-auto flex flex-col bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl">
 <div class="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 bg-gradient-to-b from-black/40 to-transparent">
-<div class="flex size-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white">
+<div id="back-btn" class="flex size-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white">
 <span class="material-symbols-outlined">arrow_back</span>
 </div>
-<div class="flex size-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white">
+<div id="search-btn" class="flex size-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white cursor-pointer hover:bg-white/30 transition-colors">
 <span class="material-symbols-outlined">search</span>
 </div>
 </div>
@@ -95,7 +95,7 @@
 <div class="absolute bottom-6 left-0 right-0 px-4 z-20 w-full max-w-[390px] mx-auto box-border">
   <div class="glass-search rounded-xl h-12 flex items-center px-4 shadow-xl border border-white/40 w-full">
     <span class="material-symbols-outlined text-primary mr-3 text-xl">search</span>
-    <input class="bg-transparent border-none outline-none text-[#1c160d] placeholder-white/70 w-full font-medium text-sm focus:ring-0" placeholder="Find your perfect juice..." type="text"/>
+    <input id="search-input" class="bg-transparent border-none outline-none text-[#1c160d] placeholder-white/70 w-full font-medium text-sm focus:ring-0" placeholder="Find your perfect juice..." type="text"/>
     <span class="material-symbols-outlined text-white/80 text-xl">mic</span>
   </div>
 </div>
@@ -127,60 +127,20 @@
 </div>
 </div>
 <div class="flex gap-2 px-4 mb-6 overflow-x-auto no-scrollbar">
-<div class="flex h-10 shrink-0 items-center justify-center rounded-full bg-primary px-6">
+<div class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-primary px-6 active" data-filter="all">
 <p class="text-white text-sm font-bold">All</p>
 </div>
-<div class="flex h-10 shrink-0 items-center justify-center rounded-full bg-card-cream dark:bg-slate-800 px-6">
+<div class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-card-cream dark:bg-slate-800 px-6" data-filter="citrus">
 <p class="text-[#1c160d] dark:text-white text-sm font-medium">Cold Pressed</p>
 </div>
-<div class="flex h-10 shrink-0 items-center justify-center rounded-full bg-card-cream dark:bg-slate-800 px-6">
+<div class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-card-cream dark:bg-slate-800 px-6" data-filter="smoothies">
 <p class="text-[#1c160d] dark:text-white text-sm font-medium">Smoothies</p>
 </div>
-<div class="flex h-10 shrink-0 items-center justify-center rounded-full bg-card-cream dark:bg-slate-800 px-6">
+<div class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-card-cream dark:bg-slate-800 px-6" data-filter="wellness">
 <p class="text-[#1c160d] dark:text-white text-sm font-medium">Wellness</p>
 </div>
 </div>
-<div class="px-4 grid grid-cols-2 gap-3 h-[420px] mb-6">
-<div class="col-span-1 h-full relative rounded-[20px] overflow-hidden bg-card-cream dark:bg-slate-800 p-4 flex flex-col border border-primary/10">
-<div class="mb-2">
-<h3 class="font-bold text-lg leading-tight">Signature Green Juice</h3>
-<p class="text-xs opacity-60 mt-1 italic">Kale, Apple, Lemon</p>
-</div>
-<div class="flex-1 w-full bg-cover bg-center rounded-lg my-2" data-alt="Signature Green Juice" style='background-image: url("https://images.unsplash.com/photo-1610970881699-44a5587cabec?auto=format&fit=crop&w=600&h=600");'></div>
-<div class="flex items-center justify-between mt-auto">
-<span class="font-bold text-primary text-lg">$9.50</span>
-<a href="../orange juce_customization_view_1/code.html" class="size-8 rounded-full bg-primary flex items-center justify-center text-white">
-<span class="material-symbols-outlined text-sm">add</span>
-</a>
-</div>
-</div>
-<div class="col-span-1 flex flex-col gap-3 h-full">
-<div class="flex-1 rounded-[20px] bg-card-cream dark:bg-slate-800 p-3 flex flex-col justify-between border border-primary/10">
-<div class="flex justify-between items-start">
-<div class="w-14 h-14 rounded-lg bg-cover bg-center" data-alt="Berry Blast" style='background-image: url("https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?auto=format&fit=crop&w=200&h=200");'></div>
-<span class="font-bold text-sm text-primary">$8.00</span>
-</div>
-<div class="flex justify-between items-end">
-<h3 class="font-bold text-sm">Berry Blast</h3>
-<a href="../orange juce_customization_view_1/code.html" class="size-6 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-[16px]">add</span>
-</a>
-</div>
-</div>
-<div class="flex-1 rounded-[20px] bg-card-cream dark:bg-slate-800 p-3 flex flex-col justify-between border border-primary/10">
-<div class="flex justify-between items-start">
-<div class="w-14 h-14 rounded-lg bg-cover bg-center" data-alt="Mango Tango" style='background-image: url("https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=200&h=200");'></div>
-<span class="font-bold text-sm text-primary">$8.50</span>
-</div>
-<div class="flex justify-between items-end">
-<h3 class="font-bold text-sm">Mango Tango</h3>
-<a href="../orange juce_customization_view_1/code.html" class="size-6 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-[16px]">add</span>
-</a>
-</div>
-</div>
-</div>
-</div>
+<!-- Static content removed for dynamic rendering -->
 <div class="mx-4 mb-6 h-[120px] rounded-xl bg-leaf-green/10 dark:bg-leaf-green/20 p-5 border border-leaf-green/30 relative overflow-hidden flex items-center">
 <div class="z-10 w-2/3">
 <h3 class="font-bold text-leaf-green text-xs uppercase tracking-widest mb-1">Catering Special</h3>
@@ -195,75 +155,31 @@
 <h3 class="text-xl font-extrabold tracking-tight">Today's Selection</h3>
 <span class="text-primary text-xs font-bold uppercase tracking-wider">View All</span>
 </div>
-<div class="px-4 grid grid-cols-2 gap-4 pb-48">
-<div class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700">
-<div class="w-full aspect-square rounded-lg bg-cover bg-center mb-3" data-alt="Pure Orange" style='background-image: url("https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&h=600");'></div>
-<div class="flex-1 flex flex-col">
-<h4 class="font-semibold text-[16px] leading-tight mb-1">Cold Pressed Orange</h4>
-<p class="text-xs opacity-60 line-clamp-1 mb-2">Valencia oranges, zero water</p>
-<div class="flex items-center justify-between mt-auto">
-<span class="text-primary font-bold">$7.00</span>
-<a href="../orange juce_customization_view_1/code.html" class="size-8 rounded-full bg-primary/10 dark:bg-slate-700 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-lg">add</span>
-</a>
+<div id="product-list" class="px-4 grid grid-cols-2 gap-4 pb-48">
+    <!-- Dynamic Content -->
 </div>
-</div>
-</div>
-<div class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700">
-<div class="w-full aspect-square rounded-lg bg-cover bg-center mb-3" data-alt="Immunity Shot" style='background-image: url("https://images.unsplash.com/photo-1596524430615-b46475ddff6e?auto=format&fit=crop&w=600&h=600");'></div>
-<div class="flex-1 flex flex-col">
-<h4 class="font-semibold text-[16px] leading-tight mb-1">Ginger Turmeric Shot</h4>
-<p class="text-xs opacity-60 line-clamp-1 mb-2">Morning immunity boost</p>
-<div class="flex items-center justify-between mt-auto">
-<span class="text-primary font-bold">$4.50</span>
-<a href="../orange juce_customization_view_1/code.html" class="size-8 rounded-full bg-primary/10 dark:bg-slate-700 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-lg">add</span>
-</a>
-</div>
-</div>
-</div>
-<div class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700">
-<div class="w-full aspect-square rounded-lg bg-cover bg-center mb-3" data-alt="Beetroot Energizer" style='background-image: url("https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=600&h=600");'></div>
-<div class="flex-1 flex flex-col">
-<h4 class="font-semibold text-[16px] leading-tight mb-1">Beetroot Energizer</h4>
-<p class="text-xs opacity-60 line-clamp-1 mb-2">Beet, Carrot, Ginger</p>
-<div class="flex items-center justify-between mt-auto">
-<span class="text-primary font-bold">$8.50</span>
-<a href="../orange juce_customization_view_1/code.html" class="size-8 rounded-full bg-primary/10 dark:bg-slate-700 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-lg">add</span>
-</a>
-</div>
-</div>
-</div>
-<div class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700">
-<div class="w-full aspect-square rounded-lg bg-cover bg-center mb-3" data-alt="Green Goddess" style='background-image: url("https://images.unsplash.com/photo-1610970881699-44a5587cabec?auto=format&fit=crop&w=600&h=600");'></div>
-<div class="flex-1 flex flex-col">
-<h4 class="font-semibold text-[16px] leading-tight mb-1">Green Goddess</h4>
-<p class="text-xs opacity-60 line-clamp-1 mb-2">Kale, spinach, apple</p>
-<div class="flex items-center justify-between mt-auto">
-<span class="text-primary font-bold">$9.00</span>
-<a href="../orange juce_customization_view_1/code.html" class="size-8 rounded-full bg-primary/10 dark:bg-slate-700 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-lg">add</span>
-</a>
-</div>
-</div>
-</div>
-</div>
-<div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[342px] z-50 pointer-events-none">
-<div class="bg-primary rounded-full h-16 w-full flex items-center justify-between px-6 shadow-[0_12px_32px_rgba(242,147,13,0.45)] pointer-events-auto">
-<div class="flex items-center gap-3">
-<div class="size-8 rounded-full bg-white/25 flex items-center justify-center text-white font-bold text-sm backdrop-blur-sm">2</div>
-<div class="flex flex-col">
-<span class="text-white font-bold text-sm">View Cart</span>
-<span class="text-white/80 text-[10px] uppercase font-bold tracking-widest leading-tight">2 Juices added</span>
-</div>
-</div>
-<div class="flex items-center gap-2">
-<div class="h-6 w-px bg-white/20 mr-2"></div>
-<span class="text-white font-extrabold text-lg">$17.50</span>
-</div>
-</div>
-</div>
+<!-- Hardcoded Nav Bar for Immediate Visibility -->
+<nav class="standard-nav-bar bg-white dark:bg-[#2a1e19] border-t border-gray-100 dark:border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] backdrop-blur-md h-[55px] flex items-stretch justify-between px-6 fixed bottom-0 left-0 right-0 z-50 max-w-[390px] mx-auto">
+    <button onclick="window.location.href='../swiggy-style_elite_main_menu_390x2500/index.html'" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">home</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Home</span>
+    </button>
+    <button onclick="window.location.href='../swiggy-style_elite_main_menu_390x2500/index.html#explore'" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">category</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Explore</span>
+    </button>
+    <button onclick="window.location.href='../order_success_page/index.html'" class="relative flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Cart</span>
+        <span id="global-cart-count" class="absolute -top-1 right-4 bg-primary text-white text-[10px] font-bold px-1.5 py-[2px] rounded-full hidden">0</span>
+    </button>
+    <button onclick="alert('Profile feature coming soon')" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">person</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Profile</span>
+    </button>
+</nav>
+<script src="script.js"></script>
+<script src="../nav-bar.js"></script>
 </div>
 
 </body></html>

@@ -1,9 +1,16 @@
 const products = [
-  { id: 1, name: "Fresh Orange", description: "Valencia oranges, cold pressed", price: 4.50, image: "https://images.unsplash.com/photo-1541976076758-65c1b5dc0f5b?q=80&w=500&auto=format&fit=crop", category: "citrus" },
-  { id: 2, name: "Lemon Mint", description: "Zesty lemon with mint", price: 4.10, image: "https://images.unsplash.com/photo-1556745753-7e4bfc180a9f?q=80&w=500&auto=format&fit=crop", category: "citrus" },
-  { id: 3, name: "Pineapple Punch", description: "Tropical pineapple blend", price: 4.80, image: "https://images.unsplash.com/photo-1547394765-185d449d6eb2?q=80&w=500&auto=format&fit=crop", category: "tropical" },
-  { id: 4, name: "Apple Classic", description: "Cold-pressed apple", price: 4.00, image: "https://images.unsplash.com/photo-1568158875615-0bddd05efd0b?q=80&w=500&auto=format&fit=crop", category: "classic" },
-  { id: 5, name: "Mango Glow", description: "Alphonso mango puree", price: 5.25, image: "https://images.unsplash.com/photo-1567197553646-4c084b6698a0?q=80&w=500&auto=format&fit=crop", category: "tropical" },
+  { id: "juice_1", name: "Fresh Orange", description: "Valencia oranges, cold pressed", price: 4.50, image: "https://images.unsplash.com/photo-1541976076758-65c1b5dc0f5b?q=80&w=500&auto=format&fit=crop", category: "citrus" },
+  { id: "juice_2", name: "Lemon Mint", description: "Zesty lemon with mint", price: 4.10, image: "https://images.unsplash.com/photo-1556745753-7e4bfc180a9f?q=80&w=500&auto=format&fit=crop", category: "citrus" },
+  { id: "juice_3", name: "Pineapple Punch", description: "Tropical pineapple blend", price: 4.80, image: "https://images.unsplash.com/photo-1547394765-185d449d6eb2?q=80&w=500&auto=format&fit=crop", category: "tropical" },
+  { id: "juice_4", name: "Apple Classic", description: "Cold-pressed apple", price: 4.00, image: "https://images.unsplash.com/photo-1568158875615-0bddd05efd0b?q=80&w=500&auto=format&fit=crop", category: "classic" },
+  { id: "juice_5", name: "Mango Glow", description: "Alphonso mango puree", price: 5.25, image: "https://images.unsplash.com/photo-1567197553646-4c084b6698a0?q=80&w=500&auto=format&fit=crop", category: "tropical" },
+  { id: "juice_6", name: "Signature Green Juice", description: "Kale, Apple, Lemon", price: 9.50, image: "https://images.unsplash.com/photo-1610970881699-44a5587cabec?auto=format&fit=crop&w=600&h=600", category: "wellness" },
+  { id: "juice_7", name: "Berry Blast", description: "Mixed berries antioxidant boost", price: 8.00, image: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?auto=format&fit=crop&w=200&h=200", category: "smoothies" },
+  { id: "juice_8", name: "Mango Tango", description: "Mango, peach, passion fruit", price: 8.50, image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=200&h=200", category: "tropical" },
+  { id: "juice_9", name: "Cold Pressed Orange", description: "Valencia oranges, zero water", price: 7.00, image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&h=600", category: "citrus" },
+  { id: "juice_10", name: "Ginger Turmeric Shot", description: "Morning immunity boost", price: 4.50, image: "https://images.unsplash.com/photo-1596524430615-b46475ddff6e?auto=format&fit=crop&w=600&h=600", category: "wellness" },
+  { id: "juice_11", name: "Beetroot Energizer", description: "Beet, Carrot, Ginger", price: 8.50, image: "https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=600&h=600", category: "wellness" },
+  { id: "juice_12", name: "Green Goddess", description: "Kale, spinach, apple", price: 9.00, image: "https://images.unsplash.com/photo-1610970881699-44a5587cabec?auto=format&fit=crop&w=600&h=600", category: "wellness" }
 ];
 
 const translations = {
@@ -14,6 +21,8 @@ const translations = {
         citrus: "Citrus",
         tropical: "Tropical",
         classic: "Classic",
+        smoothies: "Smoothies",
+        wellness: "Wellness",
         view_all: "View All",
         view_cart: "View Cart",
         items: "Items",
@@ -34,6 +43,8 @@ const translations = {
         citrus: "Agrumes",
         tropical: "Tropical",
         classic: "Classique",
+        smoothies: "Smoothies",
+        wellness: "Bien-être",
         view_all: "Voir Tout",
         view_cart: "Voir Panier",
         items: "Articles",
@@ -54,6 +65,8 @@ const translations = {
         citrus: "حمضيات",
         tropical: "استوائي",
         classic: "كلاسيكي",
+        smoothies: "عصائر سموثي",
+        wellness: "صحة",
         view_all: "عرض الكل",
         view_cart: "عرض العربة",
         items: "عناصر",
@@ -89,10 +102,37 @@ const menuTranslations = {
     "Mango Glow": {
         fr: { name: "Éclat Mangue", description: "Purée de mangue Alphonso" },
         ar: { name: "توهج المانجو", description: "هريس مانجو ألفونسو" }
+    },
+    "Signature Green Juice": {
+        fr: { name: "Jus Vert Signature", description: "Chou frisé, pomme, citron" },
+        ar: { name: "العصير الأخضر المميز", description: "كرنب، تفاح، ليمون" }
+    },
+    "Berry Blast": {
+        fr: { name: "Explosion de Baies", description: "Mélange de baies antioxydant" },
+        ar: { name: "انفجار التوت", description: "مزيج التوت المضاد للأكسدة" }
+    },
+    "Mango Tango": {
+        fr: { name: "Mango Tango", description: "Mangue, pêche, fruit de la passion" },
+        ar: { name: "مانجو تانجو", description: "مانجو، خوخ، فاكهة العاطفة" }
+    },
+    "Cold Pressed Orange": {
+        fr: { name: "Orange Pressée à Froid", description: "Oranges Valencia, zéro eau" },
+        ar: { name: "برتقال معصور على البارد", description: "برتقال فالنسيا، بدون ماء" }
+    },
+    "Ginger Turmeric Shot": {
+        fr: { name: "Shot Gingembre Curcuma", description: "Boost d'immunité matinal" },
+        ar: { name: "جرعة الزنجبيل والكركم", description: "تعزيز المناعة الصباحي" }
+    },
+    "Beetroot Energizer": {
+        fr: { name: "Énergisant Betterave", description: "Betterave, carotte, gingembre" },
+        ar: { name: "منشط الشمندر", description: "شمندر، جزر، زنجبيل" }
+    },
+    "Green Goddess": {
+        fr: { name: "Déesse Verte", description: "Chou frisé, épinards, pomme" },
+        ar: { name: "الإلهة الخضراء", description: "كرنب، سبانخ، تفاح" }
     }
 };
 
-let cart = [];
 let currentFilter = 'all';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -131,10 +171,6 @@ function applyLang(lang) {
 
   // Re-render products to update their text
   renderProducts(currentFilter);
-  // Re-render order summary if modal is open (not strictly necessary but good practice)
-  if (!document.getElementById('order-modal').classList.contains('hidden')) {
-      renderOrderSummary();
-  }
 }
 
 function getTranslation(key) {
@@ -154,73 +190,103 @@ function getMenuTranslation(item, field) {
 
 // Navigate to customization page
 function redirectToCustomization(productId) {
-    window.location.href = '../orange juce_customization_view_1/index.html';
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    window.location.href = `../orange juce_customization_view_1/index.html?price=${product.price}`;
 }
 
-// Deprecated: Direct add to cart (kept for reference)
 function addToCart(productId) {
-    redirectToCustomization(productId);
-    /*
     const product = products.find(p => p.id === productId);
-    const existingItem = cart.find(item => item.id === productId);
+    if (!product) return;
+
+    const cart = JSON.parse(localStorage.getItem('stitch_cart') || '[]');
+    const existingItem = cart.find(item => item.id === product.id);
+
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
-        cart.push({ ...product, quantity: 1 });
+        cart.push({
+            id: product.id,
+            name: getMenuTranslation(product, 'name'),
+            price: product.price,
+            image: product.image,
+            category: product.category,
+            quantity: 1
+        });
     }
-    updateCart();
-    */
+
+    localStorage.setItem('stitch_cart', JSON.stringify(cart));
+
+    if (window.updateGlobalCartCount) {
+        window.updateGlobalCartCount();
+    }
+
+    // Visual feedback
+    const btn = document.querySelector(`button[onclick*="${productId}"]`);
+    if(btn) {
+        const originalContent = btn.innerHTML;
+        btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span>';
+        setTimeout(() => {
+            btn.innerHTML = originalContent;
+        }, 1000);
+    }
 }
 
 function renderProducts(filter = 'all') {
     const list = document.getElementById('product-list');
-    const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
+    if (!list) return; // Guard clause
+    
+    const searchTerm = document.getElementById('search-input')?.value.toLowerCase() || '';
+
+    const filteredProducts = products.filter(p => {
+        const name = getMenuTranslation(p, 'name').toLowerCase();
+        const description = getMenuTranslation(p, 'description').toLowerCase();
+        const matchesCategory = filter === 'all' || p.category === filter;
+        const matchesSearch = name.includes(searchTerm) || description.includes(searchTerm);
+        return matchesCategory && matchesSearch;
+    });
+
+    if (filteredProducts.length === 0) {
+        list.innerHTML = '<div class="col-span-2 text-center py-8 text-gray-500">No juices found</div>';
+        return;
+    }
+
     list.innerHTML = filteredProducts.map((product, index) => {
         const name = getMenuTranslation(product, 'name');
         const description = getMenuTranslation(product, 'description');
         
         return `
-        <div onclick="redirectToCustomization(${product.id})" class="flex items-center gap-3 p-3 bg-white dark:bg-zinc-800 rounded-[16px] border border-zinc-100 dark:border-zinc-700 shadow-sm fade-in transition-transform active:scale-95 cursor-pointer" style="animation-delay: ${index * 0.05}s">
-            <div class="size-14 rounded-xl bg-zinc-100 bg-center bg-cover flex-shrink-0" role="img" aria-label="${name}" style="background-image: url('${product.image}');"></div>
-            <div class="flex-1">
-                <h4 class="font-semibold text-[16px]">${name}</h4>
-                <p class="text-[11px] text-zinc-500 dark:text-zinc-300 mt-0.5">${description}</p>
-                <p class="font-bold text-primary mt-1 text-sm">$${product.price.toFixed(2)}</p>
+        <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700 fade-in transition-transform active:scale-95 cursor-pointer" style="animation-delay: ${index * 0.05}s">
+            <div class="w-full aspect-square rounded-lg bg-cover bg-center mb-3" role="img" aria-label="${name}" style="background-image: url('${product.image}');"></div>
+            <div class="flex-1 flex flex-col">
+                <h4 class="font-semibold text-[16px] leading-tight mb-1">${name}</h4>
+                <p class="text-xs opacity-60 line-clamp-1 mb-2">${description}</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-primary font-bold">$${product.price.toFixed(2)}</span>
+                    <button onclick="event.stopPropagation(); addToCart('${product.id}')" class="size-8 rounded-full bg-primary/10 dark:bg-slate-700 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-lg">add</span>
+                    </button>
+                </div>
             </div>
-            <button onclick="event.stopPropagation(); addToCart(${product.id})" class="size-8 rounded-full bg-white dark:bg-zinc-700 border border-zinc-200 dark:border-zinc-600 flex items-center justify-center text-primary shadow-sm hover:bg-zinc-50 dark:hover:bg-zinc-600 transition-transform active:scale-95">
-                <span class="material-symbols-outlined text-[20px]">add</span>
-            </button>
         </div>
     `}).join('');
 }
 
-function updateCart() {
-  const floatingCart = document.getElementById('floating-cart');
-  const cartTotal = document.getElementById('cart-total');
-  const cartBadge = document.getElementById('cart-badge');
-  const cartItemsText = document.getElementById('cart-items-text');
-
-  if (cart.length > 0) {
-    floatingCart.classList.remove('hidden');
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartTotal.textContent = `$${total.toFixed(2)}`;
-    cartBadge.textContent = count;
-    
-    const itemsLabel = getTranslation('items');
-    cartItemsText.textContent = `${count} ${itemsLabel}`;
-  } else {
-    floatingCart.classList.add('hidden');
-  }
-}
-
 function setupEventListeners() {
-  document.getElementById('back-btn').addEventListener('click', () => {
-    window.history.back();
-  });
-  document.getElementById('search-btn').addEventListener('click', () => {
-    alert(getTranslation('search_alert'));
-  });
+  const backBtn = document.getElementById('back-btn');
+  if (backBtn) {
+      backBtn.addEventListener('click', () => {
+        window.location.href = '../swiggy-style_elite_main_menu_390x2500/index.html';
+      });
+  }
+  
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) {
+      searchInput.addEventListener('input', () => {
+          renderProducts(currentFilter);
+      });
+  }
+
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -229,7 +295,6 @@ function setupEventListeners() {
       renderProducts(currentFilter);
     });
   });
-  document.getElementById('floating-cart').addEventListener('click', openOrderModal);
   
   const toggle = document.getElementById('language-toggle');
   if (toggle) {
@@ -244,82 +309,3 @@ function setupEventListeners() {
   }
 }
 
-function openOrderModal() {
-  const modal = document.getElementById('order-modal');
-  if (!modal) return;
-  renderOrderSummary();
-  modal.classList.remove('hidden');
-}
-
-function closeOrderModal() {
-  const modal = document.getElementById('order-modal');
-  if (!modal) return;
-  modal.classList.add('hidden');
-}
-
-function renderOrderSummary() {
-  const container = document.getElementById('order-items');
-  const subtotalEl = document.getElementById('modal-subtotal');
-  const taxEl = document.getElementById('modal-tax');
-  const totalEl = document.getElementById('modal-total');
-  const subtotal = cart.reduce((sum, x) => sum + x.price * x.quantity, 0);
-  const tax = subtotal * 0.1;
-  const total = subtotal + tax;
-  
-  const orderStatusLabel = getTranslation('order_status');
-  const receivedLabel = getTranslation('received');
-  
-  // Note: This logic assumes modal structure is already localized via data-i18n, 
-  // but if we are dynamically generating the whole modal content we need to be careful.
-  // The modal skeleton is in index.html, so we just need to update the values.
-  // However, the 'received' badge and 'order status' title are static in index.html, so they will be handled by applyLang.
-  // The items list is dynamic.
-  
-  container.innerHTML = cart.map(x => {
-      const name = getMenuTranslation(x, 'name'); // Ensure x has the original name key to look up translation
-      return `
-    <div class="flex items-center justify-between bg-zinc-50 dark:bg-black/20 p-3 rounded-2xl border border-zinc-100 dark:border-zinc-700">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-white dark:bg-zinc-800 flex items-center justify-center text-primary font-bold">${x.quantity}x</div>
-        <div>
-          <p class="font-bold text-sm">${name}</p>
-          <p class="text-[10px] text-zinc-400 font-bold tracking-widest uppercase">$${x.price.toFixed(2)} each</p>
-        </div>
-      </div>
-      <span class="font-bold">$${(x.price * x.quantity).toFixed(2)}</span>
-    </div>
-  `}).join('');
-  
-  subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-  taxEl.textContent = `$${tax.toFixed(2)}`;
-  totalEl.textContent = `$${total.toFixed(2)}`;
-}
-
-document.addEventListener('click', (e) => {
-  // Using event delegation for dynamically added buttons or static buttons that might not be found on load if modal is hidden/generated
-  // Actually, the modal buttons are static in HTML. But let's check their IDs.
-  // The original script didn't have IDs for buttons in HTML (wait, I should check index.html again for IDs).
-  // Assuming they are or will be added.
-  
-  if (e.target && (e.target.id === 'order-close-btn' || e.target.closest('#order-close-btn'))) {
-    closeOrderModal();
-  }
-  if (e.target && (e.target.id === 'order-place-btn' || e.target.closest('#order-place-btn'))) {
-    const subtotal = cart.reduce((sum, x) => sum + x.price * x.quantity, 0);
-    const tax = subtotal * 0.1;
-    const total = subtotal + tax;
-    const order = {
-      id: '#' + Math.floor(1000 + Math.random() * 9000),
-      items: cart.map(x => ({ id: x.id, name: x.name, qty: x.quantity, price: x.price })),
-      subtotal,
-      tax,
-      total,
-      status: 'CONFIRMED',
-      table: 12,
-      created_at: new Date().toISOString()
-    };
-    localStorage.setItem('stitch_last_order', JSON.stringify(order));
-    closeOrderModal();
-    alert('Order placed successfully! (Demo)');
-  }
-});

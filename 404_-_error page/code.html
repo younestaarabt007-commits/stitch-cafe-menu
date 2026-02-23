@@ -109,36 +109,35 @@
                 </p>
 </div>
 <div class="w-full px-4 mt-8">
-<button class="group relative w-full bg-primary h-[48px] rounded-[20px] overflow-hidden shadow-[0_4px_15px_rgb(249,127,26,0.3)] transition-transform active:scale-95 flex items-center justify-center">
+<button id="return-btn" class="group relative w-full bg-primary h-[48px] rounded-[20px] overflow-hidden shadow-[0_4px_15px_rgb(249,127,26,0.3)] transition-transform active:scale-95 flex items-center justify-center">
 <div class="absolute inset-0 gloss-effect"></div>
 <span class="relative text-white text-[15px] font-bold tracking-wide">Return to Menu</span>
 <div class="absolute top-0 -left-[100%] w-1/2 h-full bg-white/20 skew-x-[-25deg] group-hover:left-[150%] transition-all duration-700"></div>
 </button>
 </div>
 </main>
-<nav class="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-[#2d1e14]/80 backdrop-blur-xl border-t border-black/5 dark:border-white/5 px-6 pb-8 pt-4">
-<div class="flex items-center justify-between">
-<div class="flex flex-col items-center gap-1 text-[#1c140d]/40 dark:text-white/40">
-<span class="material-symbols-outlined">home</span>
-<span class="text-[10px] font-bold uppercase tracking-wider">Home</span>
-</div>
-<div class="flex flex-col items-center gap-1 text-primary">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">restaurant_menu</span>
-<span class="text-[10px] font-bold uppercase tracking-wider">Menu</span>
-</div>
-<div class="flex flex-col items-center gap-1 text-[#1c140d]/40 dark:text-white/40">
-<div class="relative">
-<span class="material-symbols-outlined">shopping_bag</span>
-<div class="absolute -top-1 -right-1 size-3 bg-primary rounded-full border-2 border-white dark:border-background-dark"></div>
-</div>
-<span class="text-[10px] font-bold uppercase tracking-wider">Cart</span>
-</div>
-<div class="flex flex-col items-center gap-1 text-[#1c140d]/40 dark:text-white/40">
-<span class="material-symbols-outlined">person</span>
-<span class="text-[10px] font-bold uppercase tracking-wider">Profile</span>
-</div>
-</div>
+<!-- Hardcoded Nav Bar for Immediate Visibility -->
+<nav class="standard-nav-bar bg-white dark:bg-[#2a1e19] border-t border-gray-100 dark:border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] backdrop-blur-md h-[55px] flex items-stretch justify-between px-6 fixed bottom-0 left-0 right-0 z-50 max-w-[390px] mx-auto">
+    <button onclick="window.location.href='../swiggy-style_elite_main_menu_390x2500/index.html'" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">home</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Home</span>
+    </button>
+    <button onclick="window.location.href='../swiggy-style_elite_main_menu_390x2500/index.html#explore'" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">category</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Explore</span>
+    </button>
+    <button onclick="window.location.href='../order_success_page/index.html'" class="relative flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Cart</span>
+        <span id="global-cart-count" class="absolute -top-1 right-4 bg-primary text-white text-[10px] font-bold px-1.5 py-[2px] rounded-full hidden">0</span>
+    </button>
+    <button onclick="alert('Profile feature coming soon')" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">person</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest">Profile</span>
+    </button>
 </nav>
+    <script src="script.js"></script>
+    <script src="../nav-bar.js"></script>
 <div class="fixed bottom-1 left-1/2 -translate-x-1/2 w-32 h-1 bg-black/10 dark:bg-white/10 rounded-full z-[60]"></div>
 </div>
 
