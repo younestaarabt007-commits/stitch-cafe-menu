@@ -1,44 +1,44 @@
 // Product Data
 const products = [
     {
-        id: 1,
-        name: "Velvet Flat White",
-        description: "Double Shot, Silky Microfoam",
-        price: 4.80,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCJM9FSOKFPG71oxcbIXHzPI3JdmEoDqoupcyjwC9zi4qM0_wzlzhU7jyyhzdsFBkrBDZ0trUkR2CHGtf5076WRM1DlU2A7jFcLloqG6H36WRzFPBk_iWTXnLxbIqdoYwrvldwmnItw2fAgMAEPzxihi54rg--ag7rjgu46TJJ9cC-ctMafRmvNycsZI7CduLb1jsxK7qqFWHYC-DVTOOg7Nc77RB-pX0U_BkKENzuNomH4nToUhZtRI6EO1kTT5wylECW-aPbq2LA",
-        category: "milk"
+        "id": 1,
+        "name": "Velvet Flat White",
+        "description": "Double Shot, Silky Microfoam",
+        "price": 4.8,
+        "image": "../swiggy-style_elite_main_menu_390x2500/assets/coffee-velvet-flat-white.jpg",
+        "category": "milk"
     },
     {
-        id: 2,
-        name: "Kyoto Cold Brew",
-        description: "12-Hour Slow Drip Extraction",
-        price: 5.50,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAtn0f__4r-Zd7zjbdjMWkXDfcehpvYArEfnyA93zREIUortA8qNbqch-Hgyq50txpdCPNAH7XO3VbkdDEK-EdD-miKytaxbg9EfR2cs8DsR7iHOvnLC4IWPlCUtpcLeIcqqgKHx9KBV3wweqk0AUsd8XbOkrr9_cxBxnhwKQW-xAZ3w96D8RrGueyQP9QaoaonSrZ9KkB-6gfB2dHqdNBjulpihqKMX1yB2jJRsZBRmvXY7ed0o0g7jCuKUo90CIh0PcAn_ufvCsQ",
-        category: "black"
+        "id": 2,
+        "name": "Kyoto Cold Brew",
+        "description": "12-Hour Slow Drip Extraction",
+        "price": 5.5,
+        "image": "../swiggy-style_elite_main_menu_390x2500/assets/coffee-kyoto-cold-brew.jpg",
+        "category": "black"
     },
     {
-        id: 3,
-        name: "Oat Milk Latte",
-        description: "Creamy, Nut-Free, Vegan",
-        price: 5.20,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBQR8gezQl3jB0vULS45TC4ue2AuPbK8pkkeLXA4LLPhYMQyJc3W-IyxooLKy_1_iDXk9QQJ29kuhWJDFi9RJXTWzx7tX5CqvyubitdxsTRewMQdCFNbeTm4VHInQmyRgjiSLHjUG-vBcPIt272R1BQd4-Nc3Zlp2oW3YamR3WslvjodjKWR3PWoIeuC4t9IG4gKmkCfuTXsWC2Sl-ojhWkr4VR4eKRMXllKe1wUWliJ8ERkgCyF5AxVrxOXD4_ZOhmPqKUABX8jEQ",
-        category: "milk"
+        "id": 3,
+        "name": "Oat Milk Latte",
+        "description": "Creamy, Nut-Free, Vegan",
+        "price": 5.2,
+        "image": "../swiggy-style_elite_main_menu_390x2500/assets/coffee-oat-milk-latte.jpg",
+        "category": "milk"
     },
     {
-        id: 4,
-        name: "Single Origin Espresso",
-        description: "Intense Berry Notes",
-        price: 3.50,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB5_ok0-V4teAzZiv_cSTVLPbiP7IMvsZ3rUxdWd0hhV5ydDN034HvlLw6_xuTEK0GSgBwSK8PvFN9S1xmkrP6nIBzIo7QafLqzmXpoHRYl87CDazinVUjtRhDf3BekGPoF_rrBylwEpG-N0MCGpEBLcE6h-fY92XE-EI91GwNFZJijR0LU1xHKTkjnE1fVH88qQpPSR0d_Acw7jJ7ecM5nrVvduD3_6T0pE9yZyUiDwr3Tn0RRbXwEB5jic36-V7jyNWfHhIlDFek",
-        category: "black"
+        "id": 4,
+        "name": "Single Origin Espresso",
+        "description": "Intense Berry Notes",
+        "price": 3.5,
+        "image": "../swiggy-style_elite_main_menu_390x2500/assets/coffee-single-origin-espresso.jpg",
+        "category": "black"
     },
     {
-        id: 5,
-        name: "Dark Mocha",
-        description: "70% Cacao, Double Espresso",
-        price: 6.00,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDCYOof3TzdY9V9-b2EBPVqq4uJJsqCz0GLTW10Dq9w46kRrdeBI2BpAAicfrCc4OS_2XD6KqI8sKTWXcGIwZ-U4ZHFb48UHP0SifNCmkJkP9e2txRlSerDgs6Jrwo2HJfz21TgBq-3TsoyWLeEbIi9yIxDGeWHgiW-biCeyLhVfSNtF7dhiubqN9mR5T7l0nUAhT2ss7E3aHykK2-5qvidgBXwwFsaMyRBgulEjQQVtY9RMIbE4EKToF7FUNSYGu3Lpj3p2ill10o",
-        category: "milk"
+        "id": 5,
+        "name": "Dark Mocha",
+        "description": "70% Cacao, Double Espresso",
+        "price": 6,
+        "image": "../swiggy-style_elite_main_menu_390x2500/assets/coffee-dark-mocha.jpg",
+        "category": "milk"
     }
 ];
 

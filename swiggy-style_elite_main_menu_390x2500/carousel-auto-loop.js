@@ -73,10 +73,14 @@
       });
       
       // Set initial scroll position to show original cards
-      // Use scrollIntoView for reliable cross-browser positioning
+      // Use scrollTo for reliable cross-browser positioning without page jump
       const startCard = container.children[totalCards];
       if (startCard) {
-        startCard.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'start' });
+        // container.scrollLeft = startCard.offsetLeft;
+        container.scrollTo({
+          left: startCard.offsetLeft,
+          behavior: 'auto'
+        });
       }
       currentIndex = totalCards;
       
@@ -99,11 +103,22 @@
 
       currentIndex++;
       
-      // Use scrollIntoView which handles RTL automatically
-      // 'inline: start' aligns to the appropriate start edge (Left for LTR, Right for RTL)
+      // Use scrollTo on container instead of scrollIntoView to prevent page scrolling
       const targetCard = container.children[currentIndex];
       if (targetCard) {
-        targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        // Calculate the scroll position to center the card or align it
+        // For simple carousel, we can just scroll to the card's offsetLeft
+        // But we need to account for RTL if necessary, though offsetLeft is usually from left
+        
+        // In RTL, scrollLeft is negative or works differently depending on browser
+        // For simplicity and robustness, we can just use the card's offsetLeft
+        // container.scrollLeft = targetCard.offsetLeft; 
+        
+        // Better: use scrollTo with behavior
+        container.scrollTo({
+          left: targetCard.offsetLeft,
+          behavior: 'smooth'
+        });
       }
       
       console.log(`Carousel auto-scrolled to card ${currentIndex} (RTL: ${isRTL})`);
@@ -119,11 +134,15 @@
           currentIndex = totalOriginalCards;
           const resetCard = container.children[currentIndex];
           if (resetCard) {
-            resetCard.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'start' });
+            // Instant jump without animation
+            container.scrollTo({
+              left: resetCard.offsetLeft,
+              behavior: 'auto'
+            });
           }
           console.log('Reset to original card set for seamless loop');
         }
-      }, 500); // Wait for scroll animation to complete (increased from 350 to 500 for smoothness)
+      }, 500); // Wait for scroll animation to complete
       
     }, 3000);
     

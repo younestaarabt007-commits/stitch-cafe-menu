@@ -5,7 +5,7 @@ const products = [
     description: "Double dark chocolate with whipped cream",
     calories: "450 kcal",
     price: 6.50,
-    image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&h=600&q=80",
+    image: "../swiggy-style_elite_main_menu_390x2500/assets/close-up-milkshake-glass-plate_117406-7215.jpg",
     category: "chocolate"
   },
   {
@@ -14,7 +14,7 @@ const products = [
     description: "Fresh farm berries with creamy vanilla base",
     calories: "380 kcal",
     price: 7.25,
-    image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=600&h=600&q=80",
+    image: "../swiggy-style_elite_main_menu_390x2500/assets/strawberry-ice-cream-with-delights_140725-8818.jpg",
     category: "fruit"
   },
   {
@@ -23,7 +23,7 @@ const products = [
     description: "Protein rich shake with roasted peanuts",
     calories: "520 kcal",
     price: 8.00,
-    image: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=600&h=600&q=80",
+    image: "../swiggy-style_elite_main_menu_390x2500/assets/close-up-milkshake-glass-plate_117406-7215.jpg",
     category: "protein"
   },
   {
@@ -32,7 +32,7 @@ const products = [
     description: "Antioxidant blast with premium vanilla bean",
     calories: "340 kcal",
     price: 7.50,
-    image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=600&h=600&q=80",
+    image: "../swiggy-style_elite_main_menu_390x2500/assets/raspberry-smoothie_1150-18529.jpg",
     category: "fruit"
   }
 ];
