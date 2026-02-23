@@ -88,6 +88,15 @@
     
     // Start continuous auto-scroll
     carouselInterval = setInterval(() => {
+      // Check if container is in viewport to prevent forced scrolling when user is down the page
+      const rect = container.getBoundingClientRect();
+      const isVisible = (rect.top < window.innerHeight && rect.bottom > 0);
+      
+      if (!isVisible) {
+        // console.log('Carousel out of view, skipping auto-scroll');
+        return;
+      }
+
       currentIndex++;
       
       // Use scrollIntoView which handles RTL automatically
