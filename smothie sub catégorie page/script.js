@@ -1,6 +1,6 @@
 const products = [
-  { id: "smoothie_1", name: "Berry Burst", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "../swiggy-style_elite_main_menu_390x2500/assets/juice-berry-blast.jpg", category: "berry" },
-  { id: "smoothie_2", name: "Green Power", description: "Spinach, apple, banana", price: 5.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie-green-power.jpg", category: "green" },
+  { id: "smoothie_1", name: "Berry Burst", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie-berry-burst.jpg", category: "berry" },
+  { id: "smoothie_2", name: "Green Power", description: "Spinach, apple, banana", price: 5.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/kiwi-milk-shake-table_140725-8608.jpg", category: "green" },
   { id: "smoothie_3", name: "Protein Plus", description: "Peanut, whey, banana", price: 5.80, image: "../swiggy-style_elite_main_menu_390x2500/assets/kiwi-milk-shake-table_140725-8608.jpg", category: "protein" },
   { id: "smoothie_4", name: "Tropical Smooth", description: "Mango, pineapple, coconut", price: 5.40, image: "../swiggy-style_elite_main_menu_390x2500/assets/exotic-cocktail-closeup_181624-983.avif", category: "tropical" },
 ];

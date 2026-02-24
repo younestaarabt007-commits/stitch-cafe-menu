@@ -1,10 +1,10 @@
 const products = [
-  { id: "toast_1", name: "Signature Benedict", description: "Poached eggs, hollandaise", price: 14.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/toast-benedict.jpg", category: "eggs" },
-  { id: "toast_2", name: "Truffle Omelette", description: "Mushrooms, truffle oil", price: 12.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/hero-omelette.png", category: "eggs" },
-  { id: "toast_3", name: "Shakshuka", description: "Tomato, peppers, eggs", price: 11.25, image: "../swiggy-style_elite_main_menu_390x2500/assets/toast-shakshuka.jpg", category: "eggs" },
+  { id: "toast_1", name: "Signature Benedict", description: "Poached eggs, hollandaise", price: 14.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/toast-signature-benedict.jpg", category: "eggs" },
+  { id: "toast_2", name: "Truffle Omelette", description: "Mushrooms, truffle oil", price: 12.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/hero-scrambled-eggs.png", category: "eggs" },
+  { id: "toast_3", name: "Shakshuka", description: "Tomato, peppers, eggs", price: 11.25, image: "../swiggy-style_elite_main_menu_390x2500/assets/toast-shakshuka-baked.jpg", category: "eggs" },
   { id: "toast_4", name: "Avocado Toast", description: "Sourdough, smashed avo", price: 10.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/toast-avocado.jpg", category: "toast" },
-  { id: "toast_5", name: "Classic Benedict", description: "Ham, hollandaise", price: 13.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/toast-classic-benedict.jpg", category: "eggs" },
-  { id: "toast_6", name: "Vegan Power Bowl", description: "Grains, greens", price: 12.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/toast-vegan-bowl.jpg", category: "vegan" },
+  { id: "toast_5", name: "Classic Benedict", description: "Ham, hollandaise", price: 13.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/toast-benedict.jpg", category: "eggs" },
+  { id: "toast_6", name: "Vegan Power Bowl", description: "Grains, greens", price: 12.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/brunch-vegan-bowl.jpg", category: "vegan" },
   { id: "toast_7", name: "Mediterranean", description: "Feta, olives, tomatoes", price: 11.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/toast-mediterranean.jpg", category: "eggs" },
   { id: "toast_8", name: "Steak & Eggs", description: "Grilled ribeye, sunny-side", price: 18.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/toast-steak-eggs.jpg", category: "eggs" }
 ];

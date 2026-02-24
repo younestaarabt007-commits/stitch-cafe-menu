@@ -1,7 +1,7 @@
 const products = [
-  { id: "sweet_pastry_1", name: "Butter Croissant", description: "Flaky layers, French butter", price: 4.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/sweet-butter-croissant.jpg", category: "croissant" },
+  { id: "sweet_pastry_1", name: "Butter Croissant", description: "Flaky layers, French butter", price: 4.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/bread-butter-croissant.jpg", category: "croissant" },
   { id: "sweet_pastry_2", name: "Almond Croissant", description: "Frangipane, toasted almond", price: 5.25, image: "../swiggy-style_elite_main_menu_390x2500/assets/sweet-almond-croissant.jpg", category: "croissant" },
-  { id: "sweet_pastry_3", name: "Chocolate Éclair", description: "Choux pastry, rich ganache", price: 4.75, image: "../swiggy-style_elite_main_menu_390x2500/assets/bakery-chocolate-eclair.jpg", category: "cake" },
+  { id: "sweet_pastry_3", name: "Chocolate Éclair", description: "Choux pastry, rich ganache", price: 4.75, image: "../swiggy-style_elite_main_menu_390x2500/assets/pastry-eclair-chocolate.jpg", category: "cake" },
   { id: "sweet_pastry_4", name: "Strawberry Tart", description: "Vanilla custard, fresh berries", price: 5.80, image: "../swiggy-style_elite_main_menu_390x2500/assets/sweet-strawberry-tart.jpg", category: "tart" },
   { id: "sweet_pastry_5", name: "Lemon Meringue Tart", description: "Zesty curd, torched meringue", price: 5.90, image: "../swiggy-style_elite_main_menu_390x2500/assets/sweet-lemon-meringue.jpg", category: "tart" },
   { id: "sweet_pastry_6", name: "Velvet Cake Slice", description: "Moist crumb, vanilla frosting", price: 4.95, image: "../swiggy-style_elite_main_menu_390x2500/assets/sweet-velvet-cake.jpg", category: "cake" }

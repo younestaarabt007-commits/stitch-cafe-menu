@@ -13,23 +13,73 @@
     scrollbar-width: none;
 }
 
+/* Enhanced Header Pattern */
+.header-bg-pattern {
+    background: linear-gradient(135deg, #FF5200 0%, #FF8C00 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.header-bg-pattern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.6;
+}
+
+.header-bg-pattern::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1));
+    filter: blur(10px);
+}
+
+/* Glassmorphism Card Style */
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+.dark .glass-card {
+    background: rgba(30, 30, 30, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
 @keyframes zoom-shake {
-    0%, 100% {
-        transform: scale(1) rotate(0deg);
-    }
-    25% {
-        transform: scale(1.1) rotate(-2deg);
-    }
-    50% {
-        transform: scale(1.1) rotate(2deg);
-    }
-    75% {
-        transform: scale(1.1) rotate(-2deg);
-    }
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.05) rotate(-2deg); }
+    50% { transform: scale(1.05) rotate(2deg); }
+    75% { transform: scale(1.05) rotate(-2deg); }
+}
+
+.hero-card-image {
+    transition: transform 0.5s ease;
 }
 
 .hero-card-image:hover {
-    animation: zoom-shake 0.5s ease-in-out;
+    animation: zoom-shake 0.6s ease-in-out;
+}
+
+.floating-icon {
+    animation: float 3s ease-in-out infinite;
 }
 
 /* New Search Bar Styles */
@@ -40,64 +90,24 @@
 
 .search-main {
   position: relative;
-  border: 2px solid #5F8FA4;
-  height: 35px; /* Adjusted to match original design proportions (25px content + 8px padding + borders) */
-  background: #B1BEC6;
+  border: none;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.95);
   width: 100%;
-  border-radius: 50px;
-  padding-left: 31px;
-  padding-right: 40px;
-  font-size: 13px;
-  color: #555;
-  box-sizing: border-box;
-  z-index: 1;
-}
-
-.search-main::placeholder {
-  color: #555;
-  opacity: 0.7;
+  border-radius: 16px;
+  padding-left: 45px;
+  padding-right: 20px;
+  font-size: 14px;
+  color: #333;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
 
 .search-main:focus {
   outline: none;
-}
-
-.searchicon {
-  position: absolute;
-  height: 12px;
-  width: 12px;
-  background: transparent;
-  border: 3px solid #5F8FA4;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  border-radius: 100%;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.searchicon:after {
-  content: '';
-  position: absolute;
-  background: #5F8FA4;
-  height: 6px;
-  width: 3px;
-  bottom: -5px;
-  right: -3px;
-  transform: rotate(-45deg);
-}
-
-.microphone {
-  position: absolute;
-  height: 24px;
-  width: 24px;
-  background: #FF5252;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  border-radius: 100%;
-  box-shadow: 0px 1px 2px 0px #555;
-  cursor: pointer;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transform: translateY(-1px);
 }
 
 /* Language Toggle Button */
@@ -105,14 +115,18 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    background: rgba(255,255,255,0.2);
+    padding: 4px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.3);
 }
 
 .toggle-switch {
     position: relative;
     display: inline-block;
-    width: 50px;
-    height: 28px;
-    pointer-events: none; /* Let the container handle clicks */
+    width: 44px;
+    height: 24px;
+    pointer-events: none;
 }
 
 .slider {
@@ -127,131 +141,39 @@
     transition: background-image 0.4s;
     border-radius: 34px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid white;
 }
 
 /* Flag states */
-.lang-en .slider {
-    background-image: url('https://cdn-icons-png.freepik.com/256/197/197374.png'); /* UK Flag */
-}
-
-.lang-fr .slider {
-    background-image: url('https://cdn-icons-png.freepik.com/256/14010/14010011.png'); /* French Flag */
-}
-
-.lang-ar .slider {
-    background-image: url('https://img.icons8.com/color/256/morocco.png'); /* Moroccan Flag */
-}
+.lang-en .slider { background-image: url('https://cdn-icons-png.freepik.com/256/197/197374.png'); }
+.lang-fr .slider { background-image: url('https://cdn-icons-png.freepik.com/256/14010/14010011.png'); }
+.lang-ar .slider { background-image: url('https://img.icons8.com/color/256/morocco.png'); }
 
 #current-language {
     margin-left: 8px;
+    margin-right: 8px;
     font-size: 12px;
     color: white;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
-/* RTL Support for toggle */
-[dir="rtl"] #current-language {
-    margin-left: 0;
-    margin-right: 8px;
+/* Header Buttons */
+.header-btn {
+    transition: all 0.2s;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
-/* RTL Support for hero card images */
-[dir="rtl"] .absolute.-right-4 {
-    right: auto !important;
-    left: -1rem !important;
+.header-btn:active {
+    transform: scale(0.95);
 }
 
-[dir="rtl"] .absolute.right-3 {
-    right: auto !important;
-    left: 0.75rem !important;
-}
-
-/* RTL Support for horizontal scroll */
-[dir="rtl"] .overflow-x-auto {
-    direction: rtl;
-}
-
-[dir="rtl"] .flex {
-    direction: rtl;
-}
-
-/* RTL Support for carousel */
-[dir="rtl"] #hero-carousel .flex {
-    /* Ensure proper RTL behavior without forcing LTR */
-}
-
-[dir="rtl"] #hero-carousel .flex > div {
-    /* Ensure text aligns to the right in RTL */
-    text-align: right;
-}
-
-[dir="rtl"] #hero-carousel .items-start {
-    /* In RTL, items-start is Right. Ensure children align to the right */
-    align-items: flex-start; 
-}
-
-.microphone:after {
-  content: '';
-  position: absolute;
-  background: #BF3D3D;
-  height: 12px;
-  width: 8px;
-  border-radius: 10px;
-  left: 8px;
-  top: 3px;
-}
-
-.microphone:before {
-  content: '';
-  position: absolute;
-  border-bottom: 2px solid #BF3D3D;
-  height: 10px;
-  width: 10px;
-  border-radius: 100%;
-  top: 6px;
-  left: 7px;
-}
-
-.mic-stand {
-  position: absolute;
-  height: 4px;
-  width: 2px;
-  background: #BF3D3D;
-  bottom: 3px;
-  left: 11px;
-}
-
-/* Loader Styles */
-.loader { 
-  width: 44.8px; 
-  height: 44.8px; 
-  position: relative; 
-  transform: rotate(45deg); 
-} 
-
-.loader:before, 
-.loader:after { 
-  content: ""; 
-  position: absolute; 
-  inset: 0; 
-  border-radius: 50% 50% 0 50%; 
-  background: #0000; 
-  background-image: radial-gradient(circle 11.2px at 50% 50%,#0000 94%, #ff4747); 
-} 
-
-.loader:after { 
-  animation: pulse-ytk0dhmd 1s infinite; 
-  transform: perspective(336px) translateZ(0px); 
-} 
-
-@keyframes pulse-ytk0dhmd { 
-  to { 
-    transform: perspective(336px) translateZ(168px); 
-    opacity: 0; 
-  } 
-}
-
-[dir="rtl"] .material-symbols-outlined.flip-rtl {
-  transform: scaleX(-1);
-}
+/* RTL Support */
+[dir="rtl"] #current-language { margin-left: 0; margin-right: 8px; }
+[dir="rtl"] .absolute.-right-4 { right: auto !important; left: -1rem !important; }
+[dir="rtl"] .absolute.right-3 { right: auto !important; left: 0.75rem !important; }
+[dir="rtl"] .overflow-x-auto { direction: rtl; }
+[dir="rtl"] .flex { direction: rtl; }
+[dir="rtl"] #hero-carousel .flex > div { text-align: right; }
+[dir="rtl"] #hero-carousel .items-start { align-items: flex-start; }

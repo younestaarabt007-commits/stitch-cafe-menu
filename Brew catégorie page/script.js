@@ -5,7 +5,7 @@ const products = [
         name: "Nitro Cold Brew",
         description: "18-hour steep, nitrogen infused.",
         price: 6.50,
-        image: "../swiggy-style_elite_main_menu_390x2500/assets/coffee-kyoto-cold-brew.jpg",
+        image: "assets/coffee-nitro.jpg",
         category: "cold",
         favorite: true
     },
@@ -14,7 +14,7 @@ const products = [
         name: "Ceremonial Matcha",
         description: "Uji-sourced matcha with oat milk.",
         price: 7.25,
-        image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie-green-power.jpg",
+        image: "../swiggy-style_elite_main_menu_390x2500/assets/tea-matcha.jpg",
         category: "seasonal"
     },
     {
@@ -31,7 +31,7 @@ const products = [
         name: "Dirty Masala Chai",
         description: "House-made spices, double shot.",
         price: 6.75,
-        image: "../swiggy-style_elite_main_menu_390x2500/assets/coffee-dark-mocha.jpg",
+        image: "../swiggy-style_elite_main_menu_390x2500/assets/tea-masala-chai.jpg",
         category: "seasonal"
     },
     {
@@ -47,7 +47,7 @@ const products = [
         name: "Lavender Honey",
         description: "Floral infusion with local honey.",
         price: 7.50,
-        image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-classic.jpg",
+        image: "../swiggy-style_elite_main_menu_390x2500/assets/tea-lavender-earl.jpg",
         category: "seasonal"
     },
     {
@@ -55,7 +55,7 @@ const products = [
         name: "Golden Turmeric",
         description: "Spiced healing brew.",
         price: 6.25,
-        image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-spanish.jpg",
+        image: "../swiggy-style_elite_main_menu_390x2500/assets/tea-ginger-lemon.jpg",
         category: "seasonal"
     },
     {
@@ -63,7 +63,7 @@ const products = [
         name: "Caramel Macchiato",
         description: "Layered espresso & vanilla.",
         price: 6.50,
-        image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-hazelnut.jpg",
+        image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-caramel-macchiato.jpg",
         category: "dark"
     },
     {
@@ -71,7 +71,7 @@ const products = [
         name: "V60 Single Origin",
         description: "Hand poured perfection.",
         price: 8.00,
-        image: "../swiggy-style_elite_main_menu_390x2500/assets/coffee-velvet-flat-white.jpg",
+        image: "assets/coffee-v60.jpg",
         category: "dark"
     },
     {
