@@ -115,24 +115,10 @@ const sampleMenu = [
 ];
 
 async function fetchBestsellers() {
-  const base = apiBase();
-  if (!base) {
-    // No API base configured, use local data immediately without error
-    bestsellers = sampleMenu;
-    renderBestsellers(bestsellers);
-    return;
-  }
-  try {
-    const res = await fetch(`${base}/api/products`);
-    if (!res.ok) throw new Error('API Error');
-    const data = await res.json();
-    bestsellers = data;
-    renderBestsellers(bestsellers);
-  } catch (err) {
-    console.log('Using local fallback data');
-    bestsellers = sampleMenu;
-    renderBestsellers(bestsellers);
-  }
+  // Force local data usage to ensure items appear correctly with original images
+  console.log('Forcing local menu data display');
+  bestsellers = sampleMenu;
+  renderBestsellers(bestsellers);
 }
 
 function renderBestsellers(items) {
