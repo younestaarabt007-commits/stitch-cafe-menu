@@ -318,7 +318,7 @@ function startHeroCarousel() {
 
 document.addEventListener('DOMContentLoaded', () => {
   fetchBestsellers();
-  // renderCategories();
+  renderCategories();
   // startHeroCarousel(); // Disabled - using auto-loop instead
 });
 
