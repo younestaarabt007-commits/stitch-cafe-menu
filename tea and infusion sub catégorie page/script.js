@@ -1,11 +1,11 @@
 const products = [
-  { id: "tea_1", name: "Ceremonial Matcha", description: "Stone-ground, umami-rich", price: 12.00, image: "https://images.unsplash.com/photo-1520986438870-2e27b2b88a4d?q=80&w=500&auto=format&fit=crop", category: "matcha" },
-  { id: "tea_2", name: "Masala Chai", description: "Spiced, creamy, warming", price: 5.50, image: "https://images.unsplash.com/photo-1604908554112-46d5772f4a2d?q=80&w=500&auto=format&fit=crop", category: "herbal" },
-  { id: "tea_3", name: "Ginger Lemon", description: "Zesty, soothing infusion", price: 4.75, image: "https://images.unsplash.com/photo-1513639725746-9baf0f0b33a3?q=80&w=500&auto=format&fit=crop", category: "herbal" },
-  { id: "tea_4", name: "Moroccan Mint", description: "Cooling green tea", price: 4.50, image: "https://images.unsplash.com/photo-1595974732096-0f5f9c1a5f06?q=80&w=500&auto=format&fit=crop", category: "herbal" },
-  { id: "tea_5", name: "Royal Milk Tea", description: "Black tea, milk, caramel", price: 7.00, image: "https://images.unsplash.com/photo-1532634726-240e47cb5d1a?q=80&w=500&auto=format&fit=crop", category: "iced" },
-  { id: "tea_6", name: "Iced Peach Oolong", description: "Fruity, floral, chilled", price: 6.50, image: "https://images.unsplash.com/photo-1515512965560-0b814a59fdf8?q=80&w=500&auto=format&fit=crop", category: "iced" },
-  { id: "tea_7", name: "Lavender Earl Grey", description: "Classic bergamot twist", price: 5.25, image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=600&h=600&q=80", category: "herbal" }
+  { id: "tea_1", name: "Ceremonial Matcha", description: "Stone-ground, umami-rich", price: 12.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/tea-matcha.jpg", category: "matcha" },
+  { id: "tea_2", name: "Masala Chai", description: "Spiced, creamy, warming", price: 5.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/tea-masala-chai.jpg", category: "herbal" },
+  { id: "tea_3", name: "Ginger Lemon", description: "Zesty, soothing infusion", price: 4.75, image: "../swiggy-style_elite_main_menu_390x2500/assets/tea-ginger-lemon.jpg", category: "herbal" },
+  { id: "tea_4", name: "Moroccan Mint", description: "Cooling green tea", price: 4.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/tea-moroccan-mint.jpg", category: "herbal" },
+  { id: "tea_5", name: "Royal Milk Tea", description: "Black tea, milk, caramel", price: 7.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/tea-royal-milk.jpg", category: "iced" },
+  { id: "tea_6", name: "Iced Peach Oolong", description: "Fruity, floral, chilled", price: 6.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/tea-iced-peach.jpg", category: "iced" },
+  { id: "tea_7", name: "Lavender Earl Grey", description: "Classic bergamot twist", price: 5.25, image: "../swiggy-style_elite_main_menu_390x2500/assets/tea-lavender-earl.jpg", category: "herbal" }
 ];
 
 let currentFilter = 'all';

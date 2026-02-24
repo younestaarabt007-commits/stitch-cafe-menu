@@ -89,9 +89,36 @@
     
     // Create infinite loop
     createInfiniteLoop();
+
+    // User interaction handling
+    let userInteracting = false;
+    let interactionTimeout;
+
+    const pauseAutoScroll = () => {
+      userInteracting = true;
+      if (interactionTimeout) clearTimeout(interactionTimeout);
+    };
+
+    const resumeAutoScroll = () => {
+      interactionTimeout = setTimeout(() => {
+        userInteracting = false;
+      }, 5000); // Resume after 5 seconds of inactivity
+    };
+
+    // Add event listeners for user interaction
+    container.addEventListener('touchstart', pauseAutoScroll, { passive: true });
+    container.addEventListener('touchmove', pauseAutoScroll, { passive: true });
+    container.addEventListener('touchend', resumeAutoScroll, { passive: true });
+    container.addEventListener('mousedown', pauseAutoScroll);
+    container.addEventListener('mousemove', pauseAutoScroll);
+    container.addEventListener('mouseup', resumeAutoScroll);
+    container.addEventListener('mouseleave', resumeAutoScroll);
+    container.addEventListener('scroll', pauseAutoScroll, { passive: true });
     
     // Start continuous auto-scroll
     carouselInterval = setInterval(() => {
+      if (userInteracting) return;
+
       // Check if container is in viewport to prevent forced scrolling when user is down the page
       const rect = container.getBoundingClientRect();
       const isVisible = (rect.top < window.innerHeight && rect.bottom > 0);

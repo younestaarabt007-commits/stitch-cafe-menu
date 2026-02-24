@@ -23,7 +23,7 @@ const products = [
     description: "Protein rich shake with roasted peanuts",
     calories: "520 kcal",
     price: 8.00,
-    image: "../swiggy-style_elite_main_menu_390x2500/assets/close-up-milkshake-glass-plate_117406-7215.jpg",
+    image: "../swiggy-style_elite_main_menu_390x2500/assets/caramel-cold-shake-with-cream_140725-4501.avif",
     category: "protein"
   },
   {

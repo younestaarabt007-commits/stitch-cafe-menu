@@ -1,13 +1,13 @@
 const products = [
-  { id: "latte_1", name: "Classic Latte", description: "Double shot, steamed milk", price: 4.80, image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=500&auto=format&fit=crop", category: "classic" },
-  { id: "latte_2", name: "Signature Oat Latte", description: "Creamy & Sustainable", price: 6.50, image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=500&fit=crop", category: "plant-based" },
-  { id: "latte_3", name: "Vanilla Bean", description: "House vanilla bean syrup", price: 5.75, image: "https://images.unsplash.com/photo-1511537632536-acc2a4223056?w=500&h=500&fit=crop", category: "flavored" },
-  { id: "latte_4", name: "Caramel Macchiato", description: "Buttery caramel drizzle", price: 6.25, image: "https://images.unsplash.com/photo-1461023058943-48db5d469292?w=500&h=500&fit=crop", category: "flavored" },
-  { id: "latte_5", name: "Spanish Latte", description: "Condensed milk & espresso", price: 5.50, image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=500&h=500&fit=crop", category: "classic" },
-  { id: "latte_6", name: "Rose Water Latte", description: "Delicate floral infusion", price: 6.00, image: "https://images.unsplash.com/photo-1541167760496-1613c3434a74?w=500&h=500&fit=crop", category: "flavored" },
-  { id: "latte_7", name: "Iced Matcha Latte", description: "Ceremonial grade green tea", price: 6.25, image: "https://images.unsplash.com/photo-1570968993084-a8e384554f1f?w=500&h=500&fit=crop", category: "iced" },
-  { id: "latte_8", name: "Hazelnut Latte", description: "Rich nutty profile", price: 5.75, image: "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=500&h=500&fit=crop", category: "flavored" },
-  { id: "latte_9", name: "Pumpkin Spice Latte", description: "Seasonal spices & puree", price: 5.40, image: "https://images.unsplash.com/photo-1631900161776-9de35f9d5fbe?q=80&w=500&auto=format&fit=crop", category: "seasonal" }
+  { id: "latte_1", name: "Classic Latte", description: "Double shot, steamed milk", price: 4.80, image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-classic.jpg", category: "classic" },
+  { id: "latte_2", name: "Signature Oat Latte", description: "Creamy & Sustainable", price: 6.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-oat.jpg", category: "plant-based" },
+  { id: "latte_3", name: "Vanilla Bean", description: "House vanilla bean syrup", price: 5.75, image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-vanilla-bean.jpg", category: "flavored" },
+  { id: "latte_4", name: "Caramel Macchiato", description: "Buttery caramel drizzle", price: 6.25, image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-caramel-macchiato.jpg", category: "flavored" },
+  { id: "latte_5", name: "Spanish Latte", description: "Condensed milk & espresso", price: 5.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-spanish.jpg", category: "classic" },
+  { id: "latte_6", name: "Rose Water Latte", description: "Delicate floral infusion", price: 6.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-rose-water.jpg", category: "flavored" },
+  { id: "latte_7", name: "Iced Matcha Latte", description: "Ceremonial grade green tea", price: 6.25, image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-iced-matcha.jpg", category: "iced" },
+  { id: "latte_8", name: "Hazelnut Latte", description: "Rich nutty profile", price: 5.75, image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-hazelnut.jpg", category: "flavored" },
+  { id: "latte_9", name: "Pumpkin Spice Latte", description: "Seasonal spices & puree", price: 5.40, image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-pumpkin-spice.jpg", category: "seasonal" }
 ];
 
 let currentFilter = 'all';

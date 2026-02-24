@@ -1,10 +1,10 @@
 const products = [
-  { id: 1, name: "Fresh Orange Juice", description: "Cold pressed Valencia oranges", price: 4.50, image: "https://images.unsplash.com/photo-1541976076758-65c1b5dc0f5b?q=80&w=500&auto=format&fit=crop", category: "juices" },
-  { id: 2, name: "Strawberry Smoothie", description: "Greek yogurt, strawberry puree", price: 5.75, image: "https://images.unsplash.com/photo-1497534446932-c925b458314e?q=80&w=500&auto=format&fit=crop", category: "smoothies" },
-  { id: 3, name: "Chocolate Shake", description: "70% cacao, vanilla ice cream", price: 6.25, image: "https://images.unsplash.com/photo-1542444459-db9b6f23e273?q=80&w=500&auto=format&fit=crop", category: "shakes" },
-  { id: 4, name: "Iced Latte", description: "Double shot over chilled milk", price: 5.50, image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=500&auto=format&fit=crop", category: "iced_coffee" },
-  { id: 5, name: "Mango Lassi", description: "Alphonso mango, yogurt, cardamom", price: 5.00, image: "https://images.unsplash.com/photo-1632773171696-145c3f5f262c?q=80&w=500&auto=format&fit=crop", category: "smoothies" },
-  { id: 6, name: "Cold Brew", description: "12-hour steep, smooth finish", price: 4.90, image: "https://images.unsplash.com/photo-1510626176956-c2a2b4ff10ec?q=80&w=500&auto=format&fit=crop", category: "iced_coffee" },
+  { id: 1, name: "Fresh Orange Juice", description: "Cold pressed Valencia oranges", price: 4.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/juice-fresh-orange.jpg", category: "juices" },
+  { id: 2, name: "Strawberry Smoothie", description: "Greek yogurt, strawberry puree", price: 5.75, image: "../swiggy-style_elite_main_menu_390x2500/assets/cold-strawberry-smoothie.jpg", category: "smoothies" },
+  { id: 3, name: "Chocolate Shake", description: "70% cacao, vanilla ice cream", price: 6.25, image: "../swiggy-style_elite_main_menu_390x2500/assets/close-up-milkshake-glass-plate_117406-7215.jpg", category: "shakes" },
+  { id: 4, name: "Iced Latte", description: "Double shot over chilled milk", price: 5.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/cold-iced-latte.jpg", category: "iced_coffee" },
+  { id: 5, name: "Mango Lassi", description: "Alphonso mango, yogurt, cardamom", price: 5.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/delicious-indian-mango-drink-high-angle_23-2148734680.avif", category: "smoothies" },
+  { id: 6, name: "Cold Brew", description: "12-hour steep, smooth finish", price: 4.90, image: "../swiggy-style_elite_main_menu_390x2500/assets/coffee-kyoto-cold-brew.jpg", category: "iced_coffee" },
 ];
 
 const translations = {

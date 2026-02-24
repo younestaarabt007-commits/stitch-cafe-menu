@@ -1,8 +1,8 @@
 const products = [
-  { id: "smoothie_1", name: "Berry Burst", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "https://images.unsplash.com/photo-1502741119870-16c6b8d5fbb4?q=80&w=500&auto=format&fit=crop", category: "berry" },
-  { id: "smoothie_2", name: "Green Power", description: "Spinach, apple, banana", price: 5.00, image: "https://images.unsplash.com/photo-1505250469679-203ad9ced0cb?q=80&w=500&auto=format&fit=crop", category: "green" },
-  { id: "smoothie_3", name: "Protein Plus", description: "Peanut, whey, banana", price: 5.80, image: "https://images.unsplash.com/photo-1502741526807-1e4a6401a2ac?q=80&w=500&auto=format&fit=crop", category: "protein" },
-  { id: "smoothie_4", name: "Tropical Smooth", description: "Mango, pineapple, coconut", price: 5.40, image: "https://images.unsplash.com/photo-1559716808-4fd1a5a55ca9?q=80&w=500&auto=format&fit=crop", category: "tropical" },
+  { id: "smoothie_1", name: "Berry Burst", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "../swiggy-style_elite_main_menu_390x2500/assets/juice-berry-blast.jpg", category: "berry" },
+  { id: "smoothie_2", name: "Green Power", description: "Spinach, apple, banana", price: 5.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie-green-power.jpg", category: "green" },
+  { id: "smoothie_3", name: "Protein Plus", description: "Peanut, whey, banana", price: 5.80, image: "../swiggy-style_elite_main_menu_390x2500/assets/kiwi-milk-shake-table_140725-8608.jpg", category: "protein" },
+  { id: "smoothie_4", name: "Tropical Smooth", description: "Mango, pineapple, coconut", price: 5.40, image: "../swiggy-style_elite_main_menu_390x2500/assets/exotic-cocktail-closeup_181624-983.avif", category: "tropical" },
 ];
 
 let currentFilter = 'all';

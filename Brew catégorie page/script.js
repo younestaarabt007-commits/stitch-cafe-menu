@@ -5,7 +5,7 @@ const products = [
         name: "Nitro Cold Brew",
         description: "18-hour steep, nitrogen infused.",
         price: 6.50,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCT1wCQUEc2xm-D5wFbJkHDepkkxz8VAQ26JaKcvw-sbyix2-wnVYGr9MM6IRPbIxWiagXO2AZspBq7z_gEewaC0kTwGXDgRCFn8_fTndDjohi1j8MFgyEfwwCRe4J_EIyGKeq0tG96ht7dKmdS0UV1M-N8NOUNn_XGEibjCk7gaQOfFVDUWaUyZW2p-fsQpMVs3b-GANBPfgIeNi5YzlSigTeiVujRH8mglMr_JDDkuSHQt5KJU6fJJSfCe0CPcmmEJodJhhS_ou4",
+        image: "../swiggy-style_elite_main_menu_390x2500/assets/coffee-kyoto-cold-brew.jpg",
         category: "cold",
         favorite: true
     },
@@ -14,7 +14,7 @@ const products = [
         name: "Ceremonial Matcha",
         description: "Uji-sourced matcha with oat milk.",
         price: 7.25,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuC_3flnm9KLgxLxKB36tF5eXyvIvGDSTnw3jBRAcGyjK_SGUuZ3JPs5YYrkdEg5fFljs-4RtwHnDa-jOyAW4Ub3SlfyS58kUA_YJTQdrYkz7WcWZB4cDNQ1LIjvooURT4In53-fDmvdS3vRbA76SC3wRZ8Y4ubqmeswA3svSzCnIIKpceJcnNb1M8hHdr0rw4T2etbM3F_eTqjzb7pq3tBENJSXcgjGVpXWW7k6dy9oh7HYntN_asAaXRao-JwdRY1BOiVtrQP5tjA",
+        image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie-green-power.jpg",
         category: "seasonal"
     },
     {
@@ -22,7 +22,7 @@ const products = [
         name: "Ethiopian Yirgacheffe",
         description: "Floral notes with a citrus finish.",
         price: 5.00,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCIP8MKi2WKW4FSXIX4uvldgOj21D4qEbRqsDBBYoxlr9x3dmsp0mL1i5r85xkCM4uLPXIZYy1GiKVF_aUHi6wSloHdM3Mn2Bee8ZDUa6h581QlsAhbWH5D_r8yOk_BuAHNZgTpa0SAfGJtSnCYMB6liMbJmsOw_VhT9xJ_2LLtccejxDRgMQror-VKXeKmhWNbhU7zGS1z2iHOJ7breLPN987MQU8RnaQjnu52DHUS3Y1nfGm7DowdJJdStwcA-5YC_gaQDPsAQmM",
+        image: "../swiggy-style_elite_main_menu_390x2500/assets/coffee-single-origin-espresso.jpg",
         category: "dark",
         badge: "Light Roast"
     },
@@ -31,7 +31,7 @@ const products = [
         name: "Dirty Masala Chai",
         description: "House-made spices, double shot.",
         price: 6.75,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCwFabdrk_JL6HIByPm53ZtP_znMiZMWNEtU0XkybbZi02Fy6f4Vk5XTmHVDxtB8NEq9SAM3hr7yZYT61yhTWZ-OARuI8ZM4WyBG-nB1OT2Q7ErWVeAVlc6YcfLbN_ZjFqnzVU-4qK2Tl4Yk_TEOIyIrL70bJCg3PSFrvbjpfPH5w6LN-0wDX59LDLe2l4MICrO14SdODVMOGJ5_yGJFkh3hy748EMnANTwLB1pmveS9PuHi7qDkDDoSsodhvKD5e7Rc29lkTIFnWs",
+        image: "../swiggy-style_elite_main_menu_390x2500/assets/coffee-dark-mocha.jpg",
         category: "seasonal"
     },
     {
@@ -39,7 +39,7 @@ const products = [
         name: "Oat Milk Cortado",
         description: "Equal parts espresso & milk.",
         price: 4.50,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBuK0f9G3KD60FGrWg5AGNt2qeexG3wWZL1iLgHto2Xu2d1aUqqC-8zl9Tmv9RMTri5kkfdZa5VMd32mqYpC6ZSILkMccPWGfmdNTBcLyfK28VU4vwdQeACNCKVyiR8XATf0XV0EsWoMzj64MjcGRHWvqiWad6oHKyKARDoZ4lA7mGltdXdymwoAm8Y5NlExQJ6ABoKYNgIICshB-7LF-XeJpCcoIUHkuwcJFOY4zB-mtuwue8gDJur4zsZROdT6io1z60gTIQ2Rwo",
+        image: "../swiggy-style_elite_main_menu_390x2500/assets/coffee-oat-milk-latte.jpg",
         category: "dark"
     },
     {
@@ -47,7 +47,7 @@ const products = [
         name: "Lavender Honey",
         description: "Floral infusion with local honey.",
         price: 7.50,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBdVi2KlhCBtLOydplTgK0Ca0WYozE2GbOrVa_5EXWSopewMmcpyaqylHKKxBc5rkZX_vsP1AZ2Q0NkyOU8ptRusMfyUPWQdyW93ed3BiZtihb5C1qEZs1T3HHJhVLA1St4BLlmJqQR-XCatKqcTDKZeDWNu-3nnSr_fB9b0YH1ADgnBlUdTitwyS4BJ7yMC1uR8uUI3JbffxvOL9hudg1A3itd56iCOtZVDw-0LXuH2YO4xCgWUErVpLKW6cDZ_4fQohchHAMgU9A",
+        image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-classic.jpg",
         category: "seasonal"
     },
     {
@@ -55,7 +55,7 @@ const products = [
         name: "Golden Turmeric",
         description: "Spiced healing brew.",
         price: 6.25,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB2WveZEQ9ZqAuaHtk2h6S7uzflx9VYT-AI_atXxKqO5MUHmU3EEDLsfzkbtlDdqtcgtHQPtqEtPjcqo65RGfeh0kmjFPIPtRTU9FHgbVE7RtDPzc4cRzDeNFS4brkZ9aNTffRYiRAe0ccNMzxu1NHII0aNiFiF45-bfNXfSMLGfelG4PFYUh7HERxL-BDsXJhz_d3ZpPXWqMh920_RH-VMsNmj2FmPKBYk9SwuLUTlF1JkQYjeLzXjvBIg5BAHQnmXfIcekdJxIk0",
+        image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-spanish.jpg",
         category: "seasonal"
     },
     {
@@ -63,7 +63,7 @@ const products = [
         name: "Caramel Macchiato",
         description: "Layered espresso & vanilla.",
         price: 6.50,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCgjUlQZeCIa1cnwbujIqf06Gd160tTeQ1LCF-BkuqaVAfFV6_v399zhZm6H3ZGcsBb6fuJyRSrdB6MkTlZHDDT8bL81yBPRYETh-x7KlmkVkO6t5EaYQy5aZNk9iHuq3Fu28pE9z-5lQnFH2MTwHhFJYtmnY2Kao3_g8jMGmRcPEWJAuzh5bvj0YMi3K0mI7ijKAds1jFXDEw6_dkgoOE3fcdSCJjpbIVL_WlylVfUxPgsbKCisuDDIURnvMpATBBg0lhpiEUPnlI",
+        image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-hazelnut.jpg",
         category: "dark"
     },
     {
@@ -71,7 +71,7 @@ const products = [
         name: "V60 Single Origin",
         description: "Hand poured perfection.",
         price: 8.00,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCKee-oKo58OiriOnZCwDYqvQvCiIxmqzZ-27U6k7qRm4V69tuQWlK6hNj2dSIqtMzHaEo5BLnPatnnkfGe-8O_ilFd5jUrY49cMKvypm-WLC210aVdMmzjGOnCaS7FAso9CnYG7paFf9znbxIm_VlBqkUCH3tQLsw0XZvtRmzPdibc0npc3IREUntX_4djm2s8N1EI3tBpMpe1Ax3nhS2X90rux0YHV1sADM2Tk4vBhCnlLBERMtZ4DK1_9LAJKcPM2Ag9YgREEMk",
+        image: "../swiggy-style_elite_main_menu_390x2500/assets/coffee-velvet-flat-white.jpg",
         category: "dark"
     },
     {
@@ -79,7 +79,7 @@ const products = [
         name: "Blueberry Infusion",
         description: "Antioxidant rich blend.",
         price: 5.75,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuC2vnzTZpixnidCim5NBvO0g74IgwleCQ2NAnomq6nJXiLXe-19kgjWA5t-qTYcIoYhRJrBhigigvJdrIDHv1kwBsDad7bQsU14ItZOQMf7ScowfgN_BfUin4YKqzm2r4_E9HHrrMi2oh6rzVmKtf3kD2smOr5_pEs7aRUktwEhUu07hdaPLnGaR9lBqtaKn8DoAtoOZ8Rfe0RdRlOAA_JwxkCuowz7-SrlkI3uKFjUZZc-kb67YGmcgWweaFqmXLGfg0uPmJZ_bH0",
+        image: "../swiggy-style_elite_main_menu_390x2500/assets/juice-berry-blast.jpg",
         category: "seasonal"
     }
 ];

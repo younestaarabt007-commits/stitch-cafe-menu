@@ -1,11 +1,11 @@
 const products = [
-  { id: "smoothie_shake_1", name: "Green Detox", description: "Spinach & Apple", price: 9.50, image: "https://images.unsplash.com/photo-1610970881699-44a5587cabec?auto=format&fit=crop&w=600&h=600&q=80", category: "fruit" },
-  { id: "smoothie_shake_2", name: "Choco Malt", description: "Chocolate Malt Shake", price: 7.50, image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&h=600&q=80", category: "indulgent" },
-  { id: "smoothie_shake_3", name: "Berry Cream", description: "Indulgent Berry Shake", price: 8.25, image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=600&h=600&q=80", category: "indulgent" },
-  { id: "smoothie_shake_4", name: "Tropical Mango", description: "Fresh mango, pineapple", price: 7.50, image: "https://images.unsplash.com/photo-1546171753-97d7676e4602?auto=format&fit=crop&w=600&h=600&q=80", category: "fruit" },
-  { id: "smoothie_shake_5", name: "Wild Berry", description: "Blueberry, raspberry", price: 7.00, image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=600&h=600&q=80", category: "fruit" },
-  { id: "smoothie_shake_6", name: "Green Glow", description: "Kale, avocado, lime", price: 8.00, image: "https://images.unsplash.com/photo-1610970881699-44a5587cabec?auto=format&fit=crop&w=600&h=600&q=80", category: "fruit" },
-  { id: "smoothie_shake_7", name: "Oreo Blast", description: "Cookies, cream", price: 6.50, image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&h=600&q=80", category: "indulgent" }
+  { id: "smoothie_shake_1", name: "Green Detox", description: "Spinach & Apple", price: 9.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie-green-detox.jpg", category: "fruit" },
+  { id: "smoothie_shake_2", name: "Choco Malt", description: "Chocolate Malt Shake", price: 7.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie-choco-malt.jpg", category: "indulgent" },
+  { id: "smoothie_shake_3", name: "Berry Cream", description: "Indulgent Berry Shake", price: 8.25, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie-berry-cream.jpg", category: "indulgent" },
+  { id: "smoothie_shake_4", name: "Tropical Mango", description: "Fresh mango, pineapple", price: 7.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie-tropical-mango.jpg", category: "fruit" },
+  { id: "smoothie_shake_5", name: "Wild Berry", description: "Blueberry, raspberry", price: 7.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie-berry-cream.jpg", category: "fruit" },
+  { id: "smoothie_shake_6", name: "Green Glow", description: "Kale, avocado, lime", price: 8.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie-green-detox.jpg", category: "fruit" },
+  { id: "smoothie_shake_7", name: "Oreo Blast", description: "Cookies, cream", price: 6.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie-choco-malt.jpg", category: "indulgent" }
 ];
 
 let currentFilter = 'all';
