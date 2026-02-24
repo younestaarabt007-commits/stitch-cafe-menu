@@ -114,7 +114,7 @@ const sampleMenu = [
   { id: 'pastry-6', name: "Velvet Cake Slice", description: "Moist crumb, vanilla frosting", price: 4.95, image: "assets/sweet-velvet-cake.jpg", category: "Pastry" }
 ];
 
-async function fetchBestsellers() {
+function fetchBestsellers() {
   // Force local data usage to ensure items appear correctly with original images
   console.log('Forcing local menu data display');
   bestsellers = sampleMenu;
@@ -124,6 +124,12 @@ async function fetchBestsellers() {
 function renderBestsellers(items) {
   const container = document.getElementById('bestsellers') || document.getElementById('bestsellers-grid');
   if (!container) return;
+  
+  // Debug check
+  if (!items || items.length === 0) {
+      console.error('No items to render!');
+      return;
+  }
   
   function classify(cat) {
     const c = String(cat || '').toLowerCase();
@@ -157,7 +163,20 @@ function renderBestsellers(items) {
     }
     return res;
   }
-  const ordered = diversify(items);
+  
+  let ordered = [];
+  try {
+      ordered = diversify(items);
+  } catch (e) {
+      console.error('Diversify failed, using raw list', e);
+      ordered = items;
+  }
+  
+  // Fallback if diversify returns empty for some reason
+  if (ordered.length === 0) {
+      ordered = items;
+  }
+
   container.innerHTML = ordered.map((item, index) => {
     const imgUrl = item.image || item.image_url;
     // Use fallback if image is missing or is the default Unsplash placeholder
@@ -287,7 +306,8 @@ function getFallbackImage(item, seed = 0) {
   ];
 
   // Deterministic selection based on item name char code sum + seed
-  const hash = item.name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) + seed;
+  const safeName = item.name || 'item';
+  const hash = safeName.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) + seed;
   return pool[hash % pool.length];
 }
 
