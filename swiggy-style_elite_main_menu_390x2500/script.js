@@ -35,7 +35,7 @@ const sampleMenu = [
   { id: 'brew-6', name: "Lavender Honey", description: "Floral infusion with local honey.", price: 7.50, image: "assets/tea-lavender-earl.jpg", category: "Tea" },
   { id: 'brew-7', name: "Golden Turmeric", description: "Spiced healing brew.", price: 6.25, image: "assets/juice-ginger-turmeric-shot.jpg", category: "Tea" },
   { id: 'brew-8', name: "Caramel Macchiato", description: "Layered espresso & vanilla.", price: 6.50, image: "assets/latte-caramel-macchiato.jpg", category: "Coffee" },
-  { id: 'brew-9', name: "V60 Single Origin", description: "Hand poured perfection.", price: 8.00, image: "assets/coffee-v60.jpg", category: "Coffee" },
+  { id: 'brew-9', name: "Light Black Coffee", description: "Hand poured perfection.", price: 8.00, image: "assets/coffee-v60.jpg", category: "Coffee" },
   { id: 'brew-10', name: "Blueberry Infusion", description: "Antioxidant rich blend.", price: 5.75, image: "assets/juice-blueberry-fresh.jpg", category: "Tea" },
 
   // Artisanal Bread
