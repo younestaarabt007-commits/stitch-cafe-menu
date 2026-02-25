@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Create the new nav bar
     const navHTML = `
-      <nav class="standard-nav-bar bg-white dark:bg-[#2a1e19] border-t border-gray-100 dark:border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] backdrop-blur-md h-[55px] flex items-stretch justify-between px-6 fixed bottom-0 left-0 right-0 z-50 max-w-[390px] mx-auto">
+      <nav class="standard-nav-bar bg-white dark:bg-[#2a1e19] border-t border-gray-100 dark:border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] backdrop-blur-md h-[55px] flex items-stretch justify-between px-6 fixed bottom-0 left-0 right-0 z-50 max-w-[390px] mx-auto transition-transform duration-300">
         <button onclick="window.location.href='../swiggy-style_elite_main_menu_390x2500/index.html'" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
           <span class="material-symbols-outlined text-[22px]">home</span>
           <span class="text-[10px] font-bold uppercase tracking-widest">Home</span>
@@ -31,6 +31,24 @@ document.addEventListener("DOMContentLoaded", function() {
     `;
 
     document.body.insertAdjacentHTML('beforeend', navHTML);
+
+    // Scroll behavior: hide on scroll down, show on scroll up
+    const navBar = document.querySelector('.standard-nav-bar');
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        
+        // Hide if scrolling down and not at the very top
+        if (currentScrollY > lastScrollY && currentScrollY > 50) {
+            navBar.classList.add('translate-y-full');
+        } else {
+            // Show if scrolling up
+            navBar.classList.remove('translate-y-full');
+        }
+
+        lastScrollY = currentScrollY;
+    });
 
     // Update cart count from localStorage
     updateGlobalCartCount();
