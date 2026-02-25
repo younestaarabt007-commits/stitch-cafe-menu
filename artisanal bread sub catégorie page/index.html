@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Artisan Bakery — Stitch Café</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -26,27 +30,55 @@
       }
     };
   </script>
+  <style type="text/tailwindcss">
+    .glass-card {
+        @apply bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl;
+    }
+    .text-glow {
+        text-shadow: 0 0 15px rgba(255,255,255,0.3);
+    }
+  </style>
 </head>
+
 <body class="mesh-bg min-h-screen font-sans text-gray-900 dark:text-white">
   <div class="relative mx-auto w-full max-w-[390px] min-h-screen flex flex-col overflow-hidden pb-24">
-    <!-- Header -->
-    <header class="bg-primary pt-6 pb-6 rounded-b-[2.5rem] shadow-xl relative z-20">
-      <div class="flex items-center justify-between px-6 mb-4 text-white">
-        <button onclick="window.history.back()" class="bg-white/20 p-2 rounded-full backdrop-blur-sm">
+    <!-- Hero Section -->
+    <div class="relative h-[400px] w-full overflow-hidden bg-slate-900 mb-2">
+      <!-- Background Image Layer -->
+      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 scale-105"
+        style="background-image: url('../swiggy-style_elite_main_menu_390x2500/assets/salty food and sweet brunch/eb058f0421ae783ed7c55319ca504911.jpg'); z-index: 1;">
+      </div>
+
+      <!-- Soft Overlays -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent" style="z-index: 2;">
+      </div>
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-background-light/40 dark:from-background-dark/80 via-transparent to-transparent"
+        style="z-index: 2;">
+      </div>
+
+      <!-- Top Navigation -->
+      <div class="absolute top-0 left-0 right-0 z-30 flex items-center justify-between p-6">
+        <button onclick="window.history.back()"
+          class="size-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30">
           <span class="material-symbols-outlined text-[20px]">arrow_back</span>
         </button>
-        <h1 class="font-serif italic text-xl font-bold">Artisan Bakery</h1>
-        <button class="bg-white/20 p-2 rounded-full backdrop-blur-sm">
+        <button
+          class="size-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30">
           <span class="material-symbols-outlined text-[20px]">search</span>
         </button>
       </div>
-      <div class="px-6">
-        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
-          <p class="text-white/80 text-xs font-bold uppercase tracking-widest mb-1">Fresh Daily</p>
-          <p class="text-white text-sm font-medium">Baked fresh every morning at 5 AM using organic grains.</p>
+
+      <!-- Hero Content -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6 mt-10">
+        <div class="glass-card px-8 py-5 rounded-[2.5rem] w-full max-w-[300px]">
+          <h1 class="text-white text-[32px] font-serif font-bold italic tracking-tight leading-none text-glow mb-2">
+            Artisan Bakery</h1>
+          <div class="h-0.5 w-16 bg-primary mx-auto mb-3"></div>
+          <p class="text-white/90 text-[10px] font-bold uppercase tracking-[0.2em]">Baked Fresh at 5 AM</p>
         </div>
       </div>
-    </header>
+    </div>
 
     <!-- Category Chips -->
     <div class="flex gap-2 px-6 py-6 overflow-x-auto no-scrollbar">
@@ -59,20 +91,24 @@
 
     <!-- Featured Section -->
     <section class="px-6 mb-8">
-      <div class="bg-white dark:bg-[#2a1e19] rounded-[2.5rem] p-4 shadow-lg border border-gray-100 dark:border-white/5 relative overflow-hidden">
+      <div
+        class="bg-white dark:bg-[#2a1e19] rounded-[2.5rem] p-4 shadow-lg border border-gray-100 dark:border-white/5 relative overflow-hidden">
         <div class="flex gap-4">
           <div class="w-1/2 aspect-square rounded-3xl overflow-hidden bg-gray-50 dark:bg-black/20">
-            <img src="../swiggy-style_elite_main_menu_390x2500/assets/bread-signature-sourdough.jpg" class="w-full h-full object-cover" alt="Signature Sourdough">
+            <img src="../swiggy-style_elite_main_menu_390x2500/assets/salty food and sweet brunch/toast.jpg"
+              class="w-full h-full object-cover" alt="Signature Sourdough">
           </div>
           <div class="w-1/2 flex flex-col justify-center py-2">
-            <span class="bg-orange-100 dark:bg-orange-950/30 text-primary text-[10px] font-bold px-2 py-1 rounded-full w-fit uppercase mb-2">Signature</span>
+            <span
+              class="bg-orange-100 dark:bg-orange-950/30 text-primary text-[10px] font-bold px-2 py-1 rounded-full w-fit uppercase mb-2">Signature</span>
             <h3 class="font-bold text-lg leading-tight mb-1">Signature Sourdough</h3>
             <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-3 italic">Naturally leavened for 24h</p>
             <div class="flex items-center justify-between mt-auto">
               <span class="font-bold text-primary">$8.50</span>
-              <a href="../petit pain bakery_customization_view/index.html" class="bg-primary text-white p-1.5 rounded-xl shadow-glow flex items-center justify-center">
-                    <span class="material-symbols-outlined text-[18px]">add</span>
-                </a>
+              <a href="../petit pain bakery_customization_view/index.html"
+                class="bg-primary text-white p-1.5 rounded-xl shadow-glow flex items-center justify-center">
+                <span class="material-symbols-outlined text-[18px]">add</span>
+              </a>
             </div>
           </div>
         </div>
@@ -82,30 +118,37 @@
     <!-- Main Grid -->
     <section class="px-6 grid grid-cols-2 gap-4 mb-8">
       <!-- Item 1 -->
-      <div class="bg-white dark:bg-[#2a1e19] rounded-[2rem] p-4 shadow-md border border-gray-100 dark:border-white/5 flex flex-col">
+      <div
+        class="bg-white dark:bg-[#2a1e19] rounded-[2rem] p-4 shadow-md border border-gray-100 dark:border-white/5 flex flex-col">
         <div class="aspect-square rounded-2xl overflow-hidden bg-gray-50 dark:bg-black/20 mb-3">
-          <img src="../swiggy-style_elite_main_menu_390x2500/assets/bread-butter-croissant.jpg" class="w-full h-full object-cover" alt="Butter Croissant">
+          <img src="../swiggy-style_elite_main_menu_390x2500/assets/sweets/07abeb0b37011bc4f4413062a5fc0045.jpg"
+            class="w-full h-full object-cover" alt="Butter Croissant">
         </div>
         <h4 class="font-bold text-sm mb-1">Butter Croissant</h4>
         <div class="flex items-center justify-between mt-auto">
           <span class="text-xs font-bold text-primary">$3.50</span>
-          <a href="../petit pain bakery_customization_view/index.html" class="bg-gray-100 dark:bg-white/5 p-1.5 rounded-xl flex items-center justify-center">
-                    <span class="material-symbols-outlined text-[18px] text-primary">add</span>
-                </a>
+          <a href="../petit pain bakery_customization_view/index.html"
+            class="bg-gray-100 dark:bg-white/5 p-1.5 rounded-xl flex items-center justify-center">
+            <span class="material-symbols-outlined text-[18px] text-primary">add</span>
+          </a>
         </div>
       </div>
 
       <!-- Item 2 -->
-      <div class="product-card bg-white dark:bg-[#2a1e19] rounded-[2rem] p-4 shadow-md border border-gray-100 dark:border-white/5 flex flex-col" data-category="pastries">
+      <div
+        class="product-card bg-white dark:bg-[#2a1e19] rounded-[2rem] p-4 shadow-md border border-gray-100 dark:border-white/5 flex flex-col"
+        data-category="pastries">
         <div class="aspect-square rounded-2xl overflow-hidden bg-gray-50 dark:bg-black/20 mb-3">
-          <img src="../swiggy-style_elite_main_menu_390x2500/assets/bread-pain-au-chocolat.jpg" class="w-full h-full object-cover" alt="Pain au Chocolat">
+          <img src="../swiggy-style_elite_main_menu_390x2500/assets/sweets/99e4f1c4df32d646f2dde6bf28cd9566.jpg"
+            class="w-full h-full object-cover" alt="Pain au Chocolat">
         </div>
         <h4 class="font-bold text-sm mb-1">Pain au Chocolat</h4>
         <div class="flex items-center justify-between mt-auto">
           <span class="text-xs font-bold text-primary">$4.25</span>
-          <a href="../petit pain bakery_customization_view/code.html" class="bg-gray-100 dark:bg-white/5 p-1.5 rounded-xl flex items-center justify-center">
-                    <span class="material-symbols-outlined text-[18px] text-primary">add</span>
-                </a>
+          <a href="../petit pain bakery_customization_view/code.html"
+            class="bg-gray-100 dark:bg-white/5 p-1.5 rounded-xl flex items-center justify-center">
+            <span class="material-symbols-outlined text-[18px] text-primary">add</span>
+          </a>
         </div>
       </div>
     </section>
@@ -118,38 +161,46 @@
       </div>
       <div class="space-y-3">
         <!-- Bread Row 1 -->
-        <div class="bg-white dark:bg-[#2a1e19] p-3 rounded-[1.5rem] border border-gray-100 dark:border-white/5 flex items-center gap-4">
+        <div
+          class="bg-white dark:bg-[#2a1e19] p-3 rounded-[1.5rem] border border-gray-100 dark:border-white/5 flex items-center gap-4">
           <div class="w-16 h-16 rounded-xl overflow-hidden bg-gray-50 dark:bg-black/20 shrink-0">
-            <img src="../swiggy-style_elite_main_menu_390x2500/../swiggy-style_elite_main_menu_390x2500/../swiggy-style_elite_main_menu_390x2500/assets/bread-baguette.jpg" class="w-full h-full object-cover" alt="Baguette">
+            <img src="../swiggy-style_elite_main_menu_390x2500/assets/sweets/f3089aa69fae4df2b10dd5e82e5ef225.jpg"
+              class="w-full h-full object-cover" alt="Baguette">
           </div>
           <div class="flex-1">
             <h5 class="font-bold text-sm">Traditional Baguette</h5>
             <p class="text-[10px] text-gray-500">Crispy crust, airy interior</p>
             <span class="text-xs font-bold text-primary mt-1 block">$4.00</span>
           </div>
-          <a href="../petit pain bakery_customization_view/code.html" class="bg-gray-50 dark:bg-black/20 p-2 rounded-xl flex items-center justify-center">
-                    <span class="material-symbols-outlined text-primary text-[20px]">add</span>
-                </a>
+          <a href="../petit pain bakery_customization_view/code.html"
+            class="bg-gray-50 dark:bg-black/20 p-2 rounded-xl flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary text-[20px]">add</span>
+          </a>
         </div>
 
         <!-- Bread Row 2 -->
-        <div class="product-card bg-white dark:bg-[#2a1e19] p-3 rounded-[1.5rem] border border-gray-100 dark:border-white/5 flex items-center gap-4" data-category="whole grain">
+        <div
+          class="product-card bg-white dark:bg-[#2a1e19] p-3 rounded-[1.5rem] border border-gray-100 dark:border-white/5 flex items-center gap-4"
+          data-category="whole grain">
           <div class="w-16 h-16 rounded-xl overflow-hidden bg-gray-50 dark:bg-black/20 shrink-0">
-            <img src="../swiggy-style_elite_main_menu_390x2500/../swiggy-style_elite_main_menu_390x2500/assets/bakery-dark-rye-loaf.jpg" class="w-full h-full object-cover" alt="Rye Bread">
+            <img src="../swiggy-style_elite_main_menu_390x2500/assets/tea/7eb56d04c899ffd7a40ed6151c2713f0.jpg"
+              class="w-full h-full object-cover" alt="Rye Bread">
           </div>
           <div class="flex-1">
             <h5 class="font-bold text-sm">Artisan Rye Bread</h5>
             <p class="text-[10px] text-gray-500">Dense and fiber-rich</p>
             <span class="text-xs font-bold text-primary mt-1 block">$7.25</span>
           </div>
-          <a href="../petit pain bakery_customization_view/code.html" class="bg-gray-50 dark:bg-black/20 p-2 rounded-xl flex items-center justify-center">
-                    <span class="material-symbols-outlined text-primary text-[20px]">add</span>
-                </a>
+          <a href="../petit pain bakery_customization_view/code.html"
+            class="bg-gray-50 dark:bg-black/20 p-2 rounded-xl flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary text-[20px]">add</span>
+          </a>
         </div>
       </div>
     </section>
 
-  <script src="../nav-bar.js"></script>
-  <script src="script.js"></script>
+    <script src="../nav-bar.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>

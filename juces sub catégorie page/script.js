@@ -4,7 +4,7 @@ const products = [
         "name": "Fresh Orange",
         "description": "Valencia oranges, cold pressed",
         "price": 4.5,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/juice-fresh-orange.jpg",
+        "image": "../swiggy-style_elite_main_menu_390x2500/assets/juces.jpg",
         "category": "citrus"
     },
     {
@@ -28,7 +28,7 @@ const products = [
         "name": "Apple Classic",
         "description": "Cold-pressed apple",
         "price": 4,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/juice-apple-classic.jpg",
+        "image": "../swiggy-style_elite_main_menu_390x2500/assets/juice-apple.jpg",
         "category": "classic"
     },
     {
@@ -44,7 +44,7 @@ const products = [
         "name": "Signature Green Juice",
         "description": "Kale, Apple, Lemon",
         "price": 9.5,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/juice-signature-green-juice.jpg",
+        "image": "../swiggy-style_elite_main_menu_390x2500/assets/c638c126fbfb5edadc53720118cea1a9.jpg",
         "category": "wellness"
     },
     {
@@ -52,7 +52,7 @@ const products = [
         "name": "Berry Blast",
         "description": "Mixed berries antioxidant boost",
         "price": 8,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/juice-berry-blast.jpg",
+        "image": "../swiggy-style_elite_main_menu_390x2500/assets/f7a30f37caad29c217c59d2804298a53.jpg",
         "category": "smoothies"
     },
     {
@@ -60,7 +60,7 @@ const products = [
         "name": "Mango Tango",
         "description": "Mango, peach, passion fruit",
         "price": 8.5,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/juice-mango-tango.jpg",
+        "image": "../swiggy-style_elite_main_menu_390x2500/assets/db03e53c057449564a8c3f285d4ae705.jpg",
         "category": "tropical"
     },
     {
@@ -68,7 +68,7 @@ const products = [
         "name": "Cold Pressed Orange",
         "description": "Valencia oranges, zero water",
         "price": 7,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/juice-cold-pressed-orange.jpg",
+        "image": "../swiggy-style_elite_main_menu_390x2500/assets/juces.jpg",
         "category": "citrus"
     },
     {
@@ -76,7 +76,7 @@ const products = [
         "name": "Ginger Turmeric Shot",
         "description": "Morning immunity boost",
         "price": 4.5,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/juice-ginger-turmeric-shot.jpg",
+        "image": "../swiggy-style_elite_main_menu_390x2500/assets/bf9d74d6badcbc6dad96c5fe3b2537d9.jpg",
         "category": "wellness"
     },
     {
@@ -84,7 +84,7 @@ const products = [
         "name": "Beetroot Energizer",
         "description": "Beet, Carrot, Ginger",
         "price": 8.5,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/juice-beetroot-energizer.jpg",
+        "image": "../swiggy-style_elite_main_menu_390x2500/assets/a560aa77331782366884542df097f5fd.jpg",
         "category": "wellness"
     },
     {
@@ -92,7 +92,7 @@ const products = [
         "name": "Green Goddess",
         "description": "Kale, spinach, apple",
         "price": 9,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/juice-green-goddess.jpg",
+        "image": "../swiggy-style_elite_main_menu_390x2500/assets/734403dc841bf127b5df37617dadbab8.jpg",
         "category": "wellness"
     }
 ];
@@ -220,41 +220,41 @@ const menuTranslations = {
 let currentFilter = 'all';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const savedLang = localStorage.getItem('stitch_lang') || 'en';
-  applyLang(savedLang);
-  renderProducts();
-  setupEventListeners();
+    const savedLang = localStorage.getItem('stitch_lang') || 'en';
+    applyLang(savedLang);
+    renderProducts();
+    setupEventListeners();
 });
 
 function applyLang(lang) {
-  document.documentElement.lang = lang;
-  localStorage.setItem('stitch_lang', lang);
-  
-  if (lang === 'ar') {
-    document.documentElement.dir = 'rtl';
-    document.body.classList.add('rtl');
-  } else {
-    document.documentElement.dir = 'ltr';
-    document.body.classList.remove('rtl');
-  }
+    document.documentElement.lang = lang;
+    localStorage.setItem('stitch_lang', lang);
 
-  // Update Toggle UI
-  const toggle = document.getElementById('language-toggle');
-  if (toggle) {
-    toggle.classList.remove('lang-en', 'lang-fr', 'lang-ar');
-    toggle.classList.add(`lang-${lang}`);
-  }
-
-  // Update static text
-  document.querySelectorAll('[data-i18n]').forEach(element => {
-    const key = element.getAttribute('data-i18n');
-    if (translations[lang] && translations[lang][key]) {
-      element.textContent = translations[lang][key];
+    if (lang === 'ar') {
+        document.documentElement.dir = 'rtl';
+        document.body.classList.add('rtl');
+    } else {
+        document.documentElement.dir = 'ltr';
+        document.body.classList.remove('rtl');
     }
-  });
 
-  // Re-render products to update their text
-  renderProducts(currentFilter);
+    // Update Toggle UI
+    const toggle = document.getElementById('language-toggle');
+    if (toggle) {
+        toggle.classList.remove('lang-en', 'lang-fr', 'lang-ar');
+        toggle.classList.add(`lang-${lang}`);
+    }
+
+    // Update static text
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            element.textContent = translations[lang][key];
+        }
+    });
+
+    // Re-render products to update their text
+    renderProducts(currentFilter);
 }
 
 function getTranslation(key) {
@@ -265,7 +265,7 @@ function getTranslation(key) {
 function getMenuTranslation(item, field) {
     const lang = localStorage.getItem('stitch_lang') || 'en';
     if (lang === 'en') return item[field];
-    
+
     if (menuTranslations[item.name] && menuTranslations[item.name][lang] && menuTranslations[item.name][lang][field]) {
         return menuTranslations[item.name][lang][field];
     }
@@ -307,7 +307,7 @@ function addToCart(productId) {
 
     // Visual feedback
     const btn = document.querySelector(`button[onclick*="${productId}"]`);
-    if(btn) {
+    if (btn) {
         const originalContent = btn.innerHTML;
         btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span>';
         setTimeout(() => {
@@ -319,7 +319,7 @@ function addToCart(productId) {
 function renderProducts(filter = 'all') {
     const list = document.getElementById('product-list');
     if (!list) return; // Guard clause
-    
+
     const searchTerm = document.getElementById('search-input')?.value.toLowerCase() || '';
 
     const filteredProducts = products.filter(p => {
@@ -338,7 +338,7 @@ function renderProducts(filter = 'all') {
     list.innerHTML = filteredProducts.map((product, index) => {
         const name = getMenuTranslation(product, 'name');
         const description = getMenuTranslation(product, 'description');
-        
+
         return `
         <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700 fade-in transition-transform active:scale-95 cursor-pointer" style="animation-delay: ${index * 0.05}s">
             <div class="w-full aspect-square rounded-lg bg-cover bg-center mb-3" role="img" aria-label="${name}" style="background-image: url('${product.image}');"></div>
@@ -357,39 +357,39 @@ function renderProducts(filter = 'all') {
 }
 
 function setupEventListeners() {
-  const backBtn = document.getElementById('back-btn');
-  if (backBtn) {
-      backBtn.addEventListener('click', () => {
-        window.location.href = '../swiggy-style_elite_main_menu_390x2500/index.html';
-      });
-  }
-  
-  const searchInput = document.getElementById('search-input');
-  if (searchInput) {
-      searchInput.addEventListener('input', () => {
-          renderProducts(currentFilter);
-      });
-  }
+    const backBtn = document.getElementById('back-btn');
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            window.location.href = '../swiggy-style_elite_main_menu_390x2500/index.html';
+        });
+    }
 
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      e.currentTarget.classList.add('active');
-      currentFilter = e.currentTarget.dataset.filter;
-      renderProducts(currentFilter);
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+            renderProducts(currentFilter);
+        });
+    }
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            e.currentTarget.classList.add('active');
+            currentFilter = e.currentTarget.dataset.filter;
+            renderProducts(currentFilter);
+        });
     });
-  });
-  
-  const toggle = document.getElementById('language-toggle');
-  if (toggle) {
-    toggle.addEventListener('click', function() {
-      const current = localStorage.getItem('stitch_lang') || 'en';
-      let next = 'en';
-      if (current === 'en') next = 'fr';
-      else if (current === 'fr') next = 'ar';
-      else if (current === 'ar') next = 'en';
-      applyLang(next);
-    });
-  }
+
+    const toggle = document.getElementById('language-toggle');
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            const current = localStorage.getItem('stitch_lang') || 'en';
+            let next = 'en';
+            if (current === 'en') next = 'fr';
+            else if (current === 'fr') next = 'ar';
+            else if (current === 'ar') next = 'en';
+            applyLang(next);
+        });
+    }
 }
 

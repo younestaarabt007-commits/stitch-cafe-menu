@@ -1,15 +1,15 @@
 const products = [
-  { id: "smoothie_1", name: "Berry Burst", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie-berry-burst.jpg", category: "berry" },
-  { id: "smoothie_2", name: "Green Power", description: "Spinach, apple, banana", price: 5.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/kiwi-milk-shake-table_140725-8608.jpg", category: "green" },
-  { id: "smoothie_3", name: "Protein Plus", description: "Peanut, whey, banana", price: 5.80, image: "../swiggy-style_elite_main_menu_390x2500/assets/kiwi-milk-shake-table_140725-8608.jpg", category: "protein" },
-  { id: "smoothie_4", name: "Tropical Smooth", description: "Mango, pineapple, coconut", price: 5.40, image: "../swiggy-style_elite_main_menu_390x2500/assets/exotic-cocktail-closeup_181624-983.avif", category: "tropical" },
+    { id: "smoothie_1", name: "Berry Burst", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie/074e6662cd4a5fd64a69f06f078944bf.jpg", category: "berry" },
+    { id: "smoothie_2", name: "Green Power", description: "Spinach, apple, banana", price: 5.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie/a149102a082605c39f1576706e514bf1.jpg", category: "green" },
+    { id: "smoothie_3", name: "Protein Plus", description: "Peanut, whey, banana", price: 5.80, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie/bf9d74d6badcbc6dad96c5fe3b2537d9.jpg", category: "protein" },
+    { id: "smoothie_4", name: "Tropical Smooth", description: "Mango, pineapple, coconut", price: 5.40, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie/58b8a4072e8dc05fd60ef5308e932cd9.jpg", category: "tropical" },
 ];
 
 let currentFilter = 'all';
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderProducts();
-  setupEventListeners();
+    renderProducts();
+    setupEventListeners();
 });
 
 // Navigate to customization page
@@ -48,7 +48,7 @@ function addToCart(productId) {
 
     // Visual feedback
     const btn = document.querySelector(`button[onclick*="${productId}"]`);
-    if(btn) {
+    if (btn) {
         const originalContent = btn.innerHTML;
         btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span>';
         setTimeout(() => {
@@ -60,16 +60,16 @@ function addToCart(productId) {
 function renderProducts(filter = 'all') {
     const list = document.getElementById('product-list');
     if (!list) return; // Guard clause
-    
+
     const searchTerm = document.getElementById('search-input')?.value.toLowerCase() || '';
-    
+
     const filteredProducts = products.filter(p => {
         const matchesCategory = filter === 'all' || p.category === filter;
-        const matchesSearch = p.name.toLowerCase().includes(searchTerm) || 
-                              p.description.toLowerCase().includes(searchTerm);
+        const matchesSearch = p.name.toLowerCase().includes(searchTerm) ||
+            p.description.toLowerCase().includes(searchTerm);
         return matchesCategory && matchesSearch;
     });
-    
+
     if (filteredProducts.length === 0) {
         list.innerHTML = '<div class="col-span-2 text-center py-8 text-gray-500">No smoothies found</div>';
         return;
@@ -95,39 +95,39 @@ function renderProducts(filter = 'all') {
 }
 
 function setupEventListeners() {
-  // Back button
-  const backBtn = document.getElementById('back-btn');
-  if (backBtn) {
-      backBtn.onclick = () => {
-          window.location.href = '../swiggy-style_elite_main_menu_390x2500/index.html';
-      };
-  }
-  
-  // Search input listener
-  const searchInput = document.getElementById('search-input');
-  if (searchInput) {
-      searchInput.addEventListener('input', () => {
-          renderProducts(currentFilter);
-      });
-  }
+    // Back button
+    const backBtn = document.getElementById('back-btn');
+    if (backBtn) {
+        backBtn.onclick = () => {
+            window.location.href = '../swiggy-style_elite_main_menu_390x2500/index.html';
+        };
+    }
 
-  // Filter buttons
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const target = e.currentTarget;
-      
-      // Only apply style toggling to "pill" style buttons (heuristic: has px-5 class)
-      if (target.classList.contains('px-5')) {
-          document.querySelectorAll('.filter-btn.px-5').forEach(b => {
-              b.classList.remove('active', 'bg-primary', 'text-white');
-              b.classList.add('bg-white', 'dark:bg-slate-800', 'text-[#1c160d]', 'dark:text-white');
-          });
-          target.classList.remove('bg-white', 'dark:bg-slate-800', 'text-[#1c160d]', 'dark:text-white');
-          target.classList.add('active', 'bg-primary', 'text-white');
-      }
-      
-      currentFilter = target.dataset.filter;
-      renderProducts(currentFilter);
+    // Search input listener
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+            renderProducts(currentFilter);
+        });
+    }
+
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const target = e.currentTarget;
+
+            // Only apply style toggling to "pill" style buttons (heuristic: has px-5 class)
+            if (target.classList.contains('px-5')) {
+                document.querySelectorAll('.filter-btn.px-5').forEach(b => {
+                    b.classList.remove('active', 'bg-primary', 'text-white');
+                    b.classList.add('bg-white', 'dark:bg-slate-800', 'text-[#1c160d]', 'dark:text-white');
+                });
+                target.classList.remove('bg-white', 'dark:bg-slate-800', 'text-[#1c160d]', 'dark:text-white');
+                target.classList.add('active', 'bg-primary', 'text-white');
+            }
+
+            currentFilter = target.dataset.filter;
+            renderProducts(currentFilter);
+        });
     });
-  });
 }

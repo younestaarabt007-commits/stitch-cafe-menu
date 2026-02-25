@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Creme & Latte Fruit Juices — Stitch Café</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
   <script id="tailwind-config">
     tailwind.config = {
@@ -19,59 +23,93 @@
             "background-dark": "#1a0f08",
           },
           fontFamily: {
-            "display": ["Plus Jakarta Sans", "sans-serif"]
-          },
-          borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+            display: ["Plus Jakarta Sans", "sans-serif"],
+            serif: ["Playfair Display", "serif"]
+          }
         },
       },
     }
   </script>
-  </head>
-  <body class="bg-background-light dark:bg-background-dark text-[#1c160d] dark:text-[#fcfaf8] antialiased">
-    <div class="relative mx-auto w-full max-w-[390px] min-h-[1200px] flex flex-col shadow-2xl overflow-hidden bg-background-light dark:bg-background-dark">
-      <header class="absolute top-0 left-0 w-full z-20 flex items-center justify-between p-4">
-        <button id="back-btn" class="size-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white active:scale-95 transition-transform">
-          <span class="material-symbols-outlined">arrow_back</span>
+  <style type="text/tailwindcss">
+    .glass-card {
+        @apply bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl;
+    }
+    .text-glow {
+        text-shadow: 0 0 15px rgba(255,255,255,0.3);
+    }
+  </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#1c160d] dark:text-[#fcfaf8] antialiased">
+  <div
+    class="relative mx-auto w-full max-w-[390px] min-h-[1200px] flex flex-col shadow-2xl overflow-hidden bg-background-light dark:bg-background-dark">
+    <!-- Hero Section -->
+    <div class="relative h-[440px] w-full overflow-hidden bg-slate-900">
+      <!-- Background Image Layer -->
+      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 scale-105"
+        style="background-image: url('https://images.unsplash.com/photo-1556767576-5ec41e3239ea?q=80&w=1200&auto=format&fit=crop'); z-index: 1;">
+      </div>
+
+      <!-- Dreamy Overlays -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" style="z-index: 2;">
+      </div>
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-background-light/40 dark:from-background-dark/80 via-transparent to-transparent"
+        style="z-index: 2;">
+      </div>
+
+      <!-- Top Navigation -->
+      <div class="absolute top-0 left-0 right-0 z-30 flex items-center justify-between p-6">
+        <button id="back-btn" onclick="history.back()"
+          class="size-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30 shadow-lg active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-[20px]">arrow_back</span>
         </button>
         <div class="relative group">
-            <input type="text" id="search-input" placeholder="Search..." class="pl-10 pr-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-white placeholder-white/70 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 w-10 focus:w-48 transition-all duration-300 shadow-lg text-sm cursor-pointer focus:cursor-text peer">
-            <div class="absolute right-0 top-0 size-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white pointer-events-none transition-opacity duration-300 peer-focus:opacity-0 peer-placeholder-shown:opacity-100">
-                <span class="material-symbols-outlined">search</span>
-            </div>
-            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-white/70 text-[18px] opacity-0 peer-focus:opacity-100 transition-opacity duration-300 pointer-events-none">search</span>
-        </div>
-      </header>
-
-      <div class="relative w-full h-[360px] hero-gradient overflow-hidden flex flex-col justify-end p-4">
-        <div class="relative z-10 flex flex-col items-start gap-3 mb-2">
-          <span class="px-2.5 py-0.5 rounded-full bg-primary text-white text-[10px] font-bold uppercase tracking-widest">Creamy & Fruity</span>
-          <div class="space-y-1">
-            <h1 class="text-white text-[28px] font-bold leading-[1.1]">Creme or Latté <span class="text-primary">Fruit Juices</span></h1>
-            <p class="text-white/60 text-sm max-w-[240px]">Smooth blends and refreshing citrus fusion.</p>
-          </div>
-        </div>
-        <div class="absolute top-1/2 -right-4 w-64 h-64 -translate-y-1/2">
-          <div class="w-full h-full bg-center bg-contain bg-no-repeat" role="img" aria-label="Creamy juice glass"
-            style="background-image: url('https://images.unsplash.com/photo-1556745753-7e4bfc180a9f?q=80&w=600&auto=format&fit=crop');">
+          <input type="text" id="search-input" placeholder="Search..."
+            class="pl-10 pr-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-white placeholder-white/80 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 w-10 focus:w-48 transition-all duration-300 shadow-lg text-sm cursor-pointer focus:cursor-text peer">
+          <div
+            class="absolute right-0 top-0 size-10 flex items-center justify-center rounded-full bg-white/10 pointer-events-none transition-opacity duration-300 peer-focus:opacity-0 peer-placeholder-shown:opacity-100 text-white">
+            <span class="material-symbols-outlined text-[20px]">search</span>
           </div>
         </div>
       </div>
 
-      <div class="flex gap-2.5 px-4 overflow-x-auto no-scrollbar py-6">
-        <button class="filter-btn active px-5 py-2 rounded-full bg-primary text-white text-xs font-bold shadow-lg shadow-primary/20" data-filter="all">All</button>
-        <button class="filter-btn px-5 py-2 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700" data-filter="creamy">Creamy</button>
-        <button class="filter-btn px-5 py-2 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700" data-filter="citrus">Citrus</button>
-        <button class="filter-btn px-5 py-2 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700" data-filter="classic">Classic</button>
+      <!-- Hero Content -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6 mt-16">
+        <div class="glass-card px-10 py-7 rounded-[2.5rem] w-full max-w-[300px]">
+          <span class="text-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-2 block">Creamy & Fruity</span>
+          <h1 class="text-white text-[30px] font-serif font-bold italic tracking-tight leading-none text-glow mb-2">
+            Creamy Delights</h1>
+          <div class="h-0.5 w-12 bg-primary mx-auto mb-4 opacity-80"></div>
+          <p class="text-white/90 text-xs font-medium tracking-wide">Fusion of citrus and velvet cream</p>
+        </div>
       </div>
-
-      <div class="px-4 pt-2 pb-3 flex items-center justify-between">
-        <h2 class="text-[20px] font-bold">All Drinks</h2>
-        <span class="text-primary text-xs font-bold cursor-pointer">View All</span>
-      </div>
-      <div id="product-list" class="px-4 space-y-4 pb-32"></div>
-
     </div>
-    <script src="../nav-bar.js"></script>
-    <script src="script.js"></script>
-  </body>
+
+    <div class="flex gap-2.5 px-4 overflow-x-auto no-scrollbar py-6">
+      <button
+        class="filter-btn active px-5 py-2 rounded-full bg-primary text-white text-xs font-bold shadow-lg shadow-primary/20"
+        data-filter="all">All</button>
+      <button
+        class="filter-btn px-5 py-2 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700"
+        data-filter="creamy">Creamy</button>
+      <button
+        class="filter-btn px-5 py-2 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700"
+        data-filter="citrus">Citrus</button>
+      <button
+        class="filter-btn px-5 py-2 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700"
+        data-filter="classic">Classic</button>
+    </div>
+
+    <div class="px-4 pt-2 pb-3 flex items-center justify-between">
+      <h2 class="text-[20px] font-bold">All Drinks</h2>
+      <span class="text-primary text-xs font-bold cursor-pointer">View All</span>
+    </div>
+    <div id="product-list" class="px-4 space-y-4 pb-32"></div>
+
+  </div>
+  <script src="../nav-bar.js"></script>
+  <script src="script.js"></script>
+</body>
+
 </html>

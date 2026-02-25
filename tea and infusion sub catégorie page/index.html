@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Tea & Infusion — Stitch Café</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -28,31 +32,70 @@
       }
     };
   </script>
+  <style type="text/tailwindcss">
+    .glass-card {
+        @apply bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl;
+    }
+    .text-glow {
+        text-shadow: 0 0 15px rgba(255,255,255,0.3);
+    }
+  </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-[#1a1c18] dark:text-white antialiased">
-  <div class="relative min-h-screen w-full max-w-[390px] mx-auto flex flex-col bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl">
-    <header class="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 bg-gradient-to-b from-black/30 to-transparent">
-      <button id="back-btn" class="flex size-9 items-center justify-center rounded-full bg-white/25 backdrop-blur-md text-white shadow-sm active:scale-95">
-        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
-      </button>
-      <button id="search-btn" class="flex size-9 items-center justify-center rounded-full bg-white/25 backdrop-blur-md text-white shadow-sm active:scale-95">
-        <span class="material-symbols-outlined text-[20px]">search</span>
-      </button>
-    </header>
 
-    <div class="relative h-[380px] w-full overflow-hidden tea-hero-gradient flex items-end justify-center pb-8 shrink-0">
-      <div class="absolute inset-0 botanical-floats opacity-40"></div>
-      <div class="relative z-10 flex flex-col items-center text-center px-6">
-        <h1 class="text-white text-[28px] font-extrabold tracking-tight leading-tight">Tea & Infusion</h1>
-        <p class="text-white/85 text-[12px] font-medium mt-1">Ceremonial matcha, masala chai & herbal blends</p>
+<body class="bg-background-light dark:bg-background-dark text-[#1a1c18] dark:text-white antialiased">
+  <div
+    class="relative min-h-screen w-full max-w-[390px] mx-auto flex flex-col bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl">
+    <!-- Hero Section -->
+    <div class="relative h-[440px] w-full overflow-hidden bg-slate-900">
+      <!-- Background Image Layer -->
+      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 scale-105"
+        style="background-image: url('../swiggy-style_elite_main_menu_390x2500/assets/tea/Tea Citron Délise.jpg'); z-index: 1;">
+      </div>
+
+      <!-- Serene Overlays -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-transparent" style="z-index: 2;">
+      </div>
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-background-light/40 dark:from-background-dark/80 via-transparent to-transparent"
+        style="z-index: 2;">
+      </div>
+
+      <!-- Top Navigation -->
+      <div class="absolute top-0 left-0 right-0 z-30 flex items-center justify-between p-6">
+        <button id="back-btn" onclick="history.back()"
+          class="size-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30 shadow-lg active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+        </button>
+        <button id="search-btn"
+          class="size-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30 shadow-lg active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-[20px]">search</span>
+        </button>
+      </div>
+
+      <!-- Hero Content -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6 mt-16">
+        <div class="glass-card px-10 py-7 rounded-[2.5rem] w-full max-w-[280px]">
+          <h1 class="text-white text-[32px] font-serif font-bold italic tracking-tight leading-none text-glow mb-2">Pure
+            Zen</h1>
+          <div class="h-0.5 w-12 bg-primary mx-auto mb-4 opacity-80"></div>
+          <p class="text-white/90 text-[10px] font-bold uppercase tracking-[0.3em]">Ceremonial Blends</p>
+        </div>
       </div>
     </div>
 
     <div class="flex gap-2 px-4 overflow-x-auto no-scrollbar py-5">
-      <button class="filter-btn active px-5 h-9 rounded-full bg-primary text-white text-xs font-extrabold tracking-wide shadow-lg shadow-primary/20" data-filter="all">All</button>
-      <button class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-slate-800 text-zinc-700 dark:text-white text-xs font-semibold border border-slate-200 dark:border-slate-700 shadow-sm" data-filter="matcha">Matcha</button>
-      <button class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-slate-800 text-zinc-700 dark:text-white text-xs font-semibold border border-slate-200 dark:border-slate-700 shadow-sm" data-filter="herbal">Herbal</button>
-      <button class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-slate-800 text-zinc-700 dark:text-white text-xs font-semibold border border-slate-200 dark:border-slate-700 shadow-sm" data-filter="iced">Iced</button>
+      <button
+        class="filter-btn active px-5 h-9 rounded-full bg-primary text-white text-xs font-extrabold tracking-wide shadow-lg shadow-primary/20"
+        data-filter="all">All</button>
+      <button
+        class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-slate-800 text-zinc-700 dark:text-white text-xs font-semibold border border-slate-200 dark:border-slate-700 shadow-sm"
+        data-filter="matcha">Matcha</button>
+      <button
+        class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-slate-800 text-zinc-700 dark:text-white text-xs font-semibold border border-slate-200 dark:border-slate-700 shadow-sm"
+        data-filter="herbal">Herbal</button>
+      <button
+        class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-slate-800 text-zinc-700 dark:text-white text-xs font-semibold border border-slate-200 dark:border-slate-700 shadow-sm"
+        data-filter="iced">Iced</button>
     </div>
 
     <div class="px-4 pt-2 pb-3 flex items-center justify-between">
@@ -61,8 +104,9 @@
     </div>
     <div id="product-list" class="px-4 grid grid-cols-2 gap-3 pb-32"></div>
 
-  <script src="script.js"></script>
-  <!-- Navigation Bar -->
-  <script src="../nav-bar.js"></script>
+    <script src="script.js"></script>
+    <!-- Navigation Bar -->
+    <script src="../nav-bar.js"></script>
 </body>
+
 </html>

@@ -81,11 +81,92 @@ const products = [
         price: 5.75,
         image: "../swiggy-style_elite_main_menu_390x2500/assets/juice-berry-blast.jpg",
         category: "seasonal"
+    },
+    {
+        id: 11,
+        name: "Affogato Al Caffè",
+        description: "Double espresso over vanilla gelato.",
+        price: 7.00,
+        image: "https://images.unsplash.com/photo-1594631252845-29fc4586c362?q=80&w=400&auto=format&fit=crop",
+        category: "dark",
+        badge: "Chef's Choice"
+    },
+    {
+        id: 12,
+        name: "Iced Vanilla Oat Latte",
+        description: "Creamy oat milk with Madagascar vanilla.",
+        price: 6.75,
+        image: "https://images.unsplash.com/photo-1553909489-cd47e0907d3f?q=80&w=400&auto=format&fit=crop",
+        category: "cold"
+    },
+    {
+        id: 13,
+        name: "Turkish Coffee",
+        description: "Finely ground, cardamom infused.",
+        price: 5.50,
+        image: "https://images.unsplash.com/photo-1534040385115-33d93514755c?q=80&w=400&auto=format&fit=crop",
+        category: "dark"
+    },
+    {
+        id: 14,
+        name: "Hibiscus Berry Tea",
+        description: "Tart hibiscus with summer berries.",
+        price: 5.25,
+        image: "https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?q=80&w=400&auto=format&fit=crop",
+        category: "cold"
+    },
+    {
+        id: 15,
+        name: "Pumpkin Spice Latte",
+        description: "Autumn spice, real pumpkin purée.",
+        price: 7.25,
+        image: "https://images.unsplash.com/photo-1542691457-cbe4df041eb2?q=80&w=400&auto=format&fit=crop",
+        category: "seasonal",
+        badge: "Seasonal"
+    },
+    {
+        id: 16,
+        name: "Spanish Latte",
+        description: "Sweet condensed milk & bold espresso.",
+        price: 6.25,
+        image: "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?q=80&w=400&auto=format&fit=crop",
+        category: "dark"
+    },
+    {
+        id: 17,
+        name: "Cold Brew Lemonade",
+        description: "Coffee meeting refreshing citrus.",
+        price: 5.95,
+        image: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=300&auto=format&fit=crop",
+        category: "cold"
+    },
+    {
+        id: 18,
+        name: "Earl Grey Tea Latte",
+        description: "Bergamot notes with frothed milk.",
+        price: 6.50,
+        image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=400&auto=format&fit=crop",
+        category: "seasonal"
+    },
+    {
+        id: 19,
+        name: "Double Espresso",
+        description: "Pure, concentrated energy.",
+        price: 3.50,
+        image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=400&auto=format&fit=crop",
+        category: "dark",
+        favorite: true
+    },
+    {
+        id: 20,
+        name: "Mango Cold Brew",
+        description: "Tropical twist on classic cold brew.",
+        price: 6.95,
+        image: "https://images.unsplash.com/photo-1544145945-f904253d0c71?q=80&w=400&auto=format&fit=crop",
+        category: "cold"
     }
 ];
 
-// Cart State - Deprecated, handled by nav-bar.js
-// let cart = [];
 let currentFilter = 'all';
 
 // Initialize
@@ -95,11 +176,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Render Products
-function renderProducts(filter = 'all') {
+function renderProducts(filter = 'all', query = '') {
     const grid = document.getElementById('product-grid');
-    const filteredProducts = filter === 'all'
+    let filteredProducts = filter === 'all'
         ? products
         : products.filter(p => p.category === filter);
+
+    if (query) {
+        filteredProducts = filteredProducts.filter(p =>
+            p.name.toLowerCase().includes(query) ||
+            p.description.toLowerCase().includes(query)
+        );
+    }
 
     grid.innerHTML = filteredProducts.map((product, index) => `
         <div onclick="redirectToCustomization(${product.id})" class="flex flex-col group product-card w-full fade-in cursor-pointer" style="animation-delay: ${index * 0.05}s">
@@ -132,22 +220,15 @@ function redirectToCustomization(productId) {
     const product = products.find(p => p.id === productId);
     let customizationUrl = '../pure_noir_espresso_customization_view_1/index.html'; // Default
 
-    // Logic to determine customization page based on product or category
-    if (product.name.toLowerCase().includes('matcha') || 
-        product.name.toLowerCase().includes('chai') || 
-        product.name.toLowerCase().includes('tea') ||
-        product.name.toLowerCase().includes('lavender') ||
-        product.name.toLowerCase().includes('turmeric') ||
-        product.name.toLowerCase().includes('blueberry')) {
-        customizationUrl = '../tea_customization_view/index.html';
-    } else if (product.name.toLowerCase().includes('latte') || 
-               product.name.toLowerCase().includes('macchiato') ||
-               product.name.toLowerCase().includes('cortado')) {
-        customizationUrl = '../latte_customization_view_2/index.html';
-    } else if (product.name.toLowerCase().includes('espresso') || 
-               product.name.toLowerCase().includes('brew') ||
-               product.name.toLowerCase().includes('v60')) {
-        customizationUrl = '../pure_noir_espresso_customization_view_1/index.html';
+    if (product) {
+        const name = product.name.toLowerCase();
+        if (name.includes('matcha') || name.includes('chai') || name.includes('tea') || name.includes('lavender') || name.includes('turmeric') || name.includes('blueberry') || name.includes('hibiscus') || name.includes('infusion')) {
+            customizationUrl = '../tea_customization_view/index.html';
+        } else if (name.includes('latte') || name.includes('macchiato') || name.includes('cortado') || name.includes('caffè')) {
+            customizationUrl = '../latte_customization_view_2/index.html';
+        } else if (name.includes('espresso') || name.includes('brew') || name.includes('v60')) {
+            customizationUrl = '../pure_noir_espresso_customization_view_1/index.html';
+        }
     }
 
     window.location.href = customizationUrl;
@@ -159,12 +240,11 @@ function setupEventListeners() {
     const backBtn = document.getElementById('back-btn');
     if (backBtn) {
         backBtn.addEventListener('click', () => {
-            console.log('Back button clicked');
             window.history.back();
         });
     }
 
-    // Cart Button (Header) - Optional: Redirect to cart page or remove listener if button is removed
+    // Cart Button
     const cartBtn = document.getElementById('cart-btn');
     if (cartBtn) {
         cartBtn.addEventListener('click', () => {
@@ -176,9 +256,8 @@ function setupEventListeners() {
     const searchInput = document.getElementById('search-input');
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            console.log('Search:', searchTerm);
-            // Implement search functionality here
+            const query = e.target.value.toLowerCase();
+            renderProducts(currentFilter, query);
         });
     }
 
@@ -189,68 +268,16 @@ function setupEventListeners() {
             e.currentTarget.classList.add('active');
 
             currentFilter = e.currentTarget.dataset.filter;
-            renderProducts(currentFilter);
+            const query = document.getElementById('search-input')?.value.toLowerCase() || '';
+            renderProducts(currentFilter, query);
         });
-    });
-}
-
-    // Cart Button
-    document.getElementById('cart-btn').addEventListener('click', () => {
-        console.log('Cart:', cart);
-        alert(`Cart has ${cart.length} items`);
-    });
-
-    // Checkout Button
-    document.getElementById('checkout-btn').addEventListener('click', () => {
-        console.log('Checkout clicked');
-        alert('Proceeding to checkout...');
-    });
-
-    // Filter Buttons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
-
-            currentFilter = e.target.dataset.filter;
-            renderProducts(currentFilter);
-        });
-    });
-
-    // Search Input
-    const searchInput = document.getElementById('search-input');
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        const grid = document.getElementById('product-grid');
-
-        if (query.length > 0) {
-            const filtered = products.filter(p =>
-                p.name.toLowerCase().includes(query) ||
-                p.description.toLowerCase().includes(query)
-            );
-
-            grid.innerHTML = filtered.map((product, index) => `
-                <div class="flex flex-col group product-card w-full fade-in" style="animation-delay: ${index * 0.05}s">
-                    <div class="relative w-full aspect-[4/5] rounded-[20px] overflow-hidden shadow-sm mb-3 border border-stone-100 bg-white">
-                        <img alt="${product.name}" class="product-image w-full h-full object-cover transition-transform duration-700" src="${product.image}"/>
-                    </div>
-                    <h3 class="font-display font-semibold text-stone-900 text-[16px] leading-tight mb-0.5">${product.name}</h3>
-                    <p class="text-[12px] text-stone-500 mb-2 leading-tight line-clamp-2">${product.description}</p>
-                    <div class="flex items-center justify-between mt-auto w-full">
-                        <span class="font-bold text-espresso tracking-tight text-sm">$${product.price.toFixed(2)}</span>
-                        <button onclick="addToCart(${product.id})" class="add-btn w-[84px] h-[36px] min-w-[84px] rounded-[12px] bg-white border border-orange-custom text-orange-custom text-xs font-bold shadow-sm active:scale-95 transition-all uppercase tracking-wide flex items-center justify-center">
-                            Add
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        } else {
-            renderProducts(currentFilter);
-        }
     });
 
     // Filter Settings Button
-    document.getElementById('filter-btn').addEventListener('click', () => {
-        alert('Filter settings would open here');
-    });
+    const filterSettingsBtn = document.getElementById('filter-btn');
+    if (filterSettingsBtn) {
+        filterSettingsBtn.addEventListener('click', () => {
+            alert('Filter settings would open here');
+        });
+    }
 }

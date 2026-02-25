@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Juices — Stitch Café</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
   <script id="tailwind-config">
     tailwind.config = {
@@ -15,52 +19,85 @@
         extend: {
           colors: {
             primary: "#f2930d",
-            "background-light": "#FAFAF5",
-            "background-dark": "#1a0f08",
+            "background-light": "#fffcf2",
+            "background-dark": "#1a1c18"
           },
           fontFamily: {
-            display: ["Plus Jakarta Sans", "sans-serif"]
-          },
-          borderRadius: { "DEFAULT": "1rem", "lg": "1.5rem", "xl": "2rem", "full": "9999px" },
-        },
-      },
-    }
+            display: ["Plus Jakarta Sans", "sans-serif"],
+            serif: ["Playfair Display", "serif"]
+          }
+        }
+      }
+    };
   </script>
+  <style type="text/tailwindcss">
+    .glass-card {
+        @apply bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl;
+    }
+    .text-glow {
+        text-shadow: 0 0 15px rgba(255,255,255,0.3);
+    }
+  </style>
 </head>
+
 <body class="bg-background-light dark:bg-background-dark text-[#1c160d] dark:text-[#fcfaf8] antialiased">
-  <div class="relative mx-auto w-full max-w-[390px] min-h-screen flex flex-col shadow-2xl overflow-hidden bg-background-light dark:bg-background-dark">
-    <header class="absolute top-0 left-0 w-full z-20 flex items-center justify-between p-4">
-      <button onclick="history.back()" id="back-btn" class="size-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white active:scale-95 transition-transform">
-        <span class="material-symbols-outlined flip-rtl">arrow_back</span>
-      </button>
-      <div class="flex items-center gap-3">
-        <!-- Language Toggle -->
-        <div id="language-toggle" class="language-toggle scale-90 lang-en">
-            <div class="toggle-switch">
-                <span class="slider"></span>
-            </div>
-        </div>
+  <div
+    class="relative mx-auto w-full max-w-[390px] min-h-screen flex flex-col shadow-2xl overflow-hidden bg-background-light dark:bg-background-dark">
+    <!-- Hero Section -->
+    <div class="relative h-[420px] w-full overflow-hidden bg-slate-900">
+      <!-- Background Image Layer -->
+      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 scale-105"
+        style="background-image: url('https://images.unsplash.com/photo-1557800636-894a64c1696f?q=80&w=1200&auto=format&fit=crop'); z-index: 1;">
+      </div>
+
+      <!-- Atmospheric Overlays -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent" style="z-index: 2;">
+      </div>
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-background-light/40 dark:from-background-dark/80 via-transparent to-transparent"
+        style="z-index: 2;">
+      </div>
+
+      <!-- Top Navigation -->
+      <div class="absolute top-0 left-0 right-0 z-30 flex items-center justify-between p-6">
+        <button onclick="history.back()" id="back-btn"
+          class="size-10 flex items-center justify-center rounded-full bg-white/30 backdrop-blur-md text-white border border-white/30 shadow-lg active:scale-95 transition-transform">
+          <span class="material-symbols-outlined flip-rtl">arrow_back</span>
+        </button>
         <div class="relative group">
-            <input type="text" id="search-input" placeholder="Search..." class="pl-10 pr-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-white placeholder-white/70 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 w-10 focus:w-48 transition-all duration-300 shadow-lg text-sm cursor-pointer focus:cursor-text peer">
-            <div class="absolute right-0 top-0 size-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white pointer-events-none transition-opacity duration-300 peer-focus:opacity-0 peer-placeholder-shown:opacity-100">
-                <span class="material-symbols-outlined">search</span>
-            </div>
+          <input type="text" id="search-input" placeholder="Search..."
+            class="pl-10 pr-4 py-2 rounded-full bg-white/30 backdrop-blur-md text-white placeholder-white/80 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 w-10 focus:w-48 transition-all duration-300 shadow-lg text-sm cursor-pointer focus:cursor-text peer">
+          <div
+            class="absolute right-0 top-0 size-10 flex items-center justify-center rounded-full bg-white/10 pointer-events-none transition-opacity duration-300 peer-focus:opacity-0 peer-placeholder-shown:opacity-100">
+            <span class="material-symbols-outlined">search</span>
+          </div>
         </div>
       </div>
-    </header>
 
-    <div class="relative w-full h-[320px] hero-gradient overflow-hidden flex flex-col items-center justify-center">
-      <div class="relative z-10 flex flex-col items-center text-center px-6">
-        <h1 class="text-white text-[28px] font-extrabold tracking-tight leading-tight" data-i18n="juices">Juices</h1>
-        <p class="text-white/80 text-sm font-medium mt-1" data-i18n="subtitle">Cold-pressed and refreshing</p>
+      <!-- Hero Content -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6 mt-12">
+        <div class="glass-card px-10 py-6 rounded-[2.5rem] w-full max-w-[280px]">
+          <h1 class="text-white text-[32px] font-sans font-extrabold tracking-tight leading-none text-glow mb-1">Pure
+            Juices</h1>
+          <div class="h-0.5 w-12 bg-primary mx-auto mb-3"></div>
+          <p class="text-white/90 text-[10px] font-bold uppercase tracking-[0.2em]">Cold-pressed & Refreshing</p>
+        </div>
       </div>
     </div>
 
     <div class="flex gap-2.5 px-4 overflow-x-auto no-scrollbar py-6">
-      <button class="filter-btn active px-5 py-2 rounded-full bg-primary text-white text-xs font-bold shadow-lg shadow-primary/20" data-filter="all" data-i18n="all">All</button>
-      <button class="filter-btn px-5 py-2 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700" data-filter="citrus" data-i18n="citrus">Citrus</button>
-      <button class="filter-btn px-5 py-2 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700" data-filter="tropical" data-i18n="tropical">Tropical</button>
-      <button class="filter-btn px-5 py-2 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700" data-filter="classic" data-i18n="classic">Classic</button>
+      <button
+        class="filter-btn active px-5 py-2 rounded-full bg-primary text-white text-xs font-bold shadow-lg shadow-primary/20"
+        data-filter="all" data-i18n="all">All</button>
+      <button
+        class="filter-btn px-5 py-2 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700"
+        data-filter="citrus" data-i18n="citrus">Citrus</button>
+      <button
+        class="filter-btn px-5 py-2 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700"
+        data-filter="tropical" data-i18n="tropical">Tropical</button>
+      <button
+        class="filter-btn px-5 py-2 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700"
+        data-filter="classic" data-i18n="classic">Classic</button>
     </div>
 
     <div class="px-4 pt-2 pb-3 flex items-center justify-between">
@@ -73,4 +110,5 @@
   <script src="../nav-bar.js"></script>
   <script src="script.js"></script>
 </body>
+
 </html>

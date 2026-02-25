@@ -1,24 +1,24 @@
 const products = [
-  { id: "latte_1", name: "Classic Latte", description: "Double shot, steamed milk", price: 4.80, image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-classic.jpg", category: "classic" },
-  { id: "latte_2", name: "Signature Oat Latte", description: "Creamy & Sustainable", price: 6.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-oat.jpg", category: "plant-based" },
-  { id: "latte_3", name: "Vanilla Bean", description: "House vanilla bean syrup", price: 5.75, image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-vanilla-bean.jpg", category: "flavored" },
-  { id: "latte_4", name: "Caramel Macchiato", description: "Buttery caramel drizzle", price: 6.25, image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-caramel-macchiato.jpg", category: "flavored" },
-  { id: "latte_5", name: "Spanish Latte", description: "Condensed milk & espresso", price: 5.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-spanish.jpg", category: "classic" },
-  { id: "latte_6", name: "Rose Water Latte", description: "Delicate floral infusion", price: 6.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-rose-water.jpg", category: "flavored" },
-  { id: "latte_7", name: "Iced Matcha Latte", description: "Ceremonial grade green tea", price: 6.25, image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-iced-matcha.jpg", category: "iced" },
-  { id: "latte_8", name: "Hazelnut Latte", description: "Rich nutty profile", price: 5.75, image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-hazelnut.jpg", category: "flavored" },
-  { id: "latte_9", name: "Pumpkin Spice Latte", description: "Seasonal spices & puree", price: 5.40, image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-pumpkin-spice.jpg", category: "seasonal" }
+    { id: "latte_1", name: "Classic Latte", description: "Double shot, steamed milk", price: 4.80, image: "../swiggy-style_elite_main_menu_390x2500/assets/latté/Café Crème.jpg", category: "classic" },
+    { id: "latte_2", name: "Signature Oat Latte", description: "Creamy & Sustainable", price: 6.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/latté/c98d046bf1085bc59f77893bf9779244.jpg", category: "plant-based" },
+    { id: "latte_3", name: "Vanilla Bean", description: "House vanilla bean syrup", price: 5.75, image: "../swiggy-style_elite_main_menu_390x2500/assets/latté/413ec74a68481ef01743fe316c867c48.jpg", category: "flavored" },
+    { id: "latte_4", name: "Caramel Macchiato", description: "Buttery caramel drizzle", price: 6.25, image: "../swiggy-style_elite_main_menu_390x2500/assets/latté/c3458b0388f7f10df2f6949c1e7e73d2.jpg", category: "flavored" },
+    { id: "latte_5", name: "Spanish Latte", description: "Condensed milk & espresso", price: 5.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/latté/Café Crème.jpg", category: "classic" },
+    { id: "latte_6", name: "Rose Water Latte", description: "Delicate floral infusion", price: 6.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/latté/f44e75c15bafa88216ef43d6600177e0.jpg", category: "flavored" },
+    { id: "latte_7", name: "Iced Matcha Latte", description: "Ceremonial grade green tea", price: 6.25, image: "../swiggy-style_elite_main_menu_390x2500/assets/tea/8de4ad2c0c676dc76030cf5c8c8fad50.jpg", category: "iced" },
+    { id: "latte_8", name: "Hazelnut Latte", description: "Rich nutty profile", price: 5.75, image: "../swiggy-style_elite_main_menu_390x2500/assets/latté/c3458b0388f7f10df2f6949c1e7e73d2.jpg", category: "flavored" },
+    { id: "latte_9", name: "Pumpkin Spice Latte", description: "Seasonal spices & puree", price: 5.40, image: "../swiggy-style_elite_main_menu_390x2500/assets/latté/f44e75c15bafa88216ef43d6600177e0.jpg", category: "seasonal" }
 ];
 
 let currentFilter = 'all';
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderProducts();
-  setupEventListeners();
-  // Update cart count on load
-  if (window.updateGlobalCartCount) {
-      window.updateGlobalCartCount();
-  }
+    renderProducts();
+    setupEventListeners();
+    // Update cart count on load
+    if (window.updateGlobalCartCount) {
+        window.updateGlobalCartCount();
+    }
 });
 
 // Navigate to customization page
@@ -60,7 +60,7 @@ function addToCart(productId) {
 
     // Visual feedback
     const btn = document.querySelector(`button[onclick*="${productId}"]`);
-    if(btn) {
+    if (btn) {
         const originalContent = btn.innerHTML;
         btn.innerHTML = '<span class="material-symbols-outlined text-xs">check</span>';
         setTimeout(() => {
@@ -72,9 +72,9 @@ function addToCart(productId) {
 function renderProducts(filter = 'all') {
     const list = document.getElementById('product-list');
     if (!list) return; // Guard clause in case element doesn't exist
-    
+
     const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
-    
+
     list.innerHTML = filteredProducts.map((product, index) => `
         <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700 fade-in transition-transform active:scale-95 cursor-pointer" style="animation-delay: ${index * 0.05}s">
             <div class="w-full aspect-square rounded-lg bg-cover bg-center mb-3" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');"></div>
@@ -95,34 +95,34 @@ function renderProducts(filter = 'all') {
 }
 
 function setupEventListeners() {
-  const backBtn = document.getElementById('back-btn');
-  if (backBtn) {
-      backBtn.addEventListener('click', () => {
-        window.location.href = '../swiggy-style_elite_main_menu_390x2500/index.html';
-      });
-  }
-  
-  const searchInput = document.getElementById('search-input');
-  if (searchInput) {
-      searchInput.addEventListener('input', () => {
-          // Implement search if needed, or just filter
-          // renderProducts(currentFilter);
-      });
-  }
+    const backBtn = document.getElementById('back-btn');
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            window.location.href = '../swiggy-style_elite_main_menu_390x2500/index.html';
+        });
+    }
 
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      // Find the closest parent that contains all filter buttons if they are in different containers
-      // or just document.querySelectorAll again
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active', 'bg-primary', 'text-white'));
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.add('bg-card-tan', 'dark:bg-slate-800', 'text-[#1c160d]', 'dark:text-white')); // Reset to default style
-      
-      // Set active style
-      e.currentTarget.classList.remove('bg-card-tan', 'dark:bg-slate-800', 'text-[#1c160d]', 'dark:text-white');
-      e.currentTarget.classList.add('active', 'bg-primary', 'text-white');
-      
-      currentFilter = e.currentTarget.dataset.filter;
-      renderProducts(currentFilter);
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+            // Implement search if needed, or just filter
+            // renderProducts(currentFilter);
+        });
+    }
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Find the closest parent that contains all filter buttons if they are in different containers
+            // or just document.querySelectorAll again
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active', 'bg-primary', 'text-white'));
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.add('bg-card-tan', 'dark:bg-slate-800', 'text-[#1c160d]', 'dark:text-white')); // Reset to default style
+
+            // Set active style
+            e.currentTarget.classList.remove('bg-card-tan', 'dark:bg-slate-800', 'text-[#1c160d]', 'dark:text-white');
+            e.currentTarget.classList.add('active', 'bg-primary', 'text-white');
+
+            currentFilter = e.currentTarget.dataset.filter;
+            renderProducts(currentFilter);
+        });
     });
-  });
 }

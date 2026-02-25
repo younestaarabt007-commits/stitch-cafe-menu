@@ -13,16 +13,16 @@ let cart = [];
 // Consolidated Product Data from all sub-categories
 const sampleMenu = [
   // Brunch (New)
-  { id: 'brunch-1', name: "Farm Omelette", description: "Organic eggs, cheddar, fresh herbs.", price: 12.50, image: "assets/brunch-farm-omelette.jpg", category: "Brunch" },
-  { id: 'brunch-2', name: "Eggs Benedict", description: "English muffin, bacon, hollandaise sauce.", price: 16.00, image: "assets/croissant-benedict-salmon-with-poched-egg-hollandaise-sauce-served-with-fresh-salad_140725-1329.avif", category: "Brunch" },
-  { id: 'brunch-3', name: "Spicy Shakshuka", description: "Poached eggs in hearty spicy tomato sauce.", price: 15.50, image: "assets/brunch-shakshuka.jpg", category: "Brunch" },
-  { id: 'brunch-4', name: "Garden Skillet", description: "Roasted potatoes, kale, peppers.", price: 14.50, image: "assets/brunch-garden-skillet.jpg", category: "Brunch" },
-  { id: 'brunch-5', name: "Brunch Burrito", description: "Chorizo, scrambled eggs, beans.", price: 13.00, image: "assets/brunch-burrito-special.jpg", category: "Brunch" },
-  { id: 'brunch-6', name: "Steak & Eggs", description: "6oz sirloin, two eggs any style.", price: 19.50, image: "assets/toast-steak-eggs.jpg", category: "Brunch" },
-  { id: 'brunch-7', name: "Fit Egg-White", description: "Spinach, goat cheese, egg whites.", price: 13.50, image: "assets/brunch-fit-egg-white.jpg", category: "Brunch" },
-  { id: 'brunch-8', name: "Brunch Tacos", description: "Corn tortillas, pickled onions, avocado.", price: 11.00, image: "assets/brunch-tacos-deluxe.jpg", category: "Brunch" },
-  { id: 'brunch-9', name: "Iron Frittata", description: "Onions, potatoes, aged cheddar.", price: 14.75, image: "assets/brunch-frittata.jpg", category: "Brunch" },
-  { id: 'brunch-10', name: "Acai Delight", description: "Mixed berries, granola, honey.", price: 12.00, image: "assets/smoothie-acai-bowl.jpg", category: "Brunch" },
+  { id: 'brunch-1', name: "Farm Omelette", description: "Organic eggs, cheddar, fresh herbs.", price: 12.50, image: "assets/salty food and sweet brunch/0a928a23c6c3fb861e9c4ec54ae78b7d.jpg", category: "Brunch" },
+  { id: 'brunch-2', name: "Eggs Benedict", description: "English muffin, bacon, hollandaise sauce.", price: 16.00, image: "assets/salty food and sweet brunch/3f108fda33cdb811f37bf5dc2035c3dc.jpg", category: "Brunch" },
+  { id: 'brunch-3', name: "Spicy Shakshuka", description: "Poached eggs in hearty spicy tomato sauce.", price: 15.50, image: "assets/salty food and sweet brunch/5d9c920def5bef64b91715b917d667b2.jpg", category: "Brunch" },
+  { id: 'brunch-4', name: "Garden Skillet", description: "Roasted potatoes, kale, peppers.", price: 14.50, image: "assets/salty food and sweet brunch/5ec903108923b0eda69e0de6ab77a1f3.jpg", category: "Brunch" },
+  { id: 'brunch-5', name: "Brunch Burrito", description: "Chorizo, scrambled eggs, beans.", price: 13.00, image: "assets/salty food and sweet brunch/62e25e1c33624e2bc57b6e4531a36dc5.jpg", category: "Brunch" },
+  { id: 'brunch-6', name: "Steak & Eggs", description: "6oz sirloin, two eggs any style.", price: 19.50, image: "assets/salty food and sweet brunch/69c52da929160d633bd0def179265173.jpg", category: "Brunch" },
+  { id: 'brunch-7', name: "Fit Egg-White", description: "Spinach, goat cheese, egg whites.", price: 13.50, image: "assets/salty food and sweet brunch/89648609962eda9536c1eecdedbdf8ef.jpg", category: "Brunch" },
+  { id: 'brunch-8', name: "Brunch Tacos", description: "Corn tortillas, pickled onions, avocado.", price: 11.00, image: "assets/salty food and sweet brunch/902f3561ca86aba6382aad94c75b11f4.jpg", category: "Brunch" },
+  { id: 'brunch-9', name: "Iron Frittata", description: "Onions, potatoes, aged cheddar.", price: 14.75, image: "assets/salty food and sweet brunch/eb058f0421ae783ed7c55319ca504911.jpg", category: "Brunch" },
+  { id: 'brunch-10', name: "Acai Delight", description: "Mixed berries, granola, honey.", price: 12.00, image: "assets/smoothie/f3a3e79d662b87dca0c68b729446d755.jpg", category: "Brunch" },
   { id: 'brunch-11', name: "Belgian Gold", description: "Crispy waffles, berries, cream.", price: 11.50, image: "assets/vertical-shot-pancakes-with-fruits-top_181624-23923.jpg", category: "Brunch" },
   { id: 'brunch-12', name: "Full English", description: "Sausage, bacon, eggs, beans, toast.", price: 22.00, image: "assets/brunch-full-english.jpg", category: "Brunch" },
 
@@ -56,23 +56,23 @@ const sampleMenu = [
   { id: 'coffee-5', name: "Dark Mocha", description: "70% Cacao, Double Espresso", price: 6.00, image: "assets/coffee-dark-mocha.jpg", category: "Coffee" },
 
   // Cold Drinks
-  { id: 'cold-1', name: "Fresh Orange Juice", description: "Cold pressed Valencia oranges", price: 4.50, image: "assets/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif", category: "Juice" },
-  { id: 'cold-2', name: "Strawberry Smoothie", description: "Greek yogurt, strawberry puree", price: 5.75, image: "assets/raspberry-smoothie_1150-18529.jpg", category: "Smoothie" },
-  { id: 'cold-3', name: "Chocolate Shake", description: "70% cacao, vanilla ice cream", price: 6.25, image: "assets/close-up-milkshake-glass-plate_117406-7215.jpg", category: "Shake" },
-  { id: 'cold-4', name: "Iced Latte", description: "Double shot over chilled milk", price: 5.50, image: "assets/latte-iced-tall.jpg", category: "Coffee" },
-  { id: 'cold-5', name: "Mango Lassi", description: "Alphonso mango, yogurt, cardamom", price: 5.00, image: "assets/delicious-indian-mango-drink-high-angle_23-2148734680.avif", category: "Smoothie" },
-  { id: 'cold-6', name: "Cold Brew", description: "12-hour steep, smooth finish", price: 4.90, image: "assets/coffee-classic-cold-brew.jpg", category: "Cold Brew" },
+  { id: 'cold-1', name: "Fresh Orange Juice", description: "Cold pressed Valencia oranges", price: 4.50, image: "assets/juces.jpg", category: "Juice" },
+  { id: 'cold-2', name: "Strawberry Smoothie", description: "Greek yogurt, strawberry puree", price: 5.75, image: "assets/60d841c27d82e0664048039ced318168.jpg", category: "Smoothie" },
+  { id: 'cold-3', name: "Chocolate Shake", description: "70% cacao, vanilla ice cream", price: 6.25, image: "assets/milkshake.jpg", category: "Shake" },
+  { id: 'cold-4', name: "Iced Latte", description: "Double shot over chilled milk", price: 5.50, image: "assets/latté.jpg", category: "Coffee" },
+  { id: 'cold-5', name: "Mango Lassi", description: "Alphonso mango, yogurt, cardamom", price: 5.00, image: "assets/8de4ad2c0c676dc76030cf5c8c8fad50.jpg", category: "Smoothie" },
+  { id: 'cold-6', name: "Cold Brew", description: "12-hour steep, smooth finish", price: 4.90, image: "assets/Café Noire.jpg", category: "Cold Brew" },
 
   // Creme/Latte (Updated Images)
-  { id: 'creme-1', name: "Creamy Orange Latte", description: "Fresh orange with milk foam", price: 5.50, image: "assets/latte-spanish.jpg", category: "Coffee" },
-  { id: 'creme-2', name: "Citrus Spark", description: "Lemon-lime with mint", price: 4.25, image: "assets/juice-lemonade.jpg", category: "Juice" },
-  { id: 'creme-3', name: "Mango Cream Fizz", description: "Mango puree and light cream", price: 5.75, image: "assets/juice-mango-fizz.jpg", category: "Cold Drink" },
-  { id: 'creme-4', name: "Classic Apple Juice", description: "Cold pressed apples", price: 4.00, image: "assets/juice-apple.jpg", category: "Juice" },
-  { id: 'creme-5', name: "Berry Citrus", description: "Strawberry and grapefruit", price: 5.20, image: "assets/juice-berry-blast.jpg", category: "Juice" },
+  { id: 'creme-1', name: "Creamy Orange Latte", description: "Fresh orange with milk foam", price: 5.50, image: "assets/Café Crème.jpg", category: "Coffee" },
+  { id: 'creme-2', name: "Citrus Spark", description: "Lemon-lime with mint", price: 4.25, image: "assets/Tea Citron Délise.jpg", category: "Juice" },
+  { id: 'creme-3', name: "Mango Cream Fizz", description: "Mango puree and light cream", price: 5.75, image: "assets/7eb56d04c899ffd7a40ed6151c2713f0.jpg", category: "Cold Drink" },
+  { id: 'creme-4', name: "Classic Apple Juice", description: "Cold pressed apples", price: 4.00, image: "assets/58b8a4072e8dc05fd60ef5308e932cd9.jpg", category: "Juice" },
+  { id: 'creme-5', name: "Berry Citrus", description: "Strawberry and grapefruit", price: 5.20, image: "assets/6675fe80cec7c9ae75aedeb53a20134d.jpg", category: "Juice" },
 
   // Juices (unique items)
-  { id: 'juice-1', name: "Lemon Mint", description: "Zesty lemon with mint", price: 4.10, image: "assets/colorful-cocktail-with-orange-slice-cocktail-umbrella-green-black-straw_140725-10521.avif", category: "Juice" },
-  { id: 'juice-2', name: "Pineapple Punch", description: "Tropical pineapple blend", price: 4.80, image: "assets/exotic-cocktail-closeup_181624-983.avif", category: "Juice" },
+  { id: 'juice-1', name: "Lemon Mint", description: "Zesty lemon with mint", price: 4.10, image: "assets/juice-lemon-mint.jpg", category: "Juice" },
+  { id: 'juice-2', name: "Pineapple Punch", description: "Tropical pineapple blend", price: 4.80, image: "assets/juice-pineapple-punch.jpg", category: "Juice" },
   { id: 'juice-3', name: "Mango Glow", description: "Alphonso mango puree", price: 5.25, image: "assets/juice-mango-glow.jpg", category: "Juice" },
 
   // Latte Hot
@@ -82,12 +82,12 @@ const sampleMenu = [
   { id: 'latte-4', name: "Pumpkin Spice Latte", description: "Seasonal spices & puree", price: 5.40, image: "assets/latte-pumpkin-spice.jpg", category: "Coffee" },
 
   // Tea (New)
-  { id: 'tea-1', name: "Matcha Latte", description: "Stone-ground, umami-rich", price: 12.00, image: "assets/tea-matcha.jpg", category: "Tea" },
-  { id: 'tea-2', name: "Masala Chai", description: "Spiced, creamy, warming", price: 5.50, image: "assets/tea-masala-chai.jpg", category: "Tea" },
-  { id: 'tea-3', name: "Ginger Lemon", description: "Zesty, soothing infusion", price: 4.75, image: "assets/tea-ginger-lemon.jpg", category: "Tea" },
-  { id: 'tea-4', name: "Moroccan Mint", description: "Cooling green tea", price: 4.50, image: "assets/tea-moroccan-mint.jpg", category: "Tea" },
-  { id: 'tea-5', name: "Royal Milk Tea", description: "Black tea, milk, caramel", price: 7.00, image: "assets/tea-royal-milk.jpg", category: "Tea" },
-  { id: 'tea-6', name: "Iced Peach Oolong", description: "Fruity, floral, chilled", price: 6.50, image: "assets/tea-iced-peach.jpg", category: "Tea" },
+  { id: 'tea-1', name: "Matcha Latte", description: "Stone-ground, umami-rich", price: 12.00, image: "assets/Tea Nordique.jpg", category: "Tea" },
+  { id: 'tea-2', name: "Masala Chai", description: "Spiced, creamy, warming", price: 5.50, image: "assets/Tea Citron Délise.jpg", category: "Tea" },
+  { id: 'tea-3', name: "Ginger Lemon", description: "Zesty, soothing infusion", price: 4.75, image: "assets/7c53d6cc5ec015b0bd982eb5270ed781.jpg", category: "Tea" },
+  { id: 'tea-4', name: "Moroccan Mint", description: "Cooling green tea", price: 4.50, image: "assets/Tea Nordique.jpg", category: "Tea" },
+  { id: 'tea-5', name: "Royal Milk Tea", description: "Black tea, milk, caramel", price: 7.00, image: "assets/Café Royal.jpg", category: "Tea" },
+  { id: 'tea-6', name: "Iced Peach Oolong", description: "Fruity, floral, chilled", price: 6.50, image: "assets/09dc48198cce55c90c3f4d2544ffb163.jpg", category: "Tea" },
 
   // Smoothie & Shake (New)
   { id: 'smoothie-1', name: "Berry Burst", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "assets/smoothie-berry-cream.jpg", category: "Smoothie" },
@@ -103,15 +103,15 @@ const sampleMenu = [
   { id: 'toast-3', name: "Shakshuka", description: "Tomato, peppers, eggs", price: 11.25, image: "assets/toast-shakshuka.jpg", category: "Toast" },
   { id: 'toast-4', name: "Avocado Toast", description: "Sourdough, smashed avo", price: 10.50, image: "assets/toast-avocado.jpg", category: "Toast" },
   { id: 'toast-5', name: "Classic Benedict", description: "Ham, hollandaise", price: 13.50, image: "assets/toast-benedict.jpg", category: "Toast" },
-  { id: 'toast-6', name: "Vegan Power Bowl", description: "Grains, greens", price: 12.00, image: "assets/toast-vegan-bowl.jpg", category: "Toast" },
+  { id: 'toast-6', name: "Vegan Power Bowl", description: "Grains, greens", price: 12.00, image: "assets/d72d0813a986c68b2950bde5af05c3af.jpg", category: "Toast" },
 
   // Pastry (New)
-  { id: 'pastry-1', name: "Butter Croissant", description: "Flaky layers, French butter", price: 4.50, image: "assets/bread-butter-croissant.jpg", category: "Pastry" },
-  { id: 'pastry-2', name: "Almond Croissant", description: "Frangipane, toasted almond", price: 5.25, image: "assets/sweet-almond-croissant.jpg", category: "Pastry" },
-  { id: 'pastry-3', name: "Chocolate Éclair", description: "Choux pastry, rich ganache", price: 4.75, image: "assets/bakery-chocolate-eclair.jpg", category: "Pastry" },
-  { id: 'pastry-4', name: "Strawberry Tart", description: "Vanilla custard, fresh berries", price: 5.80, image: "assets/sweet-strawberry-tart.jpg", category: "Pastry" },
-  { id: 'pastry-5', name: "Lemon Meringue Tart", description: "Zesty curd, torched meringue", price: 5.90, image: "assets/sweet-lemon-meringue.jpg", category: "Pastry" },
-  { id: 'pastry-6', name: "Velvet Cake Slice", description: "Moist crumb, vanilla frosting", price: 4.95, image: "assets/sweet-velvet-cake.jpg", category: "Pastry" }
+  { id: 'pastry-1', name: "Butter Croissant", description: "Flaky layers, French butter", price: 4.50, image: "assets/sweets/07abeb0b37011bc4f4413062a5fc0045.jpg", category: "Pastry" },
+  { id: 'pastry-2', name: "Almond Croissant", description: "Frangipane, toasted almond", price: 5.25, image: "assets/sweets/819873298e099a845e042ded5a19ca95.jpg", category: "Pastry" },
+  { id: 'pastry-3', name: "Chocolate Éclair", description: "Choux pastry, rich ganache", price: 4.75, image: "assets/sweets/99e4f1c4df32d646f2dde6bf28cd9566.jpg", category: "Pastry" },
+  { id: 'pastry-4', name: "Strawberry Tart", description: "Vanilla custard, fresh berries", price: 5.80, image: "assets/sweets/f3089aa69fae4df2b10dd5e82e5ef225.jpg", category: "Pastry" },
+  { id: 'pastry-5', name: "Lemon Meringue Tart", description: "Zesty curd, torched meringue", price: 5.90, image: "assets/sweets/db03e53c057449564a8c3f285d4ae705.jpg", category: "Pastry" },
+  { id: 'pastry-6', name: "Velvet Cake Slice", description: "Moist crumb, vanilla frosting", price: 4.95, image: "assets/sweets/dc7635bbd750c761b95949cdaaf3037d.jpg", category: "Pastry" }
 ];
 
 function fetchBestsellers() {
@@ -124,13 +124,13 @@ function fetchBestsellers() {
 function renderBestsellers(items) {
   const container = document.getElementById('bestsellers') || document.getElementById('bestsellers-grid');
   if (!container) return;
-  
+
   // Debug check
   if (!items || items.length === 0) {
-      console.error('No items to render!');
-      return;
+    console.error('No items to render!');
+    return;
   }
-  
+
   // Simply use the provided items directly
   const ordered = items;
 
@@ -140,9 +140,9 @@ function renderBestsellers(items) {
     const isDefault = imgUrl && imgUrl.includes('photo-1546069901');
     const displayImg = (imgUrl && !isDefault) ? imgUrl : getFallbackImage(item, index);
     const rating = typeof item.rating === 'number' ? item.rating : getRatingForItem(item);
-    
+
     const fallback = getFallbackImage(item, index + 50); // Different seed for fallback
-    
+
     return `
     <div class="bg-white dark:bg-[#2a1e19] rounded-[1.5rem] p-3 shadow-md border border-gray-100 dark:border-white/5 flex gap-4 items-center relative" data-category="${item.category}">
       <div class="absolute top-3 right-3 bg-white/90 dark:bg-black/60 px-2 py-1 rounded-full shadow-sm z-10">
@@ -175,15 +175,15 @@ function renderBestsellers(items) {
 function renderCategories(items) {
   // SUB-CATEGORIES to be displayed as circles with real images
   const subCategories = [
-    { name: getTranslation('Tea & Infusion'), img: 'assets/exotic-cocktail-closeup_181624-983.avif', link: '../tea and infusion sub catégorie page/index.html' },
-    { name: getTranslation('Milkshake'), img: 'assets/close-up-milkshake-glass-plate_117406-7215.jpg', link: '../milkshake sub catégorie page/index.html' },
-    { name: getTranslation('Juice'), img: 'assets/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif', link: '../juces sub catégorie page/index.html' },
-    { name: getTranslation('Sweet Pastries'), img: 'assets/vertical-shot-pancakes-with-fruits-top_181624-23923.jpg', link: '../sweet pastries sub catégorie page/index.html' },
-    { name: getTranslation('Black Coffee'), img: 'assets/Brew.jpg', link: '../black coffee sub catégorie page/index.html' },
-    { name: getTranslation('Latte'), img: 'assets/Brew.jpg', link: '../latté hot drink sub catégorie page/index.html' },
-    { name: getTranslation('Smoothie'), img: 'assets/raspberry-smoothie_1150-18529.jpg', link: '../smothie sub catégorie page/index.html' },
-    { name: getTranslation('Toast'), img: 'assets/Brunch.jpg', link: '../toast brunch sub catégorie page/index.html' },
-    { name: getTranslation('Artisanal Bread'), img: 'assets/pastry.jpg', link: '../artisanal bread sub catégorie page/index.html' }
+    { name: getTranslation('Tea & Infusion'), img: 'assets/tea/Tea and infusion .jpg', link: '../tea and infusion sub catégorie page/index.html' },
+    { name: getTranslation('Milkshake'), img: 'assets/milkshake.jpg', link: '../milkshake sub catégorie page/index.html' },
+    { name: getTranslation('Juice'), img: 'assets/juces.jpg', link: '../juces sub catégorie page/index.html' },
+    { name: getTranslation('Sweet Pastries'), img: 'assets/sweets/Cheese Cake Oreo.jpg', link: '../sweet pastries sub catégorie page/index.html' },
+    { name: getTranslation('Black Coffee'), img: 'assets/black coffee/black coffee.jpg', link: '../black coffee sub catégorie page/index.html' },
+    { name: getTranslation('Latte'), img: 'assets/latté/Café Crème.jpg', link: '../latté hot drink sub catégorie page/index.html' },
+    { name: getTranslation('Smoothie'), img: 'assets/smoothie/Brazilian Smoothie.jpg', link: '../smothie sub catégorie page/index.html' },
+    { name: getTranslation('Toast'), img: 'assets/salty food and sweet brunch/toast.jpg', link: '../toast brunch sub catégorie page/index.html' },
+    { name: getTranslation('Artisanal Bread'), img: 'assets/bakery-dark-rye-loaf.jpg', link: '../artisanal bread sub catégorie page/index.html' }
   ];
 
   const container = document.getElementById('explore-categories');
@@ -359,7 +359,7 @@ window.addToCart = (id) => {
     cart.push({ ...item, quantity: 1 });
   }
   updateCartUI();
-  
+
   // Also save to localStorage for persistence across pages
   localStorage.setItem('stitch_cart', JSON.stringify(cart));
 };
@@ -394,23 +394,23 @@ function renderCartItems() {
   const subtotalEl = document.getElementById('modal-subtotal');
   const taxEl = document.getElementById('modal-tax');
   const totalEl = document.getElementById('modal-total');
-  
+
   if (!container) return;
-  
+
   container.innerHTML = '';
-  
+
   let subtotal = 0;
-  
+
   cart.forEach(item => {
     const itemTotal = item.price * item.quantity;
     subtotal += itemTotal;
-    
+
     const div = document.createElement('div');
     div.className = 'flex items-center gap-3 bg-gray-50 dark:bg-white/5 p-3 rounded-xl';
-    
+
     // Get translated name
     const itemName = getMenuTranslation(item, 'name');
-    
+
     div.innerHTML = `
       <div class="w-12 h-12 rounded-lg overflow-hidden shrink-0">
         <img src="${item.image}" class="w-full h-full object-cover" alt="${itemName}">
@@ -429,10 +429,10 @@ function renderCartItems() {
     `;
     container.appendChild(div);
   });
-  
+
   const tax = subtotal * 0.1;
   const total = subtotal + tax;
-  
+
   if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
   if (taxEl) taxEl.textContent = `$${tax.toFixed(2)}`;
   if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
@@ -474,7 +474,7 @@ function setupEvents() {
   if (cartBtn) {
     cartBtn.addEventListener('click', openOrderModal);
   }
-  
+
   const closeBtn = document.getElementById('order-close-btn');
   if (closeBtn) {
     closeBtn.addEventListener('click', closeOrderModal);
@@ -1040,7 +1040,7 @@ function getTranslation(key) {
 function getMenuTranslation(item, field) {
   const lang = getLang();
   if (lang === 'en') return item[field];
-  
+
   if (menuTranslations[item.id] && menuTranslations[item.id][lang] && menuTranslations[item.id][lang][field]) {
     return menuTranslations[item.id][lang][field];
   }
@@ -1050,7 +1050,7 @@ function getMenuTranslation(item, field) {
 function applyLang(lang) {
   document.documentElement.lang = lang;
   localStorage.setItem('stitch_lang', lang);
-  
+
   // RTL Support
   if (lang === 'ar') {
     document.documentElement.dir = 'rtl';
@@ -1064,7 +1064,7 @@ function applyLang(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (key && translations[lang] && translations[lang][key]) {
-        el.textContent = translations[lang][key];
+      el.textContent = translations[lang][key];
     }
   });
 
@@ -1072,7 +1072,7 @@ function applyLang(lang) {
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
     const key = el.getAttribute('data-i18n-placeholder');
     if (key && translations[lang] && translations[lang][key]) {
-        el.placeholder = translations[lang][key];
+      el.placeholder = translations[lang][key];
     }
   });
 
@@ -1084,14 +1084,14 @@ function applyLang(lang) {
     toggle.classList.add(`lang-${lang}`);
     label.textContent = lang === 'en' ? 'English' : (lang === 'fr' ? 'Français' : 'العربية');
   }
-  
+
   // Re-render content
   if (typeof bestsellers !== 'undefined' && bestsellers.length) {
-      renderBestsellers(bestsellers);
+    renderBestsellers(bestsellers);
   }
   // renderCategories();
   updateCartUI();
-  
+
   const modal = document.getElementById('order-modal');
   if (modal && !modal.classList.contains('hidden')) {
     renderCartItems();
@@ -1108,7 +1108,7 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchBestsellers();
   // // renderCategories();
   setupEvents();
-  
+
   // Check for language preference
   const lang = getLang();
   applyLang(lang); // Always apply to ensure UI sync
@@ -1118,16 +1118,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function setupLanguageToggle() {
   const toggle = document.getElementById('language-toggle');
-  
+
   if (!toggle) return;
 
-  toggle.addEventListener('click', function() {
+  toggle.addEventListener('click', function () {
     const current = getLang();
     let next = 'en';
     if (current === 'en') next = 'fr';
     else if (current === 'fr') next = 'ar';
     else if (current === 'ar') next = 'en';
-    
+
     applyLang(next);
   });
 }
