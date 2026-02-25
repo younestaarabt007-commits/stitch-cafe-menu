@@ -9,23 +9,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Create the new nav bar
     const navHTML = `
-      <nav class="standard-nav-bar bg-white dark:bg-[#2a1e19] border-t border-gray-100 dark:border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] backdrop-blur-md h-[55px] flex items-stretch justify-between px-6 fixed bottom-0 left-0 right-0 z-50 max-w-[390px] mx-auto transition-transform duration-300">
+      <nav class="standard-nav-bar bg-white dark:bg-[#2a1e19] border-t border-gray-100 dark:border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] backdrop-blur-md h-[55px] md:h-[65px] flex items-stretch justify-between px-6 md:px-12 fixed bottom-0 left-0 right-0 z-50 w-full max-w-7xl mx-auto transition-transform duration-300">
         <button onclick="window.location.href='../swiggy-style_elite_main_menu_390x2500/index.html'" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
-          <span class="material-symbols-outlined text-[22px]">home</span>
-          <span class="text-[10px] font-bold uppercase tracking-widest">Home</span>
+          <span class="material-symbols-outlined text-[22px] md:text-[26px]">home</span>
+          <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest">Home</span>
         </button>
         <button onclick="window.location.href='../swiggy-style_elite_main_menu_390x2500/index.html#explore'" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
-          <span class="material-symbols-outlined text-[22px]">category</span>
-          <span class="text-[10px] font-bold uppercase tracking-widest">Explore</span>
+          <span class="material-symbols-outlined text-[22px] md:text-[26px]">category</span>
+          <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest">Explore</span>
         </button>
         <button onclick="window.location.href='../order_success_page/index.html'" class="relative flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
-          <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
-          <span class="text-[10px] font-bold uppercase tracking-widest">Cart</span>
-          <span id="global-cart-count" class="absolute -top-1 right-4 bg-primary text-white text-[10px] font-bold px-1.5 py-[2px] rounded-full hidden">0</span>
+          <span class="material-symbols-outlined text-[22px] md:text-[26px]">shopping_cart</span>
+          <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest">Cart</span>
+          <span id="global-cart-count" class="absolute -top-1 right-4 md:right-8 bg-primary text-white text-[10px] md:text-xs font-bold px-1.5 py-[2px] rounded-full hidden">0</span>
         </button>
         <button onclick="alert('Profile feature coming soon')" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
-          <span class="material-symbols-outlined text-[22px]">person</span>
-          <span class="text-[10px] font-bold uppercase tracking-widest">Profile</span>
+          <span class="material-symbols-outlined text-[22px] md:text-[26px]">person</span>
+          <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest">Profile</span>
         </button>
       </nav>
     `;
