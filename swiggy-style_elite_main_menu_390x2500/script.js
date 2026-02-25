@@ -175,7 +175,7 @@ function renderBestsellers(items) {
 function renderCategories(items) {
   // SUB-CATEGORIES to be displayed as circles with real images
   const subCategories = [
-    { name: getTranslation('Tea & Infusion'), img: 'assets/tea/Tea and infusion .jpg', link: '../tea and infusion sub catégorie page/index.html' },
+    { name: getTranslation('Tea & Infusion'), img: 'assets/tea/berrad-the.jpg', link: '../tea and infusion sub catégorie page/index.html' },
     { name: getTranslation('Milkshake'), img: 'assets/milkshake.jpg', link: '../milkshake sub catégorie page/index.html' },
     { name: getTranslation('Juice'), img: 'assets/juces.jpg', link: '../juces sub catégorie page/index.html' },
     { name: getTranslation('Sweet Pastries'), img: 'assets/sweets/Cheese Cake Oreo.jpg', link: '../sweet pastries sub catégorie page/index.html' },
