@@ -28,21 +28,21 @@ const sampleMenu = [
 
   // Brew
   { id: 'brew-1', name: "Nitro Cold Brew", description: "18-hour steep, nitrogen infused.", price: 6.50, image: "assets/coffee-nitro-brew.jpg", category: "Cold Brew" },
-  { id: 'brew-2', name: "Matcha Latte", description: "Uji-sourced matcha with oat milk.", price: 7.25, image: "assets/latte-iced-matcha.jpg", category: "Tea" },
-  { id: 'brew-3', name: "Ethiopian Yirgacheffe", description: "Floral notes with a citrus finish.", price: 5.00, image: "assets/coffee-ethiopian-pour-over.jpg", category: "Coffee" },
+  { id: 'brew-2', name: "Matcha Latte", description: "Uji-sourced matcha with oat milk.", price: 7.25, image: "assets/Matcha Latte.jpg", category: "Tea" },
+  { id: 'brew-3', name: "Ethiopian Yirgacheffe", description: "Floral notes with a citrus finish.", price: 5.00, image: "assets/Ethiopian Yirgacheffe.jpg", category: "Coffee" },
   { id: 'brew-4', name: "Dirty Masala Chai", description: "House-made spices, double shot.", price: 6.75, image: "assets/tea-dirty-chai-espresso.jpg", category: "Tea" },
   { id: 'brew-5', name: "Oat Milk Cortado", description: "Equal parts espresso & milk.", price: 4.50, image: "assets/coffee-oat-milk-latte.jpg", category: "Coffee" },
   { id: 'brew-6', name: "Lavender Honey", description: "Floral infusion with local honey.", price: 7.50, image: "assets/tea-lavender-earl.jpg", category: "Tea" },
-  { id: 'brew-7', name: "Golden Turmeric", description: "Spiced healing brew.", price: 6.25, image: "assets/juice-ginger-turmeric-shot.jpg", category: "Tea" },
+  { id: 'brew-7', name: "Golden Turmeric", description: "Spiced healing brew.", price: 6.25, image: "assets/Golden Turmeric.jpg", category: "Tea" },
   { id: 'brew-8', name: "Caramel Macchiato", description: "Layered espresso & vanilla.", price: 6.50, image: "assets/latte-caramel-macchiato.jpg", category: "Coffee" },
-  { id: 'brew-9', name: "Light Black Coffee", description: "Hand poured perfection.", price: 8.00, image: "assets/coffee-v60.jpg", category: "Coffee" },
-  { id: 'brew-10', name: "Blueberry Infusion", description: "Antioxidant rich blend.", price: 5.75, image: "assets/juice-blueberry-fresh.jpg", category: "Tea" },
-
+  { id: 'brew-9', name: "Light Black Coffee", description: "Hand poured perfection.", price: 8.00, image: "assets/Light Black Coffee.jpg", category: "Coffee" },
+  { id: 'brew-10', name: "Blueberry Infusion", description: "Antioxidant rich blend.", price: 5.75, image: "assets/Blueberry Infusion.jpg", category: "Tea" },
+  
   // Artisanal Bread
-  { id: 'bread-1', name: "Chocolate Babka", description: "Rich dark chocolate ganache swirl.", price: 12.00, image: "assets/bakery-chocolate-babka.jpg", category: "Pastry" },
+  { id: 'bread-1', name: "Chocolate Babka", description: "Rich dark chocolate ganache swirl.", price: 12.00, image: "assets/Chocolate Babka.jpg", category: "Pastry" },
   { id: 'bread-2', name: "Seeded Multigrain", description: "Hand-topped with flax & oats.", price: 9.00, image: "assets/bakery-seeded-multigrain.jpg", category: "Bread" },
   { id: 'bread-3', name: "Dark Rye Loaf", description: "Robust German-style dense rye.", price: 10.50, image: "assets/bakery-dark-rye-loaf.jpg", category: "Bread" },
-  { id: 'bread-4', name: "Herbed Focaccia", description: "Rosemary, garlic & olive oil.", price: 7.50, image: "assets/bakery-herbed-focaccia.jpg", category: "Bread" },
+  { id: 'bread-4', name: "Herbed Focaccia", description: "Rosemary, garlic & olive oil.", price: 7.50, image: "assets/Herbed Focaccia.jpg", category: "Bread" },
   { id: 'bread-5', name: "Honey Brioche", description: "Ultra-soft, buttery morning loaf.", price: 11.25, image: "assets/bakery-honey-brioche.jpg", category: "Bread" },
   { id: 'bread-6', name: "Stoneground Wheat", description: "Nutritious 100% whole grain.", price: 8.75, image: "assets/bakery-stoneground-wheat.jpg", category: "Bread" },
   { id: 'bread-7', name: "Parisian Baguette", description: "Classic crust with an airy crumb.", price: 4.50, image: "assets/bakery-parisian-baguette.jpg", category: "Bread" },
