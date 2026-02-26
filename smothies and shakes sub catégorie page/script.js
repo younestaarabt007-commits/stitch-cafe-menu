@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function redirectToCustomization(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
-    window.location.href = `../smothie customisation review/index.html?price=${product.price}`;
+  const product = products.find(p => p.id === productId);
+  if (!product) return;
+  window.location.href = `../smothie customisation review/index.html?price=${product.price}`;
 }
 
 function renderProducts(filter = 'all') {
@@ -30,23 +30,23 @@ function renderProducts(filter = 'all') {
     : products.filter(p => p.category === filter);
 
   if (filteredProducts.length === 0) {
-      list.innerHTML = '<div class="col-span-2 text-center py-8 text-gray-500">No products found in this category</div>';
-      return;
+    list.innerHTML = '<div class="col-span-2 text-center py-8 text-gray-500">No products found in this category</div>';
+    return;
   }
 
   list.innerHTML = filteredProducts.map((product, index) => `
-    <div onclick="redirectToCustomization('${product.id}')" class="flex items-center gap-3 p-3 bg-white dark:bg-zinc-800 rounded-[16px] border border-zinc-100 dark:border-zinc-700 shadow-sm fade-in transition-transform active:scale-95 cursor-pointer" style="animation-delay: ${index * 0.05}s">
-      <div class="size-14 rounded-xl bg-zinc-100 bg-center bg-cover flex-shrink-0" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');"></div>
-      <div class="flex-1">
-        <h4 class="font-semibold text-[16px]">${product.name}</h4>
-        <p class="text-[11px] text-zinc-500 dark:text-zinc-300 mt-0.5">${product.description}</p>
-        <p class="font-bold text-primary mt-1 text-sm">$${product.price.toFixed(2)}</p>
-      </div>
-      <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('${product.id}')" class="size-8 rounded-full bg-white dark:bg-zinc-700 border border-zinc-200 dark:border-zinc-600 flex items-center justify-center text-primary shadow-sm hover:bg-zinc-50 dark:hover:bg-zinc-600 transition-transform active:scale-95">
-        <span class="material-symbols-outlined text-[20px]">add</span>
-      </button>
-    </div>
-  `).join('');
+        <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer" style="animation-delay: ${index * 0.05}s">
+            <div class="product-image w-full aspect-square rounded-xl bg-cover bg-center mb-3" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');"></div>
+            <div class="flex-1 flex flex-col">
+                <h4 class="font-semibold text-[16px] text-[#1a1c18] dark:text-white leading-tight mb-0.5">${product.name}</h4>
+                <p class="text-[11px] opacity-60 line-clamp-1 mb-2">${product.description}</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-primary font-bold text-[15px]">$${product.price.toFixed(2)}</span>
+                    <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
+                </div>
+            </div>
+        </div>
+    `).join('');
 }
 
 function addToCart(productId) {
@@ -57,32 +57,32 @@ function addToCart(productId) {
   const existingItem = cart.find(item => item.id === product.id);
 
   if (existingItem) {
-      existingItem.quantity += 1;
+    existingItem.quantity += 1;
   } else {
-      cart.push({
-          id: product.id,
-          name: product.name,
-          price: product.price,
-          image: product.image,
-          category: product.category,
-          quantity: 1
-      });
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      category: product.category,
+      quantity: 1
+    });
   }
 
   localStorage.setItem('stitch_cart', JSON.stringify(cart));
 
   if (window.updateGlobalCartCount) {
-      window.updateGlobalCartCount();
+    window.updateGlobalCartCount();
   }
 
   // Visual feedback
   const btn = document.querySelector(`button[onclick*="${productId}"]`);
-  if(btn) {
-      const originalContent = btn.innerHTML;
-      btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span>';
-      setTimeout(() => {
-          btn.innerHTML = originalContent;
-      }, 1000);
+  if (btn) {
+    const originalContent = btn.innerHTML;
+    btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span>';
+    setTimeout(() => {
+      btn.innerHTML = originalContent;
+    }, 1000);
   }
 }
 
@@ -97,31 +97,31 @@ function setupEventListeners() {
   const searchBtn = document.getElementById('search-btn');
   if (searchBtn) {
     searchBtn.addEventListener('click', () => {
-        const searchInput = document.getElementById('search-input');
-        if (searchInput) {
-            searchInput.focus();
-        }
+      const searchInput = document.getElementById('search-input');
+      if (searchInput) {
+        searchInput.focus();
+      }
     });
   }
-  
+
   const searchInput = document.getElementById('search-input');
   if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-          const term = e.target.value.toLowerCase();
-          const filtered = products.filter(p => 
-              p.name.toLowerCase().includes(term) || 
-              p.description.toLowerCase().includes(term)
-          );
-          
-          const list = document.getElementById('product-list');
-          if (!list) return;
-          
-          if (filtered.length === 0) {
-              list.innerHTML = '<div class="text-center py-8 text-gray-500">No products found</div>';
-              return;
-          }
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      const filtered = products.filter(p =>
+        p.name.toLowerCase().includes(term) ||
+        p.description.toLowerCase().includes(term)
+      );
 
-          list.innerHTML = filtered.map((product, index) => `
+      const list = document.getElementById('product-list');
+      if (!list) return;
+
+      if (filtered.length === 0) {
+        list.innerHTML = '<div class="text-center py-8 text-gray-500">No products found</div>';
+        return;
+      }
+
+      list.innerHTML = filtered.map((product, index) => `
             <div onclick="redirectToCustomization('${product.id}')" class="flex items-center gap-3 p-3 bg-white dark:bg-zinc-800 rounded-[16px] border border-zinc-100 dark:border-zinc-700 shadow-sm fade-in transition-transform active:scale-95 cursor-pointer" style="animation-delay: ${index * 0.05}s">
               <div class="size-14 rounded-xl bg-zinc-100 bg-center bg-cover flex-shrink-0" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');"></div>
               <div class="flex-1">
@@ -132,14 +132,14 @@ function setupEventListeners() {
               <button onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
             </div>
           `).join('');
-      });
+    });
   }
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       document.querySelectorAll('.filter-btn').forEach(b => {
         b.classList.remove('active', 'bg-primary', 'text-white');
-         b.classList.add('bg-white', 'dark:bg-slate-800', 'text-[#1c160d]', 'dark:text-white');
+        b.classList.add('bg-white', 'dark:bg-slate-800', 'text-[#1c160d]', 'dark:text-white');
       });
       e.currentTarget.classList.remove('bg-white', 'dark:bg-slate-800', 'text-[#1c160d]', 'dark:text-white');
       e.currentTarget.classList.add('active', 'bg-primary', 'text-white');

@@ -181,74 +181,7 @@
                 <p class="text-[#1c160d] dark:text-white text-sm font-medium">Iced</p>
             </div>
         </div>
-        <div class="px-4 grid grid-cols-2 gap-3 h-[420px] mb-6">
-            <div onclick="redirectToCustomization('latte_2')"
-                class="col-span-1 h-full relative rounded-bento overflow-hidden bg-card-tan dark:bg-slate-800 p-4 flex flex-col border border-primary/10 cursor-pointer">
-                <div class="mb-2">
-                    <h3 class="font-bold text-lg leading-tight">Signature Oat Latte</h3>
-                    <p class="text-xs opacity-60 mt-1 italic">Creamy &amp; Sustainable</p>
-                </div>
-                <div class="flex-1 w-full bg-cover bg-center rounded-lg my-2" data-alt="Signature Oat Latte"
-                    style='background-image: url("https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=500&fit=crop");'>
-                </div>
-                <div class="flex justify-between items-center mt-auto">
-                    <span class="font-bold text-primary text-lg">$6.50</span>
-                    <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('latte_2')"
-                        class="size-8 rounded-full bg-primary flex items-center justify-center text-white"><span
-                            class="material-symbols-outlined text-sm">add</span></button>
-                </div>
-            </div>
-            <div class="col-span-1 flex flex-col gap-3 h-full">
-                <div onclick="redirectToCustomization('latte_3')"
-                    class="flex-1 rounded-bento bg-card-tan dark:bg-slate-800 p-3 flex flex-col justify-between border border-primary/10 cursor-pointer">
-                    <div class="flex justify-between items-start">
-                        <div class="w-14 h-14 rounded-lg bg-cover bg-center" data-alt="Vanilla Bean Latte"
-                            style='background-image: url("https://images.unsplash.com/photo-1511537632536-acc2a4223056?w=500&h=500&fit=crop");'>
-                        </div>
-                        <span class="font-bold text-sm text-primary">$5.75</span>
-                    </div>
-                    <div class="flex justify-between items-end mt-2">
-                        <h3 class="font-bold text-sm">Vanilla Bean</h3>
-                        <button onclick="event.stopPropagation(); addToCart('latte_3')"
-                            class="size-6 rounded-full bg-primary/20 flex items-center justify-center text-primary"><span
-                                class="material-symbols-outlined text-[16px]">add</span></button>
-                    </div>
-                </div>
-                <div onclick="redirectToCustomization('latte_4')"
-                    class="flex-1 rounded-bento bg-card-tan dark:bg-slate-800 p-3 flex flex-col justify-between border border-primary/10 cursor-pointer">
-                    <div class="flex justify-between items-start">
-                        <div class="w-14 h-14 rounded-lg bg-cover bg-center" data-alt="Caramel Macchiato"
-                            style='background-image: url("https://images.unsplash.com/photo-1461023058943-48db5d469292?w=500&h=500&fit=crop");'>
-                        </div>
-                        <span class="font-bold text-sm text-primary">$6.25</span>
-                    </div>
-                    <div class="flex justify-between items-end mt-2">
-                        <h3 class="font-bold text-sm">Macchiato</h3>
-                        <button onclick="event.stopPropagation(); addToCart('latte_4')">ADD</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div
-            class="mx-4 mb-6 h-[120px] rounded-bento bg-primary/10 dark:bg-primary/20 p-5 border border-primary/30 relative overflow-hidden flex items-center">
-            <div class="z-10 w-2/3">
-                <h3 class="font-bold text-primary text-xs uppercase tracking-widest mb-1">Dietary Focus</h3>
-                <p class="font-extrabold text-lg leading-tight">Alternative Milk Guide</p>
-                <div
-                    class="mt-2 inline-flex items-center gap-1 bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full">
-                    Learn More <span class="material-symbols-outlined text-xs">arrow_forward</span>
-                </div>
-            </div>
-            <div class="absolute -right-2 top-0 bottom-0 w-32 bg-center bg-contain bg-no-repeat opacity-40 rotate-12"
-                data-alt="Alternative milk selection"
-                style='background-image: url("https://images.unsplash.com/photo-1498804103079-a6351b050096?w=500&h=500&fit=crop");'>
-            </div>
-        </div>
-        <div class="px-4 flex items-center justify-between mb-4">
-            <h3 class="text-xl font-extrabold tracking-tight">Today's Selection</h3>
-            <span class="text-primary text-xs font-bold uppercase tracking-wider">Filter</span>
-        </div>
-        <div id="product-list" class="px-4 grid grid-cols-2 gap-x-4 gap-y-6 pb-48">
+        <div id="product-list" class="px-4 grid grid-cols-2 gap-3 pb-32">
             <!-- Dynamic Content -->
         </div>
         <!-- Navigation Bar -->

@@ -18,6 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
   setupSearch();
 });
 
+// Navigate to customization page
+function redirectToCustomization(productId) {
+  const product = products.find(p => p.id === productId);
+  if (!product) return;
+  window.location.href = `../orange juce_customization_view_1/index.html?price=${product.price}`;
+}
+
 // Render Products
 function renderProducts(filter = 'all') {
   const list = document.getElementById('product-list');
@@ -27,30 +34,31 @@ function renderProducts(filter = 'all') {
   const searchTerm = document.getElementById('search-input')?.value.toLowerCase() || '';
   const filteredProducts = products.filter(p => {
     const matchesCategory = filter === 'all' || p.category === filter;
-    const matchesSearch = p.name.toLowerCase().includes(searchTerm) || 
-                          p.description.toLowerCase().includes(searchTerm);
+    const matchesSearch = p.name.toLowerCase().includes(searchTerm) ||
+      p.description.toLowerCase().includes(searchTerm);
     return matchesCategory && matchesSearch;
   });
 
   if (filteredProducts.length === 0) {
-      list.innerHTML = '<div class="col-span-1 text-center py-8 text-gray-500">No products found</div>';
-      return;
+    list.innerHTML = '<div class="col-span-1 text-center py-8 text-gray-500">No products found</div>';
+    return;
   }
 
   list.innerHTML = filteredProducts.map((product, index) => `
-    <div class="relative bg-white rounded-3xl compact-card shadow-[0_5px_25px_-5px_rgba(0,0,0,0.05)] overflow-visible group fade-in" style="animation-delay: ${index * 0.05}s">
-      <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-28 h-28 bg-contain bg-center bg-no-repeat z-10 liquid-splash-img group-hover:scale-105 transition-transform duration-300" style='background-image: url("${product.image}");'></div>
-      <div class="text-center pt-8">
-        <h3 class="font-semibold text-[16px] text-slate-900 leading-tight">${product.name}</h3>
-        <p class="text-[11px] text-slate-400 font-medium uppercase tracking-wider mt-1 mb-2">${product.description}</p>
-        <div class="flex items-center justify-between mt-1 bg-slate-50 rounded-full p-1 pl-3">
-          <span class="font-bold text-sm text-slate-900">$${product.price.toFixed(2)}</span>
-          <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="addToCart('${product.id}')">ADD</button>
-        </div>
+    <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer" style="animation-delay: ${index * 0.05}s">
+      <div class="product-image w-full aspect-square rounded-xl bg-cover bg-center mb-3" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');"></div>
+      <div class="flex-1 flex flex-col">
+          <h4 class="font-semibold text-[16px] text-[#1a1c18] dark:text-white leading-tight mb-0.5">${product.name}</h4>
+          <p class="text-[11px] opacity-60 line-clamp-1 mb-2">${product.description}</p>
+          <div class="flex items-center justify-between mt-auto">
+              <span class="text-primary font-bold text-[15px]">$${product.price.toFixed(2)}</span>
+              <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
+          </div>
       </div>
     </div>
   `).join('');
 }
+
 
 // Global Add to Cart
 function addToCart(productId) {
@@ -61,32 +69,32 @@ function addToCart(productId) {
   const existingItem = cart.find(item => item.id === product.id);
 
   if (existingItem) {
-      existingItem.quantity += 1;
+    existingItem.quantity += 1;
   } else {
-      cart.push({
-          id: product.id,
-          name: product.name,
-          price: product.price,
-          image: product.image,
-          category: product.category,
-          quantity: 1
-      });
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      category: product.category,
+      quantity: 1
+    });
   }
 
   localStorage.setItem('stitch_cart', JSON.stringify(cart));
 
   if (window.updateGlobalCartCount) {
-      window.updateGlobalCartCount();
+    window.updateGlobalCartCount();
   }
 
   // Visual feedback
   const btn = document.querySelector(`button[onclick*="${productId}"]`);
-  if(btn) {
-      const originalContent = btn.innerHTML;
-      btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span>';
-      setTimeout(() => {
-          btn.innerHTML = originalContent;
-      }, 1000);
+  if (btn) {
+    const originalContent = btn.innerHTML;
+    btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span>';
+    setTimeout(() => {
+      btn.innerHTML = originalContent;
+    }, 1000);
   }
 }
 
@@ -102,14 +110,14 @@ function setupEventListeners() {
   const searchBtn = document.getElementById('search-btn');
   if (searchBtn) {
     searchBtn.addEventListener('click', () => {
-       const searchInput = document.getElementById('search-input');
-       if (searchInput) {
-           searchInput.focus();
-           // Optional: Toggle search visibility if hidden
-       } else {
-           // Fallback if no input exists
-           alert('Search feature coming soon');
-       }
+      const searchInput = document.getElementById('search-input');
+      if (searchInput) {
+        searchInput.focus();
+        // Optional: Toggle search visibility if hidden
+      } else {
+        // Fallback if no input exists
+        alert('Search feature coming soon');
+      }
     });
   }
 
@@ -117,10 +125,10 @@ function setupEventListeners() {
     btn.addEventListener('click', (e) => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active', 'bg-black', 'text-white'));
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.add('bg-white', 'text-slate-800'));
-      
+
       e.currentTarget.classList.remove('bg-white', 'text-slate-800');
       e.currentTarget.classList.add('active', 'bg-black', 'text-white');
-      
+
       currentFilter = e.currentTarget.dataset.filter;
       renderProducts(currentFilter);
     });
@@ -128,11 +136,11 @@ function setupEventListeners() {
 }
 
 function setupSearch() {
-    // Create search input if it doesn't exist (optional, but good for completeness)
-    // For now, we assume the UI handles the search input visibility or we just filter based on a hypothetical input
-    // The previous code.html didn't seem to have a visible search input, just a button.
-    // I'll add a simple prompt-based search or just rely on the button to maybe show an input.
-    // Actually, looking at other pages, I usually added a search input.
-    // I should probably add a search input to code.html if I want real search.
-    // But for now, I'll stick to the button just alerting or focusing.
+  // Create search input if it doesn't exist (optional, but good for completeness)
+  // For now, we assume the UI handles the search input visibility or we just filter based on a hypothetical input
+  // The previous code.html didn't seem to have a visible search input, just a button.
+  // I'll add a simple prompt-based search or just rely on the button to maybe show an input.
+  // Actually, looking at other pages, I usually added a search input.
+  // I should probably add a search input to code.html if I want real search.
+  // But for now, I'll stick to the button just alerting or focusing.
 }
