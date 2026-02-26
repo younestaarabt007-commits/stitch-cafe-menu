@@ -8,108 +8,108 @@ const products = [
 ];
 
 const translations = {
-    en: {
-        cold_drinks: "Cold Drinks",
-        subtitle: "Chilled, refreshing, handcrafted",
-        all: "All",
-        juices: "Juices",
-        smoothies: "Smoothies",
-        shakes: "Shakes",
-        iced_coffee: "Iced Coffee",
-        view_cart: "View Cart",
-        items: "Items",
-        search_alert: "Search functionality would open here",
-        cart_alert: "Cart contains {count} items",
-        categories: "Categories",
-        just_in: "Just In",
-        offers: "Offers",
-        chef_pick: "Chef Pick",
-        view_all: "View All",
-        order_status: "Order Status",
-        received: "Received",
-        subtotal: "Subtotal",
-        tax: "Tax (10%)",
-        total: "Total",
-        place_order: "Place Order",
-        close: "Close"
-    },
-    fr: {
-        cold_drinks: "Boissons Froides",
-        subtitle: "Frais, rafraîchissant, artisanal",
-        all: "Tout",
-        juices: "Jus",
-        smoothies: "Smoothies",
-        shakes: "Shakes",
-        iced_coffee: "Café Glacé",
-        view_cart: "Voir Panier",
-        items: "Articles",
-        search_alert: "La fonctionnalité de recherche s'ouvrirait ici",
-        cart_alert: "Le panier contient {count} articles",
-        categories: "Catégories",
-        just_in: "Nouveauté",
-        offers: "Offres",
-        chef_pick: "Choix du Chef",
-        view_all: "Voir Tout",
-        order_status: "État de la commande",
-        received: "Reçu",
-        subtotal: "Sous-total",
-        tax: "Taxe (10%)",
-        total: "Total",
-        place_order: "Passer la commande",
-        close: "Fermer"
-    },
-    ar: {
-        cold_drinks: "مشروبات باردة",
-        subtitle: "بارد، منعش، مصنوع يدوياً",
-        all: "الكل",
-        juices: "عصائر",
-        smoothies: "سموثي",
-        shakes: "مخفوق الحليب",
-        iced_coffee: "قهوة مثلجة",
-        view_cart: "عرض العربة",
-        items: "عناصر",
-        search_alert: "وظيفة البحث ستفتح هنا",
-        cart_alert: "تحتوي العربة على {count} عنصر",
-        categories: "فئات",
-        just_in: "وصل حديثاً",
-        offers: "عروض",
-        chef_pick: "اختيار الشيف",
-        view_all: "عرض الكل",
-        order_status: "حالة الطلب",
-        received: "تم الاستلام",
-        subtotal: "المجموع الفرعي",
-        tax: "ضريبة (10%)",
-        total: "المجموع",
-        place_order: "تأكيد الطلب",
-        close: "إغلاق"
-    }
+  en: {
+    cold_drinks: "Cold Drinks",
+    subtitle: "Chilled, refreshing, handcrafted",
+    all: "All",
+    juices: "Juices",
+    smoothies: "Smoothies",
+    shakes: "Shakes",
+    iced_coffee: "Iced Coffee",
+    view_cart: "View Cart",
+    items: "Items",
+    search_alert: "Search functionality would open here",
+    cart_alert: "Cart contains {count} items",
+    categories: "Categories",
+    just_in: "Just In",
+    offers: "Offers",
+    chef_pick: "Chef Pick",
+    view_all: "View All",
+    order_status: "Order Status",
+    received: "Received",
+    subtotal: "Subtotal",
+    tax: "Tax (10%)",
+    total: "Total",
+    place_order: "Place Order",
+    close: "Close"
+  },
+  fr: {
+    cold_drinks: "Boissons Froides",
+    subtitle: "Frais, rafraîchissant, artisanal",
+    all: "Tout",
+    juices: "Jus",
+    smoothies: "Smoothies",
+    shakes: "Shakes",
+    iced_coffee: "Café Glacé",
+    view_cart: "Voir Panier",
+    items: "Articles",
+    search_alert: "La fonctionnalité de recherche s'ouvrirait ici",
+    cart_alert: "Le panier contient {count} articles",
+    categories: "Catégories",
+    just_in: "Nouveauté",
+    offers: "Offres",
+    chef_pick: "Choix du Chef",
+    view_all: "Voir Tout",
+    order_status: "État de la commande",
+    received: "Reçu",
+    subtotal: "Sous-total",
+    tax: "Taxe (10%)",
+    total: "Total",
+    place_order: "Passer la commande",
+    close: "Fermer"
+  },
+  ar: {
+    cold_drinks: "مشروبات باردة",
+    subtitle: "بارد، منعش، مصنوع يدوياً",
+    all: "الكل",
+    juices: "عصائر",
+    smoothies: "سموثي",
+    shakes: "مخفوق الحليب",
+    iced_coffee: "قهوة مثلجة",
+    view_cart: "عرض العربة",
+    items: "عناصر",
+    search_alert: "وظيفة البحث ستفتح هنا",
+    cart_alert: "تحتوي العربة على {count} عنصر",
+    categories: "فئات",
+    just_in: "وصل حديثاً",
+    offers: "عروض",
+    chef_pick: "اختيار الشيف",
+    view_all: "عرض الكل",
+    order_status: "حالة الطلب",
+    received: "تم الاستلام",
+    subtotal: "المجموع الفرعي",
+    tax: "ضريبة (10%)",
+    total: "المجموع",
+    place_order: "تأكيد الطلب",
+    close: "إغلاق"
+  }
 };
 
 const menuTranslations = {
-    "Fresh Orange Juice": {
-        fr: { name: "Jus d'Orange Frais", description: "Oranges Valencia pressées à froid" },
-        ar: { name: "عصير برتقال طازج", description: "برتقال فالنسيا معصور على البارد" }
-    },
-    "Strawberry Smoothie": {
-        fr: { name: "Smoothie Fraise", description: "Yaourt grec, purée de fraise" },
-        ar: { name: "سموثي فراولة", description: "زبادي يوناني، هريس الفراولة" }
-    },
-    "Chocolate Shake": {
-        fr: { name: "Shake Chocolat", description: "70% cacao, glace vanille" },
-        ar: { name: "مخفوق الشوكولاتة", description: "70% كاكاو، آيس كريم فانيليا" }
-    },
-    "Iced Latte": {
-        fr: { name: "Latte Glacé", description: "Double dose sur lait glacé" },
-        ar: { name: "لاتيه مثلج", description: "دبل شوت على حليب بارد" }
-    },
-    "Mango Lassi": {
-        fr: { name: "Lassi Mangue", description: "Mangue Alphonso, yaourt, cardamome" },
-        ar: { name: "لاسي مانجو", description: "مانجو ألفونسو، زبادي، هيل" }
-    },
-    "Cold Brew": {
-        fr: { name: "Infusion Froide", description: "Infusion 12 heures, finition douce" },
-        ar: { name: "كولد برو", description: "نقع لمدة 12 ساعة، نهاية سلسة" }
-    }
+  "Fresh Orange Juice": {
+    fr: { name: "Jus d'Orange Frais", description: "Oranges Valencia pressées à froid" },
+    ar: { name: "عصير برتقال طازج", description: "برتقال فالنسيا معصور على البارد" }
+  },
+  "Strawberry Smoothie": {
+    fr: { name: "Smoothie Fraise", description: "Yaourt grec, purée de fraise" },
+    ar: { name: "سموثي فراولة", description: "زبادي يوناني، هريس الفراولة" }
+  },
+  "Chocolate Shake": {
+    fr: { name: "Shake Chocolat", description: "70% cacao, glace vanille" },
+    ar: { name: "مخفوق الشوكولاتة", description: "70% كاكاو، آيس كريم فانيليا" }
+  },
+  "Iced Latte": {
+    fr: { name: "Latte Glacé", description: "Double dose sur lait glacé" },
+    ar: { name: "لاتيه مثلج", description: "دبل شوت على حليب بارد" }
+  },
+  "Mango Lassi": {
+    fr: { name: "Lassi Mangue", description: "Mangue Alphonso, yaourt, cardamome" },
+    ar: { name: "لاسي مانجو", description: "مانجو ألفونسو، زبادي، هيل" }
+  },
+  "Cold Brew": {
+    fr: { name: "Infusion Froide", description: "Infusion 12 heures, finition douce" },
+    ar: { name: "كولد برو", description: "نقع لمدة 12 ساعة، نهاية سلسة" }
+  }
 };
 
 // let cart = []; // Deprecated, handled by nav-bar.js
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function applyLang(lang) {
   document.documentElement.lang = lang;
   localStorage.setItem('stitch_lang', lang);
-  
+
   if (lang === 'ar') {
     document.documentElement.dir = 'rtl';
     document.body.classList.add('rtl');
@@ -153,23 +153,23 @@ function applyLang(lang) {
   renderProducts(currentFilter);
   // Re-render order summary if modal is open
   if (!document.getElementById('order-modal').classList.contains('hidden')) {
-      renderOrderSummary();
+    renderOrderSummary();
   }
 }
 
 function getTranslation(key) {
-    const lang = localStorage.getItem('stitch_lang') || 'en';
-    return translations[lang][key] || key;
+  const lang = localStorage.getItem('stitch_lang') || 'en';
+  return translations[lang][key] || key;
 }
 
 function getMenuTranslation(item, field) {
-    const lang = localStorage.getItem('stitch_lang') || 'en';
-    if (lang === 'en') return item[field];
-    
-    if (menuTranslations[item.name] && menuTranslations[item.name][lang] && menuTranslations[item.name][lang][field]) {
-        return menuTranslations[item.name][lang][field];
-    }
-    return item[field];
+  const lang = localStorage.getItem('stitch_lang') || 'en';
+  if (lang === 'en') return item[field];
+
+  if (menuTranslations[item.name] && menuTranslations[item.name][lang] && menuTranslations[item.name][lang][field]) {
+    return menuTranslations[item.name][lang][field];
+  }
+  return item[field];
 }
 
 function renderProducts(filter = 'all') {
@@ -181,51 +181,77 @@ function renderProducts(filter = 'all') {
   list.innerHTML = filteredProducts.map((product, index) => {
     const name = getMenuTranslation(product, 'name');
     const description = getMenuTranslation(product, 'description');
-    
+
     return `
-    <div onclick="redirectToCustomization(${product.id})" class="flex items-center gap-3 p-3 bg-white dark:bg-zinc-800 rounded-[16px] border border-zinc-100 dark:border-zinc-700 shadow-sm fade-in transition-transform active:scale-95 cursor-pointer" style="animation-delay: ${index * 0.05}s">
-      <div class="size-14 rounded-xl bg-zinc-100 bg-center bg-cover flex-shrink-0" role="img" aria-label="${name}" style="background-image: url('${product.image}');"></div>
-      <div class="flex-1">
-        <h4 class="font-semibold text-[16px]">${name}</h4>
-        <p class="text-[11px] text-zinc-500 dark:text-zinc-300 mt-0.5">${description}</p>
-        <p class="font-bold text-primary mt-1 text-sm">$${product.price.toFixed(2)}</p>
-      </div>
-      <button onclick="event.stopPropagation(); redirectToCustomization(${product.id})" class="size-8 rounded-full bg-white dark:bg-zinc-700 border border-zinc-200 dark:border-zinc-600 flex items-center justify-center text-primary shadow-sm hover:bg-zinc-50 dark:hover:bg-zinc-600 transition-transform active:scale-95">
-        <span class="material-symbols-outlined text-[20px]">add</span>
-      </button>
-    </div>
-  `}).join('');
+        <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer" style="animation-delay: ${index * 0.05}s">
+            <div class="product-image w-full aspect-square rounded-xl bg-cover bg-center mb-3" role="img" aria-label="${name}" style="background-image: url('${product.image}');"></div>
+            <div class="flex-1 flex flex-col">
+                <h4 class="font-semibold text-[16px] text-[#1a1c18] dark:text-white leading-tight mb-0.5">${name}</h4>
+                <p class="text-[11px] opacity-60 line-clamp-1 mb-2">${description}</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-primary font-bold text-[15px]">$${product.price.toFixed(2)}</span>
+                    <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
+                </div>
+            </div>
+        </div>
+    `}).join('');
 }
 
 // Redirect to Customization Page
 function redirectToCustomization(productId) {
-    const product = products.find(p => p.id === productId);
-    let customizationUrl = '../orange juce_customization_view_1/index.html'; // Default
+  const product = products.find(p => String(p.id) === String(productId));
+  if (!product) return;
+  let customizationUrl = '../orange juce_customization_view_1/index.html'; // Default
 
-    // Logic to determine customization page based on product or category
-    if (product.category === 'smoothies' || product.category === 'shakes') {
-        customizationUrl = '../smothie customisation review/index.html';
-    } else if (product.category === 'iced_coffee' || product.name.toLowerCase().includes('latte')) {
-        customizationUrl = '../latte_customization_view_2/index.html';
-    } else if (product.category === 'juices') {
-        customizationUrl = '../orange juce_customization_view_1/index.html';
-    } else if (product.name.toLowerCase().includes('cold brew')) {
-        customizationUrl = '../pure_noir_espresso_customization_view_1/index.html';
-    }
+  // Logic to determine customization page based on product or category
+  if (product.category === 'smoothies' || product.category === 'shakes') {
+    customizationUrl = '../smothie customisation review/index.html';
+  } else if (product.category === 'iced_coffee' || product.name.toLowerCase().includes('latte')) {
+    customizationUrl = '../latte_customization_view_2/index.html';
+  } else if (product.category === 'juices') {
+    customizationUrl = '../orange juce_customization_view_1/index.html';
+  } else if (product.name.toLowerCase().includes('cold brew')) {
+    customizationUrl = '../pure_noir_espresso_customization_view_1/index.html';
+  }
 
-    window.location.href = customizationUrl;
+  window.location.href = customizationUrl;
 }
 
-// Add to Cart (Deprecated for direct add, but kept for logic if needed later)
 function addToCart(productId) {
-  const product = products.find(p => p.id === productId);
-  const existingItem = cart.find(item => item.id === productId);
+  const product = products.find(p => String(p.id) === String(productId));
+  if (!product) return;
+
+  const cart = JSON.parse(localStorage.getItem('stitch_cart') || '[]');
+  const existingItem = cart.find(item => String(item.id) === String(product.id));
+
   if (existingItem) {
     existingItem.quantity += 1;
   } else {
-    cart.push({ ...product, quantity: 1 });
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      category: product.category,
+      quantity: 1
+    });
   }
-  updateCart();
+
+  localStorage.setItem('stitch_cart', JSON.stringify(cart));
+
+  if (window.updateGlobalCartCount) {
+    window.updateGlobalCartCount();
+  }
+
+  // Visual feedback
+  const btn = document.querySelector(`button[onclick*="addToCart('${productId}')"]`) || document.querySelector(`button[onclick*="addToCart(${productId})"]`);
+  if (btn) {
+    const originalContent = btn.innerHTML;
+    btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span>';
+    setTimeout(() => {
+      btn.innerHTML = originalContent;
+    }, 1000);
+  }
 }
 
 function updateCart() {
@@ -240,7 +266,7 @@ function updateCart() {
     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
     cartTotal.textContent = `$${total.toFixed(2)}`;
     cartBadge.textContent = count;
-    
+
     const itemsLabel = getTranslation('items');
     cartItemsText.textContent = `${count} ${itemsLabel}`;
   } else {
@@ -267,7 +293,7 @@ function setupEventListeners() {
 
   const toggle = document.getElementById('language-toggle');
   if (toggle) {
-    toggle.addEventListener('click', function() {
+    toggle.addEventListener('click', function () {
       const current = localStorage.getItem('stitch_lang') || 'en';
       let next = 'en';
       if (current === 'en') next = 'fr';

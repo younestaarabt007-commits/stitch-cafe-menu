@@ -190,29 +190,55 @@ function renderProducts(filter = 'all', query = '') {
     }
 
     grid.innerHTML = filteredProducts.map((product, index) => `
-        <div onclick="redirectToCustomization(${product.id})" class="flex flex-col group product-card w-full fade-in cursor-pointer" style="animation-delay: ${index * 0.05}s">
-            <div class="relative w-full aspect-[4/5] rounded-[20px] overflow-hidden shadow-sm mb-3 border border-stone-100 bg-white">
-                <img alt="${product.name}" class="product-image w-full h-full object-cover transition-transform duration-700" src="${product.image}"/>
-                ${product.badge ? `
-                    <div class="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent"></div>
-                    <span class="absolute bottom-2 left-2 text-[10px] font-bold text-white bg-black/30 backdrop-blur-sm px-2 py-0.5 rounded-full border border-white/20">${product.badge}</span>
-                ` : ''}
-                ${product.favorite ? `
-                    <button class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-rose-500 shadow-sm z-20">
-                        <span class="material-symbols-outlined text-base">favorite</span>
-                    </button>
-                ` : ''}
-            </div>
-            <h3 class="font-display font-semibold text-stone-900 text-[16px] leading-tight mb-0.5">${product.name}</h3>
-            <p class="text-[12px] text-stone-500 mb-2 leading-tight line-clamp-2">${product.description}</p>
-            <div class="flex items-center justify-between mt-auto w-full">
-                <span class="font-bold text-espresso tracking-tight text-sm">$${product.price.toFixed(2)}</span>
-                <button onclick="event.stopPropagation(); redirectToCustomization(${product.id})" class="add-btn w-[84px] h-[36px] min-w-[84px] rounded-[12px] bg-white border border-orange-custom text-orange-custom text-xs font-bold shadow-sm active:scale-95 transition-all uppercase tracking-wide flex items-center justify-center">
-                    Add
-                </button>
+        <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer" style="animation-delay: ${index * 0.05}s">
+            <div class="product-image w-full aspect-square rounded-xl bg-cover bg-center mb-3" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');"></div>
+            <div class="flex-1 flex flex-col">
+                <h4 class="font-semibold text-[16px] text-[#1a1c18] dark:text-white leading-tight mb-0.5">${product.name}</h4>
+                <p class="text-[11px] opacity-60 line-clamp-1 mb-2">${product.description}</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-primary font-bold text-[15px]">$${product.price.toFixed(2)}</span>
+                    <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
+                </div>
             </div>
         </div>
     `).join('');
+}
+
+function addToCart(productId) {
+    const product = products.find(p => String(p.id) === String(productId));
+    if (!product) return;
+
+    const cart = JSON.parse(localStorage.getItem('stitch_cart') || '[]');
+    const existingItem = cart.find(item => String(item.id) === String(product.id));
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            category: product.category,
+            quantity: 1
+        });
+    }
+
+    localStorage.setItem('stitch_cart', JSON.stringify(cart));
+
+    if (window.updateGlobalCartCount) {
+        window.updateGlobalCartCount();
+    }
+
+    // Visual feedback
+    const btn = document.querySelector(`button[onclick*="addToCart('${productId}')"]`) || document.querySelector(`button[onclick*="addToCart(${productId})"]`);
+    if (btn) {
+        const originalContent = btn.innerHTML;
+        btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span>';
+        setTimeout(() => {
+            btn.innerHTML = originalContent;
+        }, 1000);
+    }
 }
 
 // Redirect to Customization Page

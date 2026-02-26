@@ -76,14 +76,14 @@ function renderProducts(filter = 'all') {
     }
 
     list.innerHTML = filteredProducts.map((product, index) => `
-        <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer" style="animation-delay: ${index * 0.05}s">
-            <div class="product-image w-full aspect-square rounded-xl bg-cover bg-center mb-3" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');"></div>
+        <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-1 rounded-[8px] shadow-sm border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer" style="animation-delay: ${index * 0.05}s">
+            <div class="product-image w-full h-20 rounded-sm bg-cover bg-center mb-1" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');"></div>
             <div class="flex-1 flex flex-col">
-                <h4 class="font-semibold text-[16px] text-[#1a1c18] dark:text-white leading-tight mb-0.5">${product.name}</h4>
-                <p class="text-[11px] opacity-60 line-clamp-1 mb-2">${product.description}</p>
+                <h4 class="font-semibold text-[12px] text-[#1a1c18] dark:text-white leading-tight mb-0.5">${product.name}</h4>
+                <p class="text-[8px] opacity-60 line-clamp-1 mb-1">${product.description}</p>
                 <div class="flex items-center justify-between mt-auto">
-                    <span class="text-primary font-bold text-[15px]">$${product.price.toFixed(2)}</span>
-                    <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
+                    <span class="text-primary font-bold text-[11px]">$${product.price.toFixed(2)}</span>
+                    <button class="w-[62px] h-[24px] rounded-full bg-primary flex items-center justify-center text-white text-[9px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
                 </div>
             </div>
         </div>

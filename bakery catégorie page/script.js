@@ -84,21 +84,16 @@ function renderProducts(filter = 'all') {
         : products.filter(p => p.category === filter);
 
     grid.innerHTML = filteredProducts.map((product, index) => `
-        <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col group fade-in cursor-pointer" style="animation-delay: ${index * 0.05}s">
-            <div class="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden shadow-sm mb-3 bg-white">
-                <img alt="${product.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="${product.image}"/>
-                <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-1.5 shadow-sm z-10">
-                    <span class="material-symbols-outlined text-[16px] text-stone-400">favorite</span>
-                </div>
-                <div class="absolute bottom-3 left-3 bg-[#F3E5D8] px-2 py-1 rounded-md shadow-sm border border-[#E6D0BC]">
-                    <span class="text-[10px] font-bold text-[#5D4037] font-display">$${product.price.toFixed(2)}</span>
+        <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-[16px] shadow-sm border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer" style="animation-delay: ${index * 0.05}s">
+            <div class="product-image w-full aspect-square rounded-xl bg-cover bg-center mb-3" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');"></div>
+            <div class="flex-1 flex flex-col">
+                <h4 class="font-semibold text-[16px] text-[#1a1c18] dark:text-white leading-tight mb-0.5">${product.name}</h4>
+                <p class="text-[11px] opacity-60 line-clamp-1 mb-2">${product.description}</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-primary font-bold text-[15px]">$${product.price.toFixed(2)}</span>
+                    <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
                 </div>
             </div>
-            <h3 class="font-display font-bold text-product text-stone-900 leading-tight">${product.name}</h3>
-            <p class="text-[11px] text-stone-500 mb-3 line-clamp-1">${product.description}</p>
-            <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('${product.id}')" class="w-full h-[36px] bg-white border border-caramel/30 text-caramel rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-caramel hover:text-white transition-colors flex items-center justify-center gap-1 shadow-sm active:scale-95">
-                Add <span class="material-symbols-outlined text-[14px]">add</span>
-            </button>
         </div>
     `).join('');
 }
@@ -131,7 +126,7 @@ function addToCart(productId) {
 
     // Visual feedback
     const btn = document.querySelector(`button[onclick*="${productId}"]`);
-    if(btn) {
+    if (btn) {
         const originalContent = btn.innerHTML;
         btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span>';
         setTimeout(() => {
@@ -148,8 +143,8 @@ function redirectToCustomization(productId) {
     let customizationUrl = '../petit pain bakery_customization_view/index.html'; // Default
 
     // Logic to determine customization page based on product or category
-    if (product.category === 'viennoiserie' || 
-        product.category === 'patisserie' || 
+    if (product.category === 'viennoiserie' ||
+        product.category === 'patisserie' ||
         product.name.toLowerCase().includes('brioche') ||
         product.name.toLowerCase().includes('baguette') ||
         product.name.toLowerCase().includes('croissant') ||
@@ -178,14 +173,14 @@ function setupEventListeners() {
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
-            const filtered = products.filter(p => 
-                p.name.toLowerCase().includes(searchTerm) || 
+            const filtered = products.filter(p =>
+                p.name.toLowerCase().includes(searchTerm) ||
                 p.description.toLowerCase().includes(searchTerm)
             );
-            
+
             const grid = document.getElementById('product-grid');
             if (grid) {
-                 grid.innerHTML = filtered.map((product, index) => `
+                grid.innerHTML = filtered.map((product, index) => `
                     <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col group fade-in cursor-pointer" style="animation-delay: ${index * 0.05}s">
                         <div class="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden shadow-sm mb-3 bg-white">
                             <img alt="${product.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="${product.image}"/>
