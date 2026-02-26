@@ -60,14 +60,16 @@ function renderProducts(filter = 'all') {
         : products.filter(p => p.category === filter);
 
     list.innerHTML = filteredProducts.map((product, index) => `
-        <div onclick="redirectToCustomization(${product.id})" class="flex items-center gap-3 p-3 bg-white rounded-[16px] border border-zinc-100 shadow-sm fade-in transition-transform active:scale-95 cursor-pointer" style="animation-delay: ${index * 0.05}s">
-            <div class="size-14 rounded-xl bg-zinc-100 bg-center bg-cover flex-shrink-0" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');"></div>
-            <div class="flex-1">
-                <h4 class="font-semibold text-[16px]">${product.name}</h4>
-                <p class="text-[11px] text-zinc-500 mt-0.5">${product.description}</p>
-                <p class="font-bold text-primary mt-1 text-sm">$${product.price.toFixed(2)}</p>
+        <div onclick="redirectToCustomization(${product.id})" class="flex flex-col bg-white dark:bg-slate-800 p-2 rounded-[12px] shadow-sm border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer" style="animation-delay: ${index * 0.05}s">
+            <div class="product-image w-full aspect-square rounded-lg bg-cover bg-center mb-2" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');"></div>
+            <div class="flex-1 flex flex-col">
+                <h4 class="font-semibold text-[14px] text-[#1a1c18] dark:text-white leading-tight mb-0.5">${product.name}</h4>
+                <p class="text-[10px] opacity-60 line-clamp-1 mb-1.5">${product.description}</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-primary font-bold text-[13px]">$${product.price.toFixed(2)}</span>
+                    <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart(${product.id})">ADD</button>
+                </div>
             </div>
-            <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart(${product.id})">ADD</button>
         </div>
     `).join('');
 }
