@@ -74,7 +74,7 @@ function renderProducts(filter = 'all') {
                 <p class="text-[11px] opacity-60 line-clamp-1 mb-2">${product.description}</p>
                 <div class="flex items-center justify-between mt-auto">
                     <span class="text-primary font-bold text-[15px]">$${product.price.toFixed(2)}</span>
-                    <button onclick="event.stopPropagation(); addToCart('${product.id}')" class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform">ADD</button>
+                    <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
                 </div>
             </div>
         `).join('');

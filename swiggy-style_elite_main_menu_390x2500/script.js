@@ -163,7 +163,7 @@ function renderBestsellers(items) {
         </div>
         <div class="flex items-center justify-between mt-auto">
           <span class="text-xs font-bold text-primary">$${typeof item.price === 'number' ? item.price.toFixed(2) : item.price}</span>
-          <button class="bg-orange-50 text-primary dark:bg-primary/20 dark:text-primary text-[12px] font-black uppercase shadow-sm active:scale-95 transition-transform flex items-center justify-center w-[84px] h-[36px] rounded-[12px]" onclick="addToCart('${item.id}')">
+          <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="addToCart('${item.id}')">
             ${getTranslation('add')}
           </button>
         </div>
@@ -424,7 +424,7 @@ function renderCartItems() {
       <div class="flex items-center gap-3">
         <button onclick="updateItemQuantity('${item.id}', -1)" class="w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-xs font-bold">-</button>
         <span class="text-sm font-bold w-4 text-center dark:text-white">${item.quantity}</span>
-        <button onclick="updateItemQuantity('${item.id}', 1)" class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold">+</button>
+        <button onclick="updateItemQuantity('${item.id}', 1)">ADD</button>
       </div>
     `;
     container.appendChild(div);

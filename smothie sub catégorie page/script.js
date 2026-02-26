@@ -87,9 +87,7 @@ function renderProducts(filter = 'all') {
                 <h4 class="font-semibold text-[16px] leading-tight">${product.name}</h4>
                 <p class="text-[10px] opacity-60 line-clamp-1 mt-0.5">${product.description}</p>
             </div>
-            <button onclick="event.stopPropagation(); addToCart('${product.id}')" class="w-full h-[36px] mt-2 rounded-[12px] bg-primary flex items-center justify-center text-white text-sm font-bold shadow-md uppercase hover:bg-orange-600 transition-colors">
-                ADD
-            </button>
+            <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
         </div>
     `).join('');
 }

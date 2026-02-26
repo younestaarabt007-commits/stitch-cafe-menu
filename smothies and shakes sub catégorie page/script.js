@@ -42,7 +42,7 @@ function renderProducts(filter = 'all') {
         <p class="text-[11px] text-zinc-500 dark:text-zinc-300 mt-0.5">${product.description}</p>
         <p class="font-bold text-primary mt-1 text-sm">$${product.price.toFixed(2)}</p>
       </div>
-      <button onclick="event.stopPropagation(); addToCart('${product.id}')" class="size-8 rounded-full bg-white dark:bg-zinc-700 border border-zinc-200 dark:border-zinc-600 flex items-center justify-center text-primary shadow-sm hover:bg-zinc-50 dark:hover:bg-zinc-600 transition-transform active:scale-95">
+      <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('${product.id}')" class="size-8 rounded-full bg-white dark:bg-zinc-700 border border-zinc-200 dark:border-zinc-600 flex items-center justify-center text-primary shadow-sm hover:bg-zinc-50 dark:hover:bg-zinc-600 transition-transform active:scale-95">
         <span class="material-symbols-outlined text-[20px]">add</span>
       </button>
     </div>
@@ -129,9 +129,7 @@ function setupEventListeners() {
                 <p class="text-[11px] text-zinc-500 dark:text-zinc-300 mt-0.5">${product.description}</p>
                 <p class="font-bold text-primary mt-1 text-sm">$${product.price.toFixed(2)}</p>
               </div>
-              <button onclick="event.stopPropagation(); addToCart('${product.id}')" class="size-8 rounded-full bg-white dark:bg-zinc-700 border border-zinc-200 dark:border-zinc-600 flex items-center justify-center text-primary shadow-sm hover:bg-zinc-50 dark:hover:bg-zinc-600 transition-transform active:scale-95">
-                <span class="material-symbols-outlined text-[20px]">add</span>
-              </button>
+              <button onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
             </div>
           `).join('');
       });

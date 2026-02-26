@@ -96,7 +96,7 @@ function renderProducts(filter = 'all') {
             </div>
             <h3 class="font-display font-bold text-product text-stone-900 leading-tight">${product.name}</h3>
             <p class="text-[11px] text-stone-500 mb-3 line-clamp-1">${product.description}</p>
-            <button onclick="event.stopPropagation(); addToCart('${product.id}')" class="w-full h-[36px] bg-white border border-caramel/30 text-caramel rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-caramel hover:text-white transition-colors flex items-center justify-center gap-1 shadow-sm active:scale-95">
+            <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('${product.id}')" class="w-full h-[36px] bg-white border border-caramel/30 text-caramel rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-caramel hover:text-white transition-colors flex items-center justify-center gap-1 shadow-sm active:scale-95">
                 Add <span class="material-symbols-outlined text-[14px]">add</span>
             </button>
         </div>
@@ -198,9 +198,7 @@ function setupEventListeners() {
                         </div>
                         <h3 class="font-display font-bold text-product text-stone-900 leading-tight">${product.name}</h3>
                         <p class="text-[11px] text-stone-500 mb-3 line-clamp-1">${product.description}</p>
-                        <button onclick="event.stopPropagation(); addToCart('${product.id}')" class="w-full h-[36px] bg-white border border-caramel/30 text-caramel rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-caramel hover:text-white transition-colors flex items-center justify-center gap-1 shadow-sm active:scale-95">
-                            Add <span class="material-symbols-outlined text-[14px]">add</span>
-                        </button>
+                        <button onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
                     </div>
                 `).join('');
             }
