@@ -28,7 +28,7 @@
   </script>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-[#1c160d] dark:text-[#fcfaf8] antialiased">
-  <div class="relative mx-auto w-full max-w-[390px] min-h-screen flex flex-col shadow-2xl overflow-hidden bg-background-light dark:bg-background-dark">
+  <div class="relative mx-auto w-full w-full max-w-7xl min-h-screen flex flex-col shadow-2xl overflow-hidden bg-background-light dark:bg-background-dark">
     <header class="absolute top-0 left-0 w-full z-20 flex items-center justify-between p-4">
       <button id="back-btn" class="size-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white active:scale-95 transition-transform">
         <span class="material-symbols-outlined flip-rtl">arrow_back</span>
@@ -88,7 +88,7 @@
     <!-- Subcategories Grid -->
     <div class="px-4 mb-6">
       <h3 class="text-[16px] font-bold mb-4" data-i18n="categories">Categories</h3>
-      <div class="grid grid-cols-2 gap-3">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         <a href="../juces sub catégorie page/index.html" class="bg-orange-100 dark:bg-orange-900/20 rounded-2xl p-4 flex flex-col items-center justify-center text-center gap-2 active:scale-95 transition-transform">
           <span class="material-symbols-outlined text-4xl text-orange-500">local_drink</span>
           <span class="font-bold text-sm" data-i18n="juices">Juices</span>
@@ -119,3 +119,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+

@@ -41,7 +41,7 @@
 </head>
 
 <body
-    class="brew-pattern text-stone-900 font-body min-h-[3000px] relative overflow-x-hidden w-full max-w-[390px] mx-auto shadow-2xl bg-[#FAFAF5]">
+    class="brew-pattern text-stone-900 font-body min-h-[3000px] relative overflow-x-hidden w-full w-full max-w-7xl mx-auto shadow-2xl bg-[#FAFAF5]">
     <!-- Decorative Line Art -->
     <div class="line-art top-[520px] left-[10px] rotate-12">
         <span class="material-symbols-outlined text-[60px]">grain</span>
@@ -54,7 +54,7 @@
     </div>
 
     <!-- Hero Section -->
-    <div class="relative w-full h-[380px] bg-gradient-to-b from-[#1a110d] via-[#2D1B0D] to-[#3E2723] overflow-hidden">
+    <div class="relative w-full h-[380px] md:h-[450px] lg:h-[500px] bg-gradient-to-b from-[#1a110d] via-[#2D1B0D] to-[#3E2723] overflow-hidden">
         <!-- Animated Particles -->
         <div class="absolute inset-0 pointer-events-none">
             <div class="bean-particle left-1/2 top-1/2" style="--x: 100px; --y: -150px;">
@@ -75,14 +75,14 @@
         </div>
 
         <!-- Floating Cup -->
-        <div class="absolute top-[60px] left-1/2 -translate-x-1/2 w-[280px] h-[280px] z-0">
+        <div class="absolute top-[60px] left-1/2 -translate-x-1/2 w-[280px] h-[280px] md:w-[350px] md:h-[350px] z-0">
             <img alt="Floating Coffee Cup" class="w-full h-full object-contain floating-cup rotate-45 scale-125"
                 src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop" />
         </div>
 
         <!-- Header -->
         <div
-            class="absolute top-0 left-0 right-0 px-4 flex items-center justify-between z-20 pt-12 w-full max-w-[390px] mx-auto box-border">
+            class="absolute top-0 left-0 right-0 px-4 flex items-center justify-between z-20 pt-12 w-full w-full max-w-7xl mx-auto box-border">
             <button id="back-btn"
                 class="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md text-white flex items-center justify-center border border-white/20 active:scale-95 transition-transform">
                 <span class="material-symbols-outlined text-lg">arrow_back_ios_new</span>
@@ -96,7 +96,7 @@
         </div>
 
         <!-- Search Bar -->
-        <div class="absolute bottom-8 left-0 right-0 px-4 z-20 w-full max-w-[390px] mx-auto box-border">
+        <div class="absolute bottom-8 left-0 right-0 px-4 z-20 w-full w-full max-w-7xl mx-auto box-border">
             <div class="glass-search rounded-xl h-12 flex items-center px-4 shadow-xl border border-white/40 w-full">
                 <span class="material-symbols-outlined text-orange-custom mr-3 text-xl">search</span>
                 <input id="search-input"
@@ -135,7 +135,7 @@
         </div>
 
         <!-- Bento Cards Grid -->
-        <div class="grid grid-cols-2 gap-3 mb-6 relative z-20 w-full">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-6 relative z-20 w-full">
             <a href="../black coffee sub catégorie page/index.html"
                 class="bento-card col-span-1 bg-cocoa rounded-[20px] p-3 relative overflow-hidden h-40 shadow-md border border-white/10 block group">
                 <div class="relative z-10">
@@ -191,7 +191,7 @@
         </div>
 
         <!-- Product Grid -->
-        <div id="product-grid" class="grid grid-cols-2 gap-x-4 gap-y-6 relative z-20 w-full">
+        <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6 relative z-20 w-full">
             <!-- Products will be dynamically rendered here -->
         </div>
     </div>
@@ -201,3 +201,4 @@
 </body>
 
 </html>
+
