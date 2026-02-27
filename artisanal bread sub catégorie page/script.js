@@ -61,13 +61,13 @@ function renderProducts(filter = 'all') {
     if (!list) return;
     const filteredProducts = filter === 'all' ? products : products.filter(p => p.category.toLowerCase() === filter.toLowerCase());
     list.innerHTML = filteredProducts.map((product, index) => `
-            <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-1 rounded-[8px] shadow-sm border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer" style="animation-delay:${index * 0.05}s">
-                <div class="product-image w-full h-20 rounded-sm bg-cover bg-center mb-1" style="background-image:url('${product.image}')"></div>
-                <h4 class="font-semibold text-[12px] text-[#1a1c18] dark:text-white leading-tight mb-0.5">${product.name}</h4>
-                <p class="text-[8px] opacity-60 line-clamp-1 mb-1">${product.description}</p>
+            <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-2 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer" style="animation-delay:${index * 0.05}s">
+                <div class="product-image w-full h-24 rounded-lg bg-cover bg-center mb-2" style="background-image:url('${product.image}')"></div>
+                <h4 class="font-semibold text-sm text-[#1a1c18] dark:text-white leading-tight mb-1">${product.name}</h4>
+                <p class="text-xs opacity-60 line-clamp-2 mb-2">${product.description}</p>
                 <div class="flex items-center justify-between mt-auto">
-                    <span class="text-primary font-bold text-[11px]">$${product.price.toFixed(2)}</span>
-                    <button class="w-[62px] h-[24px] rounded-full bg-primary flex items-center justify-center text-white text-[9px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
+                    <span class="text-primary font-bold text-sm">$${product.price.toFixed(2)}</span>
+                    <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
                 </div>
             </div>
         `).join('');
@@ -81,11 +81,16 @@ function setupEventListeners() {
         });
     }
 
-    document.querySelectorAll('.chip').forEach(btn => {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            document.querySelectorAll('.chip').forEach(b => b.classList.remove('chip-active'));
-            e.currentTarget.classList.add('chip-active');
-            currentFilter = e.currentTarget.textContent.trim().toLowerCase();
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.classList.remove('active', 'bg-primary', 'text-white');
+                b.classList.add('bg-white', 'dark:bg-zinc-800', 'text-zinc-500', 'dark:text-white');
+            });
+            e.currentTarget.classList.remove('bg-white', 'dark:bg-zinc-800', 'text-zinc-500', 'dark:text-white');
+            e.currentTarget.classList.add('active', 'bg-primary', 'text-white');
+            
+            currentFilter = e.currentTarget.dataset.filter;
             renderProducts(currentFilter);
         });
     });

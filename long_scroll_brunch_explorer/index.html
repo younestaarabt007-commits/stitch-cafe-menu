@@ -37,25 +37,86 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body class="text-slate-900 pb-32">
-<div class="sun-burst -top-20 -left-20"></div>
-<div class="sun-burst top-[600px] -right-40"></div>
-<div class="sun-burst top-[1500px] -left-20"></div>
-<div class="sun-burst bottom-[200px] right-0"></div>
-<span class="material-symbols-outlined monstera-outline text-[300px] top-40 -left-20 rotate-12">eco</span>
-<span class="material-symbols-outlined monstera-outline text-[400px] top-[1000px] -right-32 -rotate-45">eco</span>
-<span class="material-symbols-outlined monstera-outline text-[350px] top-[2200px] -left-16 rotate-90">eco</span>
-<header class="absolute top-0 left-0 right-0 z-50 px-4 pt-12 pb-4 bg-gradient-to-b from-morning-bg/90 via-morning-bg/50 to-transparent pointer-events-none transition-all duration-300">
-<div class="flex justify-between items-center pointer-events-auto max-w-[390px] mx-auto">
-<a href="../brunch_customization_view/index.html" class="w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-sm border border-white/50 text-center decoration-none" >
-<span class="material-symbols-outlined font-bold text-xl">arrow_back_ios_new</span>
-</a>
-<div class="flex gap-3">
-<a href="../brunch_customization_view/index.html" class="w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center shadow-sm border border-white/50 text-center decoration-none" >
-<span class="material-symbols-outlined text-primary text-xl">search</span>
-</a>
-</div>
-</div>
-</header>
+    <!-- Header with Image Background -->
+    <div class="relative w-full h-[360px] bg-gray-900 overflow-hidden shrink-0">
+        <!-- Background Image -->
+        <img src="../assets/images/cold_drink_header.jpg" alt="Header" class="absolute inset-0 w-full h-full object-cover opacity-80">
+        
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-transparent"></div>
+
+        <!-- Navigation -->
+        <div class="absolute top-0 left-0 right-0 z-10 px-4 pt-4 flex items-center justify-between">
+            <button onclick="history.back()" class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white active:scale-95 transition-transform">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            
+            <div class="flex gap-3">
+                 <!-- Language Toggle -->
+                <div id="language-toggle" class="language-toggle scale-90">
+                    <div class="toggle-switch">
+                        <span class="slider"></span>
+                    </div>
+                </div>
+                <button class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white active:scale-95 transition-transform">
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Title -->
+        <div class="absolute bottom-6 left-6 text-white">
+            <h1 class="text-3xl font-bold tracking-tight" data-i18n="brunch_title">Brunch Explorer</h1>
+            <p class="text-xs font-medium opacity-90 uppercase tracking-wider mb-1" data-i18n="brunch_subtitle">Discover your favorites</p>
+        </div>
+    </div>
+
+    <!-- Explore Section -->
+    <div class="px-6 py-8">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-lg font-bold text-gray-800 tracking-tight" data-i18n="explore_categories">Explore Categories</h2>
+            <div class="flex gap-2">
+                <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors">
+                    <span class="material-symbols-outlined text-sm">arrow_back_ios</span>
+                </button>
+                <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors">
+                    <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="flex gap-4 overflow-x-auto pb-4 -mx-6 px-6 no-scrollbar snap-x">
+            <!-- Cold Drinks -->
+            <div class="min-w-[140px] h-[180px] rounded-2xl relative overflow-hidden group snap-center cursor-pointer active:scale-95 transition-transform" onclick="window.location.href='../cold drinks catégorie page/index.html'">
+                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=300&q=80" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Cold Drinks">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-4 left-4 text-white">
+                    <p class="text-xs font-medium opacity-80 mb-1">Refresh</p>
+                    <h3 class="font-bold text-lg leading-tight">Cold Drinks</h3>
+                </div>
+            </div>
+
+            <!-- Hot Drinks -->
+            <div class="min-w-[140px] h-[180px] rounded-2xl relative overflow-hidden group snap-center cursor-pointer active:scale-95 transition-transform" onclick="window.location.href='../Brew catégorie page/index.html'">
+                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=300&q=80" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Hot Drinks">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-4 left-4 text-white">
+                    <p class="text-xs font-medium opacity-80 mb-1">Warm Up</p>
+                    <h3 class="font-bold text-lg leading-tight">Hot Drinks</h3>
+                </div>
+            </div>
+
+            <!-- Bakery -->
+            <div class="min-w-[140px] h-[180px] rounded-2xl relative overflow-hidden group snap-center cursor-pointer active:scale-95 transition-transform" onclick="window.location.href='../Bakery catégorie page/index.html'">
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=300&q=80" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Bakery">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-4 left-4 text-white">
+                    <p class="text-xs font-medium opacity-80 mb-1">Sweet</p>
+                    <h3 class="font-bold text-lg leading-tight">Bakery</h3>
+                </div>
+            </div>
+        </div>
+    </div>
 <main class="max-w-[390px] mx-auto relative px-4">
 <section class="relative pt-24 pb-8 w-full">
 <div class="relative h-[360px] w-full rounded-[2.5rem] overflow-visible mb-6">
@@ -94,12 +155,12 @@
 </div>
 </section>
 <section class="mb-8 overflow-visible relative top-0 z-30 py-2 -mx-4 px-4 bg-gradient-to-b from-[#FFFDF0] via-[#FFFDF0] to-transparent">
-<div class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
-<button class="whitespace-nowrap px-5 py-2 rounded-full bg-slate-900 text-white text-sm font-bold shadow-lg shadow-slate-900/20 transform transition-transform active:scale-95">All</button>
-<button class="whitespace-nowrap px-5 py-2 rounded-full bg-white text-slate-600 text-sm font-bold shadow-sm border border-slate-200 transform transition-transform active:scale-95">Eggs</button>
-<button class="whitespace-nowrap px-5 py-2 rounded-full bg-white text-slate-600 text-sm font-bold shadow-sm border border-slate-200 transform transition-transform active:scale-95">Bowls</button>
-<button class="whitespace-nowrap px-5 py-2 rounded-full bg-white text-slate-600 text-sm font-bold shadow-sm border border-slate-200 transform transition-transform active:scale-95">Toasts</button>
-<button class="whitespace-nowrap px-5 py-2 rounded-full bg-white text-slate-600 text-sm font-bold shadow-sm border border-slate-200 transform transition-transform active:scale-95">Sides</button>
+<div class="flex gap-2.5 px-4 overflow-x-auto no-scrollbar py-2">
+<button class="filter-btn active px-5 h-9 rounded-full bg-primary text-white text-xs font-bold shadow-lg shadow-primary/20 transform transition-transform active:scale-95">All</button>
+<button class="filter-btn px-5 h-9 rounded-full bg-white text-slate-600 text-xs font-semibold shadow-sm border border-slate-200 transform transition-transform active:scale-95">Eggs</button>
+<button class="filter-btn px-5 h-9 rounded-full bg-white text-slate-600 text-xs font-semibold shadow-sm border border-slate-200 transform transition-transform active:scale-95">Bowls</button>
+<button class="filter-btn px-5 h-9 rounded-full bg-white text-slate-600 text-xs font-semibold shadow-sm border border-slate-200 transform transition-transform active:scale-95">Toasts</button>
+<button class="filter-btn px-5 h-9 rounded-full bg-white text-slate-600 text-xs font-semibold shadow-sm border border-slate-200 transform transition-transform active:scale-95">Sides</button>
 </div>
 </section>
 <section class="grid grid-cols-2 gap-4 mb-8">
@@ -132,8 +193,8 @@
 <p class="text-[11px] text-slate-500 line-clamp-2 leading-relaxed mb-3">Organic eggs, cheddar, fresh herbs.</p>
 <div class="mt-auto flex justify-between items-end">
 <span class="text-[15px] font-extrabold text-slate-900">$12.50</span>
-<a href="../brunch_customization_view/index.html" class="w-[84px] h-[36px] bg-white text-primary font-bold text-sm rounded-xl shadow-sm border border-primary/20 hover:bg-primary hover:text-white transition-colors active:scale-95 uppercase tracking-wide flex items-center justify-center text-center decoration-none">
-                                Add
+<a href="../brunch_customization_view/index.html" class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform decoration-none">
+                                ADD
                             </a>
 </div>
 </div>
