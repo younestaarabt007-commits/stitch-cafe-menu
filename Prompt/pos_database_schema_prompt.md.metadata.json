@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_OTHER",
+  "summary": "Ultra-detailed prompt for designing a production-grade PostgreSQL database schema for a multi-tenant Restaurant Light POS system. Includes complete table specifications with columns, data types, constraints, indexes, ENUM definitions, security policies (RLS), performance optimization strategies, transaction boundaries, scalability considerations, and critical success criteria. Covers all system modules: tenant management, users, menu system, tables, orders, payments, cash sessions, printing, and audit logging.",
+  "updatedAt": "2026-02-13T22:47:59.263775600Z"
+}

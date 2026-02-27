@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_OTHER",
+  "summary": "Ultra-detailed prompt for designing a complete REST API architecture for a multi-tenant Restaurant Light POS system. Includes comprehensive endpoint specifications with request/response schemas, authentication flows, role-based access control matrix, middleware architecture, error handling standards, idempotency strategies, transaction boundaries, WebSocket real-time events, security best practices, rate limiting, API versioning, testing requirements, and performance benchmarks.",
+  "updatedAt": "2026-02-13T22:50:58.278298500Z"
+}

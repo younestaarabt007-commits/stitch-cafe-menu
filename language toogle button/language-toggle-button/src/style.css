@@ -1,0 +1,52 @@
+.language-toggle {
+    display: flex;
+    align-items: center;
+    font-family: 'Helvetica';
+    margin: 20px; /* Add some margin for better spacing */
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 70px; /* Slightly wider for better usability */
+    height: 36px; /* Adjusted height */
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://cdn-icons-png.freepik.com/256/14010/14010011.png'); /* French Flag */
+    background-size: cover; /* Cover the entire slider */
+    transition: background-image 0.4s; /* Smooth transition for background change */
+    border-radius: 34px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+	background-position-y:center;
+}
+
+input:checked + .slider {
+    background-image: url('https://cdn-icons-png.freepik.com/256/12364/12364498.png');
+	/* Algerian Flag */
+	background-position-y:center;
+}
+
+#current-language {
+    margin-left: 15px; /* Increased margin for better spacing */
+    font-size: 18px; /* Slightly larger font size */
+    color: #333; /* Darker text color for contrast */
+    font-weight: bold; /* Bold text for emphasis */
+    transition: color 0.4s; /* Smooth color transition */
+}
+
+.language-toggle:hover #current-language {
+    color: #2196F3; /* Change color on hover for interactivity */
+}

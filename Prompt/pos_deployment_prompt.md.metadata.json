@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_OTHER",
+  "summary": "Ultra-detailed prompt for designing deployment architecture and DevOps infrastructure for a multi-tenant Restaurant Light POS. Includes Docker containerization, Kubernetes orchestration, CI/CD pipelines, monitoring and logging, backup strategies, security hardening, scalability planning, disaster recovery, and production deployment checklist.",
+  "updatedAt": "2026-02-13T23:09:02.794108800Z"
+}
