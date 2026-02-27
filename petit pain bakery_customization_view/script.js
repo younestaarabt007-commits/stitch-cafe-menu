@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (image) {
         const hero = document.getElementById('hero-image');
         if (hero) {
-            hero.style.backgroundImage = `linear-gradient(to top, rgba(0,0,0,0.5), transparent), url('${decodeURIComponent(image)}')`;
+            hero.style.backgroundImage = `linear-gradient(to top, rgba(0,0,0,0.6), transparent), url('${decodeURIComponent(image)}')`;
         }
     }
 
@@ -40,18 +40,24 @@ document.addEventListener('DOMContentLoaded', () => {
         option.addEventListener('click', () => {
             varietyOptions.forEach(opt => {
                 const isSelected = (opt === option);
-                const iconContainer = opt.querySelector('div.flex');
+                const checkCircle = opt.querySelector('[style*="FILL"]');
+                const radioContainer = opt.querySelector('div.flex');
 
                 if (isSelected) {
-                    opt.className = "relative p-4 rounded-lg border-2 border-primary bg-primary/5 dark:bg-primary/10 flex flex-col gap-1 cursor-pointer variety-option";
-                    const icon = opt.querySelector('.material-symbols-outlined:not([style*="FILL"])');
-                    const check = `<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1">check_circle</span>`;
-                    iconContainer.innerHTML = (icon ? icon.outerHTML : '') + check;
+                    opt.classList.remove('border-[#e8d9ce]', 'dark:border-zinc-800', 'bg-white', 'dark:bg-zinc-900/50');
+                    opt.classList.add('border-primary', 'border-2', 'bg-primary/5', 'dark:bg-primary/10');
+
+                    // Add check icon if missing
+                    if (!checkCircle && radioContainer) {
+                        const icon = `<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1">check_circle</span>`;
+                        radioContainer.insertAdjacentHTML('beforeend', icon);
+                    }
                 } else {
-                    opt.className = "relative p-4 rounded-lg border border-[#e8d9ce] dark:border-zinc-800 bg-white dark:bg-zinc-900/50 flex flex-col gap-1 cursor-pointer variety-option";
-                    const icon = opt.querySelector('.material-symbols-outlined');
-                    if (icon) icon.className = "material-symbols-outlined text-[#9c6c49] dark:text-zinc-400";
-                    iconContainer.innerHTML = icon ? icon.outerHTML : '';
+                    opt.classList.remove('border-primary', 'border-2', 'bg-primary/5', 'dark:bg-primary/10');
+                    opt.classList.add('border-[#e8d9ce]', 'dark:border-zinc-800', 'bg-white', 'dark:bg-zinc-900/50');
+
+                    // Remove check icon
+                    if (checkCircle) checkCircle.remove();
                 }
             });
 
@@ -71,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 option.classList.add('border-[#e8d9ce]', 'dark:border-zinc-800');
                 const checkmarkContainer = option.querySelector('.h-6.w-6');
                 if (checkmarkContainer) {
-                    checkmarkContainer.className = 'h-6 w-6 rounded-full border-2 border-[#e8d9ce] dark:border-zinc-700';
+                    checkmarkContainer.className = 'h-6 w-6 rounded-full border-2 border-[#e8d9ce] dark:border-zinc-700 shrink-0';
                     checkmarkContainer.innerHTML = '';
                 }
             } else {
@@ -80,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 option.classList.add('border-primary/20', 'bg-background-light', 'dark:bg-zinc-900');
                 const checkmarkContainer = option.querySelector('.h-6.w-6');
                 if (checkmarkContainer) {
-                    checkmarkContainer.className = 'h-6 w-6 rounded-full bg-primary flex items-center justify-center text-white';
+                    checkmarkContainer.className = 'h-6 w-6 rounded-full bg-primary flex items-center justify-center text-white shrink-0';
                     checkmarkContainer.innerHTML = '<span class="material-symbols-outlined text-sm">check</span>';
                 }
             }
