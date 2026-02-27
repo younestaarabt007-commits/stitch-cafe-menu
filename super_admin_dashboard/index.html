@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Super Admin Dashboard — Stitch Café</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -27,9 +31,11 @@
     };
   </script>
 </head>
+
 <body class="bg-gray-50 dark:bg-[#1a100c] font-sans text-gray-900 dark:text-white min-h-screen flex">
   <!-- Sidebar -->
-  <aside class="w-72 bg-white dark:bg-[#2a1e19] border-r border-gray-200 dark:border-white/5 flex flex-col fixed h-full z-30">
+  <aside
+    class="w-72 bg-white dark:bg-[#2a1e19] border-r border-gray-200 dark:border-white/5 flex flex-col fixed h-full z-30">
     <div class="p-8">
       <div class="flex items-center gap-3 mb-10">
         <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-glow">
@@ -39,19 +45,23 @@
       </div>
 
       <nav id="main-nav" class="space-y-1">
-        <button data-tab="overview" class="w-full flex items-center gap-3 px-4 py-3 bg-orange-50 dark:bg-orange-950/30 text-primary rounded-xl font-bold transition-all">
+        <button data-tab="overview"
+          class="w-full flex items-center gap-3 px-4 py-3 bg-orange-50 dark:bg-orange-950/30 text-primary rounded-xl font-bold transition-all">
           <span class="material-symbols-outlined text-[22px]">dashboard</span>
           Overview
         </button>
-        <button data-tab="merchants" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
+        <button data-tab="merchants"
+          class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
           <span class="material-symbols-outlined text-[22px]">storefront</span>
           Merchants
         </button>
-        <button data-tab="payments" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
+        <button data-tab="payments"
+          class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
           <span class="material-symbols-outlined text-[22px]">payments</span>
           Revenue
         </button>
-        <button data-tab="accounts" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
+        <button data-tab="accounts"
+          class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
           <span class="material-symbols-outlined text-[22px]">group</span>
           Admin Accounts
         </button>
@@ -68,7 +78,8 @@
         </div>
         <p class="text-xs font-bold truncate">admin@stitch.cafe</p>
       </div>
-      <button id="logout-btn" class="w-full flex items-center justify-center gap-2 px-4 py-3 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-xl font-bold transition-all">
+      <button id="logout-btn"
+        class="w-full flex items-center justify-center gap-2 px-4 py-3 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-xl font-bold transition-all">
         <span class="material-symbols-outlined text-[22px]">logout</span>
         Sign Out
       </button>
@@ -87,10 +98,12 @@
         <button class="p-3 bg-white dark:bg-[#2a1e19] border border-gray-200 dark:border-white/5 rounded-2xl shadow-sm">
           <span class="material-symbols-outlined text-gray-500">notifications</span>
         </button>
-        <button id="theme-toggle" class="p-3 bg-white dark:bg-[#2a1e19] border border-gray-200 dark:border-white/5 rounded-2xl shadow-sm">
+        <button id="theme-toggle"
+          class="p-3 bg-white dark:bg-[#2a1e19] border border-gray-200 dark:border-white/5 rounded-2xl shadow-sm">
           <span class="material-symbols-outlined text-gray-500">palette</span>
         </button>
-        <button class="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-6 py-3 rounded-2xl font-bold flex items-center gap-2 shadow-lg">
+        <button
+          class="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-6 py-3 rounded-2xl font-bold flex items-center gap-2 shadow-lg">
           <span class="material-symbols-outlined">add</span>
           New Merchant
         </button>
@@ -114,7 +127,7 @@
         <div class="bg-white dark:bg-[#2a1e19] p-6 rounded-[2rem] border border-gray-200 dark:border-white/5 shadow-sm">
           <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400">Monthly Revenue</span>
           <div class="flex items-end justify-between mt-2">
-            <h3 class="text-4xl font-bold">$42.5k</h3>
+            <h3 class="text-4xl font-bold">42.5kDH</h3>
             <span class="text-green-500 text-xs font-bold flex items-center gap-1">
               <span class="material-symbols-outlined text-[16px]">trending_up</span>
               +8.4%
@@ -132,13 +145,15 @@
           <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400">System Uptime</span>
           <div class="flex items-end justify-between mt-2">
             <h3 class="text-4xl font-bold">99.9%</h3>
-            <span class="text-primary text-[10px] font-bold px-2 py-0.5 bg-orange-50 dark:bg-orange-950/30 rounded-full">Healthy</span>
+            <span
+              class="text-primary text-[10px] font-bold px-2 py-0.5 bg-orange-50 dark:bg-orange-950/30 rounded-full">Healthy</span>
           </div>
         </div>
       </div>
 
       <!-- Merchant List Section (Quick View) -->
-      <div class="bg-white dark:bg-[#2a1e19] rounded-[2.5rem] border border-gray-200 dark:border-white/5 shadow-sm overflow-hidden">
+      <div
+        class="bg-white dark:bg-[#2a1e19] rounded-[2.5rem] border border-gray-200 dark:border-white/5 shadow-sm overflow-hidden">
         <div class="p-8 border-b border-gray-100 dark:border-white/5 flex items-center justify-between">
           <h4 class="text-xl font-bold">Recent Merchants</h4>
           <button class="text-sm font-bold text-primary hover:underline">View All</button>
@@ -156,7 +171,9 @@
             <tr class="hover:bg-gray-50/50 dark:hover:bg-black/5 transition-colors">
               <td class="px-8 py-5">
                 <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">ER</div>
+                  <div
+                    class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
+                    ER</div>
                   <div>
                     <p class="font-bold">Elite Roastery</p>
                     <p class="text-xs text-gray-400 font-medium">er-782@gmail.com</p>
@@ -167,10 +184,12 @@
                 <span class="text-xs font-bold text-primary">Gold SaaS</span>
               </td>
               <td class="px-8 py-5">
-                <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-[10px] font-bold rounded-full">Active</span>
+                <span
+                  class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-[10px] font-bold rounded-full">Active</span>
               </td>
               <td class="px-8 py-5 text-right">
-                <button class="p-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg transition-all" onclick="editMerchant('Elite Roastery')">
+                <button class="p-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg transition-all"
+                  onclick="editMerchant('Elite Roastery')">
                   <span class="material-symbols-outlined text-gray-400">edit</span>
                 </button>
               </td>
@@ -182,12 +201,16 @@
 
     <!-- Merchants Management Section -->
     <div id="merchants-content" class="tab-content hidden">
-      <div class="bg-white dark:bg-[#2a1e19] rounded-[2.5rem] border border-gray-200 dark:border-white/5 shadow-sm overflow-hidden">
+      <div
+        class="bg-white dark:bg-[#2a1e19] rounded-[2.5rem] border border-gray-200 dark:border-white/5 shadow-sm overflow-hidden">
         <div class="p-8 border-b border-gray-100 dark:border-white/5 flex items-center justify-between">
           <h4 class="text-xl font-bold">All Merchants</h4>
           <div class="flex gap-2">
-            <input type="text" id="merchant-search" placeholder="Search merchants..." class="bg-gray-50 dark:bg-black/20 border-none rounded-xl px-4 py-2 text-sm focus:ring-1 focus:ring-primary">
-            <button class="px-4 py-2 bg-primary text-white text-[11px] font-bold uppercase tracking-widest rounded-xl shadow-glow">Add New</button>
+            <input type="text" id="merchant-search" placeholder="Search merchants..."
+              class="bg-gray-50 dark:bg-black/20 border-none rounded-xl px-4 py-2 text-sm focus:ring-1 focus:ring-primary">
+            <button
+              class="px-4 py-2 bg-primary text-white text-[11px] font-bold uppercase tracking-widest rounded-xl shadow-glow">Add
+              New</button>
           </div>
         </div>
         <table class="w-full text-left">
@@ -208,7 +231,8 @@
 
     <!-- Payments Section -->
     <div id="payments-content" class="tab-content hidden">
-      <div class="bg-white dark:bg-[#2a1e19] rounded-[2.5rem] border border-gray-200 dark:border-white/5 shadow-sm overflow-hidden">
+      <div
+        class="bg-white dark:bg-[#2a1e19] rounded-[2.5rem] border border-gray-200 dark:border-white/5 shadow-sm overflow-hidden">
         <div class="p-8 border-b border-gray-100 dark:border-white/5">
           <h4 class="text-xl font-bold">Payment Transactions</h4>
         </div>
@@ -226,10 +250,11 @@
             <tr class="hover:bg-gray-50/50 dark:hover:bg-black/5 transition-colors">
               <td class="px-8 py-5 font-mono text-xs text-gray-500">TXN-99283-ER</td>
               <td class="px-8 py-5 font-bold">Elite Roastery</td>
-              <td class="px-8 py-5 font-bold text-green-600">$450.00</td>
+              <td class="px-8 py-5 font-bold text-green-600">450.00DH</td>
               <td class="px-8 py-5 text-xs font-medium">Feb 12, 2026</td>
               <td class="px-8 py-5">
-                <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-[10px] font-bold rounded-full">Success</span>
+                <span
+                  class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-[10px] font-bold rounded-full">Success</span>
               </td>
             </tr>
           </tbody>
@@ -238,40 +263,50 @@
     </div>
 
     <!-- Edit Merchant Modal -->
-    <div id="edit-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-6">
+    <div id="edit-modal"
+      class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-6">
       <div class="bg-white dark:bg-[#2a1e19] w-full max-w-md rounded-[2.5rem] p-8 shadow-2xl relative">
-        <button onclick="closeModal()" class="absolute right-6 top-6 text-gray-400 hover:text-gray-600 transition-colors">
+        <button onclick="closeModal()"
+          class="absolute right-6 top-6 text-gray-400 hover:text-gray-600 transition-colors">
           <span class="material-symbols-outlined">close</span>
         </button>
         <h3 class="text-2xl font-bold mb-6">Modify Merchant</h3>
         <form class="space-y-4">
           <div>
-            <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 ml-1">Business Name</label>
-            <input type="text" id="edit-merchant-name" class="w-full bg-gray-50 dark:bg-black/20 border-none rounded-2xl py-3 px-4 text-sm font-semibold focus:ring-1 focus:ring-primary">
+            <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 ml-1">Business
+              Name</label>
+            <input type="text" id="edit-merchant-name"
+              class="w-full bg-gray-50 dark:bg-black/20 border-none rounded-2xl py-3 px-4 text-sm font-semibold focus:ring-1 focus:ring-primary">
           </div>
           <div>
-            <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 ml-1">Account Status</label>
-            <select class="w-full bg-gray-50 dark:bg-black/20 border-none rounded-2xl py-3 px-4 text-sm font-semibold focus:ring-1 focus:ring-primary">
+            <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 ml-1">Account
+              Status</label>
+            <select
+              class="w-full bg-gray-50 dark:bg-black/20 border-none rounded-2xl py-3 px-4 text-sm font-semibold focus:ring-1 focus:ring-primary">
               <option>Active</option>
               <option>Suspended</option>
               <option>Pending Verification</option>
             </select>
           </div>
           <div>
-            <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 ml-1">Subscription Plan</label>
-            <select class="w-full bg-gray-50 dark:bg-black/20 border-none rounded-2xl py-3 px-4 text-sm font-semibold focus:ring-1 focus:ring-primary">
+            <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 ml-1">Subscription
+              Plan</label>
+            <select
+              class="w-full bg-gray-50 dark:bg-black/20 border-none rounded-2xl py-3 px-4 text-sm font-semibold focus:ring-1 focus:ring-primary">
               <option>Standard</option>
               <option>Gold SaaS</option>
               <option>Platinum Enterprise</option>
             </select>
           </div>
-          <button type="submit" class="w-full bg-primary text-white h-14 rounded-2xl font-bold shadow-glow mt-4">Save Changes</button>
+          <button type="submit" class="w-full bg-primary text-white h-14 rounded-2xl font-bold shadow-glow mt-4">Save
+            Changes</button>
         </form>
       </div>
     </div>
   </main>
 
   <script src="script.js"></script>
-<script src="../nav-bar.js?v=9"></script>
+  <script src="../nav-bar.js?v=9"></script>
 </body>
+
 </html>

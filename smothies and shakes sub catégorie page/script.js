@@ -50,7 +50,7 @@ function renderProducts(filter = 'all') {
                 </div>
                 <p class="text-[10px] text-gray-500 dark:text-gray-400 line-clamp-2 mb-3 leading-relaxed">${product.description}</p>
                 <div class="flex items-center justify-between gap-2 mt-auto">
-                    <span class="text-primary font-extrabold text-[14px]">$${product.price.toFixed(2)}</span>
+                    <span class="text-primary font-extrabold text-[14px]">${product.price.toFixed(2)}DH</span>
                     <button class="w-[64px] h-[32px] rounded-full bg-primary flex items-center justify-center text-white text-[11px] font-bold uppercase shadow-sm active:scale-95 hover:bg-primary/90 transition-all font-outfit" onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
                 </div>
             </div>
@@ -136,7 +136,7 @@ function setupEventListeners() {
               <div class="flex-1">
                 <h4 class="font-semibold text-[16px]">${product.name}</h4>
                 <p class="text-[11px] text-zinc-500 dark:text-zinc-300 mt-0.5">${product.description}</p>
-                <p class="font-bold text-primary mt-1 text-sm">$${product.price.toFixed(2)}</p>
+                <p class="font-bold text-primary mt-1 text-sm">${product.price.toFixed(2)}DH</p>
               </div>
               <button onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
             </div>

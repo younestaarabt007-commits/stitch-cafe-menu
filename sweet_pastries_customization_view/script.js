@@ -76,7 +76,7 @@ function setupEvents() {
     };
     try {
       localStorage.setItem('stitch_last_order', JSON.stringify(order));
-    } catch {}
+    } catch { }
     window.location.href = '../swiggy-style_elite_main_menu_390x2500/index.html';
   });
 }
@@ -87,7 +87,7 @@ function updateSummary() {
   const tops = Object.keys(state.toppings);
   document.getElementById('summary-text').textContent =
     `${capitalize(state.box.label)} • ${state.warm.label === 'yes' ? 'Warm' : 'No Warm'} • ${tops.length ? tops.map(capitalize).join(', ') : '—'}`;
-  document.getElementById('total-price').textContent = `$${(unit * state.qty).toFixed(2)}`;
+  document.getElementById('total-price').textContent = `${(unit * state.qty).toFixed(2)}DH`;
 }
 
 function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }

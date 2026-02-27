@@ -116,18 +116,18 @@ function setupEventListeners() {
 
         // Save cart
         localStorage.setItem('stitch_cart', JSON.stringify(cart));
-        
+
         // Update totals (optional, main menu will recalculate)
         // localStorage.setItem('stitch_cart_count', String(cart.length));
 
         console.log('Added to cart:', orderItem);
-        
+
         // Visual Feedback
         const btn = document.getElementById('add-to-order');
         const originalText = btn.textContent;
         btn.textContent = 'Added to Cart!';
         btn.classList.add('bg-green-600');
-        
+
         setTimeout(() => {
             // Go back to menu or previous page
             window.history.back();
@@ -159,5 +159,5 @@ function calculateTotal() {
 // Update Total Display
 function updateTotal() {
     const total = calculateTotal();
-    document.getElementById('total-price').textContent = `$${total.toFixed(2)}`;
+    document.getElementById('total-price').textContent = `${total.toFixed(2)}DH`;
 }

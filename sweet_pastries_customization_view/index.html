@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Customize Pastry — Stitch Café</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -26,20 +29,26 @@
     };
   </script>
 </head>
+
 <body class="bg-background-light dark:bg-background-dark text-[#1a1c18] dark:text-white antialiased">
-  <div class="relative min-h-screen w-full max-w-[390px] mx-auto flex flex-col bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl">
-    <header class="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 bg-gradient-to-b from-black/30 to-transparent">
-      <button id="back-btn" class="flex size-9 items-center justify-center rounded-full bg-white/25 backdrop-blur-md text-white shadow-sm active:scale-95">
+  <div
+    class="relative min-h-screen w-full max-w-[390px] mx-auto flex flex-col bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl">
+    <header
+      class="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 bg-gradient-to-b from-black/30 to-transparent">
+      <button id="back-btn"
+        class="flex size-9 items-center justify-center rounded-full bg-white/25 backdrop-blur-md text-white shadow-sm active:scale-95">
         <span class="material-symbols-outlined text-[20px]">arrow_back</span>
       </button>
-      <button id="favorite-btn" class="flex size-9 items-center justify-center rounded-full bg-white/25 backdrop-blur-md text-white shadow-sm active:scale-95">
+      <button id="favorite-btn"
+        class="flex size-9 items-center justify-center rounded-full bg-white/25 backdrop-blur-md text-white shadow-sm active:scale-95">
         <span class="material-symbols-outlined text-[20px]">bookmark</span>
       </button>
     </header>
 
     <div class="relative h-[300px] w-full overflow-hidden pastry-cust-hero flex items-end justify-center pb-6 shrink-0">
       <div class="relative z-10 flex flex-col items-center text-center px-6">
-        <h1 id="product-title" class="text-white text-[24px] font-extrabold tracking-tight leading-tight">Pastry Selection</h1>
+        <h1 id="product-title" class="text-white text-[24px] font-extrabold tracking-tight leading-tight">Pastry
+          Selection</h1>
         <p class="text-white/85 text-[12px] font-medium mt-1">Choose box size, warmth, and toppings</p>
       </div>
     </div>
@@ -49,8 +58,8 @@
         <h2 class="text-[18px] font-bold mb-2">Box Size</h2>
         <div class="grid grid-cols-3 gap-2">
           <button class="chip chip-active" data-box="single" data-price="0">Single</button>
-          <button class="chip" data-box="duo" data-price="1.80">Duo +$1.80</button>
-          <button class="chip" data-box="box4" data-price="5.50">Box of 4 +$5.50</button>
+          <button class="chip" data-box="duo" data-price="1.80">Duo +1.80DH</button>
+          <button class="chip" data-box="box4" data-price="5.50">Box of 4 +5.50DH</button>
         </div>
       </section>
 
@@ -58,16 +67,16 @@
         <h2 class="text-[18px] font-bold mb-2">Warm It</h2>
         <div class="grid grid-cols-2 gap-2">
           <button class="chip chip-active" data-warm="no" data-extra="0">No</button>
-          <button class="chip" data-warm="yes" data-extra="0.25">Yes +$0.25</button>
+          <button class="chip" data-warm="yes" data-extra="0.25">Yes +0.25DH</button>
         </div>
       </section>
 
       <section class="mt-5">
         <h2 class="text-[18px] font-bold mb-2">Toppings</h2>
         <div class="flex gap-2 overflow-x-auto no-scrollbar">
-          <button class="chip" data-top="choco" data-price="0.50">Chocolate Drizzle +$0.50</button>
-          <button class="chip" data-top="almond" data-price="0.70">Almond Flakes +$0.70</button>
-          <button class="chip" data-top="berries" data-price="1.20">Fresh Berries +$1.20</button>
+          <button class="chip" data-top="choco" data-price="0.50">Chocolate Drizzle +0.50DH</button>
+          <button class="chip" data-top="almond" data-price="0.70">Almond Flakes +0.70DH</button>
+          <button class="chip" data-top="berries" data-price="1.20">Fresh Berries +1.20DH</button>
         </div>
       </section>
 
@@ -82,13 +91,15 @@
     </main>
 
     <div id="floating-add" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-      <div class="bg-black text-white flex items-center justify-between pr-2 pl-6 overflow-hidden shadow-[0_0_20px_rgba(242,147,13,0.35)]" style="width: 342px; height: 64px; border-radius: 32px;">
+      <div
+        class="bg-black text-white flex items-center justify-between pr-2 pl-6 overflow-hidden shadow-[0_0_20px_rgba(242,147,13,0.35)]"
+        style="width: 342px; height: 64px; border-radius: 32px;">
         <div class="flex flex-col justify-center">
           <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Total</span>
           <div class="flex items-center gap-2">
             <span id="summary-text" class="text-xs font-bold">Single • No Warm • —</span>
             <span class="w-1 h-1 bg-gray-600 rounded-full"></span>
-            <span id="total-price" class="text-sm font-bold text-primary">$5.00</span>
+            <span id="total-price" class="text-sm font-bold text-primary">5.00DH</span>
           </div>
         </div>
         <button id="add-btn" class="bg-primary text-white px-5 h-[48px] rounded-full flex items-center gap-2">
@@ -99,6 +110,7 @@
     </div>
   </div>
   <script src="script.js"></script>
-<script src="../nav-bar.js?v=9"></script>
+  <script src="../nav-bar.js?v=9"></script>
 </body>
+
 </html>

@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sizeBtns = document.querySelectorAll('.px-4.pt-5.pb-2 button'); // Size section
     const milkBtns = document.querySelectorAll('.px-4.pt-4.pb-2 button'); // Milk section (first one)
     const syrupRows = document.querySelectorAll('.space-y-2 > div'); // Syrup rows
-    
+
     // Bottom bar elements
     const qtyMinusBtn = document.querySelector('.fixed .material-symbols-outlined[class*="remove"]').parentElement;
     const qtyPlusBtn = document.querySelector('.fixed .material-symbols-outlined[class*="add"]').parentElement; // First add icon in bottom bar
@@ -30,13 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Helper: Update Price Display
     function updatePrice() {
         let total = state.basePrice;
-        
+
         // Add Size adjustment
         total += state.prices.size[state.size] || 0;
-        
+
         // Add Milk adjustment
         total += state.prices.milk[state.milk] || 0;
-        
+
         // Add Syrups
         state.syrups.forEach(s => {
             total += state.prices.syrup[s] || 0;
@@ -44,9 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Multiply by Qty
         const finalTotal = total * state.qty;
-        
+
         // Update Button
-        priceDisplay.textContent = `$${finalTotal.toFixed(2)}`;
+        priceDisplay.textContent = `${finalTotal.toFixed(2)}DH`;
     }
 
     // Helper: Toggle Active Class for Single Select
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Add active styles (border-primary, bg-orange-50/50, etc - simplistic approach based on HTML)
                 btn.classList.add('border-primary', 'bg-orange-50/50', 'dark:bg-primary/5');
                 btn.classList.remove('border-gray-100', 'dark:border-white/10', 'bg-white', 'dark:bg-white/5');
-                
+
                 // Ensure check circle exists
                 if (!btn.querySelector('.check-circle')) {
                     const check = document.createElement('div');
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Remove active styles
                 btn.classList.remove('border-primary', 'bg-orange-50/50', 'dark:bg-primary/5', 'relative');
                 btn.classList.add('border-gray-100', 'dark:border-white/10', 'bg-white', 'dark:bg-white/5');
-                
+
                 const check = btn.querySelector('.check-circle');
                 if (check) check.remove();
             }
@@ -80,10 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Note: The selector might grab milk buttons too if not careful. 
     // The HTML structure: Size is in the first grid, Milk in the second.
     // Let's be more specific with selectors based on container headings.
-    
+
     const sizeSection = Array.from(document.querySelectorAll('h2')).find(el => el.textContent.includes('Choose Size'));
     const milkSection = Array.from(document.querySelectorAll('h2')).find(el => el.textContent.includes('Choose Milk'));
-    
+
     if (sizeSection) {
         const buttons = sizeSection.nextElementSibling.querySelectorAll('button');
         buttons.forEach(btn => {
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         row.addEventListener('click', () => {
             const name = row.querySelector('.font-semibold').textContent;
             const checkbox = row.querySelector('button.rounded-full'); // The circle button
-            
+
             if (state.syrups.includes(name)) {
                 // Remove
                 state.syrups = state.syrups.filter(s => s !== name);
@@ -155,9 +155,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event Listener: Add to Order
     addToOrderBtn.addEventListener('click', () => {
         // Create Cart Item
-        let unitPrice = state.basePrice + (state.prices.size[state.size]||0) + (state.prices.milk[state.milk]||0);
-        state.syrups.forEach(s => unitPrice += (state.prices.syrup[s]||0));
-        
+        let unitPrice = state.basePrice + (state.prices.size[state.size] || 0) + (state.prices.milk[state.milk] || 0);
+        state.syrups.forEach(s => unitPrice += (state.prices.syrup[s] || 0));
+
         const newItem = {
             id: 'latte-' + Date.now(),
             name: 'Velvet Oat Latte', // Could be dynamic if we had product info
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cart = JSON.parse(localStorage.getItem('stitch_cart') || '[]');
         cart.push(newItem);
         localStorage.setItem('stitch_cart', JSON.stringify(cart));
-        
+
         // Update totals logic (simplified)
         const total = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
         const count = cart.reduce((sum, i) => sum + i.qty, 0);
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const originalText = addToOrderBtn.querySelector('span:first-child').textContent;
         addToOrderBtn.querySelector('span:first-child').textContent = 'Added!';
         addToOrderBtn.classList.add('bg-green-600');
-        
+
         setTimeout(() => {
             // Redirect back to menu or category
             // Try to go back to where we came from, or default to menu
@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = card.querySelector('h3').textContent;
             const priceStr = card.querySelector('.text-xs').textContent;
             const price = parseFloat(priceStr.replace('$', ''));
-            
+
             const item = {
                 id: 'pairing-' + Date.now(),
                 name: name,
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const cart = JSON.parse(localStorage.getItem('stitch_cart') || '[]');
             cart.push(item);
             localStorage.setItem('stitch_cart', JSON.stringify(cart));
-            
+
             // Visual feedback on the small button
             const icon = btn.querySelector('span');
             icon.textContent = 'check';

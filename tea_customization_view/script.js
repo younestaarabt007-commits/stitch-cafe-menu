@@ -67,7 +67,7 @@ function setupEvents() {
     };
     try {
       localStorage.setItem('stitch_last_order', JSON.stringify(order));
-    } catch {}
+    } catch { }
     window.location.href = '../swiggy-style_elite_main_menu_390x2500/index.html';
   });
 }
@@ -76,7 +76,7 @@ function updateSummary() {
   const price = (state.size.price + state.milk.extra) * state.qty;
   document.getElementById('summary-text').textContent =
     `${capitalize(state.size.label)} • ${capitalize(state.milk.label)} • ${state.sweet}%`;
-  document.getElementById('total-price').textContent = `$${price.toFixed(2)}`;
+  document.getElementById('total-price').textContent = `${price.toFixed(2)}DH`;
 }
 
 function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }

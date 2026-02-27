@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         total += state.prices.roast[state.roast] || 0;
         state.additives.forEach(a => total += (state.prices.additive[a] || 0));
         const finalTotal = total * state.qty;
-        priceDisplay.textContent = `$${finalTotal.toFixed(2)}`;
+        priceDisplay.textContent = `${finalTotal.toFixed(2)}DH`;
     }
 
     // Helper: Set Active Roast
@@ -32,16 +32,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // Reset all roast buttons
         const roastContainer = document.querySelector('.grid.grid-cols-3');
         const buttons = roastContainer.querySelectorAll('div'); // The divs act as buttons here
-        
+
         buttons.forEach(btn => {
             // Remove active classes
             btn.classList.remove('border-2', 'border-primary', 'bg-primary/5', 'relative');
             btn.classList.add('border', 'border-gray-200', 'bg-white', 'dark:border-gray-800', 'dark:bg-gray-900/50');
-            
+
             // Remove checkmark
             const check = btn.querySelector('.absolute.top-\\[-6px\\]');
             if (check) check.remove();
-            
+
             // Reset icon color
             const icon = btn.querySelector('.material-symbols-outlined');
             if (icon) {
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add active classes to target
         targetBtn.classList.remove('border', 'border-gray-200', 'bg-white', 'dark:border-gray-800', 'dark:bg-gray-900/50');
         targetBtn.classList.add('border-2', 'border-primary', 'bg-primary/5', 'relative');
-        
+
         // Add checkmark
         const check = document.createElement('div');
         check.className = 'absolute top-[-6px] right-[-6px] bg-primary text-white rounded-full p-[2px]';
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         row.addEventListener('click', () => {
             const name = row.querySelector('.font-semibold').textContent;
             const btn = row.querySelector('button');
-            
+
             if (state.additives.includes(name)) {
                 // Remove
                 state.additives = state.additives.filter(a => a !== name);
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const qtyContainer = document.querySelector('.fixed .bg-gray-100');
     if (qtyContainer) {
         const [minusBtn, , plusBtn] = qtyContainer.children;
-        
+
         minusBtn.addEventListener('click', () => {
             if (state.qty > 1) {
                 state.qty--;
@@ -128,8 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add to Order
     addToOrderBtn.addEventListener('click', () => {
-        let unitPrice = state.basePrice + (state.prices.roast[state.roast]||0);
-        state.additives.forEach(a => unitPrice += (state.prices.additive[a]||0));
+        let unitPrice = state.basePrice + (state.prices.roast[state.roast] || 0);
+        state.additives.forEach(a => unitPrice += (state.prices.additive[a] || 0));
 
         const newItem = {
             id: 'espresso-' + Date.now(),
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cart = JSON.parse(localStorage.getItem('stitch_cart') || '[]');
         cart.push(newItem);
         localStorage.setItem('stitch_cart', JSON.stringify(cart));
-        
+
         // Update stats
         const total = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
         const count = cart.reduce((sum, i) => sum + i.qty, 0);
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const originalText = textSpan.textContent;
         textSpan.textContent = 'ADDED!';
         addToOrderBtn.classList.add('bg-green-600');
-        
+
         setTimeout(() => {
             window.location.href = '../swiggy-style_elite_main_menu_390x2500/index.html';
         }, 800);
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = btn.closest('div[class*="w-60"]');
             const name = card.querySelector('p.font-bold').textContent;
             const priceStr = card.querySelector('.text-primary').textContent;
-            const price = parseFloat(priceStr.replace('$', ''));
+            const price = parseFloat(priceStr.replace('DH', ''));
 
             const item = {
                 id: 'pairing-' + Date.now(),
@@ -188,13 +188,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 price: price,
                 qty: 1,
                 category: 'Pastry',
-                image_url: '' 
+                image_url: ''
             };
 
             const cart = JSON.parse(localStorage.getItem('stitch_cart') || '[]');
             cart.push(item);
             localStorage.setItem('stitch_cart', JSON.stringify(cart));
-            
+
             btn.textContent = '✓';
             btn.classList.add('bg-green-100', 'text-green-600');
             setTimeout(() => {

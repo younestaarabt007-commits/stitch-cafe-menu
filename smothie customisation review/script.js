@@ -25,17 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
             sizeOptions.forEach(opt => {
                 const isSelected = (opt === option);
                 const iconContainer = opt.querySelector('div.flex');
-                
+
                 if (isSelected) {
                     opt.className = "relative p-4 rounded-lg border-2 border-primary bg-primary/5 dark:bg-primary/10 flex flex-col gap-1 cursor-pointer size-option";
-                    
+
                     // Update icons
                     let iconHtml = `<span class="material-symbols-outlined text-primary">local_drink</span>`;
                     iconHtml += `<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1">check_circle</span>`;
                     iconContainer.innerHTML = iconHtml;
                 } else {
                     opt.className = "relative p-4 rounded-lg border border-[#e8d9ce] dark:border-zinc-800 bg-white dark:bg-zinc-900/50 flex flex-col gap-1 cursor-pointer size-option";
-                    
+
                     // Update icons
                     let iconHtml = `<span class="material-symbols-outlined text-[#9c6c49] dark:text-zinc-400">local_drink</span>`;
                     iconContainer.innerHTML = iconHtml;
@@ -52,15 +52,15 @@ document.addEventListener('DOMContentLoaded', () => {
         option.addEventListener('click', () => {
             // Check current state by looking for border-primary
             const isSelected = option.classList.contains('border-primary/20');
-            
+
             if (isSelected) {
                 // Deselect
                 option.classList.remove('border-primary/20', 'bg-background-light', 'dark:bg-zinc-900');
                 option.classList.add('border-[#e8d9ce]', 'dark:border-zinc-800');
-                
+
                 // Update checkmark circle
                 const checkmarkContainer = option.querySelector('.h-6.w-6');
-                if(checkmarkContainer) {
+                if (checkmarkContainer) {
                     checkmarkContainer.className = 'h-6 w-6 rounded-full border-2 border-[#e8d9ce] dark:border-zinc-700';
                     checkmarkContainer.innerHTML = '';
                 }
@@ -68,10 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Select
                 option.classList.remove('border-[#e8d9ce]', 'dark:border-zinc-800');
                 option.classList.add('border-primary/20', 'bg-background-light', 'dark:bg-zinc-900');
-                
+
                 // Update checkmark circle
                 const checkmarkContainer = option.querySelector('.h-6.w-6');
-                if(checkmarkContainer) {
+                if (checkmarkContainer) {
                     checkmarkContainer.className = 'h-6 w-6 rounded-full bg-primary flex items-center justify-center text-white';
                     checkmarkContainer.innerHTML = '<span class="material-symbols-outlined text-sm">check</span>';
                 }
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateTotal() {
         const total = (basePrice + currentSizePrice + currentExtrasPrice) * currentQuantity;
-        totalPriceElement.textContent = '$' + total.toFixed(2);
+        totalPriceElement.textContent = total.toFixed(2) + 'DH';
     }
 
     // Add to Order
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
             addToOrderBtn.innerHTML = '<span class="material-symbols-outlined">check</span> ADDED';
             addToOrderBtn.classList.remove('bg-primary');
             addToOrderBtn.classList.add('bg-green-600');
-            
+
             setTimeout(() => {
                 addToOrderBtn.innerHTML = originalContent;
                 addToOrderBtn.classList.remove('bg-green-600');

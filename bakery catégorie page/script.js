@@ -90,7 +90,7 @@ function renderProducts(filter = 'all') {
                 <h4 class="font-semibold text-[16px] text-[#1a1c18] dark:text-white leading-tight mb-0.5">${product.name}</h4>
                 <p class="text-[11px] opacity-60 line-clamp-1 mb-2">${product.description}</p>
                 <div class="flex items-center justify-between mt-auto">
-                    <span class="text-primary font-bold text-[15px]">$${product.price.toFixed(2)}</span>
+                    <span class="text-primary font-bold text-[15px]">${product.price.toFixed(2)}DH</span>
                     <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
                 </div>
             </div>
@@ -187,7 +187,7 @@ function setupEventListeners() {
                 <h4 class="font-semibold text-[16px] text-[#1a1c18] dark:text-white leading-tight mb-0.5">${product.name}</h4>
                 <p class="text-[11px] opacity-60 line-clamp-1 mb-2">${product.description}</p>
                 <div class="flex items-center justify-between mt-auto">
-                    <span class="text-primary font-bold text-[15px]">$${product.price.toFixed(2)}</span>
+                    <span class="text-primary font-bold text-[15px]">${product.price.toFixed(2)}DH</span>
                     <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
                 </div>
             </div>

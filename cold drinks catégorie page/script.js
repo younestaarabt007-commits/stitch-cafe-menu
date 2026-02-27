@@ -189,7 +189,7 @@ function renderProducts(filter = 'all') {
                 <h4 class="font-semibold text-[16px] text-[#1a1c18] dark:text-white leading-tight mb-0.5">${name}</h4>
                 <p class="text-[11px] opacity-60 line-clamp-1 mb-2">${description}</p>
                 <div class="flex items-center justify-between mt-auto">
-                    <span class="text-primary font-bold text-[15px]">$${product.price.toFixed(2)}</span>
+                    <span class="text-primary font-bold text-[15px]">${product.price.toFixed(2)}DH</span>
                     <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
                 </div>
             </div>
@@ -264,7 +264,7 @@ function updateCart() {
     floatingCart.classList.remove('hidden');
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartTotal.textContent = `$${total.toFixed(2)}`;
+    cartTotal.textContent = `${total.toFixed(2)}DH`;
     cartBadge.textContent = count;
 
     const itemsLabel = getTranslation('items');
@@ -335,16 +335,16 @@ function renderOrderSummary() {
         <div class="w-10 h-10 rounded-xl bg-white dark:bg-zinc-800 flex items-center justify-center text-primary font-bold">${x.quantity}x</div>
         <div>
           <p class="font-bold text-sm">${name}</p>
-          <p class="text-[10px] text-zinc-400 font-bold tracking-widest uppercase">$${x.price.toFixed(2)} each</p>
+          <p class="text-[10px] text-zinc-400 font-bold tracking-widest uppercase">${x.price.toFixed(2)}DH each</p>
         </div>
       </div>
-      <span class="font-bold">$${(x.price * x.quantity).toFixed(2)}</span>
+      <span class="font-bold">${(x.price * x.quantity).toFixed(2)}DH</span>
     </div>
   `}).join('');
   
-  subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-  taxEl.textContent = `$${tax.toFixed(2)}`;
-  totalEl.textContent = `$${total.toFixed(2)}`;
+  subtotalEl.textContent = `${subtotal.toFixed(2)}DH`;
+  taxEl.textContent = `${tax.toFixed(2)}DH`;
+  totalEl.textContent = `${total.toFixed(2)}DH`;
 }
 
 document.addEventListener('click', (e) => {

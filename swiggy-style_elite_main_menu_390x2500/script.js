@@ -37,7 +37,7 @@ const sampleMenu = [
   { id: 'brew-8', name: "Caramel Macchiato", description: "Layered espresso & vanilla.", price: 6.50, image: "assets/latte-caramel-macchiato.jpg", category: "Coffee" },
   { id: 'brew-9', name: "Light Black Coffee", description: "Hand poured perfection.", price: 8.00, image: "assets/Light Black Coffee.jpg", category: "Coffee" },
   { id: 'brew-10', name: "Blueberry Infusion", description: "Antioxidant rich blend.", price: 5.75, image: "assets/Blueberry Infusion.jpg", category: "Tea" },
-  
+
   // Artisanal Bread
   { id: 'bread-1', name: "Chocolate Babka", description: "Rich dark chocolate ganache swirl.", price: 12.00, image: "assets/Chocolate Babka.jpg", category: "Pastry" },
   { id: 'bread-2', name: "Seeded Multigrain", description: "Hand-topped with flax & oats.", price: 9.00, image: "assets/bakery-seeded-multigrain.jpg", category: "Bread" },
@@ -162,7 +162,7 @@ function renderBestsellers(items) {
           <p class="text-[10px] md:text-[11px] text-gray-500 dark:text-gray-400 line-clamp-2 mt-1">${getMenuTranslation(item, 'description')}</p>
         </div>
         <div class="flex items-center justify-between mt-auto">
-          <span class="text-xs font-bold text-primary">$${typeof item.price === 'number' ? item.price.toFixed(2) : item.price}</span>
+          <span class="text-xs font-bold text-primary">${typeof item.price === 'number' ? item.price.toFixed(2) : item.price}DH</span>
           <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="addToCart('${item.id}')">
             ${getTranslation('add')}
           </button>
@@ -418,7 +418,7 @@ function renderCartItems() {
       <div class="flex-1 min-w-0">
         <h4 class="font-bold text-sm truncate dark:text-white">${itemName}</h4>
         <div class="flex items-center gap-2 mt-1">
-          <span class="text-xs text-gray-500 dark:text-gray-400">$${item.price}</span>
+          <span class="text-xs text-gray-500 dark:text-gray-400">${item.price}DH</span>
         </div>
       </div>
       <div class="flex items-center gap-3">
@@ -433,9 +433,9 @@ function renderCartItems() {
   const tax = subtotal * 0.1;
   const total = subtotal + tax;
 
-  if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-  if (taxEl) taxEl.textContent = `$${tax.toFixed(2)}`;
-  if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
+  if (subtotalEl) subtotalEl.textContent = `${subtotal.toFixed(2)}DH`;
+  if (taxEl) taxEl.textContent = `${tax.toFixed(2)}DH`;
+  if (totalEl) totalEl.textContent = `${total.toFixed(2)}DH`;
 }
 
 window.updateItemQuantity = (id, change) => {
