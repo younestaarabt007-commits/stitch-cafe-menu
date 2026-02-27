@@ -1,8 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const basePrice = 8.50;
+    const params = new URLSearchParams(window.location.search);
+    const n = params.get('name');
+    const image = params.get('image');
+    const p = parseFloat(params.get('price') || '');
+
+    const basePrice = Number.isNaN(p) ? 8.50 : p;
     let currentQuantity = 1;
     let currentSizePrice = 0;
     let currentExtrasPrice = 0;
+
+    if (n) {
+        const titleEl = document.querySelector('h1');
+        if (titleEl) titleEl.textContent = decodeURIComponent(n);
+    }
+
+    if (image) {
+        const hero = document.querySelector('.relative.h-80');
+        if (hero) {
+            hero.style.backgroundImage = `linear-gradient(to top, rgba(0,0,0,0.5), transparent), url('${decodeURIComponent(image)}')`;
+            hero.style.backgroundSize = 'cover';
+            hero.style.backgroundPosition = 'center';
+        }
+    }
 
     // Elements
     const quantityValue = document.getElementById('quantity-value');

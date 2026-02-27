@@ -137,7 +137,7 @@ function addToCart(productId) {
 
 // Redirect to Customization Page
 function redirectToCustomization(productId) {
-    const product = products.find(p => p.id === productId);
+    const product = products.find(p => String(p.id) === String(productId));
     if (!product) return;
 
     let customizationUrl = '../petit pain bakery_customization_view/index.html'; // Default
@@ -154,8 +154,8 @@ function redirectToCustomization(productId) {
         customizationUrl = '../petit pain bakery_customization_view/index.html';
     }
 
-    // Append price to URL
-    window.location.href = `${customizationUrl}?price=${product.price}`;
+    // Append price, name, and image to URL
+    window.location.href = `${customizationUrl}?price=${product.price}&name=${encodeURIComponent(product.name)}&image=${encodeURIComponent(product.image)}`;
 }
 
 // Setup Event Listeners

@@ -1,8 +1,13 @@
 
 document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const n = params.get('name');
+    const image = params.get('image');
+    const p = parseFloat(params.get('price') || '');
+
     // State
     const state = {
-        basePrice: 4.50,
+        basePrice: Number.isNaN(p) ? 4.50 : p,
         roast: 'House Blend',
         additives: [],
         qty: 1,
@@ -11,6 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
             additive: { 'Extra Shot': 1.50, 'Brown Sugar': 0, 'Cinnamon Dust': 0 }
         }
     };
+
+    if (n) {
+        const titleEl = document.querySelector('h1');
+        if (titleEl) titleEl.textContent = decodeURIComponent(n);
+    }
+
+    if (image) {
+        const hero = document.querySelector('div[style*="background-image"]');
+        if (hero) {
+            hero.style.backgroundImage = `linear-gradient(to top, rgba(0,0,0,0.4), transparent), url('${decodeURIComponent(image)}')`;
+        }
+    }
 
     // Elements
     const qtyDisplay = document.querySelector('.fixed span.text-center');

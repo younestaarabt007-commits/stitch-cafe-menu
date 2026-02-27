@@ -29,7 +29,7 @@ function redirectToCustomization(productId) {
     // Using smothie customisation review as a fallback or template if specific latte customization isn't ready
     // But based on folder structure, maybe 'latté hot drink sub catégorie page' IS the list, and we need a detail page.
     // The previous code pointed to '../latte_customization_view_2/index.html'
-    window.location.href = `../latte_customization_view_2/index.html?price=${product.price}&id=${product.id}&name=${encodeURIComponent(product.name)}`;
+    window.location.href = `../latte_customization_view_2/index.html?price=${product.price}&id=${product.id}&name=${encodeURIComponent(product.name)}&image=${encodeURIComponent(product.image)}`;
 }
 
 function addToCart(productId) {

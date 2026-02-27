@@ -15,10 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
   setupEventListeners();
 });
 
+// Navigate to customization page
 function redirectToCustomization(productId) {
   const product = products.find(p => p.id === productId);
   if (!product) return;
-  window.location.href = `../smothie customisation review/index.html?price=${product.price}`;
+  window.location.href = `../smothie customisation review/index.html?price=${product.price}&name=${encodeURIComponent(product.name)}&image=${encodeURIComponent(product.image)}`;
 }
 
 function renderProducts(filter = 'all') {

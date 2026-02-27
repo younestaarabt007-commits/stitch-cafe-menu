@@ -13,6 +13,22 @@ const toppingPrices = {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const n = params.get('name');
+    const image = params.get('image');
+
+    if (n) {
+        const titleEl = document.querySelector('h1');
+        if (titleEl) titleEl.textContent = decodeURIComponent(n);
+    }
+
+    if (image) {
+        const hero = document.querySelector('div[style*="background-image"]');
+        if (hero) {
+            hero.style.backgroundImage = `linear-gradient(to top, rgba(0,0,0,0.4), transparent), url('${decodeURIComponent(image)}')`;
+        }
+    }
+
     setupEventListeners();
     updateTotal();
 });

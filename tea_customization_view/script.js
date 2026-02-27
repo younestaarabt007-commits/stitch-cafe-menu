@@ -8,12 +8,31 @@ let itemName = 'Kyoto Matcha Latte';
 
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
+
   const n = params.get('name');
   if (n) {
     itemName = n;
     const titleEl = document.getElementById('product-title');
     if (titleEl) titleEl.textContent = itemName;
   }
+
+  const imgUrl = params.get('image');
+  if (imgUrl) {
+    const heroEl = document.querySelector('.tea-cust-hero');
+    if (heroEl) {
+      heroEl.style.backgroundImage = `url('${imgUrl}')`;
+      heroEl.style.backgroundSize = 'cover';
+      heroEl.style.backgroundPosition = 'center';
+      heroEl.style.position = 'relative';
+      // Add overlay since we're removing the CSS gradients
+      if (!heroEl.querySelector('.hero-overlay')) {
+        const overlay = document.createElement('div');
+        overlay.className = 'hero-overlay absolute inset-0 bg-black/40';
+        heroEl.appendChild(overlay);
+      }
+    }
+  }
+
   setupEvents();
   updateSummary();
 });

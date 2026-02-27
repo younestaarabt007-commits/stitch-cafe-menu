@@ -11,12 +11,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const n = params.get('name');
   const p = parseFloat(params.get('price') || '');
+  const image = params.get('image');
+
   if (n) {
     itemName = n;
     const titleEl = document.getElementById('product-title');
     if (titleEl) titleEl.textContent = itemName;
   }
   if (!Number.isNaN(p)) basePrice = p;
+
+  if (image) {
+    const hero = document.querySelector('.hero-gradient');
+    if (hero) {
+      hero.style.backgroundImage = `linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)), url('${decodeURIComponent(image)}')`;
+    }
+  }
+
   setupEvents();
   updateSummary();
 });

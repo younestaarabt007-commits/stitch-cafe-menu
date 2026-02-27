@@ -46,7 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Navigate to customization page
 function redirectToCustomization(productId) {
-  window.location.href = '../smothie customisation review/index.html';
+  const product = products.find(p => p.id === productId);
+  if (!product) return;
+  window.location.href = `../orange juce_customization_view_1/index.html?price=${product.price}&name=${encodeURIComponent(product.name)}&image=${encodeURIComponent(product.image)}`;
 }
 
 // Add to cart (redirects to customization)

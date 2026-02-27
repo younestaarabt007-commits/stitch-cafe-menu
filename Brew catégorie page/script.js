@@ -243,7 +243,7 @@ function addToCart(productId) {
 
 // Redirect to Customization Page
 function redirectToCustomization(productId) {
-    const product = products.find(p => p.id === productId);
+    const product = products.find(p => String(p.id) === String(productId));
     let customizationUrl = '../pure_noir_espresso_customization_view_1/index.html'; // Default
 
     if (product) {
@@ -255,9 +255,10 @@ function redirectToCustomization(productId) {
         } else if (name.includes('espresso') || name.includes('brew') || name.includes('v60')) {
             customizationUrl = '../pure_noir_espresso_customization_view_1/index.html';
         }
+        window.location.href = `${customizationUrl}?name=${encodeURIComponent(product.name)}&image=${encodeURIComponent(product.image)}&price=${product.price}`;
+    } else {
+        window.location.href = customizationUrl;
     }
-
-    window.location.href = customizationUrl;
 }
 
 // Setup Event Listeners

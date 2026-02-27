@@ -1,8 +1,13 @@
 
 document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const n = params.get('name');
+    const image = params.get('image');
+    const p = parseFloat(params.get('price') || '');
+
     // State
     const state = {
-        basePrice: 5.50, // Base price for small/default
+        basePrice: Number.isNaN(p) ? 5.50 : p, // Base price for small/default
         size: 'Medium', // Default selection
         milk: 'Oat',    // Default selection
         syrups: [],
@@ -13,6 +18,18 @@ document.addEventListener('DOMContentLoaded', () => {
             syrup: { 'Vanilla': 0.8, 'Caramel': 0.8, 'Hazelnut': 0.8 }
         }
     };
+
+    if (n) {
+        const titleEl = document.querySelector('h1');
+        if (titleEl) titleEl.textContent = decodeURIComponent(n);
+    }
+
+    if (image) {
+        const hero = document.querySelector('div[style*="background-image"]');
+        if (hero) {
+            hero.style.backgroundImage = `linear-gradient(to top, rgba(0,0,0,0.2), transparent), url('${decodeURIComponent(image)}')`;
+        }
+    }
 
     // DOM Elements
     const sizeBtns = document.querySelectorAll('.px-4.pt-5.pb-2 button'); // Size section
