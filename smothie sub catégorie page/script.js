@@ -16,8 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
 function redirectToCustomization(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
-    // Use price parameter for customization page
-    window.location.href = `../smothie customisation review/index.html?price=${product.price}`;
+    const n = product.name;
+    const img = product.image;
+    const pr = product.price;
+    window.location.href = `../smothie customisation review/index.html?name=${encodeURIComponent(n)}&image=${encodeURIComponent(img)}&price=${pr}`;
 }
 
 function addToCart(productId) {

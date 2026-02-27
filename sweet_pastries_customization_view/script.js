@@ -1,103 +1,170 @@
-let itemName = 'Pastry Selection';
-let basePrice = 5.00;
-let state = {
-  box: { label: 'single', add: 0 },
-  warm: { label: 'no', add: 0 },
-  toppings: {},
-  qty: 1
-};
-
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const n = params.get('name');
-  const p = parseFloat(params.get('price') || '');
   const image = params.get('image');
+  const p = parseFloat(params.get('price') || '');
+
+  const basePrice = Number.isNaN(p) ? 5.00 : p;
+  let currentQuantity = 1;
+  let currentPackPrice = 0;
+  let currentExtrasPrice = 0;
 
   if (n) {
-    itemName = n;
     const titleEl = document.getElementById('product-title');
-    if (titleEl) titleEl.textContent = itemName;
+    if (titleEl) titleEl.textContent = decodeURIComponent(n);
   }
-  if (!Number.isNaN(p)) basePrice = p;
 
   if (image) {
-    const hero = document.querySelector('.hero-gradient');
+    const hero = document.getElementById('hero-image');
     if (hero) {
-      hero.style.backgroundImage = `linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)), url('${decodeURIComponent(image)}')`;
+      hero.style.backgroundImage = `linear-gradient(to top, rgba(0,0,0,0.5), transparent), url('${decodeURIComponent(image)}')`;
     }
   }
 
-  setupEvents();
-  updateSummary();
-});
+  // Elements
+  const qtyDisplay = document.getElementById('qty-display');
+  const totalPriceElement = document.getElementById('total-price');
+  const packOptions = document.querySelectorAll('.pack-option');
+  const extraOptions = document.querySelectorAll('.extra-option');
 
-function setupEvents() {
-  document.getElementById('back-btn').addEventListener('click', () => window.history.back());
-  document.querySelectorAll('.chip[data-box]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.chip[data-box]').forEach(b => b.classList.remove('chip-active'));
-      btn.classList.add('chip-active');
-      state.box = { label: btn.dataset.box, add: parseFloat(btn.dataset.price || '0') };
-      updateSummary();
+  // Back button
+  const backBtn = document.getElementById('back-btn');
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      history.back();
+    });
+  }
+
+  // Pack Selection
+  packOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      packOptions.forEach(opt => {
+        const isSelected = (opt === option);
+        if (isSelected) {
+          opt.className = "relative p-3 rounded-lg border-2 border-primary bg-primary/5 dark:bg-primary/10 flex flex-col gap-1 cursor-pointer pack-option";
+        } else {
+          opt.className = "relative p-3 rounded-lg border border-[#e8d9ce] dark:border-zinc-800 bg-white dark:bg-zinc-900/50 flex flex-col gap-1 cursor-pointer pack-option";
+        }
+      });
+
+      currentPackPrice = parseFloat(option.dataset.price);
+      updateTotal();
     });
   });
-  document.querySelectorAll('.chip[data-warm]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.chip[data-warm]').forEach(b => b.classList.remove('chip-active'));
-      btn.classList.add('chip-active');
-      state.warm = { label: btn.dataset.warm, add: parseFloat(btn.dataset.extra || '0') };
-      updateSummary();
-    });
-  });
-  document.querySelectorAll('.chip[data-top]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const key = btn.dataset.top;
-      const price = parseFloat(btn.dataset.price || '0');
-      if (btn.classList.contains('chip-active')) {
-        btn.classList.remove('chip-active');
-        delete state.toppings[key];
+
+  // Extras selection
+  extraOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      const isSelected = option.classList.contains('border-primary/20');
+
+      if (isSelected) {
+        // Deselect
+        option.classList.remove('border-primary/20', 'bg-background-light', 'dark:bg-zinc-900');
+        option.classList.add('border-[#e8d9ce]', 'dark:border-zinc-800');
+        const checkmarkContainer = option.querySelector('.h-6.w-6');
+        if (checkmarkContainer) {
+          checkmarkContainer.className = 'h-6 w-6 rounded-full border-2 border-[#e8d9ce] dark:border-zinc-700';
+          checkmarkContainer.innerHTML = '';
+        }
       } else {
-        btn.classList.add('chip-active');
-        state.toppings[key] = price;
+        // Select
+        option.classList.remove('border-[#e8d9ce]', 'dark:border-zinc-800');
+        option.classList.add('border-primary/20', 'bg-background-light', 'dark:bg-zinc-900');
+        const checkmarkContainer = option.querySelector('.h-6.w-6');
+        if (checkmarkContainer) {
+          checkmarkContainer.className = 'h-6 w-6 rounded-full bg-primary flex items-center justify-center text-white';
+          checkmarkContainer.innerHTML = '<span class="material-symbols-outlined text-sm">check</span>';
+        }
       }
-      updateSummary();
+
+      calculateExtrasPrice();
+      updateTotal();
     });
   });
-  document.getElementById('inc-qty').addEventListener('click', () => {
-    state.qty += 1;
-    document.getElementById('qty').textContent = state.qty;
-    updateSummary();
-  });
-  document.getElementById('dec-qty').addEventListener('click', () => {
-    state.qty = Math.max(1, state.qty - 1);
-    document.getElementById('qty').textContent = state.qty;
-    updateSummary();
-  });
-  document.getElementById('add-btn').addEventListener('click', () => {
-    const topsTotal = Object.values(state.toppings).reduce((s, v) => s + v, 0);
-    const unit = basePrice + state.box.add + state.warm.add + topsTotal;
-    const order = {
-      item: itemName,
-      options: { box: state.box.label, warm: state.warm.label, toppings: Object.keys(state.toppings) },
-      qty: state.qty,
-      unit_price: unit,
-      total: unit * state.qty,
-      time: new Date().toISOString()
-    };
-    try {
-      localStorage.setItem('stitch_last_order', JSON.stringify(order));
-    } catch { }
-    window.location.href = '../swiggy-style_elite_main_menu_390x2500/index.html';
-  });
-}
 
-function updateSummary() {
-  const topsTotal = Object.values(state.toppings).reduce((s, v) => s + v, 0);
-  const unit = basePrice + state.box.add + state.warm.add + topsTotal;
-  const tops = Object.keys(state.toppings);
-  document.getElementById('summary-text').textContent =
-    `${capitalize(state.box.label)} • ${state.warm.label === 'yes' ? 'Warm' : 'No Warm'} • ${tops.length ? tops.map(capitalize).join(', ') : '—'}`;
-  document.getElementById('total-price').textContent = `${(unit * state.qty).toFixed(2)}DH`;
-}
+  function calculateExtrasPrice() {
+    currentExtrasPrice = 0;
+    extraOptions.forEach(option => {
+      if (option.classList.contains('border-primary/20')) {
+        currentExtrasPrice += parseFloat(option.dataset.price);
+      }
+    });
+  }
 
-function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  // Quantity
+  const decreaseBtn = document.getElementById('qty-minus');
+  const increaseBtn = document.getElementById('qty-plus');
+
+  if (decreaseBtn) {
+    decreaseBtn.addEventListener('click', () => {
+      if (currentQuantity > 1) {
+        currentQuantity--;
+        qtyDisplay.textContent = currentQuantity;
+        updateTotal();
+      }
+    });
+  }
+
+  if (increaseBtn) {
+    increaseBtn.addEventListener('click', () => {
+      currentQuantity++;
+      qtyDisplay.textContent = currentQuantity;
+      updateTotal();
+    });
+  }
+
+  function updateTotal() {
+    const total = (basePrice + currentPackPrice + currentExtrasPrice) * currentQuantity;
+    totalPriceElement.textContent = total.toFixed(2) + 'DH';
+  }
+
+  // Add to Order
+  const addToOrderBtn = document.getElementById('add-to-order-btn');
+  if (addToOrderBtn) {
+    addToOrderBtn.addEventListener('click', () => {
+      const finalName = decodeURIComponent(n || 'Sweet Pastry');
+      const item = {
+        id: 'pastry-' + Date.now(),
+        name: finalName,
+        price: (basePrice + currentPackPrice + currentExtrasPrice),
+        quantity: currentQuantity,
+        image: decodeURIComponent(image || ''),
+        options: []
+      };
+
+      // Get pack
+      packOptions.forEach(option => {
+        if (option.classList.contains('border-primary')) {
+          item.options.push({ name: 'Pack: ' + option.dataset.name, price: parseFloat(option.dataset.price) });
+        }
+      });
+
+      // Get selected extras
+      extraOptions.forEach(option => {
+        if (option.classList.contains('border-primary/20')) {
+          item.options.push({ name: option.dataset.name, price: parseFloat(option.dataset.price) });
+        }
+      });
+
+      // Save
+      const cart = JSON.parse(localStorage.getItem('stitch_cart') || '[]');
+      cart.push(item);
+      localStorage.setItem('stitch_cart', JSON.stringify(cart));
+
+      if (window.updateGlobalCartCount) window.updateGlobalCartCount();
+
+      // Feedback
+      const originalContent = addToOrderBtn.innerHTML;
+      addToOrderBtn.innerHTML = '<span class="material-symbols-outlined text-sm">check</span> ADDED';
+      addToOrderBtn.style.backgroundColor = '#10b981';
+
+      setTimeout(() => {
+        addToOrderBtn.innerHTML = originalContent;
+        addToOrderBtn.style.backgroundColor = '';
+        history.back();
+      }, 1000);
+    });
+  }
+
+  updateTotal();
+});

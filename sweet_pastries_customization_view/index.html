@@ -4,108 +4,173 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Customize Pastry — Stitch Café</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
     rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
       theme: {
         extend: {
           colors: {
-            primary: "#f2930d",
-            "background-light": "#fafaf5",
-            "background-dark": "#1a1c18"
+            "primary": "#f47b25",
+            "background-light": "#f8f7f5",
+            "background-dark": "#221710",
           },
           fontFamily: {
-            display: ["Plus Jakarta Sans", "sans-serif"]
-          }
-        }
-      }
-    };
+            "display": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
   </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-[#1a1c18] dark:text-white antialiased">
+<body
+  class="bg-background-light dark:bg-background-dark text-[#1c130d] dark:text-[#fcfaf8] min-h-screen flex justify-center">
   <div
-    class="relative min-h-screen w-full max-w-[390px] mx-auto flex flex-col bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl">
-    <header
-      class="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 bg-gradient-to-b from-black/30 to-transparent">
-      <button id="back-btn"
-        class="flex size-9 items-center justify-center rounded-full bg-white/25 backdrop-blur-md text-white shadow-sm active:scale-95">
-        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
-      </button>
-      <button id="favorite-btn"
-        class="flex size-9 items-center justify-center rounded-full bg-white/25 backdrop-blur-md text-white shadow-sm active:scale-95">
-        <span class="material-symbols-outlined text-[20px]">bookmark</span>
-      </button>
-    </header>
-
-    <div class="relative h-[300px] w-full overflow-hidden pastry-cust-hero flex items-end justify-center pb-6 shrink-0">
-      <div class="relative z-10 flex flex-col items-center text-center px-6">
-        <h1 id="product-title" class="text-white text-[24px] font-extrabold tracking-tight leading-tight">Pastry
-          Selection</h1>
-        <p class="text-white/85 text-[12px] font-medium mt-1">Choose box size, warmth, and toppings</p>
+    class="relative w-full max-w-[390px] min-h-screen bg-white dark:bg-[#1c130d] shadow-2xl overflow-hidden flex flex-col">
+    <div class="relative h-[400px] w-full shrink-0">
+      <div id="hero-image" class="w-full h-full bg-center bg-no-repeat bg-cover"
+        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBeC_Vjp81zxsLqCzV3zzr4_lvob43RscsQs9Ej7j-_X2MYjxVg0XKdiIRciAKUj5GH5iyCImdy9KvZhDql6iuaq74h8VIblRwEJVvLU4gXMh03aNI80oGfs-GwtIduY1dABNezb6XyUI1TgTh9C6j2UviCHl5yuhffrLspsrPzMo7QwzuAXk-cEZejVZsPOVtNAP5Yv_lqbmg00eRjytJTnBXN3f4OXpNch-pwIUDsqyOHtY1cdTASW2Em2xOVhjU-QumHGP7bQsg");'>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+      </div>
+      <div class="absolute top-6 left-4 right-4 flex justify-between items-center">
+        <button id="back-btn"
+          class="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-black shadow-lg">
+          <span class="material-symbols-outlined">arrow_back_ios_new</span>
+        </button>
+        <button
+          class="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-black shadow-lg">
+          <span class="material-symbols-outlined">share</span>
+        </button>
       </div>
     </div>
-
-    <main class="px-4 pb-36">
-      <section class="mt-4">
-        <h2 class="text-[18px] font-bold mb-2">Box Size</h2>
-        <div class="grid grid-cols-3 gap-2">
-          <button class="chip chip-active" data-box="single" data-price="0">Single</button>
-          <button class="chip" data-box="duo" data-price="1.80">Duo +1.80DH</button>
-          <button class="chip" data-box="box4" data-price="5.50">Box of 4 +5.50DH</button>
+    <div class="relative -mt-16 flex-1 bg-white dark:bg-[#1c130d] rounded-t-xl px-4 pt-2 pb-32">
+      <div class="flex h-5 w-full items-center justify-center mb-2">
+        <div class="h-1.5 w-12 rounded-full bg-[#e8d9ce] dark:bg-zinc-700"></div>
+      </div>
+      <div class="flex flex-col gap-1">
+        <h1 id="product-title" class="text-[#1c130d] dark:text-white text-3xl font-bold leading-tight tracking-tight">
+          Sweet Pastry</h1>
+        <div class="flex items-center gap-2">
+          <div class="flex items-center">
+            <span class="material-symbols-outlined text-primary text-lg"
+              style="font-variation-settings: 'FILL' 1">star</span>
+            <span class="text-[#1c130d] dark:text-white text-base font-bold ml-1">4.8</span>
+          </div>
+          <span class="text-[#9c6c49] dark:text-zinc-400 text-sm">(120+ reviews)</span>
         </div>
-      </section>
-
-      <section class="mt-5">
-        <h2 class="text-[18px] font-bold mb-2">Warm It</h2>
-        <div class="grid grid-cols-2 gap-2">
-          <button class="chip chip-active" data-warm="no" data-extra="0">No</button>
-          <button class="chip" data-warm="yes" data-extra="0.25">Yes +0.25DH</button>
-        </div>
-      </section>
-
-      <section class="mt-5">
-        <h2 class="text-[18px] font-bold mb-2">Toppings</h2>
-        <div class="flex gap-2 overflow-x-auto no-scrollbar">
-          <button class="chip" data-top="choco" data-price="0.50">Chocolate Drizzle +0.50DH</button>
-          <button class="chip" data-top="almond" data-price="0.70">Almond Flakes +0.70DH</button>
-          <button class="chip" data-top="berries" data-price="1.20">Fresh Berries +1.20DH</button>
-        </div>
-      </section>
-
-      <section class="mt-5">
-        <h2 class="text-[18px] font-bold mb-2">Quantity</h2>
-        <div class="flex items-center gap-3">
-          <button id="dec-qty" class="qty-btn">-</button>
-          <span id="qty" class="text-[16px] font-bold">1</span>
-          <button id="inc-qty" class="qty-btn">+</button>
-        </div>
-      </section>
-    </main>
-
-    <div id="floating-add" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-      <div
-        class="bg-black text-white flex items-center justify-between pr-2 pl-6 overflow-hidden shadow-[0_0_20px_rgba(242,147,13,0.35)]"
-        style="width: 342px; height: 64px; border-radius: 32px;">
-        <div class="flex flex-col justify-center">
-          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Total</span>
-          <div class="flex items-center gap-2">
-            <span id="summary-text" class="text-xs font-bold">Single • No Warm • —</span>
-            <span class="w-1 h-1 bg-gray-600 rounded-full"></span>
-            <span id="total-price" class="text-sm font-bold text-primary">5.00DH</span>
+        <p class="text-[#1c130d]/70 dark:text-zinc-400 text-base font-normal leading-relaxed mt-2">
+          Delicate, flaky, and golden-brown. Our pastries are crafted with premium butter and love.
+        </p>
+      </div>
+      <div class="mt-8">
+        <h2 class="text-[#1c130d] dark:text-white text-lg font-bold mb-4">Pack Size</h2>
+        <div class="grid grid-cols-3 gap-3">
+          <div
+            class="relative p-3 rounded-lg border-2 border-primary bg-primary/5 dark:bg-primary/10 flex flex-col gap-1 cursor-pointer pack-option"
+            data-name="Single" data-price="0">
+            <p class="font-bold text-[#1c130d] dark:text-white">Single</p>
+            <p class="text-xs text-[#9c6c49] dark:text-zinc-400">1 Piece</p>
+          </div>
+          <div
+            class="relative p-3 rounded-lg border border-[#e8d9ce] dark:border-zinc-800 bg-white dark:bg-zinc-900/50 flex flex-col gap-1 cursor-pointer pack-option"
+            data-name="Duo Pack" data-price="1.80">
+            <p class="font-bold text-[#1c130d] dark:text-white">Duo Pack</p>
+            <p class="text-xs text-primary font-bold">+1.80DH</p>
+          </div>
+          <div
+            class="relative p-3 rounded-lg border border-[#e8d9ce] dark:border-zinc-800 bg-white dark:bg-zinc-900/50 flex flex-col gap-1 cursor-pointer pack-option"
+            data-name="Box of 4" data-price="5.50">
+            <p class="font-bold text-[#1c130d] dark:text-white">Box of 4</p>
+            <p class="text-xs text-primary font-bold">+5.50DH</p>
           </div>
         </div>
-        <button id="add-btn" class="bg-primary text-white px-5 h-[48px] rounded-full flex items-center gap-2">
-          <span class="font-extrabold text-[12px] uppercase tracking-wider">Add to Order</span>
-          <span class="material-symbols-outlined text-[18px]">shopping_cart</span>
-        </button>
+      </div>
+
+      <div class="mt-8">
+        <h2 class="text-[#1c130d] dark:text-white text-lg font-bold mb-4">Add Toppings</h2>
+        <div class="flex flex-col gap-3">
+          <div
+            class="flex items-center justify-between p-4 rounded-lg bg-background-light dark:bg-zinc-900 border border-primary/20 extra-option"
+            data-name="Chocolate Drizzle" data-price="0.50">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-amber-800">
+                <span class="material-symbols-outlined text-[20px]">cookie</span>
+              </div>
+              <div>
+                <p class="font-bold text-[#1c130d] dark:text-white">Chocolate Drizzle</p>
+                <p class="text-xs text-primary font-extrabold">+0.50DH</p>
+              </div>
+            </div>
+            <div class="h-6 w-6 rounded-full bg-primary flex items-center justify-center text-white">
+              <span class="material-symbols-outlined text-sm">check</span>
+            </div>
+          </div>
+          <div
+            class="flex items-center justify-between p-4 rounded-lg border border-[#e8d9ce] dark:border-zinc-800 extra-option"
+            data-name="Almond Flakes" data-price="0.70">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 rounded-full bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-orange-500">
+                <span class="material-symbols-outlined text-[20px]">nutrition</span>
+              </div>
+              <div>
+                <p class="font-bold text-[#1c130d] dark:text-white">Almond Flakes</p>
+                <p class="text-xs text-primary font-bold">+0.70DH</p>
+              </div>
+            </div>
+            <div class="h-6 w-6 rounded-full border-2 border-[#e8d9ce] dark:border-zinc-700"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add to Order Bar -->
+      <div
+        class="fixed bottom-[55px] left-0 right-0 max-w-[390px] mx-auto bg-white dark:bg-[#1c130d] border-t border-[#e8d9ce] dark:border-zinc-800 p-4 pb-4 z-20">
+        <div class="flex items-center justify-between gap-4">
+          <div class="flex items-center border border-[#e8d9ce] dark:border-zinc-800 rounded-full p-1">
+            <button id="qty-minus"
+              class="w-8 h-8 rounded-full flex items-center justify-center text-[#1c130d] dark:text-white hover:bg-[#f8f7f5] dark:hover:bg-zinc-800 transition-colors">
+              <span class="material-symbols-outlined text-sm">remove</span>
+            </button>
+            <span id="qty-display" class="w-8 text-center font-bold text-[#1c130d] dark:text-white">1</span>
+            <button id="qty-plus"
+              class="w-8 h-8 rounded-full flex items-center justify-center text-[#1c130d] dark:text-white hover:bg-[#f8f7f5] dark:hover:bg-zinc-800 transition-colors">
+              <span class="material-symbols-outlined text-sm">add</span>
+            </button>
+          </div>
+          <button id="add-to-order-btn"
+            class="flex-1 bg-primary text-white font-bold h-12 rounded-full shadow-lg shadow-orange-200 dark:shadow-none flex items-center justify-center gap-2 active:scale-95 transition-transform">
+            <span>Add to Order</span>
+            <span id="total-price" class="bg-white/20 px-2 py-0.5 rounded text-sm">0.00DH</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>

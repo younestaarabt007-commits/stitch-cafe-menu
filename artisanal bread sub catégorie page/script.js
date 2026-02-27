@@ -15,7 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Navigate to customization page
 function redirectToCustomization(productId) {
-    window.location.href = '../petit pain bakery_customization_view/index.html';
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    const n = product.name;
+    const img = product.image;
+    const pr = product.price;
+    window.location.href = `../petit pain bakery_customization_view/index.html?name=${encodeURIComponent(n)}&image=${encodeURIComponent(img)}&price=${pr}`;
 }
 
 // Global Add to Cart

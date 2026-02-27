@@ -21,7 +21,8 @@ function redirectToCustomization(productId) {
     if (!product) return;
     const name = product.name;
     const price = product.price;
-    const url = `../sweet_pastries_customization_view/index.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}`;
+    const image = product.image;
+    const url = `../sweet_pastries_customization_view/index.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&image=${encodeURIComponent(image)}`;
     window.location.href = url;
 }
 
