@@ -175,15 +175,15 @@ function renderBestsellers(items) {
 function renderCategories(items) {
   // SUB-CATEGORIES to be displayed as circles with real images
   const subCategories = [
-    { name: getTranslation('Tea & Infusion'), img: 'assets/tea/berrad-the.jpg', link: '../tea and infusion sub catégorie page/index.html' },
-    { name: getTranslation('Milkshake'), img: 'assets/milkshake.jpg', link: '../milkshake sub catégorie page/index.html' },
-    { name: getTranslation('Juice'), img: 'assets/juces.jpg', link: '../juces sub catégorie page/index.html' },
-    { name: getTranslation('Sweet Pastries'), img: 'assets/sweets/Cheese Cake Oreo.jpg', link: '../sweet pastries sub catégorie page/index.html' },
-    { name: getTranslation('Black Coffee'), img: 'assets/black coffee/black coffee.jpg', link: '../black coffee sub catégorie page/index.html' },
-    { name: getTranslation('Latte'), img: 'assets/latté/Café Crème.jpg', link: '../latté hot drink sub catégorie page/index.html' },
-    { name: getTranslation('Smoothie'), img: 'assets/smoothie/Brazilian Smoothie.jpg', link: '../smothie sub catégorie page/index.html' },
-    { name: getTranslation('Toast'), img: 'assets/salty food and sweet brunch/toast.jpg', link: '../toast brunch sub catégorie page/index.html' },
-    { name: getTranslation('Artisanal Bread'), img: 'assets/bakery-dark-rye-loaf.jpg', link: '../artisanal bread sub catégorie page/index.html' }
+    { name: getTranslation('Tea & Infusion'), img: 'assets/subcat_icons/tea icon .png', link: '../tea and infusion sub catégorie page/index.html' },
+    { name: getTranslation('Milkshake'), img: 'assets/subcat_icons/milkshake icon.png', link: '../milkshake sub catégorie page/index.html' },
+    { name: getTranslation('Juice'), img: 'assets/subcat_icons/juces icon.png', link: '../juces sub catégorie page/index.html' },
+    { name: getTranslation('Sweet Pastries'), img: 'assets/subcat_icons/sweet pastry.png', link: '../sweet pastries sub catégorie page/index.html' },
+    { name: getTranslation('Black Coffee'), img: 'assets/subcat_icons/black coffe icon.jpg', link: '../black coffee sub catégorie page/index.html' },
+    { name: getTranslation('Latte'), img: 'assets/subcat_icons/latté icon.jpg', link: '../latté hot drink sub catégorie page/index.html' },
+    { name: getTranslation('Smoothie'), img: 'assets/subcat_icons/smoothie icon.png', link: '../smothie sub catégorie page/index.html' },
+    { name: getTranslation('Toast'), img: 'assets/subcat_icons/sandwich or toast icon .jpg', link: '../toast brunch sub catégorie page/index.html' },
+    { name: getTranslation('Artisanal Bread'), img: 'assets/subcat_icons/artisanal bread.jpg', link: '../artisanal bread sub catégorie page/index.html' }
   ];
 
   const container = document.getElementById('explore-categories');
