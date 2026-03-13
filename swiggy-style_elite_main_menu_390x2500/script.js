@@ -66,9 +66,9 @@ function renderBestsellers(items) {
         </div>
         <div class="flex items-center justify-between mt-auto">
           <span class="text-xs font-bold text-primary">${typeof item.price === 'number' ? item.price.toFixed(2) : item.price}DH</span>
-          <button class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform" onclick="addToCart('${item.id}')">
+          <a href="${buildCustomizationUrl(item)}" class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform">
             ${getTranslation('add')}
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -139,6 +139,48 @@ function getRatingForItem(item) {
   };
   const base = map[item.category] || 4.4;
   return base;
+}
+
+function buildCustomizationUrl(item) {
+  if (!item) return '/pure_noir_espresso_customization_view_1/index.html';
+  const category = (item.category || '').toLowerCase();
+  let customizationPage = 'brunch_customization_view/index.html';
+  if (category.includes('brunch') || category.includes('toast')) {
+    customizationPage = 'toast_brunch_customization_view/index.html';
+  } else if (category.includes('tea') || category.includes('infusion')) {
+    customizationPage = 'tea_customization_view/index.html';
+  } else if (category.includes('coffee') || category.includes('brew')) {
+    customizationPage = 'pure_noir_espresso_customization_view_1/index.html';
+  } else if (category.includes('pastry') || category.includes('bakery')) {
+    customizationPage = 'sweet_pastries_customization_view/index.html';
+  } else if (category.includes('bread')) {
+    customizationPage = 'petit pain bakery_customization_view/index.html';
+  } else if (category.includes('juice') || category.includes('drink')) {
+    customizationPage = 'orange juce_customization_view_1/index.html';
+  } else if (category.includes('smoothie')) {
+    customizationPage = 'smothie customisation review/index.html';
+  } else if (category.includes('milkshake') || category.includes('shake')) {
+    customizationPage = 'milkshake_customization_view/index.html';
+  }
+
+  let imgPath = item.image;
+  if (imgPath && !imgPath.startsWith('/') && !imgPath.startsWith('http')) {
+    if (imgPath.startsWith('../')) {
+      imgPath = '/' + imgPath.replace(/^(\.\.\/)+/, '');
+    } else {
+      imgPath = '/' + imgPath;
+    }
+  }
+
+  const params = new URLSearchParams({
+    id: item.id || '',
+    name: item.name || '',
+    price: item.price ?? '',
+    image: imgPath || '',
+    category: item.category || ''
+  });
+
+  return `/${customizationPage}?${params.toString()}`;
 }
 
 function getFallbackImage(item, seed = 0) {
@@ -367,59 +409,12 @@ window.addToCart = (id) => {
   const itemFromAll = typeof allMenuItems !== 'undefined' ? allMenuItems.find(i => i.id === id) : null;
   const item = itemFromBestsellers || itemFromAll;
   if (!item) {
-    window.location.href = '../pure_noir_espresso_customization_view_1/index.html';
+    window.location.href = '/pure_noir_espresso_customization_view_1/index.html';
     return;
   }
 
-  // Track the item we're about to customize
   localStorage.setItem('stitch_customizing_item', JSON.stringify(item));
-
-  // Ensure image path is root-relative for consistent loading across subfolders
-  let imgPath = item.image;
-  if (imgPath && !imgPath.startsWith('/') && !imgPath.startsWith('http')) {
-    if (imgPath.startsWith('../')) {
-      imgPath = imgPath.replace('../', '/');
-    } else {
-      imgPath = '/' + imgPath;
-    }
-  }
-
-  // Determine which customization page to go to based on category
-  const category = (item.category || '').toLowerCase();
-  let customizationPage = '../brunch_customization_view/index.html'; // Default
-
-  if (category.includes('brunch') || category.includes('toast')) {
-    customizationPage = '../toast_brunch_customization_view/index.html';
-  } else if (category.includes('tea') || category.includes('infusion')) {
-    customizationPage = '../tea_customization_view/index.html';
-  } else if (category.includes('coffee') || category.includes('brew')) {
-    customizationPage = '../pure_noir_espresso_customization_view_1/index.html';
-  } else if (category.includes('pastry') || category.includes('bakery')) {
-    customizationPage = '../sweet_pastries_customization_view/index.html';
-  } else if (category.includes('bread')) {
-    customizationPage = '../petit pain bakery_customization_view/index.html';
-  } else if (category.includes('juice') || category.includes('drink')) {
-    customizationPage = '../orange juce_customization_view_1/index.html';
-  } else if (category.includes('smoothie')) {
-    customizationPage = '../smothie customisation review/index.html';
-  } else if (category.includes('milkshake') || category.includes('shake')) {
-    customizationPage = '../milkshake_customization_view/index.html';
-  }
-
-  if (customizationPage.startsWith('../')) {
-    customizationPage = '/' + customizationPage.replace('../', '');
-  }
-
-  // Add query params for immediate use if needed
-  const params = new URLSearchParams({
-    id: item.id,
-    name: item.name,
-    price: item.price,
-    image: imgPath,
-    category: item.category
-  });
-
-  window.location.href = `${customizationPage}?${params.toString()}`;
+  window.location.href = buildCustomizationUrl(item);
 };
 
 function updateCartUI() {
