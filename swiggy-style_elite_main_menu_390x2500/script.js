@@ -15,9 +15,11 @@ let currentTable = new URLSearchParams(window.location.search).get('table') || n
 
 
 function fetchBestsellers() {
-  // Force local data usage to ensure items appear correctly with original images
-  console.log('Forcing local menu data display');
-  bestsellers = allMenuItems;
+  const menuData = (typeof allMenuItems !== 'undefined' && Array.isArray(allMenuItems)) ? allMenuItems : [];
+  if (!menuData.length) {
+    console.error('Menu data not loaded. Check menu.js path.');
+  }
+  bestsellers = menuData;
   renderBestsellers(bestsellers);
 }
 
