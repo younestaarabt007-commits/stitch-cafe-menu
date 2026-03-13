@@ -108,7 +108,7 @@
                     setTimeout(() => {
                         isPerformingAutoScroll = false;
                     }, 50);
-                }, 600);
+                }, 960);
             }
         }
 
@@ -117,7 +117,7 @@
             stopLoop();
             // Only start loop if user is NOT scrolling
             if (!isUserScrolling) {
-                autoScrollInterval = setInterval(nextSlide, 500);
+                autoScrollInterval = setInterval(nextSlide, 800);
             }
         }
 
