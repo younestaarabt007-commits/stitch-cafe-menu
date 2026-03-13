@@ -32,7 +32,11 @@
   </script>
   <style type="text/tailwindcss">
     .glass-card {
-        @apply bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl;
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     }
     .text-glow {
         text-shadow: 0 0 15px rgba(255,255,255,0.3);
@@ -158,13 +162,51 @@
         data-filter="all">All</button>
       <button
         class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700"
-        data-filter="creamy">Creamy</button>
+        data-filter="black">Black</button>
       <button
         class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700"
-        data-filter="citrus">Citrus</button>
+        data-filter="milk">Milk Based</button>
       <button
         class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700"
-        data-filter="classic">Classic</button>
+        data-filter="decaf">Decaf</button>
+    </div>
+
+    <div class="px-4 space-y-4">
+      <div class="grid grid-cols-2 gap-3 h-[280px]">
+        <div class="relative rounded-[20px] overflow-hidden bg-zinc-900 group h-full">
+          <div class="absolute inset-0 bg-cover bg-center opacity-70 group-hover:scale-105 transition-transform duration-500"
+            data-alt="Vertical shot of signature pour over"
+            style="background-image: url('https://images.unsplash.com/photo-1504630083234-141d7d63b706?w=500&h=500&fit=crop');">
+          </div>
+          <div class="absolute bottom-0 left-0 p-4 w-full bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+            <p class="text-white font-bold text-base leading-tight">Signature Pour Over</p>
+            <p class="text-primary text-xs font-bold mt-1">${(6.5).toFixed(2)}DH</p>
+          </div>
+        </div>
+        <div class="grid grid-rows-2 gap-3 h-full">
+          <div class="relative rounded-[20px] overflow-hidden bg-zinc-200 h-full">
+            <div class="absolute inset-0 bg-cover bg-center" data-alt="Close up of coffee beans"
+              style="background-image: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=500&h=500&fit=crop');">
+            </div>
+            <div class="absolute inset-0 bg-black/30 flex items-center justify-center p-4">
+              <p class="text-white text-[10px] font-bold uppercase tracking-[0.1em] text-center">New Origins</p>
+            </div>
+          </div>
+          <div
+            class="relative rounded-[20px] overflow-hidden bg-primary/5 flex flex-col items-center justify-center text-center p-4 border border-primary/20 h-full">
+            <span class="material-symbols-outlined text-primary text-2xl mb-1">loyalty</span>
+            <p class="text-[10px] font-bold text-primary uppercase tracking-tighter">Rewards</p>
+            <p class="text-[#1c160d] text-[10px] font-bold">2x Points Today</p>
+          </div>
+        </div>
+      </div>
+      <div class="relative w-full h-20 rounded-[20px] overflow-hidden bg-[#1a0f08] flex items-center px-4 py-3">
+        <div class="flex-1">
+          <h3 class="text-white font-bold text-base">Limited Roast</h3>
+          <p class="text-white/60 text-[10px]">Ethiopian Yirgacheffe G1</p>
+        </div>
+        <button class="bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase">Try Now</button>
+      </div>
     </div>
 
     <div class="px-4 pt-2 pb-3 flex items-center justify-between">

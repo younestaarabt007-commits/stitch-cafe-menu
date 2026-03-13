@@ -85,46 +85,14 @@ function renderProducts(filter = 'all') {
 
 // Navigate to customization page
 function redirectToCustomization(productId) {
-    // All black coffee items go to the espresso/black coffee customization view
-    window.location.href = '../pure_noir_espresso_customization_view_1/index.html';
+    const product = products.find(p => String(p.id) === String(productId));
+    if (!product) return;
+    window.location.href = `../pure_noir_espresso_customization_view_1/index.html?name=${encodeURIComponent(product.name)}&image=${encodeURIComponent(product.image)}&price=${product.price}`;
 }
 
 // Add to cart
 function addToCart(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
-
-    const cart = JSON.parse(localStorage.getItem('stitch_cart') || '[]');
-    const existingItem = cart.find(item => item.id === product.id);
-
-    if (existingItem) {
-        existingItem.quantity += 1;
-    } else {
-        cart.push({
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            image: product.image,
-            category: product.category,
-            quantity: 1
-        });
-    }
-
-    localStorage.setItem('stitch_cart', JSON.stringify(cart));
-
-    if (window.updateGlobalCartCount) {
-        window.updateGlobalCartCount();
-    }
-
-    // Visual feedback
-    const btn = document.querySelector(`button[onclick*="${productId}"]`);
-    if (btn) {
-        const originalContent = btn.innerHTML;
-        btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span>';
-        setTimeout(() => {
-            btn.innerHTML = originalContent;
-        }, 1000);
-    }
+    redirectToCustomization(productId);
 }
 
 // Setup Event Listeners

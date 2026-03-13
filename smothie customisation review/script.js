@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (image) {
-        const hero = document.querySelector('.relative.h-80');
+        const hero = document.getElementById('hero-image');
         if (hero) {
             hero.style.backgroundImage = `linear-gradient(to top, rgba(0,0,0,0.5), transparent), url('${decodeURIComponent(image)}')`;
             hero.style.backgroundSize = 'cover';
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: 'Mixed Berry Smoothie',
                 price: (basePrice + currentSizePrice + currentExtrasPrice),
                 quantity: currentQuantity,
-                image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBiVeZwsSWJCE0eA9VnyqfFQS9JikAIjX1ILhQIdSMxHybKQKVUH0Sr4yC_VY7Kk24O1rncwIV4QOErsCS1AQafyRo16YS2BNrdDdtGyILBk815rqkxyt10oNzoZhdGaAuoofSFHQwNk1HqwRzN_8N8iQQFRJQbND46R6lZeLOfl01ft9o-_Nqhm_V7Hoj1P2VTpGmEqLxku_EHeRoAggD0NnfKsB_q5hKCNJx87UYCqbvwAHawhLYg4sCOANFI-gixKf_hoMp6jic',
+                image: decodeURIComponent(image),
                 options: []
             };
 

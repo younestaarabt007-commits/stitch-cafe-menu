@@ -1,5 +1,6 @@
 let itemName = 'Chef\'s Brunch';
 let basePrice = 12.00;
+let itemImage = null;
 let state = {
   eggs: 'poached',
   toast: 'sourdough',
@@ -22,9 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!Number.isNaN(p)) basePrice = p;
 
   if (image) {
-    const hero = document.querySelector('.hero-gradient');
+    itemImage = decodeURIComponent(image);
+    const hero = document.querySelector('.brunch-cust-hero');
     if (hero) {
-      hero.style.backgroundImage = `linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)), url('${decodeURIComponent(image)}')`;
+      hero.style.backgroundImage = `linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)), url('${itemImage}')`;
+      hero.style.backgroundSize = 'cover';
+      hero.style.backgroundPosition = 'center';
     }
   }
 
@@ -87,6 +91,7 @@ function setupEvents() {
     const unit = basePrice + extrasTotal;
     const order = {
       item: itemName,
+      image: itemImage,
       options: { eggs: state.eggs, toast: state.toast, spice: state.spice, extras: Object.keys(state.extras) },
       qty: state.qty,
       unit_price: unit,

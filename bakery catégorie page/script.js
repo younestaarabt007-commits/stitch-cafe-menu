@@ -99,40 +99,7 @@ function renderProducts(filter = 'all') {
 }
 
 function addToCart(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
-
-    const cart = JSON.parse(localStorage.getItem('stitch_cart') || '[]');
-    const existingItem = cart.find(item => item.id === product.id);
-
-    if (existingItem) {
-        existingItem.quantity += 1;
-    } else {
-        cart.push({
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            image: product.image,
-            category: product.category,
-            quantity: 1
-        });
-    }
-
-    localStorage.setItem('stitch_cart', JSON.stringify(cart));
-
-    if (window.updateGlobalCartCount) {
-        window.updateGlobalCartCount();
-    }
-
-    // Visual feedback
-    const btn = document.querySelector(`button[onclick*="${productId}"]`);
-    if (btn) {
-        const originalContent = btn.innerHTML;
-        btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span>';
-        setTimeout(() => {
-            btn.innerHTML = originalContent;
-        }, 1000);
-    }
+    redirectToCustomization(productId);
 }
 
 // Redirect to Customization Page

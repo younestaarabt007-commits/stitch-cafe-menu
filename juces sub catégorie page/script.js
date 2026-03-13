@@ -276,44 +276,22 @@ function getMenuTranslation(item, field) {
 function redirectToCustomization(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
-    window.location.href = `../orange juce_customization_view_1/index.html?price=${product.price}&name=${encodeURIComponent(product.name)}&image=${encodeURIComponent(product.image)}`;
+    
+    // Ensure image path is root-relative
+    let imgPath = product.image;
+    if (imgPath && !imgPath.startsWith('/') && !imgPath.startsWith('http')) {
+        if (imgPath.startsWith('../')) {
+            imgPath = imgPath.replace('../', '/');
+        } else {
+            imgPath = '/' + imgPath;
+        }
+    }
+    
+    window.location.href = `../orange juce_customization_view_1/index.html?price=${product.price}&name=${encodeURIComponent(product.name)}&image=${encodeURIComponent(imgPath)}`;
 }
 
 function addToCart(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
-
-    const cart = JSON.parse(localStorage.getItem('stitch_cart') || '[]');
-    const existingItem = cart.find(item => item.id === product.id);
-
-    if (existingItem) {
-        existingItem.quantity += 1;
-    } else {
-        cart.push({
-            id: product.id,
-            name: getMenuTranslation(product, 'name'),
-            price: product.price,
-            image: product.image,
-            category: product.category,
-            quantity: 1
-        });
-    }
-
-    localStorage.setItem('stitch_cart', JSON.stringify(cart));
-
-    if (window.updateGlobalCartCount) {
-        window.updateGlobalCartCount();
-    }
-
-    // Visual feedback
-    const btn = document.querySelector(`button[onclick*="${productId}"]`);
-    if (btn) {
-        const originalContent = btn.innerHTML;
-        btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span>';
-        setTimeout(() => {
-            btn.innerHTML = originalContent;
-        }, 1000);
-    }
+    redirectToCustomization(productId);
 }
 
 function renderProducts(filter = 'all') {

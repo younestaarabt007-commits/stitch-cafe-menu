@@ -1,6 +1,6 @@
 const products = [
-    { id: "smoothie_1", name: "Berry Burst", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie/074e6662cd4a5fd64a69f06f078944bf.jpg", category: "berry" },
-    { id: "smoothie_2", name: "Green Power", description: "Spinach, apple, banana", price: 5.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie/a149102a082605c39f1576706e514bf1.jpg", category: "green" },
+    { id: "smoothie_1", name: "Berry Burst", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie-berry-cream.jpg", category: "berry" },
+    { id: "smoothie_2", name: "Green Power", description: "Spinach, apple, banana", price: 5.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/kiwi-milk-shake-table_140725-8608.jpg", category: "green" },
     { id: "smoothie_3", name: "Protein Plus", description: "Peanut, whey, banana", price: 5.80, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie/bf9d74d6badcbc6dad96c5fe3b2537d9.jpg", category: "protein" },
     { id: "smoothie_4", name: "Tropical Smooth", description: "Mango, pineapple, coconut", price: 5.40, image: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie/58b8a4072e8dc05fd60ef5308e932cd9.jpg", category: "tropical" },
 ];
@@ -23,40 +23,7 @@ function redirectToCustomization(productId) {
 }
 
 function addToCart(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
-
-    const cart = JSON.parse(localStorage.getItem('stitch_cart') || '[]');
-    const existingItem = cart.find(item => item.id === product.id);
-
-    if (existingItem) {
-        existingItem.quantity += 1;
-    } else {
-        cart.push({
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            image: product.image,
-            category: product.category,
-            quantity: 1
-        });
-    }
-
-    localStorage.setItem('stitch_cart', JSON.stringify(cart));
-
-    if (window.updateGlobalCartCount) {
-        window.updateGlobalCartCount();
-    }
-
-    // Visual feedback
-    const btn = document.querySelector(`button[onclick*="${productId}"]`);
-    if (btn) {
-        const originalContent = btn.innerHTML;
-        btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span>';
-        setTimeout(() => {
-            btn.innerHTML = originalContent;
-        }, 1000);
-    }
+    redirectToCustomization(productId);
 }
 
 function renderProducts(filter = 'all') {

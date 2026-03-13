@@ -10,6 +10,7 @@ const toppingPrices = {
     'smoked-salmon': 4.50,
     'extra-avocado': 3.00
 };
+let itemName = 'Artisanal Avocado Toast';
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,12 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const image = params.get('image');
 
     if (n) {
+        itemName = n;
         const titleEl = document.querySelector('h1');
         if (titleEl) titleEl.textContent = decodeURIComponent(n);
     }
 
     if (image) {
-        const hero = document.querySelector('div[style*="background-image"]');
+        const hero = document.getElementById('customization-hero');
         if (hero) {
             hero.style.backgroundImage = `linear-gradient(to top, rgba(0,0,0,0.4), transparent), url('${decodeURIComponent(image)}')`;
         }
@@ -106,48 +108,20 @@ function setupEventListeners() {
 
     // Add to Order Button
     document.getElementById('add-to-order').addEventListener('click', () => {
-        const orderItem = {
-            id: 'brunch-' + Date.now(), // Unique ID for cart
-            name: 'Avocado Smash & Poached Egg',
-            price: calculateTotal() / quantity, // Unit price
+        const order = {
+            item: itemName || "Brunch Item",
+            bread: selectedBread,
+            toppings: selectedToppings,
+            pairings: selectedPairings,
             qty: quantity,
-            category: 'Brunch',
-            options: {
-                bread: selectedBread,
-                toppings: selectedToppings,
-                pairings: selectedPairings
-            }
+            unit_price: calculateTotal() / quantity,
+            total: calculateTotal(),
+            time: new Date().toISOString()
         };
-
-        // Get existing cart
-        let cart = [];
         try {
-            cart = JSON.parse(localStorage.getItem('stitch_cart') || '[]');
-        } catch (e) {
-            cart = [];
-        }
-
-        // Add to cart
-        cart.push(orderItem);
-
-        // Save cart
-        localStorage.setItem('stitch_cart', JSON.stringify(cart));
-
-        // Update totals (optional, main menu will recalculate)
-        // localStorage.setItem('stitch_cart_count', String(cart.length));
-
-        console.log('Added to cart:', orderItem);
-
-        // Visual Feedback
-        const btn = document.getElementById('add-to-order');
-        const originalText = btn.textContent;
-        btn.textContent = 'Added to Cart!';
-        btn.classList.add('bg-green-600');
-
-        setTimeout(() => {
-            // Go back to menu or previous page
-            window.history.back();
-        }, 800);
+            localStorage.setItem('stitch_last_order', JSON.stringify(order));
+        } catch { }
+        window.location.href = '../swiggy-style_elite_main_menu_390x2500/index.html';
     });
 }
 

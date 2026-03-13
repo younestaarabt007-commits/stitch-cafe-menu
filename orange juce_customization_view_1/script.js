@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const price = params.get('price');
 
     if (image) {
-        const heroImage = document.querySelector('div[style*="background-image"]');
+        const heroContainer = document.getElementById('customization-hero');
+        const heroImage = heroContainer ? heroContainer.querySelector('div') : null;
         if (heroImage) {
             heroImage.style.backgroundImage = `linear-gradient(to top, rgba(0,0,0,0.2), transparent), url('${decodeURIComponent(image)}')`;
         }

@@ -1,200 +1,270 @@
-// Merchant Management Logic
-let allMerchants = [];
+// Demo Data
+const DUMMY_MERCHANTS = [
+    { id: 'm1', name: 'Elite Roastery', email: 'er-782@gmail.com', plan: 'Gold SaaS', status: 'Active', revenue: '12,450 DH', location: 'Casablanca' },
+    { id: 'm2', name: 'Le Matin Bakery', email: 'contact@lematin.ma', plan: 'Starter', status: 'Active', revenue: '8,200 DH', location: 'Rabat' },
+    { id: 'm3', name: 'Green Leaf Salad', email: 'hello@greenleaf.com', plan: 'Pro', status: 'Suspended', revenue: '0 DH', location: 'Marrakech' },
+    { id: 'm4', name: 'Sushi Zen', email: 'manager@sushizen.ma', plan: 'Gold SaaS', status: 'Active', revenue: '45,100 DH', location: 'Tangier' },
+    { id: 'm5', name: 'Burger King (Franchise)', email: 'bk-maroc@bk.com', plan: 'Enterprise', status: 'Active', revenue: '120,500 DH', location: 'Casablanca' }
+];
 
-async function loadMerchants() {
-    const tbody = document.getElementById('merchant-list-body');
-    tbody.innerHTML = '<tr><td colspan="4" class="text-center py-10"><span class="animate-spin material-symbols-outlined text-primary text-4xl">sync</span></td></tr>';
-    
-    try {
-        const token = localStorage.getItem('stitch_token');
-        const res = await fetch('http://localhost:3000/api/v1/admin/merchants', {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-        const result = await res.json();
-        
-        if (result.success) {
-            allMerchants = result.data;
-            renderMerchants(allMerchants);
+// Navigation Logic
+function switchTab(tabName) {
+    // Hide all contents
+    document.querySelectorAll('.tab-content').forEach(el => {
+        el.style.display = 'none';
+        el.classList.add('hidden');
+        el.classList.remove('block');
+    });
+
+    // Show selected content
+    const content = document.getElementById(`${tabName}-content`);
+    if (content) {
+        content.style.display = 'block';
+        content.classList.remove('hidden');
+        content.classList.add('block');
+    }
+
+    // Update active button state in sidebar
+    document.querySelectorAll('#main-nav button[data-tab]').forEach(btn => {
+        if (btn.dataset.tab === tabName) {
+            btn.classList.remove('text-gray-500', 'hover:text-primary', 'hover:bg-orange-50', 'dark:hover:bg-orange-950/10');
+            btn.classList.add('bg-orange-50', 'dark:bg-orange-950/30', 'text-primary');
+        } else {
+            btn.classList.add('text-gray-500', 'hover:text-primary', 'hover:bg-orange-50', 'dark:hover:bg-orange-950/10');
+            btn.classList.remove('bg-orange-50', 'dark:bg-orange-950/30', 'text-primary');
         }
-    } catch (e) {
-        tbody.innerHTML = '<tr><td colspan="4" class="text-center py-10 text-red-500 font-bold">Failed to load merchants.</td></tr>';
+    });
+
+    // Update Header Title
+    const titles = {
+        overview: 'Platform Overview',
+        merchants: 'Merchant Management',
+        payments: 'Financial Overview',
+        accounts: 'Administrative Accounts'
+    };
+    const headerTitle = document.querySelector('header h2');
+    if (headerTitle && titles[tabName]) {
+        headerTitle.textContent = titles[tabName];
     }
 }
 
-function renderMerchants(merchants) {
-    const tbody = document.getElementById('merchant-list-body');
-    tbody.innerHTML = merchants.map(m => `
+// Rendering Logic
+function createMerchantRow(m, isSimple) {
+    if (isSimple) {
+        return `
+        <tr class="hover:bg-gray-50/50 dark:hover:bg-black/5 transition-colors">
+            <td class="px-8 py-5">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
+                        ${m.name.substring(0, 2).toUpperCase()}
+                    </div>
+                    <div>
+                        <p class="font-bold">${m.name}</p>
+                        <p class="text-xs text-gray-400 font-medium">${m.email}</p>
+                    </div>
+                </div>
+            </td>
+            <td class="px-8 py-5"><span class="text-xs font-bold text-primary">${m.plan}</span></td>
+            <td class="px-8 py-5">
+                <span class="px-3 py-1 ${m.status === 'Active' ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400' : 'bg-red-100 dark:bg-red-900/30 text-red-600'} text-[10px] font-bold rounded-full">${m.status}</span>
+            </td>
+            <td class="px-8 py-5 text-right">
+                <button onclick="editMerchant('${m.name}')" class="p-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg transition-all"><span class="material-symbols-outlined text-gray-400">edit</span></button>
+            </td>
+        </tr>`;
+    } else {
+        return `
         <tr class="hover:bg-gray-50/50 dark:hover:bg-black/5 transition-colors">
             <td class="px-8 py-5">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-primary font-bold">
-                        ${m.name.substring(0,2).toUpperCase()}
+                        ${m.name.substring(0, 2).toUpperCase()}
                     </div>
                     <div>
                         <p class="font-bold">${m.name}</p>
-                        <p class="text-xs text-gray-400 font-medium">Tenant ID: ${m.id.substring(0,8)}...</p>
+                        <p class="text-xs text-gray-400 font-medium">${m.email}</p>
                     </div>
                 </div>
             </td>
+            <td class="px-8 py-5 text-sm font-bold text-gray-500">${m.location}</td>
+            <td class="px-8 py-5"><span class="text-xs font-bold text-primary">${m.plan}</span></td>
+            <td class="px-8 py-5 text-sm font-bold">${m.revenue}</td>
             <td class="px-8 py-5">
-                <span class="px-3 py-1 ${m.is_active ? 'bg-green-100 dark:bg-green-900/30 text-green-600' : 'bg-red-100 dark:bg-red-900/30 text-red-600'} text-[10px] font-bold rounded-full">
-                    ${m.is_active ? 'Active' : 'Suspended'}
-                </span>
-            </td>
-            <td class="px-8 py-5 text-xs font-medium text-gray-500">
-                ${new Date(m.created_at).toLocaleDateString()}
+                <span class="px-3 py-1 ${m.status === 'Active' ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400' : 'bg-red-100 dark:bg-red-900/30 text-red-600'} text-[10px] font-bold rounded-full">${m.status}</span>
             </td>
             <td class="px-8 py-5 text-right">
                 <div class="flex justify-end gap-2">
-                    <button onclick="toggleMerchantStatus('${m.id}', ${m.is_active})" class="p-2 hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-lg transition-all" title="${m.is_active ? 'Suspend' : 'Activate'}">
-                        <span class="material-symbols-outlined ${m.is_active ? 'text-orange-500' : 'text-green-500'}">${m.is_active ? 'block' : 'check_circle'}</span>
-                    </button>
-                    <button onclick="deleteMerchant('${m.id}')" class="p-2 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-lg transition-all text-red-500" title="Delete Permanent">
-                        <span class="material-symbols-outlined">delete</span>
-                    </button>
+                    <button class="p-2 hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-lg transition-all text-orange-500"><span class="material-symbols-outlined">block</span></button>
+                    <button class="p-2 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-lg transition-all text-red-500"><span class="material-symbols-outlined">delete</span></button>
                 </div>
             </td>
-        </tr>
-    `).join('');
-}
-
-window.toggleMerchantStatus = async (id, currentStatus) => {
-    if (!confirm(`Are you sure you want to ${currentStatus ? 'SUSPEND' : 'ACTIVATE'} this merchant?`)) return;
-    
-    try {
-        const token = localStorage.getItem('stitch_token');
-        const res = await fetch(`http://localhost:3000/api/v1/admin/merchants/${id}/status`, {
-            method: 'PATCH',
-            headers: { 
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ is_active: !currentStatus })
-        });
-        
-        if (res.ok) {
-            loadMerchants();
-        }
-    } catch (e) {
-        alert('Action failed');
-    }
-};
-
-window.deleteMerchant = async (id) => {
-    if (!confirm('CRITICAL: This will permanently delete ALL data for this merchant. This cannot be undone. Proceed?')) return;
-    
-    try {
-        const token = localStorage.getItem('stitch_token');
-        const res = await fetch(`http://localhost:3000/api/v1/admin/merchants/${id}`, {
-            method: 'DELETE',
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-        
-        if (res.ok) {
-            loadMerchants();
-        }
-    } catch (e) {
-        alert('Delete failed');
-    }
-};
-
-// Search Filter
-document.getElementById('merchant-search')?.addEventListener('input', (e) => {
-    const q = e.target.value.toLowerCase();
-    const filtered = allMerchants.filter(m => m.name.toLowerCase().includes(q));
-    renderMerchants(filtered);
-});
-
-// Session Check
-document.addEventListener('DOMContentLoaded', () => {
-    const token = localStorage.getItem('stitch_token');
-    const role = localStorage.getItem('stitch_role');
-    if (!token || role !== 'SUPER_ADMIN') {
-        window.location.href = '../auth_login_page/index.html';
-        return;
-    }
-    const savedTheme = localStorage.getItem('stitch_theme') || 'elite';
-    applyTheme(savedTheme);
-});
-
-// Tab Switching Logic
-const navButtons = document.querySelectorAll('#main-nav button');
-const tabContents = document.querySelectorAll('.tab-content');
-
-navButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const tabId = btn.getAttribute('data-tab');
-        
-        // Update Nav UI
-        navButtons.forEach(b => {
-            b.classList.remove('bg-orange-50', 'dark:bg-orange-950/30', 'text-primary');
-            b.classList.add('text-gray-500');
-        });
-        btn.classList.add('bg-orange-50', 'dark:bg-orange-950/30', 'text-primary');
-        btn.classList.remove('text-gray-500');
-
-        // Show/Hide Content
-        tabContents.forEach(content => {
-            if (content.id === `${tabId}-content`) {
-                content.classList.remove('hidden');
-            } else {
-                content.classList.add('hidden');
-            }
-        });
-
-        if (tabId === 'merchants') {
-            loadMerchants();
-        }
-
-        // Update Header Title
-        const titles = {
-            overview: 'Platform Overview',
-            merchants: 'Merchant Management',
-            payments: 'Financial Overview',
-            accounts: 'Administrative Accounts'
-        };
-        document.querySelector('header h2').textContent = titles[tabId];
-    });
-});
-
-// Modal Logic
-function editMerchant(name) {
-    document.getElementById('edit-merchant-name').value = name;
-    document.getElementById('edit-modal').classList.remove('hidden');
-}
-
-function closeModal() {
-    document.getElementById('edit-modal').classList.add('hidden');
-}
-
-// Close modal on outside click
-window.onclick = function(event) {
-    const modal = document.getElementById('edit-modal');
-    if (event.target == modal) {
-        closeModal();
+        </tr>`;
     }
 }
 
+function renderMerchants(merchants = DUMMY_MERCHANTS) {
+    // Render Recent (Overview)
+    const recentBody = document.getElementById('recent-merchants-body');
+    if (recentBody) {
+        recentBody.innerHTML = merchants.slice(0, 3).map(m => createMerchantRow(m, true)).join('');
+    }
+
+    // Render All (Merchants Tab)
+    const allBody = document.getElementById('all-merchants-body');
+    if (allBody) {
+        allBody.innerHTML = merchants.map(m => createMerchantRow(m, false)).join('');
+    }
+}
+
+// UI Helpers
 function applyTheme(name) {
-    document.body.classList.remove('theme-blue', 'theme-emerald');
-    if (name === 'blue') document.body.classList.add('theme-blue');
-    if (name === 'emerald') document.body.classList.add('theme-emerald');
+    document.documentElement.classList.remove('theme-blue', 'theme-emerald');
+    if (name === 'blue') document.documentElement.classList.add('theme-blue');
+    if (name === 'emerald') document.documentElement.classList.add('theme-emerald');
     localStorage.setItem('stitch_theme', name);
 }
 
-const themeToggle = document.getElementById('theme-toggle');
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        const current = localStorage.getItem('stitch_theme') || 'elite';
-        const next = current === 'elite' ? 'blue' : current === 'blue' ? 'emerald' : 'elite';
-        applyTheme(next);
-    });
+function editMerchant(name) {
+    const modal = document.getElementById('edit-modal');
+    const input = document.getElementById('edit-merchant-name');
+    if (modal && input) {
+        input.value = name;
+        modal.classList.remove('hidden');
+    }
 }
 
-// Logout logic
-document.getElementById('logout-btn').addEventListener('click', () => {
-    localStorage.removeItem('stitch_token');
-    localStorage.removeItem('stitch_role');
-    localStorage.removeItem('stitch_user');
-    window.location.href = '../auth_login_page/index.html';
+function closeModal() {
+    const modal = document.getElementById('edit-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+    }
+}
+
+// Initial Load and Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Initialize Tabs
+    switchTab('overview');
+    renderMerchants();
+
+    // 2. Tab Navigation
+    document.querySelectorAll('#main-nav button[data-tab]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            switchTab(btn.dataset.tab);
+        });
+    });
+
+    // 3. Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const current = localStorage.getItem('stitch_theme') || 'elite';
+            const next = current === 'elite' ? 'blue' : current === 'blue' ? 'emerald' : 'elite';
+            applyTheme(next);
+        });
+    }
+
+    // 4. Search Filter
+    const searchInput = document.getElementById('merchant-search');
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const q = e.target.value.toLowerCase();
+            const filtered = DUMMY_MERCHANTS.filter(m => m.name.toLowerCase().includes(q));
+            renderMerchants(filtered);
+        });
+    }
+
+    // 5. Logout Handler
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            if (confirm('Sign out?')) {
+                localStorage.removeItem('stitch_token');
+                localStorage.removeItem('stitch_role');
+                localStorage.removeItem('stitch_user');
+                window.location.href = '../auth_login_page/index.html';
+            }
+        });
+    }
+
+    // 6. Close Modal on Background Click
+    window.onclick = function (event) {
+        const modal = document.getElementById('edit-modal');
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+
+    // 7. Sidebar Toggle Logic
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const sidebar = document.querySelector('aside');
+    const mainContent = document.getElementById('main-content');
+    const sidebarHeader = document.getElementById('sidebar-header');
+    const sidebarFooter = document.getElementById('sidebar-footer');
+    const sidebarTexts = document.querySelectorAll('.sidebar-text');
+    const sidebarTitle = document.getElementById('sidebar-title');
+    const navButtons = document.querySelectorAll('#main-nav button');
+    const userInfoCard = document.getElementById('user-info-card');
+    const userInfoHeader = document.getElementById('user-info-header');
+
+    if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', () => {
+            const isCollapsed = sidebar.classList.toggle('w-20');
+            sidebar.classList.toggle('w-72');
+
+            // Toggle main content margin
+            if (isCollapsed) {
+                mainContent.classList.remove('ml-72');
+                mainContent.classList.add('ml-24'); // Slightly more than w-20 (5rem) to avoid overlap
+            } else {
+                mainContent.classList.add('ml-72');
+                mainContent.classList.remove('ml-24');
+            }
+
+            // Toggle padding on header/footer
+            sidebarHeader.classList.toggle('p-8');
+            sidebarHeader.classList.toggle('p-4');
+            sidebarFooter.classList.toggle('p-8');
+            sidebarFooter.classList.toggle('p-4');
+
+            // Toggle Text Visibility & Layout
+            if (isCollapsed) {
+                if (sidebarTitle) sidebarTitle.classList.add('hidden');
+                sidebarTexts.forEach(el => el.classList.add('hidden'));
+                
+                navButtons.forEach(btn => {
+                    btn.classList.remove('gap-3');
+                    btn.classList.add('justify-center');
+                    btn.classList.remove('px-4');
+                });
+
+                if (userInfoCard) {
+                    userInfoCard.classList.replace('p-4', 'p-2');
+                    userInfoCard.classList.add('flex', 'justify-center');
+                }
+                if (userInfoHeader) {
+                    userInfoHeader.classList.remove('mb-2');
+                    userInfoHeader.classList.remove('gap-3');
+                }
+
+            } else {
+                if (sidebarTitle) sidebarTitle.classList.remove('hidden');
+                sidebarTexts.forEach(el => el.classList.remove('hidden'));
+                
+                navButtons.forEach(btn => {
+                    btn.classList.add('gap-3');
+                    btn.classList.remove('justify-center');
+                    btn.classList.add('px-4');
+                });
+
+                if (userInfoCard) {
+                    userInfoCard.classList.replace('p-2', 'p-4');
+                    userInfoCard.classList.remove('flex', 'justify-center');
+                }
+                if (userInfoHeader) {
+                    userInfoHeader.classList.add('mb-2');
+                    userInfoHeader.classList.add('gap-3');
+                }
+            }
+        });
+    }
 });

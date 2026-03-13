@@ -214,44 +214,11 @@ function redirectToCustomization(productId) {
     customizationUrl = '../pure_noir_espresso_customization_view_1/index.html';
   }
 
-  window.location.href = customizationUrl;
+  window.location.href = `${customizationUrl}?name=${encodeURIComponent(product.name)}&image=${encodeURIComponent(product.image)}&price=${product.price}`;
 }
 
 function addToCart(productId) {
-  const product = products.find(p => String(p.id) === String(productId));
-  if (!product) return;
-
-  const cart = JSON.parse(localStorage.getItem('stitch_cart') || '[]');
-  const existingItem = cart.find(item => String(item.id) === String(product.id));
-
-  if (existingItem) {
-    existingItem.quantity += 1;
-  } else {
-    cart.push({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      image: product.image,
-      category: product.category,
-      quantity: 1
-    });
-  }
-
-  localStorage.setItem('stitch_cart', JSON.stringify(cart));
-
-  if (window.updateGlobalCartCount) {
-    window.updateGlobalCartCount();
-  }
-
-  // Visual feedback
-  const btn = document.querySelector(`button[onclick*="addToCart('${productId}')"]`) || document.querySelector(`button[onclick*="addToCart(${productId})"]`);
-  if (btn) {
-    const originalContent = btn.innerHTML;
-    btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span>';
-    setTimeout(() => {
-      btn.innerHTML = originalContent;
-    }, 1000);
-  }
+  redirectToCustomization(productId);
 }
 
 function updateCart() {

@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (image) {
-        const hero = document.querySelector('div[style*="background-image"]');
+        const hero = document.getElementById('customization-hero');
         if (hero) {
             hero.style.backgroundImage = `linear-gradient(to top, rgba(0,0,0,0.4), transparent), url('${decodeURIComponent(image)}')`;
         }

@@ -1,9 +1,11 @@
 body {
-    background-color: #f8f6f5;
+    background-color: #0f172a;
+    color: #e2e8f0;
 }
 
-.dark body {
-    background-color: #1a100c;
+body.light {
+    background-color: #e4e4e4;
+    color: #0f172a;
 }
 
 body.app-preload>#app-hydration-shell {
@@ -18,6 +20,181 @@ body.icons-pending .material-symbols-outlined {
     color: transparent !important;
 }
 
+/* Keep buttons white for contrast, but make cards/panels slightly off-white */
+.bg-white {
+    background-color: #ffffff !important;
+}
+
+/* But keep actual white buttons white for visual separation */
+button.bg-white,
+.btn-white,
+button[class*="bg-white"] {
+    background-color: #ffffff !important;
+}
+
+/* FIX: Ensure black buttons remain black (overriding the rule above which matches 'dark:bg-white') */
+button.bg-gray-900,
+.bg-gray-900 {
+    background-color: #111827 !important;
+    color: #f9fafb !important;
+}
+
+.dark button.bg-gray-900,
+.dark .bg-gray-900 {
+    background-color: #f1f5f9 !important;
+    color: #e2e8f0 !important;
+}
+
+.dark .bg-white {
+    background-color: #1e293b !important;
+}
+
+/* Enhanced text visibility on orange background */
+.text-shadow-md {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-strong {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* High contrast text for orange background */
+.text-high-contrast {
+    color: #a7a7a7 !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.025em !important;
+}
+
+/* Ultra high contrast for maximum visibility */
+.text-ultra-contrast {
+    color: #a7a7a7 !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.05em !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Hide New Table button when specific tabs are active */
+#main-content[data-active-tab="pos"] #new-table-btn,
+#main-content[data-active-tab="orders"] #new-table-btn,
+#main-content[data-active-tab="menu"] #new-table-btn {
+    display: none !important;
+}
+
+.dark button.bg-white,
+.dark .btn-white,
+.dark button[class*="bg-white"] {
+    background-color: #1e293b !important;
+}
+
+/* Better Shadows Utility */
+.shadow-combined {
+    box-shadow: 0px 4px 4px rgba(15, 23, 42, 0.05), 0px 12px 12px rgba(15, 23, 42, 0.03);
+}
+
+.dark .shadow-combined {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3), 0px 12px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Radio Cards (Bland Elements) Utility */
+.radio-card-input {
+    appearance: none;
+    -webkit-appearance: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.radio-card-label {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.radio-card-input:checked + .radio-card-input:checked+.btn-radio-card {
+    border-color: #0ea5e9;
+    background-color: rgba(14, 165, 233, 0.05);
+}
+
+.radio-card-input:checked + .radio-card-label .radio-check-icon {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.radio-card-input:checked + .radio-card-label .radio-check-icon::after {
+    opacity: 1;
+}
+
+.radio-check-icon {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-muted);
+    border-radius: 50%;
+    margin-bottom: 8px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.dark .radio-check-icon {
+    border-color: var(--border-muted);
+}
+
+.radio-check-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* Radio Card Style for Buttons (Mimics the Input version) */
+.btn-radio-card {
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-radio-card:hover {
+    background-color: #f1f5f9;
+}
+
+.dark .btn-radio-card:hover {
+    background-color: rgba(241, 245, 249, 0.05);
+}
+
+.btn-radio-card.active {
+    border-color: #0ea5e9;
+    background-color: rgba(14, 165, 233, 0.05);
+    color: #0ea5e9;
+}
+
+.btn-radio-card.active .material-symbols-outlined {
+    color: #0ea5e9;
+}
+
+/* Override gray-50 backgrounds with warm light gray that's distinct from white */
+.bg-gray-50 {
+    background-color: #f8f6f5 !important;
+}
+
+.dark .bg-gray-50 {
+    background-color: #1a100c !important;
+}
+
 .shadow-glow {
     box-shadow: 
         0 0 20px rgba(255, 82, 0, 0.3),
@@ -27,16 +204,16 @@ body.icons-pending .material-symbols-outlined {
 
 .shadow-soft {
     box-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.08),
-        0 4px 12px rgba(0, 0, 0, 0.06),
-        0 8px 24px rgba(0, 0, 0, 0.04);
+        0 2px 4px rgba(15, 23, 42, 0.08),
+        0 4px 12px rgba(15, 23, 42, 0.06),
+        0 8px 24px rgba(15, 23, 42, 0.04);
 }
 
 .shadow-deep {
     box-shadow: 
-        0 4px 8px rgba(0, 0, 0, 0.12),
-        0 8px 16px rgba(0, 0, 0, 0.1),
-        0 16px 32px rgba(0, 0, 0, 0.08);
+        0 4px 8px rgba(15, 23, 42, 0.12),
+        0 8px 16px rgba(15, 23, 42, 0.1),
+        0 16px 32px rgba(15, 23, 42, 0.08);
 }
 
 .dark .shadow-deep {
@@ -48,9 +225,9 @@ body.icons-pending .material-symbols-outlined {
 
 .shadow-elevated {
     box-shadow: 
-        0 4px 8px rgba(0, 0, 0, 0.15),
-        0 12px 24px rgba(0, 0, 0, 0.12),
-        0 24px 48px rgba(0, 0, 0, 0.1);
+        0 4px 8px rgba(15, 23, 42, 0.3),
+        0 12px 24px rgba(15, 23, 42, 0.12),
+        0 24px 48px rgba(15, 23, 42, 0.1);
 }
 
 .dark .shadow-elevated {
@@ -70,46 +247,64 @@ body.icons-pending .material-symbols-outlined {
     background: rgba(255, 82, 0, 0.1);
 }
 
-.status-reserved {
-    color: #8B5CF6;
-    background: rgba(139, 92, 246, 0.1);
+.status-available {
+    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
 }
 
 .bg-available {
-    background-color: #10B981 !important;
+    background-color: var(--success) !important;
 }
 
 .bg-occupied {
-    background-color: #FF5200 !important;
+    background-color: var(--primary) !important;
 }
 
 .bg-reserved {
-    background-color: #8B5CF6 !important;
+    background-color: var(--info) !important;
 }
 
 .pos-card {
-    border: 1.5px solid rgba(255, 82, 0, 0.18);
+    border: 1.5px solid color-mix(in oklch, var(--primary) 18%, transparent);
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dark .pos-card {
-    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border: 1.5px solid color-mix(in oklch, var(--border) 20%, transparent);
+}
+
+/* Custom spacing for 1280px screens to separate buttons from title */
+@media (min-width: 1280px) {
+    .pos-page-header {
+        gap: 1.5rem !important; /* Reduced gap to pull buttons closer to title */
+    }
+    
+    .pos-page-actions {
+        gap: 0.75rem !important;
+        flex-shrink: 0 !important;
+        display: flex !important;
+        flex-wrap: nowrap !important;
+    }
+    
+    .pos-page-header > div:first-child {
+        flex-shrink: 0 !important; /* Prevent title from wrapping */
+    }
 }
 
 .pos-card:hover {
-    border-color: var(--color-primary);
+    border-color: var(--primary);
     transform: translateY(-2px);
     box-shadow: 
-        0 4px 8px rgba(15, 23, 42, 0.12),
-        0 8px 16px rgba(15, 23, 42, 0.1),
-        0 16px 32px rgba(15, 23, 42, 0.08);
+        0 4px 8px color-mix(in oklch, var(--bg-dark) 12%, transparent),
+        0 8px 16px color-mix(in oklch, var(--bg-dark) 10%, transparent),
+        0 16px 32px color-mix(in oklch, var(--bg-dark) 8%, transparent);
 }
 
 .dark .pos-card:hover {
     box-shadow: 
-        0 4px 8px rgba(0, 0, 0, 0.35),
-        0 8px 16px rgba(0, 0, 0, 0.3),
-        0 16px 32px rgba(0, 0, 0, 0.25);
+        0 4px 8px color-mix(in oklch, var(--bg-dark) 35%, transparent),
+        0 8px 16px color-mix(in oklch, var(--bg-dark) 30%, transparent),
+        0 16px 32px color-mix(in oklch, var(--bg-dark) 25%, transparent);
 }
 
 .pos-order-shell {
@@ -124,7 +319,7 @@ body.icons-pending .material-symbols-outlined {
 
 .dark .pos-order-shell {
     border-color: rgba(255, 255, 255, 0.14) !important;
-    background: #241913 !important;
+    background: #2a1e19 !important;
     box-shadow: 
         0 4px 8px rgba(0, 0, 0, 0.35),
         0 8px 16px rgba(0, 0, 0, 0.3),
@@ -167,7 +362,7 @@ body.icons-pending .material-symbols-outlined {
 }
 
 .pos-menu-panel {
-    background: #ffffff;
+    background: #f7f7f7;
     border: 1.5px solid rgba(15, 23, 42, 0.08);
     border-radius: 1.5rem;
     padding: 0.85rem;
@@ -179,9 +374,9 @@ body.icons-pending .material-symbols-outlined {
 
 .dark .pos-menu-panel {
     box-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.3),
-        0 4px 8px rgba(0, 0, 0, 0.25),
-        0 8px 16px rgba(0, 0, 0, 0.2);
+        0 2px 4px color-mix(in oklch, var(--bg-dark) 30%, transparent),
+        0 4px 8px color-mix(in oklch, var(--bg-dark) 25%, transparent),
+        0 8px 16px color-mix(in oklch, var(--bg-dark) 20%, transparent);
 }
 
 .dark .pos-menu-panel {
@@ -196,7 +391,7 @@ body.icons-pending .material-symbols-outlined {
 }
 
 .dark .pos-menu-grid-shell {
-    background: rgba(0, 0, 0, 0.18);
+    background: color-mix(in oklch, var(--bg-dark) 18%, transparent);
 }
 
 .pos-cart-head-block,
@@ -443,30 +638,31 @@ button::before {
 }
 
 button.bg-primary {
-    border-color: color-mix(in srgb, var(--color-primary) 78%, #ffffff 22%) !important;
+    background-color: #0ea5e9 !important;
+    border-color: color-mix(in srgb, #0ea5e9 78%, #ffffff 22%) !important;
     box-shadow: 
-        0 2px 4px rgba(255, 82, 0, 0.3),
-        0 4px 8px rgba(255, 82, 0, 0.25),
-        0 8px 16px rgba(255, 82, 0, 0.2),
-        0 0 20px rgba(255, 82, 0, 0.15),
+        0 2px 4px color-mix(in srgb, #0ea5e9 30%, transparent),
+        0 4px 8px color-mix(in srgb, #0ea5e9 25%, transparent),
+        0 8px 16px color-mix(in srgb, #0ea5e9 20%, transparent),
+        0 0 20px color-mix(in srgb, #0ea5e9 15%, transparent),
         inset 0 1px 0 rgba(255, 255, 255, 0.32);
 }
 
 button.bg-primary:hover {
     transform: translateY(-2px);
     box-shadow: 
-        0 4px 8px rgba(255, 82, 0, 0.35),
-        0 8px 16px rgba(255, 82, 0, 0.3),
-        0 16px 32px rgba(255, 82, 0, 0.25),
-        0 0 30px rgba(255, 82, 0, 0.2),
+        0 4px 8px color-mix(in srgb, #0ea5e9 35%, transparent),
+        0 8px 16px color-mix(in srgb, #0ea5e9 30%, transparent),
+        0 16px 32px color-mix(in srgb, #0ea5e9 25%, transparent),
+        0 0 30px color-mix(in srgb, #0ea5e9 20%, transparent),
         inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 button.bg-primary:active {
     transform: translateY(0px);
     box-shadow: 
-        0 1px 2px rgba(255, 82, 0, 0.3),
-        0 2px 4px rgba(255, 82, 0, 0.25),
+        0 1px 2px color-mix(in srgb, #0ea5e9 30%, transparent),
+        0 2px 4px color-mix(in srgb, #0ea5e9 25%, transparent),
         inset 0 2px 4px rgba(0, 0, 0, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.28);
 }
@@ -603,9 +799,9 @@ header.md\:hidden {
         0 4px 8px rgba(0, 0, 0, 0.25);
 }
 
-/* High contrast for white-on-white */
+/* High contrast - keep buttons white for visual separation */
 .btn-white {
-    background: white;
+    background: #ffffff;
     border: 1px solid rgba(15, 23, 42, 0.1);
     box-shadow: 
         0 2px 4px rgba(15, 23, 42, 0.08),
@@ -674,6 +870,7 @@ header.md\:hidden {
 
 /* Stat Cards */
 .pos-stat-card {
+    background-color: #f7f7f7 !important;
     box-shadow: 
         0 2px 4px rgba(0, 0, 0, 0.08),
         0 4px 8px rgba(0, 0, 0, 0.06),
@@ -705,6 +902,7 @@ header.md\:hidden {
 
 /* Order Cards */
 .pos-order-card {
+    background-color: #f7f7f7 !important;
     box-shadow: 
         0 2px 4px rgba(0, 0, 0, 0.08),
         0 4px 8px rgba(0, 0, 0, 0.06),
@@ -735,6 +933,7 @@ header.md\:hidden {
 
 /* Quick Action Cards */
 .pos-quick-card {
+    background-color: #f7f7f7 !important;
     box-shadow: 
         0 2px 4px rgba(0, 0, 0, 0.08),
         0 4px 8px rgba(0, 0, 0, 0.06),
@@ -765,6 +964,7 @@ header.md\:hidden {
 
 /* QR Panel */
 .pos-qr-panel {
+    background-color: #f7f7f7 !important;
     box-shadow: 
         0 4px 8px rgba(0, 0, 0, 0.1),
         0 8px 16px rgba(0, 0, 0, 0.08),
@@ -795,7 +995,7 @@ header.md\:hidden {
 .qr-preview-wrapper {
     position: relative;
     padding: 24px;
-    background: white;
+    background: #f7f7f7;
     border-radius: 2rem;
     box-shadow: 
         0 2px 4px rgba(0, 0, 0, 0.08),
@@ -815,7 +1015,6 @@ header.md\:hidden {
 
 #qr-preview-canvas {
     position: relative;
-    z-index: 2;
 }
 
 /* Size Options */
@@ -1078,9 +1277,9 @@ input[type="time"]:focus,
 textarea:focus,
 select:focus {
     box-shadow: 
-        0 2px 4px rgba(255, 82, 0, 0.15),
-        0 4px 8px rgba(255, 82, 0, 0.12),
-        0 8px 16px rgba(255, 82, 0, 0.1);
+        0 2px 4px rgba(14, 165, 233, 0.15),
+        0 4px 8px rgba(14, 165, 233, 0.12),
+        0 8px 16px rgba(14, 165, 233, 0.1);
 }
 
 .dark input[type="text"]:focus,
@@ -1090,9 +1289,9 @@ select:focus {
 .dark textarea:focus,
 .dark select:focus {
     box-shadow: 
-        0 2px 4px rgba(255, 82, 0, 0.3),
-        0 4px 8px rgba(255, 82, 0, 0.25),
-        0 8px 16px rgba(255, 82, 0, 0.2);
+        0 2px 4px rgba(14, 165, 233, 0.3),
+        0 4px 8px rgba(14, 165, 233, 0.25),
+        0 8px 16px rgba(14, 165, 233, 0.2);
 }
 
 /* Reservation Cards */

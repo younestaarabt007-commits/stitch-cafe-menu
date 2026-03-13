@@ -28,8 +28,81 @@
 
 
     <link rel="stylesheet" href="style.css"/>
+  <style id="sidebar-preloader">
+    #sidebar, #sidebar *, #main-content, #main-content * { transition: none !important; }
+  </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="bg-gray-50 dark:bg-[#1a100c] min-h-screen flex">
+  <aside id="sidebar"
+    class="fixed inset-y-0 left-0 w-72 bg-white dark:bg-[#2a1e19] border-r border-gray-200 dark:border-white/5 flex flex-col z-50 transform -translate-x-full md:translate-x-0 transition-all duration-300 group">
+    <div class="p-8 sidebar-header transition-all duration-300">
+      <div class="flex items-center justify-between mb-10">
+        <div class="flex items-center gap-3 overflow-hidden">
+          <div onclick="toggleSidebar()" class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-glow cursor-pointer hover:scale-105 transition-transform shrink-0">
+            <span class="material-symbols-outlined text-white text-[24px]">storefront</span>
+          </div>
+          <h1 id="sidebar-title" class="font-serif italic text-2xl font-bold whitespace-nowrap transition-all duration-300 origin-left">Stitch <span class="text-primary">Merchant</span></h1>
+        </div>
+        <button id="mobile-menu-close" class="md:hidden p-2 text-gray-500" onclick="document.getElementById('sidebar').classList.add('-translate-x-full')">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <nav class="space-y-1">
+        <a href="../dashbord insight page/index.html"
+          class="nav-item w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
+          <span class="material-symbols-outlined text-[22px]">dashboard</span>
+          <span class="nav-text whitespace-nowrap transition-all duration-300">Dashboard</span>
+        </a>
+        <a href="../dashbord orders page/index.html"
+          class="nav-item w-full flex items-center gap-3 px-4 py-3 bg-orange-50 dark:bg-orange-950/30 text-primary rounded-xl font-bold transition-all">
+          <span class="material-symbols-outlined text-[22px]">list_alt</span>
+          <span class="nav-text whitespace-nowrap transition-all duration-300">Live Orders</span>
+        </a>
+        <a href="../dashbord item_&_menu_management page/index.html"
+          class="nav-item w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
+          <span class="material-symbols-outlined text-[22px]">restaurant_menu</span>
+          <span class="nav-text whitespace-nowrap transition-all duration-300">Menu Manager</span>
+        </a>
+        <a href="../dashbord reservations page/index.html"
+          class="nav-item w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
+          <span class="material-symbols-outlined text-[22px]">calendar_month</span>
+          <span class="nav-text whitespace-nowrap transition-all duration-300">Reservations</span>
+        </a>
+        <a href="../dashbord qr center page/index.html"
+          class="nav-item w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
+          <span class="material-symbols-outlined text-[22px]">qr_code_2</span>
+          <span class="nav-text whitespace-nowrap transition-all duration-300">QR Center</span>
+        </a>
+        <a href="../desktop_table and floor_management_map page/index.html"
+          class="nav-item flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
+          <span class="material-symbols-outlined text-[22px]">table_restaurant</span>
+          <span class="nav-text whitespace-nowrap transition-all duration-300">Floor Map</span>
+        </a>
+         <a href="../swiggy-style_elite_main_menu_390x2500/index.html"
+          class="nav-item flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
+          <span class="material-symbols-outlined text-[22px]">arrow_back</span>
+          <span class="nav-text whitespace-nowrap transition-all duration-300">Back to Client</span>
+        </a>
+      </nav>
+    </div>
+    
+    <div class="mt-auto p-8 sidebar-footer transition-all duration-300">
+        <div class="flex items-center gap-3 mb-2 overflow-hidden">
+             <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center shrink-0">
+                 <span class="material-symbols-outlined text-primary text-sm">person</span>
+             </div>
+             <div id="user-profile-info" class="whitespace-nowrap transition-all duration-300">
+                 <p class="text-sm font-bold">Merchant Admin</p>
+                 <p class="text-xs text-gray-500">admin@stitch.com</p>
+             </div>
+        </div>
+    </div>
+  </aside>
+  <button id="mobile-menu-toggle" class="md:hidden fixed bottom-4 right-4 z-50 bg-primary text-white p-3 rounded-full shadow-lg" onclick="document.getElementById('sidebar').classList.remove('-translate-x-full')">
+      <span class="material-symbols-outlined">menu</span>
+  </button>
+  <div id="main-content" class="flex-1 flex flex-col min-h-screen transition-all duration-300 md:ml-72 w-full">
 <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-charcoal/5 px-12 py-5">
 <div class="max-w-[1440px] mx-auto flex items-center justify-between">
 <div class="flex items-center gap-12">
@@ -59,7 +132,7 @@
 </div>
 </div>
 </header>
-<main class="flex-1 w-full max-w-[1440px] mx-auto px-12 py-10 space-y-12">
+<main class="orders-workspace flex-1 w-full max-w-[1440px] mx-auto px-12 py-10 space-y-12">
 <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <div class="gloss-card kpi-card rounded-2xl p-10 flex flex-col justify-between h-48 transition-all hover:translate-y-[-4px]">
 <div class="flex justify-between items-start">
@@ -92,18 +165,18 @@
 </div>
 </div>
 </section>
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-<div class="lg:col-span-8 space-y-10">
+<div class="dashboard-lego-grid grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="orders-lane lg:col-span-8 space-y-8">
 <div class="flex items-end justify-between border-b border-charcoal/10 pb-4">
-<h3 class="text-4xl font-black text-charcoal tracking-tighter">Live Orders</h3>
-<div class="flex gap-4">
-<span class="text-[10px] font-black uppercase tracking-widest px-4 py-2 bg-charcoal text-white rounded-full">New (3)</span>
-<span class="text-[10px] font-black uppercase tracking-widest px-4 py-2 bg-white border border-charcoal/10 text-charcoal/40 rounded-full">In Progress (9)</span>
+<h3 class="text-3xl font-black text-charcoal tracking-tighter">Live Orders</h3>
+<div class="flex gap-2.5">
+<span class="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 bg-charcoal text-white rounded-full">New (3)</span>
+<span class="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 bg-white border border-charcoal/10 text-charcoal/40 rounded-full">In Progress (9)</span>
 </div>
 </div>
-<div class="bg-white priority-border rounded-xl shadow-2xl overflow-hidden">
+<div class="order-module order-module-priority bg-white priority-border rounded-xl shadow-2xl overflow-hidden">
 <div class="flex flex-col md:flex-row">
-<div class="flex-1 p-10 space-y-8">
+<div class="flex-1 p-7 space-y-6">
 <div class="flex items-center justify-between">
 <div class="flex items-center gap-4">
 <span class="bg-brand-orange text-white text-[9px] font-black px-3 py-1 rounded tracking-[0.2em]">PRIORITY</span>
@@ -112,52 +185,52 @@
 <span class="text-charcoal font-black text-xl">Table 08</span>
 </div>
 <div>
-<h4 class="text-7xl font-black text-charcoal tracking-tighter">#402-A</h4>
+<h4 class="text-6xl font-black text-charcoal tracking-tighter">#402-A</h4>
 </div>
-<div class="space-y-6 py-8 border-y border-charcoal/5">
-<div class="flex items-center gap-6">
-<input class="custom-checkbox size-7 rounded-md border-2 border-charcoal/20 transition-all cursor-pointer focus:ring-0" id="order-1-item-1" type="checkbox"/>
+<div class="space-y-4 py-6 border-y border-charcoal/5">
+<div class="flex items-center gap-4">
+<input class="custom-checkbox size-6 rounded-md border-2 border-charcoal/20 transition-all cursor-pointer focus:ring-0" id="order-1-item-1" type="checkbox"/>
 <label class="flex-1 flex items-baseline gap-3 cursor-pointer group" for="order-1-item-1">
-<span class="text-2xl font-black text-brand-orange">2x</span>
-<span class="text-2xl font-bold text-charcoal">Iced Oat Latte</span>
-<span class="text-sm font-medium text-charcoal/40">/ Extra Shot, No Syrup</span>
+<span class="text-xl font-black text-brand-orange">2x</span>
+<span class="text-xl font-bold text-charcoal">Iced Oat Latte</span>
+<span class="text-xs font-medium text-charcoal/40">/ Extra Shot, No Syrup</span>
 </label>
 </div>
-<div class="flex items-center gap-6">
-<input checked="" class="custom-checkbox size-7 rounded-md border-2 border-charcoal/20 transition-all cursor-pointer focus:ring-0" id="order-1-item-2" type="checkbox"/>
+<div class="flex items-center gap-4">
+<input checked="" class="custom-checkbox size-6 rounded-md border-2 border-charcoal/20 transition-all cursor-pointer focus:ring-0" id="order-1-item-2" type="checkbox"/>
 <label class="flex-1 flex items-baseline gap-3 cursor-pointer" for="order-1-item-2">
-<span class="text-2xl font-black text-brand-orange">1x</span>
-<span class="text-2xl font-bold text-charcoal">Smoked Salmon Bagel</span>
-<span class="text-sm font-medium text-charcoal/40">/ Extra Capers</span>
+<span class="text-xl font-black text-brand-orange">1x</span>
+<span class="text-xl font-bold text-charcoal">Smoked Salmon Bagel</span>
+<span class="text-xs font-medium text-charcoal/40">/ Extra Capers</span>
 </label>
 </div>
 </div>
-<div class="space-y-4">
-<button class="order-accept-btn w-full py-8 rounded-xl text-white text-2xl font-black uppercase tracking-[0.3em] transition-all active:scale-[0.98]">
+<div class="space-y-3">
+<button class="order-accept-btn w-full py-5 rounded-xl text-white text-lg font-black uppercase tracking-[0.22em] transition-all active:scale-[0.98]">
                                 ACCEPT ORDER
                             </button>
-<div class="grid grid-cols-2 gap-4">
-<button class="btn-outline-charcoal py-4 rounded-xl text-xs font-black uppercase tracking-[0.2em] transition-all">
+<div class="grid grid-cols-2 gap-3">
+<button class="btn-outline-charcoal py-3 rounded-xl text-[11px] font-black uppercase tracking-[0.16em] transition-all">
                                     Hold Ticket
                                 </button>
-<button class="btn-outline-charcoal py-4 rounded-xl text-xs font-black uppercase tracking-[0.2em] transition-all">
+<button class="btn-outline-charcoal py-3 rounded-xl text-[11px] font-black uppercase tracking-[0.16em] transition-all">
                                     Reject
                                 </button>
 </div>
 </div>
 </div>
-<div class="w-full md:w-72 bg-charcoal">
+<div class="w-full md:w-64 bg-charcoal">
 <img alt="Order Item" class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqKGNYWRGbjxSvouDF11gaimWsZWgjJdV8BqY9OkMJTNKEN_oqossc8Fz_DBOzWfSeo3AMiuqIncTzrAReXMcSZgBroyFc1asin01P407OUMmQIMBFpyR-H_01Jj2zJYfDtB2unIIzDZnHlw-loWo-JZhLcIE8Ei_F2baXdrx2IxKkbbybfEDWzBI8-d3jQBKhjCCOCFjmCyDLxzCklgusr-GvTjJgCCywjcGkkHpZtuM5rT-rioHp4HD9ERsAGcakclAEjfmBlzU"/>
 </div>
 </div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<div class="bg-white border-l-8 border-charcoal/20 rounded-xl p-8 space-y-6 shadow-sm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="order-module bg-white border-l-8 border-charcoal/20 rounded-xl p-6 space-y-4 shadow-sm">
 <div class="flex justify-between items-start">
-<h5 class="text-3xl font-black text-charcoal tracking-tight">#403-B</h5>
+<h5 class="text-2xl font-black text-charcoal tracking-tight">#403-B</h5>
 <span class="text-[10px] font-black text-charcoal/40 uppercase tracking-widest">5m ago</span>
 </div>
-<div class="space-y-4 pb-4 border-b border-charcoal/5">
+<div class="space-y-3 pb-3 border-b border-charcoal/5">
 <div class="flex items-center gap-3">
 <input class="custom-checkbox size-5 rounded border-charcoal/20 focus:ring-0" id="o2-i1" type="checkbox"/>
 <label class="flex items-baseline gap-2" for="o2-i1">
@@ -166,20 +239,20 @@
 </label>
 </div>
 </div>
-<div class="space-y-3">
-<button class="bg-brand-orange w-full py-4 rounded-lg text-white text-sm font-black uppercase tracking-widest">ACCEPT</button>
+<div class="space-y-2.5">
+<button class="bg-brand-orange w-full py-3 rounded-lg text-white text-xs font-black uppercase tracking-[0.16em]">ACCEPT</button>
 <div class="grid grid-cols-2 gap-2">
-<button class="btn-outline-charcoal py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest">Hold</button>
-<button class="btn-outline-charcoal py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest">Reject</button>
+<button class="btn-outline-charcoal py-2 rounded-lg text-[9px] font-bold uppercase tracking-widest">Hold</button>
+<button class="btn-outline-charcoal py-2 rounded-lg text-[9px] font-bold uppercase tracking-widest">Reject</button>
 </div>
 </div>
 </div>
-<div class="bg-white border-l-8 border-charcoal/20 rounded-xl p-8 space-y-6 shadow-sm">
+<div class="order-module bg-white border-l-8 border-charcoal/20 rounded-xl p-6 space-y-4 shadow-sm">
 <div class="flex justify-between items-start">
-<h5 class="text-3xl font-black text-charcoal tracking-tight">#404-C</h5>
+<h5 class="text-2xl font-black text-charcoal tracking-tight">#404-C</h5>
 <span class="text-[10px] font-black text-charcoal/40 uppercase tracking-widest">7m ago</span>
 </div>
-<div class="space-y-4 pb-4 border-b border-charcoal/5">
+<div class="space-y-3 pb-3 border-b border-charcoal/5">
 <div class="flex items-center gap-3">
 <input class="custom-checkbox size-5 rounded border-charcoal/20 focus:ring-0" id="o3-i1" type="checkbox"/>
 <label class="flex items-baseline gap-2" for="o3-i1">
@@ -188,23 +261,23 @@
 </label>
 </div>
 </div>
-<div class="space-y-3">
-<button class="bg-brand-orange w-full py-4 rounded-lg text-white text-sm font-black uppercase tracking-widest">ACCEPT</button>
+<div class="space-y-2.5">
+<button class="bg-brand-orange w-full py-3 rounded-lg text-white text-xs font-black uppercase tracking-[0.16em]">ACCEPT</button>
 <div class="grid grid-cols-2 gap-2">
-<button class="btn-outline-charcoal py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest">Hold</button>
-<button class="btn-outline-charcoal py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest">Reject</button>
+<button class="btn-outline-charcoal py-2 rounded-lg text-[9px] font-bold uppercase tracking-widest">Hold</button>
+<button class="btn-outline-charcoal py-2 rounded-lg text-[9px] font-bold uppercase tracking-widest">Reject</button>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="lg:col-span-4 space-y-8">
-<div class="bg-charcoal rounded-2xl p-8 text-white sticky top-32">
-<div class="flex justify-between items-center mb-8">
+<div class="orders-side-panel bg-charcoal rounded-2xl p-6 text-white sticky top-32">
+<div class="flex justify-between items-center mb-6">
 <h3 class="text-xl font-bold tracking-tight">Daily Volume</h3>
 <span class="material-symbols-outlined text-brand-orange">analytics</span>
 </div>
-<div class="h-40 flex items-end gap-2 mb-8">
+<div class="h-36 flex items-end gap-2 mb-6">
 <div class="flex-1 bg-white/10 rounded-t-sm h-[40%]"></div>
 <div class="flex-1 bg-white/10 rounded-t-sm h-[60%]"></div>
 <div class="flex-1 bg-white/10 rounded-t-sm h-[45%]"></div>
@@ -213,8 +286,8 @@
 <div class="flex-1 bg-white/10 rounded-t-sm h-[50%]"></div>
 <div class="flex-1 bg-white/10 rounded-t-sm h-[30%]"></div>
 </div>
-<div class="space-y-4">
-<div class="p-4 rounded-xl bg-white/5 border border-white/10 flex justify-between items-center">
+<div class="space-y-3">
+<div class="orders-side-card p-3.5 rounded-xl bg-white/5 border border-white/10 flex justify-between items-center">
 <div>
 <p class="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">Peak Intensity</p>
 <p class="font-black text-lg">09:15 AM</p>
@@ -223,7 +296,7 @@
 <span class="material-symbols-outlined text-brand-orange text-sm">trending_up</span>
 </div>
 </div>
-<div class="p-4 rounded-xl bg-white/5 border border-white/10 flex justify-between items-center">
+<div class="orders-side-card p-3.5 rounded-xl bg-white/5 border border-white/10 flex justify-between items-center">
 <div>
 <p class="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">Stock Alerts</p>
 <p class="font-black text-lg text-brand-orange">Oat Milk Low</p>
@@ -235,24 +308,96 @@
 </div>
 </div>
 </main>
-<div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100]">
-<nav class="bg-charcoal/95 backdrop-blur-2xl rounded-2xl p-2.5 flex items-center gap-1 shadow-2xl border border-white/10">
-<button class="bg-brand-orange size-12 rounded-xl flex items-center justify-center text-white shadow-lg">
-<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1">grid_view</span>
-</button>
-<button class="text-white/40 hover:text-white size-12 rounded-xl flex items-center justify-center transition-colors">
-<span class="material-symbols-outlined text-2xl">list_alt</span>
-</button>
-<button class="text-white/40 hover:text-white size-12 rounded-xl flex items-center justify-center transition-colors">
-<span class="material-symbols-outlined text-2xl">bar_chart</span>
-</button>
-<div class="w-px h-6 bg-white/10 mx-2"></div>
-<button class="text-white/40 hover:text-white size-12 rounded-xl flex items-center justify-center transition-colors">
-<span class="material-symbols-outlined text-2xl">notifications</span>
-</button>
-</nav>
-</div>
-
   <script src="script.js"></script>
-<script src="../nav-bar.js?v=9"></script>
+  </div>
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const isCollapsed = sidebar.classList.contains('w-20');
+        
+        if (isCollapsed) {
+            expandSidebar();
+            localStorage.setItem('merchantSidebarState', 'expanded');
+        } else {
+            collapseSidebar();
+            localStorage.setItem('merchantSidebarState', 'collapsed');
+        }
+    }
+
+    function collapseSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+        const title = document.getElementById('sidebar-title');
+        const navTexts = document.querySelectorAll('.nav-text');
+        const userProfile = document.getElementById('user-profile-info');
+        const sidebarHeaders = document.querySelectorAll('.sidebar-header, .sidebar-footer');
+
+        sidebar.classList.remove('w-72');
+        sidebar.classList.add('w-20');
+        
+        mainContent.classList.remove('md:ml-72');
+        mainContent.classList.add('md:ml-20');
+        
+        title.classList.add('opacity-0', 'w-0', 'px-0');
+        
+        navTexts.forEach(text => text.classList.add('hidden'));
+        userProfile.classList.add('opacity-0', 'w-0');
+        
+        sidebarHeaders.forEach(header => {
+            header.classList.remove('p-8');
+            header.classList.add('p-4');
+        });
+        
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.classList.remove('px-4');
+            item.classList.add('justify-center', 'px-2');
+        });
+    }
+
+    function expandSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+        const title = document.getElementById('sidebar-title');
+        const navTexts = document.querySelectorAll('.nav-text');
+        const userProfile = document.getElementById('user-profile-info');
+        const sidebarHeaders = document.querySelectorAll('.sidebar-header, .sidebar-footer');
+
+        sidebar.classList.remove('w-20');
+        sidebar.classList.add('w-72');
+        
+        mainContent.classList.remove('md:ml-20');
+        mainContent.classList.add('md:ml-72');
+        
+        title.classList.remove('opacity-0', 'w-0', 'px-0');
+        
+        navTexts.forEach(text => text.classList.remove('hidden'));
+        userProfile.classList.remove('opacity-0', 'w-0');
+        
+        sidebarHeaders.forEach(header => {
+            header.classList.remove('p-4');
+            header.classList.add('p-8');
+        });
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.classList.remove('justify-center', 'px-2');
+            item.classList.add('px-4');
+        });
+    }
+
+    // Initialize state on load
+    document.addEventListener('DOMContentLoaded', () => {
+        const state = localStorage.getItem('merchantSidebarState');
+        if (state === 'collapsed') {
+            collapseSidebar();
+        }
+        
+        // Remove preloader styles to enable transitions
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                const preloader = document.getElementById('sidebar-preloader');
+                if (preloader) preloader.remove();
+            }, 100);
+        });
+    });
+</script>
 </body></html>

@@ -35,59 +35,59 @@
 <body class="bg-gray-50 dark:bg-[#1a100c] font-sans text-gray-900 dark:text-white min-h-screen flex">
   <!-- Sidebar -->
   <aside
-    class="w-72 bg-white dark:bg-[#2a1e19] border-r border-gray-200 dark:border-white/5 flex flex-col fixed h-full z-30">
-    <div class="p-8">
+    class="w-72 bg-white dark:bg-[#2a1e19] border-r border-gray-200 dark:border-white/5 flex flex-col fixed inset-y-0 left-0 z-30 transition-all duration-300 ease-in-out">
+    <div id="sidebar-header" class="p-8 transition-all duration-300">
       <div class="flex items-center gap-3 mb-10">
-        <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-glow">
+        <button id="sidebar-toggle" class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-glow hover:scale-105 transition-transform cursor-pointer">
           <span class="material-symbols-outlined text-white text-[24px]">restaurant_menu</span>
-        </div>
-        <h1 class="font-serif italic text-2xl font-bold">Stitch <span class="text-primary">Admin</span></h1>
+        </button>
+        <h1 id="sidebar-title" class="font-serif italic text-2xl font-bold transition-opacity duration-300">Stitch <span class="text-primary">Admin</span></h1>
       </div>
 
       <nav id="main-nav" class="space-y-1">
         <button data-tab="overview"
-          class="w-full flex items-center gap-3 px-4 py-3 bg-orange-50 dark:bg-orange-950/30 text-primary rounded-xl font-bold transition-all">
-          <span class="material-symbols-outlined text-[22px]">dashboard</span>
-          Overview
+          class="w-full flex items-center gap-3 px-4 py-3 bg-orange-50 dark:bg-orange-950/30 text-primary rounded-xl font-bold transition-all overflow-hidden whitespace-nowrap">
+          <span class="material-symbols-outlined text-[22px] min-w-[22px]">dashboard</span>
+          <span class="sidebar-text transition-opacity duration-300">Overview</span>
         </button>
         <button data-tab="merchants"
-          class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
-          <span class="material-symbols-outlined text-[22px]">storefront</span>
-          Merchants
+          class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all overflow-hidden whitespace-nowrap">
+          <span class="material-symbols-outlined text-[22px] min-w-[22px]">storefront</span>
+          <span class="sidebar-text transition-opacity duration-300">Merchants</span>
         </button>
         <button data-tab="payments"
-          class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
-          <span class="material-symbols-outlined text-[22px]">payments</span>
-          Revenue
+          class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all overflow-hidden whitespace-nowrap">
+          <span class="material-symbols-outlined text-[22px] min-w-[22px]">payments</span>
+          <span class="sidebar-text transition-opacity duration-300">Revenue</span>
         </button>
         <button data-tab="accounts"
-          class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
-          <span class="material-symbols-outlined text-[22px]">group</span>
-          Admin Accounts
+          class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all overflow-hidden whitespace-nowrap">
+          <span class="material-symbols-outlined text-[22px] min-w-[22px]">group</span>
+          <span class="sidebar-text transition-opacity duration-300">Admin Accounts</span>
         </button>
       </nav>
     </div>
 
-    <div class="mt-auto p-8">
-      <div class="bg-gray-50 dark:bg-black/20 rounded-2xl p-4 mb-4">
-        <div class="flex items-center gap-3 mb-2">
-          <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+    <div id="sidebar-footer" class="mt-auto p-8 transition-all duration-300">
+      <div id="user-info-card" class="bg-gray-50 dark:bg-black/20 rounded-2xl p-4 mb-4 overflow-hidden whitespace-nowrap transition-all duration-300">
+        <div id="user-info-header" class="flex items-center gap-3 mb-2 transition-all duration-300">
+          <div class="w-8 h-8 min-w-[32px] rounded-full bg-primary/20 flex items-center justify-center">
             <span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
           </div>
-          <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400">Super Admin</span>
+          <span class="sidebar-text text-[10px] font-bold uppercase tracking-widest text-gray-400 transition-opacity duration-300">Super Admin</span>
         </div>
-        <p class="text-xs font-bold truncate">admin@stitch.cafe</p>
+        <p class="sidebar-text text-xs font-bold truncate transition-opacity duration-300">admin@stitch.cafe</p>
       </div>
       <button id="logout-btn"
-        class="w-full flex items-center justify-center gap-2 px-4 py-3 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-xl font-bold transition-all">
-        <span class="material-symbols-outlined text-[22px]">logout</span>
-        Sign Out
+        class="w-full flex items-center justify-center gap-2 px-4 py-3 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-xl font-bold transition-all overflow-hidden whitespace-nowrap">
+        <span class="material-symbols-outlined text-[22px] min-w-[22px]">logout</span>
+        <span class="sidebar-text transition-opacity duration-300">Sign Out</span>
       </button>
     </div>
   </aside>
 
   <!-- Main Content -->
-  <main class="flex-1 ml-72 p-10">
+  <main id="main-content" class="flex-1 ml-72 p-10 transition-all duration-300 ease-in-out">
     <!-- Header -->
     <header class="flex items-center justify-between mb-10">
       <div>
@@ -111,7 +111,7 @@
     </header>
 
     <!-- Overview Section -->
-    <div id="overview-content" class="tab-content">
+    <div id="overview-content" class="tab-content" style="display: block;">
       <!-- Stats Grid -->
       <div class="grid grid-cols-4 gap-6 mb-10">
         <div class="bg-white dark:bg-[#2a1e19] p-6 rounded-[2rem] border border-gray-200 dark:border-white/5 shadow-sm">
@@ -156,7 +156,8 @@
         class="bg-white dark:bg-[#2a1e19] rounded-[2.5rem] border border-gray-200 dark:border-white/5 shadow-sm overflow-hidden">
         <div class="p-8 border-b border-gray-100 dark:border-white/5 flex items-center justify-between">
           <h4 class="text-xl font-bold">Recent Merchants</h4>
-          <button class="text-sm font-bold text-primary hover:underline">View All</button>
+          <button onclick="switchTab('merchants')" class="text-sm font-bold text-primary hover:underline">View
+            All</button>
         </div>
         <table class="w-full text-left">
           <thead>
@@ -167,146 +168,114 @@
               <th class="px-8 py-4 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-gray-100 dark:divide-white/5">
-            <tr class="hover:bg-gray-50/50 dark:hover:bg-black/5 transition-colors">
-              <td class="px-8 py-5">
-                <div class="flex items-center gap-3">
-                  <div
-                    class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
-                    ER</div>
-                  <div>
-                    <p class="font-bold">Elite Roastery</p>
-                    <p class="text-xs text-gray-400 font-medium">er-782@gmail.com</p>
-                  </div>
-                </div>
-              </td>
-              <td class="px-8 py-5">
-                <span class="text-xs font-bold text-primary">Gold SaaS</span>
-              </td>
-              <td class="px-8 py-5">
-                <span
-                  class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-[10px] font-bold rounded-full">Active</span>
-              </td>
-              <td class="px-8 py-5 text-right">
-                <button class="p-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg transition-all"
-                  onclick="editMerchant('Elite Roastery')">
-                  <span class="material-symbols-outlined text-gray-400">edit</span>
-                </button>
-              </td>
-            </tr>
+          <tbody class="divide-y divide-gray-100 dark:divide-white/5" id="recent-merchants-body">
+            <!-- Populated by JS -->
           </tbody>
         </table>
       </div>
     </div>
 
     <!-- Merchants Management Section -->
-    <div id="merchants-content" class="tab-content hidden">
+    <div id="merchants-content" class="tab-content" style="display: none;">
+      <div class="flex items-center justify-between mb-8">
+        <h3 class="text-2xl font-bold">All Merchants</h3>
+        <div class="flex gap-3">
+          <input type="text" placeholder="Search stores..."
+            class="bg-white dark:bg-[#2a1e19] border-none rounded-xl px-4 py-2 text-sm shadow-sm focus:ring-2 focus:ring-primary">
+          <select
+            class="bg-white dark:bg-[#2a1e19] border-none rounded-xl px-4 py-2 text-sm shadow-sm focus:ring-2 focus:ring-primary">
+            <option>All Plans</option>
+            <option>Free</option>
+            <option>Starter</option>
+            <option>Pro</option>
+          </select>
+        </div>
+      </div>
       <div
         class="bg-white dark:bg-[#2a1e19] rounded-[2.5rem] border border-gray-200 dark:border-white/5 shadow-sm overflow-hidden">
-        <div class="p-8 border-b border-gray-100 dark:border-white/5 flex items-center justify-between">
-          <h4 class="text-xl font-bold">All Merchants</h4>
-          <div class="flex gap-2">
-            <input type="text" id="merchant-search" placeholder="Search merchants..."
-              class="bg-gray-50 dark:bg-black/20 border-none rounded-xl px-4 py-2 text-sm focus:ring-1 focus:ring-primary">
-            <button
-              class="px-4 py-2 bg-primary text-white text-[11px] font-bold uppercase tracking-widest rounded-xl shadow-glow">Add
-              New</button>
-          </div>
-        </div>
         <table class="w-full text-left">
           <thead>
             <tr class="text-[10px] font-bold uppercase tracking-widest text-gray-400 bg-gray-50/50 dark:bg-black/10">
               <th class="px-8 py-4">Merchant</th>
+              <th class="px-8 py-4">Location</th>
+              <th class="px-8 py-4">Subscription</th>
+              <th class="px-8 py-4">Revenue (YTD)</th>
               <th class="px-8 py-4">Status</th>
-              <th class="px-8 py-4">Created At</th>
               <th class="px-8 py-4 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody id="merchant-list-body" class="divide-y divide-gray-100 dark:divide-white/5">
-            <!-- Merchant Rows loaded via script -->
+          <tbody class="divide-y divide-gray-100 dark:divide-white/5" id="all-merchants-body">
+            <!-- Populated by JS -->
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- Payments Section -->
-    <div id="payments-content" class="tab-content hidden">
-      <div
-        class="bg-white dark:bg-[#2a1e19] rounded-[2.5rem] border border-gray-200 dark:border-white/5 shadow-sm overflow-hidden">
-        <div class="p-8 border-b border-gray-100 dark:border-white/5">
-          <h4 class="text-xl font-bold">Payment Transactions</h4>
+    <!-- Revenue Section -->
+    <div id="payments-content" class="tab-content" style="display: none;">
+      <div class="grid grid-cols-2 gap-8">
+        <div
+          class="bg-white dark:bg-[#2a1e19] p-8 rounded-[2.5rem] border border-gray-200 dark:border-white/5 shadow-sm">
+          <h3 class="text-xl font-bold mb-6">Revenue Breakdown</h3>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-bold text-gray-500">Subscription Fees</span>
+              <span class="font-bold">25,400 DH</span>
+            </div>
+            <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+              <div class="h-full bg-primary w-[60%]"></div>
+            </div>
+
+            <div class="flex items-center justify-between mt-4">
+              <span class="text-sm font-bold text-gray-500">Transaction Commission</span>
+              <span class="font-bold">12,100 DH</span>
+            </div>
+            <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+              <div class="h-full bg-green-500 w-[30%]"></div>
+            </div>
+
+            <div class="flex items-center justify-between mt-4">
+              <span class="text-sm font-bold text-gray-500">Hardware Sales</span>
+              <span class="font-bold">5,000 DH</span>
+            </div>
+            <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+              <div class="h-full bg-blue-500 w-[10%]"></div>
+            </div>
+          </div>
         </div>
-        <table class="w-full text-left">
-          <thead>
-            <tr class="text-[10px] font-bold uppercase tracking-widest text-gray-400 bg-gray-50/50 dark:bg-black/10">
-              <th class="px-8 py-4">Transaction ID</th>
-              <th class="px-8 py-4">Merchant</th>
-              <th class="px-8 py-4">Amount</th>
-              <th class="px-8 py-4">Date</th>
-              <th class="px-8 py-4">Status</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-100 dark:divide-white/5">
-            <tr class="hover:bg-gray-50/50 dark:hover:bg-black/5 transition-colors">
-              <td class="px-8 py-5 font-mono text-xs text-gray-500">TXN-99283-ER</td>
-              <td class="px-8 py-5 font-bold">Elite Roastery</td>
-              <td class="px-8 py-5 font-bold text-green-600">450.00DH</td>
-              <td class="px-8 py-5 text-xs font-medium">Feb 12, 2026</td>
-              <td class="px-8 py-5">
-                <span
-                  class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-[10px] font-bold rounded-full">Success</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+
+        <div class="bg-primary p-8 rounded-[2.5rem] text-white shadow-glow flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-bold mb-2">Projected MRR</h3>
+            <p class="text-white/80 text-sm">Monthly Recurring Revenue forecast based on current growth.</p>
+          </div>
+          <div>
+            <h2 class="text-5xl font-bold mb-2">58.2k <span class="text-2xl opacity-60">DH</span></h2>
+            <div
+              class="inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-xs font-bold backdrop-blur-sm">
+              <span class="material-symbols-outlined text-[14px]">trending_up</span>
+              +18% vs last month
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Edit Merchant Modal -->
-    <div id="edit-modal"
-      class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-6">
-      <div class="bg-white dark:bg-[#2a1e19] w-full max-w-md rounded-[2.5rem] p-8 shadow-2xl relative">
-        <button onclick="closeModal()"
-          class="absolute right-6 top-6 text-gray-400 hover:text-gray-600 transition-colors">
-          <span class="material-symbols-outlined">close</span>
-        </button>
-        <h3 class="text-2xl font-bold mb-6">Modify Merchant</h3>
-        <form class="space-y-4">
-          <div>
-            <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 ml-1">Business
-              Name</label>
-            <input type="text" id="edit-merchant-name"
-              class="w-full bg-gray-50 dark:bg-black/20 border-none rounded-2xl py-3 px-4 text-sm font-semibold focus:ring-1 focus:ring-primary">
-          </div>
-          <div>
-            <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 ml-1">Account
-              Status</label>
-            <select
-              class="w-full bg-gray-50 dark:bg-black/20 border-none rounded-2xl py-3 px-4 text-sm font-semibold focus:ring-1 focus:ring-primary">
-              <option>Active</option>
-              <option>Suspended</option>
-              <option>Pending Verification</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 ml-1">Subscription
-              Plan</label>
-            <select
-              class="w-full bg-gray-50 dark:bg-black/20 border-none rounded-2xl py-3 px-4 text-sm font-semibold focus:ring-1 focus:ring-primary">
-              <option>Standard</option>
-              <option>Gold SaaS</option>
-              <option>Platinum Enterprise</option>
-            </select>
-          </div>
-          <button type="submit" class="w-full bg-primary text-white h-14 rounded-2xl font-bold shadow-glow mt-4">Save
-            Changes</button>
-        </form>
+    <!-- Accounts Section -->
+    <div id="accounts-content" class="tab-content" style="display: none;">
+      <div
+        class="bg-white dark:bg-[#2a1e19] rounded-[2.5rem] p-10 text-center border border-gray-200 dark:border-white/5">
+        <div class="w-20 h-20 bg-gray-100 dark:bg-white/5 rounded-full flex items-center justify-center mx-auto mb-6">
+          <span class="material-symbols-outlined text-4xl text-gray-400">engineering</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">Admin Management</h3>
+        <p class="text-gray-500 max-w-md mx-auto mb-8">Manage other super admins and support staff access levels.</p>
+        <button class="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-6 py-3 rounded-xl font-bold">Add New
+          Admin</button>
       </div>
     </div>
-  </main>
 
-  <script src="script.js"></script>
-  <script src="../nav-bar.js?v=9"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

@@ -38,9 +38,105 @@
 
 
     <link rel="stylesheet" href="style.css"/>
+  <style id="sidebar-preloader">
+    #sidebar, #sidebar *, #main-content, #main-content * { transition: none !important; }
+  </style>
+  <style>
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #receipt-print-area, #receipt-print-area * {
+        visibility: visible;
+      }
+      #receipt-print-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        display: block !important;
+        background: white;
+        color: black;
+      }
+    }
+  </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-charcoal dark:text-white">
-<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden max-w-[480px] mx-auto shadow-2xl border-x border-gray-100 dark:border-gray-800">
+<body class="bg-gray-50 dark:bg-[#1a100c] min-h-screen flex">
+  <!-- Sidebar -->
+  <aside id="sidebar"
+    class="fixed inset-y-0 left-0 w-72 bg-white dark:bg-[#2a1e19] border-r border-gray-200 dark:border-white/5 flex flex-col z-50 transform -translate-x-full md:translate-x-0 transition-all duration-300 group">
+    <div class="p-8 sidebar-header transition-all duration-300">
+      <div class="flex items-center justify-between mb-10">
+        <div class="flex items-center gap-3 overflow-hidden">
+          <div onclick="toggleSidebar()" class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-glow cursor-pointer hover:scale-105 transition-transform shrink-0">
+            <span class="material-symbols-outlined text-white text-[24px]">storefront</span>
+          </div>
+          <h1 id="sidebar-title" class="font-serif italic text-2xl font-bold whitespace-nowrap transition-all duration-300 origin-left">Stitch <span class="text-primary">Merchant</span></h1>
+        </div>
+        <button id="mobile-menu-close" class="md:hidden p-2 text-gray-500" onclick="document.getElementById('sidebar').classList.add('-translate-x-full')">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <nav class="space-y-1">
+        <a href="../dashbord insight page/index.html"
+          class="nav-item w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
+          <span class="material-symbols-outlined text-[22px]">dashboard</span>
+          <span class="nav-text whitespace-nowrap transition-all duration-300">Dashboard</span>
+        </a>
+        <a href="../dashbord orders page/index.html"
+          class="nav-item w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
+          <span class="material-symbols-outlined text-[22px]">list_alt</span>
+          <span class="nav-text whitespace-nowrap transition-all duration-300">Live Orders</span>
+        </a>
+        <a href="../dashbord item_&_menu_management page/index.html"
+          class="nav-item w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
+          <span class="material-symbols-outlined text-[22px]">restaurant_menu</span>
+          <span class="nav-text whitespace-nowrap transition-all duration-300">Menu Manager</span>
+        </a>
+        <a href="../dashbord reservations page/index.html"
+          class="nav-item w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
+          <span class="material-symbols-outlined text-[22px]">calendar_month</span>
+          <span class="nav-text whitespace-nowrap transition-all duration-300">Reservations</span>
+        </a>
+        <a href="../dashbord qr center page/index.html"
+          class="nav-item w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
+          <span class="material-symbols-outlined text-[22px]">qr_code_2</span>
+          <span class="nav-text whitespace-nowrap transition-all duration-300">QR Center</span>
+        </a>
+        <a href="../desktop_table and floor_management_map page/index.html"
+          class="nav-item flex items-center gap-3 px-4 py-3 bg-orange-50 dark:bg-orange-950/30 text-primary rounded-xl font-bold transition-all">
+          <span class="material-symbols-outlined text-[22px]">table_restaurant</span>
+          <span class="nav-text whitespace-nowrap transition-all duration-300">Floor Map</span>
+        </a>
+         <a href="../swiggy-style_elite_main_menu_390x2500/index.html"
+          class="nav-item flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-primary hover:bg-orange-50 dark:hover:bg-orange-950/10 rounded-xl font-bold transition-all">
+          <span class="material-symbols-outlined text-[22px]">arrow_back</span>
+          <span class="nav-text whitespace-nowrap transition-all duration-300">Back to Client</span>
+        </a>
+      </nav>
+    </div>
+    
+    <div class="mt-auto p-8 sidebar-footer transition-all duration-300">
+        <div class="flex items-center gap-3 mb-2 overflow-hidden">
+             <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center shrink-0">
+                 <span class="material-symbols-outlined text-primary text-sm">person</span>
+             </div>
+             <div id="user-profile-info" class="whitespace-nowrap transition-all duration-300">
+                 <p class="text-sm font-bold">Merchant Admin</p>
+                 <p class="text-xs text-gray-500">admin@stitch.com</p>
+             </div>
+        </div>
+    </div>
+  </aside>
+
+  <!-- Mobile Toggle -->
+  <button id="mobile-menu-toggle" class="md:hidden fixed bottom-4 right-4 z-50 bg-primary text-white p-3 rounded-full shadow-lg" onclick="document.getElementById('sidebar').classList.remove('-translate-x-full')">
+      <span class="material-symbols-outlined">menu</span>
+  </button>
+
+  <!-- Main Content Wrapper -->
+  <div id="main-content" class="flex-1 flex flex-col min-h-screen transition-all duration-300 md:ml-72 w-full">
 <!-- TopAppBar -->
 <div class="sticky top-0 z-20 flex flex-col bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md">
 <div class="flex items-center p-4 pb-2 justify-between">
@@ -190,7 +286,7 @@
 </div>
 <!-- Actions -->
 <div class="grid grid-cols-2 gap-3">
-<button class="flex h-12 items-center justify-center gap-2 rounded-xl bg-white dark:bg-gray-800 border-2 border-primary text-primary font-bold transition-all active:scale-95">
+<button onclick="printBill()" class="flex h-12 items-center justify-center gap-2 rounded-xl bg-white dark:bg-gray-800 border-2 border-primary text-primary font-bold transition-all active:scale-95">
 <span class="material-symbols-outlined">print</span>
                     Print Bill
                 </button>
@@ -206,6 +302,168 @@
 </div>
 <div class="h-5 bg-background-light dark:bg-background-dark"></div>
 </div>
-  <script src="script.js"></script>
-<script src="../nav-bar.js?v=9"></script>
+  <!-- Hidden Receipt Template -->
+<div id="receipt-print-area" class="hidden">
+    <!-- Actual Receipt Content -->
+    <div class="text-black font-mono text-sm leading-tight max-w-[80mm] mx-auto p-4">
+        <div class="text-center mb-6">
+                <!-- Decorative Header -->
+                <div class="border-y-4 border-double border-black py-4 mb-3">
+                    <h1 class="text-xl font-black uppercase tracking-widest leading-tight">
+                        ESPACE<br>LAHCEN<br>OUTAARABT
+                    </h1>
+                    <h2 class="text-lg font-bold mt-2 font-arabic" dir="rtl">فضاء لحسن أوتعرابت</h2>
+                </div>
+                <div class="flex items-center justify-center gap-2 mb-3">
+                    <span class="text-lg">❖</span>
+                    <div class="h-0.5 bg-black w-full"></div>
+                    <span class="text-lg">❖</span>
+                </div>
+                
+                <p class="text-xs uppercase font-bold">Rabat, Yaacoub El Mansour</p>
+                <p class="text-xs uppercase">Morocco / Maroc / المغرب</p>
+                <p class="text-xs mt-1">+212 600-000000</p>
+            </div>
+            
+            <div class="border-b-2 border-dashed border-black my-4"></div>
+            
+            <div class="flex justify-between mb-2 text-xs font-bold uppercase">
+                <span>Table: 03</span>
+                <span id="receipt-date"></span>
+            </div>
+            
+            <div class="border-b-2 border-dashed border-black my-4"></div>
+            
+            <div class="space-y-4 mb-6">
+                <div>
+                    <div class="flex justify-between font-bold uppercase">
+                        <span>2x Flat White</span>
+                        <span>110.00 DH</span>
+                    </div>
+                    <div class="text-[10px] pl-2 text-gray-600 uppercase mt-0.5">- Oat Milk, Extra Hot</div>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between font-bold uppercase">
+                        <span>1x Avocado Smash</span>
+                        <span>185.00 DH</span>
+                    </div>
+                    <div class="text-[10px] pl-2 text-gray-600 uppercase mt-0.5">- Add Poached Egg</div>
+                </div>
+            </div>
+            
+            <div class="border-b-2 border-dashed border-black my-4"></div>
+            
+            <div class="flex justify-between font-bold text-xl mt-2">
+                <span>TOTAL / المجموع</span>
+                <span>295.00 DH</span>
+            </div>
+            
+            <div class="border-b-2 border-dashed border-black my-6"></div>
+            
+            <div class="text-center text-[10px] uppercase font-bold tracking-widest">
+                <p>Merci pour votre visite!</p>
+                <p class="font-arabic mt-1 text-sm" dir="rtl">شكراً لزيارتكم!</p>
+                <p class="mt-2">Follow us @espace_lahcen</p>
+            </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+    function printBill() {
+        const date = new Date().toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' });
+        document.getElementById('receipt-date').textContent = date;
+        window.print();
+    }
+
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const isCollapsed = sidebar.classList.contains('w-20');
+        
+        if (isCollapsed) {
+            expandSidebar();
+            localStorage.setItem('merchantSidebarState', 'expanded');
+        } else {
+            collapseSidebar();
+            localStorage.setItem('merchantSidebarState', 'collapsed');
+        }
+    }
+
+    function collapseSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+        const title = document.getElementById('sidebar-title');
+        const navTexts = document.querySelectorAll('.nav-text');
+        const userProfile = document.getElementById('user-profile-info');
+        const sidebarHeaders = document.querySelectorAll('.sidebar-header, .sidebar-footer');
+
+        sidebar.classList.remove('w-72');
+        sidebar.classList.add('w-20');
+        
+        mainContent.classList.remove('md:ml-72');
+        mainContent.classList.add('md:ml-20');
+        
+        title.classList.add('opacity-0', 'w-0', 'px-0');
+        
+        navTexts.forEach(text => text.classList.add('hidden'));
+        userProfile.classList.add('opacity-0', 'w-0');
+        
+        sidebarHeaders.forEach(header => {
+            header.classList.remove('p-8');
+            header.classList.add('p-4');
+        });
+        
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.classList.remove('px-4');
+            item.classList.add('justify-center', 'px-2');
+        });
+    }
+
+    function expandSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+        const title = document.getElementById('sidebar-title');
+        const navTexts = document.querySelectorAll('.nav-text');
+        const userProfile = document.getElementById('user-profile-info');
+        const sidebarHeaders = document.querySelectorAll('.sidebar-header, .sidebar-footer');
+
+        sidebar.classList.remove('w-20');
+        sidebar.classList.add('w-72');
+        
+        mainContent.classList.remove('md:ml-20');
+        mainContent.classList.add('md:ml-72');
+        
+        title.classList.remove('opacity-0', 'w-0', 'px-0');
+        
+        navTexts.forEach(text => text.classList.remove('hidden'));
+        userProfile.classList.remove('opacity-0', 'w-0');
+        
+        sidebarHeaders.forEach(header => {
+            header.classList.remove('p-4');
+            header.classList.add('p-8');
+        });
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.classList.remove('justify-center', 'px-2');
+            item.classList.add('px-4');
+        });
+    }
+
+    // Initialize state on load
+    document.addEventListener('DOMContentLoaded', () => {
+        const state = localStorage.getItem('merchantSidebarState');
+        if (state === 'collapsed') {
+            collapseSidebar();
+        }
+        
+        // Remove preloader styles to enable transitions
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                const preloader = document.getElementById('sidebar-preloader');
+                if (preloader) preloader.remove();
+            }, 100);
+        });
+    });
+</script>
 </body></html>

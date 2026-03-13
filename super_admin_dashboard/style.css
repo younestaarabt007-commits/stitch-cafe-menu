@@ -62,3 +62,13 @@ body {
     background: rgba(42, 30, 25, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
+
+/* Ensure tab contents are hidden by default, shown by JS */
+/* Animation removed for stability */
+.tab-content {
+    /* No default display:none here, relying on inline styles */
+}
+
+.tab-content.block {
+    display: block !important;
+}

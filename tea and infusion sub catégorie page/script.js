@@ -1,10 +1,10 @@
 const products = [
     { id: "tea_1", name: "Ceremonial Matcha", description: "Stone-ground, umami-rich", price: 12.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/tea/8de4ad2c0c676dc76030cf5c8c8fad50.jpg", category: "matcha" },
-    { id: "tea_2", name: "Masala Chai", description: "Spiced, creamy, warming", price: 5.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/tea/Tea Citron Délise.jpg", category: "herbal" },
-    { id: "tea_3", name: "Ginger Lemon", description: "Zesty, soothing infusion", price: 4.75, image: "../swiggy-style_elite_main_menu_390x2500/assets/tea/7eb56d04c899ffd7a40ed6151c2713f0.jpg", category: "herbal" },
-    { id: "tea_4", name: "Moroccan Mint", description: "Cooling green tea", price: 4.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/tea/9006b694ca33d7df81128c00d0b0b4d1.jpg", category: "herbal" },
-    { id: "tea_5", name: "Royal Milk Tea", description: "Black tea, milk, caramel", price: 7.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/tea/3344b471b8ae59206338a60703ed541b.jpg", category: "iced" },
-    { id: "tea_6", name: "Iced Peach Oolong", description: "Fruity, floral, chilled", price: 6.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/tea/09dc48198cce55c90c3f4d2544ffb163.jpg", category: "iced" },
+    { id: "tea_2", name: "Masala Chai", description: "Spiced, creamy, warming", price: 5.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/Tea Citron Délise.jpg", category: "herbal" },
+    { id: "tea_3", name: "Ginger Lemon", description: "Zesty, soothing infusion", price: 4.75, image: "../swiggy-style_elite_main_menu_390x2500/assets/7c53d6cc5ec015b0bd982eb5270ed781.jpg", category: "herbal" },
+    { id: "tea_4", name: "Moroccan Mint", description: "Cooling green tea", price: 4.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/Tea Nordique.jpg", category: "herbal" },
+    { id: "tea_5", name: "Royal Milk Tea", description: "Black tea, milk, caramel", price: 7.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/Café Royal.jpg", category: "iced" },
+    { id: "tea_6", name: "Iced Peach Oolong", description: "Fruity, floral, chilled", price: 6.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/09dc48198cce55c90c3f4d2544ffb163.jpg", category: "iced" },
     { id: "tea_7", name: "Lavender Earl Grey", description: "Classic bergamot twist", price: 5.25, image: "../swiggy-style_elite_main_menu_390x2500/assets/tea/tea-lavender-earl.jpg", category: "herbal" }
 ];
 
@@ -22,47 +22,22 @@ function redirectToCustomization(productId) {
     if (!product) return;
     const name = product.name;
     const price = product.price;
-    const image = product.image;
-    const url = `../tea_customization_view/index.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&image=${encodeURIComponent(image)}`;
+    // Ensure image path is root-relative
+    let imgPath = product.image;
+    if (imgPath && !imgPath.startsWith('/') && !imgPath.startsWith('http')) {
+        if (imgPath.startsWith('../')) {
+            imgPath = imgPath.replace('../', '/');
+        } else {
+            imgPath = '/' + imgPath;
+        }
+    }
+    const url = `../tea_customization_view/index.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&image=${encodeURIComponent(imgPath)}`;
     window.location.href = url;
 }
 
 // Global Add to Cart
 function addToCart(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
-
-    const cart = JSON.parse(localStorage.getItem('stitch_cart') || '[]');
-    const existingItem = cart.find(item => item.id === product.id);
-
-    if (existingItem) {
-        existingItem.quantity += 1;
-    } else {
-        cart.push({
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            image: product.image,
-            category: product.category,
-            quantity: 1
-        });
-    }
-
-    localStorage.setItem('stitch_cart', JSON.stringify(cart));
-
-    if (window.updateGlobalCartCount) {
-        window.updateGlobalCartCount();
-    }
-
-    // Visual feedback
-    const btn = document.querySelector(`button[onclick*="${productId}"]`);
-    if (btn) {
-        const originalContent = btn.innerHTML;
-        btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span>';
-        setTimeout(() => {
-            btn.innerHTML = originalContent;
-        }, 1000);
-    }
+    redirectToCustomization(productId);
 }
 
 function renderProducts(filter = 'all') {

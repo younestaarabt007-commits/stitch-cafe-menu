@@ -9,115 +9,15 @@ function apiBase() {
 
 let bestsellers = [];
 let cart = [];
+let currentTable = new URLSearchParams(window.location.search).get('table') || null;
 
 // Consolidated Product Data from all sub-categories
-const sampleMenu = [
-  // Brunch (New)
-  { id: 'brunch-1', name: "Farm Omelette", description: "Organic eggs, cheddar, fresh herbs.", price: 12.50, image: "assets/salty food and sweet brunch/0a928a23c6c3fb861e9c4ec54ae78b7d.jpg", category: "Brunch" },
-  { id: 'brunch-2', name: "Eggs Benedict", description: "English muffin, bacon, hollandaise sauce.", price: 16.00, image: "assets/salty food and sweet brunch/3f108fda33cdb811f37bf5dc2035c3dc.jpg", category: "Brunch" },
-  { id: 'brunch-3', name: "Spicy Shakshuka", description: "Poached eggs in hearty spicy tomato sauce.", price: 15.50, image: "assets/salty food and sweet brunch/5d9c920def5bef64b91715b917d667b2.jpg", category: "Brunch" },
-  { id: 'brunch-4', name: "Garden Skillet", description: "Roasted potatoes, kale, peppers.", price: 14.50, image: "assets/salty food and sweet brunch/5ec903108923b0eda69e0de6ab77a1f3.jpg", category: "Brunch" },
-  { id: 'brunch-5', name: "Brunch Burrito", description: "Chorizo, scrambled eggs, beans.", price: 13.00, image: "assets/salty food and sweet brunch/62e25e1c33624e2bc57b6e4531a36dc5.jpg", category: "Brunch" },
-  { id: 'brunch-6', name: "Steak & Eggs", description: "6oz sirloin, two eggs any style.", price: 19.50, image: "assets/salty food and sweet brunch/69c52da929160d633bd0def179265173.jpg", category: "Brunch" },
-  { id: 'brunch-7', name: "Fit Egg-White", description: "Spinach, goat cheese, egg whites.", price: 13.50, image: "assets/salty food and sweet brunch/89648609962eda9536c1eecdedbdf8ef.jpg", category: "Brunch" },
-  { id: 'brunch-8', name: "Brunch Tacos", description: "Corn tortillas, pickled onions, avocado.", price: 11.00, image: "assets/salty food and sweet brunch/902f3561ca86aba6382aad94c75b11f4.jpg", category: "Brunch" },
-  { id: 'brunch-9', name: "Iron Frittata", description: "Onions, potatoes, aged cheddar.", price: 14.75, image: "assets/salty food and sweet brunch/eb058f0421ae783ed7c55319ca504911.jpg", category: "Brunch" },
-  { id: 'brunch-10', name: "Acai Delight", description: "Mixed berries, granola, honey.", price: 12.00, image: "assets/smoothie/f3a3e79d662b87dca0c68b729446d755.jpg", category: "Brunch" },
-  { id: 'brunch-11', name: "Belgian Gold", description: "Crispy waffles, berries, cream.", price: 11.50, image: "assets/vertical-shot-pancakes-with-fruits-top_181624-23923.jpg", category: "Brunch" },
-  { id: 'brunch-12', name: "Full English", description: "Sausage, bacon, eggs, beans, toast.", price: 22.00, image: "assets/brunch-full-english.jpg", category: "Brunch" },
 
-  // Brew
-  { id: 'brew-1', name: "Nitro Cold Brew", description: "18-hour steep, nitrogen infused.", price: 6.50, image: "assets/coffee-nitro-brew.jpg", category: "Cold Brew" },
-  { id: 'brew-2', name: "Matcha Latte", description: "Uji-sourced matcha with oat milk.", price: 7.25, image: "assets/Matcha Latte.jpg", category: "Tea" },
-  { id: 'brew-3', name: "Ethiopian Yirgacheffe", description: "Floral notes with a citrus finish.", price: 5.00, image: "assets/Ethiopian Yirgacheffe.jpg", category: "Coffee" },
-  { id: 'brew-4', name: "Dirty Masala Chai", description: "House-made spices, double shot.", price: 6.75, image: "assets/tea-dirty-chai-espresso.jpg", category: "Tea" },
-  { id: 'brew-5', name: "Oat Milk Cortado", description: "Equal parts espresso & milk.", price: 4.50, image: "assets/coffee-oat-milk-latte.jpg", category: "Coffee" },
-  { id: 'brew-6', name: "Lavender Honey", description: "Floral infusion with local honey.", price: 7.50, image: "assets/tea-lavender-earl.jpg", category: "Tea" },
-  { id: 'brew-7', name: "Golden Turmeric", description: "Spiced healing brew.", price: 6.25, image: "assets/Golden Turmeric.jpg", category: "Tea" },
-  { id: 'brew-8', name: "Caramel Macchiato", description: "Layered espresso & vanilla.", price: 6.50, image: "assets/latte-caramel-macchiato.jpg", category: "Coffee" },
-  { id: 'brew-9', name: "Light Black Coffee", description: "Hand poured perfection.", price: 8.00, image: "assets/Light Black Coffee.jpg", category: "Coffee" },
-  { id: 'brew-10', name: "Blueberry Infusion", description: "Antioxidant rich blend.", price: 5.75, image: "assets/Blueberry Infusion.jpg", category: "Tea" },
-
-  // Artisanal Bread
-  { id: 'bread-1', name: "Chocolate Babka", description: "Rich dark chocolate ganache swirl.", price: 12.00, image: "assets/Chocolate Babka.jpg", category: "Pastry" },
-  { id: 'bread-2', name: "Seeded Multigrain", description: "Hand-topped with flax & oats.", price: 9.00, image: "assets/bakery-seeded-multigrain.jpg", category: "Bread" },
-  { id: 'bread-3', name: "Dark Rye Loaf", description: "Robust German-style dense rye.", price: 10.50, image: "assets/bakery-dark-rye-loaf.jpg", category: "Bread" },
-  { id: 'bread-4', name: "Herbed Focaccia", description: "Rosemary, garlic & olive oil.", price: 7.50, image: "assets/Herbed Focaccia.jpg", category: "Bread" },
-  { id: 'bread-5', name: "Honey Brioche", description: "Ultra-soft, buttery morning loaf.", price: 11.25, image: "assets/bakery-honey-brioche.jpg", category: "Bread" },
-  { id: 'bread-6', name: "Stoneground Wheat", description: "Nutritious 100% whole grain.", price: 8.75, image: "assets/bakery-stoneground-wheat.jpg", category: "Bread" },
-  { id: 'bread-7', name: "Parisian Baguette", description: "Classic crust with an airy crumb.", price: 4.50, image: "assets/bakery-parisian-baguette.jpg", category: "Bread" },
-  { id: 'bread-8', name: "Cranberry Walnut", description: "Sweet & tart artisan loaf.", price: 9.50, image: "assets/bakery-cranberry-walnut.jpg", category: "Bread" },
-
-  // Black Coffee
-  { id: 'coffee-1', name: "Velvet Flat White", description: "Double Shot, Silky Microfoam", price: 4.80, image: "assets/coffee-velvet-flat-white.jpg", category: "Coffee" },
-  { id: 'coffee-2', name: "Kyoto Cold Brew", description: "12-Hour Slow Drip Extraction", price: 5.50, image: "assets/coffee-kyoto-cold-brew.jpg", category: "Cold Brew" },
-  { id: 'coffee-3', name: "Oat Milk Latte", description: "Creamy, Nut-Free, Vegan", price: 5.20, image: "assets/latte-oat.jpg", category: "Coffee" },
-  { id: 'coffee-4', name: "Single Origin Espresso", description: "Intense Berry Notes", price: 3.50, image: "assets/coffee-single-origin-espresso.jpg", category: "Coffee" },
-  { id: 'coffee-5', name: "Dark Mocha", description: "70% Cacao, Double Espresso", price: 6.00, image: "assets/coffee-dark-mocha.jpg", category: "Coffee" },
-
-  // Cold Drinks
-  { id: 'cold-1', name: "Fresh Orange Juice", description: "Cold pressed Valencia oranges", price: 4.50, image: "assets/juces.jpg", category: "Juice" },
-  { id: 'cold-2', name: "Strawberry Smoothie", description: "Greek yogurt, strawberry puree", price: 5.75, image: "assets/60d841c27d82e0664048039ced318168.jpg", category: "Smoothie" },
-  { id: 'cold-3', name: "Chocolate Shake", description: "70% cacao, vanilla ice cream", price: 6.25, image: "assets/milkshake.jpg", category: "Shake" },
-  { id: 'cold-4', name: "Iced Latte", description: "Double shot over chilled milk", price: 5.50, image: "assets/latté.jpg", category: "Coffee" },
-  { id: 'cold-5', name: "Mango Lassi", description: "Alphonso mango, yogurt, cardamom", price: 5.00, image: "assets/8de4ad2c0c676dc76030cf5c8c8fad50.jpg", category: "Smoothie" },
-  { id: 'cold-6', name: "Cold Brew", description: "12-hour steep, smooth finish", price: 4.90, image: "assets/Café Noire.jpg", category: "Cold Brew" },
-
-  // Creme/Latte (Updated Images)
-  { id: 'creme-1', name: "Creamy Orange Latte", description: "Fresh orange with milk foam", price: 5.50, image: "assets/Café Crème.jpg", category: "Coffee" },
-  { id: 'creme-2', name: "Citrus Spark", description: "Lemon-lime with mint", price: 4.25, image: "assets/Tea Citron Délise.jpg", category: "Juice" },
-  { id: 'creme-3', name: "Mango Cream Fizz", description: "Mango puree and light cream", price: 5.75, image: "assets/7eb56d04c899ffd7a40ed6151c2713f0.jpg", category: "Cold Drink" },
-  { id: 'creme-4', name: "Classic Apple Juice", description: "Cold pressed apples", price: 4.00, image: "assets/58b8a4072e8dc05fd60ef5308e932cd9.jpg", category: "Juice" },
-  { id: 'creme-5', name: "Berry Citrus", description: "Strawberry and grapefruit", price: 5.20, image: "assets/6675fe80cec7c9ae75aedeb53a20134d.jpg", category: "Juice" },
-
-  // Juices (unique items)
-  { id: 'juice-1', name: "Lemon Mint", description: "Zesty lemon with mint", price: 4.10, image: "assets/juice-lemon-mint.jpg", category: "Juice" },
-  { id: 'juice-2', name: "Pineapple Punch", description: "Tropical pineapple blend", price: 4.80, image: "assets/juice-pineapple-punch.jpg", category: "Juice" },
-  { id: 'juice-3', name: "Mango Glow", description: "Alphonso mango puree", price: 5.25, image: "assets/juice-mango-glow.jpg", category: "Juice" },
-
-  // Latte Hot
-  { id: 'latte-1', name: "Classic Latte", description: "Double shot, steamed milk", price: 4.80, image: "assets/latte-classic.jpg", category: "Coffee" },
-  { id: 'latte-2', name: "Vanilla Latte", description: "House vanilla syrup", price: 5.10, image: "assets/latte-vanilla-bean.jpg", category: "Coffee" },
-  { id: 'latte-3', name: "Caramel Latte", description: "Buttery caramel drizzle", price: 5.10, image: "assets/latte-caramel-swirl.jpg", category: "Coffee" },
-  { id: 'latte-4', name: "Pumpkin Spice Latte", description: "Seasonal spices & puree", price: 5.40, image: "assets/latte-pumpkin-spice.jpg", category: "Coffee" },
-
-  // Tea (New)
-  { id: 'tea-1', name: "Matcha Latte", description: "Stone-ground, umami-rich", price: 12.00, image: "assets/Tea Nordique.jpg", category: "Tea" },
-  { id: 'tea-2', name: "Masala Chai", description: "Spiced, creamy, warming", price: 5.50, image: "assets/Tea Citron Délise.jpg", category: "Tea" },
-  { id: 'tea-3', name: "Ginger Lemon", description: "Zesty, soothing infusion", price: 4.75, image: "assets/7c53d6cc5ec015b0bd982eb5270ed781.jpg", category: "Tea" },
-  { id: 'tea-4', name: "Moroccan Mint", description: "Cooling green tea", price: 4.50, image: "assets/Tea Nordique.jpg", category: "Tea" },
-  { id: 'tea-5', name: "Royal Milk Tea", description: "Black tea, milk, caramel", price: 7.00, image: "assets/Café Royal.jpg", category: "Tea" },
-  { id: 'tea-6', name: "Iced Peach Oolong", description: "Fruity, floral, chilled", price: 6.50, image: "assets/09dc48198cce55c90c3f4d2544ffb163.jpg", category: "Tea" },
-
-  // Smoothie & Shake (New)
-  { id: 'smoothie-1', name: "Berry Burst", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "assets/smoothie-berry-cream.jpg", category: "Smoothie" },
-  { id: 'smoothie-2', name: "Green Power", description: "Spinach, apple, banana", price: 5.00, image: "assets/kiwi-milk-shake-table_140725-8608.jpg", category: "Smoothie" },
-  { id: 'shake-1', name: "Classic Chocolate Shake", description: "Rich cocoa, creamy base", price: 5.20, image: "assets/smoothie-choco-malt.jpg", category: "Shake" },
-  { id: 'shake-2', name: "Vanilla Bean Shake", description: "Madagascar vanilla, smooth", price: 5.00, image: "assets/shake-vanilla-bean.jpg", category: "Shake" },
-  { id: 'shake-3', name: "Strawberry Bliss", description: "Fresh strawberries, cream", price: 5.40, image: "assets/shake-strawberry.jpg", category: "Shake" },
-  { id: 'shake-4', name: "Banana Caramel", description: "Banana, caramel drizzle", price: 5.60, image: "assets/shake-banana-caramel.jpg", category: "Shake" },
-
-  // Toast (New)
-  { id: 'toast-1', name: "Signature Benedict", description: "Poached eggs, hollandaise", price: 14.50, image: "assets/toast-signature-benedict.jpg", category: "Toast" },
-  { id: 'toast-2', name: "Truffle Omelette", description: "Mushrooms, truffle oil", price: 12.50, image: "assets/hero-scrambled-eggs.png", category: "Toast" },
-  { id: 'toast-3', name: "Shakshuka", description: "Tomato, peppers, eggs", price: 11.25, image: "assets/toast-shakshuka.jpg", category: "Toast" },
-  { id: 'toast-4', name: "Avocado Toast", description: "Sourdough, smashed avo", price: 10.50, image: "assets/toast-avocado.jpg", category: "Toast" },
-  { id: 'toast-5', name: "Classic Benedict", description: "Ham, hollandaise", price: 13.50, image: "assets/toast-benedict.jpg", category: "Toast" },
-  { id: 'toast-6', name: "Vegan Power Bowl", description: "Grains, greens", price: 12.00, image: "assets/d72d0813a986c68b2950bde5af05c3af.jpg", category: "Toast" },
-
-  // Pastry (New)
-  { id: 'pastry-1', name: "Butter Croissant", description: "Flaky layers, French butter", price: 4.50, image: "assets/sweets/07abeb0b37011bc4f4413062a5fc0045.jpg", category: "Pastry" },
-  { id: 'pastry-2', name: "Almond Croissant", description: "Frangipane, toasted almond", price: 5.25, image: "assets/sweets/819873298e099a845e042ded5a19ca95.jpg", category: "Pastry" },
-  { id: 'pastry-3', name: "Chocolate Éclair", description: "Choux pastry, rich ganache", price: 4.75, image: "assets/sweets/99e4f1c4df32d646f2dde6bf28cd9566.jpg", category: "Pastry" },
-  { id: 'pastry-4', name: "Strawberry Tart", description: "Vanilla custard, fresh berries", price: 5.80, image: "assets/sweets/f3089aa69fae4df2b10dd5e82e5ef225.jpg", category: "Pastry" },
-  { id: 'pastry-5', name: "Lemon Meringue Tart", description: "Zesty curd, torched meringue", price: 5.90, image: "assets/sweets/db03e53c057449564a8c3f285d4ae705.jpg", category: "Pastry" },
-  { id: 'pastry-6', name: "Velvet Cake Slice", description: "Moist crumb, vanilla frosting", price: 4.95, image: "assets/sweets/dc7635bbd750c761b95949cdaaf3037d.jpg", category: "Pastry" }
-];
 
 function fetchBestsellers() {
   // Force local data usage to ensure items appear correctly with original images
   console.log('Forcing local menu data display');
-  bestsellers = sampleMenu;
+  bestsellers = allMenuItems;
   renderBestsellers(bestsellers);
 }
 
@@ -135,7 +35,10 @@ function renderBestsellers(items) {
   const ordered = items;
 
   container.innerHTML = ordered.map((item, index) => {
-    const imgUrl = item.image || item.image_url;
+    let imgUrl = item.image || item.image_url;
+    if (imgUrl && imgUrl.startsWith('assets/')) {
+      imgUrl = '../../' + imgUrl;
+    }
     // Use fallback if image is missing or is the default Unsplash placeholder
     const isDefault = imgUrl && imgUrl.includes('photo-1546069901');
     const displayImg = (imgUrl && !isDefault) ? imgUrl : getFallbackImage(item, index);
@@ -149,7 +52,7 @@ function renderBestsellers(items) {
         <span class="material-symbols-outlined text-[14px] text-green-600 dark:text-green-400">${getCategoryIcon(item.category)}</span>
       </div>
       <div class="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden bg-gray-50 dark:bg-black/20 relative shrink-0">
-        <img src="${displayImg}" class="w-full h-full object-cover" alt="${getMenuTranslation(item, 'name')}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'">
+        <img src="${displayImg}" class="w-full h-full object-cover" alt="${item.name}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'">
       </div>
       <div class="flex-1 min-w-0 flex flex-col h-24 md:h-32 justify-between py-0.5">
         <div>
@@ -194,7 +97,7 @@ function renderCategories(items) {
       <div class="p-[3px] rounded-full bg-gray-200 dark:bg-gray-700 group-hover:bg-primary transition-all">
         <div class="bg-white dark:bg-[#1a100c] p-1 rounded-full">
           <div class="w-16 h-16 rounded-full overflow-hidden relative">
-            <img src="${cat.img}" alt="${cat.name}" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='assets/waiter.jpg'">
+            <img src="${cat.img}" alt="${cat.name}" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='../../assets/waiter.jpg'">
           </div>
         </div>
       </div>
@@ -241,14 +144,14 @@ function getRatingForItem(item) {
 function getFallbackImage(item, seed = 0) {
   // Try to match specific keywords in name to local assets
   const name = item.name.toLowerCase();
-  if (name.includes('milkshake')) return 'assets/close-up-milkshake-glass-plate_117406-7215.jpg';
-  if (name.includes('smoothie')) return 'assets/raspberry-smoothie_1150-18529.jpg';
-  if (name.includes('juice') || name.includes('orange')) return 'assets/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif';
-  if (name.includes('tea')) return 'assets/exotic-cocktail-closeup_181624-983.avif';
-  if (name.includes('toast') || name.includes('benedict')) return 'assets/croissant-benedict-salmon-with-poched-egg-hollandaise-sauce-served-with-fresh-salad_140725-1329.avif';
-  if (name.includes('pancake')) return 'assets/vertical-shot-pancakes-with-fruits-top_181624-23923.jpg';
-  if (name.includes('pastry') || name.includes('croissant')) return 'assets/pastry.jpg';
-  if (name.includes('mango')) return 'assets/delicious-indian-mango-drink-high-angle_23-2148734680.avif';
+  if (name.includes('milkshake')) return '../../assets/close-up-milkshake-glass-plate_117406-7215.jpg';
+  if (name.includes('smoothie')) return '../../assets/raspberry-smoothie_1150-18529.jpg';
+  if (name.includes('juice') || name.includes('orange')) return '../../assets/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif';
+  if (name.includes('tea')) return '../../assets/exotic-cocktail-closeup_181624-983.avif';
+  if (name.includes('toast') || name.includes('benedict')) return '../../assets/croissant-benedict-salmon-with-poched-egg-hollandaise-sauce-served-with-fresh-salad_140725-1329.avif';
+  if (name.includes('pancake')) return '../../assets/vertical-shot-pancakes-with-fruits-top_181624-23923.jpg';
+  if (name.includes('pastry') || name.includes('croissant')) return '../../assets/pastry.jpg';
+  if (name.includes('mango')) return '../../assets/delicious-indian-mango-drink-high-angle_23-2148734680.avif';
 
   // Fallback pool of high-quality images
   const pool = [
@@ -274,10 +177,121 @@ function startHeroCarousel() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 1. Initialize Cart
+  cart = getStoredCart();
+  updateCartUI();
+
+  // 2. Check for returning customization order
+  try {
+    const lastOrder = localStorage.getItem('stitch_last_order');
+    if (lastOrder) {
+      const order = JSON.parse(lastOrder);
+      // Create a cart item from the order
+      const cartItem = {
+        id: 'custom-' + Date.now(), // Unique ID for custom item
+        name: order.item,
+        price: order.unit_price, // Use the customized unit price
+        image: order.image && order.image.startsWith('assets/') ? '../../' + order.image : (order.image || '../../assets/waiter.jpg'), // Use passed image or fallback
+        category: 'Custom',
+        quantity: order.qty,
+        options: order.options
+      };
+      
+      // Add to cart
+      cart.push(cartItem);
+      updateCartUI();
+      localStorage.setItem('stitch_cart', JSON.stringify(cart));
+      
+      // Clear the temp storage
+      localStorage.removeItem('stitch_last_order');
+    }
+  } catch (e) {
+    console.error('Error processing last order', e);
+  }
+
   fetchBestsellers();
   renderCategories();
+  handleTableContext();
   // startHeroCarousel(); // Disabled - using auto-loop instead
 });
+
+function handleTableContext() {
+  if (!currentTable) return;
+
+  // 1. Update Table Badge in UI
+  const badge = document.getElementById('table-badge');
+  if (badge) {
+    badge.textContent = `Table ${currentTable}`;
+    badge.classList.remove('hidden');
+  }
+
+  // 2. Check Reservation Status
+  const reservations = JSON.parse(localStorage.getItem('stitch_reservations') || '[]');
+  const isReserved = reservations.some(res => res.tableId === currentTable);
+
+  if (isReserved) {
+    showReservationOverlay();
+  }
+}
+
+function showReservationOverlay() {
+  const overlay = document.createElement('div');
+  overlay.className = 'fixed inset-0 bg-black/80 backdrop-blur-md z-[100] flex flex-col items-center justify-center p-8 text-center text-white';
+  overlay.innerHTML = `
+    <div class="w-20 h-20 bg-primary/20 rounded-3xl flex items-center justify-center mb-6 border border-primary/30">
+        <span class="material-symbols-outlined text-[48px] text-primary">event_busy</span>
+    </div>
+    <h2 class="text-3xl font-serif italic mb-2">Table Reserved</h2>
+    <p class="text-gray-400 mb-8 max-w-xs">This table is currently booked for a client. Please see our staff for assistance.</p>
+    <button onclick="window.history.back()" class="bg-primary text-white px-8 py-4 rounded-2xl font-bold shadow-glow">Go Back</button>
+  `;
+  document.body.appendChild(overlay);
+  document.body.style.overflow = 'hidden';
+}
+
+// Intercept Place Order to sync with Dashboard
+const originalPlaceOrder = window.placeOrder; // Not defined yet or defined differently
+window.placeOrder = () => {
+  if (cart.length === 0) return;
+
+  const orderData = {
+    id: 'ORD-' + Math.floor(Math.random() * 10000).toString().padStart(3, '0'),
+    table: currentTable || 'Online',
+    items: cart,
+    total: cart.reduce((acc, item) => acc + (item.price * item.quantity), 0),
+    status: 'Received',
+    time: Date.now()
+  };
+
+  // 1. Sync to LocalStorage for Dashboard
+  const liveOrders = JSON.parse(localStorage.getItem('stitch_live_orders') || '[]');
+  liveOrders.push(orderData);
+  localStorage.setItem('stitch_live_orders', JSON.stringify(liveOrders));
+
+  // 2. Clear Cart and Notify
+  cart = [];
+  localStorage.removeItem('cart');
+  renderCart();
+
+  // Custom success view
+  showOrderSuccess(orderData.id);
+};
+
+function showOrderSuccess(orderId) {
+  const success = document.createElement('div');
+  success.className = 'fixed inset-0 bg-white dark:bg-[#1a100c] z-[110] flex flex-col items-center justify-center p-8 text-center';
+  success.innerHTML = `
+        <div class="w-32 h-32 bg-green-500/10 rounded-full flex items-center justify-center mb-8 relative">
+            <div class="absolute inset-0 bg-green-500/5 rounded-full animate-ping"></div>
+            <span class="material-symbols-outlined text-[64px] text-green-500">check_circle</span>
+        </div>
+        <h2 class="text-3xl font-serif italic mb-2">Order Confirmed!</h2>
+        <p class="text-gray-500 mb-2">Your order <span class="font-bold text-primary">#${orderId}</span> is now being prepared.</p>
+        <p class="text-xs text-gray-400 mb-10">We'll bring it to your table shortly.</p>
+        <button onclick="location.reload()" class="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-10 py-4 rounded-2xl font-bold">Done</button>
+    `;
+  document.body.appendChild(success);
+}
 
 window.navigateToCategory = (category) => {
   const categoryId = category.toLowerCase();
@@ -349,19 +363,63 @@ window.filterByCategory = (category) => {
 };
 
 window.addToCart = (id) => {
-  const item = bestsellers.find(i => i.id === id) || sampleMenu.find(i => i.id === id);
-  if (!item) return;
-
-  const existing = cart.find(i => i.id === id);
-  if (existing) {
-    existing.quantity++;
-  } else {
-    cart.push({ ...item, quantity: 1 });
+  const itemFromBestsellers = bestsellers.find(i => i.id === id);
+  const itemFromAll = typeof allMenuItems !== 'undefined' ? allMenuItems.find(i => i.id === id) : null;
+  const item = itemFromBestsellers || itemFromAll;
+  if (!item) {
+    window.location.href = '../pure_noir_espresso_customization_view_1/index.html';
+    return;
   }
-  updateCartUI();
 
-  // Also save to localStorage for persistence across pages
-  localStorage.setItem('stitch_cart', JSON.stringify(cart));
+  // Track the item we're about to customize
+  localStorage.setItem('stitch_customizing_item', JSON.stringify(item));
+
+  // Ensure image path is root-relative for consistent loading across subfolders
+  let imgPath = item.image;
+  if (imgPath && !imgPath.startsWith('/') && !imgPath.startsWith('http')) {
+    if (imgPath.startsWith('../')) {
+      imgPath = imgPath.replace('../', '/');
+    } else {
+      imgPath = '/' + imgPath;
+    }
+  }
+
+  // Determine which customization page to go to based on category
+  const category = (item.category || '').toLowerCase();
+  let customizationPage = '../brunch_customization_view/index.html'; // Default
+
+  if (category.includes('brunch') || category.includes('toast')) {
+    customizationPage = '../toast_brunch_customization_view/index.html';
+  } else if (category.includes('tea') || category.includes('infusion')) {
+    customizationPage = '../tea_customization_view/index.html';
+  } else if (category.includes('coffee') || category.includes('brew')) {
+    customizationPage = '../pure_noir_espresso_customization_view_1/index.html';
+  } else if (category.includes('pastry') || category.includes('bakery')) {
+    customizationPage = '../sweet_pastries_customization_view/index.html';
+  } else if (category.includes('bread')) {
+    customizationPage = '../petit pain bakery_customization_view/index.html';
+  } else if (category.includes('juice') || category.includes('drink')) {
+    customizationPage = '../orange juce_customization_view_1/index.html';
+  } else if (category.includes('smoothie')) {
+    customizationPage = '../smothie customisation review/index.html';
+  } else if (category.includes('milkshake') || category.includes('shake')) {
+    customizationPage = '../milkshake_customization_view/index.html';
+  }
+
+  if (customizationPage.startsWith('../')) {
+    customizationPage = '/' + customizationPage.replace('../', '');
+  }
+
+  // Add query params for immediate use if needed
+  const params = new URLSearchParams({
+    id: item.id,
+    name: item.name,
+    price: item.price,
+    image: imgPath,
+    category: item.category
+  });
+
+  window.location.href = `${customizationPage}?${params.toString()}`;
 };
 
 function updateCartUI() {
