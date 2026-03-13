@@ -68,9 +68,9 @@ function renderBestsellers(items) {
         </div>
         <div class="flex items-center justify-between mt-auto">
           <span class="text-xs font-bold text-primary">${typeof item.price === 'number' ? item.price.toFixed(2) : item.price}DH</span>
-          <a href="${buildCustomizationUrl(item)}" class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform">
+          <button onclick="addToCart('${item.id}')" class="w-[84px] h-[36px] rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform">
             ${getTranslation('add')}
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -144,45 +144,38 @@ function getRatingForItem(item) {
 }
 
 function buildCustomizationUrl(item) {
-  if (!item) return '/pure_noir_espresso_customization_view_1/index.html';
+  if (!item) return '../pure_noir_espresso_customization_view_1/index.html';
   const category = (item.category || '').toLowerCase();
-  let customizationPage = 'brunch_customization_view/index.html';
+  let customizationPage = '../brunch_customization_view/index.html';
   if (category.includes('brunch') || category.includes('toast')) {
-    customizationPage = 'toast_brunch_customization_view/index.html';
+    customizationPage = '../toast_brunch_customization_view/index.html';
   } else if (category.includes('tea') || category.includes('infusion')) {
-    customizationPage = 'tea_customization_view/index.html';
+    customizationPage = '../tea_customization_view/index.html';
   } else if (category.includes('coffee') || category.includes('brew')) {
-    customizationPage = 'pure_noir_espresso_customization_view_1/index.html';
+    customizationPage = '../pure_noir_espresso_customization_view_1/index.html';
   } else if (category.includes('pastry') || category.includes('bakery')) {
-    customizationPage = 'sweet_pastries_customization_view/index.html';
+    customizationPage = '../sweet_pastries_customization_view/index.html';
   } else if (category.includes('bread')) {
-    customizationPage = 'petit pain bakery_customization_view/index.html';
+    customizationPage = '../petit pain bakery_customization_view/index.html';
   } else if (category.includes('juice') || category.includes('drink')) {
-    customizationPage = 'orange juce_customization_view_1/index.html';
+    customizationPage = '../orange juce_customization_view_1/index.html';
   } else if (category.includes('smoothie')) {
-    customizationPage = 'smothie customisation review/index.html';
+    customizationPage = '../smothie customisation review/index.html';
   } else if (category.includes('milkshake') || category.includes('shake')) {
-    customizationPage = 'milkshake_customization_view/index.html';
+    customizationPage = '../milkshake_customization_view/index.html';
   }
 
-  let imgPath = item.image;
-  if (imgPath && !imgPath.startsWith('/') && !imgPath.startsWith('http')) {
-    if (imgPath.startsWith('../')) {
-      imgPath = '/' + imgPath.replace(/^(\.\.\/)+/, '');
-    } else {
-      imgPath = '/' + imgPath;
-    }
-  }
+  let imgPath = item.image || '';
 
   const params = new URLSearchParams({
     id: item.id || '',
     name: item.name || '',
     price: item.price ?? '',
-    image: imgPath || '',
+    image: imgPath,
     category: item.category || ''
   });
 
-  return `/${customizationPage}?${params.toString()}`;
+  return `${customizationPage}?${params.toString()}`;
 }
 
 function getFallbackImage(item, seed = 0) {
@@ -411,7 +404,7 @@ window.addToCart = (id) => {
   const itemFromAll = typeof allMenuItems !== 'undefined' ? allMenuItems.find(i => i.id === id) : null;
   const item = itemFromBestsellers || itemFromAll;
   if (!item) {
-    window.location.href = '/pure_noir_espresso_customization_view_1/index.html';
+    window.location.href = '../pure_noir_espresso_customization_view_1/index.html';
     return;
   }
 

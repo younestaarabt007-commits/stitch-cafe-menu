@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customise you order</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom scrollbar styles */
+    ::-webkit-scrollbar {
+      width: 1px;
+      height: 1px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 relative">
+
+  <div class="relative h-64 overflow-hidden">
+    <div id="hero-image" class="w-full h-full bg-center bg-no-repeat bg-cover"
+      data-alt="Vibrant purple berry smoothie with blueberries and mint leaves"
+      style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBiVeZwsSWJCE0eA9VnyqfFQS9JikAIjX1ILhQIdSMxHybKQKVUH0Sr4yC_VY7Kk24O1rncwIV4QOErsCS1AQafyRo16YS2BNrdDdtGyILBk815rqkxyt10oNzoZhdGaAuoofSFHQwNk1HqwRzN_8N8iQQFRJQbND46R6lZeLOfl01ft9o-_Nqhm_V7Hoj1P2VTpGmEqLxku_EHeRoAggD0NnfKsB_q5hKCNJx87UYCqbvwAHawhLYg4sCOANFI-gixKf_hoMp6jic");'>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+    </div>
+    <div class="absolute top-4 left-4">
+      <a href="../swiggy-style_elite_main_menu_390x2500/index.html" class="text-white text-lg"><i
+          class="fa-solid fa-arrow-left"></i></a>
+    </div>
+  </div>
+
+  <div class="p-4">
+    <h1 id="item-name" class="text-2xl font-bold"></h1>
+    <p id="item-description" class="text-gray-600 mt-2"></p>
+    <div class="flex items-center mt-2">
+      <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+      <span id="item-rating" class="ml-1 font-bold"></span>
+      <span id="item-rating-count" class="text-gray-500 ml-1"></span>
+    </div>
+    <div class="mt-4 flex items-center justify-between">
+      <div class="flex items-center">
+        <button id="decrease-quantity"
+          class="bg-gray-200 text-gray-700 rounded-full w-8 h-8 flex items-center justify-center">
+          <i class="fas fa-minus"></i>
+        </button>
+        <span id="quantity" class="mx-4 text-lg font-bold">1</span>
+        <button id="increase-quantity"
+          class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center">
+          <i class="fas fa-plus"></i>
+        </button>
+      </div>
+      <div id="item-price" class="text-xl font-bold"></div>
+    </div>
+  </div>
+
+  <div class="bg-white p-4 mt-4">
+    <h2 class="text-lg font-bold">Size</h2>
+    <div class="mt-2 space-y-2">
+      <label class="flex items-center">
+        <input type="radio" name="size" class="form-radio text-green-500" value="small" checked>
+        <span class="ml-2">Small</span>
+        <span class="ml-auto">- 2.00 DH</span>
+      </label>
+      <label class="flex items-center">
+        <input type="radio" name="size" class="form-radio text-green-500" value="medium">
+        <span class="ml-2">Medium</span>
+        <span class="ml-auto">+ 0.00 DH</span>
+      </label>
+      <label class="flex items-center">
+        <input type="radio" name="size" class="form-radio text-green-500" value="large">
+        <span class="ml-2">Large</span>
+        <span class="ml-auto">+ 3.00 DH</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="bg-white p-4 mt-4">
+    <h2 class="text-lg font-bold">Extras</h2>
+    <div class="mt-2 space-y-2">
+      <label class="flex items-center">
+        <input type="checkbox" class="form-checkbox text-green-500" value="extra-shot">
+        <span class="ml-2">Extra Shot</span>
+        <span class="ml-auto">+ 5.00 DH</span>
+      </label>
+      <label class="flex items-center">
+        <input type="checkbox" class="form-checkbox text-green-500" value="whipped-cream">
+        <span class="ml-2">Whipped Cream</span>
+        <span class="ml-auto">+ 3.00 DH</span>
+      </label>
+    </div>
+  </div>
+
+  <div id="add-to-order-btn"
+    class="fixed bottom-[55px] left-0 right-0 bg-green-500 text-white p-4 flex justify-between items-center z-20">
+    <div>
+      <span id="total-items">1 Item</span> | <span id="total-price">25.00 DH</span>
+    </div>
+    <button class="font-bold">Add to order</button>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>
