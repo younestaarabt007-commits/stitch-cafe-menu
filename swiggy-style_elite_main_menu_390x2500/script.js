@@ -595,6 +595,9 @@ const translations = {
     place_order: "Place Order",
     order_status: "Order Status",
     received: "Received",
+    greeting_morning: "Good Morning ☀️",
+    greeting_afternoon: "Good Afternoon 🌤️",
+    greeting_evening: "Good Evening 🌙",
     // Categories
     'Tea & Infusion': "Tea & Infusion",
     'Milkshake': "Milkshake",
@@ -666,6 +669,9 @@ const translations = {
     place_order: "Commander",
     order_status: "Statut de la commande",
     received: "Reçu",
+    greeting_morning: "Bonjour ☀️",
+    greeting_afternoon: "Bon Après-midi 🌤️",
+    greeting_evening: "Bonsoir 🌙",
     // Categories
     'Tea & Infusion': "Thé & Infusion",
     'Milkshake': "Milkshake",
@@ -732,6 +738,9 @@ const translations = {
     items: "عناصر",
     order_status: "حالة الطلب",
     received: "تم الاستلام",
+    greeting_morning: "صباح الخير ☀️",
+    greeting_afternoon: "نهارك سعيد 🌤️",
+    greeting_evening: "مساء الخير 🌙",
     subtotal: "المجموع الفرعي",
     tax: "ضريبة (10%)",
     total: "المجموع",
@@ -1135,6 +1144,13 @@ function applyLang(lang) {
     toggle.classList.remove('lang-en', 'lang-fr', 'lang-ar');
     toggle.classList.add(`lang-${lang}`);
     label.textContent = lang === 'en' ? 'English' : (lang === 'fr' ? 'Français' : 'العربية');
+  }
+
+  const greetingEl = document.getElementById('header-greeting');
+  if (greetingEl) {
+    const h = new Date().getHours();
+    const key = h < 12 ? 'greeting_morning' : h < 17 ? 'greeting_afternoon' : 'greeting_evening';
+    greetingEl.textContent = (translations[lang] && translations[lang][key]) ? translations[lang][key] : translations.en[key];
   }
 
   // Re-render content

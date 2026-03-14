@@ -177,3 +177,5 @@
 [dir="rtl"] .flex { direction: rtl; }
 [dir="rtl"] #hero-carousel .flex > div { text-align: right; }
 [dir="rtl"] #hero-carousel .items-start { align-items: flex-start; }
+[dir="rtl"] .absolute.top-3.right-4 { right: auto !important; left: 1rem !important; }
+[dir="rtl"] .absolute.top-3.md\:right-8 { right: auto !important; left: 2rem !important; }
