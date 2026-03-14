@@ -598,6 +598,7 @@ const translations = {
     greeting_morning: "Good Morning ☀️",
     greeting_afternoon: "Good Afternoon 🌤️",
     greeting_evening: "Good Evening 🌙",
+    welcome_message: "What would you like today?",
     // Categories
     'Tea & Infusion': "Tea & Infusion",
     'Milkshake': "Milkshake",
@@ -672,6 +673,7 @@ const translations = {
     greeting_morning: "Bonjour ☀️",
     greeting_afternoon: "Bon Après-midi 🌤️",
     greeting_evening: "Bonsoir 🌙",
+    welcome_message: "Qu'est-ce qui vous ferait plaisir aujourd'hui?",
     // Categories
     'Tea & Infusion': "Thé & Infusion",
     'Milkshake': "Milkshake",
@@ -741,6 +743,7 @@ const translations = {
     greeting_morning: "صباح الخير ☀️",
     greeting_afternoon: "نهارك سعيد 🌤️",
     greeting_evening: "مساء الخير 🌙",
+    welcome_message: "ماذا تحب أن تأكل اليوم؟",
     subtotal: "المجموع الفرعي",
     tax: "ضريبة (10%)",
     total: "المجموع",
@@ -1157,7 +1160,7 @@ function applyLang(lang) {
   if (typeof bestsellers !== 'undefined' && bestsellers.length) {
     renderBestsellers(bestsellers);
   }
-  // renderCategories();
+  renderCategories();
   updateCartUI();
 
   const modal = document.getElementById('order-modal');
@@ -1167,20 +1170,34 @@ function applyLang(lang) {
 }
 
 function getLang() {
-  return localStorage.getItem('stitch_lang') || 'en';
+  // Check localStorage first
+  const savedLang = localStorage.getItem('stitch_lang');
+  if (savedLang) return savedLang;
+  
+  // Check browser language preference
+  const browserLang = navigator.language || navigator.userLanguage;
+  if (browserLang) {
+    if (browserLang.startsWith('ar')) return 'ar';
+    if (browserLang.startsWith('fr')) return 'fr';
+  }
+  
+  // Default to English
+  return 'en';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   cart = getStoredCart();
   updateCartUI();
   fetchBestsellers();
-  // // renderCategories();
   setupEvents();
 
   // Check for language preference
   const lang = getLang();
   applyLang(lang); // Always apply to ensure UI sync
-
+  
+  // Render categories after language is applied
+  renderCategories();
+  
   setupLanguageToggle();
 });
 
