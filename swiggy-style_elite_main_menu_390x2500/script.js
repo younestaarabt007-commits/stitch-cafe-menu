@@ -47,6 +47,9 @@ function renderBestsellers(items) {
     const rating = typeof item.rating === 'number' ? item.rating : getRatingForItem(item);
 
     const fallback = getFallbackImage(item, index + 50); // Different seed for fallback
+    
+    // Store exact image used so the customization view gets the same one
+    item._displayImage = displayImg;
 
     return `
     <div class="bg-white dark:bg-[#2a1e19] rounded-[1.5rem] p-3 shadow-md border border-gray-100 dark:border-white/5 flex gap-4 items-center relative" data-category="${item.category}">
@@ -165,7 +168,8 @@ function buildCustomizationUrl(item) {
     customizationPage = '../milkshake_customization_view/index.html';
   }
 
-  let imgPath = item.image || '';
+  // Use the stored display image if available, else original, else fallback
+  let imgPath = item._displayImage || item.image || getFallbackImage(item, 0);
 
   const params = new URLSearchParams({
     id: item.id || '',
