@@ -5,7 +5,7 @@ const products = [
         name: "Nitro Cold Brew",
         description: "18-hour steep, nitrogen infused.",
         price: 6.50,
-        image: "assets/coffee-nitro.jpg",
+        image: "/assets/coffee-nitro.jpg",
         category: "cold",
         favorite: true
     },
@@ -14,7 +14,7 @@ const products = [
         name: "Ceremonial Matcha",
         description: "Uji-sourced matcha with oat milk.",
         price: 7.25,
-        image: "../swiggy-style_elite_main_menu_390x2500/assets/tea-matcha.jpg",
+        image: "/assets/tea-matcha.jpg",
         category: "seasonal"
     },
     {
@@ -22,7 +22,7 @@ const products = [
         name: "Ethiopian Yirgacheffe",
         description: "Floral notes with a citrus finish.",
         price: 5.00,
-        image: "../swiggy-style_elite_main_menu_390x2500/assets/coffee-single-origin-espresso.jpg",
+        image: "/assets/coffee-single-origin-espresso.jpg",
         category: "dark",
         badge: "Light Roast"
     },
@@ -31,7 +31,7 @@ const products = [
         name: "Dirty Masala Chai",
         description: "House-made spices, double shot.",
         price: 6.75,
-        image: "../swiggy-style_elite_main_menu_390x2500/assets/tea-masala-chai.jpg",
+        image: "/assets/tea-masala-chai.jpg",
         category: "seasonal"
     },
     {
@@ -39,7 +39,7 @@ const products = [
         name: "Oat Milk Cortado",
         description: "Equal parts espresso & milk.",
         price: 4.50,
-        image: "../swiggy-style_elite_main_menu_390x2500/assets/coffee-oat-milk-latte.jpg",
+        image: "/assets/coffee-oat-milk-latte.jpg",
         category: "dark"
     },
     {
@@ -47,7 +47,7 @@ const products = [
         name: "Lavender Honey",
         description: "Floral infusion with local honey.",
         price: 7.50,
-        image: "../swiggy-style_elite_main_menu_390x2500/assets/tea-lavender-earl.jpg",
+        image: "/assets/tea-lavender-earl.jpg",
         category: "seasonal"
     },
     {
@@ -55,7 +55,7 @@ const products = [
         name: "Golden Turmeric",
         description: "Spiced healing brew.",
         price: 6.25,
-        image: "../swiggy-style_elite_main_menu_390x2500/assets/tea-ginger-lemon.jpg",
+        image: "/assets/tea-ginger-lemon.jpg",
         category: "seasonal"
     },
     {
@@ -63,7 +63,7 @@ const products = [
         name: "Caramel Macchiato",
         description: "Layered espresso & vanilla.",
         price: 6.50,
-        image: "../swiggy-style_elite_main_menu_390x2500/assets/latte-caramel-macchiato.jpg",
+        image: "/assets/latte-caramel-macchiato.jpg",
         category: "dark"
     },
     {
@@ -71,7 +71,7 @@ const products = [
         name: "V60 Single Origin",
         description: "Hand poured perfection.",
         price: 8.00,
-        image: "assets/coffee-v60.jpg",
+        image: "/assets/coffee-v60.jpg",
         category: "dark"
     },
     {
@@ -79,7 +79,7 @@ const products = [
         name: "Blueberry Infusion",
         description: "Antioxidant rich blend.",
         price: 5.75,
-        image: "../swiggy-style_elite_main_menu_390x2500/assets/juice-berry-blast.jpg",
+        image: "/assets/juice-berry-blast.jpg",
         category: "seasonal"
     },
     {
@@ -225,6 +225,7 @@ function redirectToCustomization(productId) {
         // Ensure image path is root-relative
         let imgPath = product.image;
         if (imgPath && !imgPath.startsWith('/') && !imgPath.startsWith('http')) {
+            imgPath = '/' + imgPath; && !imgPath.startsWith('http')) {
             imgPath = '/' + imgPath;
         }
         window.location.href = `${customizationUrl}?name=${encodeURIComponent(product.name)}&image=${encodeURIComponent(imgPath)}&price=${product.price}`;

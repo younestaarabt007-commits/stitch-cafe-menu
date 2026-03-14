@@ -4,7 +4,7 @@ const products = [
         "name": "Fresh Orange",
         "description": "Valencia oranges, cold pressed",
         "price": 4.5,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/juces.jpg",
+        "image": "/assets/juces.jpg",
         "category": "citrus"
     },
     {
@@ -12,7 +12,7 @@ const products = [
         "name": "Lemon Mint",
         "description": "Zesty lemon with mint",
         "price": 4.1,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/juice-lemon-mint.jpg",
+        "image": "/assets/juice-lemon-mint.jpg",
         "category": "citrus"
     },
     {
@@ -20,7 +20,7 @@ const products = [
         "name": "Pineapple Punch",
         "description": "Tropical pineapple blend",
         "price": 4.8,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/juice-pineapple-punch.jpg",
+        "image": "/assets/juice-pineapple-punch.jpg",
         "category": "tropical"
     },
     {
@@ -28,7 +28,7 @@ const products = [
         "name": "Apple Classic",
         "description": "Cold-pressed apple",
         "price": 4,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/juice-apple.jpg",
+        "image": "/assets/juice-apple.jpg",
         "category": "classic"
     },
     {
@@ -36,7 +36,7 @@ const products = [
         "name": "Mango Glow",
         "description": "Alphonso mango puree",
         "price": 5.25,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/juice-mango-glow.jpg",
+        "image": "/assets/juice-mango-glow.jpg",
         "category": "tropical"
     },
     {
@@ -44,7 +44,7 @@ const products = [
         "name": "Signature Green Juice",
         "description": "Kale, Apple, Lemon",
         "price": 9.5,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/c638c126fbfb5edadc53720118cea1a9.jpg",
+        "image": "/assets/c638c126fbfb5edadc53720118cea1a9.jpg",
         "category": "wellness"
     },
     {
@@ -52,7 +52,7 @@ const products = [
         "name": "Berry Blast",
         "description": "Mixed berries antioxidant boost",
         "price": 8,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/f7a30f37caad29c217c59d2804298a53.jpg",
+        "image": "/assets/f7a30f37caad29c217c59d2804298a53.jpg",
         "category": "smoothies"
     },
     {
@@ -60,7 +60,7 @@ const products = [
         "name": "Mango Tango",
         "description": "Mango, peach, passion fruit",
         "price": 8.5,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/db03e53c057449564a8c3f285d4ae705.jpg",
+        "image": "/assets/db03e53c057449564a8c3f285d4ae705.jpg",
         "category": "tropical"
     },
     {
@@ -68,7 +68,7 @@ const products = [
         "name": "Cold Pressed Orange",
         "description": "Valencia oranges, zero water",
         "price": 7,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/juces.jpg",
+        "image": "/assets/juces.jpg",
         "category": "citrus"
     },
     {
@@ -76,7 +76,7 @@ const products = [
         "name": "Ginger Turmeric Shot",
         "description": "Morning immunity boost",
         "price": 4.5,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/bf9d74d6badcbc6dad96c5fe3b2537d9.jpg",
+        "image": "/assets/bf9d74d6badcbc6dad96c5fe3b2537d9.jpg",
         "category": "wellness"
     },
     {
@@ -84,7 +84,7 @@ const products = [
         "name": "Beetroot Energizer",
         "description": "Beet, Carrot, Ginger",
         "price": 8.5,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/a560aa77331782366884542df097f5fd.jpg",
+        "image": "/assets/a560aa77331782366884542df097f5fd.jpg",
         "category": "wellness"
     },
     {
@@ -92,7 +92,7 @@ const products = [
         "name": "Green Goddess",
         "description": "Kale, spinach, apple",
         "price": 9,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/734403dc841bf127b5df37617dadbab8.jpg",
+        "image": "/assets/734403dc841bf127b5df37617dadbab8.jpg",
         "category": "wellness"
     }
 ];
@@ -279,7 +279,8 @@ function redirectToCustomization(productId) {
     
     // Ensure image path is root-relative
     let imgPath = product.image;
-    if (imgPath && !imgPath.startsWith('/') && !imgPath.startsWith('http')) {
+        if (imgPath && !imgPath.startsWith('/') && !imgPath.startsWith('http')) {
+            imgPath = '/' + imgPath; && !imgPath.startsWith('http')) {
         if (imgPath.startsWith('../')) {
             imgPath = imgPath.replace('../', '/');
         } else {

@@ -1,9 +1,9 @@
 const products = [
-    { id: "bakery_1", name: "Signature Sourdough", description: "Naturally leavened for 24h", price: 8.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/salty food and sweet brunch/toast.jpg", category: "sourdough" },
-    { id: "bakery_2", name: "Butter Croissant", description: "Flaky layers, French butter", price: 3.50, image: "../swiggy-style_elite_main_menu_390x2500/assets/sweets/07abeb0b37011bc4f4413062a5fc0045.jpg", category: "pastries" },
-    { id: "bakery_3", name: "Pain au Chocolat", description: "Rich chocolate, buttery dough", price: 4.25, image: "../swiggy-style_elite_main_menu_390x2500/assets/sweets/99e4f1c4df32d646f2dde6bf28cd9566.jpg", category: "pastries" },
-    { id: "bakery_4", name: "Traditional Baguette", description: "Crispy crust, airy interior", price: 4.00, image: "../swiggy-style_elite_main_menu_390x2500/assets/sweets/f3089aa69fae4df2b10dd5e82e5ef225.jpg", category: "sourdough" },
-    { id: "bakery_5", name: "Artisan Rye Bread", description: "Dense and fiber-rich", price: 7.25, image: "../swiggy-style_elite_main_menu_390x2500/assets/tea/7eb56d04c899ffd7a40ed6151c2713f0.jpg", category: "whole grain" }
+    { id: "bakery_1", name: "Signature Sourdough", description: "Naturally leavened for 24h", price: 8.50, image: "/assets/salty food and sweet brunch/toast.jpg", category: "sourdough" },
+    { id: "bakery_2", name: "Butter Croissant", description: "Flaky layers, French butter", price: 3.50, image: "/assets/sweets/07abeb0b37011bc4f4413062a5fc0045.jpg", category: "pastries" },
+    { id: "bakery_3", name: "Pain au Chocolat", description: "Rich chocolate, buttery dough", price: 4.25, image: "/assets/sweets/99e4f1c4df32d646f2dde6bf28cd9566.jpg", category: "pastries" },
+    { id: "bakery_4", name: "Traditional Baguette", description: "Crispy crust, airy interior", price: 4.00, image: "/assets/sweets/f3089aa69fae4df2b10dd5e82e5ef225.jpg", category: "sourdough" },
+    { id: "bakery_5", name: "Artisan Rye Bread", description: "Dense and fiber-rich", price: 7.25, image: "/assets/tea/7eb56d04c899ffd7a40ed6151c2713f0.jpg", category: "whole grain" }
 ];
 
 let currentFilter = 'all';

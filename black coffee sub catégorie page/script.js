@@ -5,7 +5,7 @@ const products = [
         "name": "Velvet Flat White",
         "description": "Double Shot, Silky Microfoam",
         "price": 4.8,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/latté/Café Crème.jpg",
+        "image": "/assets/latté/Café Crème.jpg",
         "category": "milk"
     },
     {
@@ -13,7 +13,7 @@ const products = [
         "name": "Kyoto Cold Brew",
         "description": "12-Hour Slow Drip Extraction",
         "price": 5.5,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/black coffee/black coffee.jpg",
+        "image": "/assets/black coffee/black coffee.jpg",
         "category": "black"
     },
     {
@@ -21,7 +21,7 @@ const products = [
         "name": "Oat Milk Latte",
         "description": "Creamy, Nut-Free, Vegan",
         "price": 5.2,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/latté/c98d046bf1085bc59f77893bf9779244.jpg",
+        "image": "/assets/latté/c98d046bf1085bc59f77893bf9779244.jpg",
         "category": "milk"
     },
     {
@@ -29,7 +29,7 @@ const products = [
         "name": "Single Origin Espresso",
         "description": "Intense Berry Notes",
         "price": 3.5,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/black coffee/f7a30f37caad29c217c59d2804298a53.jpg",
+        "image": "/assets/black coffee/f7a30f37caad29c217c59d2804298a53.jpg",
         "category": "black"
     },
     {
@@ -37,7 +37,7 @@ const products = [
         "name": "Dark Mocha",
         "description": "70% Cacao, Double Espresso",
         "price": 6,
-        "image": "../swiggy-style_elite_main_menu_390x2500/assets/latté/f44e75c15bafa88216ef43d6600177e0.jpg",
+        "image": "/assets/latté/f44e75c15bafa88216ef43d6600177e0.jpg",
         "category": "milk"
     }
 ];
