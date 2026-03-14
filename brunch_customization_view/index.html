@@ -67,7 +67,7 @@
         </div>
 
         <!-- Customization Options -->
-        <div class="pb-32 px-4 pt-6 space-y-8">
+        <div class="px-4 pt-6 space-y-8">
             <!-- Choose Bread -->
             <section>
                 <div class="flex items-center justify-between mb-3">
@@ -213,29 +213,29 @@
                     </div>
                 </div>
             </section>
-        </div>
 
-        <!-- Bottom Bar -->
-        <div
-            class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[390px] px-4 pb-6 pt-3 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl border-t border-slate-100 dark:border-zinc-800 z-50">
-            <div class="flex items-center gap-3">
-                <div class="flex items-center bg-slate-100 dark:bg-zinc-800 p-1 rounded-[14px]">
-                    <button id="qty-minus"
-                        class="w-9 h-9 flex items-center justify-center rounded-[10px] bg-white dark:bg-zinc-700 shadow-sm text-slate-700 dark:text-white transition-transform active:scale-95">
-                        <span class="material-symbols-outlined text-[18px]">remove</span>
-                    </button>
-                    <span id="quantity" class="px-4 font-bold text-lg text-slate-800 dark:text-white">1</span>
-                    <button id="qty-plus"
-                        class="w-9 h-9 flex items-center justify-center rounded-[10px] bg-white dark:bg-zinc-700 shadow-sm text-slate-700 dark:text-white transition-transform active:scale-95">
-                        <span class="material-symbols-outlined text-[18px]">add</span>
+            <!-- Bottom Bar -->
+            <div
+                class="mt-10 mb-8 w-full px-4 pt-3 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl border-t border-slate-100 dark:border-zinc-800">
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center bg-slate-100 dark:bg-zinc-800 p-1 rounded-[14px]">
+                        <button id="qty-minus"
+                            class="w-9 h-9 flex items-center justify-center rounded-[10px] bg-white dark:bg-zinc-700 shadow-sm text-slate-700 dark:text-white transition-transform active:scale-95">
+                            <span class="material-symbols-outlined text-[18px]">remove</span>
+                        </button>
+                        <span id="quantity" class="px-4 font-bold text-lg text-slate-800 dark:text-white">1</span>
+                        <button id="qty-plus"
+                            class="w-9 h-9 flex items-center justify-center rounded-[10px] bg-white dark:bg-zinc-700 shadow-sm text-slate-700 dark:text-white transition-transform active:scale-95">
+                            <span class="material-symbols-outlined text-[18px]">add</span>
+                        </button>
+                    </div>
+                    <button id="add-to-order"
+                        class="flex-1 bg-primary hover:bg-orange-600 text-white flex items-center justify-between h-[48px] px-5 rounded-[14px] shadow-lg shadow-orange-500/30 transition-all active:scale-95">
+                        <span class="font-bold uppercase tracking-tight text-sm">Add To Order</span>
+                        <div class="h-4 w-px bg-white/20"></div>
+                        <span id="total-price" class="font-bold text-sm">$14.50</span>
                     </button>
                 </div>
-                <button id="add-to-order"
-                    class="flex-1 bg-primary hover:bg-orange-600 text-white flex items-center justify-between h-[48px] px-5 rounded-[14px] shadow-lg shadow-orange-500/30 transition-all active:scale-95">
-                    <span class="font-bold uppercase tracking-tight text-sm">Add To Order</span>
-                    <div class="h-4 w-px bg-white/20"></div>
-                    <span id="total-price" class="font-bold text-sm">$14.50</span>
-                </button>
             </div>
         </div>
     </div>

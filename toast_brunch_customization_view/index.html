@@ -53,7 +53,7 @@
       </div>
     </div>
 
-    <main class="px-4 pb-36">
+    <main class="px-4">
       <section class="mt-4">
         <h2 class="text-[18px] font-bold mb-2">Egg Style</h2>
         <div class="grid grid-cols-4 gap-2">
@@ -99,26 +99,26 @@
           <button id="inc-qty" class="qty-btn">+</button>
         </div>
       </section>
-    </main>
 
-    <div id="floating-add" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-      <div
-        class="bg-black text-white flex items-center justify-between pr-2 pl-6 overflow-hidden shadow-[0_0_20px_rgba(242,147,13,0.35)]"
-        style="width: 342px; height: 64px; border-radius: 32px;">
-        <div class="flex flex-col justify-center">
-          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Total</span>
-          <div class="flex items-center gap-2">
-            <span id="summary-text" class="text-xs font-bold">Poached • Sourdough • None</span>
-            <span class="w-1 h-1 bg-gray-600 rounded-full"></span>
-            <span id="total-price" class="text-sm font-bold text-primary">12.00DH</span>
+      <div id="floating-add" class="mt-10 mb-6 flex justify-center w-full">
+        <div
+          class="bg-black text-white flex items-center justify-between pr-2 pl-6 overflow-hidden shadow-[0_0_20px_rgba(242,147,13,0.35)]"
+          style="width: 342px; height: 64px; border-radius: 32px;">
+          <div class="flex flex-col justify-center">
+            <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Total</span>
+            <div class="flex items-center gap-2">
+              <span id="summary-text" class="text-xs font-bold">Poached • Sourdough • None</span>
+              <span class="w-1 h-1 bg-gray-600 rounded-full"></span>
+              <span id="total-price" class="text-sm font-bold text-primary">12.00DH</span>
+            </div>
           </div>
+          <button id="add-btn" class="bg-primary text-white px-5 h-[48px] rounded-full flex items-center gap-2">
+            <span class="font-extrabold text-[12px] uppercase tracking-wider">Add to Order</span>
+            <span class="material-symbols-outlined text-[18px]">shopping_cart</span>
+          </button>
         </div>
-        <button id="add-btn" class="bg-primary text-white px-5 h-[48px] rounded-full flex items-center gap-2">
-          <span class="font-extrabold text-[12px] uppercase tracking-wider">Add to Order</span>
-          <span class="material-symbols-outlined text-[18px]">shopping_cart</span>
-        </button>
       </div>
-    </div>
+    </main>
   </div>
   <script src="script.js"></script>
   <script src="../nav-bar.js?v=9"></script>
