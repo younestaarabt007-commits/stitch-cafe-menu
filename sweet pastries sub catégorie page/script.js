@@ -1,10 +1,10 @@
 const products = [
-    { id: "sweet_pastry_1", name: "Butter Croissant", description: "Flaky layers, French butter", price: 4.50, image: "/assets/sweets/07abeb0b37011bc4f4413062a5fc0045.jpg", category: "croissant" },
-    { id: "sweet_pastry_2", name: "Almond Croissant", description: "Frangipane, toasted almond", price: 5.25, image: "/assets/sweets/819873298e099a845e042ded5a19ca95.jpg", category: "croissant" },
-    { id: "sweet_pastry_3", name: "Chocolate Éclair", description: "Choux pastry, rich ganache", price: 4.75, image: "/assets/sweets/99e4f1c4df32d646f2dde6bf28cd9566.jpg", category: "cake" },
-    { id: "sweet_pastry_4", name: "Strawberry Tart", description: "Vanilla custard, fresh berries", price: 5.80, image: "/assets/sweets/f3089aa69fae4df2b10dd5e82e5ef225.jpg", category: "tart" },
-    { id: "sweet_pastry_5", name: "Lemon Meringue Tart", description: "Zesty curd, torched meringue", price: 5.90, image: "/assets/sweets/db03e53c057449564a8c3f285d4ae705.jpg", category: "tart" },
-    { id: "sweet_pastry_6", name: "Velvet Cake Slice", description: "Moist crumb, vanilla frosting", price: 4.95, image: "/assets/sweets/dc7635bbd750c761b95949cdaaf3037d.jpg", category: "cake" }
+    { id: "sweet_pastry_1", name: "Butter Croissant", description: "Flaky layers, French butter", price: 4.50, image: "/assets/sweet-butter-croissant.jpg", category: "croissant" },
+    { id: "sweet_pastry_2", name: "Almond Croissant", description: "Frangipane, toasted almond", price: 5.25, image: "/assets/sweet-almond-croissant.jpg", category: "croissant" },
+    { id: "sweet_pastry_3", name: "Chocolate Éclair", description: "Choux pastry, rich ganache", price: 4.75, image: "/assets/bakery-chocolate-eclair.jpg", category: "cake" },
+    { id: "sweet_pastry_4", name: "Strawberry Tart", description: "Vanilla custard, fresh berries", price: 5.80, image: "/assets/sweet-strawberry-tart.jpg", category: "tart" },
+    { id: "sweet_pastry_5", name: "Lemon Meringue Tart", description: "Zesty curd, torched meringue", price: 5.90, image: "/assets/sweet-lemon-meringue.jpg", category: "tart" },
+    { id: "sweet_pastry_6", name: "Velvet Cake Slice", description: "Moist crumb, vanilla frosting", price: 4.95, image: "/assets/sweet-velvet-cake.jpg", category: "cake" }
 ];
 
 let currentFilter = 'all';

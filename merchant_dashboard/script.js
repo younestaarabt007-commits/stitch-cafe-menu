@@ -16,7 +16,7 @@ const DEMO_MENU = [
     { id: 'brunch-7', name: "Fit Egg-White", price: 13.50, category: "Brunch", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/salty food and sweet brunch/89648609962eda9536c1eecdedbdf8ef.jpg", hasModifiers: false, stock: 20 },
     { id: 'brunch-8', name: "Brunch Tacos", price: 11.00, category: "Brunch", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/salty food and sweet brunch/902f3561ca86aba6382aad94c75b11f4.jpg", hasModifiers: false, stock: 15 },
     { id: 'brunch-9', name: "Iron Frittata", price: 14.75, category: "Brunch", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/salty food and sweet brunch/eb058f0421ae783ed7c55319ca504911.jpg", hasModifiers: false, stock: 10 },
-    { id: 'brunch-10', name: "Acai Delight", price: 12.00, category: "Brunch", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie/f3a3e79d662b87dca0c68b729446d755.jpg", hasModifiers: false, stock: 12 },
+    { id: 'brunch-10', name: "Acai Delight", price: 12.00, category: "Brunch", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie-acai-bowl.jpg", hasModifiers: false, stock: 12 },
     { id: 'brunch-11', name: "Belgian Gold", price: 11.50, category: "Brunch", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/vertical-shot-pancakes-with-fruits-top_181624-23923.jpg", hasModifiers: false, stock: null },
     { id: 'brunch-12', name: "Full English", price: 22.00, category: "Brunch", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/brunch-full-english.jpg", hasModifiers: false, stock: null },
 
@@ -49,22 +49,22 @@ const DEMO_MENU = [
     { id: 'bread-8', name: "Cranberry Walnut", price: 9.50, category: "Bread", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/bakery-cranberry-walnut.jpg", hasModifiers: false, stock: 5 },
 
     // Bakery & Sweets
-    { id: 'pastry-1', name: "Butter Croissant", price: 4.50, category: "Bakery", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/sweets/07abeb0b37011bc4f4413062a5fc0045.jpg", hasModifiers: false, stock: 20 },
-    { id: 'pastry-2', name: "Almond Croissant", price: 5.25, category: "Bakery", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/sweets/819873298e099a845e042ded5a19ca95.jpg", hasModifiers: false, stock: 10 },
-    { id: 'pastry-3', name: "Chocolate Éclair", price: 4.75, category: "Bakery", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/sweets/99e4f1c4df32d646f2dde6bf28cd9566.jpg", hasModifiers: false, stock: 15 },
-    { id: 'pastry-4', name: "Strawberry Tart", price: 5.80, category: "Bakery", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/sweets/f3089aa69fae4df2b10dd5e82e5ef225.jpg", hasModifiers: false, stock: 8 },
-    { id: 'pastry-5', name: "Lemon Meringue Tart", price: 5.90, category: "Bakery", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/sweets/db03e53c057449564a8c3f285d4ae705.jpg", hasModifiers: false, stock: 12 },
-    { id: 'pastry-6', name: "Velvet Cake Slice", price: 4.95, category: "Bakery", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/sweets/dc7635bbd750c761b95949cdaaf3037d.jpg", hasModifiers: false, stock: 18 },
+    { id: 'pastry-1', name: "Butter Croissant", price: 4.50, category: "Bakery", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/sweet-butter-croissant.jpg", hasModifiers: false, stock: 20 },
+    { id: 'pastry-2', name: "Almond Croissant", price: 5.25, category: "Bakery", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/sweet-almond-croissant.jpg", hasModifiers: false, stock: 10 },
+    { id: 'pastry-3', name: "Chocolate Éclair", price: 4.75, category: "Bakery", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/bakery-chocolate-eclair.jpg", hasModifiers: false, stock: 15 },
+    { id: 'pastry-4', name: "Strawberry Tart", price: 5.80, category: "Bakery", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/sweet-strawberry-tart.jpg", hasModifiers: false, stock: 8 },
+    { id: 'pastry-5', name: "Lemon Meringue Tart", price: 5.90, category: "Bakery", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/sweet-lemon-meringue.jpg", hasModifiers: false, stock: 12 },
+    { id: 'pastry-6', name: "Velvet Cake Slice", price: 4.95, category: "Bakery", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/sweet-velvet-cake.jpg", hasModifiers: false, stock: 18 },
 
     // Juices & Cold Drinks
     { id: 'juice-1', name: "Lemon Mint", price: 4.10, category: "Juices", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/juice-lemon-mint.jpg", hasModifiers: false, stock: null },
     { id: 'juice-2', name: "Pineapple Punch", price: 4.80, category: "Juices", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/juice-pineapple-punch.jpg", hasModifiers: false, stock: null },
     { id: 'juice-3', name: "Mango Glow", price: 5.25, category: "Juices", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/juice-mango-glow.jpg", hasModifiers: false, stock: null },
-    { id: 'cold-1', name: "Fresh Orange Juice", price: 4.50, category: "Juices", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/juces.jpg", hasModifiers: false, stock: null },
+    { id: 'cold-1', name: "Fresh Orange Juice", price: 4.50, category: "Juices", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/juice-fresh-orange.jpg", hasModifiers: false, stock: null },
 
     // Smoothies & Shakes
     { id: 'smoothie-1', name: "Berry Burst", price: 5.20, category: "Smoothie", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie-berry-cream.jpg", hasModifiers: false, stock: null },
-    { id: 'smoothie-2', name: "Green Power", price: 5.00, category: "Smoothie", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/kiwi-milk-shake-table_140725-8608.jpg", hasModifiers: false, stock: null },
+    { id: 'smoothie-2', name: "Green Power", price: 5.00, category: "Smoothie", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie-green-power.jpg", hasModifiers: false, stock: null },
     { id: 'shake-1', name: "Classic Chocolate Shake", price: 5.20, category: "Shakes", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/smoothie-choco-malt.jpg", hasModifiers: false, stock: null },
     { id: 'shake-2', name: "Vanilla Bean Shake", price: 5.00, category: "Shakes", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/shake-vanilla-bean.jpg", hasModifiers: false, stock: null },
     { id: 'shake-3', name: "Strawberry Bliss", price: 5.40, category: "Shakes", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/shake-strawberry.jpg", hasModifiers: false, stock: null },
@@ -72,16 +72,16 @@ const DEMO_MENU = [
 
     // Toasts & Benedicts
     { id: 'toast-1', name: "Signature Benedict", price: 14.50, category: "Brunch", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/toast-signature-benedict.jpg", hasModifiers: false, stock: null },
-    { id: 'toast-2', name: "Truffle Omelette", price: 12.50, category: "Brunch", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/hero-scrambled-eggs.png", hasModifiers: false, stock: null },
+    { id: 'toast-2', name: "Truffle Omelette", price: 12.50, category: "Brunch", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/brunch-farm-omelette.jpg", hasModifiers: false, stock: null },
     { id: 'toast-3', name: "Shakshuka", price: 11.25, category: "Brunch", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/toast-shakshuka.jpg", hasModifiers: false, stock: null },
     { id: 'toast-4', name: "Avocado Toast", price: 10.50, category: "Brunch", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/toast-avocado.jpg", hasModifiers: false, stock: null },
     { id: 'toast-5', name: "Classic Benedict", price: 13.50, category: "Brunch", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/toast-benedict.jpg", hasModifiers: false, stock: null },
-    { id: 'toast-6', name: "Vegan Power Bowl", price: 12.00, category: "Brunch", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/d72d0813a986c68b2950bde5af05c3af.jpg", hasModifiers: false, stock: null },
+    { id: 'toast-6', name: "Vegan Power Bowl", price: 12.00, category: "Brunch", image_url: "../swiggy-style_elite_main_menu_390x2500/assets/toast-vegan-bowl.jpg", hasModifiers: false, stock: null },
 ];
 
 const DEMO_ORDERS = [
-    { id: 'ORD-001', table: '12', items: [{ name: 'Velvet Flat White', qty: 2, price: 20, image_url: '../swiggy-style_elite_main_menu_390x2500/assets/coffee-velvet-flat-white.jpg' }, { name: 'Butter Croissant', qty: 1, price: 18, image_url: '../swiggy-style_elite_main_menu_390x2500/assets/sweets/07abeb0b37011bc4f4413062a5fc0045.jpg' }], total: 58, status: 'Received', time: Date.now() - 1000 * 60 * 2 },
-    { id: 'ORD-002', table: '5', items: [{ name: 'Avocado Toast', qty: 1, price: 45, image_url: '../swiggy-style_elite_main_menu_390x2500/assets/toast-avocado.jpg' }, { name: 'Fresh Orange Juice', qty: 1, price: 30, image_url: '../swiggy-style_elite_main_menu_390x2500/assets/juces.jpg' }], total: 75, status: 'Preparing', time: Date.now() - 1000 * 60 * 12 },
+    { id: 'ORD-001', table: '12', items: [{ name: 'Velvet Flat White', qty: 2, price: 20, image_url: '../swiggy-style_elite_main_menu_390x2500/assets/coffee-velvet-flat-white.jpg' }, { name: 'Butter Croissant', qty: 1, price: 18, image_url: '../swiggy-style_elite_main_menu_390x2500/assets/sweet-butter-croissant.jpg' }], total: 58, status: 'Received', time: Date.now() - 1000 * 60 * 2 },
+    { id: 'ORD-002', table: '5', items: [{ name: 'Avocado Toast', qty: 1, price: 45, image_url: '../swiggy-style_elite_main_menu_390x2500/assets/toast-avocado.jpg' }, { name: 'Fresh Orange Juice', qty: 1, price: 30, image_url: '../swiggy-style_elite_main_menu_390x2500/assets/juice-fresh-orange.jpg' }], total: 75, status: 'Preparing', time: Date.now() - 1000 * 60 * 12 },
     { id: 'ORD-003', table: '3', items: [{ name: 'Single Origin Espresso', qty: 3, price: 18, mods: ['Extra Shot', 'Oat Milk'], image_url: '../swiggy-style_elite_main_menu_390x2500/assets/coffee-single-origin-espresso.jpg' }], total: 78, status: 'Ready', time: Date.now() - 1000 * 60 * 25 },
 ];
 

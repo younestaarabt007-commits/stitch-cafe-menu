@@ -1,10 +1,10 @@
 const products = [
-  { id: 1, name: "Fresh Orange Juice", description: "Cold pressed Valencia oranges", price: 4.50, image: "/assets/juice-fresh-orange.jpg", category: "juices" },
+  { id: 1, name: "Fresh Orange Juice", description: "Cold pressed Valencia oranges", price: 4.50, image: "/assets/juice-orange.jpg", category: "juices" },
   { id: 2, name: "Strawberry Smoothie", description: "Greek yogurt, strawberry puree", price: 5.75, image: "/assets/cold-strawberry-smoothie.jpg", category: "smoothies" },
-  { id: 3, name: "Chocolate Shake", description: "70% cacao, vanilla ice cream", price: 6.25, image: "/assets/shake-classic-chocolate.jpg", category: "shakes" },
-  { id: 4, name: "Iced Latte", description: "Double shot over chilled milk", price: 5.50, image: "/assets/latte-iced-matcha.jpg", category: "iced_coffee" },
+  { id: 3, name: "Chocolate Shake", description: "70% cacao, vanilla ice cream", price: 6.25, image: "/assets/close-up-milkshake-glass-plate_117406-7215.jpg", category: "shakes" },
+  { id: 4, name: "Iced Latte", description: "Double shot over chilled milk", price: 5.50, image: "/assets/cold-iced-latte.jpg", category: "iced_coffee" },
   { id: 5, name: "Mango Lassi", description: "Alphonso mango, yogurt, cardamom", price: 5.00, image: "/assets/delicious-indian-mango-drink-high-angle_23-2148734680.avif", category: "smoothies" },
-  { id: 6, name: "Cold Brew", description: "12-hour steep, smooth finish", price: 4.90, image: "/assets/coffee-cold-brew.jpg", category: "iced_coffee" },
+  { id: 6, name: "Cold Brew", description: "12-hour steep, smooth finish", price: 4.90, image: "/assets/coffee-classic-cold-brew.jpg", category: "iced_coffee" },
 ];
 
 const translations = {

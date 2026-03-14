@@ -5,7 +5,7 @@ const products = [
     description: "Double dark chocolate with whipped cream",
     calories: "450 kcal",
     price: 6.50,
-    image: "/assets/milkshake.jpg",
+    image: "/assets/close-up-milkshake-glass-plate_117406-7215.jpg",
     category: "chocolate"
   },
   {

@@ -1,11 +1,11 @@
 const products = [
-    { id: "tea_1", name: "Ceremonial Matcha", description: "Stone-ground, umami-rich", price: 12.00, image: "/assets/tea/8de4ad2c0c676dc76030cf5c8c8fad50.jpg", category: "matcha" },
-    { id: "tea_2", name: "Masala Chai", description: "Spiced, creamy, warming", price: 5.50, image: "/assets/Tea Citron Délise.jpg", category: "herbal" },
-    { id: "tea_3", name: "Ginger Lemon", description: "Zesty, soothing infusion", price: 4.75, image: "/assets/7c53d6cc5ec015b0bd982eb5270ed781.jpg", category: "herbal" },
-    { id: "tea_4", name: "Moroccan Mint", description: "Cooling green tea", price: 4.50, image: "/assets/Tea Nordique.jpg", category: "herbal" },
-    { id: "tea_5", name: "Royal Milk Tea", description: "Black tea, milk, caramel", price: 7.00, image: "/assets/Café Royal.jpg", category: "iced" },
-    { id: "tea_6", name: "Iced Peach Oolong", description: "Fruity, floral, chilled", price: 6.50, image: "/assets/09dc48198cce55c90c3f4d2544ffb163.jpg", category: "iced" },
-    { id: "tea_7", name: "Lavender Earl Grey", description: "Classic bergamot twist", price: 5.25, image: "/assets/tea/tea-lavender-earl.jpg", category: "herbal" }
+    { id: "tea_1", name: "Ceremonial Matcha", description: "Stone-ground, umami-rich", price: 12.00, image: "/assets/tea-matcha.jpg", category: "matcha" },
+    { id: "tea_2", name: "Masala Chai", description: "Spiced, creamy, warming", price: 5.50, image: "/assets/tea-masala-chai.jpg", category: "herbal" },
+    { id: "tea_3", name: "Ginger Lemon", description: "Zesty, soothing infusion", price: 4.75, image: "/assets/tea-ginger-lemon.jpg", category: "herbal" },
+    { id: "tea_4", name: "Moroccan Mint", description: "Cooling green tea", price: 4.50, image: "/assets/tea-moroccan-mint.jpg", category: "herbal" },
+    { id: "tea_5", name: "Royal Milk Tea", description: "Black tea, milk, caramel", price: 7.00, image: "/assets/tea-royal-milk.jpg", category: "iced" },
+    { id: "tea_6", name: "Iced Peach Oolong", description: "Fruity, floral, chilled", price: 6.50, image: "/assets/tea-iced-peach.jpg", category: "iced" },
+    { id: "tea_7", name: "Lavender Earl Grey", description: "Classic bergamot twist", price: 5.25, image: "/assets/tea-lavender-earl.jpg", category: "herbal" }
 ];
 
 let currentFilter = 'all';

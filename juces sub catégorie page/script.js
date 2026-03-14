@@ -4,7 +4,7 @@ const products = [
         "name": "Fresh Orange",
         "description": "Valencia oranges, cold pressed",
         "price": 4.5,
-        "image": "/assets/juces.jpg",
+        "image": "/assets/juice-fresh-orange.jpg",
         "category": "citrus"
     },
     {
@@ -28,7 +28,7 @@ const products = [
         "name": "Apple Classic",
         "description": "Cold-pressed apple",
         "price": 4,
-        "image": "/assets/juice-apple.jpg",
+        "image": "/assets/juice-apple-classic.jpg",
         "category": "classic"
     },
     {
@@ -44,7 +44,7 @@ const products = [
         "name": "Signature Green Juice",
         "description": "Kale, Apple, Lemon",
         "price": 9.5,
-        "image": "/assets/c638c126fbfb5edadc53720118cea1a9.jpg",
+        "image": "/assets/juice-signature-green-juice.jpg",
         "category": "wellness"
     },
     {
@@ -52,7 +52,7 @@ const products = [
         "name": "Berry Blast",
         "description": "Mixed berries antioxidant boost",
         "price": 8,
-        "image": "/assets/f7a30f37caad29c217c59d2804298a53.jpg",
+        "image": "/assets/juice-berry-blast.jpg",
         "category": "smoothies"
     },
     {
@@ -60,7 +60,7 @@ const products = [
         "name": "Mango Tango",
         "description": "Mango, peach, passion fruit",
         "price": 8.5,
-        "image": "/assets/db03e53c057449564a8c3f285d4ae705.jpg",
+        "image": "/assets/juice-mango-tango.jpg",
         "category": "tropical"
     },
     {
@@ -68,7 +68,7 @@ const products = [
         "name": "Cold Pressed Orange",
         "description": "Valencia oranges, zero water",
         "price": 7,
-        "image": "/assets/juces.jpg",
+        "image": "/assets/juice-cold-pressed-orange.jpg",
         "category": "citrus"
     },
     {
@@ -76,7 +76,7 @@ const products = [
         "name": "Ginger Turmeric Shot",
         "description": "Morning immunity boost",
         "price": 4.5,
-        "image": "/assets/bf9d74d6badcbc6dad96c5fe3b2537d9.jpg",
+        "image": "/assets/juice-ginger-turmeric-shot.jpg",
         "category": "wellness"
     },
     {
@@ -84,7 +84,7 @@ const products = [
         "name": "Beetroot Energizer",
         "description": "Beet, Carrot, Ginger",
         "price": 8.5,
-        "image": "/assets/a560aa77331782366884542df097f5fd.jpg",
+        "image": "/assets/juice-beetroot-energizer.jpg",
         "category": "wellness"
     },
     {
@@ -92,7 +92,7 @@ const products = [
         "name": "Green Goddess",
         "description": "Kale, spinach, apple",
         "price": 9,
-        "image": "/assets/734403dc841bf127b5df37617dadbab8.jpg",
+        "image": "/assets/juice-green-goddess.jpg",
         "category": "wellness"
     }
 ];
