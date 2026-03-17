@@ -1,39 +1,93 @@
 const products = [
   {
     id: "milkshake_1",
-    name: "Classic Chocolate Fudge",
+    name: "close-up-milkshake-glass-plate_117406-7215",
     description: "Double dark chocolate with whipped cream",
     calories: "450 kcal",
     price: 6.50,
-    image: "/assets/close-up-milkshake-glass-plate_117406-7215.jpg",
+    image: "../assets/close-up-milkshake-glass-plate_117406-7215.jpg",
     category: "chocolate"
   },
   {
     id: "milkshake_2",
-    name: "Wild Strawberry Swirl",
+    name: "shake-strawberry",
     description: "Fresh farm berries with creamy vanilla base",
     calories: "380 kcal",
     price: 7.25,
-    image: "/assets/shake-strawberry.jpg",
+    image: "../assets/shake-strawberry.jpg",
     category: "fruit"
   },
   {
     id: "milkshake_3",
-    name: "Peanut Butter Power",
+    name: "shake-banana-caramel",
     description: "Protein rich shake with roasted peanuts",
     calories: "520 kcal",
     price: 8.00,
-    image: "/assets/shake-banana-caramel.jpg",
+    image: "../assets/shake-banana-caramel.jpg",
     category: "protein"
   },
   {
     id: "milkshake_4",
-    name: "Blueberry Vanilla Mist",
+    name: "shake-vanilla-bean",
     description: "Antioxidant blast with premium vanilla bean",
     calories: "340 kcal",
     price: 7.50,
-    image: "/assets/shake-vanilla-bean.jpg",
+    image: "../assets/shake-vanilla-bean.jpg",
     category: "fruit"
+  },
+  {
+    id: "smoothie_1",
+    name: "Blue Berry Smoothie",
+    description: "Strawberry, blueberry, yogurt",
+    calories: "310 kcal",
+    price: 5.20,
+    image: "../images/sub catégorie images/smoothie/Blue Berry Smoothie.jpg",
+    category: "smoothie"
+  },
+  {
+    id: "smoothie_2",
+    name: "Kiwi Smoothie",
+    description: "Spinach, apple, banana",
+    calories: "295 kcal",
+    price: 5.00,
+    image: "../images/sub catégorie images/smoothie/Kiwi Smoothie.jpg",
+    category: "smoothie"
+  },
+  {
+    id: "shake_1",
+    name: "Milkshake Café Chocolat",
+    description: "Rich cocoa, creamy base",
+    calories: "480 kcal",
+    price: 5.20,
+    image: "../images/sub catégorie images/milshake/Milkshake Café Chocolat.jpg",
+    category: "shake"
+  },
+  {
+    id: "shake_2",
+    name: "Milkshake Oreo",
+    description: "Madagascar vanilla, smooth",
+    calories: "460 kcal",
+    price: 5.00,
+    image: "../images/sub catégorie images/milshake/Milkshake Oreo.jpg",
+    category: "shake"
+  },
+  {
+    id: "shake_3",
+    name: "strawberry-ice milkshake",
+    description: "Fresh strawberries, cream",
+    calories: "430 kcal",
+    price: 5.40,
+    image: "../images/sub catégorie images/milshake/strawberry-ice milkshake.jpg",
+    category: "shake"
+  },
+  {
+    id: "shake_4",
+    name: "Milkshake Banane",
+    description: "Banana, caramel drizzle",
+    calories: "445 kcal",
+    price: 5.60,
+    image: "../images/sub catégorie images/milshake/Milkshake Banane.jpg",
+    category: "shake"
   }
 ];
 

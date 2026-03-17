@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const rootDir = __dirname;
-const mainMenuScriptPath = path.join(rootDir, 'swiggy-style_elite_main_menu_390x2500', 'script.js');
+const mainMenuScriptPath = path.join(rootDir, 'swiggy-style_elite_main_menu_390x2500', 'menu.js');
 
 // Function to extract items from a script content
 function extractItems(content) {
@@ -48,22 +48,37 @@ subCategoryDirs.forEach(dir => {
                 const subImage = items[name].image;
                 
                 // Normalize paths for comparison
-                const normMain = mainImage.replace('assets/', '');
-                const normSub = subImage.replace('../swiggy-style_elite_main_menu_390x2500/assets/', '').replace('assets/', '');
+                const normMain = mainImage
+                    .replace('../../images/', '../images/')
+                    .replace('assets/', '');
+                const normSub = subImage
+                    .replace('../swiggy-style_elite_main_menu_390x2500/assets/', '')
+                    .replace('../swiggy-style_elite_main_menu_390x2500/../../images/', '../images/')
+                    .replace('../../images/', '../images/')
+                    .replace('assets/', '');
                 
-                if (normMain !== normSub) {
-                    // Update the image path in the sub-category script
-                    // We need to construct the correct relative path
-                    const newPath = `../swiggy-style_elite_main_menu_390x2500/${mainImage}`;
-                    
-                    // Regex to replace the specific item's image
-                    // We look for the item by name and then replace its image field
+                // Decide desired canonical path for subcategory
+                let desiredPath = mainImage;
+                if (desiredPath.startsWith('../../images/')) {
+                    desiredPath = desiredPath.replace('../../images/', '../images/');
+                } else if (desiredPath.startsWith('../images/')) {
+                    // already canonical
+                } else if (desiredPath.startsWith('assets/')) {
+                    // keep pointing to main menu assets (icons or legacy)
+                    desiredPath = `../swiggy-style_elite_main_menu_390x2500/${desiredPath}`;
+                } else if (desiredPath.startsWith('../swiggy-style_elite_main_menu_390x2500/')) {
+                    // leave as-is
+                } else {
+                    desiredPath = desiredPath.replace('../../', '../');
+                }
+
+                // Update when actual differs from desired, or when normalized differs
+                if (subImage !== desiredPath || normMain !== normSub) {
                     const itemRegex = new RegExp(`(name:\\s*"${name}"[\\s\\S]*?image:\\s*")([^"]+)(")`);
-                    
                     if (itemRegex.test(content)) {
-                        content = content.replace(itemRegex, `$1${newPath}$3`);
+                        content = content.replace(itemRegex, `$1${desiredPath}$3`);
                         modified = true;
-                        console.log(`Updated "${name}" in ${dir}/script.js to use ${newPath}`);
+                        console.log(`Updated "${name}" in ${dir}/script.js -> ${desiredPath}`);
                     }
                 }
             }

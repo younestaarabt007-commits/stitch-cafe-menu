@@ -4,7 +4,7 @@ const products = [
         "name": "Fresh Orange",
         "description": "Valencia oranges, cold pressed",
         "price": 4.5,
-        "image": "/assets/juice-fresh-orange.jpg",
+        "image": "../images/sub catégorie images/Jus/Jus D'Orange.jpg",
         "category": "citrus"
     },
     {
@@ -12,7 +12,7 @@ const products = [
         "name": "Lemon Mint",
         "description": "Zesty lemon with mint",
         "price": 4.1,
-        "image": "/assets/juice-lemon-mint.jpg",
+        "image": "../images/sub catégorie images/Jus/Cuba Mokhito.avif",
         "category": "citrus"
     },
     {
@@ -20,7 +20,7 @@ const products = [
         "name": "Pineapple Punch",
         "description": "Tropical pineapple blend",
         "price": 4.8,
-        "image": "/assets/juice-pineapple-punch.jpg",
+        "image": "../images/sub catégorie images/Jus/Jus D'ananas.jpg",
         "category": "tropical"
     },
     {
@@ -28,7 +28,7 @@ const products = [
         "name": "Apple Classic",
         "description": "Cold-pressed apple",
         "price": 4,
-        "image": "/assets/juice-apple-classic.jpg",
+        "image": "../images/sub catégorie images/Jus/Jus de Pomme.jpg",
         "category": "classic"
     },
     {
@@ -36,7 +36,7 @@ const products = [
         "name": "Mango Glow",
         "description": "Alphonso mango puree",
         "price": 5.25,
-        "image": "/assets/juice-mango-glow.jpg",
+        "image": "../images/sub catégorie images/Jus/Jus Mangue.jpg",
         "category": "tropical"
     },
     {
@@ -44,7 +44,7 @@ const products = [
         "name": "Signature Green Juice",
         "description": "Kale, Apple, Lemon",
         "price": 9.5,
-        "image": "/assets/juice-signature-green-juice.jpg",
+        "image": "../images/sub catégorie images/Jus/jus de kiwi.jpg",
         "category": "wellness"
     },
     {
@@ -52,7 +52,7 @@ const products = [
         "name": "Berry Blast",
         "description": "Mixed berries antioxidant boost",
         "price": 8,
-        "image": "/assets/juice-berry-blast.jpg",
+        "image": "../images/sub catégorie images/Jus/Blueberry Infusion.jpg",
         "category": "smoothies"
     },
     {
@@ -60,7 +60,7 @@ const products = [
         "name": "Mango Tango",
         "description": "Mango, peach, passion fruit",
         "price": 8.5,
-        "image": "/assets/juice-mango-tango.jpg",
+        "image": "../images/sub catégorie images/Jus/delicious-indian-mango-drink-high-angle_23-2148734680.avif",
         "category": "tropical"
     },
     {
@@ -68,7 +68,7 @@ const products = [
         "name": "Cold Pressed Orange",
         "description": "Valencia oranges, zero water",
         "price": 7,
-        "image": "/assets/juice-cold-pressed-orange.jpg",
+        "image": "../images/sub catégorie images/Jus/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif",
         "category": "citrus"
     },
     {
@@ -76,7 +76,7 @@ const products = [
         "name": "Ginger Turmeric Shot",
         "description": "Morning immunity boost",
         "price": 4.5,
-        "image": "/assets/juice-ginger-turmeric-shot.jpg",
+        "image": "../images/sub catégorie images/Jus/Exotic-cocktail-.avif",
         "category": "wellness"
     },
     {
@@ -84,7 +84,7 @@ const products = [
         "name": "Beetroot Energizer",
         "description": "Beet, Carrot, Ginger",
         "price": 8.5,
-        "image": "/assets/juice-beetroot-energizer.jpg",
+        "image": "../images/sub catégorie images/Jus/Jus de Papae .jpg",
         "category": "wellness"
     },
     {
@@ -92,7 +92,7 @@ const products = [
         "name": "Green Goddess",
         "description": "Kale, spinach, apple",
         "price": 9,
-        "image": "/assets/juice-green-goddess.jpg",
+        "image": "../images/sub catégorie images/Jus/Jus D'avocat.jpg",
         "category": "wellness"
     }
 ];
@@ -276,19 +276,11 @@ function getMenuTranslation(item, field) {
 function redirectToCustomization(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
-    
-    // Ensure image path is root-relative
-    let imgPath = product.image;
-        if (imgPath && !imgPath.startsWith('/') && !imgPath.startsWith('http')) {
-            imgPath = '/' + imgPath; && !imgPath.startsWith('http')) {
-        if (imgPath.startsWith('../')) {
-            imgPath = imgPath.replace('../', '/');
-        } else {
-            imgPath = '/' + imgPath;
-        }
-    }
-    
-    window.location.href = `../orange juce_customization_view_1/index.html?price=${product.price}&name=${encodeURIComponent(product.name)}&image=${encodeURIComponent(imgPath)}`;
+    const url = new URL('../orange juce_customization_view_1/index.html', window.location.href);
+    url.searchParams.set('price', String(product.price));
+    url.searchParams.set('name', product.name);
+    url.searchParams.set('image', product.image);
+    window.location.href = url.toString();
 }
 
 function addToCart(productId) {

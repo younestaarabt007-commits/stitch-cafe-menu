@@ -1,8 +1,10 @@
 const products = [
-    { id: "smoothie_1", name: "Berry Burst", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "/assets/smoothie-berry-cream.jpg", category: "berry" },
-    { id: "smoothie_2", name: "Green Power", description: "Spinach, apple, banana", price: 5.00, image: "/assets/smoothie-green-power.jpg", category: "green" },
-    { id: "smoothie_3", name: "Protein Plus", description: "Peanut, whey, banana", price: 5.80, image: "/assets/smoothie-acai-bowl.jpg", category: "protein" },
-    { id: "smoothie_4", name: "Tropical Smooth", description: "Mango, pineapple, coconut", price: 5.40, image: "/assets/smoothie-tropical-mango.jpg", category: "tropical" },
+    { id: "smoothie_1", name: "Blue Berry Smoothie", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "../images/sub catégorie images/smoothie/Blue Berry Smoothie.jpg", category: "berry" },
+    { id: "smoothie_2", name: "Kiwi Smoothie", description: "Spinach, apple, banana", price: 5.00, image: "../images/sub catégorie images/smoothie/Kiwi Smoothie.jpg", category: "green" },
+    { id: "smoothie_3", name: "smoothie-acai-bowl", description: "Peanut, whey, banana", price: 5.80, image: "../assets/smoothie-acai-bowl.jpg", category: "protein" },
+    { id: "smoothie_4", name: "smoothie-tropical-mango", description: "Mango, pineapple, coconut", price: 5.40, image: "../assets/smoothie-tropical-mango.jpg", category: "tropical" },
+    { id: "smoothie_5", name: "raspberry-smoothie_1150-18529", description: "Greek yogurt, strawberry puree", price: 5.75, image: "../images/sub catégorie images/smoothie/raspberry-smoothie_1150-18529.jpg", category: "berry" },
+    { id: "smoothie_6", name: "Jus Mangue", description: "Alphonso mango, yogurt, cardamom", price: 5.00, image: "../images/sub catégorie images/Jus/Jus Mangue.jpg", category: "tropical" }
 ];
 
 let currentFilter = 'all';

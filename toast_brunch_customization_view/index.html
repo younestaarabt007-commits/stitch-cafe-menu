@@ -53,72 +53,140 @@
       </div>
     </div>
 
-    <main class="px-4">
-      <section class="mt-4">
-        <h2 class="text-[18px] font-bold mb-2">Egg Style</h2>
-        <div class="grid grid-cols-4 gap-2">
-          <button class="chip chip-active" data-eggs="poached">Poached</button>
-          <button class="chip" data-eggs="scrambled">Scrambled</button>
-          <button class="chip" data-eggs="sunny">Sunny</button>
-          <button class="chip" data-eggs="omelette">Omelette</button>
-        </div>
-      </section>
-
-      <section class="mt-5">
-        <h2 class="text-[18px] font-bold mb-2">Toast Type</h2>
-        <div class="grid grid-cols-3 gap-2">
-          <button class="chip chip-active" data-toast="sourdough">Sourdough</button>
-          <button class="chip" data-toast="multigrain">Multigrain</button>
-          <button class="chip" data-toast="brioche">Brioche</button>
-        </div>
-      </section>
-
-      <section class="mt-5">
-        <h2 class="text-[18px] font-bold mb-2">Extras</h2>
-        <div class="flex gap-2 overflow-x-auto no-scrollbar">
-          <button class="chip" data-extra="avocado" data-price="2.00">Avocado +2.00DH</button>
-          <button class="chip" data-extra="salmon" data-price="4.00">Smoked Salmon +4.00DH</button>
-          <button class="chip" data-extra="feta" data-price="1.50">Feta +1.50DH</button>
-        </div>
-      </section>
-
-      <section class="mt-5">
-        <h2 class="text-[18px] font-bold mb-2">Spice Level</h2>
-        <div class="grid grid-cols-3 gap-2">
-          <button class="chip chip-active" data-spice="none">None</button>
-          <button class="chip" data-spice="mild">Mild</button>
-          <button class="chip" data-spice="hot">Hot</button>
-        </div>
-      </section>
-
-      <section class="mt-5">
-        <h2 class="text-[18px] font-bold mb-2">Quantity</h2>
-        <div class="flex items-center gap-3">
-          <button id="dec-qty" class="qty-btn">-</button>
-          <span id="qty" class="text-[16px] font-bold">1</span>
-          <button id="inc-qty" class="qty-btn">+</button>
-        </div>
-      </section>
-
-      <div id="floating-add" class="mt-10 mb-6 flex justify-center w-full">
-        <div
-          class="bg-black text-white flex items-center justify-between pr-2 pl-6 overflow-hidden shadow-[0_0_20px_rgba(242,147,13,0.35)]"
-          style="width: 342px; height: 64px; border-radius: 32px;">
-          <div class="flex flex-col justify-center">
-            <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Total</span>
-            <div class="flex items-center gap-2">
-              <span id="summary-text" class="text-xs font-bold">Poached • Sourdough • None</span>
-              <span class="w-1 h-1 bg-gray-600 rounded-full"></span>
-              <span id="total-price" class="text-sm font-bold text-primary">12.00DH</span>
-            </div>
+    <div class="relative -mt-16 flex-1 bg-white dark:bg-[#1c130d] rounded-t-xl px-4 pt-2">
+      <div class="flex h-5 w-full items-center justify-center mb-2">
+        <div class="h-1.5 w-12 rounded-full bg-[#e8d9ce] dark:bg-zinc-700"></div>
+      </div>
+      <div class="flex flex-col gap-1 mb-6">
+        <h1 class="text-[#1c130d] dark:text-white text-hero font-bold leading-tight tracking-tight">Chef's Brunch</h1>
+        <div class="flex items-center gap-2">
+          <div class="flex items-center">
+            <span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1">star</span>
+            <span class="text-[#1c130d] dark:text-white text-base font-bold ml-1">4.8</span>
           </div>
-          <button id="add-btn" class="bg-primary text-white px-5 h-[48px] rounded-full flex items-center gap-2">
-            <span class="font-extrabold text-[12px] uppercase tracking-wider">Add to Order</span>
-            <span class="material-symbols-outlined text-[18px]">shopping_cart</span>
+          <span class="text-[#9c6c49] dark:text-zinc-400 text-sm">(85+ reviews)</span>
+        </div>
+        <p class="text-[#1c130d]/70 dark:text-zinc-400 text-base font-normal leading-relaxed mt-2">
+          Choose egg style, toast type, extras.
+        </p>
+      </div>
+
+      <div class="mb-6">
+        <h2 class="text-[#1c130d] dark:text-white text-section font-bold mb-4">Egg Style</h2>
+        <div class="grid grid-cols-2 gap-4">
+          <button data-eggs="poached"
+            class="group relative p-4 rounded-[20px] border-2 border-primary bg-primary/5 dark:bg-primary/10 flex flex-col gap-1 cursor-pointer chip-active">
+            <p class="font-bold text-product text-[#1c130d] dark:text-white">Poached</p>
+            <p class="text-sm text-[#9c6c49] dark:text-zinc-400">Classic brunch</p>
+          </button>
+          <button data-eggs="scrambled"
+            class="group relative p-4 rounded-[20px] border border-[#e8d9ce] dark:border-zinc-800 bg-white dark:bg-zinc-900/50 flex flex-col gap-1 cursor-pointer">
+            <p class="font-bold text-product text-[#1c130d] dark:text-white">Scrambled</p>
+            <p class="text-sm text-[#9c6c49] dark:text-zinc-400">Soft &amp; creamy</p>
+          </button>
+          <button data-eggs="sunny"
+            class="group relative p-4 rounded-[20px] border border-[#e8d9ce] dark:border-zinc-800 bg-white dark:bg-zinc-900/50 flex flex-col gap-1 cursor-pointer">
+            <p class="font-bold text-product text-[#1c130d] dark:text-white">Sunny</p>
+            <p class="text-sm text-[#9c6c49] dark:text-zinc-400">Sunny side up</p>
+          </button>
+          <button data-eggs="omelette"
+            class="group relative p-4 rounded-[20px] border border-[#e8d9ce] dark:border-zinc-800 bg-white dark:bg-zinc-900/50 flex flex-col gap-1 cursor-pointer">
+            <p class="font-bold text-product text-[#1c130d] dark:text-white">Omelette</p>
+            <p class="text-sm text-[#9c6c49] dark:text-zinc-400">Fluffy folded</p>
           </button>
         </div>
       </div>
-    </main>
+
+      <div class="mb-6">
+        <h2 class="text-[#1c130d] dark:text-white text-section font-bold mb-4">Toast Type</h2>
+        <div class="grid grid-cols-3 gap-4">
+          <button data-toast="sourdough"
+            class="group relative p-4 rounded-[20px] border-2 border-primary bg-primary/5 dark:bg-primary/10 flex flex-col gap-1 cursor-pointer chip-active">
+            <p class="font-bold text-product text-[#1c130d] dark:text-white">Sourdough</p>
+          </button>
+          <button data-toast="multigrain"
+            class="group relative p-4 rounded-[20px] border border-[#e8d9ce] dark:border-zinc-800 bg-white dark:bg-zinc-900/50 flex flex-col gap-1 cursor-pointer">
+            <p class="font-bold text-product text-[#1c130d] dark:text-white">Multigrain</p>
+          </button>
+          <button data-toast="brioche"
+            class="group relative p-4 rounded-[20px] border border-[#e8d9ce] dark:border-zinc-800 bg-white dark:bg-zinc-900/50 flex flex-col gap-1 cursor-pointer">
+            <p class="font-bold text-product text-[#1c130d] dark:text-white">Brioche</p>
+          </button>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h2 class="text-[#1c130d] dark:text-white text-section font-bold mb-4">Extras</h2>
+        <div class="flex flex-col gap-3">
+          <button data-extra="avocado" data-price="2.00"
+            class="flex items-center justify-between p-3 rounded-lg border border-[#e8d9ce] dark:border-zinc-800 bg-white dark:bg-zinc-900/50">
+            <span class="font-bold text-product text-[#1c130d] dark:text-white">Avocado</span>
+            <span class="text-xs text-primary font-bold">+2.00DH</span>
+          </button>
+          <button data-extra="salmon" data-price="4.00"
+            class="flex items-center justify-between p-3 rounded-lg border border-[#e8d9ce] dark:border-zinc-800 bg-white dark:bg-zinc-900/50">
+            <span class="font-bold text-product text-[#1c130d] dark:text-white">Smoked Salmon</span>
+            <span class="text-xs text-primary font-bold">+4.00DH</span>
+          </button>
+          <button data-extra="feta" data-price="1.50"
+            class="flex items-center justify-between p-3 rounded-lg border border-[#e8d9ce] dark:border-zinc-800 bg-white dark:bg-zinc-900/50">
+            <span class="font-bold text-product text-[#1c130d] dark:text-white">Feta</span>
+            <span class="text-xs text-primary font-bold">+1.50DH</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <h2 class="text-[#1c130d] dark:text-white text-section font-bold mb-4">Spice Level</h2>
+        <div class="grid grid-cols-3 gap-4">
+          <button data-spice="none"
+            class="group relative p-3 rounded-[20px] border-2 border-primary bg-primary/5 dark:bg-primary/10 flex flex-col items-center gap-1 cursor-pointer chip-active">
+            <span class="font-bold text-product text-[#1c130d] dark:text-white">None</span>
+          </button>
+          <button data-spice="mild"
+            class="group relative p-3 rounded-[20px] border border-[#e8d9ce] dark:border-zinc-800 bg-white dark:bg-zinc-900/50 flex flex-col items-center gap-1 cursor-pointer">
+            <span class="font-bold text-product text-[#1c130d] dark:text-white">Mild</span>
+          </button>
+          <button data-spice="hot"
+            class="group relative p-3 rounded-[20px] border border-[#e8d9ce] dark:border-zinc-800 bg-white dark:bg-zinc-900/50 flex flex-col items-center gap-1 cursor-pointer">
+            <span class="font-bold text-product text-[#1c130d] dark:text-white">Hot</span>
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="mt-6 mb-8 w-full bg-white/95 dark:bg-[#1c130d]/95 backdrop-blur-xl border-t border-[#e8d9ce] dark:border-zinc-800 px-4 py-3">
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center gap-4">
+            <div
+              class="flex items-center bg-background-light dark:bg-zinc-900 rounded-full px-2 h-12 border border-[#e8d9ce] dark:border-zinc-800">
+              <button
+                id="dec-qty"
+                class="w-8 h-8 rounded-full flex items-center justify-center text-[#1c130d] dark:text-white hover:bg-zinc-200 dark:hover:bg-zinc-700">
+                <span class="material-symbols-outlined text-lg">remove</span>
+              </button>
+              <span id="qty" class="w-6 text-center font-bold text-base">1</span>
+              <button
+                id="inc-qty"
+                class="w-8 h-8 rounded-full flex items-center justify-center text-[#1c130d] dark:text-white hover:bg-zinc-200 dark:hover:bg-zinc-700">
+                <span class="material-symbols-outlined text-lg">add</span>
+              </button>
+            </div>
+            <button
+              id="add-btn"
+              class="flex-1 h-12 bg-primary hover:bg-primary/90 text-white rounded-full flex items-center justify-center gap-2 shadow-[0_8px_30px_rgb(244,123,37,0.3)] transition-transform active:scale-95">
+              <span class="font-bold text-base tracking-wide uppercase">Add to Order</span>
+              <span class="w-1 h-1 rounded-full bg-white/50"></span>
+              <span id="total-price" class="font-extrabold text-base">12.00DH</span>
+            </button>
+          </div>
+          <div class="flex items-center justify-between text-xs text-[#9c6c49] dark:text-zinc-400 px-1">
+            <span class="font-bold uppercase tracking-wide">Summary</span>
+            <span id="summary-text" class="font-medium text-right">Poached • Sourdough • None</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <script src="script.js"></script>
   <script src="../nav-bar.js?v=9"></script>

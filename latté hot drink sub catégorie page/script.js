@@ -1,13 +1,14 @@
 const products = [
-    { id: "latte_1", name: "Classic Latte", description: "Double shot, steamed milk", price: 4.80, image: "/assets/latte-classic.jpg", category: "classic" },
-    { id: "latte_2", name: "Signature Oat Latte", description: "Creamy & Sustainable", price: 6.50, image: "/assets/latte-oat.jpg", category: "plant-based" },
-    { id: "latte_3", name: "Vanilla Bean", description: "House vanilla bean syrup", price: 5.75, image: "/assets/latte-vanilla-bean.jpg", category: "flavored" },
-    { id: "latte_4", name: "Caramel Macchiato", description: "Buttery caramel drizzle", price: 6.25, image: "/assets/latte-caramel-macchiato.jpg", category: "flavored" },
-    { id: "latte_5", name: "Spanish Latte", description: "Condensed milk & espresso", price: 5.50, image: "/assets/latte-spanish.jpg", category: "classic" },
-    { id: "latte_6", name: "Rose Water Latte", description: "Delicate floral infusion", price: 6.00, image: "/assets/latte-rose-water.jpg", category: "flavored" },
-    { id: "latte_7", name: "Iced Matcha Latte", description: "Ceremonial grade green tea", price: 6.25, image: "/assets/latte-iced-matcha.jpg", category: "iced" },
-    { id: "latte_8", name: "Hazelnut Latte", description: "Rich nutty profile", price: 5.75, image: "/assets/latte-hazelnut.jpg", category: "flavored" },
-    { id: "latte_9", name: "Pumpkin Spice Latte", description: "Seasonal spices & puree", price: 5.40, image: "/assets/latte-pumpkin-spice.jpg", category: "seasonal" }
+    { id: "latte_1", name: "Café au lait avec la Creme", description: "Double shot, steamed milk", price: 4.80, image: "../images/sub catégorie images/latté/Café au lait avec la Creme.jpg", category: "classic" },
+    { id: "latte_2", name: "latte-oat", description: "Creamy & Sustainable", price: 6.50, image: "../assets/latte-oat.jpg", category: "plant-based" },
+    { id: "latte_3", name: "latte-vanilla-bean", description: "House vanilla bean syrup", price: 5.75, image: "../assets/latte-vanilla-bean.jpg", category: "flavored" },
+    { id: "latte_4", name: "Café au lait avec la Creme", description: "Buttery caramel drizzle", price: 6.25, image: "../images/sub catégorie images/latté/Café au lait avec la Creme.jpg", category: "flavored" },
+    { id: "latte_5", name: "latte-spanish", description: "Condensed milk & espresso", price: 5.50, image: "../assets/latte-spanish.jpg", category: "classic" },
+    { id: "latte_6", name: "latte-rose-water", description: "Delicate floral infusion", price: 6.00, image: "../assets/latte-rose-water.jpg", category: "flavored" },
+    { id: "latte_7", name: "latte-iced-matcha", description: "Ceremonial grade green tea", price: 6.25, image: "../assets/latte-iced-matcha.jpg", category: "iced" },
+    { id: "latte_8", name: "latte-hazelnut", description: "Rich nutty profile", price: 5.75, image: "../assets/latte-hazelnut.jpg", category: "flavored" },
+    { id: "latte_10", name: "Café au Lait Artisanal", description: "House vanilla syrup", price: 5.10, image: "../images/sub catégorie images/latté/Café au Lait Artisanal.jpg", category: "classic" },
+    { id: "latte_11", name: "Café Crème", description: "Double shot over chilled milk", price: 5.50, image: "../images/sub catégorie images/latté/Café Crème.jpg", category: "classic" }
 ];
 
 let currentFilter = 'all';

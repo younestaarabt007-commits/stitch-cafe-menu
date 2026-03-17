@@ -1,10 +1,11 @@
 const products = [
-    { id: "sweet_pastry_1", name: "Butter Croissant", description: "Flaky layers, French butter", price: 4.50, image: "/assets/sweet-butter-croissant.jpg", category: "croissant" },
-    { id: "sweet_pastry_2", name: "Almond Croissant", description: "Frangipane, toasted almond", price: 5.25, image: "/assets/sweet-almond-croissant.jpg", category: "croissant" },
-    { id: "sweet_pastry_3", name: "Chocolate Éclair", description: "Choux pastry, rich ganache", price: 4.75, image: "/assets/bakery-chocolate-eclair.jpg", category: "cake" },
-    { id: "sweet_pastry_4", name: "Strawberry Tart", description: "Vanilla custard, fresh berries", price: 5.80, image: "/assets/sweet-strawberry-tart.jpg", category: "tart" },
-    { id: "sweet_pastry_5", name: "Lemon Meringue Tart", description: "Zesty curd, torched meringue", price: 5.90, image: "/assets/sweet-lemon-meringue.jpg", category: "tart" },
-    { id: "sweet_pastry_6", name: "Velvet Cake Slice", description: "Moist crumb, vanilla frosting", price: 4.95, image: "/assets/sweet-velvet-cake.jpg", category: "cake" }
+    { id: "sweet_pastry_1", name: "French Toast", description: "Flaky layers, French butter", price: 4.50, image: "../images/sub catégorie images/sweets/French Toast.jpg", category: "croissant" },
+    { id: "sweet_pastry_2", name: "Mille Feuilles", description: "Frangipane, toasted almond", price: 5.25, image: "../images/sub catégorie images/sweets/Mille Feuilles.jpg", category: "croissant" },
+    { id: "sweet_pastry_3", name: "Teramisu au Chocolat", description: "Choux pastry, rich ganache", price: 4.75, image: "../images/sub catégorie images/sweets/Teramisu au Chocolat.jpg", category: "cake" },
+    { id: "sweet_pastry_4", name: "Waffels au fruit", description: "Vanilla custard, fresh berries", price: 5.80, image: "../images/sub catégorie images/sweets/Waffels au fruit.jpg", category: "tart" },
+    { id: "sweet_pastry_5", name: "Chees Cake au Citron", description: "Zesty curd, torched meringue", price: 5.90, image: "../images/sub catégorie images/sweets/Chees Cake au Citron.jpg", category: "tart" },
+    { id: "sweet_pastry_6", name: "Dark an White Chocolat Cake ", description: "Moist crumb, vanilla frosting", price: 4.95, image: "../images/sub catégorie images/sweets/Dark an White Chocolat Cake .jpg", category: "cake" },
+    { id: "sweet_pastry_7", name: "Orange Chesse Cake", description: "Grilled ribeye, sunny-side", price: 18.00, image: "../images/sub catégorie images/sweets/Orange Chesse Cake.jpg", category: "cake" }
 ];
 
 let currentFilter = 'all';

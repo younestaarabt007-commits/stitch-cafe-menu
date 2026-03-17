@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Petit Déjeuner Category</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2930d",
+                        "background-light": "#FAFAF5",
+                        "background-dark": "#1a0f08",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans"],
+                        "serif": ["Playfair Display", "serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        .glass-effect { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .hero-gradient { background: radial-gradient(circle at top right, rgba(61, 43, 31, 0.4), rgba(26, 15, 8, 0.6)); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-card { background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+        .text-glow { text-shadow: 0 0 15px rgba(255,255,255,0.3); }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FAFAF5; min-height: 1300px; }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#1c160d] dark:text-[#fcfaf8] antialiased">
+    <div class="relative mx-auto w-full max-w-7xl min-h-screen flex flex-col shadow-2xl overflow-hidden bg-background-light dark:bg-background-dark">
+        <header class="relative w-full h-[360px] overflow-hidden flex flex-col items-center justify-center bg-cover bg-center" style="background-image: url('../images/header images of sub catégorie/petit dejeuner header image .jpg');">
+            <div class="absolute inset-0 bg-black/30"></div>
+            <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background-light dark:from-background-dark to-transparent"></div>
+
+            <div class="absolute top-0 left-0 w-full z-20 flex items-center justify-between p-4">
+                <button onclick="history.back()" class="size-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white active:scale-95 transition-transform">
+                    <span class="material-symbols-outlined flip-rtl">arrow_back</span>
+                </button>
+                <div class="flex items-center gap-3">
+                    <div id="language-toggle" class="language-toggle scale-90 lang-en">
+                        <div class="toggle-switch"><span class="slider"></span></div>
+                    </div>
+                    <button id="search-btn" class="size-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white active:scale-95 transition-transform">
+                        <span class="material-symbols-outlined">search</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative z-10 flex flex-col items-center text-center px-6 pt-10">
+                <h1 class="text-white text-[32px] font-extrabold tracking-tight leading-tight drop-shadow-md">Petit Déjeuner</h1>
+                <p class="text-white/90 text-sm font-medium mt-1 drop-shadow-sm">Morning plates crafted for every taste</p>
+            </div>
+        </header>
+
+        <div id="explore-categories" class="flex overflow-x-auto hide-scrollbar gap-2 px-4 md:px-8 pb-0 w-full pt-8">
+            <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="window.location.href='../tea and infusion sub catégorie page/index.html'">
+                <div class="p-[3px] rounded-full bg-gray-200 dark:bg-gray-700 group-hover:bg-primary transition-all">
+                    <div class="bg-white dark:bg-[#1a100c] p-1 rounded-full">
+                        <div class="w-16 h-16 rounded-full overflow-hidden relative">
+                            <img src="../swiggy-style_elite_main_menu_390x2500/assets/subcat_icons/tea icon .png" alt="Tea &amp; Infusion" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='../swiggy-style_elite_main_menu_390x2500/assets/waiter.jpg'">
+                        </div>
+                    </div>
+                </div>
+                <p class="text-[10px] text-gray-800 dark:text-white text-center leading-tight max-w-[5rem]">Tea &amp; Infusion</p>
+            </div>
+            <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="window.location.href='../black coffee sub catégorie page/index.html'">
+                <div class="p-[3px] rounded-full bg-gray-200 dark:bg-gray-700 group-hover:bg-primary transition-all">
+                    <div class="bg-white dark:bg-[#1a100c] p-1 rounded-full">
+                        <div class="w-16 h-16 rounded-full overflow-hidden relative">
+                            <img src="../swiggy-style_elite_main_menu_390x2500/assets/subcat_icons/black coffe icon.jpg" alt="Black Coffee" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='../swiggy-style_elite_main_menu_390x2500/assets/waiter.jpg'">
+                        </div>
+                    </div>
+                </div>
+                <p class="text-[10px] text-gray-800 dark:text-white text-center leading-tight max-w-[5rem]">Black Coffee</p>
+            </div>
+            <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="window.location.href='../petit dejeuner sub catégorie page/index.html'">
+                <div class="p-[3px] rounded-full bg-gray-200 dark:bg-gray-700 group-hover:bg-primary transition-all">
+                    <div class="bg-white dark:bg-[#1a100c] p-1 rounded-full">
+                        <div class="w-16 h-16 rounded-full overflow-hidden relative">
+                            <img src="../images/sub catégories icons/Breakfast.jpg" alt="Breakfast" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='../swiggy-style_elite_main_menu_390x2500/assets/waiter.jpg'">
+                        </div>
+                    </div>
+                </div>
+                <p class="text-[10px] text-gray-800 dark:text-white text-center leading-tight max-w-[5rem]">Breakfast</p>
+            </div>
+            <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="window.location.href='../smothie sub catégorie page/index.html'">
+                <div class="p-[3px] rounded-full bg-gray-200 dark:bg-gray-700 group-hover:bg-primary transition-all">
+                    <div class="bg-white dark:bg-[#1a100c] p-1 rounded-full">
+                        <div class="w-16 h-16 rounded-full overflow-hidden relative">
+                            <img src="../swiggy-style_elite_main_menu_390x2500/assets/subcat_icons/smoothie icon.png" alt="Smoothie" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='../swiggy-style_elite_main_menu_390x2500/assets/waiter.jpg'">
+                        </div>
+                    </div>
+                </div>
+                <p class="text-[10px] text-gray-800 dark:text-white text-center leading-tight max-w-[5rem]">Smoothie</p>
+            </div>
+        </div>
+
+        <div class="flex gap-2.5 px-4 overflow-x-auto no-scrollbar py-6">
+            <button class="filter-btn active px-5 h-9 rounded-full bg-primary text-white text-xs font-bold shadow-lg shadow-primary/20" data-filter="all">All</button>
+            <button class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700" data-filter="classic">Classic</button>
+            <button class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700" data-filter="moroccan">Moroccan</button>
+            <button class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700" data-filter="deluxe">Deluxe</button>
+            <button class="filter-btn px-5 h-9 rounded-full bg-white dark:bg-zinc-800 text-zinc-500 text-xs font-semibold border border-zinc-100 dark:border-zinc-700" data-filter="traditional">Traditional</button>
+        </div>
+
+        <div class="px-4 space-y-4">
+            <div class="grid grid-cols-2 gap-3 h-[280px]">
+                <div class="relative rounded-[20px] overflow-hidden bg-zinc-900 group h-full">
+                    <div class="absolute inset-0 bg-cover bg-center opacity-70 group-hover:scale-105 transition-transform duration-500" style="background-image: url('../images/header images of sub catégorie/petit dejeuner header image .jpg');"></div>
+                    <div class="absolute bottom-0 left-0 p-4 w-full bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                        <p class="text-white font-bold text-base leading-tight">Breakfast Signature</p>
+                        <p class="text-primary text-xs font-bold mt-1">${(7.2).toFixed(2)}DH</p>
+                    </div>
+                </div>
+                <div class="grid grid-rows-2 gap-3 h-full">
+                    <div class="relative rounded-[20px] overflow-hidden bg-zinc-200 h-full">
+                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('../images/sub catégorie images/petit dejeuner/Petit Déjeuner Royal.jpg');"></div>
+                        <div class="absolute inset-0 bg-black/30 flex items-center justify-center p-4">
+                            <p class="text-white text-[10px] font-bold uppercase tracking-[0.1em] text-center">Royal Morning</p>
+                        </div>
+                    </div>
+                    <div class="relative rounded-[20px] overflow-hidden bg-primary/5 flex flex-col items-center justify-center text-center p-4 border border-primary/20 h-full">
+                        <span class="material-symbols-outlined text-primary text-2xl mb-1">sunny</span>
+                        <p class="text-[10px] font-bold text-primary uppercase tracking-tighter">Morning Deal</p>
+                        <p class="text-[#1c160d] text-[10px] font-bold">Fresh Start Menu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative w-full h-20 rounded-[20px] overflow-hidden bg-[#1a0f08] flex items-center px-4 py-3">
+                <div class="flex-1">
+                    <h3 class="text-white font-bold text-base">Chef Breakfast Pick</h3>
+                    <p class="text-white/60 text-[10px]">Includes warm drink and bakery side</p>
+                </div>
+                <button class="bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase">Try Now</button>
+            </div>
+        </div>
+
+        <div class="px-4 pt-8 pb-3 flex items-center justify-between">
+            <h2 class="text-[20px] font-bold">All Breakfasts</h2>
+            <span class="text-primary text-xs font-bold">View All</span>
+        </div>
+
+        <div id="product-list" class="px-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 pb-32"></div>
+
+        <script src="script.js"></script>
+        <script src="../nav-bar.js?v=9"></script>
+    </div>
+</body>
+
+</html>

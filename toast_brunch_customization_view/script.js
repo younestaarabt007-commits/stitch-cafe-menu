@@ -38,31 +38,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function setupEvents() {
   document.getElementById('back-btn').addEventListener('click', () => window.history.back());
-  document.querySelectorAll('.chip[data-eggs]').forEach(btn => {
+  document.querySelectorAll('[data-eggs]').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.chip[data-eggs]').forEach(b => b.classList.remove('chip-active'));
+      document.querySelectorAll('[data-eggs]').forEach(b => b.classList.remove('chip-active'));
       btn.classList.add('chip-active');
       state.eggs = btn.dataset.eggs;
       updateSummary();
     });
   });
-  document.querySelectorAll('.chip[data-toast]').forEach(btn => {
+  document.querySelectorAll('[data-toast]').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.chip[data-toast]').forEach(b => b.classList.remove('chip-active'));
+      document.querySelectorAll('[data-toast]').forEach(b => b.classList.remove('chip-active'));
       btn.classList.add('chip-active');
       state.toast = btn.dataset.toast;
       updateSummary();
     });
   });
-  document.querySelectorAll('.chip[data-spice]').forEach(btn => {
+  document.querySelectorAll('[data-spice]').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.chip[data-spice]').forEach(b => b.classList.remove('chip-active'));
+      document.querySelectorAll('[data-spice]').forEach(b => b.classList.remove('chip-active'));
       btn.classList.add('chip-active');
       state.spice = btn.dataset.spice;
       updateSummary();
     });
   });
-  document.querySelectorAll('.chip[data-extra]').forEach(btn => {
+  document.querySelectorAll('[data-extra]').forEach(btn => {
     btn.addEventListener('click', () => {
       const key = btn.dataset.extra;
       const price = parseFloat(btn.dataset.price || '0');

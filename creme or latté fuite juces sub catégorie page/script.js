@@ -1,11 +1,11 @@
 const products = [
-  { id: "creme_latte_fuite_juice_1", name: "Orange Velvet", description: "Signature creamy orange blend", price: 8.50, image: "/assets/juice-fresh-orange.jpg", category: "creamy" },
-  { id: "creme_latte_fuite_juice_2", name: "Berry Cream", description: "Mixed berries with cream", price: 6.00, image: "/assets/cold-strawberry-smoothie.jpg", category: "creamy" },
-  { id: "creme_latte_fuite_juice_3", name: "Tropical Milk", description: "Exotic fruits with milk", price: 6.50, image: "/assets/exotic-cocktail-closeup_181624-983.avif", category: "creamy" },
-  { id: "creme_latte_fuite_juice_4", name: "Valencia Classic", description: "100% Pure Orange Juice", price: 5.50, image: "/assets/juice-cold-pressed-orange.jpg", category: "pure" },
-  { id: "creme_latte_fuite_juice_5", name: "Orange Milk", description: "Creamy Refresher", price: 6.00, image: "/assets/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif", category: "creamy" },
-  { id: "creme_latte_fuite_juice_6", name: "Carrot Glow", description: "Ginger Kick", price: 7.00, image: "/assets/juice-mango-glow.jpg", category: "pure" },
-  { id: "creme_latte_fuite_juice_7", name: "Berry Shake", description: "Thick & Creamy", price: 7.50, image: "/assets/close-up-milkshake-glass-plate_117406-7215.jpg", category: "creamy" },
+  { id: "creme_latte_fuite_juice_1", name: "juice-fresh-orange", description: "Signature creamy orange blend", price: 8.50, image: "../assets/juice-fresh-orange.jpg", category: "creamy" },
+  { id: "creme_latte_fuite_juice_2", name: "cold-strawberry-smoothie", description: "Mixed berries with cream", price: 6.00, image: "../assets/cold-strawberry-smoothie.jpg", category: "creamy" },
+  { id: "creme_latte_fuite_juice_3", name: "exotic-cocktail-closeup_181624-983", description: "Exotic fruits with milk", price: 6.50, image: "../assets/exotic-cocktail-closeup_181624-983.avif", category: "creamy" },
+  { id: "creme_latte_fuite_juice_4", name: "juice-cold-pressed-orange", description: "100% Pure Orange Juice", price: 5.50, image: "../assets/juice-cold-pressed-orange.jpg", category: "pure" },
+  { id: "creme_latte_fuite_juice_5", name: "glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038", description: "Creamy Refresher", price: 6.00, image: "../assets/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif", category: "creamy" },
+  { id: "creme_latte_fuite_juice_6", name: "juice-mango-glow", description: "Ginger Kick", price: 7.00, image: "../assets/juice-mango-glow.jpg", category: "pure" },
+  { id: "creme_latte_fuite_juice_7", name: "close-up-milkshake-glass-plate_117406-7215", description: "Thick & Creamy", price: 7.50, image: "../assets/close-up-milkshake-glass-plate_117406-7215.jpg", category: "creamy" },
 ];
 
 // Cart State

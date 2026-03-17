@@ -11,6 +11,13 @@ let bestsellers = [];
 let cart = [];
 let currentTable = new URLSearchParams(window.location.search).get('table') || null;
 
+function normalizeImagePath(path) {
+  if (!path || typeof path !== 'string') return path;
+  if (path.startsWith('../../images/')) return path.replace('../../images/', '../images/');
+  if (path.startsWith('assets/')) return '../' + path;
+  return path;
+}
+
 // Consolidated Product Data from all sub-categories
 
 
@@ -37,19 +44,20 @@ function renderBestsellers(items) {
   const ordered = items;
 
   container.innerHTML = ordered.map((item, index) => {
-    let imgUrl = item.image || item.image_url;
-    if (imgUrl && imgUrl.startsWith('assets/')) {
-      imgUrl = '../../' + imgUrl;
-    }
+    let imgUrl = normalizeImagePath(item.image || item.image_url);
     // Use fallback if image is missing or is the default Unsplash placeholder
     const isDefault = imgUrl && imgUrl.includes('photo-1546069901');
-    const displayImg = (imgUrl && !isDefault) ? imgUrl : getFallbackImage(item, index);
+    const displayImg = (imgUrl && !isDefault) ? imgUrl : normalizeImagePath(getFallbackImage(item, index));
     const rating = typeof item.rating === 'number' ? item.rating : getRatingForItem(item);
 
-    const fallback = getFallbackImage(item, index + 50); // Different seed for fallback
+    const fallback = normalizeImagePath(getFallbackImage(item, index + 50)); // Different seed for fallback
     
-    // Store exact image used so the customization view gets the same one
     item._displayImage = displayImg;
+
+    const nameText = (() => {
+      const base = getMenuTranslation(item, 'name');
+      return getLang() === 'en' ? summarizeEnglishName(canonicalizeEnglishName(base)) : base;
+    })();
 
     return `
     <div class="bg-white dark:bg-[#2a1e19] rounded-[1.5rem] p-3 shadow-md border border-gray-100 dark:border-white/5 flex gap-4 items-center relative" data-category="${item.category}">
@@ -61,7 +69,7 @@ function renderBestsellers(items) {
       </div>
       <div class="flex-1 min-w-0 flex flex-col h-24 md:h-32 justify-between py-0.5">
         <div>
-          <h4 class="font-bold text-[13px] md:text-sm text-gray-900 dark:text-white leading-tight pr-6">${getMenuTranslation(item, 'name')}</h4>
+          <h4 class="font-bold text-[13px] md:text-sm text-gray-900 dark:text-white leading-tight pr-6">${nameText}</h4>
           <div class="flex items-center gap-1 mt-1">
             <span class="material-symbols-outlined text-[14px] text-[#FFC107]" style="font-variation-settings: 'FILL' 1">star</span>
             <span class="text-[11px] text-gray-700 dark:text-gray-300 font-semibold">${Number(rating).toFixed(1)}</span>
@@ -83,15 +91,16 @@ function renderBestsellers(items) {
 function renderCategories(items) {
   // SUB-CATEGORIES to be displayed as circles with real images
   const subCategories = [
-    { name: getTranslation('Tea & Infusion'), img: 'assets/subcat_icons/tea icon .png', link: '../tea and infusion sub catégorie page/index.html' },
-    { name: getTranslation('Milkshake'), img: 'assets/subcat_icons/milkshake icon.png', link: '../milkshake sub catégorie page/index.html' },
-    { name: getTranslation('Juice'), img: 'assets/subcat_icons/juces icon.png', link: '../juces sub catégorie page/index.html' },
-    { name: getTranslation('Sweet Pastries'), img: 'assets/subcat_icons/sweet pastry.png', link: '../sweet pastries sub catégorie page/index.html' },
-    { name: getTranslation('Black Coffee'), img: 'assets/subcat_icons/black coffe icon.jpg', link: '../black coffee sub catégorie page/index.html' },
-    { name: getTranslation('Latte'), img: 'assets/subcat_icons/latté icon.jpg', link: '../latté hot drink sub catégorie page/index.html' },
-    { name: getTranslation('Smoothie'), img: 'assets/subcat_icons/smoothie icon.png', link: '../smothie sub catégorie page/index.html' },
-    { name: getTranslation('Toast'), img: 'assets/subcat_icons/sandwich or toast icon .jpg', link: '../toast brunch sub catégorie page/index.html' },
-    { name: getTranslation('Artisanal Bread'), img: 'assets/subcat_icons/artisanal bread.jpg', link: '../artisanal bread sub catégorie page/index.html' }
+    { name: getTranslation('Tea & Infusion'), img: '../assets/subcat_icons/tea icon .png', link: '../tea and infusion sub catégorie page/index.html' },
+    { name: getTranslation('Milkshake'), img: '../assets/subcat_icons/milkshake icon.png', link: '../milkshake sub catégorie page/index.html' },
+    { name: getTranslation('Juice'), img: '../assets/subcat_icons/juces icon.png', link: '../juces sub catégorie page/index.html' },
+    { name: getTranslation('Sweet Pastries'), img: '../assets/subcat_icons/sweet pastry.png', link: '../sweet pastries sub catégorie page/index.html' },
+    { name: getTranslation('Black Coffee'), img: '../assets/subcat_icons/black coffe icon.jpg', link: '../black coffee sub catégorie page/index.html' },
+    { name: getTranslation('Latte'), img: '../assets/subcat_icons/latté icon.jpg', link: '../latté hot drink sub catégorie page/index.html' },
+    { name: getTranslation('Smoothie'), img: '../assets/subcat_icons/smoothie icon.png', link: '../smothie sub catégorie page/index.html' },
+    { name: getTranslation('Toast'), img: '../assets/subcat_icons/sandwich or toast icon .jpg', link: '../toast brunch sub catégorie page/index.html' },
+    { name: getTranslation('Breakfast'), img: '../images/sub catégories icons/Breakfast.jpg', link: '../petit dejeuner sub catégorie page/index.html' },
+    { name: getTranslation('Artisanal Bread'), img: '../assets/subcat_icons/artisanal bread.jpg', link: '../artisanal bread sub catégorie page/index.html' }
   ];
 
   const container = document.getElementById('explore-categories');
@@ -102,7 +111,7 @@ function renderCategories(items) {
       <div class="p-[3px] rounded-full bg-gray-200 dark:bg-gray-700 group-hover:bg-primary transition-all">
         <div class="bg-white dark:bg-[#1a100c] p-1 rounded-full">
           <div class="w-16 h-16 rounded-full overflow-hidden relative">
-            <img src="${cat.img}" alt="${cat.name}" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='../../assets/waiter.jpg'">
+            <img src="${cat.img}" alt="${cat.name}" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='../assets/waiter.jpg'">
           </div>
         </div>
       </div>
@@ -169,7 +178,7 @@ function buildCustomizationUrl(item) {
   }
 
   // Use the stored display image if available, else original, else fallback
-  let imgPath = item._displayImage || item.image || getFallbackImage(item, 0);
+  let imgPath = normalizeImagePath(item._displayImage || item.image || getFallbackImage(item, 0));
 
   const params = new URLSearchParams({
     id: item.id || '',
@@ -185,25 +194,25 @@ function buildCustomizationUrl(item) {
 function getFallbackImage(item, seed = 0) {
   // Try to match specific keywords in name to local assets
   const name = item.name.toLowerCase();
-  if (name.includes('milkshake')) return '../../assets/close-up-milkshake-glass-plate_117406-7215.jpg';
-  if (name.includes('smoothie')) return '../../assets/raspberry-smoothie_1150-18529.jpg';
-  if (name.includes('juice') || name.includes('orange')) return '../../assets/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif';
-  if (name.includes('tea')) return '../../assets/exotic-cocktail-closeup_181624-983.avif';
-  if (name.includes('toast') || name.includes('benedict')) return '../../assets/croissant-benedict-salmon-with-poched-egg-hollandaise-sauce-served-with-fresh-salad_140725-1329.avif';
-  if (name.includes('pancake')) return '../../assets/vertical-shot-pancakes-with-fruits-top_181624-23923.jpg';
-  if (name.includes('pastry') || name.includes('croissant')) return '../../assets/pastry.jpg';
-  if (name.includes('mango')) return '../../assets/delicious-indian-mango-drink-high-angle_23-2148734680.avif';
+  if (name.includes('milkshake')) return '../images/sub catégorie images/milshake/close-up-milkshake-glass-plate_.jpg';
+  if (name.includes('smoothie')) return '../images/sub catégorie images/smoothie/raspberry-smoothie_1150-18529.jpg';
+  if (name.includes('juice') || name.includes('orange')) return '../images/sub catégorie images/Jus/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif';
+  if (name.includes('tea')) return '../images/sub catégorie images/tea/Tea Citron Délise.jpg';
+  if (name.includes('toast') || name.includes('benedict')) return '../images/sub catégorie images/toast/Toast Champignon Frommage.jpg';
+  if (name.includes('pancake')) return '../images/sub catégorie images/sweets/vertical-shot-pancakes-with-fruits-top_181624-23923.jpg';
+  if (name.includes('pastry') || name.includes('croissant')) return '../images/sub catégorie images/sweets/French Toast.jpg';
+  if (name.includes('mango')) return '../images/sub catégorie images/Jus/delicious-indian-mango-drink-high-angle_23-2148734680.avif';
 
-  // Fallback pool of high-quality images
+  // Fallback pool of local images
   const pool = [
-    'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500', // Salad/Bowl
-    'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=500', // Pizza/Flatbread
-    'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=500', // Toast/Egg
-    'https://images.unsplash.com/photo-1484723091739-30a097e8f929?q=80&w=500', // French Toast
-    'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=500', // Healthy Bowl
-    'https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=500', // Drink
-    'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=500', // Coffee
-    'https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=500'  // Coffee beans
+    '../images/sub catégorie images/Brunch food/Salade Cesar.jpg',
+    '../images/sub catégorie images/Brunch food/Salade Mexicaine.jpg',
+    '../images/sub catégorie images/Brunch food/Pumpkin Stew.jpg',
+    '../images/sub catégorie images/sweets/panne cake with berries .png',
+    '../images/sub catégorie images/Jus/colorful-cocktail-with-orange-slice-cocktail-umbrella-green-black-straw_140725-10521.avif',
+    '../images/sub catégorie images/tea/Tea Nordique.jpg',
+    '../images/sub catégorie images/black coffee/Café Noir Italien.jpg',
+    '../images/sub catégorie images/sweets/Orange Chesse Cake.jpg'
   ];
 
   // Deterministic selection based on item name char code sum + seed
@@ -232,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
         id: 'custom-' + Date.now(), // Unique ID for custom item
         name: order.item,
         price: order.unit_price, // Use the customized unit price
-        image: order.image && order.image.startsWith('assets/') ? '../../' + order.image : (order.image || '../../assets/waiter.jpg'), // Use passed image or fallback
+        image: order.image && order.image.startsWith('assets/') ? '../' + order.image : (normalizeImagePath(order.image) || '../assets/waiter.jpg'),
         category: 'Custom',
         quantity: order.qty,
         options: order.options
@@ -571,11 +580,11 @@ const translations = {
     latte: "Latte",
     smoothie: "Smoothie",
     tea_infusion: "Tea & Infusion",
-    artisanal_bread: "Artisanal Bread",
+    artisanal_bread: "Pastry",
     our_menu: "Our Menu",
     toasts_bowls: "Toasts & Bowls",
     coffee_tea: "Coffee & Tea",
-    cold_drink: "Cold Drink",
+    cold_drink: "Drinks",
     juices_shakes: "Juices & Shakes",
     pastry: "Pastry",
     bakery_sweets: "Bakery & Sweets",
@@ -608,7 +617,7 @@ const translations = {
     'Latte': "Latte",
     'Smoothie': "Smoothie",
     'Toast': "Toast",
-    'Artisanal Bread': "Artisanal Bread"
+    'Artisanal Bread': "Pastry"
   },
   fr: {
     table_12: "Table 12",
@@ -683,7 +692,7 @@ const translations = {
     'Latte': "Latte",
     'Smoothie': "Smoothie",
     'Toast': "Tartine",
-    'Artisanal Bread': "Pain Artisanal"
+    'Artisanal Bread': "Venoiserie"
   },
   ar: {
     table_12: "طاولة 12",
@@ -1096,6 +1105,258 @@ const menuTranslations = {
   }
 };
 
+function canonicalizeEnglishName(s) {
+  if (!s || typeof s !== 'string') return s;
+  let t = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  t = t.replace(/’/g, "'");
+  const lowers = t.toLowerCase();
+  const fruitMap = {
+    'ananas': 'pineapple',
+    'fraise': 'strawberry',
+    'pomme': 'apple',
+    'mangue': 'mango',
+    'citron': 'lemon',
+    'peche': 'peach',
+    'framboise': 'raspberry',
+    'myrtille': 'blueberry',
+    'banane': 'banana',
+    'orange': 'orange',
+    'kiwi': 'kiwi',
+    'avocat': 'avocado',
+    'papae': 'papaya',
+    'grenadine': 'pomegranate'
+  };
+  let out = lowers;
+  out = out.replace(/\bjus\s+(d'|de\s+)?([a-z]+(?:\s+[a-z]+)*)/g, (_, __, fruit) => {
+    const words = fruit.trim().split(/\s+/).map(w => fruitMap[w] || w);
+    return `${words.join(' ')} juice`;
+  });
+  out = out.replace(/\bsalade\s+(de|d')\s+([a-z]+(?:\s+[a-z]+)*)/g, (_, __, what) => {
+    return `${what.trim()} salad`;
+  });
+  const repl = [
+    ['petit dejeuner', 'breakfast'],
+    ['oeufs', 'eggs'],
+    ['oeuf', 'egg'],
+    ['cafe au lait', 'coffee with milk'],
+    ['cafe', 'coffee'],
+    ['noire', 'black'],
+    ['noir', 'black'],
+    ['italien', 'italian'],
+    ['marocain', 'moroccan'],
+    ['marocaine', 'moroccan'],
+    ['nordique', 'nordic'],
+    ['latino', 'latin'],
+    ['cesar', 'caesar'],
+    ['salade', 'salad'],
+    ['creme', 'cream'],
+    ['citron', 'lemon'],
+    ['fraise', 'strawberry'],
+    ['gaufre', 'waffle'],
+    ['chocolat', 'chocolate'],
+    ['lait', 'milk'],
+    ['vanille', 'vanilla'],
+    ['caramel', 'caramel'],
+    ['banane', 'banana'],
+    ['frommage', 'cheese'],
+    ['fromage', 'cheese'],
+    ['champignon', 'mushroom'],
+    ['the', 'tea'],
+    ['menthe', 'mint'],
+    ['lavande', 'lavender'],
+    ['myrtille', 'blueberry'],
+    ['pomme', 'apple'],
+    ['mangue', 'mango'],
+    ['peche', 'peach'],
+    ['avocat', 'avocado'],
+    ['russe', 'russian'],
+    ['mexicaine', 'mexican'],
+    ['belge', 'belgian'],
+    ['citronnelle', 'lemongrass'],
+    ['citronnelle', 'lemongrass'],
+    ['citron vert', 'lime'],
+    ['focaccia', 'focaccia'],
+    ['babka', 'babka'],
+    ['croissant', 'croissant'],
+    ['tarte', 'tart'],
+    ['gateau', 'cake'],
+    ['velours', 'velvet'],
+    ['eclair', 'eclair'],
+    ['espresso', 'espresso']
+  ];
+  repl.forEach(([a, b]) => {
+    const r = new RegExp(`\\b${a}\\b`, 'g');
+    out = out.replace(r, b);
+  });
+  out = out.replace(/\bau\b/g, 'to').replace(/\bde\b/g, 'of').replace(/\bet\b/g, 'and').replace(/\bavec\b/g, 'with').replace(/\bla\b/g, '').replace(/\ble\b/g, '').replace(/\bdu\b/g, '').replace(/\bdes\b/g, '');
+  out = out.replace(/\bsalad\s+([a-z]+)/g, (_, adj) => `${adj} salad`);
+  out = out.replace(/[_\-]+/g, ' ').replace(/\s{2,}/g, ' ').trim();
+  const small = new Set(['and','or','of','the','with','to','a','an','in','on','for']);
+  out = out.split(' ').map((w,i) => {
+    if (!w) return w;
+    if (small.has(w) && i !== 0) return w;
+    return w.charAt(0).toUpperCase() + w.slice(1);
+  }).join(' ');
+  return out;
+}
+
+function summarizeEnglishName(s) {
+  if (!s || typeof s !== 'string') return s;
+  const cleaned = s
+    .replace(/\.(png|jpg|jpeg|avif|webp)$/i, '')
+    .replace(/\b\d{3,}\b/g, ' ')
+    .replace(/\bpng\b|\bjpeg\b|\bjpg\b|\bavif\b|\bwebp\b/gi, ' ')
+    .replace(/\bisolated\b|\btransparent\b|\bbackground\b|\bimage\b/gi, ' ')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+  const stop = new Set(['with','and','of','the','to','for','on','in','or','from','by','over','under','into','a','an','at','as','is','are','was','were','be','being','been','served','serving','fresh','delicious','tasty','garnished','creating','featuring','perfect','presentation','high','angle','close','up','bursting','shape','glass','umbrella','straw','plate','breakfast','brunch','english']);
+  const words = cleaned.split(/[\s\-_,/]+/).filter(Boolean);
+  const uniq = [];
+  for (const w of words) {
+    const lw = w.toLowerCase();
+    if (stop.has(lw)) continue;
+    if (/^\d+$/.test(lw)) continue;
+    if (lw.length < 2) continue;
+    if (!uniq.includes(lw)) uniq.push(lw);
+  }
+  const has = (k) => uniq.includes(k);
+  if (has('salad')) {
+    if (has('caesar') || has('cesar')) return 'Cesar Salad';
+    if (has('moroccan') || has('marocain') || has('marocaine')) return 'Moroccan Salad';
+    return 'Salad';
+  }
+  const keyOrder = ['benedict','eggs','egg','breakfast','brunch','salmon','omelette','scrambled','waffle','pancake','toast','salad','croissant','tart','cake','eclair','babka','focaccia','latte','espresso','coffee','tea','juice','smoothie','milkshake','cocktail','mango','orange','blueberry','strawberry','lemon'];
+  const eggIdx = uniq.indexOf('egg');
+  if (eggIdx !== -1 && !uniq.includes('eggs')) {
+    uniq[eggIdx] = 'eggs';
+  }
+  uniq.sort((a,b) => {
+    const ia = keyOrder.indexOf(a);
+    const ib = keyOrder.indexOf(b);
+    const sa = ia === -1 ? 999 : ia;
+    const sb = ib === -1 ? 999 : ib;
+    if (sa !== sb) return sa - sb;
+    return 0;
+  });
+  const top = uniq.slice(0,3).map(w => w.charAt(0).toUpperCase() + w.slice(1));
+  return top.join(' ').trim() || s;
+}
+
+function generateFrenchFromEnglishSummary(name) {
+  if (!name || typeof name !== 'string') return name;
+  const dict = {
+    'benedict':'Bénédicte','eggs':'Œufs','egg':'Œuf','salmon':'Saumon','omelette':'Omelette','scrambled':'Brouillés','waffle':'Gaufre','pancake':'Pancake','toast':'Toast','salad':'Salade','croissant':'Croissant','tart':'Tarte','cake':'Gâteau','eclair':'Éclair','babka':'Babka','focaccia':'Focaccia','latte':'Latte','espresso':'Espresso','coffee':'Café','tea':'Thé','juice':'Jus','smoothie':'Smoothie','milkshake':'Milkshake','cocktail':'Cocktail','mango':'Mangue','orange':'Orange','blueberry':'Myrtille','strawberry':'Fraise','raspberry':'Framboise','banana':'Banane','apple':'Pomme','peach':'Pêche','lemon':'Citron','lime':'Citron vert','lemongrass':'Citronnelle','avocado':'Avocat','mint':'Menthe','rosemary':'Romarin','iced':'Glacé','indian':'Indien','drink':'Boisson','slice':'Tranche','zest':'Zeste','cheese':'Fromage','chesse':'Fromage','vanilla':'Vanille','caramel':'Caramel','chocolate':'Chocolat','caesar':'César','cesar':'César'
+  };
+  return name.split(' ').map(t => dict[t.toLowerCase()] || t).join(' ');
+}
+
+function generateArabicFromEnglishSummary(name) {
+  if (!name || typeof name !== 'string') return name;
+  const tokens = name.toLowerCase().split(/\s+/).filter(Boolean);
+  const has = (k) => tokens.includes(k);
+  const flavors = ['mango','orange','lemon','lime','apple','peach','banana','strawberry','blueberry','raspberry','avocado','vanilla','caramel','chocolate','mint','rosemary'];
+  const arDef = {
+    mango:'المانجو', orange:'البرتقال', lemon:'الليمون', lime:'الليمون الأخضر', apple:'التفاح', peach:'الخوخ', banana:'الموز',
+    strawberry:'الفراولة', blueberry:'التوت الأزرق', raspberry:'التوت الأحمر', avocado:'الأفوكادو',
+    vanilla:'الفانيليا', caramel:'الكراميل', chocolate:'الشوكولاتة', mint:'النعناع', rosemary:'إكليل الجبل',
+    salmon:'السلمون', cheese:'الجبن', mushroom:'الفطر', moroccan:'المغربية', caesar:'قيصر', cesar:'قيصر'
+  };
+  const pickFlavor = () => {
+    for (const f of flavors) if (has(f)) return f;
+    return null;
+  };
+  const flavor = pickFlavor();
+  if (has('juice')) {
+    if (flavor) return `عصير ${arDef[flavor] || ''}`.trim();
+    return 'عصير';
+  }
+  if (has('smoothie')) {
+    if (flavor) return `سموثي ${arDef[flavor] || ''}`.trim();
+    return 'سموثي';
+  }
+  if (has('milkshake')) {
+    if (flavor) return `ميلك شيك ${arDef[flavor] || ''}`.trim();
+    return 'ميلك شيك';
+  }
+  if (has('latte')) {
+    const iced = has('iced');
+    if (flavor) return `لاتيه ${arDef[flavor] || ''}${iced ? ' مثلج' : ''}`.trim();
+    return iced ? 'لاتيه مثلج' : 'لاتيه';
+  }
+  if (has('espresso')) {
+    return 'إسبريسو';
+  }
+  if (has('coffee')) {
+    const iced = has('iced');
+    return iced ? 'قهوة مثلجة' : 'قهوة';
+  }
+  if (has('tea')) {
+    if (has('moroccan') && has('mint')) return 'شاي مغربي بالنعناع';
+    if (has('mint')) return 'شاي بالنعناع';
+    if (flavor) return `شاي ${arDef[flavor] || ''}`.trim();
+    return 'شاي';
+  }
+  if (has('benedict')) {
+    if (has('salmon')) return 'بيض بنديكت بالسلمون';
+    return 'بيض بنديكت';
+  }
+  if (has('omelette')) {
+    if (has('cheese') && has('mushroom')) return 'عجة بالجبن والفطر';
+    if (has('cheese')) return 'عجة بالجبن';
+    if (has('mushroom')) return 'عجة بالفطر';
+    return 'عجة';
+  }
+  if (has('scrambled') && has('eggs')) {
+    if (has('rosemary')) return 'بيض مخفوق بإكليل الجبل';
+    return 'بيض مخفوق';
+  }
+  if (has('salad')) {
+    if (has('moroccan')) return 'سلطة مغربية';
+    if (has('caesar')) return 'سلطة قيصر';
+    if (flavor) return `سلطة ${arDef[flavor] || ''}`.trim();
+    return 'سلطة';
+  }
+  if (has('cake')) {
+    if (has('cheese') && flavor) return `كعكة الجبن بـ${arDef[flavor] ? arDef[flavor].replace(/^ال/,'ال') : ''}`.trim();
+    if (has('cheese')) return 'كعكة الجبن';
+    if (flavor) return `كيك ${arDef[flavor] || ''}`.trim();
+    return 'كيك';
+  }
+  if (has('tart')) {
+    if (flavor) return `تارت ${arDef[flavor] || ''}`.trim();
+    return 'تارت';
+  }
+  if (has('eclair')) {
+    if (flavor) return `إكلير ${arDef[flavor] || ''}`.trim();
+    return 'إكلير';
+  }
+  if (has('croissant')) {
+    if (has('benedict') && has('salmon')) return 'كرواسون بنديكت بالسلمون';
+    if (has('benedict')) return 'كرواسون بنديكت';
+    if (flavor) return `كرواسون ${arDef[flavor] || ''}`.trim();
+    return 'كرواسون';
+  }
+  if (has('waffle')) {
+    if (flavor) return `وافل بـ${arDef[flavor] ? arDef[flavor].replace(/^ال/,'ال') : ''}`.trim();
+    return 'وافل';
+  }
+  if (has('pancake')) {
+    if (flavor) return `بان كيك بـ${arDef[flavor] ? arDef[flavor].replace(/^ال/,'ال') : ''}`.trim();
+    return 'بان كيك';
+  }
+  if (has('toast')) {
+    if (has('avocado')) return 'توست بالأفوكادو';
+    if (has('cheese') && has('mushroom')) return 'توست بالجبن والفطر';
+    if (has('cheese')) return 'توست بالجبن';
+    return 'توست';
+  }
+  const dict = {
+    benedict:'بنديكت',eggs:'بيض',egg:'بيض',salmon:'سلمون',omelette:'عجة',scrambled:'مخلوط',waffle:'وافل',pancake:'بان كيك',toast:'توست',salad:'سلطة',croissant:'كرواسون',tart:'تارت',cake:'كيك',eclair:'إكلير',babka:'بابكا',focaccia:'فوكاتشيا',latte:'لاتيه',espresso:'إسبريسو',coffee:'قهوة',tea:'شاي',juice:'عصير',smoothie:'سموثي',milkshake:'ميلك شيك',cocktail:'كوكتيل',mango:'مانجو',orange:'برتقال',blueberry:'توت أزرق',strawberry:'فراولة',raspberry:'توت أحمر',banana:'موز',apple:'تفاح',peach:'خوخ',lemon:'ليمون',lime:'ليمون أخضر',lemongrass:'عشب الليمون',avocado:'أفوكادو',mint:'نعناع',rosemary:'إكليل الجبل',iced:'مثلج',indian:'هندي',drink:'مشروب',slice:'شريحة',zest:'قشر',cheese:'جبن',chesse:'جبن',vanilla:'فانيليا',caramel:'كراميل',chocolate:'شوكولاتة'
+  };
+  const out = tokens.map(t => dict[t]).filter(Boolean);
+  return out.join(' ') || 'منتج';
+}
+
 function getTranslation(key) {
   const lang = getLang();
   return (translations[lang] && translations[lang][key]) || (translations['en'] && translations['en'][key]) || key;
@@ -1103,8 +1364,20 @@ function getTranslation(key) {
 
 function getMenuTranslation(item, field) {
   const lang = getLang();
-  if (lang === 'en') return item[field];
+  if (lang === 'en') {
+    if (field === 'name') return summarizeEnglishName(canonicalizeEnglishName(item[field]));
+    return item[field];
+  }
 
+  if (field === 'name' && lang === 'fr') {
+    const enBase = summarizeEnglishName(canonicalizeEnglishName(item[field]));
+    return generateFrenchFromEnglishSummary(enBase);
+  }
+  if (field === 'name' && lang === 'ar') {
+    const enBase = summarizeEnglishName(canonicalizeEnglishName(item[field]));
+    return generateArabicFromEnglishSummary(enBase);
+  }
+  
   if (menuTranslations[item.id] && menuTranslations[item.id][lang] && menuTranslations[item.id][lang][field]) {
     return menuTranslations[item.id][lang][field];
   }

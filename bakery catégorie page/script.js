@@ -5,7 +5,7 @@ const products = [
         "name": "Chocolate Babka",
         "description": "Rich dark chocolate ganache swirl.",
         "price": 12,
-        "image": "/assets/bakery-chocolate-babka.jpg",
+        "image": "../assets/bakery-chocolate-babka.jpg",
         "category": "patisserie"
     },
     {
@@ -13,7 +13,7 @@ const products = [
         "name": "Seeded Multigrain",
         "description": "Hand-topped with flax & oats.",
         "price": 9,
-        "image": "/assets/bakery-seeded-multigrain.jpg",
+        "image": "../assets/bakery-seeded-multigrain.jpg",
         "category": "sourdough"
     },
     {
@@ -21,7 +21,7 @@ const products = [
         "name": "Dark Rye Loaf",
         "description": "Robust German-style dense rye.",
         "price": 10.5,
-        "image": "/assets/bakery-dark-rye-loaf.jpg",
+        "image": "../assets/bakery-dark-rye-loaf.jpg",
         "category": "sourdough"
     },
     {
@@ -29,7 +29,7 @@ const products = [
         "name": "Herbed Focaccia",
         "description": "Rosemary, garlic & olive oil.",
         "price": 7.5,
-        "image": "/assets/bakery-herbed-focaccia.jpg",
+        "image": "../assets/bakery-herbed-focaccia.jpg",
         "category": "viennoiserie"
     },
     {
@@ -37,7 +37,7 @@ const products = [
         "name": "Honey Brioche",
         "description": "Ultra-soft, buttery morning loaf.",
         "price": 11.25,
-        "image": "/assets/bakery-honey-brioche.jpg",
+        "image": "../assets/bakery-honey-brioche.jpg",
         "category": "viennoiserie"
     },
     {
@@ -45,7 +45,7 @@ const products = [
         "name": "Stoneground Wheat",
         "description": "Nutritious 100% whole grain.",
         "price": 8.75,
-        "image": "/assets/bakery-stoneground-wheat.jpg",
+        "image": "../assets/bakery-stoneground-wheat.jpg",
         "category": "sourdough"
     },
     {
@@ -53,7 +53,7 @@ const products = [
         "name": "Parisian Baguette",
         "description": "Classic crust with an airy crumb.",
         "price": 4.5,
-        "image": "/assets/bakery-parisian-baguette.jpg",
+        "image": "../assets/bakery-parisian-baguette.jpg",
         "category": "viennoiserie"
     },
     {
@@ -61,7 +61,7 @@ const products = [
         "name": "Cranberry Walnut",
         "description": "Sweet & tart artisan loaf.",
         "price": 9.5,
-        "image": "/assets/bakery-cranberry-walnut.jpg",
+        "image": "../assets/bakery-cranberry-walnut.jpg",
         "category": "sourdough"
     }
 ];

@@ -1,11 +1,11 @@
 const products = [
-    { id: "tea_1", name: "Ceremonial Matcha", description: "Stone-ground, umami-rich", price: 12.00, image: "/assets/tea-matcha.jpg", category: "matcha" },
-    { id: "tea_2", name: "Masala Chai", description: "Spiced, creamy, warming", price: 5.50, image: "/assets/tea-masala-chai.jpg", category: "herbal" },
-    { id: "tea_3", name: "Ginger Lemon", description: "Zesty, soothing infusion", price: 4.75, image: "/assets/tea-ginger-lemon.jpg", category: "herbal" },
-    { id: "tea_4", name: "Moroccan Mint", description: "Cooling green tea", price: 4.50, image: "/assets/tea-moroccan-mint.jpg", category: "herbal" },
-    { id: "tea_5", name: "Royal Milk Tea", description: "Black tea, milk, caramel", price: 7.00, image: "/assets/tea-royal-milk.jpg", category: "iced" },
-    { id: "tea_6", name: "Iced Peach Oolong", description: "Fruity, floral, chilled", price: 6.50, image: "/assets/tea-iced-peach.jpg", category: "iced" },
-    { id: "tea_7", name: "Lavender Earl Grey", description: "Classic bergamot twist", price: 5.25, image: "/assets/tea-lavender-earl.jpg", category: "herbal" }
+    { id: "tea_1", name: "Matcha Latte", description: "Stone-ground, umami-rich", price: 12.00, image: "../images/sub catégorie images/latté/Matcha Latte.jpg", category: "matcha" },
+    { id: "tea_2", name: "Tea Citron Délise", description: "Spiced, creamy, warming", price: 5.50, image: "../images/sub catégorie images/tea/Tea Citron Délise.jpg", category: "herbal" },
+    { id: "tea_3", name: "Tea Nordique", description: "Zesty, soothing infusion", price: 4.75, image: "../images/sub catégorie images/tea/Tea Nordique.jpg", category: "herbal" },
+    { id: "tea_4", name: "The Marocain a la Menthe", description: "Cooling green tea", price: 4.50, image: "../images/sub catégorie images/tea/The Marocain a la Menthe.jpg", category: "herbal" },
+    { id: "tea_5", name: "Floral Tea", description: "Black tea, milk, caramel", price: 7.00, image: "../images/sub catégorie images/tea/Floral Tea.jpg", category: "iced" },
+    { id: "tea_6", name: "The de Hibiscus", description: "Fruity, floral, chilled", price: 6.50, image: "../images/sub catégorie images/tea/The de Hibiscus.jpg", category: "iced" },
+    { id: "tea_7", name: "Luxury Late Night Tea", description: "Classic bergamot twist", price: 5.25, image: "../images/sub catégorie images/tea/Luxury Late Night Tea.jpg", category: "herbal" }
 ];
 
 let currentFilter = 'all';
@@ -22,17 +22,8 @@ function redirectToCustomization(productId) {
     if (!product) return;
     const name = product.name;
     const price = product.price;
-    // Ensure image path is root-relative
-    let imgPath = product.image;
-        if (imgPath && !imgPath.startsWith('/') && !imgPath.startsWith('http')) {
-            imgPath = '/' + imgPath; && !imgPath.startsWith('http')) {
-        if (imgPath.startsWith('../')) {
-            imgPath = imgPath.replace('../', '/');
-        } else {
-            imgPath = '/' + imgPath;
-        }
-    }
-    const url = `../tea_customization_view/index.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&image=${encodeURIComponent(imgPath)}`;
+    const image = product.image;
+    const url = `../tea_customization_view/index.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&image=${encodeURIComponent(image)}`;
     window.location.href = url;
 }
 

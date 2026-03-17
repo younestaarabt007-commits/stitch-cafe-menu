@@ -1,44 +1,52 @@
 // Product Data
 const products = [
     {
-        "id": 1,
-        "name": "Velvet Flat White",
-        "description": "Double Shot, Silky Microfoam",
-        "price": 4.8,
-        "image": "/assets/coffee-velvet-flat-white.jpg",
-        "category": "milk"
+        id: 1,
+        name: "Café normal",
+        description: "Double Shot, Silky Microfoam",
+        price: 4.8,
+        image: "../images/sub catégorie images/black coffee/Café normal  .jpg",
+        category: "black"
     },
     {
-        "id": 2,
-        "name": "Kyoto Cold Brew",
-        "description": "12-Hour Slow Drip Extraction",
-        "price": 5.5,
-        "image": "/assets/coffee-kyoto-cold-brew.jpg",
-        "category": "black"
+        id: 2,
+        name: "Café Américain",
+        description: "12-Hour Slow Drip Extraction",
+        price: 5.5,
+        image: "../images/sub catégorie images/black coffee/Café Américain.jpg",
+        category: "black"
     },
     {
-        "id": 3,
-        "name": "Oat Milk Latte",
-        "description": "Creamy, Nut-Free, Vegan",
-        "price": 5.2,
-        "image": "/assets/coffee-oat-milk-latte.jpg",
-        "category": "milk"
+        id: 3,
+        name: "Café Noire Expresso",
+        description: "Intense Berry Notes",
+        price: 3.5,
+        image: "../images/sub catégorie images/black coffee/Café Noire Expresso.jpg",
+        category: "espresso"
     },
     {
-        "id": 4,
-        "name": "Single Origin Espresso",
-        "description": "Intense Berry Notes",
-        "price": 3.5,
-        "image": "/assets/coffee-single-origin-espresso.jpg",
-        "category": "black"
+        id: 4,
+        name: "Café Noir Italien",
+        description: "18-hour steep, nitrogen infused.",
+        price: 6.5,
+        image: "../images/sub catégorie images/black coffee/Café Noir Italien.jpg",
+        category: "black"
     },
     {
-        "id": 5,
-        "name": "Dark Mocha",
-        "description": "70% Cacao, Double Espresso",
-        "price": 6,
-        "image": "/assets/coffee-dark-mocha.jpg",
-        "category": "milk"
+        id: 5,
+        name: "Single Origin Espresso",
+        description: "Floral notes with a citrus finish.",
+        price: 5.0,
+        image: "../assets/coffee-single-origin-espresso.jpg",
+        category: "espresso"
+    },
+    {
+        id: 6,
+        name: "Kyoto Cold Brew",
+        description: "12-Hour Slow Drip Extraction",
+        price: 5.5,
+        image: "../assets/coffee-kyoto-cold-brew.jpg",
+        category: "cold"
     }
 ];
 

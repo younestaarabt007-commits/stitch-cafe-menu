@@ -1,11 +1,11 @@
 const products = [
-  { id: "smoothie_shake_1", name: "Green Detox", description: "Spinach & Apple", price: 9.50, image: "/assets/smoothie-green-detox.jpg", category: "fruit" },
-  { id: "smoothie_shake_2", name: "Choco Malt", description: "Chocolate Malt Shake", price: 7.50, image: "/assets/smoothie-choco-malt.jpg", category: "indulgent" },
-  { id: "smoothie_shake_3", name: "Berry Cream", description: "Indulgent Berry Shake", price: 8.25, image: "/assets/smoothie-berry-cream.jpg", category: "indulgent" },
-  { id: "smoothie_shake_4", name: "Tropical Mango", description: "Fresh mango, pineapple", price: 7.50, image: "/assets/smoothie-tropical-mango.jpg", category: "fruit" },
-  { id: "smoothie_shake_5", name: "Wild Berry", description: "Blueberry, raspberry", price: 7.00, image: "/assets/raspberry-smoothie_1150-18529.jpg", category: "fruit" },
-  { id: "smoothie_shake_6", name: "Green Glow", description: "Kale, avocado, lime", price: 8.00, image: "/assets/smoothie-green-power.jpg", category: "fruit" },
-  { id: "smoothie_shake_7", name: "Oreo Blast", description: "Cookies, cream", price: 6.50, image: "/assets/shake-vanilla-bean.jpg", category: "indulgent" }
+  { id: "smoothie_shake_1", name: "smoothie-green-detox", description: "Spinach & Apple", price: 9.50, image: "../assets/smoothie-green-detox.jpg", category: "fruit" },
+  { id: "smoothie_shake_2", name: "smoothie-choco-malt", description: "Chocolate Malt Shake", price: 7.50, image: "../assets/smoothie-choco-malt.jpg", category: "indulgent" },
+  { id: "smoothie_shake_3", name: "smoothie-berry-cream", description: "Indulgent Berry Shake", price: 8.25, image: "../assets/smoothie-berry-cream.jpg", category: "indulgent" },
+  { id: "smoothie_shake_4", name: "smoothie-tropical-mango", description: "Fresh mango, pineapple", price: 7.50, image: "../assets/smoothie-tropical-mango.jpg", category: "fruit" },
+  { id: "smoothie_shake_5", name: "raspberry-smoothie_1150-18529", description: "Blueberry, raspberry", price: 7.00, image: "../assets/raspberry-smoothie_1150-18529.jpg", category: "fruit" },
+  { id: "smoothie_shake_6", name: "smoothie-green-power", description: "Kale, avocado, lime", price: 8.00, image: "../assets/smoothie-green-power.jpg", category: "fruit" },
+  { id: "smoothie_shake_7", name: "shake-vanilla-bean", description: "Cookies, cream", price: 6.50, image: "../assets/shake-vanilla-bean.jpg", category: "indulgent" }
 ];
 
 let currentFilter = 'all';

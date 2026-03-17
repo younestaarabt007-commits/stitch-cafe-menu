@@ -2,122 +2,126 @@
 const products = [
     {
         id: 1,
-        name: "Nitro Cold Brew",
+        name: "coffee-nitro",
         description: "18-hour steep, nitrogen infused.",
         price: 6.50,
-        image: "/assets/coffee-nitro.jpg",
+        image: "../assets/coffee-nitro.jpg",
         category: "cold",
-        favorite: true
+        favorite: true,
+        isHot: false
     },
     {
         id: 2,
-        name: "Ceremonial Matcha",
+        name: "tea-matcha",
         description: "Uji-sourced matcha with oat milk.",
         price: 7.25,
-        image: "/assets/tea-matcha.jpg",
+        image: "../assets/tea-matcha.jpg",
         category: "seasonal"
     },
     {
         id: 3,
-        name: "Ethiopian Yirgacheffe",
+        name: "coffee-single-origin-espresso",
         description: "Floral notes with a citrus finish.",
         price: 5.00,
-        image: "/assets/coffee-single-origin-espresso.jpg",
+        image: "../assets/coffee-single-origin-espresso.jpg",
         category: "dark",
         badge: "Light Roast"
     },
     {
         id: 4,
-        name: "Dirty Masala Chai",
+        name: "tea-masala-chai",
         description: "House-made spices, double shot.",
         price: 6.75,
-        image: "/assets/tea-masala-chai.jpg",
+        image: "../assets/tea-masala-chai.jpg",
         category: "seasonal"
     },
     {
         id: 5,
-        name: "Oat Milk Cortado",
+        name: "coffee-oat-milk-latte",
         description: "Equal parts espresso & milk.",
         price: 4.50,
-        image: "/assets/coffee-oat-milk-latte.jpg",
+        image: "../assets/coffee-oat-milk-latte.jpg",
         category: "dark"
     },
     {
         id: 6,
-        name: "Lavender Honey",
+        name: "tea-lavender-earl",
         description: "Floral infusion with local honey.",
         price: 7.50,
-        image: "/assets/tea-lavender-earl.jpg",
+        image: "../assets/tea-lavender-earl.jpg",
         category: "seasonal"
     },
     {
         id: 7,
-        name: "Golden Turmeric",
+        name: "tea-ginger-lemon",
         description: "Spiced healing brew.",
         price: 6.25,
-        image: "/assets/tea-ginger-lemon.jpg",
+        image: "../assets/tea-ginger-lemon.jpg",
         category: "seasonal"
     },
     {
         id: 8,
-        name: "Caramel Macchiato",
+        name: "latte-caramel-macchiato",
         description: "Layered espresso & vanilla.",
         price: 6.50,
-        image: "/assets/latte-caramel-macchiato.jpg",
+        image: "../assets/latte-caramel-macchiato.jpg",
         category: "dark"
     },
     {
         id: 9,
-        name: "V60 Single Origin",
+        name: "coffee-v60",
         description: "Hand poured perfection.",
         price: 8.00,
-        image: "/assets/coffee-v60.jpg",
+        image: "../assets/coffee-v60.jpg",
         category: "dark"
     },
     {
         id: 10,
-        name: "Blueberry Infusion",
+        name: "juice-berry-blast",
         description: "Antioxidant rich blend.",
         price: 5.75,
-        image: "/assets/juice-berry-blast.jpg",
-        category: "seasonal"
+        image: "../assets/juice-berry-blast.jpg",
+        category: "seasonal",
+        isHot: false
     },
     {
         id: 11,
-        name: "Affogato Al Caffè",
+        name: "coffee-dark-mocha",
         description: "Double espresso over vanilla gelato.",
         price: 7.00,
-        image: "https://images.unsplash.com/photo-1594631252845-29fc4586c362?q=80&w=400&auto=format&fit=crop",
+        image: "../assets/coffee-dark-mocha.jpg",
         category: "dark",
         badge: "Chef's Choice"
     },
     {
         id: 12,
-        name: "Iced Vanilla Oat Latte",
+        name: "latte-vanilla-bean",
         description: "Creamy oat milk with Madagascar vanilla.",
         price: 6.75,
-        image: "https://images.unsplash.com/photo-1553909489-cd47e0907d3f?q=80&w=400&auto=format&fit=crop",
-        category: "cold"
+        image: "../assets/latte-vanilla-bean.jpg",
+        category: "cold",
+        isHot: false
     },
     {
         id: 13,
-        name: "Turkish Coffee",
+        name: "coffee-single-origin-espresso",
         description: "Finely ground, cardamom infused.",
         price: 5.50,
-        image: "https://images.unsplash.com/photo-1534040385115-33d93514755c?q=80&w=400&auto=format&fit=crop",
+        image: "../assets/coffee-single-origin-espresso.jpg",
         category: "dark"
     },
     {
         id: 14,
-        name: "Hibiscus Berry Tea",
+        name: "juice-berry-blast",
         description: "Tart hibiscus with summer berries.",
         price: 5.25,
-        image: "https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?q=80&w=400&auto=format&fit=crop",
-        category: "cold"
+        image: "../assets/juice-berry-blast.jpg",
+        category: "cold",
+        isHot: false
     },
     {
         id: 15,
-        name: "Pumpkin Spice Latte",
+        name: "photo-1542691457-cbe4df041eb2?q=80&w=400&auto=format&fit=crop",
         description: "Autumn spice, real pumpkin purée.",
         price: 7.25,
         image: "https://images.unsplash.com/photo-1542691457-cbe4df041eb2?q=80&w=400&auto=format&fit=crop",
@@ -126,7 +130,7 @@ const products = [
     },
     {
         id: 16,
-        name: "Spanish Latte",
+        name: "photo-1570968915860-54d5c301fa9f?q=80&w=400&auto=format&fit=crop",
         description: "Sweet condensed milk & bold espresso.",
         price: 6.25,
         image: "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?q=80&w=400&auto=format&fit=crop",
@@ -134,15 +138,16 @@ const products = [
     },
     {
         id: 17,
-        name: "Cold Brew Lemonade",
+        name: "photo-1517701550927-30cf4ba1dba5?q=80&w=300&auto=format&fit=crop",
         description: "Coffee meeting refreshing citrus.",
         price: 5.95,
         image: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=300&auto=format&fit=crop",
-        category: "cold"
+        category: "cold",
+        isHot: false
     },
     {
         id: 18,
-        name: "Earl Grey Tea Latte",
+        name: "photo-1576092768241-dec231879fc3?q=80&w=400&auto=format&fit=crop",
         description: "Bergamot notes with frothed milk.",
         price: 6.50,
         image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=400&auto=format&fit=crop",
@@ -150,7 +155,7 @@ const products = [
     },
     {
         id: 19,
-        name: "Double Espresso",
+        name: "photo-1510591509098-f4fdc6d0ff04?q=80&w=400&auto=format&fit=crop",
         description: "Pure, concentrated energy.",
         price: 3.50,
         image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=400&auto=format&fit=crop",
@@ -159,15 +164,31 @@ const products = [
     },
     {
         id: 20,
-        name: "Mango Cold Brew",
+        name: "photo-1544145945-f904253d0c71?q=80&w=400&auto=format&fit=crop",
         description: "Tropical twist on classic cold brew.",
         price: 6.95,
         image: "https://images.unsplash.com/photo-1544145945-f904253d0c71?q=80&w=400&auto=format&fit=crop",
-        category: "cold"
+        category: "cold",
+        isHot: false
     }
 ];
 
 let currentFilter = 'all';
+
+for (const product of products) {
+    if (typeof product.image === 'string' && product.image.startsWith('/assets/')) {
+        product.image = '..' + product.image;
+    }
+    if (typeof product.image === 'string' && product.image.includes('images.unsplash.com')) {
+        if (product.category === 'cold') {
+            product.image = "../images/sub catégorie images/Jus/Cuba Mokhito.avif";
+        } else if (product.category === 'seasonal') {
+            product.image = "../images/sub catégorie images/tea/Tea Nordique.jpg";
+        } else {
+            product.image = "../images/sub catégorie images/black coffee/Café Noir Italien.jpg";
+        }
+    }
+}
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -179,8 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
 function renderProducts(filter = 'all', query = '') {
     const grid = document.getElementById('product-grid');
     let filteredProducts = filter === 'all'
-        ? products
-        : products.filter(p => p.category === filter);
+        ? products.filter(p => p.isHot !== false)
+        : products.filter(p => p.isHot !== false && p.category === filter);
 
     if (query) {
         filteredProducts = filteredProducts.filter(p =>
@@ -222,10 +243,8 @@ function redirectToCustomization(productId) {
         } else if (name.includes('espresso') || name.includes('brew') || name.includes('v60')) {
             customizationUrl = '../pure_noir_espresso_customization_view_1/index.html';
         }
-        // Ensure image path is root-relative
         let imgPath = product.image;
         if (imgPath && !imgPath.startsWith('/') && !imgPath.startsWith('http')) {
-            imgPath = '/' + imgPath; && !imgPath.startsWith('http')) {
             imgPath = '/' + imgPath;
         }
         window.location.href = `${customizationUrl}?name=${encodeURIComponent(product.name)}&image=${encodeURIComponent(imgPath)}&price=${product.price}`;
