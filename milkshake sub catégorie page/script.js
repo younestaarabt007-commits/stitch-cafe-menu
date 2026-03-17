@@ -88,6 +88,51 @@ const products = [
     price: 5.60,
     image: "../images/sub catégorie images/milshake/Milkshake Banane.jpg",
     category: "shake"
+  },
+  {
+    id: "shake_5",
+    name: "Greek Yogurt Fruit",
+    description: "Greek yogurt, mixed fruits",
+    calories: "410 kcal",
+    price: 5.30,
+    image: "../images/sub catégorie images/milshake/Greek Yogurt Fruit.jpg",
+    category: "shake"
+  },
+  {
+    id: "shake_6",
+    name: "Milkshake Caramel",
+    description: "Buttery caramel shake",
+    calories: "470 kcal",
+    price: 5.40,
+    image: "../images/sub catégorie images/milshake/Milkshake Caramel.jpg",
+    category: "shake"
+  },
+  {
+    id: "shake_7",
+    name: "Peanut Milkshake",
+    description: "Peanut, milk, sweet blend",
+    calories: "490 kcal",
+    price: 5.60,
+    image: "../images/sub catégorie images/milshake/Peanut Milkshak.jpg",
+    category: "shake"
+  },
+  {
+    id: "shake_8",
+    name: "Kiwi Milk Shake",
+    description: "Fresh kiwi, creamy base",
+    calories: "420 kcal",
+    price: 5.10,
+    image: "../images/sub catégorie images/milshake/kiwi-milk-shake-.jpg",
+    category: "shake"
+  },
+  {
+    id: "shake_9",
+    name: "close-up-milkshake",
+    description: "Creamy milkshake, classic",
+    calories: "440 kcal",
+    price: 5.20,
+    image: "../images/sub catégorie images/milshake/close-up-milkshake-glass-plate_.jpg",
+    category: "shake"
   }
 ];
 
@@ -118,7 +163,7 @@ function renderProducts(filter = 'all') {
   list.innerHTML = filteredProducts.map((product, index) => `
         <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm hover:shadow-md border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer group transition-all duration-300 transform hover:-translate-y-1" style="animation-delay: ${index * 0.05}s">
             <div class="product-image w-full h-32 rounded-xl bg-cover bg-center mb-3 relative overflow-hidden" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');">
-                <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity"></div>
             </div>
             <div class="flex-1 flex flex-col px-1">
                 <h4 class="font-bold text-[14px] text-gray-800 dark:text-white leading-tight mb-1 line-clamp-1">${product.name}</h4>

@@ -3,7 +3,11 @@ const products = [
     { id: "bakery_2", name: "French Toast", description: "Flaky layers, French butter", price: 3.50, image: "../images/sub catégorie images/sweets/French Toast.jpg", category: "pastries" },
     { id: "bakery_3", name: "bread-pain-au-chocolat", description: "Rich chocolate, buttery dough", price: 4.25, image: "../assets/bread-pain-au-chocolat.jpg", category: "pastries" },
     { id: "bakery_4", name: "bread-baguette", description: "Crispy crust, airy interior", price: 4.00, image: "../assets/bread-baguette.jpg", category: "sourdough" },
-    { id: "bakery_5", name: "bakery-dark-rye-loaf", description: "Dense and fiber-rich", price: 7.25, image: "../assets/bakery-dark-rye-loaf.jpg", category: "whole grain" }
+    { id: "bakery_5", name: "bakery-dark-rye-loaf", description: "Dense and fiber-rich", price: 7.25, image: "../assets/bakery-dark-rye-loaf.jpg", category: "whole grain" },
+    { id: "pastry_1", name: "Baklawa", description: "Flaky layers with nuts & honey", price: 5.50, image: "../images/sub catégorie images/Pastry/Baklawa.jpg", category: "pastries" },
+    { id: "pastry_2", name: "Basbousa", description: "Semolina cake with syrup", price: 4.75, image: "../images/sub catégorie images/Pastry/Basbousa.jpg", category: "pastries" },
+    { id: "pastry_3", name: "Cookies au Chocolat", description: "Rich chocolate cookies", price: 6.00, image: "../images/sub catégorie images/Pastry/Cokkies au chocolat.jpg", category: "pastries" },
+    { id: "pastry_4", name: "Donuts", description: "Classic glazed donuts", price: 5.00, image: "../images/sub catégorie images/Pastry/Donuts.jpg", category: "pastries" }
 ];
 
 let currentFilter = 'all';
@@ -35,7 +39,7 @@ function renderProducts(filter = 'all') {
     list.innerHTML = filteredProducts.map((product, index) => `
             <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm hover:shadow-md border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer group transition-all duration-300 transform hover:-translate-y-1" style="animation-delay:${index * 0.05}s">
                 <div class="product-image w-full h-32 rounded-xl bg-cover bg-center mb-3 relative overflow-hidden" style="background-image:url('${product.image}')" data-name="${product.name}" data-price="${product.price}">
-                    <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity"></div>
                 </div>
                 <div class="flex-1 flex flex-col px-1">
                     <h4 class="font-bold text-[14px] text-gray-800 dark:text-white leading-tight mb-1 line-clamp-1">${product.name}</h4>

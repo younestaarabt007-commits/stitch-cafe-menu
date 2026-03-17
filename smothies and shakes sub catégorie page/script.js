@@ -5,7 +5,9 @@ const products = [
   { id: "smoothie_shake_4", name: "smoothie-tropical-mango", description: "Fresh mango, pineapple", price: 7.50, image: "../assets/smoothie-tropical-mango.jpg", category: "fruit" },
   { id: "smoothie_shake_5", name: "raspberry-smoothie_1150-18529", description: "Blueberry, raspberry", price: 7.00, image: "../assets/raspberry-smoothie_1150-18529.jpg", category: "fruit" },
   { id: "smoothie_shake_6", name: "smoothie-green-power", description: "Kale, avocado, lime", price: 8.00, image: "../assets/smoothie-green-power.jpg", category: "fruit" },
-  { id: "smoothie_shake_7", name: "shake-vanilla-bean", description: "Cookies, cream", price: 6.50, image: "../assets/shake-vanilla-bean.jpg", category: "indulgent" }
+  { id: "smoothie_shake_7", name: "shake-vanilla-bean", description: "Cookies, cream", price: 6.50, image: "../assets/shake-vanilla-bean.jpg", category: "indulgent" },
+  { id: "smoothie_shake_8", name: "Blue Berry Smoothie", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "../images/sub catégorie images/smoothie/Blue Berry Smoothie.jpg", category: "fruit" },
+  { id: "smoothie_shake_9", name: "Milkshake Oreo", description: "Oreo cookie indulgence", price: 5.00, image: "../images/sub catégorie images/milshake/Milkshake Oreo.jpg", category: "indulgent" }
 ];
 
 let currentFilter = 'all';
@@ -38,7 +40,7 @@ function renderProducts(filter = 'all') {
   list.innerHTML = filteredProducts.map((product, index) => `
         <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm hover:shadow-md border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer group transition-all duration-300 transform hover:-translate-y-1" style="animation-delay: ${index * 0.05}s">
             <div class="product-image w-full h-32 rounded-xl bg-cover bg-center mb-3 relative overflow-hidden" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');">
-                <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity"></div>
             </div>
             <div class="flex-1 flex flex-col px-1">
                 <h4 class="font-bold text-[14px] text-gray-800 dark:text-white leading-tight mb-1 line-clamp-1">${product.name}</h4>

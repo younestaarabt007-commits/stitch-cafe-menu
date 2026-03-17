@@ -5,7 +5,12 @@ const products = [
     { id: "tea_4", name: "The Marocain a la Menthe", description: "Cooling green tea", price: 4.50, image: "../images/sub catégorie images/tea/The Marocain a la Menthe.jpg", category: "herbal" },
     { id: "tea_5", name: "Floral Tea", description: "Black tea, milk, caramel", price: 7.00, image: "../images/sub catégorie images/tea/Floral Tea.jpg", category: "iced" },
     { id: "tea_6", name: "The de Hibiscus", description: "Fruity, floral, chilled", price: 6.50, image: "../images/sub catégorie images/tea/The de Hibiscus.jpg", category: "iced" },
-    { id: "tea_7", name: "Luxury Late Night Tea", description: "Classic bergamot twist", price: 5.25, image: "../images/sub catégorie images/tea/Luxury Late Night Tea.jpg", category: "herbal" }
+    { id: "tea_7", name: "Luxury Late Night Tea", description: "Classic bergamot twist", price: 5.25, image: "../images/sub catégorie images/tea/Luxury Late Night Tea.jpg", category: "herbal" },
+    { id: "tea_8", name: "Blue Tea", description: "Butterfly pea infusion", price: 5.00, image: "../images/sub catégorie images/tea/Blue Tea.jpg", category: "herbal" },
+    { id: "tea_9", name: "Chinese Tea", description: "Classic Chinese blend", price: 4.80, image: "../images/sub catégorie images/tea/Chinese Tea.jpg", category: "herbal" },
+    { id: "tea_10", name: "Thé Médicinal", description: "Herbal wellness mix", price: 6.00, image: "../images/sub catégorie images/tea/Thé Médicinal.jpg", category: "herbal" },
+    { id: "tea_11", name: "Thé de Grenadine", description: "Pomegranate notes", price: 5.20, image: "../images/sub catégorie images/tea/Thé de Grenadine.jpg", category: "herbal" },
+    { id: "tea_12", name: "Lavender Tea", description: "Relaxing floral tea", price: 5.10, image: "../images/sub catégorie images/tea/lavender Tea.jpg", category: "herbal" }
 ];
 
 let currentFilter = 'all';
@@ -39,7 +44,7 @@ function renderProducts(filter = 'all') {
     list.innerHTML = filteredProducts.map((product, index) => `
             <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm hover:shadow-md border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer group transition-all duration-300 transform hover:-translate-y-1" style="animation-delay: ${index * 0.05}s">
                 <div class="product-image w-full h-32 rounded-xl bg-cover bg-center mb-3 relative overflow-hidden" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');">
-                    <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity"></div>
                 </div>
                 <div class="flex-1 flex flex-col px-1">
                     <h4 class="font-bold text-[14px] text-gray-800 dark:text-white leading-tight mb-1 line-clamp-1">${product.name}</h4>

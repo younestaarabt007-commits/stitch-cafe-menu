@@ -4,7 +4,12 @@ const products = [
     { id: "smoothie_3", name: "smoothie-acai-bowl", description: "Peanut, whey, banana", price: 5.80, image: "../assets/smoothie-acai-bowl.jpg", category: "protein" },
     { id: "smoothie_4", name: "smoothie-tropical-mango", description: "Mango, pineapple, coconut", price: 5.40, image: "../assets/smoothie-tropical-mango.jpg", category: "tropical" },
     { id: "smoothie_5", name: "raspberry-smoothie_1150-18529", description: "Greek yogurt, strawberry puree", price: 5.75, image: "../images/sub catégorie images/smoothie/raspberry-smoothie_1150-18529.jpg", category: "berry" },
-    { id: "smoothie_6", name: "Jus Mangue", description: "Alphonso mango, yogurt, cardamom", price: 5.00, image: "../images/sub catégorie images/Jus/Jus Mangue.jpg", category: "tropical" }
+    { id: "smoothie_6", name: "Jus Mangue", description: "Alphonso mango, yogurt, cardamom", price: 5.00, image: "../images/sub catégorie images/Jus/Jus Mangue.jpg", category: "tropical" },
+    { id: "smoothie_7", name: "Brazilian Smoothie", description: "Tropical fruits blend", price: 5.60, image: "../images/sub catégorie images/smoothie/Brazilian Smoothie.jpg", category: "tropical" },
+    { id: "smoothie_8", name: "Dragon Fruit Smoothie", description: "Vibrant dragon fruit", price: 5.70, image: "../images/sub catégorie images/smoothie/Dragon Fruit Smoothie .jpg", category: "tropical" },
+    { id: "smoothie_9", name: "Golden Turmeric", description: "Turmeric, banana, ginger", price: 5.30, image: "../images/sub catégorie images/smoothie/Golden Turmeric.jpg", category: "protein" },
+    { id: "smoothie_10", name: "Greek Yogurt with Cereal", description: "Yogurt, cereal and fruits", price: 5.40, image: "../images/sub catégorie images/smoothie/Greek Yogurt with cereal and fruits .jpg", category: "protein" },
+    { id: "smoothie_11", name: "Tropical Smoothie", description: "Mango, pineapple, banana", price: 5.50, image: "../images/sub catégorie images/smoothie/tropical Smoothie.jpg", category: "tropical" }
 ];
 
 let currentFilter = 'all';
@@ -49,7 +54,7 @@ function renderProducts(filter = 'all') {
     list.innerHTML = filteredProducts.map((product, index) => `
         <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm hover:shadow-md border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer group transition-all duration-300 transform hover:-translate-y-1" style="animation-delay: ${index * 0.05}s">
             <div class="product-image w-full h-32 rounded-xl bg-cover bg-center mb-3 relative overflow-hidden" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');">
-                <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity"></div>
             </div>
             <div class="flex-1 flex flex-col px-1">
                 <h4 class="font-bold text-[14px] text-gray-800 dark:text-white leading-tight mb-1 line-clamp-1">${product.name}</h4>

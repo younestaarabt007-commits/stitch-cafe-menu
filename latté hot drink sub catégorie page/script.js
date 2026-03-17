@@ -9,6 +9,9 @@ const products = [
     { id: "latte_8", name: "latte-hazelnut", description: "Rich nutty profile", price: 5.75, image: "../assets/latte-hazelnut.jpg", category: "flavored" },
     { id: "latte_10", name: "Café au Lait Artisanal", description: "House vanilla syrup", price: 5.10, image: "../images/sub catégorie images/latté/Café au Lait Artisanal.jpg", category: "classic" },
     { id: "latte_11", name: "Café Crème", description: "Double shot over chilled milk", price: 5.50, image: "../images/sub catégorie images/latté/Café Crème.jpg", category: "classic" }
+    ,
+    { id: "latte_12", name: "Coffe Latté Lotus", description: "Lotus biscuit latte", price: 6.20, image: "../images/sub catégorie images/latté/Coffe Latté Lotus.jpg", category: "flavored" },
+    { id: "latte_13", name: "Chocolat Chaud au Cannelle", description: "Hot chocolate with cinnamon", price: 5.80, image: "../images/sub catégorie images/latté/Chocolat Chaud au Cannelle.jpg", category: "flavored" }
 ];
 
 let currentFilter = 'all';
@@ -46,7 +49,7 @@ function renderProducts(filter = 'all') {
     list.innerHTML = filteredProducts.map((product, index) => `
         <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm hover:shadow-md border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer group transition-all duration-300 transform hover:-translate-y-1" style="animation-delay: ${index * 0.05}s">
             <div class="product-image w-full h-32 rounded-xl bg-cover bg-center mb-3 relative overflow-hidden" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');">
-                <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity"></div>
             </div>
             <div class="flex-1 flex flex-col px-1">
                 <h4 class="font-bold text-[14px] text-gray-800 dark:text-white leading-tight mb-1 line-clamp-1">${product.name}</h4>

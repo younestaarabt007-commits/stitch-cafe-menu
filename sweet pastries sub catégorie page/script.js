@@ -5,7 +5,12 @@ const products = [
     { id: "sweet_pastry_4", name: "Waffels au fruit", description: "Vanilla custard, fresh berries", price: 5.80, image: "../images/sub catégorie images/sweets/Waffels au fruit.jpg", category: "tart" },
     { id: "sweet_pastry_5", name: "Chees Cake au Citron", description: "Zesty curd, torched meringue", price: 5.90, image: "../images/sub catégorie images/sweets/Chees Cake au Citron.jpg", category: "tart" },
     { id: "sweet_pastry_6", name: "Dark an White Chocolat Cake ", description: "Moist crumb, vanilla frosting", price: 4.95, image: "../images/sub catégorie images/sweets/Dark an White Chocolat Cake .jpg", category: "cake" },
-    { id: "sweet_pastry_7", name: "Orange Chesse Cake", description: "Grilled ribeye, sunny-side", price: 18.00, image: "../images/sub catégorie images/sweets/Orange Chesse Cake.jpg", category: "cake" }
+    { id: "sweet_pastry_7", name: "Orange Chesse Cake", description: "Grilled ribeye, sunny-side", price: 18.00, image: "../images/sub catégorie images/sweets/Orange Chesse Cake.jpg", category: "cake" },
+    { id: "sweet_pastry_8", name: "Cheese Cake Oreo", description: "Creamy cheesecake with Oreo crust", price: 5.90, image: "../images/sub catégorie images/sweets/Cheese Cake Oreo.jpg", category: "cake" },
+    { id: "sweet_pastry_9", name: "Cheese Cake au Caramel", description: "Smooth caramel cheesecake", price: 5.90, image: "../images/sub catégorie images/sweets/Cheese Cake au Caramel.jpg", category: "cake" },
+    { id: "sweet_pastry_10", name: "Crème Caramel", description: "Silky baked custard with caramel", price: 4.20, image: "../images/sub catégorie images/sweets/Crème Caramel.jpg", category: "tart" },
+    { id: "sweet_pastry_11", name: "Banana Split", description: "Banana, ice cream, chocolate", price: 5.50, image: "../images/sub catégorie images/sweets/Banana Split.jpg", category: "cake" },
+    { id: "sweet_pastry_12", name: "Waffels au Miels Crème", description: "Honey and cream waffle", price: 5.60, image: "../images/sub catégorie images/sweets/Waffels au Miels Crème.jpg", category: "tart" }
 ];
 
 let currentFilter = 'all';
@@ -39,7 +44,7 @@ function renderProducts(filter = 'all') {
     list.innerHTML = filteredProducts.map((product, index) => `
             <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm hover:shadow-md border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer group transition-all duration-300 transform hover:-translate-y-1" style="animation-delay:${index * 0.05}s">
                 <div class="product-image w-full h-32 rounded-xl bg-cover bg-center mb-3 relative overflow-hidden" style="background-image:url('${product.image}')" data-name="${product.name}" data-price="${product.price}">
-                    <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity"></div>
                 </div>
                 <div class="flex-1 flex flex-col px-1">
                     <h4 class="font-bold text-[14px] text-gray-800 dark:text-white leading-tight mb-1 line-clamp-1">${product.name}</h4>

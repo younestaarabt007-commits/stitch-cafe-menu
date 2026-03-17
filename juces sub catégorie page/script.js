@@ -94,6 +94,38 @@ const products = [
         "price": 9,
         "image": "../images/sub catégorie images/Jus/Jus D'avocat.jpg",
         "category": "wellness"
+    },
+    {
+        "id": "juice_13",
+        "name": "Jus De Banane",
+        "description": "Ripe bananas, creamy blend",
+        "price": 4.6,
+        "image": "../images/sub catégorie images/Jus/Jus De Banane.jpg",
+        "category": "tropical"
+    },
+    {
+        "id": "juice_14",
+        "name": "Jus au Fruit de Dragon",
+        "description": "Dragon fruit, refreshing",
+        "price": 5.2,
+        "image": "../images/sub catégorie images/Jus/Jus au Fruit de Dragon.jpg",
+        "category": "tropical"
+    },
+    {
+        "id": "juice_15",
+        "name": "Jus de Fraise",
+        "description": "Fresh strawberry juice",
+        "price": 4.7,
+        "image": "../images/sub catégorie images/Jus/Jus de Fraise .jpg",
+        "category": "classic"
+    },
+    {
+        "id": "juice_16",
+        "name": "Jus de Peche",
+        "description": "Sweet peach blend",
+        "price": 4.7,
+        "image": "../images/sub catégorie images/Jus/Jus de Peche.jpg",
+        "category": "classic"
     }
 ];
 
@@ -312,8 +344,8 @@ function renderProducts(filter = 'all') {
 
         return `
         <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm hover:shadow-md border border-slate-100 dark:border-slate-700 fade-in-up cursor-pointer group transition-all duration-300 transform hover:-translate-y-1" style="animation-delay: ${index * 0.05}s">
-            <div class="product-image w-full h-32 rounded-xl bg-cover bg-center mb-3 relative overflow-hidden" role="img" aria-label="${name}" style="background-image: url('${product.image}');">
-                <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div class="product-image w-full h-32 rounded-xl bg-cover bg-center mb-3 relative overflow-hidden" role="img" aria-label="${product.name}" style="background-image: url('${product.image}');">
+                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity"></div>
             </div>
             <div class="flex-1 flex flex-col px-1">
                 <h4 class="font-bold text-[14px] text-gray-800 dark:text-white leading-tight mb-1 line-clamp-1">${name}</h4>
