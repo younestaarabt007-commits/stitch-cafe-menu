@@ -1,0 +1,104 @@
+/* variables */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+:root{
+  --ff: "Montserrat", sans-serif;
+   --colorp: #f9f9f9;
+  --colorp2: #fff;
+  --colora: #ffe537;
+  --colora2: #537fe7;
+  --colorbody: #1e1e1e;
+  --colors: #333;
+    --h2: bold clamp(2rem, 2.5vw, 3rem)/1.5em var(--ff);
+    --p: 1rem/1.8em var(--ff);
+ --colorgray: hsl(0, 0%, 60%);
+  --graygradient: linear-gradient(45deg, hsl(0, 0%, 20%), hsl(0, 0%, 15%));
+}
+body {
+  width: 90vw;
+  margin: 40px auto;
+  background-color: var(--colorbody);
+  color: var(--colorp);
+  font: var(--p);
+}
+h2{font: var(--h2);}
+button{
+  background: none;
+  padding: 12px 24px;
+  font: var(--p);
+  color: var(--colora);
+  border-radius: 12px;
+  border: solid 1px var(--colora);
+  cursor: pointer;
+}
+button:active{
+  scale: .95;
+}
+
+label{font: var(--p);}
+
+.no-radio-buttons {
+  display: none;
+}
+radio-buttons {
+  display: block;
+}
+
+
+/* Actual code */
+
+.radio-cards{
+  font: var(--p);
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.no-radio-cards {
+  display: none;
+}
+.radio-card{
+  padding: 20px;
+  border-radius: 20px;
+  background: var(--graygradient);
+  position: relative;
+  box-shadow: var(--shadow);
+  flex: 1;
+  min-width: 150px;
+}
+
+.radio-card input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer; 
+}
+
+.radio-card input[type="radio"]::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  background-color: none;
+  border: solid 2px var(--colorp);
+  border-radius: 50%;
+}
+.radio-card input[type="radio"]:checked::before {
+  border: solid 2px var(--colora2);
+  background-color: var(--colora2);
+  background-image: url('https://www.iamsajid.com/supercharge/tick.svg');
+  background-size: cover;
+  
+}
+
+.radio-card label{
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: var(--colorgray);
+  margin-left: -8px;
+}
+.pixels-no{
+  font: var(--h2);
+  line-height: .5em;
+}

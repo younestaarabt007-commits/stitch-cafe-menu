@@ -1,0 +1,18 @@
+/* Scroll down to see the actual code */
+
+body{display: flex;  flex-wrap: wrap; gap: 20px; max-width: 90vw; margin: 20px auto; font-size: 2rem; font-family: "Manrope", sans-serif;}
+.sh{
+  min-width: 100px;
+  flex: 1;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+
+/* Actual code */
+.combined{
+  box-shadow: 0px 4px 4px #00000030, 0px 12px 12px #00000015;}
+.dark{
+  box-shadow: 0px 4px 4px #00000030;}
+.light{
+  box-shadow: 0px 12px 12px #00000015;}
