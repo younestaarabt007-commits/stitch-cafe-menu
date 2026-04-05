@@ -80,9 +80,9 @@ const DEMO_MENU = [
 ];
 
 const DEMO_ORDERS = [
-    { id: 'ORD-001', table: '12', items: [{ name: 'Velvet Flat White', qty: 2, price: 20, image_url: '../swiggy-style_elite_main_menu_390x2500/assets/coffee-velvet-flat-white.jpg' }, { name: 'Butter Croissant', qty: 1, price: 18, image_url: '../swiggy-style_elite_main_menu_390x2500/assets/sweet-butter-croissant.jpg' }], total: 58, status: 'Received', time: Date.now() - 1000 * 60 * 2 },
-    { id: 'ORD-002', table: '5', items: [{ name: 'Avocado Toast', qty: 1, price: 45, image_url: '../swiggy-style_elite_main_menu_390x2500/assets/toast-avocado.jpg' }, { name: 'Fresh Orange Juice', qty: 1, price: 30, image_url: '../swiggy-style_elite_main_menu_390x2500/assets/juice-fresh-orange.jpg' }], total: 75, status: 'Preparing', time: Date.now() - 1000 * 60 * 12 },
-    { id: 'ORD-003', table: '3', items: [{ name: 'Single Origin Espresso', qty: 3, price: 18, mods: ['Extra Shot', 'Oat Milk'], image_url: '../swiggy-style_elite_main_menu_390x2500/assets/coffee-single-origin-espresso.jpg' }], total: 78, status: 'Ready', time: Date.now() - 1000 * 60 * 25 },
+    { id: 'ORD-001', table: '12', customerName: 'Yassine', notes: 'No nuts. Allergic.', items: [{ name: 'Velvet Flat White', qty: 2, price: 20, image_url: '../swiggy-style_elite_main_menu_390x2500/assets/coffee-velvet-flat-white.jpg' }, { name: 'Butter Croissant', qty: 1, price: 18, image_url: '../swiggy-style_elite_main_menu_390x2500/assets/sweet-butter-croissant.jpg' }], total: 58, status: 'Received', time: Date.now() - 1000 * 60 * 2 },
+    { id: 'ORD-002', table: '5', customerName: 'Amal', notes: 'Less salt. Serve hot.', items: [{ name: 'Avocado Toast', qty: 1, price: 45, image_url: '../swiggy-style_elite_main_menu_390x2500/assets/toast-avocado.jpg' }, { name: 'Fresh Orange Juice', qty: 1, price: 30, image_url: '../swiggy-style_elite_main_menu_390x2500/assets/juice-fresh-orange.jpg' }], total: 75, status: 'Preparing', time: Date.now() - 1000 * 60 * 12 },
+    { id: 'ORD-003', table: '3', customerName: 'Karim', notes: 'Oat milk, extra hot.', items: [{ name: 'Single Origin Espresso', qty: 3, price: 18, mods: ['Extra Shot', 'Oat Milk'], image_url: '../swiggy-style_elite_main_menu_390x2500/assets/coffee-single-origin-espresso.jpg' }], total: 78, status: 'Ready', time: Date.now() - 1000 * 60 * 25 },
 ];
 
 // --- TRANSLATIONS ---
@@ -265,9 +265,9 @@ function cycleLanguage() {
     
     // Update the button text
     const langCycleText = document.getElementById('lang-cycle-text');
-    if (langCycleText) {
-        langCycleText.textContent = nextLang.toUpperCase();
-    }
+    const langCycleTextKitchen = document.getElementById('lang-cycle-text-kitchen');
+    if (langCycleText) langCycleText.textContent = nextLang.toUpperCase();
+    if (langCycleTextKitchen) langCycleTextKitchen.textContent = nextLang.toUpperCase();
     
     // Switch to the next language
     switchLanguage(nextLang);
@@ -279,9 +279,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize cycle button text
     const langCycleText = document.getElementById('lang-cycle-text');
-    if (langCycleText) {
-        langCycleText.textContent = currentLang.toUpperCase();
-    }
+    const langCycleTextKitchen = document.getElementById('lang-cycle-text-kitchen');
+    if (langCycleText) langCycleText.textContent = currentLang.toUpperCase();
+    if (langCycleTextKitchen) langCycleTextKitchen.textContent = currentLang.toUpperCase();
     
     // ... existing init logic
 });
@@ -294,6 +294,7 @@ let completedOrders = []; // Track completed orders for Z-Report
 let globalDiscount = { amount: 0, type: '%' };
 let currentModItem = null; // Item currently being customized
 let activePosCartItemId = null;
+let kitchenFilter = 'all'; // Kitchen display filter: 'all', 'Received', 'Preparing', 'Ready'
 let hasHydratedMenuFromAPI = false;
 let menuRequestPromise = null;
 let hasInitializedMenuManager = false;
@@ -405,6 +406,14 @@ function switchTab(tabId) {
     const activeTab = document.getElementById(`${tabId}-tab`);
     if (activeTab) activeTab.classList.remove('hidden');
 
+    document.querySelectorAll('#collapsed-quick-rail .collapsed-nav-btn .material-symbols-outlined').forEach(el => {
+        el.classList.remove('icon-active-gradient');
+    });
+    const activeCollapsedIcon = document.querySelector(`#collapsed-quick-rail .collapsed-nav-btn[data-tab="${tabId}"] .material-symbols-outlined`);
+    if (activeCollapsedIcon) {
+        activeCollapsedIcon.classList.add('icon-active-gradient');
+    }
+
     const titles = {
         dashboard: ["Today's Summary", "Manage your shop in real-time."],
         pos: ["Point of Sale", "Take manual orders directly from the counter."],
@@ -434,6 +443,16 @@ function switchTab(tabId) {
     if (tabId === 'menu') { loadMenuManager(); }
     if (tabId === 'qr') { loadQRTab(); }
     if (tabId === 'reservations') { loadReservationsTab(); }
+
+    // Hide header for POS and Kitchen tabs to maximize screen space
+    const pageHeader = document.querySelector('.pos-page-header');
+    if (pageHeader) {
+        if (tabId === 'pos' || tabId === 'kitchen') {
+            pageHeader.style.display = 'none';
+        } else {
+            pageHeader.style.display = '';
+        }
+    }
 }
 
 // --- QR CENTER TAB ---
@@ -1445,6 +1464,84 @@ function renderOrders() {
         </div>`;
 }
 
+// --- KITCHEN FILTER ---
+window.filterKitchenOrders = (filter) => {
+    kitchenFilter = filter;
+    
+    // Update active button state
+    document.querySelectorAll('.kitchen-filter-btn').forEach(btn => {
+        if (btn.dataset.filter === filter) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    
+    renderKitchenDisplay();
+};
+
+// --- KITCHEN ITEM DETAIL MODAL ---
+window.openKitchenItemModal = (item) => {
+    const modal = document.getElementById('kitchen-item-modal');
+    const img = document.getElementById('kitchen-modal-img');
+    const imgPlaceholder = document.getElementById('kitchen-modal-img-placeholder');
+    const name = document.getElementById('kitchen-modal-name');
+    const price = document.getElementById('kitchen-modal-price');
+    const qty = document.getElementById('kitchen-modal-qty');
+    const descWrap = document.getElementById('kitchen-modal-desc-wrap');
+    const desc = document.getElementById('kitchen-modal-desc');
+    const modsWrap = document.getElementById('kitchen-modal-mods-wrap');
+    const mods = document.getElementById('kitchen-modal-mods');
+    const catWrap = document.getElementById('kitchen-modal-cat-wrap');
+    const cat = document.getElementById('kitchen-modal-cat');
+
+    if (!modal) return;
+
+    name.textContent = item.name || 'Item';
+    price.textContent = `${(item.price || 0).toFixed(2)}DH`;
+    qty.innerHTML = `<span class="text-lg font-black text-primary">${item.qty || 1}x</span>`;
+
+    if (item.image_url) {
+        img.src = item.image_url;
+        img.alt = item.name;
+        img.classList.remove('hidden');
+        imgPlaceholder.classList.add('hidden');
+        imgPlaceholder.classList.remove('flex');
+    } else {
+        img.classList.add('hidden');
+        imgPlaceholder.classList.remove('hidden');
+        imgPlaceholder.classList.add('flex');
+    }
+
+    if (item.description) {
+        descWrap.classList.remove('hidden');
+        desc.textContent = item.description;
+    } else {
+        descWrap.classList.add('hidden');
+    }
+
+    if (item.mods && item.mods.length > 0) {
+        modsWrap.classList.remove('hidden');
+        mods.innerHTML = item.mods.map(m => `<span class="px-2.5 py-1 bg-primary/10 text-primary text-xs font-bold rounded-lg">${m}</span>`).join('');
+    } else {
+        modsWrap.classList.add('hidden');
+    }
+
+    if (item.category) {
+        catWrap.classList.remove('hidden');
+        cat.textContent = item.category;
+    } else {
+        catWrap.classList.add('hidden');
+    }
+
+    modal.classList.remove('hidden');
+};
+
+window.closeKitchenItemModal = () => {
+    const modal = document.getElementById('kitchen-item-modal');
+    if (modal) modal.classList.add('hidden');
+};
+
 // --- KITCHEN DISPLAY TAB ---
 function renderKitchenDisplay() {
     const kitchenTab = document.getElementById('kitchen-tab');
@@ -1456,7 +1553,22 @@ function renderKitchenDisplay() {
     // Filter orders that need kitchen attention (not completed)
     const kitchenOrders = liveOrders.filter(order => order.status !== 'Completed');
     
-    if (kitchenOrders.length === 0) {
+    // Update status counts
+    const countAll = document.getElementById('kitchen-count-all');
+    const countReceived = document.getElementById('kitchen-count-received');
+    const countPreparing = document.getElementById('kitchen-count-preparing');
+    const countReady = document.getElementById('kitchen-count-ready');
+    if (countAll) countAll.textContent = kitchenOrders.length;
+    if (countReceived) countReceived.textContent = kitchenOrders.filter(o => o.status === 'Received').length;
+    if (countPreparing) countPreparing.textContent = kitchenOrders.filter(o => o.status === 'Preparing').length;
+    if (countReady) countReady.textContent = kitchenOrders.filter(o => o.status === 'Ready').length;
+    
+    // Apply active filter
+    const filteredOrders = kitchenFilter === 'all' 
+        ? kitchenOrders 
+        : kitchenOrders.filter(o => o.status === kitchenFilter);
+    
+    if (filteredOrders.length === 0) {
         container.innerHTML = '';
         emptyState.classList.remove('hidden');
         return;
@@ -1465,72 +1577,141 @@ function renderKitchenDisplay() {
     emptyState.classList.add('hidden');
     
     // Sort by time (oldest first for kitchen priority)
-    const sortedOrders = kitchenOrders.sort((a, b) => a.time - b.time);
+    const sortedOrders = filteredOrders.sort((a, b) => a.time - b.time);
     
-    container.innerHTML = sortedOrders.map(order => `
-        <div class="bg-white dark:bg-[#2a1e19] rounded-2xl border border-gray-200 dark:border-white/5 shadow-sm overflow-hidden">
-            <div class="p-4 border-b border-gray-100 dark:border-white/10">
-                <div class="flex items-center justify-between mb-2">
-                    <div class="flex items-center gap-2">
-                        <span class="font-mono text-xs text-gray-500 font-bold">${order.id}</span>
-                        <span class="px-2 py-0.5 ${getStatusStyle(order.status)} text-[10px] font-bold rounded-full border border-current/20 shadow-sm">${order.status}</span>
+    const getStatusBorderColor = (status) => {
+        if (status === 'Received') return 'border-orange-400 dark:border-orange-600';
+        if (status === 'Preparing') return 'border-blue-400 dark:border-blue-600';
+        if (status === 'Ready') return 'border-green-400 dark:border-green-600';
+        return 'border-gray-300 dark:border-gray-600';
+    };
+
+    const getStatusBg = (status) => {
+        if (status === 'Received') return 'bg-orange-50 dark:bg-orange-950/30';
+        if (status === 'Preparing') return 'bg-blue-50 dark:bg-blue-950/30';
+        if (status === 'Ready') return 'bg-green-50 dark:bg-green-950/30';
+        return 'bg-gray-50 dark:bg-gray-800/30';
+    };
+
+    const getStatusAccent = (status) => {
+        if (status === 'Received') return 'bg-orange-500';
+        if (status === 'Preparing') return 'bg-blue-500';
+        if (status === 'Ready') return 'bg-green-500';
+        return 'bg-gray-400';
+    };
+
+    const getStatusBtn = (status) => {
+        if (status === 'Received') return 'bg-blue-500 hover:bg-blue-600';
+        if (status === 'Preparing') return 'bg-green-500 hover:bg-green-600';
+        if (status === 'Ready') return 'bg-orange-500 hover:bg-orange-600';
+        return 'bg-gray-500 hover:bg-gray-600';
+    };
+
+    const getStatusBtnLabel = (status) => {
+        if (status === 'Received') return 'Start Preparing';
+        if (status === 'Preparing') return 'Mark Ready';
+        if (status === 'Ready') return 'Complete Order';
+        return 'Update';
+    };
+
+    const getNextStatus = (status) => {
+        if (status === 'Received') return 'Preparing';
+        if (status === 'Preparing') return 'Ready';
+        if (status === 'Ready') return 'Completed';
+        return status;
+    };
+
+    const getTimerColor = (minutes) => {
+        if (minutes >= 15) return 'text-red-600 bg-red-100 dark:bg-red-900/30 dark:text-red-400';
+        if (minutes >= 10) return 'text-orange-600 bg-orange-100 dark:bg-orange-900/30 dark:text-orange-400';
+        return 'text-gray-500 bg-gray-100 dark:bg-gray-800/30 dark:text-gray-400';
+    };
+
+    container.innerHTML = sortedOrders.map(order => {
+        const elapsed = Math.floor((Date.now() - order.time) / 60000);
+        const totalItems = order.items.reduce((sum, i) => sum + i.qty, 0);
+        
+        return `
+        <div class="kitchen-card bg-white dark:bg-[#2a1e19] rounded-2xl border-2 ${getStatusBorderColor(order.status)} shadow-lg overflow-hidden flex flex-col transition-all hover:shadow-xl">
+            <!-- Card Header with Status Accent -->
+            <div class="relative">
+                <div class="absolute top-0 left-0 right-0 h-1.5 ${getStatusAccent(order.status)}"></div>
+                <div class="px-5 pt-5 pb-3">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl ${getStatusBg(order.status)} border-2 ${getStatusBorderColor(order.status)} flex flex-col items-center justify-center shrink-0">
+                                <span class="text-[9px] font-bold text-gray-400 uppercase leading-none">Table</span>
+                                <span class="text-xl font-black text-primary leading-tight">${order.table || 'W'}</span>
+                            </div>
+                            <div>
+                                <span class="font-mono text-sm font-bold text-gray-800 dark:text-white">${order.id}</span>
+                                <div class="flex items-center gap-2 mt-0.5">
+                                    <span class="px-2.5 py-0.5 ${getStatusStyle(order.status)} text-[10px] font-bold rounded-lg uppercase tracking-wider">${order.status}</span>
+                                    <span class="text-[10px] font-bold text-gray-400">${totalItems} item${totalItems > 1 ? 's' : ''}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Timer -->
+                        <div class="flex flex-col items-end gap-1">
+                            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl ${getTimerColor(elapsed)}">
+                                <span class="material-symbols-outlined text-[16px]">timer</span>
+                                <span class="text-sm font-black">${elapsed}m</span>
+                            </div>
+                            <span class="text-[9px] font-bold text-gray-400 uppercase tracking-wider">${timeAgo(order.time)}</span>
+                        </div>
                     </div>
-                    <span class="text-xs font-bold text-gray-400">${timeAgo(order.time)}</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="material-symbols-outlined text-[16px] text-gray-400">table_restaurant</span>
-                    <span class="text-sm font-bold text-primary">Table ${order.table || 'Walk-in'}</span>
+                    
+                    ${order.customerName ? `
+                    <div class="flex items-center gap-2 mb-2 px-3 py-1.5 bg-gray-50 dark:bg-white/5 rounded-lg">
+                        <span class="material-symbols-outlined text-[16px] text-gray-400">person</span>
+                        <span class="text-xs font-bold text-gray-600 dark:text-gray-300">${order.customerName}</span>
+                    </div>` : ''}
+                    
+                    ${order.notes ? `
+                    <div class="flex items-start gap-2 mb-2 px-3 py-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/30 rounded-lg">
+                        <span class="material-symbols-outlined text-[16px] text-amber-500 mt-0.5">chat_bubble</span>
+                        <p class="text-xs font-bold text-amber-700 dark:text-amber-400">${order.notes}</p>
+                    </div>` : ''}
                 </div>
             </div>
             
-            <div class="p-4">
-                <div class="space-y-3">
+            <!-- Items List -->
+            <div class="px-5 pb-3 flex-1">
+                <div class="space-y-2">
                     ${order.items.map(item => `
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-lg bg-gray-50 dark:bg-black/20 flex items-center justify-center overflow-hidden">
-                                    ${item.image_url ? `<img src="${item.image_url}" alt="${item.name}" class="w-full h-full object-cover">` : '<span class="material-symbols-outlined text-gray-400 text-[16px]">restaurant</span>'}
-                                </div>
-                                <div>
-                                    <div class="font-bold text-sm">${item.name}</div>
-                                    ${item.mods ? `<div class="text-xs text-gray-500">${item.mods.join(', ')}</div>` : ''}
-                                </div>
+                        <div onclick="openKitchenItemModal({name:'${item.name.replace(/'/g, "\\'")}',price:${item.price || 0},qty:${item.qty || 1},image_url:'${(item.image_url || '').replace(/'/g, "\\'")}',mods:${item.mods ? JSON.stringify(item.mods) : 'null'},category:'${(item.category || '').replace(/'/g, "\\'")}',description:'${(item.description || '').replace(/'/g, "\\'")}'})" class="flex items-center gap-3 px-3 py-2.5 bg-gray-50 dark:bg-white/5 rounded-xl border border-gray-100 dark:border-white/10 cursor-pointer hover:border-primary/40 hover:bg-primary/5 transition-all group">
+                            <div class="w-10 h-10 rounded-lg bg-white dark:bg-[#3a2c25] border border-gray-200 dark:border-white/10 flex items-center justify-center overflow-hidden shrink-0">
+                                ${item.image_url ? `<img src="${item.image_url}" alt="${item.name}" class="w-full h-full object-cover rounded-md">` : '<span class="material-symbols-outlined text-gray-400 text-[18px]">restaurant</span>'}
                             </div>
-                            <div class="text-right">
-                                <div class="font-bold text-sm">x${item.qty}</div>
-                                <div class="text-xs text-gray-500">${item.price}DH</div>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-bold text-sm truncate">${item.name}</p>
+                                ${item.mods ? `<p class="text-[10px] text-gray-500 truncate font-medium">${item.mods.join(', ')}</p>` : ''}
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                                    <span class="text-sm font-black text-primary">${item.qty}x</span>
+                                </div>
+                                <span class="material-symbols-outlined text-[16px] text-gray-300 group-hover:text-primary transition-all">open_in_new</span>
                             </div>
                         </div>
                     `).join('')}
                 </div>
-                
-                <div class="mt-4 pt-4 border-t border-gray-100 dark:border-white/10">
-                    <div class="flex items-center justify-between">
-                        <span class="text-sm font-bold">Total</span>
-                        <span class="font-bold text-primary">${order.total.toFixed(2)}DH</span>
-                    </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="px-5 pb-4 mt-auto">
+                <div class="flex items-center justify-between mb-3 py-2 border-t-2 border-gray-100 dark:border-white/10">
+                    <span class="text-xs font-bold uppercase tracking-wider text-gray-400">Total</span>
+                    <span class="text-lg font-black text-primary">${order.total.toFixed(2)}DH</span>
                 </div>
-                
-                <div class="mt-4 flex gap-2">
-                    ${order.status === 'Received' ? `
-                        <button onclick="updateOrderStatus('${order.id}', 'Preparing')" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all">
-                            Start Preparing
-                        </button>
-                    ` : ''}
-                    ${order.status === 'Preparing' ? `
-                        <button onclick="updateOrderStatus('${order.id}', 'Ready')" class="flex-1 bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all">
-                            Mark Ready
-                        </button>
-                    ` : ''}
-                    ${order.status === 'Ready' ? `
-                        <button onclick="updateOrderStatus('${order.id}', 'Completed')" class="flex-1 bg-orange-500 hover:bg-orange-600 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all">
-                            Complete Order
-                        </button>
-                    ` : ''}
-                </div>
+                <button onclick="updateOrderStatus('${order.id}', '${getNextStatus(order.status)}')" 
+                    class="w-full ${getStatusBtn(order.status)} text-white py-3.5 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-md hover:shadow-lg active:scale-[0.98]">
+                    <span class="material-symbols-outlined text-[18px]">${order.status === 'Received' ? 'local_fire_department' : order.status === 'Preparing' ? 'check_circle' : 'done_all'}</span>
+                    ${getStatusBtnLabel(order.status)}
+                </button>
             </div>
         </div>
-    `).join('');
+    `}).join('');
 }
 
 // --- POS TAB ---
@@ -1787,40 +1968,56 @@ window.focusPosCartItem = (cartId) => {
 function renderCart() {
     const cartList = document.getElementById('pos-cart-list');
     const checkoutBtn = document.getElementById('pos-checkout-btn');
+    const cartCount = document.getElementById('pos-cart-count');
+    const mobileCartCount = document.getElementById('mobile-cart-count');
+    const mobileCheckoutBtn = document.getElementById('mobile-checkout-btn');
     if (!cartList) return;
+
+    const totalItems = posCart.reduce((sum, i) => sum + i.quantity, 0);
+    if (cartCount) cartCount.textContent = totalItems;
+    if (mobileCartCount) mobileCartCount.textContent = totalItems;
 
     if (posCart.length === 0) {
         cartList.innerHTML = `
-            <div class="text-center py-4 text-gray-400">
-                <span class="material-symbols-outlined text-[32px] mb-1 opacity-20">shopping_cart</span>
+            <div class="text-center py-8 text-gray-400">
+                <div class="w-16 h-16 rounded-2xl bg-gray-100 dark:bg-white/5 flex items-center justify-center mb-3 mx-auto">
+                    <span class="material-symbols-outlined text-[36px] opacity-40">shopping_cart</span>
+                </div>
                 <p class="text-xs font-bold uppercase tracking-widest">Cart is empty</p>
+                <p class="text-[10px] text-gray-400 mt-1">Tap items to add them here</p>
             </div>`;
         if (checkoutBtn) checkoutBtn.disabled = true;
+        if (mobileCheckoutBtn) mobileCheckoutBtn.disabled = true;
     } else {
         cartList.innerHTML = posCart.map(item => `
-            <div onclick="focusPosCartItem('${item.cartId}')" class="pos-cart-item ${activePosCartItemId === item.cartId ? 'active' : ''} flex items-start gap-2 bg-white dark:bg-black/20 p-2 rounded-lg border border-gray-100 dark:border-white/5 group cursor-pointer">
-                <div class="w-9 h-9 rounded-md bg-white/90 dark:bg-[#3a2c25] border border-white/80 dark:border-white/10 flex items-center justify-center overflow-hidden text-primary font-bold shrink-0">
+            <div onclick="focusPosCartItem('${item.cartId}')" class="pos-cart-item ${activePosCartItemId === item.cartId ? 'active' : ''} flex items-center gap-3 bg-white dark:bg-black/20 px-3 py-2.5 rounded-xl border-2 border-gray-200 dark:border-white/15 group cursor-pointer">
+                <div class="w-11 h-11 rounded-lg bg-white dark:bg-[#3a2c25] border-2 border-gray-200 dark:border-white/15 flex items-center justify-center overflow-hidden text-primary font-bold shrink-0">
                     ${item.image_url
-                ? `<img src="${item.image_url}" alt="${item.name}" loading="lazy" decoding="async" class="w-full h-full object-cover">`
-                : `<span class="material-symbols-outlined text-[16px] text-primary/70">restaurant</span>`}
+                ? `<img src="${item.image_url}" alt="${item.name}" loading="lazy" decoding="async" class="w-full h-full object-cover rounded-md">`
+                : `<span class="material-symbols-outlined text-[18px] text-primary/70">restaurant</span>`}
                 </div>
-                <div class="flex-1 min-w-0 py-0">
-                    <p class="font-bold text-xs truncate">${item.name}</p>
-                    ${item.mods && item.mods.length > 0 ? `<p class="text-[10px] text-gray-500 truncate mt-0.5">${item.mods.join(', ')}</p>` : ''}
-                    ${item.notes ? `<p class="text-[10px] text-orange-500 font-medium truncate mt-0.5"><span class="material-symbols-outlined text-[10px] align-middle">warning</span> ${item.notes}</p>` : ''}
-                    <p class="text-[10px] text-primary font-bold mt-0.5">Table: ${item.table || 'Walk-in'}</p>
-                    <p class="text-[10px] text-gray-400 font-bold tracking-widest uppercase mt-0.5">${(item.price * item.quantity).toFixed(2)}DH</p>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between gap-2">
+                        <p class="font-bold text-sm truncate">${item.name}</p>
+                        <span class="text-xs font-extrabold text-primary bg-primary/10 px-2 py-0.5 rounded-md shrink-0">${item.quantity}x</span>
+                    </div>
+                    <div class="flex items-center justify-between gap-2 mt-1">
+                        <div class="flex items-center gap-1.5 min-w-0">
+                            ${item.mods && item.mods.length > 0 ? `<p class="text-[10px] text-gray-500 truncate font-medium">${item.mods.join(', ')}</p>` : ''}
+                            ${item.notes ? `<p class="text-[10px] text-orange-500 font-bold truncate">${item.notes}</p>` : ''}
+                            <p class="text-[10px] text-primary font-bold">${item.table ? 'Table ' + item.table : 'Walk-in'}</p>
+                        </div>
+                        <span class="text-sm font-black text-gray-800 dark:text-white shrink-0">${(item.price * item.quantity).toFixed(2)}DH</span>
+                    </div>
                 </div>
-                <div class="w-7 h-7 rounded-md bg-white/90 dark:bg-[#3a2c25] border border-white/80 dark:border-white/10 flex items-center justify-center text-primary text-[10px] font-black shrink-0 mt-0.5">
-                    ${item.quantity}x
-                </div>
-                <div class="flex flex-col gap-0.5 items-center justify-center shrink-0">
-                    <button onclick="event.stopPropagation(); updateQty('${item.cartId}', 1)"  class="pos-cart-qty-btn text-gray-400 hover:text-primary transition-all"><span class="material-symbols-outlined text-[18px]">add_circle</span></button>
-                    <button onclick="event.stopPropagation(); updateQty('${item.cartId}', -1)" class="pos-cart-qty-btn text-gray-400 hover:text-red-500 transition-all"><span class="material-symbols-outlined text-[18px]">remove_circle</span></button>
+                <div class="flex flex-col gap-1 items-center justify-center shrink-0">
+                    <button onclick="event.stopPropagation(); updateQty('${item.cartId}', 1)"  class="pos-cart-qty-btn text-gray-400 hover:text-primary transition-all"><span class="material-symbols-outlined text-[20px]">add_circle</span></button>
+                    <button onclick="event.stopPropagation(); updateQty('${item.cartId}', -1)" class="pos-cart-qty-btn text-gray-400 hover:text-red-500 transition-all"><span class="material-symbols-outlined text-[20px]">remove_circle</span></button>
                 </div>
             </div>
         `).join('');
         if (checkoutBtn) checkoutBtn.disabled = false;
+        if (mobileCheckoutBtn) mobileCheckoutBtn.disabled = false;
     }
     updateTotals();
 }
@@ -1848,8 +2045,12 @@ function updateTotals() {
     }
 
     const total = Math.max(0, subtotal - discountAmount);
-    const el = document.getElementById('pos-cart-total');
-    if (el) el.textContent = `${total.toFixed(2)}DH`;
+    const subtotalEl = document.getElementById('pos-cart-subtotal');
+    const totalEl = document.getElementById('pos-cart-total');
+    const mobileTotalEl = document.getElementById('mobile-cart-total');
+    if (subtotalEl) subtotalEl.textContent = `${subtotal.toFixed(2)}DH`;
+    if (totalEl) totalEl.textContent = `${total.toFixed(2)}DH`;
+    if (mobileTotalEl) mobileTotalEl.textContent = `${total.toFixed(2)}DH`;
 }
 
 window.clearCart = () => {

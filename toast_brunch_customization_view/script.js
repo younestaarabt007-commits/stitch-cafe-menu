@@ -18,7 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (n) {
     itemName = n;
     const titleEl = document.getElementById('product-title');
+    const titleCardEl = document.getElementById('product-title-card');
     if (titleEl) titleEl.textContent = itemName;
+    if (titleCardEl) titleCardEl.textContent = itemName;
   }
   if (!Number.isNaN(p)) basePrice = p;
 
