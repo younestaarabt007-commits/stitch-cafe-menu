@@ -1348,13 +1348,102 @@ function generateArabicFromEnglishSummary(name) {
     if (has('avocado')) return 'توست بالأفوكادو';
     if (has('cheese') && has('mushroom')) return 'توست بالجبن والفطر';
     if (has('cheese')) return 'توست بالجبن';
+    if (has('mushroom')) return 'توست بالفطر';
     return 'توست';
   }
+  if (has('infusion')) return 'نقيع';
+  if (has('brew') || has('cold') && has('brew')) return 'كولد برو';
+  if (has('matcha')) return 'ماتشا';
+  if (has('chai') || has('masala')) return 'تشاي ماسالا';
+  if (has('hibiscus')) return 'كركديه';
+  if (has('moroccan') || has('marocain')) return 'مغربي';
+  if (has('nordic') || has('nordique')) return 'شمالي';
+  if (has('citron') || has('lemon')) return 'ليمون';
+  if (has('royal')) return 'رويال';
+  if (has('normal')) return 'قهوة عادية';
+  if (has('américain') || has('americain')) return 'قهوة أمريكية';
+  if (has('noire') || has('noir')) return 'قهوة سوداء';
+  if (has('italien') || has('italian')) return 'إيطالي';
+  if (has('léger') || has('leger')) return 'خفيف';
+  if (has('au') && has('lait')) return 'قهوة بالحليب';
+  if (has('crème') || has('creme')) return 'كريمة';
+  if (has('au') && has('lait') && has('artisanal')) return 'قهوة حرفية بالحليب';
+  if (has('chocolate') || has('chocolat')) return 'شوكولاتة';
+  if (has('fondue')) return 'شوكولاتة مذابة';
+  if (has('split')) return 'سبليت';
+  if (has('french')) return 'فرنسي';
+  if (has('mille') && has('feuilles')) return 'ميل فوي';
+  if (has('teramisu') || has('tiramisu')) return 'تيراميسو';
+  if (has('waffels') || has('waffle')) return 'وافل';
+  if (has('chees') || has('cheese')) return 'جبن';
+  if (has('citron') || has('lemon')) return 'ليمون';
+  if (has('dark') && has('white')) return 'شوكولاتة بيضاء وداكنة';
+  if (has('oreo')) return 'أوريو';
+  if (has('caramel')) return 'كراميل';
+  if (has('banane') || has('banana')) return 'موز';
+  if (has('fraise') || has('strawberry')) return 'فراولة';
+  if (has('myrtille') || has('blueberry')) return 'توت أزرق';
+  if (has('framboise') || has('raspberry')) return 'توت أحمر';
+  if (has('kiwi')) return 'كيوي';
+  if (has('ananas') || has('pineapple')) return 'أناناس';
+  if (has('pêche') || has('peach')) return 'خوخ';
+  if (has('pomme') || has('apple')) return 'تفاح';
+  if (has('d\'ananas')) return 'عصير أناناس';
+  if (has('de') && has('pomme')) return 'عصير تفاح';
+  if (has('de') && has('fraise')) return 'عصير فراولة';
+  if (has('de') && has('mangue')) return 'عصير مانجو';
+  if (has('mang')) return 'مانجو';
+  if (has('cub') && has('mokhito')) return 'كوبا موكيتو';
+  if (has('cuba')) return 'كوبا';
+  if (has('mokhito') || has('mojito')) return 'موخيتو';
+  if (has('glass') || has('iced')) return 'مثلج';
+  if (has('milk') || has('shake')) return 'ميلك شيك';
+  if (has('milkshake') || has('milkshake')) return 'ميلك شيك';
+  if (has('blue') && has('berry')) return 'توت أزرق';
+  if (has('green')) return 'أخضر';
+  if (has('golden') || has('turmeric')) return 'كركم ذهبي';
+  if (has('brazilian')) return 'برازيلي';
+  if (has('dragon') && has('fruit')) return 'فاكهة التنين';
+  if (has('greek') && has('yogurt')) return 'زبادي يوناني';
+  if (has('tropical')) return 'استوائي';
+  if (has('protein')) return 'بروتين';
+  if (has('acai')) return 'آساي';
+  if (has('bowl')) return 'بولة';
+  if (has('citron') || has('delise')) return 'ليمون';
+  if (has('floral')) return 'زهري';
+  if (has('lavender')) return 'لافندر';
+  if (has('ginger')) return 'زنجبيل';
+  if (has('rosey') || has('rose')) return 'وردي';
+  if (has('hazelnut')) return 'بنسل';
+  if (has('spanish')) return 'إسباني';
+  if (has('lotus')) return 'لوتس';
+  if (has('cannelle') || has('cinnamon')) return 'قرفة';
+  if (has('chocolate')) return 'شوكولاتة';
+  if (has('close') && has('up')) return 'لقطة قريبة';
+  if (has('glass')) return 'كأس';
+  if (has('plate')) return 'طبق';
+  if (has('photo')) return 'صورة';
+  if (has('png') || has('jpg') || has('jpeg')) return '';
+  if (has('delicious') || has('tasty')) return '';
+  if (has('high') && has('angle')) return '';
+  if (has('isolated') || has('transparent')) return '';
+  if (has('background')) return '';
+  if (has('perfect') || has('perfect')) return '';
+  if (has('vibrant') || has('appetizing')) return '';
+  if (has('presentation')) return '';
+  if (has('fresh') || has('served')) return '';
+  if (has('with') || has('and')) return '';
   const dict = {
-    benedict:'بنديكت',eggs:'بيض',egg:'بيض',salmon:'سلمون',omelette:'عجة',scrambled:'مخلوط',waffle:'وافل',pancake:'بان كيك',toast:'توست',salad:'سلطة',croissant:'كرواسون',tart:'تارت',cake:'كيك',eclair:'إكلير',babka:'بابكا',focaccia:'فوكاتشيا',latte:'لاتيه',espresso:'إسبريسو',coffee:'قهوة',tea:'شاي',juice:'عصير',smoothie:'سموثي',milkshake:'ميلك شيك',cocktail:'كوكتيل',mango:'مانجو',orange:'برتقال',blueberry:'توت أزرق',strawberry:'فراولة',raspberry:'توت أحمر',banana:'موز',apple:'تفاح',peach:'خوخ',lemon:'ليمون',lime:'ليمون أخضر',lemongrass:'عشب الليمون',avocado:'أفوكادو',mint:'نعناع',rosemary:'إكليل الجبل',iced:'مثلج',indian:'هندي',drink:'مشروب',slice:'شريحة',zest:'قشر',cheese:'جبن',chesse:'جبن',vanilla:'فانيليا',caramel:'كراميل',chocolate:'شوكولاتة'
+    benedict:'بنديكت',eggs:'بيض',egg:'بيض',salmon:'سلمون',omelette:'عجة',scrambled:'مخلوط',waffle:'وافل',pancake:'بان كيك',toast:'توست',salad:'سلطة',croissant:'كرواسون',tart:'تارت',cake:'كيك',eclair:'إكلير',babka:'بابكا',focaccia:'فوكاتشيا',latte:'لاتيه',espresso:'إسبريسو',coffee:'قهوة',tea:'شاي',juice:'عصير',smoothie:'سموثي',milkshake:'ميلك شيك',cocktail:'كوكتيل',mango:'مانجو',orange:'برتقال',blueberry:'توت أزرق',strawberry:'فراولة',raspberry:'توت أحمر',banana:'موز',apple:'تفاح',peach:'خوخ',lemon:'ليمز',lime:'ليمز أخضر',lemongrass:'عشب الليمز',avocado:'أفوكادو',mint:'نعناع',rosemary:'إكليل الجبل',iced:'مثلج',indian:'هندي',drink:'مشروب',slice:'شريحة',zest:'قشر',cheese:'جبن',chesse:'جبن',vanilla:'فانيليا',caramel:'كراميل',chocolate:'شوكولاتة',
+    // Additional words
+    cafe:'قهوة',café:'قهوة',creme:'كريمة',crème:'كريمة',pain:'خبز',sandwich:'ساندويتش',pizza:'بيتزا',burger:'برغر',soupe:'شوربة',riz:'أرز',pates:'معكرونة',pâtes:'معكرونة',volaille:'دواجن',poulet:'دجاج',viande:'لحم',poisson:'سمك',bacon:'لحم مقدد',saucisse:'سجق',chorizo:'تشوريزو',jambon:'هام',frites:'بطاطس مقلية',pommes:'تفاح',petit:'صغير',grand:'كبير',medium:'متوسط', Chaud:'ساخن',froid:'بارد',doux:'حلو',sale:'مالح',nouveau:'جديد',special:'خاص',deluxe:'ديلكس',mix:'ميمكس',breakfast:'فطور',brunch:'برانش',dinner:'عشاء',lunch:'غداء',fermier:'ريفي',artisanal:'حرفي',fresh:'طازج',home:'منزل',house:'منزل',chef:'شيف',king:'ملك',queen:'ملكة',deluxe:'ديلكس',supreme:'سوبريم',complet:'كامل',simple:'بسيط',naturel:'طبيعي',bio:'عضوي',organic:'عضوي',healthy:'صحي',light:'خفيف',heavy:'ثقل',spicy:'حار',mild:'خفيف',hot:'ساخن',warm:'دافئ',cold:'بارد',gratin:'جرتان',royale:'رويال',mousse:'موس',flan:'فلان',soufflé:'سفله',fondue:'فوندو',rizotto:'ريزوتو',burger:'برغر',tacos:'تاكو',burrito:'بوريتو',wrap:'راب',bagel:'بيغل',donut:'دونات',muffin:'مافن',croissant:'كرواسون',brioche:'بريوش',chausson:'شوسون',feuilletée:'فيليتي',feuillete:'فيليتي',pithivier:'بيتيفييه',galette:'جاليت',crpe:'كريب',crêpe:'كريب',blinis:'بليني',blini:'بليني',naan:'نان',pita:'بيتا',khobz:'خBread',focaccia:'فوكاتشيا',ciabatta:'سياباتا',baguette:'باغيت',baton:'باتون',torsette:'تورسيت',ficelle:'فيسيل',sandwich:'ساندويتش',club:'كلوب',panini:'بانيي',bagel:'بيغل',croque:'كروك',croissant:'كرواسون',chausson:'شوسون',viennoiserie:'فيانوازري',patisserie:'باتيسري',gteau:'جاتو',gâteau:'جاتو',tarte:'تارت',flan:'فلان',pouding:'بودينغ',crumble:'كرمبل',cobbler:'كوبler',trifle:'ترايفل',bavarois:'بافاروا',mousse:'موس',gelée:'جيلي',pâte:'بات',pate:'بات',marzipan:'مارزيبان',nougat:'نوقات',praline:'برالين',caramel:'كراميل',sirop:'شربات',syrup:'شربات',miel:'عسل',confiture:'مربى',pâte:'معجون',nutella:'نوتيلا',pistache:' fistash',pistachio:'فستق',amande:'لوز',noix:'جوز',noisette:'هيزل',cacahuète:'كاشو',arachide:'فول سوداني',noix:'جوز',coco:'جوز الهند',cocoa:'كاكاو',vanille:'فانيليا',cinnamon:'قرفة',cannelle:'قرفة',gingembre:'زنجبيل',curcuma:'كركم',cardamome:'هيل',poivre:'فلفل',sel:'ملح',sucre:' sugar',sucre:'سكب',épice:'توابل',herbes:'أعشاب',basilic:'ريحان',ciboulette:'شبت',persil:'بقدونس',estragon:'إستراجون',sauge:'مريمية',thym:'زعتر',romarin:'إكليل الجبل',lavande:'لافندر',fleur:'زهر',fleurs:'زهور',rose:'وردي',violette:'بنفسجي',jasmin:'ياسمين',fleur:'زهرة',
+    // Menu specific items
+    frittata:'فريتاتا',champignon:'فطر',frommage:'جبن',avocat:'أفوكادو',fromage:'جبن',mache:'جرجير',roquette:'روكيت',laitue:'خس',tomate:'طماطم',oignon:'بصل',poivron:'فطر',pomme:'تفاح',pomme:'بطاطس',patate:'بطاطس',carotte:'جزر',celeri:' كرفس',brocoli:'بروكلي',haricot:'فاصوليا',pois:'بازلاء',lentille:'عدس',chickpeas:'حمص',quinoa:'كينوا',couscous:'كسكس', Boulgour:'برغل',riz:'أرز',pates:'معكرونة',nouilles:'نودلز',vermicelle:'فيرميسيل',lasagne:'لازانيا',ravioli:'رافيولي',tortellini:'تورتيليني',gnocchi:'نيوكي',risotto:'ريزوتو',arancini:'أرانسيني',falafel:'فلافل',tabbouleh:'تبولة',houmous:'حمص',baba:'بابا',ganache:'غاناش',glacage:'تلج',crème:'كريمة',pâte:'عجينة',levure:'خميرة',levain:'عجين',beurre:'زبدة',lait:'حليب',crème:'كريمة',yaourt:'زبادي',fromage:'جبن',chèvre:'ماعز',brebis:'ضأن',comté:'كومتي',gruyère:'غرويير',mozzarella:'موزاريلا',parmesan:'بارميزان',cheddar:'شيدر',bleu:'أزرق',roquefort:'روكفور',feta:'فيتا',ricotta:'ريكوتا',mascarpone:'ماسكاربوني',philadelphia:'فيلادلفيا',boursin:'بورسان',nordique:'شمالي',marocain:'مغربي',espagnol:'إسباني',italien:'إيطالي',français:'فرنسي',américain:'أمريكي',asiatique:'آسيوي',indien:'هندي',arabe:'عربي',méditerran:'متوسطي',oriental:'شرقي',occidental:'غربي',traditionnel:'تقليدي',moderne:'حديث',classique:'كلاسيكي',rustique:'ريفي',gastronom:'غاسترونوم',bio:'عضوي',naturel:'طبيعي',pur:'نقي',fin:'رفيع',premium:'بريميوم',luxe:'فاخر',elite:'نخبة',signature:'توقيع',chef:'شيف',master:' master',grand:'كبير',petit:'صغير',giant:'عملاق',mini:'صغير',size:'حجم',portion:'حصة',assiette:'طبق',menu:'قائمة',carte:'خريطة',list:'قائمة',special:'خاص',offre:'عرض',promo:'برومو',deal:'صفقة',combo:'كومبو',set:'مجموعة',pack:'حزمة',box:'صندوق',tray:'صينية',plateau:'طاولة',serviette:'منديل',couvercle:'غطاء',verre:'كأس',tasse:'فنجان',bol:'وعاء',mug:'ماغ',carafe:'carafe',bouteille:'زجاجة',cannette:'علبة',can:'علبة',paille:'ماصة',cuiller:'ملعة',fourchette:'شوكة',couteau:'سكين',serviette:'منديل',nappe:'مفرش',tapis:'سجادة',sets:'طقم',cadeau:'هدية',bonus:'مكافأة',point:'نقطة',credit:'ائتمان',carte:'بطاقة',ticket:'تذكرة',coupon:'كوبون',voucher:'فاوشر',gift:'هدية',reward:'مكافأة',promotion:'ترقية',reduction:'تخفيض',discount:'خصم',soldes:'تنزيلات',solde:'تنزيل',gratis:'مجاني',offert:'مقدم',inclus:'مشمول',extra:'إضافي',supplément:'إضافة',option:'خيار',choix:'اختيار',alternative:'بديل',substitut:'بديل',autre:'أخرى',encore:'مرة أخرى',autres:'آخرين',plus:'أكثر',moins:'أقل',tres:'جدا',bien:'جيد',tres:' very',super:'سوبر',hyper:'هابر',mega:'ميغا',extra:'إكسترا',ultra:'ألترا',
+    // New additions for better coverage
+    petit:'صغير',dejeuner:'غداء',déjeuner:'غداء',diner:'عشاء',dîner:'عشاء',collation:'وجبة خفيفة',snack:'سناك', amuse:'أمuze',bouffe:'طعام',repas:'وجبة',plats:'أطباق',plat:'طبق',entrée:'مقبلات',dessert:'حلويات',boisson:'مشروبات',accompagnement:'إضافة',côtée:'جنب',gratinée:'جراتين',composée:'مركبة',mêlée:'مخلوطة',froide:'باردة',chaude:'ساخنة',légère:'خفيفة',corsée:'قوية',foncée:'داكنة',claire:'فاتحة',nature:'طبيعية',suivie:'متبوعة',servie:'مخدمة',préparée:'محضرة',cuisinée:'مطبوخة',rôtie:'مشوية',grillée:'مشوية',pochée:'مسلوقة',battue:'مخفوقة',mixée:'ممزوجة',filtrée:'مصفاة',infusée:'منقوعة',bouillie:' مسلوقة',cuite:'مطبوخة',crue:'نيئة',fraiche:'طازجة',salée:'مملحة',sucrée:'محلاة',épicerée:'متبل',fumée:'مدخنة',marinée:'متبلة',confite:'مربى',séchée:'مجففة',congélée:'مجمدية',réfrigérée:'مبردة',chauffée:'مسخنة',réchauffée:'مسخنة',emportée:'مغلفة',livrée:'مسلمة',commandée:'مطلوبة',réservée:'محجوزة',confirmée:'مؤكدة',annulée:'ملغاة',reportée:'مؤجلة',accepted:'مقبول',refused:'مرفوض',pending:'قيد الانتظار',complete:'مكتمل',incomplet:'غير مكتمل',urgent:'عاجل',prioritaire:'أولوية',normal:'عادي',express:'سريع',rapide:'سريع',lent:'بطيء',court:'قصير',long:' طويل',large:'واسع',étroit:'ضيق',haut:'عالي',bas:'منخفض',gros:'سميك',mince:'رفيع',lourd:'ثقيل',leger:'خفيف',fort:'قوي',doux:' softer',dur:'صعب',mou:'لين',sec:'جاف',humide:'رطب',mouillé:'مبلل',cassé:'مكسور',entier:'كامل',moitié:'نصف',quart:'ربع',tiers:'ثلث',trois:' three',deux:' two',un:' one',zero:'صفر',premier:'الأول',deuxième:'الثاني',troisième:'الثالث',dernier:'الأخير',suivant:'التالي',précédent:'السابق',autre:'آخر',différent:'مختلف',simile:'مشابه',identique:'متطابق',équivalent:'مكافئ',opposé:'معاكس',contraire:'ضد',semblable:'ماثل',comparalbe:'مقارن',différent:'مغاير',
   };
   const out = tokens.map(t => dict[t]).filter(Boolean);
-  return out.join(' ') || 'منتج';
+  return out.length > 0 ? out.join(' ') : 'منتج';
 }
 
 function getTranslation(key) {

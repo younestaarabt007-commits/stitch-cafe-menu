@@ -11,6 +11,28 @@
         const originalCards = Array.from(container.children);
         if (originalCards.length === 0) return;
 
+        // Add CSS for smooth animations
+        const style = document.createElement('style');
+        style.textContent = `
+            #hero-carousel .flex {
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x mandatory;
+            }
+            #hero-carousel .flex > div {
+                scroll-snap-align: center;
+                flex-shrink: 0;
+                transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease;
+            }
+            #hero-carousel .flex > div:hover {
+                transform: scale(1.02);
+            }
+            .carousel-clone {
+                opacity: 0.7;
+            }
+        `;
+        document.head.appendChild(style);
+
         // --- Infinite Loop Setup ---
 
         const lastCard = originalCards[originalCards.length - 1];
@@ -49,12 +71,15 @@
         let autoScrollInterval;
         let isPerformingAutoScroll = false;
         let isVisible = true;
-        let isUserScrolling = false; // New flag for global scroll detection
+        let isUserScrolling = false;
 
-        // Helper to scroll to specific card index
+        // High-spec motion settings
+        const SCROLL_DURATION = 600; // ms - faster but smooth
+        const SLIDE_INTERVAL = 3500; // ms - faster auto-scroll
+        const PAUSE_ON_HOVER = true;
+
+        // Helper to scroll to specific card index with high-spec motion
         function scrollToCard(index, smooth = true) {
-            // STRICT GUARD: If user has scrolled down the page, NEVER scroll the carousel
-            // This prevents the "page jump" issue where the carousel pulls focus/scroll back up
             if (window.scrollY > 100 || isUserScrolling) return;
 
             const card = allCards[index];
@@ -66,21 +91,19 @@
 
             const targetScroll = cardLeft - (containerWidth / 2) + (cardWidth / 2);
 
-            // Use scrollLeft assignment for "instant" jumps (safer than scrollTo with behavior: auto)
             if (!smooth) {
+                container.style.scrollBehavior = 'auto';
                 container.scrollLeft = targetScroll;
             } else {
-                // For smooth scrolls, use scrollTo
-                if (container.scrollWidth > container.clientWidth) {
-                    container.scrollTo({
-                        left: targetScroll,
-                        behavior: 'smooth'
-                    });
-                }
+                container.style.scrollBehavior = 'smooth';
+                container.scrollTo({
+                    left: targetScroll,
+                    behavior: 'smooth'
+                });
             }
         }
 
-        // Set initial position instantly
+        // Set initial position
         requestAnimationFrame(() => {
             scrollToCard(currentIndex, false);
         });
@@ -98,6 +121,16 @@
 
             scrollToCard(currentIndex, true);
 
+            // Add shake effect to new center card
+            if (currentIndex >= 1 && currentIndex <= originalCards.length) {
+                allCards.forEach(card => card.classList.remove('center-card'));
+                const centerCard = allCards[currentIndex];
+                if (centerCard) {
+                    centerCard.classList.add('center-card');
+                }
+                lastCenterIndex = currentIndex;
+            }
+
             if (currentIndex === jumpTriggerIndex) {
                 isPerformingAutoScroll = true;
 
@@ -112,12 +145,11 @@
             }
         }
 
-        // Loop Control
+        // Loop Control with high-spec timing
         function startLoop() {
             stopLoop();
-            // Only start loop if user is NOT scrolling
             if (!isUserScrolling) {
-                autoScrollInterval = setInterval(nextSlide, 4500);
+                autoScrollInterval = setInterval(nextSlide, SLIDE_INTERVAL);
             }
         }
 
@@ -125,23 +157,22 @@
             if (autoScrollInterval) clearInterval(autoScrollInterval);
         }
 
-        // --- Global Scroll Detection ---
+        // Global Scroll Detection
         let scrollTimeoutGlobal;
         window.addEventListener('scroll', () => {
             isUserScrolling = true;
-            stopLoop(); // Stop carousel immediately when user scrolls page
+            stopLoop();
 
             clearTimeout(scrollTimeoutGlobal);
             scrollTimeoutGlobal = setTimeout(() => {
                 isUserScrolling = false;
-                // Only resume if carousel is visible
                 if (isVisible) {
                     startLoop();
                 }
-            }, 150); // Wait for scroll to settle
+            }, 100);
         }, { passive: true });
 
-        // --- Intersection Observer ---
+        // Intersection Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 isVisible = entry.isIntersecting;
@@ -151,53 +182,74 @@
                     stopLoop();
                 }
             });
-        }, { threshold: 0.1 }); // Kept low to catch partial visibility
+        }, { threshold: 0.1 });
 
         observer.observe(container);
 
-        // --- Interaction Handlers ---
-        container.addEventListener('mouseenter', stopLoop);
+        // Interaction Handlers with enhanced responsiveness
+        container.addEventListener('mouseenter', () => {
+            if (PAUSE_ON_HOVER) stopLoop();
+        });
         container.addEventListener('touchstart', stopLoop, { passive: true });
 
         container.addEventListener('mouseleave', () => {
             if (isVisible && !isUserScrolling) startLoop();
         });
         container.addEventListener('touchend', () => {
-            if (isVisible && !isUserScrolling) setTimeout(startLoop, 2000);
+            if (isVisible && !isUserScrolling) setTimeout(startLoop, 1500);
         });
 
-        // Sync currentIndex on manual carousel scroll
+        // Sync currentIndex on manual carousel scroll with enhanced detection
         let scrollTimeout;
+        let lastCenterIndex = -1;
+        
+        function updateCenterCard() {
+            const center = container.scrollLeft + (container.clientWidth / 2);
+            let minDiff = Infinity;
+            let closest = currentIndex;
+
+            allCards.forEach((card, i) => {
+                const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+                const diff = Math.abs(center - cardCenter);
+                if (diff < minDiff) {
+                    minDiff = diff;
+                    closest = i;
+                }
+            });
+
+            // Only trigger shake effect when entering new center card
+            if (closest !== lastCenterIndex && !isPerformingAutoScroll) {
+                // Remove center-card from all
+                allCards.forEach(card => card.classList.remove('center-card'));
+                
+                // Add to new center card (not clones)
+                if (closest >= 1 && closest <= originalCards.length) {
+                    const realCard = allCards[closest];
+                    if (realCard) {
+                        realCard.classList.add('center-card');
+                    }
+                }
+                lastCenterIndex = closest;
+            }
+            
+            currentIndex = closest;
+
+            if (currentIndex === jumpTriggerIndex) {
+                currentIndex = startIndex;
+                scrollToCard(currentIndex, false);
+            }
+
+            if (currentIndex === 0) {
+                currentIndex = realLastIndex;
+                scrollToCard(currentIndex, false);
+            }
+        }
+        
+        // Add scroll listener
         container.addEventListener('scroll', () => {
             if (isPerformingAutoScroll) return;
-
             clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                const center = container.scrollLeft + (container.clientWidth / 2);
-                let minDiff = Infinity;
-                let closest = currentIndex;
-
-                allCards.forEach((card, i) => {
-                    const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
-                    const diff = Math.abs(center - cardCenter);
-                    if (diff < minDiff) {
-                        minDiff = diff;
-                        closest = i;
-                    }
-                });
-
-                currentIndex = closest;
-
-                if (currentIndex === jumpTriggerIndex) {
-                    currentIndex = startIndex;
-                    scrollToCard(currentIndex, false);
-                }
-
-                if (currentIndex === 0) {
-                    currentIndex = realLastIndex;
-                    scrollToCard(currentIndex, false);
-                }
-            }, 100);
+            scrollTimeout = setTimeout(updateCenterCard, 50);
         });
     }
 

@@ -13,6 +13,53 @@
     scrollbar-width: none;
 }
 
+/* Hero Carousel High-Spec Motion */
+#hero-carousel .flex {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    transition: scroll-behavior 0.3s ease;
+}
+
+#hero-carousel .flex > div {
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                opacity 0.3s ease,
+                box-shadow 0.3s ease;
+    will-change: transform, opacity;
+}
+
+/* Shake animation for center cards */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10% { transform: translateX(-2px) rotate(-1deg); }
+    20% { transform: translateX(2px) rotate(1deg); }
+    30% { transform: translateX(-2px) rotate(-1deg); }
+    40% { transform: translateX(2px) rotate(1deg); }
+    50% { transform: translateX(-1px) rotate(-0.5deg); }
+    60% { transform: translateX(1px) rotate(0.5deg); }
+    70% { transform: translateX(-1px) rotate(-0.5deg); }
+    80% { transform: translateX(1px) rotate(0.5deg); }
+    90% { transform: translateX(0) rotate(0); }
+}
+
+#hero-carousel .flex > div.center-card {
+    transform: scale(1.05);
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+#hero-carousel .flex > div.center-card .product-image,
+#hero-carousel .flex > div.center-card img {
+    animation: shake 0.5s ease-in-out;
+}
+
+#hero-carousel .flex > div:hover {
+    transform: scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
 /* Enhanced Header Pattern */
 .header-bg-pattern {
     background: linear-gradient(135deg, #FF5200 0%, #FF8C00 100%);

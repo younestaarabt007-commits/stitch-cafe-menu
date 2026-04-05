@@ -2,172 +2,172 @@
 const products = [
     {
         id: 1,
-        name: "coffee-nitro",
+        name: "Café Noir Italien",
         description: "18-hour steep, nitrogen infused.",
         price: 6.50,
-        image: "../assets/coffee-nitro.jpg",
+        image: "../images/sub catégorie images/black coffee/Café Noir Italien.jpg",
         category: "cold",
         favorite: true,
         isHot: false
     },
     {
         id: 2,
-        name: "tea-matcha",
+        name: "Matcha Latte",
         description: "Uji-sourced matcha with oat milk.",
         price: 7.25,
-        image: "../assets/tea-matcha.jpg",
+        image: "../images/sub catégorie images/latté/Matcha Latte.jpg",
         category: "seasonal"
     },
     {
         id: 3,
-        name: "coffee-single-origin-espresso",
+        name: "Ethiopian Yirgacheffe",
         description: "Floral notes with a citrus finish.",
         price: 5.00,
-        image: "../assets/coffee-single-origin-espresso.jpg",
+        image: "../images/sub catégorie images/latté/Ethiopian Yirgacheffe.jpg",
         category: "dark",
         badge: "Light Roast"
     },
     {
         id: 4,
-        name: "tea-masala-chai",
+        name: "Café Royal",
         description: "House-made spices, double shot.",
         price: 6.75,
-        image: "../assets/tea-masala-chai.jpg",
+        image: "../images/sub catégorie images/black coffee/Café Royal.jpg",
         category: "seasonal"
     },
     {
         id: 5,
-        name: "coffee-oat-milk-latte",
+        name: "Café au Lait Artisanal",
         description: "Equal parts espresso & milk.",
         price: 4.50,
-        image: "../assets/coffee-oat-milk-latte.jpg",
+        image: "../images/sub catégorie images/latté/Café au Lait Artisanal.jpg",
         category: "dark"
     },
     {
         id: 6,
-        name: "tea-lavender-earl",
+        name: "lavender Tea",
         description: "Floral infusion with local honey.",
         price: 7.50,
-        image: "../assets/tea-lavender-earl.jpg",
+        image: "../images/sub catégorie images/tea/lavender Tea.jpg",
         category: "seasonal"
     },
     {
         id: 7,
-        name: "tea-ginger-lemon",
+        name: "Golden Turmeric",
         description: "Spiced healing brew.",
         price: 6.25,
-        image: "../assets/tea-ginger-lemon.jpg",
+        image: "../images/sub catégorie images/smoothie/Golden Turmeric.jpg",
         category: "seasonal"
     },
     {
         id: 8,
-        name: "latte-caramel-macchiato",
+        name: "Café au lait avec la Creme",
         description: "Layered espresso & vanilla.",
         price: 6.50,
-        image: "../assets/latte-caramel-macchiato.jpg",
+        image: "../images/sub catégorie images/latté/Café au lait avec la Creme.jpg",
         category: "dark"
     },
     {
         id: 9,
-        name: "coffee-v60",
+        name: "Café Léger",
         description: "Hand poured perfection.",
         price: 8.00,
-        image: "../assets/coffee-v60.jpg",
+        image: "../images/sub catégorie images/black coffee/Café Léger .jpg",
         category: "dark"
     },
     {
         id: 10,
-        name: "juice-berry-blast",
+        name: "Blueberry Infusion",
         description: "Antioxidant rich blend.",
         price: 5.75,
-        image: "../assets/juice-berry-blast.jpg",
+        image: "../images/sub catégorie images/Jus/Blueberry Infusion.jpg",
         category: "seasonal",
         isHot: false
     },
     {
         id: 11,
-        name: "coffee-dark-mocha",
+        name: "Chocolat Fondu",
         description: "Double espresso over vanilla gelato.",
         price: 7.00,
-        image: "../assets/coffee-dark-mocha.jpg",
+        image: "../images/sub catégorie images/sweets/Chocolat Fondu.jpg",
         category: "dark",
         badge: "Chef's Choice"
     },
     {
         id: 12,
-        name: "latte-vanilla-bean",
+        name: "Café Américain",
         description: "Creamy oat milk with Madagascar vanilla.",
         price: 6.75,
-        image: "../assets/latte-vanilla-bean.jpg",
+        image: "../images/sub catégorie images/black coffee/Café Américain.jpg",
         category: "cold",
         isHot: false
     },
     {
         id: 13,
-        name: "coffee-single-origin-espresso",
+        name: "Café Noire Expresso",
         description: "Finely ground, cardamom infused.",
         price: 5.50,
-        image: "../assets/coffee-single-origin-espresso.jpg",
+        image: "../images/sub catégorie images/black coffee/Café Noire Expresso.jpg",
         category: "dark"
     },
     {
         id: 14,
-        name: "juice-berry-blast",
+        name: "Tea Nordique",
         description: "Tart hibiscus with summer berries.",
         price: 5.25,
-        image: "../assets/juice-berry-blast.jpg",
+        image: "../images/sub catégorie images/tea/Tea Nordique.jpg",
         category: "cold",
         isHot: false
     },
     {
         id: 15,
-        name: "photo-1542691457-cbe4df041eb2?q=80&w=400&auto=format&fit=crop",
+        name: "The de Hibiscus",
         description: "Autumn spice, real pumpkin purée.",
         price: 7.25,
-        image: "https://images.unsplash.com/photo-1542691457-cbe4df041eb2?q=80&w=400&auto=format&fit=crop",
+        image: "../images/sub catégorie images/tea/The de Hibiscus.jpg",
         category: "seasonal",
         badge: "Seasonal"
     },
     {
         id: 16,
-        name: "photo-1570968915860-54d5c301fa9f?q=80&w=400&auto=format&fit=crop",
+        name: "The Marocain a la Menthe",
         description: "Sweet condensed milk & bold espresso.",
         price: 6.25,
-        image: "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?q=80&w=400&auto=format&fit=crop",
+        image: "../images/sub catégorie images/tea/The Marocain a la Menthe.jpg",
         category: "dark"
     },
     {
         id: 17,
-        name: "photo-1517701550927-30cf4ba1dba5?q=80&w=300&auto=format&fit=crop",
+        name: "Tea Citron Délise",
         description: "Coffee meeting refreshing citrus.",
         price: 5.95,
-        image: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=300&auto=format&fit=crop",
+        image: "../images/sub catégorie images/tea/Tea Citron Délise.jpg",
         category: "cold",
         isHot: false
     },
     {
         id: 18,
-        name: "photo-1576092768241-dec231879fc3?q=80&w=400&auto=format&fit=crop",
+        name: "Floral Tea",
         description: "Bergamot notes with frothed milk.",
         price: 6.50,
-        image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=400&auto=format&fit=crop",
+        image: "../images/sub catégorie images/tea/Floral Tea.jpg",
         category: "seasonal"
     },
     {
         id: 19,
-        name: "photo-1510591509098-f4fdc6d0ff04?q=80&w=400&auto=format&fit=crop",
+        name: "Café normal",
         description: "Pure, concentrated energy.",
         price: 3.50,
-        image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=400&auto=format&fit=crop",
+        image: "../images/sub catégorie images/black coffee/Café normal  .jpg",
         category: "dark",
         favorite: true
     },
     {
         id: 20,
-        name: "photo-1544145945-f904253d0c71?q=80&w=400&auto=format&fit=crop",
+        name: "Café au Lait Artisanal",
         description: "Tropical twist on classic cold brew.",
         price: 6.95,
-        image: "https://images.unsplash.com/photo-1544145945-f904253d0c71?q=80&w=400&auto=format&fit=crop",
+        image: "../images/sub catégorie images/latté/Café au Lait Artisanal.jpg",
         category: "cold",
         isHot: false
     }

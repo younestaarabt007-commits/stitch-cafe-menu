@@ -2,7 +2,7 @@ const products = [
   { id: "toast_1", name: "Toast Champignon Frommage", description: "Poached eggs, hollandaise", price: 14.50, image: "../images/sub catégorie images/toast/Toast Champignon Frommage.jpg", category: "eggs" },
   { id: "toast_2", name: "Toast Frittata", description: "Mushrooms, truffle oil", price: 12.50, image: "../images/sub catégorie images/toast/Toast Frittata.jpg", category: "eggs" },
   { id: "toast_3", name: "Pumpkin Stew", description: "Tomato, peppers, eggs", price: 11.25, image: "../images/sub catégorie images/Brunch food/Pumpkin Stew.jpg", category: "eggs" },
-  { id: "toast_4", name: "toast", description: "Sourdough, smashed avo", price: 10.50, image: "../images/sub catégorie images/toast/toast.jpg", category: "toast" },
+  { id: "toast_4", name: "Toast Avocat", description: "Sourdough, smashed avo", price: 10.50, image: "../images/sub catégorie images/toast/toast.jpg", category: "toast" },
   { id: "toast_5", name: "croissant-benedict-salmon-with-poched-egg-hollandaise-sauce-served-with-fresh-salad_140725-1329", description: "Ham, hollandaise", price: 13.50, image: "../images/sub catégorie images/Brunch food/croissant-benedict-salmon-with-poched-egg-hollandaise-sauce-served-with-fresh-salad_140725-1329.avif", category: "eggs" },
   { id: "toast_6", name: "Toast Vegan", description: "Grains, greens", price: 12.00, image: "../images/sub catégorie images/toast/Toast Vegan.jpg", category: "vegan" },
   { id: "toast_7", name: "Salade Espagnol", description: "Feta, olives, tomatoes", price: 11.00, image: "../images/sub catégorie images/Brunch food/Salade Espagnol.jpg", category: "eggs" },

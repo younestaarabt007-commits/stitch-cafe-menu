@@ -5,23 +5,23 @@ const products = [
         "name": "Chocolate Babka",
         "description": "Rich dark chocolate ganache swirl.",
         "price": 12,
-        "image": "../assets/bakery-chocolate-babka.jpg",
+        "image": "../images/sub catégorie images/sweets/Chocolate Babka.jpg",
         "category": "patisserie"
     },
     {
         "id": 2,
-        "name": "Seeded Multigrain",
-        "description": "Hand-topped with flax & oats.",
+        "name": "Waffels au Miels Crème",
+        "description: "Hand-topped with flax & oats.",
         "price": 9,
-        "image": "../assets/bakery-seeded-multigrain.jpg",
+        "image": "../images/sub catégorie images/sweets/Waffels au Miels Crème.jpg",
         "category": "sourdough"
     },
     {
         "id": 3,
-        "name": "Dark Rye Loaf",
+        "name": "Salade Espagnol",
         "description": "Robust German-style dense rye.",
         "price": 10.5,
-        "image": "../assets/bakery-dark-rye-loaf.jpg",
+        "image": "../images/sub catégorie images/Brunch food/Salade Espagnol.jpg",
         "category": "sourdough"
     },
     {
@@ -29,39 +29,39 @@ const products = [
         "name": "Herbed Focaccia",
         "description": "Rosemary, garlic & olive oil.",
         "price": 7.5,
-        "image": "../assets/bakery-herbed-focaccia.jpg",
+        "image": "../images/sub catégorie images/Brunch food/Herbed Focaccia.jpg",
         "category": "viennoiserie"
     },
     {
         "id": 5,
-        "name": "Honey Brioche",
+        "name": "Sandwich Viand Hache",
         "description": "Ultra-soft, buttery morning loaf.",
         "price": 11.25,
-        "image": "../assets/bakery-honey-brioche.jpg",
+        "image": "../images/sub catégorie images/Snack food/Sandwich Viand Hache.jpg",
         "category": "viennoiserie"
     },
     {
         "id": 6,
-        "name": "Stoneground Wheat",
+        "name": "Salade Cesar",
         "description": "Nutritious 100% whole grain.",
         "price": 8.75,
-        "image": "../assets/bakery-stoneground-wheat.jpg",
+        "image": "../images/sub catégorie images/Brunch food/Salade Cesar.jpg",
         "category": "sourdough"
     },
     {
         "id": 7,
-        "name": "Parisian Baguette",
+        "name": "Banana Split",
         "description": "Classic crust with an airy crumb.",
         "price": 4.5,
-        "image": "../assets/bakery-parisian-baguette.jpg",
+        "image": "../images/sub catégorie images/sweets/Banana Split.jpg",
         "category": "viennoiserie"
     },
     {
         "id": 8,
-        "name": "Cranberry Walnut",
+        "name": "Waffels au fruit",
         "description": "Sweet & tart artisan loaf.",
         "price": 9.5,
-        "image": "../assets/bakery-cranberry-walnut.jpg",
+        "image": "../images/sub catégorie images/sweets/Waffels au fruit.jpg",
         "category": "sourdough"
     }
 ];

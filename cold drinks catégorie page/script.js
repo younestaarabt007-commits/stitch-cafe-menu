@@ -1,10 +1,10 @@
 const products = [
-  { id: 1, name: "juice-orange", description: "Cold pressed Valencia oranges", price: 4.50, image: "../assets/juice-orange.jpg", category: "juices" },
-  { id: 2, name: "cold-strawberry-smoothie", description: "Greek yogurt, strawberry puree", price: 5.75, image: "../assets/cold-strawberry-smoothie.jpg", category: "smoothies" },
-  { id: 3, name: "close-up-milkshake-glass-plate_117406-7215", description: "70% cacao, vanilla ice cream", price: 6.25, image: "../assets/close-up-milkshake-glass-plate_117406-7215.jpg", category: "shakes" },
-  { id: 4, name: "cold-iced-latte", description: "Double shot over chilled milk", price: 5.50, image: "../assets/cold-iced-latte.jpg", category: "iced_coffee" },
-  { id: 5, name: "delicious-indian-mango-drink-high-angle_23-2148734680", description: "Alphonso mango, yogurt, cardamom", price: 5.00, image: "../assets/delicious-indian-mango-drink-high-angle_23-2148734680.avif", category: "smoothies" },
-  { id: 6, name: "coffee-classic-cold-brew", description: "12-hour steep, smooth finish", price: 4.90, image: "../assets/coffee-classic-cold-brew.jpg", category: "iced_coffee" },
+  { id: 1, name: "Jus D'Orange", description: "Cold pressed Valencia oranges", price: 4.50, image: "../images/sub catégorie images/Jus/Jus D'Orange.jpg", category: "juices" },
+  { id: 2, name: "raspberry-smoothie_1150-18529", description: "Greek yogurt, strawberry puree", price: 5.75, image: "../images/sub catégorie images/smoothie/raspberry-smoothie_1150-18529.jpg", category: "smoothies" },
+  { id: 3, name: "close-up-milkshake", description: "70% cacao, vanilla ice cream", price: 6.25, image: "../images/sub catégorie images/milshake/close-up-milkshake-glass-plate_.jpg", category: "shakes" },
+  { id: 4, name: "Café Crème", description: "Double shot over chilled milk", price: 5.50, image: "../images/sub catégorie images/latté/Café Crème.jpg", category: "iced_coffee" },
+  { id: 5, name: "Jus Mangue", description: "Alphonso mango, yogurt, cardamom", price: 5.00, image: "../images/sub catégorie images/Jus/Jus Mangue.jpg", category: "smoothies" },
+  { id: 6, name: "Café Noir Italien", description: "12-hour steep, smooth finish", price: 4.90, image: "../images/sub catégorie images/black coffee/Café Noir Italien.jpg", category: "iced_coffee" },
 ];
 
 const translations = {
@@ -86,29 +86,29 @@ const translations = {
 };
 
 const menuTranslations = {
-  "Fresh Orange Juice": {
+  "Jus D'Orange": {
     fr: { name: "Jus d'Orange Frais", description: "Oranges Valencia pressées à froid" },
     ar: { name: "عصير برتقال طازج", description: "برتقال فالنسيا معصور على البارد" }
   },
-  "Strawberry Smoothie": {
-    fr: { name: "Smoothie Fraise", description: "Yaourt grec, purée de fraise" },
-    ar: { name: "سموثي فراولة", description: "زبادي يوناني، هريس الفراولة" }
+  "raspberry-smoothie_1150-18529": {
+    fr: { name: "Smoothie Framboise", description: "Yaourt grec, purée de fraise" },
+    ar: { name: "سموثي التوت", description: "زبادي يوناني، هريس الفراولة" }
   },
-  "Chocolate Shake": {
+  "close-up-milkshake": {
     fr: { name: "Shake Chocolat", description: "70% cacao, glace vanille" },
     ar: { name: "مخفوق الشوكولاتة", description: "70% كاكاو، آيس كريم فانيليا" }
   },
-  "Iced Latte": {
-    fr: { name: "Latte Glacé", description: "Double dose sur lait glacé" },
-    ar: { name: "لاتيه مثلج", description: "دبل شوت على حليب بارد" }
+  "Café Crème": {
+    fr: { name: "Café Crème", description: "Double dose sur lait glacé" },
+    ar: { name: "كافيه كريم", description: "دبل شوت على حليب بارد" }
   },
-  "Mango Lassi": {
-    fr: { name: "Lassi Mangue", description: "Mangue Alphonso, yaourt, cardamome" },
-    ar: { name: "لاسي مانجو", description: "مانجو ألفونسو، زبادي، هيل" }
+  "Jus Mangue": {
+    fr: { name: "Jus de Mangue", description: "Mangue Alphonso, yaourt, cardamome" },
+    ar: { name: "عصير مانجو", description: "مانجو ألفونسو، زبادي، هيل" }
   },
-  "Cold Brew": {
-    fr: { name: "Infusion Froide", description: "Infusion 12 heures, finition douce" },
-    ar: { name: "كولد برو", description: "نقع لمدة 12 ساعة، نهاية سلسة" }
+  "Café Noir Italien": {
+    fr: { name: "Café Noir Italien", description: "Infusion 12 heures, finition douce" },
+    ar: { name: "كافيه نوار إيطالي", description: "نقع لمدة 12 ساعة، نهاية سلسة" }
   }
 };
 
