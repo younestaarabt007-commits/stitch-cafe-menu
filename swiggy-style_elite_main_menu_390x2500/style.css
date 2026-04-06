@@ -30,18 +30,18 @@
     will-change: transform, opacity;
 }
 
-/* Combined Shake + Zoom animation for center cards */
+/* Combined Shake + Zoom animation for center cards - stays in place */
 @keyframes shake-zoom {
-    0%, 100% { transform: scale(1) translateX(0) translateY(0) rotate(0deg); }
-    10% { transform: scale(1.08) translateX(-2px) translateY(1px) rotate(-1deg); }
-    20% { transform: scale(1.08) translateX(2px) translateY(-1px) rotate(1deg); }
-    30% { transform: scale(1.08) translateX(-2px) translateY(1px) rotate(-1deg); }
-    40% { transform: scale(1.08) translateX(2px) translateY(-1px) rotate(1deg); }
-    50% { transform: scale(1.08) translateX(-1px) translateY(0.5px) rotate(-0.5deg); }
-    60% { transform: scale(1.08) translateX(1px) translateY(-0.5px) rotate(0.5deg); }
-    70% { transform: scale(1.08) translateX(-1px) translateY(0.5px) rotate(-0.5deg); }
-    80% { transform: scale(1.08) translateX(1px) translateY(-0.5px) rotate(0.5deg); }
-    90% { transform: scale(1.08) translateX(0) translateY(0) rotate(0); }
+    0%, 100% { transform: scale(1) translateY(0) rotate(0deg); }
+    10% { transform: scale(1.08) translateY(8px) rotate(-2deg); }
+    20% { transform: scale(1.08) translateY(8px) rotate(2deg); }
+    30% { transform: scale(1.08) translateY(8px) rotate(-2deg); }
+    40% { transform: scale(1.08) translateY(8px) rotate(2deg); }
+    50% { transform: scale(1.08) translateY(8px) rotate(-1deg); }
+    60% { transform: scale(1.08) translateY(8px) rotate(1deg); }
+    70% { transform: scale(1.08) translateY(8px) rotate(-1deg); }
+    80% { transform: scale(1.08) translateY(8px) rotate(1deg); }
+    90% { transform: scale(1.08) translateY(8px) rotate(0deg); }
 }
 
 #hero-carousel .flex > div.center-card {
