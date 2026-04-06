@@ -52,12 +52,16 @@
             pointer-events: none;
             color: #88AB42;
         }.clay-card {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(200, 200, 200, 0.5);
             box-shadow: 8px 8px 16px rgba(166, 171, 160, 0.15), -8px -8px 16px rgba(255, 255, 255, 0.8);
             transition: transform 0.2s ease;
+        }
+        .clay-card:hover {
+            border: 1px solid rgba(150, 150, 150, 0.7);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
         .clay-card:active {
             transform: scale(0.98);
