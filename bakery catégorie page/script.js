@@ -2,68 +2,100 @@
 const products = [
     {
         "id": 1,
-        "name": "Chocolate Babka",
-        "description": "Rich dark chocolate ganache swirl.",
-        "price": 12,
-        "image": "../images/sub catégorie images/sweets/Chocolate Babka.jpg",
-        "category": "patisserie"
+        "name": "French Toast",
+        "description": "Flaky layers, French butter",
+        "price": 4.50,
+        "image": "../images/sub catégorie images/sweets/French Toast.jpg",
+        "category": "pastry"
     },
     {
         "id": 2,
-        "name": "Waffels au Miels Crème",
-        "description: "Hand-topped with flax & oats.",
-        "price": 9,
-        "image": "../images/sub catégorie images/sweets/Waffels au Miels Crème.jpg",
-        "category": "sourdough"
+        "name": "Mille Feuilles",
+        "description": "Frangipane, toasted almond",
+        "price": 5.25,
+        "image": "../images/sub catégorie images/sweets/Mille Feuilles.jpg",
+        "category": "pastry"
     },
     {
         "id": 3,
-        "name": "Salade Espagnol",
-        "description": "Robust German-style dense rye.",
-        "price": 10.5,
-        "image": "../images/sub catégorie images/Brunch food/Salade Espagnol.jpg",
-        "category": "sourdough"
+        "name": "Teramisu au Chocolat",
+        "description": "Choux pastry, rich ganache",
+        "price": 4.75,
+        "image": "../images/sub catégorie images/sweets/Teramisu au Chocolat.jpg",
+        "category": "cake"
     },
     {
         "id": 4,
-        "name": "Herbed Focaccia",
-        "description": "Rosemary, garlic & olive oil.",
-        "price": 7.5,
-        "image": "../images/sub catégorie images/Brunch food/Herbed Focaccia.jpg",
-        "category": "viennoiserie"
+        "name": "Waffels au fruit",
+        "description": "Vanilla custard, fresh berries",
+        "price": 5.80,
+        "image": "../images/sub catégorie images/sweets/Waffels au fruit.jpg",
+        "category": "waffle"
     },
     {
         "id": 5,
-        "name": "Sandwich Viand Hache",
-        "description": "Ultra-soft, buttery morning loaf.",
-        "price": 11.25,
-        "image": "../images/sub catégorie images/Snack food/Sandwich Viand Hache.jpg",
-        "category": "viennoiserie"
+        "name": "Chees Cake au Citron",
+        "description": "Zesty curd, torched meringue",
+        "price": 5.90,
+        "image": "../images/sub catégorie images/sweets/Chees Cake au Citron.jpg",
+        "category": "cake"
     },
     {
         "id": 6,
-        "name": "Salade Cesar",
-        "description": "Nutritious 100% whole grain.",
-        "price": 8.75,
-        "image": "../images/sub catégorie images/Brunch food/Salade Cesar.jpg",
-        "category": "sourdough"
+        "name": "Dark an White Chocolat Cake ",
+        "description": "Moist crumb, vanilla frosting",
+        "price": 4.95,
+        "image": "../images/sub catégorie images/sweets/Dark an White Chocolat Cake .jpg",
+        "category": "cake"
     },
     {
         "id": 7,
-        "name": "Banana Split",
-        "description": "Classic crust with an airy crumb.",
-        "price": 4.5,
-        "image": "../images/sub catégorie images/sweets/Banana Split.jpg",
-        "category": "viennoiserie"
+        "name": "Cheese Cake Oreo",
+        "description": "Creamy cheesecake with Oreo crust",
+        "price": 5.90,
+        "image": "../images/sub catégorie images/sweets/Cheese Cake Oreo.jpg",
+        "category": "cake"
     },
     {
         "id": 8,
-        "name": "Waffels au fruit",
-        "description": "Sweet & tart artisan loaf.",
-        "price": 9.5,
-        "image": "../images/sub catégorie images/sweets/Waffels au fruit.jpg",
-        "category": "sourdough"
-    }
+        "name": "Cheese Cake au Caramel",
+        "description": "Smooth caramel cheesecake",
+        "price": 5.90,
+        "image": "../images/sub catégorie images/sweets/Cheese Cake au Caramel.jpg",
+        "category": "cake"
+    },
+    {
+        "id": 9,
+        "name": "Crème Caramel",
+        "description": "Silky baked custard with caramel",
+        "price": 4.20,
+        "image": "../images/sub catégorie images/sweets/Crème Caramel.jpg",
+        "category": "dessert"
+    },
+    {
+        "id": 10,
+        "name": "Banana Split",
+        "description": "Banana, ice cream, chocolate",
+        "price": 5.50,
+        "image": "../images/sub catégorie images/sweets/Banana Split.jpg",
+        "category": "dessert"
+    },
+    {
+        "id": 11,
+        "name": "Waffels au Miels Crème",
+        "description": "Honey and cream waffle",
+        "price": 5.60,
+        "image": "../images/sub catégorie images/sweets/Waffels au Miels Crème.jpg",
+        "category": "waffle"
+    },
+    {
+        "id": 12,
+        "name": "Chocolat Fondu",
+        "description": "70% Cacao, Double Espresso",
+        "price": 6.00,
+        "image": "../images/sub catégorie images/sweets/Chocolat Fondu.jpg",
+        "category": "dessert"
+    },
 ];
 
 let currentFilter = 'all';

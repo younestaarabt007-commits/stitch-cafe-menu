@@ -1,10 +1,15 @@
 const products = [
   { id: 1, name: "Jus D'Orange", description: "Cold pressed Valencia oranges", price: 4.50, image: "../images/sub catégorie images/Jus/Jus D'Orange.jpg", category: "juices" },
-  { id: 2, name: "raspberry-smoothie_1150-18529", description: "Greek yogurt, strawberry puree", price: 5.75, image: "../images/sub catégorie images/smoothie/raspberry-smoothie_1150-18529.jpg", category: "smoothies" },
-  { id: 3, name: "close-up-milkshake", description: "70% cacao, vanilla ice cream", price: 6.25, image: "../images/sub catégorie images/milshake/close-up-milkshake-glass-plate_.jpg", category: "shakes" },
-  { id: 4, name: "Café Crème", description: "Double shot over chilled milk", price: 5.50, image: "../images/sub catégorie images/latté/Café Crème.jpg", category: "iced_coffee" },
-  { id: 5, name: "Jus Mangue", description: "Alphonso mango, yogurt, cardamom", price: 5.00, image: "../images/sub catégorie images/Jus/Jus Mangue.jpg", category: "smoothies" },
-  { id: 6, name: "Café Noir Italien", description: "12-hour steep, smooth finish", price: 4.90, image: "../images/sub catégorie images/black coffee/Café Noir Italien.jpg", category: "iced_coffee" },
+  { id: 2, name: "Jus Mangue", description: "Alphonso mango, yogurt, cardamom", price: 5.00, image: "../images/sub catégorie images/Jus/Jus Mangue.jpg", category: "juices" },
+  { id: 3, name: "Jus D'ananas", description: "Tropical pineapple blend", price: 4.80, image: "../images/sub catégorie images/Jus/Jus D'ananas.jpg", category: "juices" },
+  { id: 4, name: "Cuba Mokhito", description: "Zesty lemon with mint", price: 4.10, image: "../images/sub catégorie images/Jus/Cuba Mokhito.avif", category: "juices" },
+  { id: 5, name: "Blueberry Infusion", description: "Antioxidant rich blend", price: 5.75, image: "../images/sub catégorie images/Jus/Blueberry Infusion.jpg", category: "smoothies" },
+  { id: 6, name: "Blue Berry Smoothie", description: "Strawberry, blueberry, yogurt", price: 5.20, image: "../images/sub catégorie images/smoothie/Blue Berry Smoothie.jpg", category: "smoothies" },
+  { id: 7, name: "Kiwi Smoothie", description: "Spinach, apple, banana", price: 5.00, image: "../images/sub catégorie images/smoothie/Kiwi Smoothie.jpg", category: "smoothies" },
+  { id: 8, name: "Milkshake Café Chocolat", description: "Rich cocoa, creamy base", price: 5.20, image: "../images/sub catégorie images/milshake/Milkshake Café Chocolat.jpg", category: "shakes" },
+  { id: 9, name: "Milkshake Oreo", description: "Madagascar vanilla, smooth", price: 5.00, image: "../images/sub catégorie images/milshake/Milkshake Oreo.jpg", category: "shakes" },
+  { id: 10, name: "strawberry-ice milkshake", description: "Fresh strawberries, cream", price: 5.40, image: "../images/sub catégorie images/milshake/strawberry-ice milkshake.jpg", category: "shakes" },
+  { id: 11, name: "Milkshake Banane", description: "Banana, caramel drizzle", price: 5.60, image: "../images/sub catégorie images/milshake/Milkshake Banane.jpg", category: "shakes" },
 ];
 
 const translations = {

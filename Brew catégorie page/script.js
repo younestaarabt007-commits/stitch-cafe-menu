@@ -2,22 +2,101 @@
 const products = [
     {
         id: 1,
-        name: "Café Noir Italien",
-        description: "18-hour steep, nitrogen infused.",
-        price: 6.50,
-        image: "../images/sub catégorie images/black coffee/Café Noir Italien.jpg",
-        category: "cold",
-        favorite: true,
-        isHot: false
-    },
-    {
-        id: 2,
         name: "Matcha Latte",
         description: "Uji-sourced matcha with oat milk.",
         price: 7.25,
         image: "../images/sub catégorie images/latté/Matcha Latte.jpg",
         category: "seasonal"
     },
+    {
+        id: 2,
+        name: "Ethiopian Yirgacheffe",
+        description: "Floral notes with a citrus finish.",
+        price: 5.00,
+        image: "../images/sub kategori images/latté/Ethiopian Yirgacheffe.jpg",
+        category: "coffee"
+    },
+    {
+        id: 3,
+        name: "Café Royal",
+        description: "House-made spices, double shot.",
+        price: 6.75,
+        image: "../images/sub catégorie images/black coffee/Café Royal.jpg",
+        category: "coffee"
+    },
+    {
+        id: 4,
+        name: "Café au Lait Artisanal",
+        description: "Equal parts espresso & milk.",
+        price: 4.50,
+        image: "../images/sub catégorie images/latté/Café au Lait Artisanal.jpg",
+        category: "coffee"
+    },
+    {
+        id: 5,
+        name: "lavender Tea",
+        description: "Floral infusion with local honey.",
+        price: 7.50,
+        image: "../images/sub catégorie images/tea/lavender Tea.jpg",
+        category: "tea"
+    },
+    {
+        id: 6,
+        name: "Golden Turmeric",
+        description: "Spiced healing brew.",
+        price: 6.25,
+        image: "../images/sub catégorie images/smoothie/Golden Turmeric.jpg",
+        category: "tea"
+    },
+    {
+        id: 7,
+        name: "Café au lait avec la Creme",
+        description: "Layered espresso & vanilla.",
+        price: 6.50,
+        image: "../images/sub catégorie images/latté/Café au lait avec la Creme.jpg",
+        category: "coffee"
+    },
+    {
+        id: 8,
+        name: "Tea Nordique",
+        description: "Tart hibiscus with summer berries.",
+        price: 5.25,
+        image: "../images/sub catégorie images/tea/Tea Nordique.jpg",
+        category: "tea"
+    },
+    {
+        id: 9,
+        name: "The de Hibiscus",
+        description: "Fruity, floral, chilled.",
+        price: 6.50,
+        image: "../images/sub catégorie images/tea/The de Hibiscus.jpg",
+        category: "tea"
+    },
+    {
+        id: 10,
+        name: "The Marocain a la Menthe",
+        description: "Cooling green tea.",
+        price: 4.50,
+        image: "../images/sub catégorie images/tea/The Marocain a la Menthe.jpg",
+        category: "tea"
+    },
+    {
+        id: 11,
+        name: "Tea Citron Délise",
+        description: "Zesty, soothing infusion.",
+        price: 5.50,
+        image: "../images/sub catégorie images/tea/Tea Citron Délise.jpg",
+        category: "tea"
+    },
+    {
+        id: 12,
+        name: "Floral Tea",
+        description: "Black tea, milk, caramel.",
+        price: 7.00,
+        image: "../images/sub catégorie images/tea/Floral Tea.jpg",
+        category: "tea"
+    },
+];
     {
         id: 3,
         name: "Ethiopian Yirgacheffe",
