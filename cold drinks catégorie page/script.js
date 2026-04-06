@@ -272,6 +272,19 @@ function setupEventListeners() {
   }
 }
 
+// Global filter function for category icons
+function filterByCategory(category) {
+  currentFilter = category;
+  renderProducts(category);
+  
+  // Update active button state
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  const targetBtn = document.querySelector(`.filter-btn[data-filter="${category}"]`);
+  if (targetBtn) {
+    targetBtn.classList.add('active');
+  }
+}
+
 /*
 function openOrderModal() {
   const modal = document.getElementById('order-modal');

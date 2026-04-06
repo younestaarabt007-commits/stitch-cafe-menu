@@ -63,30 +63,49 @@
       </div>
     </div>
 
-    <div class="flex w-full overflow-x-auto px-4 pt-6 pb-2 gap-4 no-scrollbar">
-      <div class="flex flex-col items-center gap-2 min-w-[64px]">
-        <div class="size-[60px] rounded-full p-[2px] border-2 border-primary">
-          <div class="w-full h-full rounded-full bg-center bg-cover" role="img"
-            style="background-image: url('https://images.unsplash.com/photo-1559716808-4fd1a5a55ca9?q=80&w=200&auto=format&fit=crop');">
+    <div class="flex overflow-x-auto hide-scrollbar gap-2 px-4 pb-0 max-w-7xl mx-auto w-full pt-4">
+      <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="filterByCategory('juices')">
+        <div class="p-[3px] rounded-full bg-gray-200 dark:bg-gray-700 group-hover:bg-primary transition-all">
+          <div class="bg-white dark:bg-[#1a100c] p-1 rounded-full">
+            <div class="w-16 h-16 rounded-full overflow-hidden relative">
+              <img src="../../images/sub catégorie images/Jus/Jus D'Orange.jpg" alt="Jus" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            </div>
           </div>
         </div>
-        <p class="text-[11px] font-semibold" data-i18n="just_in">Just In</p>
+        <p class="text-[10px] text-gray-800 dark:text-white text-center leading-tight max-w-[5rem]">Jus</p>
       </div>
-      <div class="flex flex-col items-center gap-2 min-w-[64px]">
-        <div class="size-[60px] rounded-full p-[2px] border-2 border-primary">
-          <div class="w-full h-full rounded-full bg-center bg-cover" role="img"
-            style="background-image: url('https://images.unsplash.com/photo-1547394765-185d449d6eb2?q=80&w=200&auto=format&fit=crop');">
+
+      <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="filterByCategory('smoothies')">
+        <div class="p-[3px] rounded-full bg-gray-200 dark:bg-gray-700 group-hover:bg-primary transition-all">
+          <div class="bg-white dark:bg-[#1a100c] p-1 rounded-full">
+            <div class="w-16 h-16 rounded-full overflow-hidden relative">
+              <img src="../../images/sub catégorie images/smoothie/Blue Berry Smoothie.jpg" alt="Smoothie" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            </div>
           </div>
         </div>
-        <p class="text-[11px] font-semibold" data-i18n="offers">Offers</p>
+        <p class="text-[10px] text-gray-800 dark:text-white text-center leading-tight max-w-[5rem]">Smoothie</p>
       </div>
-      <div class="flex flex-col items-center gap-2 min-w-[64px]">
-        <div class="size-[60px] rounded-full p-[2px] border-2 border-primary">
-          <div class="w-full h-full rounded-full bg-center bg-cover" role="img"
-            style="background-image: url('https://images.unsplash.com/photo-1510626176956-c2a2b4ff10ec?q=80&w=200&auto=format&fit=crop');">
+
+      <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="filterByCategory('shakes')">
+        <div class="p-[3px] rounded-full bg-gray-200 dark:bg-gray-700 group-hover:bg-primary transition-all">
+          <div class="bg-white dark:bg-[#1a100c] p-1 rounded-full">
+            <div class="w-16 h-16 rounded-full overflow-hidden relative">
+              <img src="../../images/sub catégorie images/milshake/Milkshake Café Chocolat.jpg" alt="Milkshake" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            </div>
           </div>
         </div>
-        <p class="text-[11px] font-semibold" data-i18n="chef_pick">Chef Pick</p>
+        <p class="text-[10px] text-gray-800 dark:text-white text-center leading-tight max-w-[5rem]">Milkshake</p>
+      </div>
+
+      <div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer group" onclick="filterByCategory('iced_coffee')">
+        <div class="p-[3px] rounded-full bg-gray-200 dark:bg-gray-700 group-hover:bg-primary transition-all">
+          <div class="bg-white dark:bg-[#1a100c] p-1 rounded-full">
+            <div class="w-16 h-16 rounded-full overflow-hidden relative">
+              <img src="../../images/sub catégorie images/black coffee/Café Noir Italien.jpg" alt="Iced Coffee" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            </div>
+          </div>
+        </div>
+        <p class="text-[10px] text-gray-800 dark:text-white text-center leading-tight max-w-[5rem]">Iced Coffee</p>
       </div>
     </div>
 
