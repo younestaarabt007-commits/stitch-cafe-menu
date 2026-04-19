@@ -1,13 +1,14 @@
 const products = [
-    { id: "bakery_1", name: "bread-signature-sourdough", description: "Naturally leavened for 24h", price: 8.50, image: "../assets/bread-signature-sourdough.jpg", category: "sourdough" },
-    { id: "bakery_2", name: "French Toast", description: "Flaky layers, French butter", price: 3.50, image: "../images/sub catégorie images/sweets/French Toast.jpg", category: "pastries" },
-    { id: "bakery_3", name: "bread-pain-au-chocolat", description: "Rich chocolate, buttery dough", price: 4.25, image: "../assets/bread-pain-au-chocolat.jpg", category: "pastries" },
-    { id: "bakery_4", name: "bread-baguette", description: "Crispy crust, airy interior", price: 4.00, image: "../assets/bread-baguette.jpg", category: "sourdough" },
-    { id: "bakery_5", name: "bakery-dark-rye-loaf", description: "Dense and fiber-rich", price: 7.25, image: "../assets/bakery-dark-rye-loaf.jpg", category: "whole grain" },
-    { id: "pastry_1", name: "Baklawa", description: "Flaky layers with nuts & honey", price: 5.50, image: "../images/sub catégorie images/Pastry/Baklawa.jpg", category: "pastries" },
-    { id: "pastry_2", name: "Basbousa", description: "Semolina cake with syrup", price: 4.75, image: "../images/sub catégorie images/Pastry/Basbousa.jpg", category: "pastries" },
-    { id: "pastry_3", name: "Cookies au Chocolat", description: "Rich chocolate cookies", price: 6.00, image: "../images/sub catégorie images/Pastry/Cokkies au chocolat.jpg", category: "pastries" },
-    { id: "pastry_4", name: "Donuts", description: "Classic glazed donuts", price: 5.00, image: "../images/sub catégorie images/Pastry/Donuts.jpg", category: "pastries" }
+    { id: "bakery_1", name: "Croissant", description: "Buttery flaky pastry", price: 4.50, image: "../images/sub catégorie images/Pastry/Croissant.jpg", category: "viennoiserie" },
+    { id: "bakery_2", name: "Pain au Chocolat", description: "Rich chocolate bread", price: 4.80, image: "../images/sub catégorie images/Pastry/Petit Pain au Chocolat.jpg", category: "viennoiserie" },
+    { id: "bakery_3", name: "Pain aux Raisins", description: "Raisin pastry with cream", price: 5.00, image: "../images/sub catégorie images/Pastry/Pain Raisins.jpg", category: "viennoiserie" },
+    { id: "bakery_4", name: "Pain Suisse", description: "Swiss pastry with cream", price: 5.50, image: "../images/sub catégorie images/Pastry/Pain Suise.jpg", category: "viennoiserie" },
+    { id: "bakery_5", name: "Baklawa", description: "Flaky layers with nuts & honey", price: 5.50, image: "../images/sub catégorie images/Pastry/Baklawa.jpg", category: "patisserie" },
+    { id: "bakery_6", name: "Basbousa", description: "Semolina cake with syrup", price: 4.75, image: "../images/sub catégorie images/Pastry/Basbousa.jpg", category: "patisserie" },
+    { id: "bakery_7", name: "Cookies au Chocolat", description: "Rich chocolate cookies", price: 6.00, image: "../images/sub catégorie images/Pastry/Cokkies au chocolat.jpg", category: "patisserie" },
+    { id: "bakery_8", name: "Donuts", description: "Classic glazed donuts", price: 5.00, image: "../images/sub catégorie images/Pastry/Donuts.jpg", category: "patisserie" },
+    { id: "bakery_9", name: "French Toast", description: "Flaky layers, French butter", price: 3.50, image: "../images/sub catégorie images/sweets/French Toast.jpg", category: "patisserie" },
+    { id: "bakery_10", name: "Mille Feuilles", description: "Frangipane, toasted almond", price: 5.25, image: "../images/sub catégorie images/sweets/Mille Feuilles.jpg", category: "patisserie" }
 ];
 
 let currentFilter = 'all';
@@ -38,7 +39,7 @@ function renderProducts(filter = 'all') {
     const filteredProducts = filter === 'all' ? products : products.filter(p => p.category.toLowerCase() === filter.toLowerCase());
     list.innerHTML = filteredProducts.map((product, index) => `
             <div onclick="redirectToCustomization('${product.id}')" class="flex flex-col bg-white dark:bg-slate-800 p-3 rounded-2xl border-2 border-white/70 dark:border-white/10 ring-1 ring-black/5 dark:ring-white/5 ring-offset-1 ring-offset-white dark:ring-offset-[#1a100c] shadow-[0_4px_14px_rgba(0,0,0,0.12)] hover:shadow-[0_10px_24px_rgba(0,0,0,0.18)] fade-in-up cursor-pointer group transition-all duration-300 transform hover:-translate-y-1" style="animation-delay:${index * 0.05}s">
-                <div class="product-image w-full h-32 rounded-xl bg-cover bg-center mb-3 relative overflow-hidden" style="background-image:url('${product.image}')" data-name="${product.name}" data-price="${product.price}">
+                <div class="product-image w-full h-44 rounded-xl bg-cover bg-center mb-3 relative overflow-hidden" role="img" aria-label="${product.name}" style="background-image:url('${product.image}')">
                     <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity"></div>
                 </div>
                 <div class="flex-1 flex flex-col px-1">
@@ -53,7 +54,7 @@ function renderProducts(filter = 'all') {
                     <p class="text-[10px] text-gray-500 dark:text-gray-400 line-clamp-2 mb-3 leading-relaxed">${product.description}</p>
                     <div class="flex items-center justify-between gap-2 mt-auto">
                     <span class="text-primary font-extrabold text-[14px]">${product.price.toFixed(2)}DH</span>
-                        <button class="w-[64px] h-[32px] rounded-full bg-[#FF5200] flex items-center justify-center !text-white text-[11px] font-bold uppercase shadow-sm active:scale-95 hover:bg-primary/90 transition-all font-outfit border-2 border-orange-400 ring-2 ring-orange-500/50 ring-offset-1 ring-orange-200 dark:ring-offset-[#1a100c] shadow-[0_2px_8px_rgba(0,0,0,0.18)] hover:shadow-lg" style="color: white !important;" onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
+                        <button class="w-[64px] h-[32px] rounded-full bg-[#FF5200] flex items-center justify-center !text-white text-[11px] font-bold uppercase shadow-sm active:scale-95 hover:bg-primary/90 transition-all font-outfit border-2 border-orange-400 ring-2 ring-orange-500/50 ring-offset-1 ring-orange-200 dark:ring-offset-[#1a100c]" style="color: white !important;" onclick="event.stopPropagation(); addToCart('${product.id}')">ADD</button>
                     </div>
                 </div>
             </div>

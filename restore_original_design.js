@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
 
 // Read current index.html
@@ -78,7 +78,7 @@ const originalCategoryButtons = `    <!-- 4 Big Category Buttons -->
         </div>
 
         <!-- Pastries Button -->
-        <div class="bg-gradient-to-br from-pink-400 to-pink-600 rounded-2xl p-6 text-white relative overflow-hidden group cursor-pointer" onclick="window.location.href='../sweet pastries sub catégorie page/index.html'">
+        <div class="bg-gradient-to-br from-pink-400 to-pink-600 rounded-2xl p-6 text-white relative overflow-hidden group cursor-pointer" onclick="window.location.href='../fast food sub catégorie page/index.html'">
           <div class="flex flex-col items-center justify-center h-full">
             <span class="material-symbols-outlined text-4xl mb-2">bakery_dining</span>
             <h3 class="text-xl font-bold">Pastries</h3>

@@ -34,23 +34,20 @@ function renderBestsellers(items) {
   const container = document.getElementById('bestsellers') || document.getElementById('bestsellers-grid');
   if (!container) return;
 
-  // Debug check
   if (!items || items.length === 0) {
     console.error('No items to render!');
     return;
   }
 
-  // Simply use the provided items directly
   const ordered = items;
+  let html = '';
 
-  container.innerHTML = ordered.map((item, index) => {
+  ordered.forEach((item, index) => {
     let imgUrl = normalizeImagePath(item.image || item.image_url);
-    // Use fallback if image is missing or is the default Unsplash placeholder
     const isDefault = imgUrl && imgUrl.includes('photo-1546069901');
     const displayImg = (imgUrl && !isDefault) ? imgUrl : normalizeImagePath(getFallbackImage(item, index));
     const rating = typeof item.rating === 'number' ? item.rating : getRatingForItem(item);
-
-    const fallback = normalizeImagePath(getFallbackImage(item, index + 50)); // Different seed for fallback
+    const fallback = normalizeImagePath(getFallbackImage(item, index + 50));
     
     item._displayImage = displayImg;
 
@@ -59,7 +56,7 @@ function renderBestsellers(items) {
       return getLang() === 'en' ? summarizeEnglishName(canonicalizeEnglishName(base)) : base;
     })();
 
-    return `
+    html += `
     <div class="bg-white dark:bg-[#2a1e19] rounded-[1.5rem] p-3 shadow-md border border-gray-100 dark:border-white/5 flex gap-4 items-center relative" data-category="${item.category}">
       <div class="absolute top-3 right-3 bg-white/90 dark:bg-black/60 px-2 py-1 rounded-full shadow-sm z-10">
         <span class="material-symbols-outlined text-[14px] text-green-600 dark:text-green-400">${getCategoryIcon(item.category)}</span>
@@ -85,7 +82,74 @@ function renderBestsellers(items) {
         </div>
       </div>
     </div>
-  `}).join('');
+    `;
+
+    // Inject BOTH Promo Cards after every 8 items
+    if ((index + 1) % 8 === 0) {
+      const blockNumber = (index + 1) / 8;
+      html += renderLimitedRoastCard();
+      html += renderSubscriptionBanner(blockNumber);
+    }
+  });
+
+  container.innerHTML = html;
+}
+
+function renderLimitedRoastCard() {
+  return `
+  <div class="col-span-full my-4 -mx-1">
+    <div class="relative w-full h-24 rounded-[2rem] overflow-hidden bg-[#1a0f08] flex items-center px-6 py-4 shadow-xl border border-white/10 group">
+      <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent z-10"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-1/2 opacity-40 group-hover:opacity-60 transition-opacity">
+          <img src="../images/header images of sub catégorie/black coffee header image .jpg" class="w-full h-full object-cover">
+      </div>
+      <div class="relative z-20 flex-1">
+          <span class="bg-primary/20 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider mb-2 inline-block">Special Edition</span>
+          <h3 class="text-white font-bold text-lg leading-tight">Limited Roast</h3>
+          <p class="text-white/60 text-[11px] mt-0.5">Ethiopian Yirgacheffe G1 Premium</p>
+      </div>
+      <div class="relative z-20">
+          <button class="bg-primary text-white text-[11px] font-bold px-5 py-2.5 rounded-full uppercase shadow-glow active:scale-95 transition-transform">
+              Try Now
+          </button>
+      </div>
+    </div>
+  </div>
+  `;
+}
+
+function renderSubscriptionBanner(blockNumber) {
+  const themes = [
+      { color: 'orange', name: 'Juice', img: '../images/header images of sub catégorie/juces header image.jpg' },
+      { color: 'blue', name: 'Milkshake', img: '../images/header images of sub catégorie/milkshake header image.jpg' },
+      { color: 'pink', name: 'Sweet', img: '../images/header images of sub catégorie/sweet pastries header image.jpg' },
+      { color: 'emerald', name: 'Tea', img: '../assets/images/Tea an infussion header image.jpg' }
+  ];
+  const theme = themes[(blockNumber - 1) % themes.length];
+  
+  return `
+  <div class="col-span-full my-4 -mx-1">
+    <div class="h-[120px] rounded-[2rem] bg-gradient-to-r from-${theme.color}-50 to-${theme.color}-100 dark:from-slate-800 dark:to-slate-900 p-6 border border-${theme.color}-200/50 relative overflow-hidden flex items-center shadow-lg group">
+      <div class="absolute right-[-10%] top-0 bottom-0 w-[180px] bg-center bg-contain bg-no-repeat opacity-20 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700" 
+           style='background-image: url("${theme.img}");'></div>
+      <div class="relative z-10 w-full flex justify-between items-center">
+          <div class="w-2/3">
+              <h3 class="font-bold text-${theme.color}-600 dark:text-${theme.color}-400 text-[10px] uppercase tracking-[0.2em] mb-1">Subscription Packs</h3>
+              <p class="font-extrabold text-xl text-gray-900 dark:text-white leading-tight">${theme.name} Packs</p>
+              <div class="mt-3 inline-flex items-center gap-2 text-primary text-[12px] font-bold uppercase tracking-wider cursor-pointer hover:gap-3 transition-all">
+                  <span>Explore Plans</span> 
+                  <span class="material-symbols-outlined text-[18px]">arrow_right_alt</span>
+              </div>
+          </div>
+          <div class="w-1/3 flex justify-end">
+              <div class="w-16 h-16 rounded-2xl overflow-hidden shadow-2xl border-2 border-white dark:border-white/10 rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                  <img src="${theme.img}" class="w-full h-full object-cover">
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  `;
 }
 
 function renderCategories(items) {
@@ -94,7 +158,7 @@ function renderCategories(items) {
     { name: getTranslation('Tea & Infusion'), img: '../assets/subcat_icons/tea icon .png', link: '../tea and infusion sub catégorie page/index.html' },
     { name: getTranslation('Milkshake'), img: '../assets/subcat_icons/milkshake icon.png', link: '../milkshake sub catégorie page/index.html' },
     { name: getTranslation('Juice'), img: '../assets/subcat_icons/juces icon.png', link: '../juces sub catégorie page/index.html' },
-    { name: getTranslation('Sweet Pastries'), img: '../assets/subcat_icons/sweet pastry.png', link: '../sweet pastries sub catégorie page/index.html' },
+    { name: getTranslation('Sweet Pastries'), img: '../../images/sub catégories icons/Snack Food.jpg', link: '../fast food sub catégorie page/index.html' },
     { name: getTranslation('Black Coffee'), img: '../assets/subcat_icons/black coffe icon.jpg', link: '../black coffee sub catégorie page/index.html' },
     { name: getTranslation('Latte'), img: '../assets/subcat_icons/latté icon.jpg', link: '../latté hot drink sub catégorie page/index.html' },
     { name: getTranslation('Smoothie'), img: '../assets/subcat_icons/smoothie icon.png', link: '../smothie sub catégorie page/index.html' },
@@ -166,7 +230,7 @@ function buildCustomizationUrl(item) {
   } else if (category.includes('coffee') || category.includes('brew')) {
     customizationPage = '../pure_noir_espresso_customization_view_1/index.html';
   } else if (category.includes('pastry') || category.includes('bakery')) {
-    customizationPage = '../sweet_pastries_customization_view/index.html';
+    customizationPage = '../fast_food_customization_view/index.html';
   } else if (category.includes('bread')) {
     customizationPage = '../petit pain bakery_customization_view/index.html';
   } else if (category.includes('juice') || category.includes('drink')) {
@@ -352,7 +416,7 @@ window.navigateToCategory = (category) => {
     return;
   }
   if (categoryId === 'bakery' || categoryId === 'pastry' || categoryId === 'sweet pastries') {
-    window.location.href = '../sweet pastries sub catégorie page/index.html';
+    window.location.href = '../fast food sub catégorie page/index.html';
     return;
   }
   if (categoryId === 'cold drink') {
@@ -564,6 +628,7 @@ const translations = {
     trend: "Trend",
     morning: "MORNING",
     brew: "BREW",
+    boissons_chaudes: "Hot Drinks",
     freshly_brewed_coffee: "Freshly brewed coffee.",
     sweet_treats: "Sweet Treats",
     popular: "⭐ Popular",
@@ -581,6 +646,10 @@ const translations = {
     smoothie: "Smoothie",
     tea_infusion: "Tea & Infusion",
     artisanal_bread: "Pastry",
+    viennoiserie: "Venoisserie",
+    patisserie: "Patisserie",
+    viennoiserie_title: "Venoisserie",
+    patisserie_title: "Patisserie",
     our_menu: "Our Menu",
     toasts_bowls: "Toasts & Bowls",
     coffee_tea: "Coffee & Tea",
@@ -639,6 +708,7 @@ const translations = {
     trend: "Tendance",
     morning: "MATIN",
     brew: "INFUSION",
+    boissons_chaudes: "Boissons Chaudes",
     freshly_brewed_coffee: "Café fraîchement préparé.",
     sweet_treats: "Douceurs Sucrées",
     popular: "⭐ Populaire",
@@ -656,6 +726,10 @@ const translations = {
     smoothie: "Smoothie",
     tea_infusion: "Thé & Infusion",
     artisanal_bread: "Pain Artisanal",
+    viennoiserie: "Vénoisserie",
+    patisserie: "Pâtisserie",
+    viennoiserie_title: "Vénoisserie",
+    patisserie_title: "Pâtisserie",
     our_menu: "Notre Menu",
     toasts_bowls: "Tartines & Bols",
     coffee_tea: "Café & Thé",
@@ -714,6 +788,7 @@ const translations = {
     trend: "رائج",
     morning: "الصباح",
     brew: "قهوة",
+    boissons_chaudes: "مشروبات ساخنة",
     freshly_brewed_coffee: "قهوة طازجة التحضير.",
     sweet_treats: "حلويات",
     popular: "⭐ مشهور",
@@ -731,6 +806,10 @@ const translations = {
     smoothie: "سموثي",
     tea_infusion: "شاي وأعشاب",
     artisanal_bread: "خبز حرفي",
+    viennoiserie: "فاتresse",
+    patisserie: "معجنات",
+    viennoiserie_title: "فاتresse",
+    patisserie_title: "معجنات",
     our_menu: "قائمتنا",
     toasts_bowls: "توست وسلطانيات",
     coffee_tea: "قهوة وشاي",

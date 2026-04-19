@@ -1,4 +1,4 @@
-
+﻿
 function apiBase() {
   try {
     return localStorage.getItem('stitch_api_base') || (typeof window !== 'undefined' && window.STITCH_API_BASE) || null;
@@ -81,7 +81,7 @@ function renderCategories(items) {
     { name: getTranslation('Tea & Infusion'), img: 'assets/subcat_icons/tea icon .png', link: '../tea and infusion sub cat├⌐gorie page/index.html' },
     { name: getTranslation('Milkshake'), img: 'assets/subcat_icons/milkshake icon.png', link: '../milkshake sub cat├⌐gorie page/index.html' },
     { name: getTranslation('Juice'), img: 'assets/subcat_icons/juces icon.png', link: '../juces sub cat├⌐gorie page/index.html' },
-    { name: getTranslation('Sweet Pastries'), img: 'assets/subcat_icons/sweet pastry.png', link: '../sweet pastries sub cat├⌐gorie page/index.html' },
+    { name: getTranslation('Sweet Pastries'), img: '../images/sub catégories icons/Snack Food.jpg', link: '../sweet pastries sub cat├⌐gorie page/index.html' },
     { name: getTranslation('Black Coffee'), img: 'assets/subcat_icons/black coffe icon.jpg', link: '../black coffee sub cat├⌐gorie page/index.html' },
     { name: getTranslation('Latte'), img: 'assets/subcat_icons/latt├⌐ icon.jpg', link: '../latt├⌐ hot drink sub cat├⌐gorie page/index.html' },
     { name: getTranslation('Smoothie'), img: 'assets/subcat_icons/smoothie icon.png', link: '../smothie sub cat├⌐gorie page/index.html' },
@@ -152,7 +152,7 @@ function buildCustomizationUrl(item) {
   } else if (category.includes('coffee') || category.includes('brew')) {
     customizationPage = 'pure_noir_espresso_customization_view_1/index.html';
   } else if (category.includes('pastry') || category.includes('bakery')) {
-    customizationPage = 'sweet_pastries_customization_view/index.html';
+    customizationPage = 'fast_food_customization_view/index.html';
   } else if (category.includes('bread')) {
     customizationPage = 'petit pain bakery_customization_view/index.html';
   } else if (category.includes('juice') || category.includes('drink')) {

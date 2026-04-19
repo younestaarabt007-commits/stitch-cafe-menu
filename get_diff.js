@@ -1,4 +1,4 @@
-const { exec } = require('child_process');
+﻿const { exec } = require('child_process');
 
 exec('git diff "bakery catégorie page/script.js"', (error, stdout, stderr) => {
     if (error) {
