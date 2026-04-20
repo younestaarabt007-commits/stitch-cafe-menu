@@ -84,72 +84,139 @@ function renderBestsellers(items) {
     </div>
     `;
 
-    // Inject BOTH Promo Cards after every 8 items
+    // Inject BOTH Promo Carousels after every 8 items
     if ((index + 1) % 8 === 0) {
-      const blockNumber = (index + 1) / 8;
-      html += renderLimitedRoastCard();
-      html += renderSubscriptionBanner(blockNumber);
+      html += renderSmallPromoCarousel();
+      html += renderBannerPromoCarousel();
     }
   });
 
   container.innerHTML = html;
 }
 
-function renderLimitedRoastCard() {
+function renderSmallPromoCarousel() {
+  const variations = [
+    { tag: 'Special Edition', title: 'Limited Roast', desc: 'Ethiopian Yirgacheffe G1 Premium', img: '../images/header images of sub catégorie/black coffee header image .jpg' },
+    { tag: 'Morning Deal', title: 'Breakfast Special', desc: 'Freshly baked croissants & pastries', img: '../images/sub catégories icons/Breakfast.jpg' },
+    { tag: 'Healthy Choice', title: 'Fresh & Vibrant', desc: 'Seasonal fruit smoothies', img: '../images/sub catégorie images/smoothie/raspberry-smoothie_1150-18529.jpg' },
+    { tag: 'Daily Fresh', title: "Baker's Choice", desc: 'Artisanal Sourdough crusts', img: '../assets/subcat_icons/artisanal bread.jpg' },
+    { tag: 'Summer Vibe', title: 'Citrus Refresh', desc: 'Iced organic juice blends', img: '../images/header images of sub catégorie/juces header image.jpg' },
+    { tag: 'Indulgence', title: 'Sweet Treats', desc: 'Decadent velvet chocolate cakes', img: '../images/header images of sub catégorie/sweet pastries header image.jpg' },
+    { tag: 'Cool Down', title: 'Creamy Delights', desc: 'Classic vanilla bean milkshakes', img: '../images/header images of sub catégorie/milkshake header image.jpg' },
+    { tag: 'Energy', title: 'Morning Boost', desc: 'Avocado & poached egg toast', img: '../images/sub catégorie images/toast/Toast Champignon Frommage.jpg' },
+    { tag: 'Relax', title: 'Zen Moment', desc: 'Premium matcha green tea', img: '../assets/images/Tea an infussion header image.jpg' }
+  ];
+
+  let slidesHtml = variations.map(v => `
+      <div style="width: 11.11111%;" class="shrink-0 h-full relative border border-white/10 group bg-[#1a0f08] flex items-center px-6 shadow-xl">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent z-10"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-1/2 opacity-40 group-hover:opacity-60 transition-opacity">
+            <img src="${v.img}" class="w-full h-full object-cover">
+        </div>
+        <div class="relative z-20 flex-1 flex flex-col justify-center py-4">
+            <span class="bg-primary/20 text-primary text-[10px] font-bold w-fit px-2 py-0.5 rounded-full uppercase tracking-wider mb-2 inline-block">${v.tag}</span>
+            <h3 class="text-white font-bold text-lg leading-tight mt-1">${v.title}</h3>
+            <p class="text-white/60 text-[11px] mt-0.5">${v.desc}</p>
+        </div>
+        <div class="relative z-20 flex items-center">
+            <button class="bg-primary text-white text-[11px] font-bold px-5 py-2.5 rounded-full uppercase shadow-glow active:scale-95 transition-transform">
+                Try Now
+            </button>
+        </div>
+      </div>
+  `).join('');
+
   return `
   <div class="col-span-full my-4 -mx-1">
-    <div class="relative w-full h-24 rounded-[2rem] overflow-hidden bg-[#1a0f08] flex items-center px-6 py-4 shadow-xl border border-white/10 group">
-      <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent z-10"></div>
-      <div class="absolute right-0 top-0 bottom-0 w-1/2 opacity-40 group-hover:opacity-60 transition-opacity">
-          <img src="../images/header images of sub catégorie/black coffee header image .jpg" class="w-full h-full object-cover">
-      </div>
-      <div class="relative z-20 flex-1">
-          <span class="bg-primary/20 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider mb-2 inline-block">Special Edition</span>
-          <h3 class="text-white font-bold text-lg leading-tight">Limited Roast</h3>
-          <p class="text-white/60 text-[11px] mt-0.5">Ethiopian Yirgacheffe G1 Premium</p>
-      </div>
-      <div class="relative z-20">
-          <button class="bg-primary text-white text-[11px] font-bold px-5 py-2.5 rounded-full uppercase shadow-glow active:scale-95 transition-transform">
-              Try Now
-          </button>
+    <div class="w-full h-24 rounded-[2rem] overflow-hidden relative promo-container">
+      <div class="promo-track-left flex w-[900%] h-full transition-transform duration-500 ease-in-out">
+        ${slidesHtml}
       </div>
     </div>
   </div>
   `;
 }
 
-function renderSubscriptionBanner(blockNumber) {
-  const themes = [
-      { color: 'orange', name: 'Juice', img: '../images/header images of sub catégorie/juces header image.jpg' },
-      { color: 'blue', name: 'Milkshake', img: '../images/header images of sub catégorie/milkshake header image.jpg' },
-      { color: 'pink', name: 'Sweet', img: '../images/header images of sub catégorie/sweet pastries header image.jpg' },
-      { color: 'emerald', name: 'Tea', img: '../assets/images/Tea an infussion header image.jpg' }
+function renderBannerPromoCarousel() {
+  const variations = [
+    { color: 'orange', name: 'Juice', img: '../images/header images of sub catégorie/juces header image.jpg' },
+    { color: 'blue', name: 'Milkshake', img: '../images/header images of sub catégorie/milkshake header image.jpg' },
+    { color: 'pink', name: 'Sweet', img: '../images/header images of sub catégorie/sweet pastries header image.jpg' },
+    { color: 'emerald', name: 'Tea', img: '../assets/images/Tea an infussion header image.jpg' },
+    { color: 'slate', name: 'Coffee', img: '../images/header images of sub catégorie/black coffee header image .jpg' },
+    { color: 'yellow', name: 'Breakfast', img: '../images/sub catégories icons/Breakfast.jpg' },
+    { color: 'rose', name: 'Smoothie', img: '../images/sub catégorie images/smoothie/raspberry-smoothie_1150-18529.jpg' },
+    { color: 'amber', name: 'Toast', img: '../images/sub catégorie images/toast/Toast Champignon Frommage.jpg' },
+    { color: 'fuchsia', name: 'Bread', img: '../assets/subcat_icons/artisanal bread.jpg' }
   ];
-  const theme = themes[(blockNumber - 1) % themes.length];
-  
+
+  let slidesHtml = variations.map(theme => `
+      <div style="width: 11.11111%;" class="shrink-0 h-full relative group">
+        <div class="w-full h-full bg-gradient-to-r from-${theme.color}-50 to-${theme.color}-100 dark:from-slate-800 dark:to-slate-900 border border-${theme.color}-200/50 relative overflow-hidden flex items-center p-6 shadow-lg">
+          <div class="absolute right-[-10%] top-0 bottom-0 w-[180px] bg-center bg-contain bg-no-repeat opacity-20 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700" 
+               style='background-image: url("${theme.img}");'></div>
+          <div class="relative z-10 w-full flex justify-between items-center">
+              <div class="w-2/3">
+                  <h3 class="font-bold text-${theme.color}-600 dark:text-${theme.color}-400 text-[10px] uppercase tracking-[0.2em] mb-1">Subscription Packs</h3>
+                  <p class="font-extrabold text-xl text-gray-900 dark:text-white leading-tight">${theme.name} Packs</p>
+                  <div class="mt-3 inline-flex items-center gap-2 text-primary text-[12px] font-bold uppercase tracking-wider cursor-pointer hover:gap-3 transition-all">
+                      <span>Explore Plans</span> 
+                      <span class="material-symbols-outlined text-[18px]">arrow_right_alt</span>
+                  </div>
+              </div>
+              <div class="w-1/3 flex justify-end">
+                  <div class="w-16 h-16 rounded-2xl overflow-hidden shadow-2xl border-2 border-white dark:border-white/10 rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                      <img src="${theme.img}" class="w-full h-full object-cover">
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+  `).join('');
+
   return `
   <div class="col-span-full my-4 -mx-1">
-    <div class="h-[120px] rounded-[2rem] bg-gradient-to-r from-${theme.color}-50 to-${theme.color}-100 dark:from-slate-800 dark:to-slate-900 p-6 border border-${theme.color}-200/50 relative overflow-hidden flex items-center shadow-lg group">
-      <div class="absolute right-[-10%] top-0 bottom-0 w-[180px] bg-center bg-contain bg-no-repeat opacity-20 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700" 
-           style='background-image: url("${theme.img}");'></div>
-      <div class="relative z-10 w-full flex justify-between items-center">
-          <div class="w-2/3">
-              <h3 class="font-bold text-${theme.color}-600 dark:text-${theme.color}-400 text-[10px] uppercase tracking-[0.2em] mb-1">Subscription Packs</h3>
-              <p class="font-extrabold text-xl text-gray-900 dark:text-white leading-tight">${theme.name} Packs</p>
-              <div class="mt-3 inline-flex items-center gap-2 text-primary text-[12px] font-bold uppercase tracking-wider cursor-pointer hover:gap-3 transition-all">
-                  <span>Explore Plans</span> 
-                  <span class="material-symbols-outlined text-[18px]">arrow_right_alt</span>
-              </div>
-          </div>
-          <div class="w-1/3 flex justify-end">
-              <div class="w-16 h-16 rounded-2xl overflow-hidden shadow-2xl border-2 border-white dark:border-white/10 rotate-3 group-hover:rotate-0 transition-transform duration-500">
-                  <img src="${theme.img}" class="w-full h-full object-cover">
-              </div>
-          </div>
+    <div class="w-full h-[120px] rounded-[2rem] overflow-hidden relative promo-container">
+      <!-- We initialize this track offset so it can travel "Right" -->
+      <div class="promo-track-right flex w-[900%] h-full transition-transform duration-500 ease-in-out" style="transform: translateX(-88.8888%);">
+        ${slidesHtml}
       </div>
     </div>
   </div>
   `;
+}
+
+// Global Carousel Animation logic
+let promoCarouselIndex = 0;
+let promoCarouselInterval = null;
+
+function startPromoCarousels() {
+  if (promoCarouselInterval) clearInterval(promoCarouselInterval);
+
+  // Set initial state for right tracks
+  const rightTracks = document.querySelectorAll('.promo-track-right');
+  rightTracks.forEach(track => {
+    track.style.transform = `translateX(-88.8888%)`; // (-8 * 100/9)
+  });
+
+  promoCarouselInterval = setInterval(() => {
+    promoCarouselIndex = (promoCarouselIndex + 1) % 9;
+    
+    // Left Sliding Card 1
+    const leftTracks = document.querySelectorAll('.promo-track-left');
+    leftTracks.forEach(track => {
+      // 9 items = width 900%. Each item is 100/9 = 11.1111% of the track.
+      track.style.transform = `translateX(-${promoCarouselIndex * 11.1111}%)`;
+    });
+
+    // Right Sliding Card 2
+    const rightTracks = document.querySelectorAll('.promo-track-right');
+    rightTracks.forEach(track => {
+      // Starts at index 8 (-88.88%), moves towards index 0 (0%)
+      const reverseIndex = 8 - promoCarouselIndex;
+      track.style.transform = `translateX(-${reverseIndex * 11.1111}%)`;
+    });
+  }, 2000);
 }
 
 function renderCategories(items) {
@@ -158,7 +225,8 @@ function renderCategories(items) {
     { name: getTranslation('Tea & Infusion'), img: '../assets/subcat_icons/tea icon .png', link: '../tea and infusion sub catégorie page/index.html' },
     { name: getTranslation('Milkshake'), img: '../assets/subcat_icons/milkshake icon.png', link: '../milkshake sub catégorie page/index.html' },
     { name: getTranslation('Juice'), img: '../assets/subcat_icons/juces icon.png', link: '../juces sub catégorie page/index.html' },
-    { name: getTranslation('Sweet Pastries'), img: '../../images/sub catégories icons/Snack Food.jpg', link: '../fast food sub catégorie page/index.html' },
+    { name: getTranslation('Sweet Pastries'), img: '../images/sub catégories icons/sweet pastry icon.png', link: '../sweet pastries sub catégorie page/index.html' },
+    { name: getTranslation('Cold Drinks') || 'Cold Drinks', img: '../images/sub catégories icons/Cold drinks icon.jpg', link: '../cold drinks sub catégorie page/index.html' },
     { name: getTranslation('Black Coffee'), img: '../assets/subcat_icons/black coffe icon.jpg', link: '../black coffee sub catégorie page/index.html' },
     { name: getTranslation('Latte'), img: '../assets/subcat_icons/latté icon.jpg', link: '../latté hot drink sub catégorie page/index.html' },
     { name: getTranslation('Smoothie'), img: '../assets/subcat_icons/smoothie icon.png', link: '../smothie sub catégorie page/index.html' },
@@ -327,6 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCategories();
   handleTableContext();
   // startHeroCarousel(); // Disabled - using auto-loop instead
+  startPromoCarousels();
 });
 
 function handleTableContext() {
