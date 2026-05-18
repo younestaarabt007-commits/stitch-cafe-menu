@@ -1,18 +1,18 @@
 
-window.allMenuItems = [
+const allMenuItems = [
   // Brunch
-  { id: 'brunch-1', name: "Farm Omelette", description: "Organic eggs, cheddar, fresh herbs.", price: 12.50, image: "../../images/sub catégorie images/Brunch food/Salade Cesar.jpg", category: "Brunch" },
-  { id: 'brunch-2', name: "Croissant Benedict Salmon", description: "English muffin, bacon, hollandaise sauce.", price: 16.00, image: "../../images/sub catégorie images/Brunch food/croissant-benedict-salmon-with-poched-egg-hollandaise-sauce-served-with-fresh-salad_140725-1329.avif", category: "Brunch" },
+  { id: 'brunch-1', name: "delicious-omelette-bursting-with-fillings-featuring-eggs-vegetables-and-cheese-creating-vibrant-and-appetizing-presentation-perfect-for-breakfast-or-brunch-lovers-png", description: "Organic eggs, cheddar, fresh herbs.", price: 12.50, image: "../../images/sub catégorie images/Brunch food/Salade Cesar.jpg", category: "Brunch" },
+  { id: 'brunch-2', name: "croissant-benedict-salmon-with-poched-egg-hollandaise-sauce-served-with-fresh-salad_140725-1329", description: "English muffin, bacon, hollandaise sauce.", price: 16.00, image: "../../images/sub catégorie images/Brunch food/croissant-benedict-salmon-with-poched-egg-hollandaise-sauce-served-with-fresh-salad_140725-1329.avif", category: "Brunch" },
   { id: 'brunch-3', name: "Petit Déjeuner Latino", description: "Poached eggs in hearty spicy tomato sauce.", price: 15.50, image: "../../images/sub catégorie images/Brunch food/Petit Déjeuner Latino.jpg", category: "Brunch" },
   { id: 'brunch-4', name: "Salade Marocaine", description: "Roasted potatoes, kale, peppers.", price: 14.50, image: "../../images/sub catégorie images/Brunch food/Salade Marocaine.jpg", category: "Brunch" },
   { id: 'brunch-5', name: "Petit Déjeuner Nordique", description: "Chorizo, scrambled eggs, beans.", price: 13.00, image: "../../images/sub catégorie images/Brunch food/Petit Déjeuner Nordique.jpg", category: "Brunch" },
   { id: 'brunch-6', name: "Orange Chesse Cake", description: "6oz sirloin, two eggs any style.", price: 19.50, image: "../../images/sub catégorie images/sweets/Orange Chesse Cake.jpg", category: "Brunch" },
-  { id: 'brunch-7', name: "Fluffy Scrambled Eggs", description: "Spinach, goat cheese, egg whites.", price: 13.50, image: "../../images/sub catégorie images/Brunch food/fluffy-scrambled-eggs-garnished-with-rosemary-png.png", category: "Brunch" },
+  { id: 'brunch-7', name: "fluffy-scrambled-eggs-garnished-with-rosemary-png", description: "Spinach, goat cheese, egg whites.", price: 13.50, image: "../../images/sub catégorie images/Brunch food/fluffy-scrambled-eggs-garnished-with-rosemary-png.png", category: "Brunch" },
   { id: 'brunch-8', name: "Crème Caramel", description: "Corn tortillas, pickled onions, avocado.", price: 11.00, image: "../../images/sub catégorie images/sweets/Crème Caramel.jpg", category: "Brunch" },
   { id: 'brunch-9', name: "Toast Frittata", description: "Onions, potatoes, aged cheddar.", price: 14.75, image: "../../images/sub catégorie images/toast/Toast Frittata.jpg", category: "Brunch" },
-  { id: 'brunch-10', name: "Pancake with Berries", description: "Mixed berries, granola, honey.", price: 12.00, image: "../../images/sub catégorie images/sweets/Orange Chesse Cake.jpg", category: "Brunch" },
-  { id: 'brunch-11', name: "Waffles with Honey and Creme", description: "Crispy waffles, berries, cream.", price: 11.50, image: "../../images/sub catégorie images/sweets/waffles with Honey and Creme.jpg", category: "Brunch" },
-  { id: 'brunch-12', name: "Full English Breakfast", description: "Sausage, bacon, eggs, beans, toast.", price: 22.00, image: "../../images/sub catégorie images/Brunch food/delicious-and-hearty-full-english-breakfast-plate-with-fried-eggs-sausages-toast-beans-and-tomatoes-isolated-on-transparent-background-png.png", category: "Brunch" },
+  { id: 'brunch-10', name: "panne cake with berries ", description: "Mixed berries, granola, honey.", price: 12.00, image: "../../images/sub catégorie images/sweets/Orange Chesse Cake.jpg", category: "Brunch" },
+  { id: 'brunch-11', name: "waffles with Honey and Creme", description: "Crispy waffles, berries, cream.", price: 11.50, image: "../../images/sub catégorie images/sweets/waffles with Honey and Creme.jpg", category: "Brunch" },
+  { id: 'brunch-12', name: "delicious-and-hearty-full-english-breakfast-plate-with-fried-eggs-sausages-toast-beans-and-tomatoes-isolated-on-transparent-background-png", description: "Sausage, bacon, eggs, beans, toast.", price: 22.00, image: "../../images/sub catégorie images/Brunch food/delicious-and-hearty-full-english-breakfast-plate-with-fried-eggs-sausages-toast-beans-and-tomatoes-isolated-on-transparent-background-png.png", category: "Brunch" },
 
   // Brew
   { id: 'brew-1', name: "Café Noir Italien", description: "18-hour steep, nitrogen infused.", price: 6.50, image: "../../images/sub catégorie images/black coffee/Café Noir Italien.jpg", category: "Cold Brew" },
@@ -44,16 +44,16 @@ window.allMenuItems = [
 
   // Cold Drinks
   { id: 'cold-1', name: "Jus D'Orange", description: "Cold pressed Valencia oranges", price: 4.50, image: "../../images/sub catégorie images/Jus/Jus D'Orange.jpg", category: "Juice" },
-  { id: 'cold-2', name: "Raspberry Smoothie", description: "Greek yogurt, strawberry puree", price: 5.75, image: "../../images/sub catégorie images/smoothie/raspberry-smoothie_1150-18529.jpg", category: "Smoothie" },
-  { id: 'cold-3', name: "Chocolate Milkshake", description: "70% cacao, vanilla ice cream", price: 6.25, image: "../../images/sub catégorie images/milshake/close-up-milkshake-glass-plate_.jpg", category: "Shake" },
+  { id: 'cold-2', name: "raspberry-smoothie_1150-18529", description: "Greek yogurt, strawberry puree", price: 5.75, image: "../../images/sub catégorie images/smoothie/raspberry-smoothie_1150-18529.jpg", category: "Smoothie" },
+  { id: 'cold-3', name: "close-up-milkshake-glass-plate_", description: "70% cacao, vanilla ice cream", price: 6.25, image: "../../images/sub catégorie images/milshake/close-up-milkshake-glass-plate_.jpg", category: "Shake" },
   { id: 'cold-4', name: "Café Crème", description: "Double shot over chilled milk", price: 5.50, image: "../../images/sub catégorie images/latté/Café Crème.jpg", category: "Coffee" },
   { id: 'cold-5', name: "Jus Mangue", description: "Alphonso mango, yogurt, cardamom", price: 5.00, image: "../../images/sub catégorie images/Jus/Jus Mangue.jpg", category: "Smoothie" },
   { id: 'cold-6', name: "Café Noir Italien", description: "12-hour steep, smooth finish", price: 4.90, image: "../../images/sub catégorie images/black coffee/Café Noir Italien.jpg", category: "Cold Brew" },
 
   // Creme/Latte
-  { id: 'creme-1', name: "Iced Orange Mocktail", description: "Fresh orange with milk foam", price: 5.50, image: "../../images/sub catégorie images/Jus/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif", category: "Coffee" },
-  { id: 'creme-2', name: "Tropical Umbrella Cocktail", description: "Lemon-lime with mint", price: 4.25, image: "../../images/sub catégorie images/Jus/colorful-cocktail-with-orange-slice-cocktail-umbrella-green-black-straw_140725-10521.avif", category: "Juice" },
-  { id: 'creme-3', name: "Mango Indian Drink", description: "Mango puree and light cream", price: 5.75, image: "../../images/sub catégorie images/Jus/delicious-indian-mango-drink-high-angle_23-2148734680.avif", category: "Cold Drink" },
+  { id: 'creme-1', name: "glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038", description: "Fresh orange with milk foam", price: 5.50, image: "../../images/sub catégorie images/Jus/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif", category: "Coffee" },
+  { id: 'creme-2', name: "colorful-cocktail-with-orange-slice-cocktail-umbrella-green-black-straw_140725-10521", description: "Lemon-lime with mint", price: 4.25, image: "../../images/sub catégorie images/Jus/colorful-cocktail-with-orange-slice-cocktail-umbrella-green-black-straw_140725-10521.avif", category: "Juice" },
+  { id: 'creme-3', name: "delicious-indian-mango-drink-high-angle_23-2148734680", description: "Mango puree and light cream", price: 5.75, image: "../../images/sub catégorie images/Jus/delicious-indian-mango-drink-high-angle_23-2148734680.avif", category: "Cold Drink" },
   { id: 'creme-4', name: "Jus de Pomme", description: "Cold pressed apples", price: 4.00, image: "../../images/sub catégorie images/Jus/Jus de Pomme.jpg", category: "Juice" },
   { id: 'creme-5', name: "Jus de Fraise ", description: "Strawberry and grapefruit", price: 5.20, image: "../../images/sub catégorie images/Jus/Jus de Fraise .jpg", category: "Juice" },
 
@@ -65,7 +65,7 @@ window.allMenuItems = [
   // Latte Hot
   { id: 'latte-1', name: "Café au lait avec la Creme", description: "Double shot, steamed milk", price: 4.80, image: "../../images/sub catégorie images/latté/Café au lait avec la Creme.jpg", category: "Coffee" },
   { id: 'latte-2', name: "Café au Lait Artisanal", description: "House vanilla syrup", price: 5.10, image: "../../images/sub catégorie images/latté/Café au Lait Artisanal.jpg", category: "Coffee" },
-  { id: 'latte-3', name: "Caramel Cold Shake", description: "Buttery caramel drizzle", price: 5.10, image: "../../images/sub catégorie images/sweets/caramel-cold-shake-with-cream_.avif", category: "Coffee" },
+  { id: 'latte-3', name: "caramel-cold-shake-with-cream_", description: "Buttery caramel drizzle", price: 5.10, image: "../../images/sub catégorie images/sweets/caramel-cold-shake-with-cream_.avif", category: "Coffee" },
   { id: 'latte-4', name: "Chocolat Cake with Stawberrys", description: "Seasonal spices & puree", price: 5.40, image: "../../images/sub catégorie images/sweets/Chocolat Cake with Stawberrys.jpg", category: "Coffee" },
 
   // Tea
@@ -88,8 +88,8 @@ window.allMenuItems = [
   { id: 'toast-1', name: "Toast Champignon Frommage", description: "Poached eggs, hollandaise", price: 14.50, image: "../../images/sub catégorie images/toast/Toast Champignon Frommage.jpg", category: "Toast" },
   { id: 'toast-2', name: "Toast Frittata", description: "Mushrooms, truffle oil", price: 12.50, image: "../../images/sub catégorie images/toast/Toast Frittata.jpg", category: "Toast" },
   { id: 'toast-3', name: "Pumpkin Stew", description: "Tomato, peppers, eggs", price: 11.25, image: "../../images/sub catégorie images/Brunch food/Pumpkin Stew.jpg", category: "Toast" },
-  { id: 'toast-4', name: "Toast Avocado", description: "Sourdough, smashed avo", price: 10.50, image: "../../images/sub catégorie images/toast/toast.jpg", category: "Toast" },
-  { id: 'toast-5', name: "Croissant Benedict Salmon", description: "Ham, hollandaise", price: 13.50, image: "../../images/sub catégorie images/Brunch food/croissant-benedict-salmon-with-poched-egg-hollandaise-sauce-served-with-fresh-salad_140725-1329.avif", category: "Toast" },
+  { id: 'toast-4', name: "toast", description: "Sourdough, smashed avo", price: 10.50, image: "../../images/sub catégorie images/toast/toast.jpg", category: "Toast" },
+  { id: 'toast-5', name: "croissant-benedict-salmon-with-poched-egg-hollandaise-sauce-served-with-fresh-salad_140725-1329", description: "Ham, hollandaise", price: 13.50, image: "../../images/sub catégorie images/Brunch food/croissant-benedict-salmon-with-poched-egg-hollandaise-sauce-served-with-fresh-salad_140725-1329.avif", category: "Toast" },
   { id: 'toast-6', name: "Toast Vegan", description: "Grains, greens", price: 12.00, image: "../../images/sub catégorie images/toast/Toast Vegan.jpg", category: "Toast" },
 
   // Pastry
@@ -98,65 +98,11 @@ window.allMenuItems = [
   { id: 'pastry-3', name: "Teramisu au Chocolat", description: "Choux pastry, rich ganache", price: 4.75, image: "../../images/sub catégorie images/sweets/Teramisu au Chocolat.jpg", category: "Pastry" },
   { id: 'pastry-4', name: "Waffels au fruit", description: "Vanilla custard, fresh berries", price: 5.80, image: "../../images/sub catégorie images/sweets/Waffels au fruit.jpg", category: "Pastry" },
   { id: 'pastry-5', name: "Chees Cake au Citron", description: "Zesty curd, torched meringue", price: 5.90, image: "../../images/sub catégorie images/sweets/Chees Cake au Citron.jpg", category: "Pastry" },
-  { id: 'pastry-6', name: "Dark an White Chocolat Cake ", description: "Moist crumb, vanilla frosting", price: 4.95, image: "../../images/sub catégorie images/sweets/Dark an White Chocolat Cake .jpg", category: "Pastry" },
-
-  // Added Sweet Pastries
-  { id: "sweet_1", name: "Cheese Cake Oreo", description: "Creamy oreo cheesecake", price: 18.00, image: "../../images/sub catégorie images/sweets/Cheese Cake Oreo.jpg", category: "Pastry" },
-  { id: "sweet_2", name: "Cheese Cake au Caramel", description: "Rich caramel cheesecake", price: 17.00, image: "../../images/sub catégorie images/sweets/Cheese Cake au Caramel.jpg", category: "Pastry" },
-  { id: "sweet_5", name: "Chocolat Fondu", description: "Melted dark chocolate with fruits", price: 22.00, image: "../../images/sub catégorie images/sweets/Chocolat Fondu.jpg", category: "Pastry" },
-  { id: "sweet_12", name: "Banana Split", description: "Classic banana split with ice cream", price: 20.00, image: "../../images/sub catégorie images/sweets/Banana Split.jpg", category: "Pastry" },
-  { id: "sweet_15", name: "Pancake aux Fruits", description: "Fluffy pancakes with berries", price: 18.00, image: "../../images/sub catégorie images/sweets/pancake avec fraise et chocolat.jpg", category: "Pastry" },
-
-  // Viennoiserie & Extra Pastries
-  { id: "vien_1", name: "Croissant", description: "Buttery flaky pastry", price: 4.50, image: "../../images/sub catégorie images/Pastry/Croissant.jpg", category: "Pastry" },
-  { id: "vien_2", name: "Pain au Chocolat", description: "Rich chocolate bread", price: 4.80, image: "../../images/sub catégorie images/Pastry/Petit Pain au Chocolat.jpg", category: "Pastry" },
-  { id: "vien_3", name: "Pain aux Raisins", description: "Raisin pastry with cream", price: 5.00, image: "../../images/sub catégorie images/Pastry/Pain Raisins.jpg", category: "Pastry" },
-  { id: "vien_4", name: "Pain Suisse", description: "Swiss pastry with cream", price: 5.50, image: "../../images/sub catégorie images/Pastry/Pain Suise.jpg", category: "Pastry" },
-  { id: "pastry-7", name: "Baklawa", description: "Flaky layers with nuts & honey", price: 5.50, image: "../../images/sub catégorie images/Pastry/Baklawa.jpg", category: "Pastry" },
-  { id: "pastry-8", name: "Basbousa", description: "Semolina cake with syrup", price: 4.75, image: "../../images/sub catégorie images/Pastry/Basbousa.jpg", category: "Pastry" },
-  { id: "pastry-9", name: "Cookies au Chocolat", description: "Rich chocolate cookies", price: 6.00, image: "../../images/sub catégorie images/Pastry/Cokkies au chocolat.jpg", category: "Pastry" },
-  { id: "pastry-10", name: "Donuts", description: "Classic glazed donuts", price: 5.00, image: "../../images/sub catégorie images/Pastry/Donuts.jpg", category: "Pastry" },
-
-  // Fast Food
-  { id: "fast_1", name: "Tacos Mixte", description: "Mixed tacos with meat and fries", price: 18.00, image: "../../images/sub catégorie images/fast food/Tacos Mixe.jpg", category: "Fast Food" },
-  { id: "fast_2", name: "Tacos Viande Haché", description: "Ground meat tacos", price: 16.00, image: "../../images/sub catégorie images/fast food/Tacos Viande Haché.jpg", category: "Fast Food" },
-  { id: "fast_3", name: "American Burger", description: "Classic American burger", price: 22.00, image: "../../images/sub catégorie images/fast food/American Burger .jpg", category: "Fast Food" },
-  { id: "fast_4", name: "Double Cheese Burger", description: "Double patty with cheese", price: 28.00, image: "../../images/sub catégorie images/fast food/Double Cheese Burger.jpg", category: "Fast Food" },
-  { id: "fast_5", name: "Chicken Burger", description: "Crispy chicken burger", price: 20.00, image: "../../images/sub catégorie images/fast food/Chiken Burger.jpg", category: "Fast Food" },
-  { id: "fast_6", name: "Chicken Crunchy Burger", description: "Crispy crunchy chicken burger", price: 22.00, image: "../../images/sub catégorie images/fast food/Burger Chiken Crunchy.jpg", category: "Fast Food" },
-  { id: "fast_7", name: "Chicken Pickle Burger", description: "Chicken burger with pickles", price: 21.00, image: "../../images/sub catégorie images/fast food/Chiken Pickle Burger.jpg", category: "Fast Food" },
-  { id: "fast_8", name: "Burger Viande Boeuf", description: "Beef burger", price: 19.00, image: "../../images/sub catégorie images/fast food/Burger Viande Beuf.jpg", category: "Fast Food" },
-  { id: "fast_9", name: "Burger Crevette", description: "Shrimp burger", price: 24.00, image: "../../images/sub catégorie images/fast food/Burger Crevette.jpg", category: "Fast Food" },
-  { id: "fast_10", name: "Sandwich Poulet", description: "Chicken sandwich", price: 14.00, image: "../../images/sub catégorie images/fast food/Sandwich Poulet.jpg", category: "Fast Food" },
-  { id: "fast_11", name: "Sandwich Viande Haché", description: "Ground meat sandwich", price: 15.00, image: "../../images/sub catégorie images/fast food/Sandwich Viand Hache.jpg", category: "Fast Food" },
-  { id: "fast_12", name: "Sandwich Viande", description: "Meat sandwich", price: 16.00, image: "../../images/sub catégorie images/fast food/Sandwich de Viande.jpg", category: "Fast Food" },
-  { id: "fast_13", name: "Hot Dog", description: "Classic hot dog", price: 12.00, image: "../../images/sub catégorie images/fast food/Hot Dog.jpg", category: "Fast Food" },
-  { id: "fast_14", name: "Frites", description: "Crispy french fries", price: 8.00, image: "../../images/sub catégorie images/fast food/Frites.jpg", category: "Fast Food" },
-  { id: "drink-w1", name: "Still Water", description: "Local mineral water", price: 0.00, image: "../../images/sub catégorie images/Jus/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif", category: "Juice" },
-  { id: "drink-w2", name: "Sparkling Water", description: "Refreshing sparkling water", price: 5.00, image: "../../images/sub catégorie images/Jus/glass-iced-orange-cocktail-garnished-with-orange-zest-strawberry-shape_140725-6038.avif", category: "Juice" },
-  { id: "pairing-1", name: "Fresh Juice", description: "Cold pressed seasonal fruits", price: 15.00, image: "../images/sub catégorie images/Jus/Jus D'Orange.jpg", category: "Juice" },
-  { id: "pairing-2", name: "Flat White", description: "Double shot espresso with silky microfoam", price: 18.00, image: "../images/sub catégorie images/latté/Café au lait avec la Creme.jpg", category: "Coffee" },
-  { id: "pairing-3", name: "Avocado Side", description: "Freshly sliced avocado with sea salt", price: 10.00, image: "../images/sub catégorie images/toast/toast.jpg", category: "Toast" },
-  { id: "pairing-4", name: "Mint Tea", description: "Traditional Moroccan mint tea", price: 12.00, image: "../images/sub catégorie images/tea/The Marocain a la Menthe.jpg", category: "Tea" },
-  { id: "pairing-5", name: "Cappuccino", description: "Espresso with thick milk foam", price: 18.00, image: "../images/sub catégorie images/latté/Café au Lait Artisanal.jpg", category: "Coffee" },
-  { id: "pairing-6", name: "Hot Latte", description: "Steamed milk over rich espresso", price: 18.00, image: "../images/sub catégorie images/latté/Café au lait avec la Creme.jpg", category: "Coffee" }
+  { id: 'pastry-6', name: "Dark an White Chocolat Cake ", description: "Moist crumb, vanilla frosting", price: 4.95, image: "../../images/sub catégorie images/sweets/Dark an White Chocolat Cake .jpg", category: "Pastry" }
 ];
 
-for (const item of window.allMenuItems) {
+for (const item of allMenuItems) {
   if (typeof item.image === 'string' && item.image.startsWith('../../images/')) {
     item.image = item.image.replace('../../images/', '../images/');
   }
-}
-
-function cleanItemName(name) {
-    if (!name) return "";
-    // Remove extensions
-    let clean = name.replace(/\.(png|jpg|jpeg|webp|avif)$/i, '');
-    // Remove common SEO/Stock suffixes like _140725-1329 or -png
-    clean = clean.replace(/(_|-)\d{6,}-\d{4,}/g, '');
-    clean = clean.replace(/(-|_)png$/i, '');
-    // Replace dashes and underscores with spaces
-    clean = clean.replace(/[-_]/g, ' ');
-    // Capitalize first letter of each word
-    return clean.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }

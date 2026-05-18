@@ -43,72 +43,51 @@ function renderBestsellers(items) {
   let html = '';
 
   ordered.forEach((item, index) => {
-    try {
-      if (!item) return;
+    let imgUrl = normalizeImagePath(item.image || item.image_url);
+    const isDefault = imgUrl && imgUrl.includes('photo-1546069901');
+    const displayImg = (imgUrl && !isDefault) ? imgUrl : normalizeImagePath(getFallbackImage(item, index));
+    const rating = typeof item.rating === 'number' ? item.rating : getRatingForItem(item);
+    const fallback = normalizeImagePath(getFallbackImage(item, index + 50));
+    
+    item._displayImage = displayImg;
 
-      let imgUrl = normalizeImagePath(item.image || item.image_url);
-      const isDefault = imgUrl && imgUrl.includes('photo-1546069901');
-      const displayImg = (imgUrl && !isDefault) ? imgUrl : normalizeImagePath(getFallbackImage(item, index));
-      const rating = typeof item.rating === 'number' ? item.rating : getRatingForItem(item);
-      const fallback = normalizeImagePath(getFallbackImage(item, index + 50));
-      
-      item._displayImage = displayImg;
+    const nameText = (() => {
+      const base = getMenuTranslation(item, 'name');
+      return getLang() === 'en' ? summarizeEnglishName(canonicalizeEnglishName(base)) : base;
+    })();
 
-      const nameText = (() => {
-        try {
-          const base = getMenuTranslation(item, 'name') || item.name || 'Unknown Item';
-          return getLang() === 'en' ? summarizeEnglishName(canonicalizeEnglishName(base)) : base;
-        } catch (e) {
-          console.warn('Error processing name for item:', item.id, e);
-          return item.name || 'Item';
-        }
-      })();
-
-      const descText = (() => {
-        try {
-          return getMenuTranslation(item, 'description') || item.description || '';
-        } catch (e) {
-          return item.description || '';
-        }
-      })();
-
-      const priceText = typeof item.price === 'number' ? item.price.toFixed(2) : (item.price || '0.00');
-
-      html += `
-      <div class="bg-white dark:bg-[#2a1e19] rounded-[1.5rem] p-3 shadow-md border border-gray-100 dark:border-white/5 flex gap-4 items-center relative" data-category="${item.category || 'all'}">
-        <div class="absolute top-3 right-3 bg-white/90 dark:bg-black/60 px-2 py-1 rounded-full shadow-sm z-10">
-          <span class="material-symbols-outlined text-[14px] text-green-600 dark:text-green-400">${getCategoryIcon(item.category)}</span>
-        </div>
-        <div class="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden bg-gray-50 dark:bg-black/20 relative shrink-0">
-          <img src="${displayImg}" class="w-full h-full object-cover" alt="${nameText}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'">
-        </div>
-        <div class="flex-1 min-w-0 flex flex-col h-24 md:h-32 justify-between py-0.5">
-          <div>
-            <h4 class="font-bold text-[13px] md:text-sm text-gray-900 dark:text-white leading-tight pr-6">${nameText}</h4>
-            <div class="flex items-center gap-1 mt-1">
-              <span class="material-symbols-outlined text-[14px] text-[#FFC107]" style="font-variation-settings: 'FILL' 1">star</span>
-              <span class="text-[11px] text-gray-700 dark:text-gray-300 font-semibold">${Number(rating).toFixed(1)}</span>
-              <span class="text-[10px] text-gray-400">(${Math.floor(Number(rating) * 25)}+)</span>
-            </div>
-            <p class="text-[10px] md:text-[11px] text-gray-500 dark:text-gray-400 line-clamp-2 mt-1">${descText}</p>
+    html += `
+    <div class="bg-white dark:bg-[#2a1e19] rounded-[1.5rem] p-3 shadow-md border border-gray-100 dark:border-white/5 flex gap-4 items-center relative" data-category="${item.category}">
+      <div class="absolute top-3 right-3 bg-white/90 dark:bg-black/60 px-2 py-1 rounded-full shadow-sm z-10">
+        <span class="material-symbols-outlined text-[14px] text-green-600 dark:text-green-400">${getCategoryIcon(item.category)}</span>
+      </div>
+      <div class="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden bg-gray-50 dark:bg-black/20 relative shrink-0">
+        <img src="${displayImg}" class="w-full h-full object-cover" alt="${item.name}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'">
+      </div>
+      <div class="flex-1 min-w-0 flex flex-col h-24 md:h-32 justify-between py-0.5">
+        <div>
+          <h4 class="font-bold text-[13px] md:text-sm text-gray-900 dark:text-white leading-tight pr-6">${nameText}</h4>
+          <div class="flex items-center gap-1 mt-1">
+            <span class="material-symbols-outlined text-[14px] text-[#FFC107]" style="font-variation-settings: 'FILL' 1">star</span>
+            <span class="text-[11px] text-gray-700 dark:text-gray-300 font-semibold">${Number(rating).toFixed(1)}</span>
+            <span class="text-[10px] text-gray-400">(${Math.floor(Number(rating) * 25)}+)</span>
           </div>
-          <div class="flex items-center justify-between mt-auto">
-            <span class="text-xs font-bold text-primary">${priceText}DH</span>
-            <button onclick="addToCart('${item.id}')" class="w-[84px] h-[36px] rounded-full bg-[#FF5200] flex items-center justify-center !text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform border-2 border-orange-400 ring-2 ring-orange-500/50 ring-offset-1 ring-orange-200" style="color: white !important;">
-              ${getTranslation('add')}
-            </button>
-          </div>
+          <p class="text-[10px] md:text-[11px] text-gray-500 dark:text-gray-400 line-clamp-2 mt-1">${getMenuTranslation(item, 'description')}</p>
+        </div>
+        <div class="flex items-center justify-between mt-auto">
+          <span class="text-xs font-bold text-primary">${typeof item.price === 'number' ? item.price.toFixed(2) : item.price}DH</span>
+          <button onclick="addToCart('${item.id}')" class="w-[84px] h-[36px] rounded-full bg-[#FF5200] flex items-center justify-center !text-white text-[12px] font-bold uppercase shadow-sm active:scale-95 transition-transform border-2 border-orange-400 ring-2 ring-orange-500/50 ring-offset-1 ring-orange-200" style="color: white !important;">
+            ${getTranslation('add')}
+          </button>
         </div>
       </div>
-      `;
+    </div>
+    `;
 
-      // Inject BOTH Promo Carousels after every 8 items
-      if ((index + 1) % 8 === 0) {
-        html += renderSmallPromoCarousel();
-        html += renderBannerPromoCarousel();
-      }
-    } catch (err) {
-      console.error('Critical error rendering item at index', index, err);
+    // Inject BOTH Promo Carousels after every 8 items
+    if ((index + 1) % 8 === 0) {
+      html += renderSmallPromoCarousel();
+      html += renderBannerPromoCarousel();
     }
   });
 
@@ -253,8 +232,7 @@ function renderCategories(items) {
     { name: getTranslation('Smoothie'), img: '../assets/subcat_icons/smoothie icon.png', link: '../smothie sub catégorie page/index.html' },
     { name: getTranslation('Toast'), img: '../assets/subcat_icons/sandwich or toast icon .jpg', link: '../toast brunch sub catégorie page/index.html' },
     { name: getTranslation('Breakfast'), img: '../images/sub catégories icons/Breakfast.jpg', link: '../petit dejeuner sub catégorie page/index.html' },
-    { name: getTranslation('Artisanal Bread'), img: '../assets/subcat_icons/artisanal bread.jpg', link: '../artisanal bread sub catégorie page/index.html' },
-    { name: getTranslation('Fast Food') || 'Fast Food', img: '../images/sub catégories icons/Snack Food.jpg', link: '../fast food sub catégorie page/index.html' }
+    { name: getTranslation('Artisanal Bread'), img: '../assets/subcat_icons/artisanal bread.jpg', link: '../artisanal bread sub catégorie page/index.html' }
   ];
 
   const container = document.getElementById('explore-categories');
@@ -287,8 +265,7 @@ function getCategoryIcon(cat) {
     'Smoothie': 'blender',
     'Shake': 'icecream',
     'Bread': 'breakfast_dining',
-    'Toast': 'breakfast_dining',
-    'Fast Food': 'fastfood'
+    'Toast': 'breakfast_dining'
   };
   return icons[cat] || 'restaurant';
 }
@@ -304,8 +281,7 @@ function getRatingForItem(item) {
     'Pastry': 4.5,
     'Brunch': 4.4,
     'Toast': 4.3,
-    'Bread': 4.4,
-    'Fast Food': 4.6
+    'Bread': 4.4
   };
   const base = map[item.category] || 4.4;
   return base;
@@ -322,8 +298,6 @@ function buildCustomizationUrl(item) {
   } else if (category.includes('coffee') || category.includes('brew')) {
     customizationPage = '../pure_noir_espresso_customization_view_1/index.html';
   } else if (category.includes('pastry') || category.includes('bakery')) {
-    customizationPage = '../sweet_pastries_customization_view/index.html';
-  } else if (category.includes('fast food')) {
     customizationPage = '../fast_food_customization_view/index.html';
   } else if (category.includes('bread')) {
     customizationPage = '../petit pain bakery_customization_view/index.html';
@@ -422,7 +396,6 @@ document.addEventListener('DOMContentLoaded', () => {
   handleTableContext();
   // startHeroCarousel(); // Disabled - using auto-loop instead
   startPromoCarousels();
-  initSearch();
 });
 
 function handleTableContext() {
@@ -431,14 +404,7 @@ function handleTableContext() {
   // 1. Update Table Badge in UI
   const badge = document.getElementById('table-badge');
   if (badge) {
-    // Find the text element inside the badge to preserve the icon
-    const textSpan = badge.querySelector('span[data-i18n^="table"]');
-    if (textSpan) {
-      textSpan.textContent = `Table ${currentTable}`;
-    } else {
-      // Fallback if structure is different
-      badge.textContent = `Table ${currentTable}`;
-    }
+    badge.textContent = `Table ${currentTable}`;
     badge.classList.remove('hidden');
   }
 
@@ -518,15 +484,7 @@ window.navigateToCategory = (category) => {
     window.location.href = '../Brew catégorie page/index.html';
     return;
   }
-  if (categoryId === 'bakery' || categoryId === 'pastry') {
-    window.location.href = '../artisanal bread sub catégorie page/index.html'; // Assuming this is where artisan bread/pastry is
-    return;
-  }
-  if (categoryId === 'sweet pastries') {
-    window.location.href = '../sweet pastries sub catégorie page/index.html';
-    return;
-  }
-  if (categoryId === 'fast food') {
+  if (categoryId === 'bakery' || categoryId === 'pastry' || categoryId === 'sweet pastries') {
     window.location.href = '../fast food sub catégorie page/index.html';
     return;
   }
@@ -699,12 +657,10 @@ function getStoredCart() {
 
 // Setup basic events
 function setupEvents() {
-  // Search button is now handled by initSearch input listener
-  // but we can add a focus shortcut here if needed
-  const searchBtn = document.querySelector('.material-symbols-outlined.text-xl'); 
+  const searchBtn = document.querySelector('.material-symbols-outlined.text-xl'); // Assuming search icon
   if (searchBtn) {
     searchBtn.addEventListener('click', () => {
-      document.getElementById('search-input')?.focus();
+      alert(getTranslation('search_feature_soon'));
     });
   }
 
@@ -717,65 +673,585 @@ function setupEvents() {
   if (closeBtn) {
     closeBtn.addEventListener('click', closeOrderModal);
   }
-
-  const placeOrderBtn = document.getElementById('order-place-btn');
-  if (placeOrderBtn) {
-    placeOrderBtn.addEventListener('click', placeOrder);
-  }
 }
 
-function placeOrder() {
-  if (cart.length === 0) {
-    alert(getTranslation('cart_empty') || "Your cart is empty!");
-    return;
+// Language Helper
+const translations = {
+  en: {
+    table_12: "Table 12",
+    stitch_cafe: "Stitch Café",
+    dine_in: "Dine In",
+    take_away: "Take Away",
+    chefs_choice: "Chef's Choice",
+    no1_seller: "N°1 seller",
+    brunch: "BRUNCH",
+    favorites: "FAVORITES",
+    savory_brunch: "Savory brunch classics.",
+    order_now: "Order Now",
+    new_arrival: "New Arrival",
+    hot: "🔥 Hot",
+    velvet: "VELVET",
+    sips: "SIPS",
+    smooth_iced_blends: "Smooth iced blends.",
+    morning_special: "Morning Special",
+    trend: "Trend",
+    morning: "MORNING",
+    brew: "BREW",
+    boissons_chaudes: "Hot Drinks",
+    freshly_brewed_coffee: "Freshly brewed coffee.",
+    sweet_treats: "Sweet Treats",
+    popular: "⭐ Popular",
+    sweet: "SWEET",
+    delights: "DELIGHTS",
+    fluffy_pancakes: "Fluffy pancakes, sweet treats.",
+    explore: "Explore",
+    view_all: "View All",
+    milkshake: "Milkshake",
+    juice: "Juice",
+    sweet_pastries: "Sweet Pastries",
+    toast: "Toast",
+    black_coffee: "Black Coffee",
+    latte: "Latte",
+    smoothie: "Smoothie",
+    tea_infusion: "Tea & Infusion",
+    artisanal_bread: "Pastry",
+    viennoiserie: "Venoisserie",
+    patisserie: "Patisserie",
+    viennoiserie_title: "Venoisserie",
+    patisserie_title: "Patisserie",
+    our_menu: "Our Menu",
+    toasts_bowls: "Toasts & Bowls",
+    coffee_tea: "Coffee & Tea",
+    cold_drink: "Drinks",
+    juices_shakes: "Juices & Shakes",
+    pastry: "Pastry",
+    bakery_sweets: "Bakery & Sweets",
+    trending_now: "Trending Now",
+    all_items: "All variety of items",
+    home: "Home",
+    cart: "Cart",
+    profile: "Profile",
+    search_placeholder: "Search...",
+    search_feature_soon: "Search feature coming soon!",
+    items: "items",
+    add: "ADD",
+    subtotal: "Subtotal",
+    tax: "Tax (10%)",
+    total: "Total",
+    close: "Close",
+    place_order: "Place Order",
+    order_status: "Order Status",
+    received: "Received",
+    greeting_morning: "Good Morning ☀️",
+    greeting_afternoon: "Good Afternoon 🌤️",
+    greeting_evening: "Good Evening 🌙",
+    welcome_message: "What would you like today?",
+    // Categories
+    'Tea & Infusion': "Tea & Infusion",
+    'Milkshake': "Milkshake",
+    'Juice': "Juice",
+    'Sweet Pastries': "Sweet Pastries",
+    'Black Coffee': "Black Coffee",
+    'Latte': "Latte",
+    'Smoothie': "Smoothie",
+    'Toast': "Toast",
+    'Artisanal Bread': "Pastry"
+  },
+  fr: {
+    table_12: "Table 12",
+    stitch_cafe: "Stitch Café",
+    dine_in: "Sur Place",
+    take_away: "À Emporter",
+    chefs_choice: "Choix du Chef",
+    no1_seller: "N°1 des ventes",
+    brunch: "BRUNCH",
+    favorites: "FAVORIS",
+    savory_brunch: "Classiques salés du brunch.",
+    order_now: "Commander",
+    new_arrival: "Nouveauté",
+    hot: "🔥 Chaud",
+    velvet: "VELOURS",
+    sips: "GORGEES",
+    smooth_iced_blends: "Mélanges glacés onctueux.",
+    morning_special: "Spécial Matin",
+    trend: "Tendance",
+    morning: "MATIN",
+    brew: "INFUSION",
+    boissons_chaudes: "Boissons Chaudes",
+    freshly_brewed_coffee: "Café fraîchement préparé.",
+    sweet_treats: "Douceurs Sucrées",
+    popular: "⭐ Populaire",
+    sweet: "DOUCEUR",
+    delights: "DELICES",
+    fluffy_pancakes: "Pancakes moelleux, douceurs.",
+    explore: "Explorer",
+    view_all: "Voir Tout",
+    milkshake: "Milkshake",
+    juice: "Jus",
+    sweet_pastries: "Pâtisseries Sucrées",
+    toast: "Tartine",
+    black_coffee: "Café Noir",
+    latte: "Latte",
+    smoothie: "Smoothie",
+    tea_infusion: "Thé & Infusion",
+    artisanal_bread: "Pain Artisanal",
+    viennoiserie: "Vénoisserie",
+    patisserie: "Pâtisserie",
+    viennoiserie_title: "Vénoisserie",
+    patisserie_title: "Pâtisserie",
+    our_menu: "Notre Menu",
+    toasts_bowls: "Tartines & Bols",
+    coffee_tea: "Café & Thé",
+    cold_drink: "Boissons Froides",
+    juices_shakes: "Jus & Shakes",
+    pastry: "Pâtisserie",
+    bakery_sweets: "Boulangerie & Douceurs",
+    trending_now: "Tendances",
+    all_items: "Toute la variété",
+    home: "Accueil",
+    cart: "Panier",
+    profile: "Profil",
+    search_placeholder: "Rechercher...",
+    search_feature_soon: "Fonction de recherche bientôt disponible !",
+    items: "articles",
+    add: "AJOUTER",
+    subtotal: "Sous-total",
+    tax: "Taxe (10%)",
+    total: "Total",
+    close: "Fermer",
+    place_order: "Commander",
+    order_status: "Statut de la commande",
+    received: "Reçu",
+    greeting_morning: "Bonjour ☀️",
+    greeting_afternoon: "Bon Après-midi 🌤️",
+    greeting_evening: "Bonsoir 🌙",
+    welcome_message: "Qu'est-ce qui vous ferait plaisir aujourd'hui?",
+    // Categories
+    'Tea & Infusion': "Thé & Infusion",
+    'Milkshake': "Milkshake",
+    'Juice': "Jus",
+    'Sweet Pastries': "Pâtisseries Sucrées",
+    'Black Coffee': "Café Noir",
+    'Latte': "Latte",
+    'Smoothie': "Smoothie",
+    'Toast': "Tartine",
+    'Artisanal Bread': "Venoiserie"
+  },
+  ar: {
+    table_12: "طاولة 12",
+    stitch_cafe: "ستيتش كافيه",
+    dine_in: "تناول هنا",
+    take_away: "سفري",
+    chefs_choice: "اختيار الشيف",
+    no1_seller: "الأكثر مبيعاً",
+    brunch: "فطور متأخر",
+    favorites: "المفضلة",
+    savory_brunch: "كلاسيكيات الفطور المالح.",
+    order_now: "اطلب الآن",
+    new_arrival: "وصل حديثاً",
+    hot: "🔥 ساخن",
+    velvet: "مخملي",
+    sips: "رشفات",
+    smooth_iced_blends: "مشروبات مثلجة ناعمة.",
+    morning_special: "عرض الصباح",
+    trend: "رائج",
+    morning: "الصباح",
+    brew: "قهوة",
+    boissons_chaudes: "مشروبات ساخنة",
+    freshly_brewed_coffee: "قهوة طازجة التحضير.",
+    sweet_treats: "حلويات",
+    popular: "⭐ مشهور",
+    sweet: "حلوى",
+    delights: "لذيذة",
+    fluffy_pancakes: "بان كيك هش، حلويات.",
+    explore: "استكشف",
+    view_all: "عرض الكل",
+    milkshake: "ميلك شيك",
+    juice: "عصير",
+    sweet_pastries: "معجنات حلوة",
+    toast: "توست",
+    black_coffee: "قهوة سوداء",
+    latte: "لاتيه",
+    smoothie: "سموثي",
+    tea_infusion: "شاي وأعشاب",
+    artisanal_bread: "خبز حرفي",
+    viennoiserie: "فاتresse",
+    patisserie: "معجنات",
+    viennoiserie_title: "فاتresse",
+    patisserie_title: "معجنات",
+    our_menu: "قائمتنا",
+    toasts_bowls: "توست وسلطانيات",
+    coffee_tea: "قهوة وشاي",
+    cold_drink: "مشروبات باردة",
+    juices_shakes: "عصائر ومخفوقات",
+    pastry: "معجنات",
+    bakery_sweets: "مخبوزات وحلويات",
+    trending_now: "الأكثر رواجاً",
+    all_items: "جميع الأصناف",
+    home: "الرئيسية",
+    cart: "السلة",
+    profile: "الملف الشخصي",
+    search_placeholder: "بحث...",
+    add: "إضافة",
+    search_feature_soon: "ميزة البحث قريبا!",
+    items: "عناصر",
+    order_status: "حالة الطلب",
+    received: "تم الاستلام",
+    greeting_morning: "صباح الخير ☀️",
+    greeting_afternoon: "نهارك سعيد 🌤️",
+    greeting_evening: "مساء الخير 🌙",
+    welcome_message: "ماذا تحب أن تأكل اليوم؟",
+    subtotal: "المجموع الفرعي",
+    tax: "ضريبة (10%)",
+    total: "المجموع",
+    close: "إغلاق",
+    place_order: "تأكيد الطلب",
+    // Categories
+    'Tea & Infusion': "شاي وأعشاب",
+    'Milkshake': "ميلك شيك",
+    'Juice': "عصير",
+    'Sweet Pastries': "معجنات حلوة",
+    'Black Coffee': "قهوة سوداء",
+    'Latte': "لاتيه",
+    'Smoothie': "سموثي",
+    'Toast': "توست",
+    'Artisanal Bread': "خبز حرفي"
   }
+};
 
-  const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-  const total = subtotal * 1.1; // 10% tax
+const menuTranslations = {
+  // Brunch
+  'brunch-1': {
+    fr: { name: "Omelette Fermière", description: "Œufs bio, cheddar, herbes fraîches." },
+    ar: { name: "عجة ريفية", description: "بيض عضوي، جبن شيدر، أعشاب طازجة." }
+  },
+  'brunch-2': {
+    fr: { name: "Œufs Bénédicte", description: "Muffin anglais, bacon, sauce hollandaise." },
+    ar: { name: "بيض بنديكت", description: "مافن إنجليزي، لحم مقدد، صلصة هولنديز." }
+  },
+  'brunch-3': {
+    fr: { name: "Shakshuka Épicée", description: "Œufs pochés dans une sauce tomate épicée." },
+    ar: { name: "شكشوكة حارة", description: "بيض مسلوق في صلصة طماطم حارة." }
+  },
+  'brunch-4': {
+    fr: { name: "Poêlée du Jardin", description: "Pommes de terre rôties, chou frisé, poivrons." },
+    ar: { name: "مقلاة الحديقة", description: "بطاطس مشوية، كرنب، فلفل." }
+  },
+  'brunch-5': {
+    fr: { name: "Burrito Brunch", description: "Chorizo, œufs brouillés, haricots." },
+    ar: { name: "بوريتو الفطور", description: "تشوريزو، بيض مخفوق، فاصوليا." }
+  },
+  'brunch-6': {
+    fr: { name: "Steak & Œufs", description: "Faux-filet 6oz, deux œufs au choix." },
+    ar: { name: "ستيك وبيض", description: "شريحة لحم 6 أونصة، بيضتان حسب الرغبة." }
+  },
+  'brunch-7': {
+    fr: { name: "Blanc d'Œuf Fitness", description: "Épinards, fromage de chèvre, blancs d'œufs." },
+    ar: { name: "بياض البيض الصحي", description: "سبانخ، جبن ماعز، بياض بيض." }
+  },
+  'brunch-8': {
+    fr: { name: "Tacos Brunch", description: "Tortillas de maïs, oignons marinés, avocat." },
+    ar: { name: "تاكو الفطور", description: "تورتيلا ذرة، بصل مخلل، أفوكادو." }
+  },
+  'brunch-9': {
+    fr: { name: "Frittata de Fer", description: "Oignons, pommes de terre, cheddar vieilli." },
+    ar: { name: "فريتاتا الحديد", description: "بصل، بطاطس، شيدر معتق." }
+  },
+  'brunch-10': {
+    fr: { name: "Délice Açaï", description: "Baies mélangées, granola, miel." },
+    ar: { name: "ديلك آساي", description: "توت مشكل، جرانولا، عسل." }
+  },
+  'brunch-11': {
+    fr: { name: "Gaufre Belge", description: "Gaufres croustillantes, baies, crème." },
+    ar: { name: "وافل بلجيكي", description: "وافل مقرمش، توت، كريمة." }
+  },
+  'brunch-12': {
+    fr: { name: "Petit Déjeuner Anglais", description: "Saucisse, bacon, œufs, haricots, toast." },
+    ar: { name: "فطور إنجليزي كامل", description: "سجق، لحم مقدد، بيض، فاصوليا، توست." }
+  },
 
-  const orderData = {
-    merchantId: 'm1', // Default for now
-    table: currentTable || 'Online',
-    customer: localStorage.getItem('stitch_customer_name') || 'Guest',
-    itemsList: cart.map(item => ({
-      name: getMenuTranslation(item, 'name'),
-      qty: item.quantity,
-      price: item.price,
-      image_url: item.image
-    })),
-    total: `${total.toFixed(2)}DH`,
-    timestamp: Date.now()
-  };
+  // Brew
+  'brew-1': {
+    fr: { name: "Nitro Cold Brew", description: "Infusion 18h, infusé à l'azote." },
+    ar: { name: "نيترو كولد برو", description: "نقع 18 ساعة، مشبع بالنيتروجين." }
+  },
+  'brew-2': {
+    fr: { name: "Matcha Cérémonial", description: "Matcha d'Uji avec lait d'avoine." },
+    ar: { name: "ماتشا احتفالي", description: "ماتشا من أوجي مع حليب الشوفان." }
+  },
+  'brew-3': {
+    fr: { name: "Yirgacheffe Éthiopien", description: "Notes florales avec une finale citronnée." },
+    ar: { name: "يرجاشيف إثيوبي", description: "نكهات زهرية مع لمسة حمضية." }
+  },
+  'brew-4': {
+    fr: { name: "Dirty Masala Chai", description: "Épices maison, double dose." },
+    ar: { name: "ديرتي ماسالا تشاي", description: "توابل منزلية، جرعة مزدوجة." }
+  },
+  'brew-5': {
+    fr: { name: "Cortado Lait d'Avoine", description: "Parts égales expresso & lait." },
+    ar: { name: "كورتادو حليب الشوفان", description: "كميات متساوية من الإسبريسو والحليب." }
+  },
+  'brew-6': {
+    fr: { name: "Miel Lavande", description: "Infusion florale avec miel local." },
+    ar: { name: "عسل اللافندر", description: "نقيع زهري مع عسل محلي." }
+  },
+  'brew-7': {
+    fr: { name: "Curcuma Doré", description: "Infusion curative épicée." },
+    ar: { name: "كركم ذهبي", description: "مشروب علاجي متبل." }
+  },
+  'brew-8': {
+    fr: { name: "Caramel Macchiato", description: "Expresso étagé & vanille." },
+    ar: { name: "كراميل ماكياتو", description: "طبقات إسبريسو وفانيليا." }
+  },
+  'brew-9': {
+    fr: { name: "V60 Origine Unique", description: "Perfection versée à la main." },
+    ar: { name: "V60 أصل واحد", description: "تحضير يدوي متقن." }
+  },
+  'brew-10': {
+    fr: { name: "Infusion Myrtille", description: "Mélange riche en antioxydants." },
+    ar: { name: "نقيع التوت الأزرق", description: "خليط غني بمضادات الأكسدة." }
+  },
 
-  if (window.CentralStore) {
-    window.CentralStore.addOrder(orderData);
-    
-    // UI Feedback
-    const btn = document.getElementById('order-place-btn');
-    const originalText = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = "✓ SENT";
-    btn.classList.replace('bg-primary', 'bg-green-500');
+  // Artisanal Bread
+  'bread-1': {
+    fr: { name: "Babka Chocolat", description: "Tourbillon de ganache chocolat noir riche." },
+    ar: { name: "بابكا الشوكولاتة", description: "دوامة غاناش الشوكولاتة الداكنة الغنية." }
+  },
+  'bread-2': {
+    fr: { name: "Multigrains", description: "Garni à la main de lin & avoine." },
+    ar: { name: "خبز متعدد الحبوب", description: "مغطى يدوياً بالكتان والشوفان." }
+  },
+  'bread-3': {
+    fr: { name: "Pain de Seigle Noir", description: "Seigle dense style allemand robuste." },
+    ar: { name: "رغيف الجاودار الداكن", description: "جاودار كثيف على الطراز الألماني." }
+  },
+  'bread-4': {
+    fr: { name: "Focaccia aux Herbes", description: "Romarin, ail & huile d'olive." },
+    ar: { name: "فوكاشيا بالأعشاب", description: "إكليل الجبل، ثوم وزيت زيتون." }
+  },
+  'bread-5': {
+    fr: { name: "Brioche au Miel", description: "Pain du matin ultra-doux et beurré." },
+    ar: { name: "بريوش بالعسل", description: "رغيف صباحي فائق النعومة والزبدة." }
+  },
+  'bread-6': {
+    fr: { name: "Blé Moulu sur Pierre", description: "100% grains entiers nutritifs." },
+    ar: { name: "قمح مطحون على الحجر", description: "حبوب كاملة مغذية 100%." }
+  },
+  'bread-7': {
+    fr: { name: "Baguette Parisienne", description: "Croûte classique avec mie aérée." },
+    ar: { name: "باغيت باريسي", description: "قشرة كلاسيكية مع لب هوائي." }
+  },
+  'bread-8': {
+    fr: { name: "Canneberge Noix", description: "Pain artisanal doux & acidulé." },
+    ar: { name: "توت بري وجوز", description: "رغيف حرفي حلو وحامض." }
+  },
 
-    setTimeout(() => {
-      cart = [];
-      localStorage.removeItem('stitch_cart');
-      updateCartUI();
-      closeOrderModal();
-      
-      // Reset button
-      btn.disabled = false;
-      btn.textContent = originalText;
-      btn.classList.replace('bg-green-500', 'bg-primary');
-      
-      alert("Order placed successfully! The kitchen is preparing your food.");
-    }, 1500);
-  } else {
-    alert("Ordering system offline. Please try again later.");
+  // Black Coffee
+  'coffee-1': {
+    fr: { name: "Flat White Velours", description: "Double dose, micromousse soyeuse" },
+    ar: { name: "فلات وايت مخملي", description: "جرعة مزدوجة، رغوة ناعمة حريرية" }
+  },
+  'coffee-2': {
+    fr: { name: "Kyoto Cold Brew", description: "Extraction goutte à goutte lente 12h" },
+    ar: { name: "كيوتو كولد برو", description: "استخلاص بالتنقيط البطيء لمدة 12 ساعة" }
+  },
+  'coffee-3': {
+    fr: { name: "Latte Lait d'Avoine", description: "Crémeux, sans noix, végétalien" },
+    ar: { name: "لاتيه حليب الشوفان", description: "كريمي، خالي من المكسرات، نباتي" }
+  },
+  'coffee-4': {
+    fr: { name: "Espresso Origine Unique", description: "Notes de baies intenses" },
+    ar: { name: "إسبريسو أصل واحد", description: "نكهات توت قوية" }
+  },
+  'coffee-5': {
+    fr: { name: "Moka Noir", description: "70% Cacao, Double Expresso" },
+    ar: { name: "موكا داكن", description: "70% كاكاو، إسبريسو مزدوج" }
+  },
+
+  // Cold Drinks
+  'cold-1': {
+    fr: { name: "Jus d'Orange Frais", description: "Oranges Valencia pressées à froid" },
+    ar: { name: "عصير برتقال طازج", description: "برتقال فالنسيا معصور على البارد" }
+  },
+  'cold-2': {
+    fr: { name: "Smoothie Fraise", description: "Yaourt grec, purée de fraise" },
+    ar: { name: "سموثي الفراولة", description: "زبادي يوناني، هريس الفراولة" }
+  },
+  'cold-3': {
+    fr: { name: "Shake Chocolat", description: "70% cacao, glace vanille" },
+    ar: { name: "شيك الشوكولاتة", description: "70% كاكاو، آيس كريم فانيليا" }
+  },
+  'cold-4': {
+    fr: { name: "Latte Glacé", description: "Double dose sur lait glacé" },
+    ar: { name: "لاتيه مثلج", description: "جرعة مزدوجة على حليب بارد" }
+  },
+  'cold-5': {
+    fr: { name: "Mango Lassi", description: "Mangue Alphonso, yaourt, cardamome" },
+    ar: { name: "مانجو لاسي", description: "مانجو ألفونسو، زبادي، هيل" }
+  },
+  'cold-6': {
+    fr: { name: "Cold Brew", description: "Infusion 12h, finale douce" },
+    ar: { name: "كولد برو", description: "نقع 12 ساعة، نهاية سلسة" }
+  },
+
+  // Creme/Latte
+  'creme-1': {
+    fr: { name: "Latte Orange Crémeux", description: "Orange fraîche avec mousse de lait" },
+    ar: { name: "لاتيه برتقال كريمي", description: "برتقال طازج مع رغوة حليب" }
+  },
+  'creme-2': {
+    fr: { name: "Étincelle Agrumes", description: "Citron-lime avec menthe" },
+    ar: { name: "شرارة الحمضيات", description: "ليمون وليمون حامض مع نعناع" }
+  },
+  'creme-3': {
+    fr: { name: "Fizz Mangue Crème", description: "Purée de mangue et crème légère" },
+    ar: { name: "فيز مانجو وكريمة", description: "هريس مانجو وكريمة خفيفة" }
+  },
+  'creme-4': {
+    fr: { name: "Jus de Pomme Classique", description: "Pommes pressées à froid" },
+    ar: { name: "عصير تفاح كلاسيكي", description: "تفاح معصور على البارد" }
+  },
+  'creme-5': {
+    fr: { name: "Agrumes Baies", description: "Fraise et pamplemousse" },
+    ar: { name: "حمضيات وتوت", description: "فراولة وجريب فروت" }
+  },
+
+  // Juices
+  'juice-1': {
+    fr: { name: "Citron Menthe", description: "Citron piquant avec menthe" },
+    ar: { name: "ليمون ونعناع", description: "ليمون لاذع مع نعناع" }
+  },
+  'juice-2': {
+    fr: { name: "Punch Ananas", description: "Mélange ananas tropical" },
+    ar: { name: "بنش الأناناس", description: "مزيج أناناس استوائي" }
+  },
+  'juice-3': {
+    fr: { name: "Éclat Mangue", description: "Purée de mangue Alphonso" },
+    ar: { name: "توهج المانجو", description: "هريس مانجو ألفونسو" }
+  },
+
+  // Latte Hot
+  'latte-1': {
+    fr: { name: "Latte Classique", description: "Double dose, lait vapeur" },
+    ar: { name: "لاتيه كلاسيكي", description: "جرعة مزدوجة، حليب مبخر" }
+  },
+  'latte-2': {
+    fr: { name: "Latte Vanille", description: "Sirop vanille maison" },
+    ar: { name: "لاتيه فانيليا", description: "شراب فانيليا منزلي" }
+  },
+  'latte-3': {
+    fr: { name: "Latte Caramel", description: "Filet de caramel au beurre" },
+    ar: { name: "لاتيه كراميل", description: "رذاذ كراميل بالزبدة" }
+  },
+  'latte-4': {
+    fr: { name: "Pumpkin Spice Latte", description: "Épices de saison & purée" },
+    ar: { name: "لاتيه توابل اليقطين", description: "توابل موسمية وهريس" }
+  },
+
+  // Tea
+  'tea-1': {
+    fr: { name: "Matcha Cérémonial", description: "Moulu sur pierre, riche en umami" },
+    ar: { name: "ماتشا احتفالي", description: "مطحون على الحجر، غني بالأومامي" }
+  },
+  'tea-2': {
+    fr: { name: "Masala Chai", description: "Épicé, crémeux, réchauffant" },
+    ar: { name: "ماسالا تشاي", description: "متبل، كريمي، دافئ" }
+  },
+  'tea-3': {
+    fr: { name: "Gingembre Citron", description: "Piquant, infusion apaisante" },
+    ar: { name: "زنجبيل وليمون", description: "لاذع، نقيع مهدئ" }
+  },
+  'tea-4': {
+    fr: { name: "Menthe Marocaine", description: "Thé vert rafraîchissant" },
+    ar: { name: "شاي مغربي بالنعناع", description: "شاي أخضر منعش" }
+  },
+  'tea-5': {
+    fr: { name: "Thé au Lait Royal", description: "Thé noir, lait, caramel" },
+    ar: { name: "شاي بالحليب ملكي", description: "شاي أسود، حليب، كراميل" }
+  },
+  'tea-6': {
+    fr: { name: "Oolong Pêche Glacé", description: "Fruité, floral, frais" },
+    ar: { name: "أولونغ الخوخ المثلج", description: "فاكهي، زهري، بارد" }
+  },
+
+  // Smoothie & Shake
+  'smoothie-1': {
+    fr: { name: "Explosion de Baies", description: "Fraise, myrtille, yaourt" },
+    ar: { name: "انفجار التوت", description: "فراولة، توت أزرق، زبادي" }
+  },
+  'smoothie-2': {
+    fr: { name: "Force Verte", description: "Épinards, pomme, banane" },
+    ar: { name: "القوة الخضراء", description: "سبانخ، تفاح، موز" }
+  },
+  'shake-1': {
+    fr: { name: "Shake Chocolat Classique", description: "Cacao riche, base crémeuse" },
+    ar: { name: "شيك شوكولاتة كلاسيكي", description: "كاكاو غني، قاعدة كريمية" }
+  },
+  'shake-2': {
+    fr: { name: "Shake Vanille", description: "Vanille de Madagascar, onctueux" },
+    ar: { name: "شيك فانيليا", description: "فانيليا مدغشقر، ناعم" }
+  },
+  'shake-3': {
+    fr: { name: "Délice Fraise", description: "Fraises fraîches, crème" },
+    ar: { name: "بهجة الفراولة", description: "فراولة طازجة، كريمة" }
+  },
+  'shake-4': {
+    fr: { name: "Banane Caramel", description: "Banane, filet de caramel" },
+    ar: { name: "موز وكراميل", description: "موز، رذاذ كراميل" }
+  },
+
+  // Toast
+  'toast-1': {
+    fr: { name: "Bénédicte Signature", description: "Œufs pochés, hollandaise" },
+    ar: { name: "بنديكت المميز", description: "بيض مسلوق، هولنديز" }
+  },
+  'toast-2': {
+    fr: { name: "Omelette Truffe", description: "Champignons, huile de truffe" },
+    ar: { name: "عجة الكمأة", description: "فطر، زيت الكمأة" }
+  },
+  'toast-3': {
+    fr: { name: "Shakshuka", description: "Tomate, poivrons, œufs" },
+    ar: { name: "شكشوكة", description: "طماطم، فلفل، بيض" }
+  },
+  'toast-4': {
+    fr: { name: "Toast Avocat", description: "Levain, avocat écrasé" },
+    ar: { name: "توست الأفوكادو", description: "خبز العجين المخمر، أفوكادو مهروس" }
+  },
+  'toast-5': {
+    fr: { name: "Bénédicte Classique", description: "Jambon, hollandaise" },
+    ar: { name: "بنديكت كلاسيكي", description: "لحم، هولنديز" }
+  },
+  'toast-6': {
+    fr: { name: "Bol Énergie Vegan", description: "Graines, légumes verts" },
+    ar: { name: "وعاء الطاقة النباتي", description: "حبوب، خضروات" }
+  },
+
+  // Pastry
+  'pastry-1': {
+    fr: { name: "Croissant au Beurre", description: "Feuilleté, beurre français" },
+    ar: { name: "كرواسون بالزبدة", description: "طبقات هشة، زبدة فرنسية" }
+  },
+  'pastry-2': {
+    fr: { name: "Croissant aux Amandes", description: "Frangipane, amandes grillées" },
+    ar: { name: "كرواسون باللوز", description: "فرانجيبان، لوز محمص" }
+  },
+  'pastry-3': {
+    fr: { name: "Éclair au Chocolat", description: "Pâte à choux, ganache riche" },
+    ar: { name: "إكلير الشوكولاتة", description: "عجينة الشو، غاناش غني" }
+  },
+  'pastry-4': {
+    fr: { name: "Tarte aux Fraises", description: "Crème pâtissière, fraises fraîches" },
+    ar: { name: "تارت الفراولة", description: "كاسترد الفانيليا، فراولة طازجة" }
+  },
+  'pastry-5': {
+    fr: { name: "Tarte Citron Meringuée", description: "Caillé piquant, meringue brûlée" },
+    ar: { name: "تارت الليمون والميرينغ", description: "خثرة لاذعة، ميرينغ محمر" }
+  },
+  'pastry-6': {
+    fr: { name: "Part de Gâteau Velours", description: "Mie moelleuse, glaçage vanille" },
+    ar: { name: "شريحة كيك مخملي", description: "فتات رطب، كريمة فانيليا" }
   }
-}
-
-// Menu translations are now managed globally in i18n.js
+};
 
 function canonicalizeEnglishName(s) {
   if (!s || typeof s !== 'string') return s;
@@ -1118,112 +1594,76 @@ function generateArabicFromEnglishSummary(name) {
   return out.length > 0 ? out.join(' ') : 'منتج';
 }
 
-
-/**
- * PREMIUM SEARCH ENGINE
- */
-function initSearch() {
-  const searchInput = document.getElementById('search-input');
-  const searchResults = document.getElementById('search-results');
-  const resultsList = document.getElementById('results-list');
-  const resultsCount = document.getElementById('results-count');
-
-  if (!searchInput || !searchResults || !resultsList) return;
-
-  searchInput.addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase().trim();
-    
-    if (query.length < 1) {
-      searchResults.classList.add('hidden');
-      return;
-    }
-
-    const matches = allMenuItems.filter(item => {
-      const name = (getMenuTranslation(item, 'name') || item.name || '').toLowerCase();
-      const desc = (getMenuTranslation(item, 'description') || item.description || '').toLowerCase();
-      const cat = (item.category || '').toLowerCase();
-      return name.includes(query) || desc.includes(query) || cat.includes(query);
-    });
-
-    renderSearchResults(matches);
-  });
-
-  // Close on click outside
-  document.addEventListener('click', (e) => {
-    if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-      searchResults.classList.add('hidden');
-    }
-  });
-
-  // Close on Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      searchResults.classList.add('hidden');
-      searchInput.blur();
-    }
-  });
+function getTranslation(key) {
+  const lang = getLang();
+  return (translations[lang] && translations[lang][key]) || (translations['en'] && translations['en'][key]) || key;
 }
 
-function renderSearchResults(matches) {
-  const searchResults = document.getElementById('search-results');
-  const resultsList = document.getElementById('results-list');
-  const resultsCount = document.getElementById('results-count');
-
-  if (matches.length === 0) {
-    resultsList.innerHTML = `
-      <div class="p-8 text-center">
-        <span class="material-symbols-outlined text-gray-300 text-4xl mb-2">search_off</span>
-        <p class="text-sm text-gray-500">No dishes found for this search</p>
-      </div>
-    `;
-    resultsCount.textContent = "0 found";
-  } else {
-    resultsCount.textContent = `${matches.length} found`;
-    resultsList.innerHTML = matches.map(item => {
-      const name = getMenuTranslation(item, 'name') || item.name;
-      const price = typeof item.price === 'number' ? item.price.toFixed(2) : item.price;
-      const img = normalizeImagePath(item.image || getFallbackImage(item));
-      
-      return `
-        <div class="p-3 flex items-center gap-3 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer transition-colors active:scale-[0.98]" 
-             onclick="navigateToProduct('${item.id}')">
-          <div class="w-12 h-12 rounded-xl overflow-hidden shrink-0 shadow-sm border border-gray-100 dark:border-white/5">
-            <img src="${img}" class="w-full h-full object-cover" alt="${name}" onerror="this.src='../assets/waiter.jpg'">
-          </div>
-          <div class="flex-1 min-w-0">
-            <h4 class="text-sm font-bold text-gray-900 dark:text-white truncate">${name}</h4>
-            <div class="flex items-center gap-2 mt-0.5">
-              <span class="text-[10px] font-bold text-primary">${price}DH</span>
-              <span class="text-[9px] text-gray-400 uppercase tracking-tighter bg-gray-100 dark:bg-white/5 px-1.5 py-0.5 rounded-full">${item.category}</span>
-            </div>
-          </div>
-          <span class="material-symbols-outlined text-gray-300 text-[18px]">chevron_right</span>
-        </div>
-      `;
-    }).join('');
+function getMenuTranslation(item, field) {
+  const lang = getLang();
+  if (lang === 'en') {
+    if (field === 'name') return summarizeEnglishName(canonicalizeEnglishName(item[field]));
+    return item[field];
   }
 
-  searchResults.classList.remove('hidden');
-}
-
-window.navigateToProduct = (id) => {
-  const item = allMenuItems.find(i => i.id === id);
-  if (item) {
-    localStorage.setItem('stitch_customizing_item', JSON.stringify(item));
-    window.location.href = buildCustomizationUrl(item);
+  if (field === 'name' && lang === 'fr') {
+    const enBase = summarizeEnglishName(canonicalizeEnglishName(item[field]));
+    return generateFrenchFromEnglishSummary(enBase);
   }
-};
-
-
-// Respond to language changes
-document.addEventListener('languageChanged', (e) => {
-  const lang = e.detail.lang;
+  if (field === 'name' && lang === 'ar') {
+    const enBase = summarizeEnglishName(canonicalizeEnglishName(item[field]));
+    return generateArabicFromEnglishSummary(enBase);
+  }
   
+  if (menuTranslations[item.id] && menuTranslations[item.id][lang] && menuTranslations[item.id][lang][field]) {
+    return menuTranslations[item.id][lang][field];
+  }
+  return item[field];
+}
+
+function applyLang(lang) {
+  document.documentElement.lang = lang;
+  localStorage.setItem('stitch_lang', lang);
+
+  // RTL Support
+  if (lang === 'ar') {
+    document.documentElement.dir = 'rtl';
+    document.body.classList.add('rtl');
+  } else {
+    document.documentElement.dir = 'ltr';
+    document.body.classList.remove('rtl');
+  }
+
+  // Update static text
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (key && translations[lang] && translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+
+  // Update placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (key && translations[lang] && translations[lang][key]) {
+      el.placeholder = translations[lang][key];
+    }
+  });
+
+  // Update Toggle UI
+  const toggle = document.getElementById('language-toggle');
+  const label = document.getElementById('current-language');
+  if (toggle && label) {
+    toggle.classList.remove('lang-en', 'lang-fr', 'lang-ar');
+    toggle.classList.add(`lang-${lang}`);
+    label.textContent = lang === 'en' ? 'English' : (lang === 'fr' ? 'Français' : 'العربية');
+  }
+
   const greetingEl = document.getElementById('header-greeting');
   if (greetingEl) {
     const h = new Date().getHours();
     const key = h < 12 ? 'greeting_morning' : h < 17 ? 'greeting_afternoon' : 'greeting_evening';
-    greetingEl.textContent = getTranslation(key);
+    greetingEl.textContent = (translations[lang] && translations[lang][key]) ? translations[lang][key] : translations.en[key];
   }
 
   // Re-render content
@@ -1237,5 +1677,52 @@ document.addEventListener('languageChanged', (e) => {
   if (modal && !modal.classList.contains('hidden')) {
     renderCartItems();
   }
+}
+
+function getLang() {
+  // Check localStorage first
+  const savedLang = localStorage.getItem('stitch_lang');
+  if (savedLang) return savedLang;
+  
+  // Check browser language preference
+  const browserLang = navigator.language || navigator.userLanguage;
+  if (browserLang) {
+    if (browserLang.startsWith('ar')) return 'ar';
+    if (browserLang.startsWith('fr')) return 'fr';
+  }
+  
+  // Default to English
+  return 'en';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  cart = getStoredCart();
+  updateCartUI();
+  fetchBestsellers();
+  setupEvents();
+
+  // Check for language preference
+  const lang = getLang();
+  applyLang(lang); // Always apply to ensure UI sync
+  
+  // Render categories after language is applied
+  renderCategories();
+  
+  setupLanguageToggle();
 });
 
+function setupLanguageToggle() {
+  const toggle = document.getElementById('language-toggle');
+
+  if (!toggle) return;
+
+  toggle.addEventListener('click', function () {
+    const current = getLang();
+    let next = 'en';
+    if (current === 'en') next = 'fr';
+    else if (current === 'fr') next = 'ar';
+    else if (current === 'ar') next = 'en';
+
+    applyLang(next);
+  });
+}
