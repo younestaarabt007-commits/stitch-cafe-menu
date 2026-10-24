@@ -1,39 +1,21 @@
+<!DOCTYPE html>
 <html class="light" lang="en" dir="ltr">
 
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Merchant Dashboard — Stitch Café</title>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
-    rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-    rel="stylesheet" />
+  <meta name="theme-color" content="#f7f8fa" />
+  <link rel="stylesheet" href="./assets/utilities.css" />
   <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./merchant.css" />
+  <link rel="stylesheet" href="./icons.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            primary: "#FF5200",
-            "background-light": "#f8f6f5",
-            "background-dark": "#1a100c"
-          },
-          fontFamily: {
-            sans: ["Plus Jakarta Sans", "sans-serif"],
-            serif: ["Instrument Serif", "serif"]
-          }
-        }
-      }
-    };
-  </script>
+
 </head>
 
 <body
-  class="icons-pending pos-compact bg-[#e4e4e4] dark:bg-[#1a100c] font-sans text-gray-900 dark:text-white h-screen overflow-hidden flex flex-col md:flex-row">
+  class="merchant-app icons-pending pos-compact bg-[#e4e4e4] dark:bg-[#1a100c] font-sans text-gray-900 dark:text-white h-screen overflow-hidden flex flex-col md:flex-row">
   <div id="app-hydration-shell"
     class="hidden fixed inset-0 z-[100] bg-[#e4e4e4] dark:bg-[#1a100c] items-center justify-center px-6">
     <div class="w-full max-w-xl">
@@ -71,13 +53,13 @@
   <aside id="sidebar"
     class="fixed top-0 left-0 w-72 h-screen bg-orange-500 dark:bg-orange-600 border-r border-orange-600 dark:border-orange-700 flex flex-col z-50 transform -translate-x-full md:translate-x-0 transition-all duration-300 overflow-hidden">
     <!-- Top: Logo -->
-    <div class="px-6 pt-6 pb-4 shrink-0">
+    <div class="merchant-brand px-6 pt-6 pb-4 shrink-0">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
           <div id="sidebar-retract-trigger" class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-glow cursor-pointer">
             <span class="material-symbols-outlined text-white text-[22px]">storefront</span>
           </div>
-          <h1 class="font-serif italic text-xl font-bold text-white">Stitch <span class="text-primary text-ultra-contrast">Merchant</span></h1>
+          <h1 class="merchant-wordmark">Stitch<span>Merchant workspace</span></h1>
         </div>
         <button id="mobile-menu-close" class="md:hidden p-2 text-gray-500">
           <span class="material-symbols-outlined">close</span>
@@ -86,7 +68,8 @@
     </div>
 
     <!-- Middle: Navigation (scrollable) -->
-    <nav class="flex-1 overflow-y-auto px-4 py-2 space-y-1.5 min-h-0">
+    <nav aria-label="Merchant navigation" class="flex-1 overflow-y-auto px-4 py-2 space-y-1.5 min-h-0">
+      <p class="merchant-nav-label">WORKSPACE</p>
       <button data-tab="dashboard"
         class="w-full flex items-center gap-3 px-4 py-2.5 text-primary hover:text-orange-500 hover:bg-white dark:hover:bg-white/90 rounded-xl font-bold transition-all nav-btn pos-button">
         <span class="material-symbols-outlined text-[20px] text-primary">dashboard</span>
@@ -127,7 +110,7 @@
     </nav>
 
     <!-- Bottom: Profile + Logout -->
-    <div class="shrink-0 px-4 pb-4 pt-2 border-t border-orange-400 dark:border-orange-500">
+    <div class="merchant-profile shrink-0 px-4 pb-4 pt-2 border-t border-orange-400 dark:border-orange-500">
       <div class="bg-white/10 dark:bg-black/20 rounded-xl p-3 mb-3">
         <div class="flex items-center gap-3">
           <div class="w-9 h-9 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center shrink-0">
@@ -215,7 +198,7 @@
   <main id="main-content" class="flex-1 md:ml-72 p-4 md:p-6 h-screen overflow-y-auto flex flex-col transition-all duration-300 bg-[#e4e4e4]" data-active-tab="dashboard">
     <!-- Header -->
     <header class="pos-page-header flex items-center justify-start mb-4 md:mb-6 shrink-0 gap-8 lg:gap-12">
-      <div class="flex items-center gap-1 md:gap-2 flex-wrap">
+      <div class="merchant-page-heading flex items-center gap-1 md:gap-2 flex-wrap">
         <h2 id="page-title" class="text-2xl md:text-3xl font-bold tracking-tight">Today's Summary</h2>
         <p id="page-subtitle" class="text-gray-500 dark:text-gray-400 font-medium">Manage your shop in real-time.</p>
       </div>
@@ -225,7 +208,7 @@
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
           </span>
-          <span class="text-xs font-bold">Kitchen Online</span>
+          <span class="text-xs font-bold">Demo workspace</span>
         </div>
         <!-- Language Selector -->
         <button onclick="cycleLanguage()" id="lang-cycle-btn"
@@ -233,7 +216,7 @@
           <span id="lang-cycle-text">EN</span>
         </button>
 
-        <button id="theme-toggle"
+        <button id="theme-toggle" aria-label="Change accent color" title="Change accent color"
           class="p-3 bg-white dark:bg-[#2a1e19] border border-gray-200 dark:border-white/5 rounded-2xl shadow-soft pos-button btn-white">
           <span class="material-symbols-outlined text-gray-500 no-flip">palette</span>
         </button>
@@ -593,7 +576,7 @@
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
             </span>
-            <span class="text-[11px] font-bold">Kitchen Online</span>
+            <span class="text-[11px] font-bold">Demo workspace</span>
           </div>
           <button onclick="cycleLanguage()" id="lang-cycle-btn-kitchen"
             class="px-3 py-1.5 bg-white dark:bg-[#2a1e19] border-2 border-gray-200 dark:border-white/10 rounded-xl text-xs font-bold transition-all shadow-sm">
@@ -765,12 +748,15 @@
 
     <!-- Tab: POS (Take Order) -->
     <div id="pos-tab" class="tab-content hidden flex-1 min-h-0 flex flex-col">
+      <div class="merchant-pos-heading">
+        <div><h2>Point of Sale</h2><p>Select products and build your order.</p></div>
+      </div>
       <div class="pos-lego-shell flex flex-col lg:flex-row gap-4 lg:gap-6 flex-1 min-h-0">
 
         <!-- Left: Menu Section -->
         <div class="pos-menu-panel flex-1 flex flex-col gap-3 min-w-0 min-h-0">
           <!-- Search + Category Filters -->
-          <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center shrink-0">
+          <div class="merchant-pos-tools flex flex-col sm:flex-row gap-3 items-start sm:items-center shrink-0">
             <div class="relative flex-1">
               <span
                 class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-[20px]">search</span>
@@ -779,6 +765,11 @@
                 placeholder="Search menu items..." oninput="filterPOSBySearch(this.value)"
                 data-i18n-placeholder="search_placeholder">
             </div>
+            <button id="pos-expand-btn" type="button" class="merchant-expand-button" aria-label="Expand order workspace" aria-pressed="false" title="Expand order workspace">
+              <svg class="merchant-expand-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg>
+              <svg class="merchant-restore-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h5V3m8 0v5h5M8 21v-5H3m18 0h-5v5"/></svg>
+              <span id="pos-expand-label">Expand</span>
+            </button>
           </div>
 
           <!-- Category Chips -->
@@ -795,7 +786,7 @@
         </div>
 
         <!-- Right: Cart / Order Summary -->
-        <div class="w-full lg:w-[340px] xl:w-[380px] shrink-0 flex flex-col h-full min-h-0">
+        <div class="merchant-cart-panel w-full lg:w-[340px] xl:w-[380px] shrink-0 flex flex-col h-full min-h-0">
           <div
             class="pos-order-shell bg-white dark:bg-[#2a1e19] rounded-2xl border-2 border-gray-400 dark:border-white/30 shadow-xl flex flex-col overflow-hidden flex-1 min-h-0">
 
@@ -1050,72 +1041,6 @@
       </div>
     </div>
 
-    <!-- POS Customization Modal -->
-    <div id="pos-modifier-modal"
-      class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-      <div
-        class="bg-white dark:bg-[#2a1e19] w-full max-w-md rounded-[2.5rem] flex flex-col max-h-[90vh] shadow-2xl overflow-hidden relative">
-
-        <!-- Header -->
-        <div
-          class="p-6 pb-4 border-b border-gray-100 dark:border-white/5 flex items-start justify-between shrink-0 bg-gray-50/50 dark:bg-black/10">
-          <div>
-            <h3 id="mod-item-name" class="text-2xl font-bold">Item Name</h3>
-            <p id="mod-item-price" class="text-primary font-black mt-1">0.00DH</p>
-          </div>
-          <button onclick="closeModifierModal()"
-            class="p-2 hover:bg-gray-200 dark:hover:bg-white/10 rounded-xl transition-all">
-            <span class="material-symbols-outlined text-gray-400">close</span>
-          </button>
-        </div>
-
-        <!-- Scrollable Options Area -->
-        <div class="p-6 overflow-y-auto space-y-6 flex-1 hide-scrollbar">
-
-          <!-- Dynamic Modifiers Section -->
-          <div id="mod-options-container" class="space-y-6">
-            <!-- Injected via JS -->
-          </div>
-
-          <!-- Table Number Assignment -->
-          <div>
-            <h4 class="text-sm font-bold mb-3 flex items-center gap-2">
-              <span class="material-symbols-outlined text-[18px] text-gray-400">table_restaurant</span>
-              Table Assignment
-            </h4>
-            <input type="text" id="mod-item-table"
-              class="w-full bg-gray-50 dark:bg-black/20 border-none rounded-2xl p-4 text-sm font-bold focus:ring-1 focus:ring-primary placeholder-gray-400"
-              placeholder="Table No (e.g. 12)">
-          </div>
-
-          <!-- Custom Notes -->
-          <div>
-            <h4 class="text-sm font-bold mb-3 flex items-center gap-2">
-              <span class="material-symbols-outlined text-[18px] text-gray-400">edit_note</span>
-              Special Instructions
-            </h4>
-            <textarea id="mod-item-notes" rows="2"
-              class="w-full bg-gray-50 dark:bg-black/20 border-none rounded-2xl p-4 text-sm focus:ring-1 focus:ring-primary resize-none placeholder-gray-400"
-              placeholder="e.g. Allergy: Nuts, Extra hot..."></textarea>
-          </div>
-
-        </div>
-
-        <!-- Footer / Action -->
-        <div class="p-6 pt-4 border-t border-gray-100 dark:border-white/5 shrink-0 bg-white dark:bg-[#2a1e19]">
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Total Price</span>
-            <span id="mod-final-price" class="text-xl font-bold">0.00DH</span>
-          </div>
-          <button id="mod-add-btn"
-            class="w-full bg-primary text-white h-14 rounded-2xl font-bold shadow-glow hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
-            <span class="material-symbols-outlined">add_shopping_cart</span>
-            Add Item
-          </button>
-        </div>
-
-      </div>
-    </div>
   </main>
 
   <!-- Kitchen Item Detail Modal -->
@@ -1303,7 +1228,9 @@
   <!-- Print Canvas Section (Hidden UI, used for printing) -->
   <div id="print-section" class="hidden"></div>
 
+  <script src="./icons.js"></script>
   <script src="./script.js"></script>
+  <script src="./merchant-ui.js"></script>
 </body>
 
 </html>

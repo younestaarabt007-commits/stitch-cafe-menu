@@ -1,8 +1,16 @@
 // ============================================================
 // STITCH MERCHANT DASHBOARD — DEMO MODE
-// All API calls are gracefully degraded to static demo data.
-// No customer data or tokens are exposed.
+// Without a login token, orders stay in this browser as local demo data.
+// An API failure never becomes a simulated successful server order.
 // ============================================================
+
+// Public customer menu used by QR previews, downloads, sharing and the generator.
+const CUSTOMER_MENU_URL = 'https://stitch-cafe-menu.vercel.app/swiggy-style_elite_main_menu_390x2500/index.html';
+function buildCustomerMenuUrl(tableId) {
+    const url = new URL(CUSTOMER_MENU_URL);
+    url.searchParams.set('table', String(tableId));
+    return url.href;
+}
 
 // --- DEMO DATA ---
 const DEMO_MENU = [
@@ -299,13 +307,80 @@ let hasHydratedMenuFromAPI = false;
 let menuRequestPromise = null;
 let hasInitializedMenuManager = false;
 let initialHydrationFinished = false;
+let activePOSCategory = 'All';
+let posSearchQuery = '';
+let checkoutInProgress = false;
+const MERCHANT_SESSION_KEY = 'stitch_merchant_session_v1';
+const PRODUCT_PLACEHOLDER = 'assets/product-placeholder.svg';
+
+function escapeHTML(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+}
+
+function normalizeProductImage(path) {
+    return typeof path === 'string' && path
+        ? path.replace('../swiggy-style_elite_main_menu_390x2500/assets/', '../swiggy-style_elite_main_menu_390x2500/assets/')
+        : PRODUCT_PLACEHOLDER;
+}
+
+function validOrder(order) {
+    return order && typeof order.id === 'string' && Number.isFinite(order.total) && order.total >= 0
+        && Number.isFinite(order.time) && ['Received', 'Preparing', 'Ready', 'Completed'].includes(order.status)
+        && Array.isArray(order.items) && order.items.every(item => item && typeof item.name === 'string'
+            && Number.isFinite(item.price) && item.price >= 0 && Number.isInteger(item.qty) && item.qty > 0);
+}
+
+function restoreMerchantSession() {
+    try {
+        const saved = JSON.parse(localStorage.getItem(MERCHANT_SESSION_KEY) || 'null');
+        if (saved && saved.version === 1) {
+            if (Array.isArray(saved.liveOrders) && saved.liveOrders.every(validOrder)) liveOrders = saved.liveOrders;
+            if (Array.isArray(saved.completedOrders) && saved.completedOrders.every(validOrder)) completedOrders = saved.completedOrders;
+            if (Array.isArray(saved.cart) && saved.cart.every(item => item && typeof item.id === 'string'
+                && typeof item.cartId === 'string' && typeof item.name === 'string' && Number.isFinite(item.price)
+                && item.price >= 0 && Number.isInteger(item.quantity) && item.quantity > 0)) posCart = saved.cart;
+            if (saved.discount && Number.isFinite(saved.discount.amount) && saved.discount.amount >= 0) {
+                globalDiscount = { amount: saved.discount.amount, type: saved.discount.type === '%' ? '%' : 'DH' };
+            }
+        } else {
+            const previousOrders = JSON.parse(localStorage.getItem('stitch_live_orders') || 'null');
+            if (Array.isArray(previousOrders) && previousOrders.every(validOrder)) liveOrders = previousOrders;
+        }
+        [...liveOrders, ...completedOrders].forEach(order => order.items.forEach(item => { item.image_url = normalizeProductImage(item.image_url); }));
+        posCart.forEach(item => { item.image_url = normalizeProductImage(item.image_url); });
+        activePosCartItemId = posCart[0]?.cartId || null;
+    } catch { /* Invalid or unavailable storage must not prevent opening the dashboard. */ }
+}
+
+function persistMerchantSession(syncOrders = false) {
+    try {
+        localStorage.setItem(MERCHANT_SESSION_KEY, JSON.stringify({ version: 1, liveOrders, completedOrders, cart: posCart, discount: globalDiscount }));
+        if (syncOrders) localStorage.setItem('stitch_live_orders', JSON.stringify(liveOrders));
+    } catch { /* Keep the current browser session usable when storage is full or disabled. */ }
+    refreshMerchantNavigation();
+}
+
+function refreshMerchantNavigation() {
+    const count = liveOrders.filter(order => order.status !== 'Completed').length;
+    for (const tab of ['orders', 'kitchen']) {
+        const badge = document.querySelector(`#sidebar [data-tab="${tab}"] .ml-auto`);
+        if (badge) badge.textContent = String(count);
+    }
+}
+
+function showMerchantNotice(message, isError = false) {
+    document.getElementById('merchant-notice')?.remove();
+    const notice = document.createElement('div');
+    notice.id = 'merchant-notice';
+    notice.setAttribute('role', isError ? 'alert' : 'status');
+    notice.className = `merchant-notice fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] rounded-xl px-5 py-4 text-sm font-semibold shadow-lg ${isError ? 'bg-red-700' : 'bg-gray-900'} text-white`;
+    notice.textContent = message;
+    document.body.appendChild(notice);
+    setTimeout(() => notice.remove(), 6000);
+}
 
 function waitForMaterialSymbols(timeoutMs = 1200) {
-    if (!document.fonts?.load) return Promise.resolve();
-    return Promise.race([
-        document.fonts.load('20px "Material Symbols Outlined"'),
-        new Promise(resolve => setTimeout(resolve, timeoutMs))
-    ]);
+    return Promise.resolve(); // SVG icons are bundled locally.
 }
 
 function finishInitialHydration() {
@@ -357,7 +432,9 @@ async function fetchJSON(url, options = {}) {
 function hydrateMenuFromCache() {
     try {
         const cached = JSON.parse(localStorage.getItem('stitch_menu_cache') || '[]');
-        if (Array.isArray(cached) && cached.length > 0) menuItems = cached;
+        if (Array.isArray(cached) && cached.length > 0 && cached.every(item => item && typeof item.id === 'string' && typeof item.name === 'string' && Number.isFinite(Number(item.price)))) {
+            menuItems = cached.map(item => ({ ...item, price: Number(item.price), image_url: normalizeProductImage(item.image_url) }));
+        }
     } catch { }
 }
 
@@ -385,7 +462,7 @@ async function ensureMenuData() {
         try {
             const result = await fetchJSON(`${apiBaseUrl}/api/v1/menu`, { timeoutMs: 1500 });
             if (result.success && Array.isArray(result.data) && result.data.length > 0) {
-                menuItems = result.data;
+                menuItems = result.data.map(item => ({ ...item, price: Number(item.price), image_url: normalizeProductImage(item.image_url) }));
                 persistMenuCache(menuItems);
             }
         } catch { }
@@ -728,7 +805,7 @@ function generateQRPreview(tableId) {
     if (!container) return;
     container.innerHTML = '';
 
-    const url = `${window.location.origin}/stitch_caf_menu_table_12/swiggy-style_elite_main_menu_390x2500/index.html?table=${tableId}`;
+    const url = buildCustomerMenuUrl(tableId);
 
     // Create a temporary div for QRCode.js to render into
     const tempDiv = document.createElement('div');
@@ -873,7 +950,7 @@ window.printCurrentQRWithTemplate = () => {
         
         // Get QR code from QRCode.js instead of sourceCanvas for higher quality
         const tableId = currentViewedTable.id;
-        const url = `${window.location.origin}/stitch_caf_menu_table_12/swiggy-style_elite_main_menu_390x2500/index.html?table=${tableId}`;
+        const url = buildCustomerMenuUrl(tableId);
         
         const qrContainer = document.createElement('div');
         new QRCode(qrContainer, {
@@ -950,7 +1027,7 @@ window.printCurrentQRWithTemplate = () => {
 
 window.shareCurrentQR = () => {
     if (!currentViewedTable) return;
-    const url = `${window.location.origin}/order?table=${currentViewedTable.id}`;
+    const url = buildCustomerMenuUrl(currentViewedTable.id);
     if (navigator.share) {
         navigator.share({ title: `Order from Table ${currentViewedTable.id}`, url });
     } else {
@@ -1065,14 +1142,15 @@ window.deleteReservation = (index) => {
 // --- ORDER SYNC LISTENER ---
 window.addEventListener('storage', (e) => {
     if (e.key === 'stitch_live_orders') {
-        const newOrders = JSON.parse(e.newValue || '[]');
-        if (newOrders.length > liveOrders.length) {
-            // New order added!
+        try {
+            const newOrders = JSON.parse(e.newValue || '[]');
+            if (!Array.isArray(newOrders) || !newOrders.every(validOrder)) return;
             liveOrders = newOrders;
-            renderLiveOrders(liveOrders);
-            // Play a sound or notify?
-            console.log("🔔 New order synced from menu!");
-        }
+            renderDashboard();
+            renderOrders();
+            renderKitchenDisplay();
+            persistMerchantSession();
+        } catch { /* Ignore malformed updates from other tabs. */ }
     }
 });
 
@@ -1270,7 +1348,8 @@ window.closeOrderDetailsModal = () => document.getElementById('order-details-mod
 
 window.updateOrderStatus = (orderId, newStatus) => {
     const order = liveOrders.find(o => o.id === orderId);
-    if (!order) return;
+    if (!order || !['Received', 'Preparing', 'Ready', 'Completed'].includes(newStatus)) return;
+    const detailsOpen = !document.getElementById('order-details-modal')?.classList.contains('hidden');
     order.status = newStatus;
 
     if (newStatus === 'Completed') {
@@ -1278,21 +1357,20 @@ window.updateOrderStatus = (orderId, newStatus) => {
         completedOrders.push({ ...order, completedAt: Date.now() });
         liveOrders = liveOrders.filter(o => o.id !== orderId);
         closeOrderDetailsModal();
-    } else {
-        // Re-open details to show new state
+    } else if (detailsOpen) {
         openOrderDetailsModal(orderId);
     }
-    renderLiveOrders(liveOrders);
+    persistMerchantSession(true);
+    renderDashboard();
+    renderOrders();
+    renderKitchenDisplay();
 };
 
 // --- KDS: RECEIPT PRINTING MODAL ---
 window.openReceiptModal = (orderId) => {
     // If order was passed, use it. Otherwise find it.
-    let order = liveOrders.find(o => o.id === orderId);
-    if (!order) {
-        // For completed demo orders not in live state anymore, or fallback
-        order = DEMO_ORDERS.find(o => o.id === orderId) || DEMO_ORDERS[0];
-    }
+    const order = [...liveOrders, ...completedOrders].find(o => o.id === orderId);
+    if (!order) return;
 
     document.getElementById('receipt-date').textContent = new Date(order.time).toLocaleString();
     document.getElementById('receipt-order-id').textContent = `Order: ${order.id}`;
@@ -1395,10 +1473,12 @@ window.closeShift = () => {
     // Reset Data
     completedOrders = [];
     liveOrders = [];
+    persistMerchantSession(true);
 
     closeEndOfShiftModal();
     renderDashboard();
     renderOrders();
+    renderKitchenDisplay();
     alert('Shift Closed. Register has been reset.');
 };
 
@@ -1720,74 +1800,95 @@ async function loadPOSMenu() {
     if (!grid) return;
 
     renderPOSCategories(menuItems);
-    renderPOSMenu(menuItems);
+    applyPOSFilters();
 
     await ensureMenuData();
 
-    const searchValue = document.getElementById('pos-search')?.value?.toLowerCase().trim() || '';
-    const filtered = searchValue
-        ? menuItems.filter(i => i.name.toLowerCase().includes(searchValue) || i.category.toLowerCase().includes(searchValue))
-        : menuItems;
     renderPOSCategories(menuItems);
-    renderPOSMenu(filtered);
+    applyPOSFilters();
 }
 
 function renderPOSCategories(items) {
     const container = document.getElementById('pos-categories');
     if (!container) return;
-    const categories = ['All', ...new Set(items.map(i => i.category))];
+    const categories = ['All', ...new Set(items.map(i => i.category).filter(Boolean))];
+    if (!categories.includes(activePOSCategory)) activePOSCategory = 'All';
+    const categoryImages = {
+        Brunch: 'sandwich or toast icon .jpg',
+        Coffee: 'black coffe icon.jpg',
+        Tea: 'tea icon .png',
+        Bakery: 'sweet pastry.png',
+        Bread: 'artisanal bread.jpg',
+        Juices: 'juces icon.png',
+        Smoothie: 'smoothie icon.png',
+        Shakes: 'milkshake icon.png'
+    };
+    const categoryIcon = category => categoryImages[category]
+        ? `<img src="../swiggy-style_elite_main_menu_390x2500/assets/subcat_icons/${encodeURIComponent(categoryImages[category])}" alt="" width="30" height="30" decoding="async">`
+        : '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>';
     container.innerHTML = categories.map(cat => `
-        <button onclick="filterPOSByCategory('${cat}')" class="category-btn px-4 py-2 ${cat === 'All' ? 'bg-primary text-white shadow-glow' : 'bg-gray-100 dark:bg-white/5 text-gray-500'} text-xs font-bold rounded-xl transition-all whitespace-nowrap">
-            ${cat}
+        <button type="button" data-category="${escapeHTML(cat)}" aria-pressed="${cat === activePOSCategory}" class="category-btn merchant-category-btn px-4 py-2 ${cat === activePOSCategory ? 'bg-primary text-white' : 'bg-gray-100 dark:bg-white/5 text-gray-500'} text-xs font-bold rounded-xl transition-all whitespace-nowrap">
+            <span class="merchant-category-icon" aria-hidden="true">${categoryIcon(cat)}</span>
+            <span class="merchant-category-label">${escapeHTML(cat)}</span>
+            <span class="merchant-category-count">${cat === 'All' ? items.length : items.filter(item => item.category === cat).length}</span>
         </button>
     `).join('');
+    container.querySelectorAll('[data-category]').forEach(button => {
+        button.addEventListener('click', () => filterPOSByCategory(button.dataset.category));
+    });
 }
 
 window.filterPOSByCategory = (category) => {
-    document.querySelectorAll('.category-btn').forEach(btn => {
-        const isActive = btn.textContent.trim() === category;
-        btn.classList.toggle('bg-primary', isActive);
-        btn.classList.toggle('text-white', isActive);
-        btn.classList.toggle('shadow-glow', isActive);
-        btn.classList.toggle('bg-gray-100', !isActive);
-        btn.classList.toggle('text-gray-500', !isActive);
-    });
-    const filtered = category === 'All' ? menuItems : menuItems.filter(i => i.category === category);
-    renderPOSMenu(filtered);
+    activePOSCategory = category;
+    renderPOSCategories(menuItems);
+    applyPOSFilters();
 };
+
+function applyPOSFilters() {
+    const query = posSearchQuery.toLocaleLowerCase().trim();
+    renderPOSMenu(menuItems.filter(item => (activePOSCategory === 'All' || item.category === activePOSCategory)
+        && (!query || `${item.name} ${item.category || ''}`.toLocaleLowerCase().includes(query))));
+}
+
+function refreshPOSSelection() {
+    document.querySelectorAll('.merchant-product-card').forEach(card => {
+        const quantity = posCart.filter(item => item.id === card.dataset.productId).reduce((sum, item) => sum + item.quantity, 0);
+        card.classList.toggle('is-selected', quantity > 0);
+        const badge = card.querySelector('.merchant-product-quantity');
+        if (badge) {
+            badge.hidden = quantity === 0;
+            badge.textContent = `${quantity} ×`;
+        }
+    });
+}
 
 function renderPOSMenu(items) {
     const grid = document.getElementById('pos-menu-grid');
     if (!grid) return;
     if (items.length === 0) {
-        grid.innerHTML = '<div class="col-span-3 text-center py-10 text-gray-400 font-bold text-xs uppercase tracking-widest">No items found</div>';
+        grid.innerHTML = '<div class="merchant-empty-state col-span-full text-center py-10 text-gray-500"><span class="material-symbols-outlined" aria-hidden="true">search_off</span><p>Aucun produit trouvé</p><p class="text-sm">Essayez une autre recherche ou catégorie.</p></div>';
         return;
     }
     grid.innerHTML = items.map(item => {
-        const outOfStock = item.stock !== null && item.stock <= 0;
+        const outOfStock = item.stock != null && item.stock <= 0;
         return `
-        <div class="bg-white dark:bg-[#2a1e19] p-4 rounded-2xl border border-gray-100 dark:border-white/5 shadow-soft transition-all group relative overflow-hidden pos-card ${outOfStock ? 'opacity-50 cursor-not-allowed' : 'hover:border-primary/50 cursor-pointer'}" 
-             ${!outOfStock ? `onclick="addToCart('${item.id}')"` : ''}>
-            
-            ${outOfStock ? '<div class="absolute inset-0 bg-white/50 dark:bg-black/50 z-10 flex items-center justify-center"><span class="bg-red-500 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest rotate-[-15deg] shadow-lg border-2 border-white dark:border-[#2a1e19]">Sold Out</span></div>' : ''}
-
-            <div class="w-full aspect-square bg-gray-50 dark:bg-black/20 rounded-xl mb-4 overflow-hidden relative flex items-center justify-center">
-                ${item.image_url
-                ? `<img src="${item.image_url}" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">`
-                : `<span class="material-symbols-outlined text-4xl text-gray-300">coffee</span>`}
-                ${!outOfStock ? `
-                <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all flex items-center justify-center">
-                    <span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all bg-white rounded-full p-2 shadow-lg">add</span>
-                </div>` : ''}
+        <button type="button" data-product-id="${escapeHTML(item.id)}" aria-label="Ajouter ${escapeHTML(item.name)}, ${Number(item.price).toFixed(2)} DH" ${outOfStock ? 'disabled' : ''} class="merchant-product-card bg-white dark:bg-[#2a1e19] p-4 rounded-2xl border border-gray-100 dark:border-white/5 transition-all group relative overflow-hidden pos-card text-left ${outOfStock ? 'opacity-50 cursor-not-allowed' : 'hover:border-primary/50 cursor-pointer'}">
+            <div class="merchant-product-image w-full aspect-square bg-gray-50 dark:bg-black/20 rounded-xl mb-4 overflow-hidden relative">
+                <img src="${escapeHTML(normalizeProductImage(item.image_url))}" alt="${escapeHTML(item.name)}" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='assets/product-placeholder.svg'">
+                <span class="merchant-product-quantity" hidden></span>
+                ${outOfStock ? '<span class="merchant-product-soldout">Épuisé</span>' : '<span class="merchant-product-add material-symbols-outlined" aria-hidden="true">add</span>'}
             </div>
-            <h5 class="font-bold text-sm mb-1 truncate pr-2">${item.name}</h5>
-            <div class="flex items-center justify-between mt-1">
-                <span class="text-primary font-black">${Number(item.price).toFixed(2)}DH</span>
-                ${item.stock !== null && item.stock > 0 ? `<span class="text-[10px] font-bold text-orange-500 px-1.5 py-0.5 bg-orange-50 dark:bg-orange-900/20 rounded-md shadow-sm border border-orange-100 dark:border-orange-800/30">${item.stock} left</span>`
-                : `<span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">${item.category}</span>`}
+            <span class="merchant-product-name block font-bold text-sm mb-1">${escapeHTML(item.name)}</span>
+            <div class="merchant-product-meta flex items-center justify-between mt-1">
+                <span class="merchant-product-price text-primary font-black">${Number(item.price).toFixed(2)} <small>DH</small></span>
+                <span class="merchant-product-stock text-[10px] font-bold text-gray-500">${item.stock != null ? `${item.stock} restants` : escapeHTML(item.category)}</span>
             </div>
-        </div>
+        </button>
     `}).join('');
+    grid.querySelectorAll('[data-product-id]').forEach(button => {
+        button.addEventListener('click', () => addToCart(button.dataset.productId));
+    });
+    refreshPOSSelection();
 }
 
 window.addToCart = (itemId) => {
@@ -1795,30 +1896,20 @@ window.addToCart = (itemId) => {
     if (!item) return;
 
     // Reject if out of stock
-    if (item.stock !== null && item.stock <= 0) {
+    if (item.stock != null && item.stock <= 0) {
         alert('This item is currently out of stock.');
         return;
     }
 
     // Check if adding exceeds current stock
     const cartCount = posCart.filter(c => c.id === itemId).reduce((sum, current) => sum + current.quantity, 0);
-    if (item.stock !== null && cartCount >= item.stock) {
+    if (item.stock != null && cartCount >= item.stock) {
         alert(`Cannot add more. Only ${item.stock} left in stock.`);
         return;
     }
 
-    // If it has modifiers (e.g. Coffee), show modal. Otherwise, add directly.
-    if (item.hasModifiers || item.category === 'Coffee') {
-        openModifierModal(item);
-    } else {
-        // Direct add for simple items
-        const cartId = item.id;
-        const existing = posCart.find(c => c.cartId === cartId);
-        if (existing) existing.quantity++;
-        else posCart.push({ ...item, cartId, quantity: 1, basePrice: item.price, mods: [], notes: '' });
-        activePosCartItemId = cartId;
-        renderCart();
-    }
+    // Every item needs the same opportunity to specify its table and instructions.
+    openModifierModal(item);
 };
 
 // --- MODIFIER MODAL LOGIC ---
@@ -1869,16 +1960,18 @@ const modifiersConfig = {
 };
 
 function openModifierModal(item) {
-    currentModItem = { ...item, basePrice: item.price };
+    currentModItem = { ...item, basePrice: Number(item.price) };
     const modal = document.getElementById('pos-modifier-modal');
     if (!modal) return;
 
     document.getElementById('mod-item-name').textContent = item.name;
-    document.getElementById('mod-item-price').textContent = `${item.price.toFixed(2)}DH`;
+    document.getElementById('mod-item-price').textContent = `${Number(item.price).toFixed(2)}DH`;
     document.getElementById('mod-item-notes').value = '';
+    const orderTable = posCart.find(cartItem => cartItem.table && cartItem.table !== 'Walk-in')?.table || '';
+    document.getElementById('mod-item-table').value = orderTable;
 
     const container = document.getElementById('mod-options-container');
-    const mods = modifiersConfig[item.category] || modifiersConfig['Coffee'];
+    const mods = modifiersConfig[item.category] || [];
 
     container.innerHTML = mods.map((mod, gIdx) => `
         <div>
@@ -1895,7 +1988,7 @@ function openModifierModal(item) {
                 `).join('')}
             </div>
         </div>
-    `).join('');
+    `).join('') || '<p class="merchant-no-options">No extra options for this item. You can specify the table and special instructions below.</p>';
 
     calculateModPrice();
     modal.classList.remove('hidden');
@@ -1919,15 +2012,19 @@ window.calculateModPrice = () => {
 
 document.getElementById('mod-add-btn')?.addEventListener('click', () => {
     if (!currentModItem) return;
+    const product = menuItems.find(item => item.id === currentModItem.id);
+    const quantityInCart = posCart.filter(item => item.id === currentModItem.id).reduce((sum, item) => sum + item.quantity, 0);
+    if (product?.stock != null && quantityInCart >= product.stock) {
+        showMerchantNotice(`Cannot add more. Only ${product.stock} left in stock.`, true);
+        return;
+    }
 
     let addedPrice = 0;
     let selectedMods = [];
 
     document.querySelectorAll('#mod-options-container input:checked').forEach(input => {
         const val = parseFloat(input.value);
-        if (val > 0 || input.type !== 'radio') { // Dont list "Whole Milk (Free)" as a mod to keep it clean, unless you want to
-            selectedMods.push(input.dataset.label);
-        }
+        if (input.dataset.label) selectedMods.push(input.dataset.label);
         addedPrice += val;
     });
 
@@ -1937,7 +2034,7 @@ document.getElementById('mod-add-btn')?.addEventListener('click', () => {
 
     // Create a unique cart ID based on options so identical customizations stack
     const modString = selectedMods.sort().join('|') + '|' + notes + '|' + tableNo;
-    const cartId = `${currentModItem.id}-${btoa(modString).substring(0, 10)}`;
+    const cartId = `${currentModItem.id}-${Array.from(new TextEncoder().encode(modString), byte => byte.toString(16).padStart(2, '0')).join('')}`;
 
     const existing = posCart.find(c => c.cartId === cartId);
     if (existing) {
@@ -1988,43 +2085,86 @@ function renderCart() {
             </div>`;
         if (checkoutBtn) checkoutBtn.disabled = true;
         if (mobileCheckoutBtn) mobileCheckoutBtn.disabled = true;
+        
+        // Reset Cash Calculator
+        const cashInput = document.getElementById('cash-received');
+        if (cashInput) cashInput.value = '';
+        const changeEl = document.getElementById('change-to-return');
+        if (changeEl) {
+            changeEl.textContent = '0.00DH';
+            changeEl.className = 'text-sm font-extrabold text-slate-400 dark:text-slate-500';
+        }
     } else {
-        cartList.innerHTML = posCart.map(item => `
-            <div onclick="focusPosCartItem('${item.cartId}')" class="pos-cart-item ${activePosCartItemId === item.cartId ? 'active' : ''} flex items-center gap-3 bg-white dark:bg-black/20 px-3 py-2.5 rounded-xl border-2 border-gray-200 dark:border-white/15 group cursor-pointer">
-                <div class="w-11 h-11 rounded-lg bg-white dark:bg-[#3a2c25] border-2 border-gray-200 dark:border-white/15 flex items-center justify-center overflow-hidden text-primary font-bold shrink-0">
+        cartList.innerHTML = posCart.map(item => {
+            const isWalkin = !item.table || item.table === 'Walk-in' || item.table === '';
+            const tableLabel = isWalkin ? 'Walk-in' : `Table ${item.table}`;
+            
+            return `
+            <div onclick="focusPosCartItem('${item.cartId}')" class="pos-cart-item ${activePosCartItemId === item.cartId ? 'active' : ''} flex items-stretch gap-3 bg-white dark:bg-black/20 p-3 rounded-xl border-2 border-gray-200 dark:border-white/15 group cursor-pointer">
+                <!-- Thumbnail -->
+                <div class="w-12 h-12 rounded-xl bg-white dark:bg-[#3a2c25] border border-gray-200 dark:border-white/10 flex items-center justify-center overflow-hidden text-primary font-bold shrink-0 self-center">
                     ${item.image_url
-                ? `<img src="${item.image_url}" alt="${item.name}" loading="lazy" decoding="async" class="w-full h-full object-cover rounded-md">`
-                : `<span class="material-symbols-outlined text-[18px] text-primary/70">restaurant</span>`}
+                        ? `<img src="${escapeHTML(normalizeProductImage(item.image_url))}" alt="${escapeHTML(item.name)}" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='assets/product-placeholder.svg'">`
+                        : `<span class="material-symbols-outlined text-[22px] text-primary/70">restaurant</span>`}
                 </div>
-                <div class="flex-1 min-w-0">
-                    <div class="flex items-center justify-between gap-2">
-                        <p class="font-bold text-sm truncate">${item.name}</p>
-                        <span class="text-xs font-extrabold text-primary bg-primary/10 px-2 py-0.5 rounded-md shrink-0">${item.quantity}x</span>
+                
+                <!-- Product Metadata & Content -->
+                <div class="flex-1 min-w-0 flex flex-col justify-between">
+                    <div class="flex items-start justify-between gap-2">
+                        <p class="font-extrabold text-sm text-gray-800 dark:text-gray-100 truncate">${escapeHTML(item.name)}</p>
+                        <span class="text-xs font-black text-primary bg-primary/10 px-2 py-0.5 rounded-lg shrink-0">${item.quantity}x</span>
                     </div>
-                    <div class="flex items-center justify-between gap-2 mt-1">
-                        <div class="flex items-center gap-1.5 min-w-0">
-                            ${item.mods && item.mods.length > 0 ? `<p class="text-[10px] text-gray-500 truncate font-medium">${item.mods.join(', ')}</p>` : ''}
-                            ${item.notes ? `<p class="text-[10px] text-orange-500 font-bold truncate">${item.notes}</p>` : ''}
-                            <p class="text-[10px] text-primary font-bold">${item.table ? 'Table ' + item.table : 'Walk-in'}</p>
+                    
+                    <!-- Chips and custom details -->
+                    ${item.mods && item.mods.length > 0 ? `
+                        <div class="flex flex-wrap gap-1 mt-1 max-w-full">
+                            ${item.mods.map(mod => `<span class="cart-mod-chip">${escapeHTML(mod)}</span>`).join('')}
                         </div>
+                    ` : ''}
+                    
+                    ${item.notes ? `
+                        <div class="flex items-center gap-1 mt-1 text-[9px] font-extrabold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/20 px-2 py-0.5 rounded-md border border-amber-500/10 w-fit">
+                            <span class="material-symbols-outlined text-[11px]">edit_note</span>
+                            <span class="truncate max-w-[150px]">${escapeHTML(item.notes)}</span>
+                        </div>
+                    ` : ''}
+
+                    <div class="flex items-center justify-between gap-2 mt-1.5 pt-1.5 border-t border-dashed border-gray-100 dark:border-white/5">
+                        <span class="px-2 py-0.5 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-md text-[9px] font-black uppercase tracking-wide text-gray-500 dark:text-gray-400 shrink-0">
+                            ${escapeHTML(tableLabel)}
+                        </span>
                         <span class="text-sm font-black text-gray-800 dark:text-white shrink-0">${(item.price * item.quantity).toFixed(2)}DH</span>
                     </div>
                 </div>
-                <div class="flex flex-col gap-1 items-center justify-center shrink-0">
-                    <button onclick="event.stopPropagation(); updateQty('${item.cartId}', 1)"  class="pos-cart-qty-btn text-gray-400 hover:text-primary transition-all"><span class="material-symbols-outlined text-[20px]">add_circle</span></button>
-                    <button onclick="event.stopPropagation(); updateQty('${item.cartId}', -1)" class="pos-cart-qty-btn text-gray-400 hover:text-red-500 transition-all"><span class="material-symbols-outlined text-[20px]">remove_circle</span></button>
+
+                <!-- Tactics Actions -->
+                <div class="flex flex-col gap-1.5 items-center justify-center shrink-0 ml-1">
+                    <button type="button" aria-label="Ajouter une unité de ${escapeHTML(item.name)}" onclick="event.stopPropagation(); updateQty('${item.cartId}', 1)" class="pos-cart-qty-btn">
+                        <span class="material-symbols-outlined text-[14px] font-black">add</span>
+                    </button>
+                    <button type="button" aria-label="Retirer une unité de ${escapeHTML(item.name)}" onclick="event.stopPropagation(); updateQty('${item.cartId}', -1)" class="pos-cart-qty-btn">
+                        <span class="material-symbols-outlined text-[14px] font-black">remove</span>
+                    </button>
                 </div>
             </div>
-        `).join('');
+            `;
+        }).join('');
         if (checkoutBtn) checkoutBtn.disabled = false;
         if (mobileCheckoutBtn) mobileCheckoutBtn.disabled = false;
     }
     updateTotals();
+    refreshPOSSelection();
 }
 
 window.updateQty = (cartId, delta) => {
     const item = posCart.find(c => c.cartId === cartId);
     if (!item) return;
+    const product = menuItems.find(product => product.id === item.id);
+    const quantityInCart = posCart.filter(line => line.id === item.id).reduce((sum, line) => sum + line.quantity, 0);
+    if (delta > 0 && product?.stock != null && quantityInCart + delta > product.stock) {
+        showMerchantNotice(`Stock disponible : ${product.stock}.`, true);
+        return;
+    }
     item.quantity += delta;
     if (item.quantity <= 0) posCart = posCart.filter(c => c.cartId !== cartId);
     if (delta > 0) activePosCartItemId = cartId;
@@ -2032,87 +2172,151 @@ window.updateQty = (cartId, delta) => {
     renderCart();
 };
 
-function updateTotals() {
+function calculateCartTotals() {
     const subtotal = posCart.reduce((sum, i) => sum + i.price * i.quantity, 0);
-
-    // Read discount from the new UI elements
-    const discountVal = parseFloat(document.getElementById('discount-value')?.value) || 0;
+    const inputValue = parseFloat(document.getElementById('discount-value')?.value);
+    const discountVal = Number.isFinite(inputValue) ? Math.max(0, inputValue) : 0;
     const discountType = document.getElementById('discount-type')?.value || '%';
+    globalDiscount = { amount: discountVal, type: discountType };
+    const discountAmount = Math.min(subtotal, discountType === '%' ? subtotal * Math.min(discountVal, 100) / 100 : discountVal);
+    return { subtotal, discountAmount, total: Math.round((subtotal - discountAmount) * 100) / 100 };
+}
 
-    let discountAmount = 0;
-    if (discountVal > 0) {
-        discountAmount = discountType === '%' ? subtotal * (discountVal / 100) : discountVal;
-    }
-
-    const total = Math.max(0, subtotal - discountAmount);
+function updateTotals() {
+    const { subtotal, total } = calculateCartTotals();
     const subtotalEl = document.getElementById('pos-cart-subtotal');
     const totalEl = document.getElementById('pos-cart-total');
     const mobileTotalEl = document.getElementById('mobile-cart-total');
     if (subtotalEl) subtotalEl.textContent = `${subtotal.toFixed(2)}DH`;
     if (totalEl) totalEl.textContent = `${total.toFixed(2)}DH`;
     if (mobileTotalEl) mobileTotalEl.textContent = `${total.toFixed(2)}DH`;
+
+    // Recalculate change in real-time when totals change
+    updateChangeCalculator();
+    persistMerchantSession();
 }
+
+window.updateChangeCalculator = () => {
+    const totalEl = document.getElementById('pos-cart-total');
+    if (!totalEl) return;
+    const total = parseFloat(totalEl.textContent.replace('DH', '')) || 0;
+    const cashInput = document.getElementById('cash-received');
+    const changeEl = document.getElementById('change-to-return');
+    if (!cashInput || !changeEl) return;
+
+    const cashVal = parseFloat(cashInput.value) || 0;
+    if (cashVal <= 0) {
+        changeEl.textContent = '0.00DH';
+        changeEl.className = 'text-sm font-extrabold text-slate-400 dark:text-slate-500';
+        return;
+    }
+
+    const change = cashVal - total;
+    if (change >= 0) {
+        changeEl.textContent = `${change.toFixed(2)}DH`;
+        changeEl.className = 'text-sm font-extrabold text-emerald-600 dark:text-emerald-400';
+    } else {
+        changeEl.textContent = `Reste: ${Math.abs(change).toFixed(2)}DH`;
+        changeEl.className = 'text-xs font-bold text-rose-500';
+    }
+};
+
+window.openCashDrawer = () => {
+    // Show a beautiful premium feedback toast indicating the drawer opened
+    const toast = document.createElement('div');
+    toast.className = 'fixed bottom-20 right-6 bg-slate-900/90 dark:bg-black/90 backdrop-blur-md text-white px-5 py-3.5 rounded-2xl shadow-2xl z-[100] flex items-center gap-3 border border-white/10 transition-all duration-300';
+    toast.style.transform = 'translateY(50px)';
+    toast.style.opacity = '0';
+    toast.innerHTML = `
+        <span class="material-symbols-outlined text-emerald-400 text-[24px]">inbox</span>
+        <div>
+            <p class="font-extrabold text-sm text-emerald-400">Simulation du tiroir-caisse</p>
+            <p class="text-gray-400 font-medium text-[10px] mt-0.5">Mode démo · aucun équipement connecté</p>
+        </div>
+    `;
+    document.body.appendChild(toast);
+    
+    // Trigger micro-animation
+    requestAnimationFrame(() => {
+        toast.style.transform = 'translateY(0)';
+        toast.style.opacity = '1';
+    });
+
+    setTimeout(() => {
+        toast.style.transform = 'translateY(50px)';
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 400);
+    }, 2800);
+};
 
 window.clearCart = () => {
     posCart = [];
     activePosCartItemId = null;
     const discountEl = document.getElementById('discount-value');
     if (discountEl) discountEl.value = '';
+    
+    // Reset Cash input
+    const cashInput = document.getElementById('cash-received');
+    if (cashInput) cashInput.value = '';
+    
     renderCart();
 };
 
 window.checkoutPOS = async () => {
-    if (posCart.length === 0) return;
-    
+    if (posCart.length === 0 || checkoutInProgress) return;
+    checkoutInProgress = true;
+    const cartSnapshot = posCart.map(item => ({ ...item }));
+    const { subtotal, discountAmount, total } = calculateCartTotals();
+    const isDemo = !localStorage.getItem('stitch_token');
+    let serverOrder = null;
     try {
-        const result = await fetchJSON(`${apiBase()}/api/v1/orders`, {
-            method: 'POST',
-            body: JSON.stringify({ items: posCart.map(i => ({ menu_item_id: i.id, quantity: i.quantity })) })
+        if (!isDemo) {
+            const result = await fetchJSON(`${apiBase()}/api/v1/orders`, {
+                method: 'POST',
+                body: JSON.stringify({ items: cartSnapshot.map(item => ({ menu_item_id: item.id, quantity: item.quantity })) })
+            });
+            if (!result.success) throw new Error('Order rejected');
+            serverOrder = result.data || {};
+        }
+
+        const orderId = String(serverOrder?.id || `POS-${Date.now()}`);
+        const newOrder = {
+            id: orderId,
+            table: cartSnapshot[0]?.table || 'Walk-in',
+            items: cartSnapshot.map(item => ({ name: item.name, qty: item.quantity, price: item.price, mods: item.mods || [], notes: item.notes || '', image_url: item.image_url || '' })),
+            subtotal,
+            discountAmount,
+            total: Number.isFinite(Number(serverOrder?.total)) ? Number(serverOrder.total) : total,
+            status: 'Received',
+            source: isDemo ? 'local-demo' : 'api',
+            time: Date.now()
+        };
+
+        cartSnapshot.forEach(cartItem => {
+            const activeItem = menuItems.find(item => item.id === cartItem.id);
+            if (activeItem?.stock != null) activeItem.stock = Math.max(0, activeItem.stock - cartItem.quantity);
         });
-        if (result.success) {
-            alert('✅ Order placed successfully!');
-            posCart = [];
-            renderCart();
-            switchTab('dashboard');
-            return;
-        }
-    } catch { /* Demo fallback */ }
-    
-    // Demo: simulate successful order & decrement stock logically
-    const total = posCart.reduce((sum, i) => sum + i.price * i.quantity, 0);
-    const orderId = 'POS-' + Date.now();
-    const tableNo = posCart[0]?.table || 'Walk-in';
-    const newOrder = {
-        id: orderId,
-        table: tableNo,
-        items: posCart.map(c => ({ name: c.name, qty: c.quantity, price: c.price, mods: c.mods || [], notes: c.notes || '', image_url: c.image_url || '' })),
-        total,
-        status: 'Received',
-        time: Date.now()
-    };
-    
-    // Decrement stock for tracked items
-    posCart.forEach(cartItem => {
-        const activeItem = menuItems.find(i => i.id === cartItem.id);
-        if (activeItem && activeItem.stock !== null) {
-            activeItem.stock = Math.max(0, activeItem.stock - cartItem.quantity);
-        }
-    });
-    
-    liveOrders.unshift(newOrder);
-    localStorage.setItem('stitch_live_orders', JSON.stringify(liveOrders));
-    posCart = [];
-    activePosCartItemId = null;
-    renderCart();
-    renderDashboard();
-    alert(`✅ Order ${orderId} placed successfully! Total: ${total.toFixed(2)}DH`);
-    switchTab('orders');
+        persistMenuCache(menuItems);
+        liveOrders.unshift(newOrder);
+        clearCart();
+        persistMerchantSession(true);
+        renderDashboard();
+        renderKitchenDisplay();
+        applyPOSFilters();
+        showMerchantNotice(isDemo
+            ? `Commande démo enregistrée dans ce navigateur · ${newOrder.total.toFixed(2)} DH. Aucun paiement effectué.`
+            : `Commande envoyée · ${orderId}.`);
+        switchTab('orders');
+    } catch {
+        showMerchantNotice('Envoi impossible. La commande reste dans le panier : vérifiez la connexion puis réessayez.', true);
+    } finally {
+        checkoutInProgress = false;
+    }
 };
 
 window.filterPOSBySearch = (query) => {
-    const q = query.toLowerCase().trim();
-    const filtered = q ? menuItems.filter(i => i.name.toLowerCase().includes(q) || i.category.toLowerCase().includes(q)) : menuItems;
-    renderPOSMenu(filtered);
+    posSearchQuery = query;
+    applyPOSFilters();
 };
 
 
@@ -2362,6 +2566,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Theme
     applyTheme(localStorage.getItem('stitch_theme') || 'elite');
     hydrateMenuFromCache();
+    restoreMerchantSession();
 
     // Sidebar nav buttons
     document.querySelectorAll('.nav-btn[data-tab]').forEach(btn => {
@@ -2393,17 +2598,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // POS Search
     document.getElementById('pos-search')?.addEventListener('input', e => {
-        const q = e.target.value.toLowerCase();
-        renderPOSMenu(menuItems.filter(i =>
-            i.name.toLowerCase().includes(q) || i.category.toLowerCase().includes(q)
-        ));
+        filterPOSBySearch(e.target.value);
     });
 
     // Discount Inputs
-    const discountInput = document.getElementById('pos-discount-input');
-    const discountType = document.getElementById('pos-discount-type');
+    const discountInput = document.getElementById('discount-value');
+    const discountType = document.getElementById('discount-type');
 
     if (discountInput && discountType) {
+        discountInput.value = globalDiscount.amount || '';
+        discountType.value = globalDiscount.type;
         const applyDiscount = () => {
             globalDiscount.amount = parseFloat(discountInput.value) || 0;
             globalDiscount.type = discountType.value;
@@ -2412,6 +2616,10 @@ document.addEventListener('DOMContentLoaded', () => {
         discountInput.addEventListener('input', applyDiscount);
         discountType.addEventListener('change', applyDiscount);
     }
+    // Cash Received input listener for change calculator
+    document.getElementById('cash-received')?.addEventListener('input', () => {
+        window.updateChangeCalculator();
+    });
 
     // POS Checkout
     document.getElementById('pos-checkout-btn')?.addEventListener('click', async () => {
@@ -2424,7 +2632,7 @@ document.addEventListener('DOMContentLoaded', () => {
             await checkoutPOS();
         } finally {
             // Reset button state after checkout completes (success or failure)
-            btn.disabled = false;
+            btn.disabled = posCart.length === 0;
             btn.innerHTML = '<span class="material-symbols-outlined">receipt_long</span> Place Order';
         }
     });
@@ -2444,10 +2652,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.generateQR = () => {
         const tableId = document.getElementById('qr-table-input').value.trim() || 'Undefined';
 
-        // Construct the demo URL representing the storefront link
-        const url = new URL(window.location.href);
-        const baseUrl = url.origin + url.pathname.replace('/stitch_caf_menu_table_12/merchant_dashboard/index.html', '/stitch_caf_menu_table_12');
-        currentQRData = `${baseUrl}?table=${encodeURIComponent(tableId)}`;
+        currentQRData = buildCustomerMenuUrl(tableId);
 
         document.getElementById('qr-link-text').textContent = currentQRData;
 
@@ -2575,6 +2780,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Load initial dashboard
+    renderCart();
     switchTab('dashboard');
     switchMenuSubTab('catalog'); // init menu manager subtab state
     Promise.allSettled([iconFontReadyPromise, ensureMenuData()])
